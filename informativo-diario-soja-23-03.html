@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radar Agro - Soja | Rural IN</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+        :root {
+            --primary: #1B5E20;
+            --primary-light: #388E3C;
+            --primary-dark: #0D3B0F;
+            --accent: #C8E6C9;
+            --accent-gold: #FFD600;
+            --bg-dark: #0A0E07;
+            --bg-card: #0F1A0D;
+            --bg-card-alt: #152113;
+            --text-primary: #E8F5E9;
+            --text-secondary: #A5D6A7;
+            --text-muted: #6B8F6E;
+            --border: #1E3A1F;
+            --red: #EF5350;
+            --red-bg: rgba(239,83,80,0.1);
+            --green: #66BB6A;
+            --green-bg: rgba(102,187,106,0.1);
+            --blue: #42A5F5;
+            --orange: #FFA726;
+            --yellow: #FFD600;
+            --soy: #8BC34A;
+            --soy-dark: #558B2F;
+            --soy-light: #DCEDC8;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family:'Inter',sans-serif;
+            background:var(--bg-dark);
+            color:var(--text-primary);
+            line-height:1.6;
+            min-height:100vh;
+        }
+
+        ::-webkit-scrollbar { width:6px; }
+        ::-webkit-scrollbar-track { background:var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background:var(--primary); border-radius:3px; }
+
+        .container { max-width:1100px; margin:0 auto; padding:0 16px; }
+
+        /* HEADER */
+        .header {
+            background:linear-gradient(135deg, #071005 0%, var(--primary-dark) 40%, var(--primary) 100%);
+            padding:20px 0;
+            border-bottom:3px solid var(--soy);
+            position:relative; overflow:hidden;
+        }
+        .header::before {
+            content:''; position:absolute; top:-50%;right:-10%;
+            width:300px;height:300px;
+            background:radial-gradient(circle,rgba(139,195,74,0.12) 0%,transparent 70%);
+            border-radius:50%;
+        }
+        .header-content {
+            display:flex; align-items:center; justify-content:space-between;
+            flex-wrap:wrap; gap:16px; position:relative; z-index:1;
+        }
+        .logo-area { display:flex; align-items:center; gap:16px; }
+        .logo-placeholder {
+            width:70px;height:70px;background:white;border-radius:14px;
+            display:flex;align-items:center;justify-content:center;
+            box-shadow:0 4px 15px rgba(0,0,0,0.3); flex-shrink:0; overflow:hidden;
+        }
+        .header-title h1 { font-size:1.6rem;font-weight:900;letter-spacing:-0.5px;text-shadow:0 2px 4px rgba(0,0,0,0.3); }
+        .header-title h1 span { color:var(--soy); }
+        .header-title p { font-size:0.8rem;opacity:0.85;font-weight:400;margin-top:2px; }
+        .header-badge {
+            background:rgba(0,0,0,0.35); border:1px solid rgba(255,255,255,0.12);
+            border-radius:12px; padding:10px 18px; text-align:center; backdrop-filter:blur(10px);
+        }
+        .header-badge .date { font-size:0.75rem;opacity:0.8;text-transform:uppercase;letter-spacing:1px; }
+        .header-badge .time { font-size:1.1rem;font-weight:700;color:var(--soy); }
+
+        /* TICKER */
+        .ticker-bar { background:var(--bg-card); border-bottom:1px solid var(--border); padding:12px 0; overflow:hidden; }
+        .ticker-items { display:flex; gap:32px; overflow-x:auto; scrollbar-width:none; padding:0 16px; }
+        .ticker-items::-webkit-scrollbar { display:none; }
+        .ticker-item { display:flex; align-items:center; gap:8px; white-space:nowrap; flex-shrink:0; }
+        .ticker-label { font-size:0.7rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px; font-weight:600; }
+        .ticker-value { font-family:'JetBrains Mono',monospace; font-size:0.85rem; font-weight:600; color:var(--text-primary); }
+        .ticker-var { font-family:'JetBrains Mono',monospace; font-size:0.75rem; font-weight:600; padding:2px 6px; border-radius:4px; }
+        .ticker-var.up { color:var(--green); background:var(--green-bg); }
+        .ticker-var.down { color:var(--red); background:var(--red-bg); }
+        .ticker-var.neutral { color:var(--text-muted); background:rgba(107,143,110,0.1); }
+
+        .main-content { padding:24px 0 40px; }
+
+        /* SECTION TITLE */
+        .section-title { display:flex; align-items:center; gap:12px; margin-bottom:20px; padding-bottom:10px; border-bottom:2px solid var(--border); }
+        .section-icon { width:36px;height:36px; background:linear-gradient(135deg,var(--primary),var(--soy)); border-radius:10px; display:flex;align-items:center;justify-content:center; font-size:1.1rem; flex-shrink:0; }
+        .section-title h2 { font-size:1.2rem; font-weight:700; color:var(--text-primary); }
+        .section-title h2 span { color:var(--soy); }
+
+        /* CARDS */
+        .card {
+            background:var(--bg-card); border:1px solid var(--border); border-radius:16px;
+            padding:24px; margin-bottom:20px; transition:border-color 0.3s;
+        }
+        .card:hover { border-color:var(--soy-dark); }
+        .card-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; flex-wrap:wrap; gap:8px; }
+        .card-title { font-size:1rem; font-weight:700; color:var(--text-secondary); }
+
+        .badge { font-size:0.65rem; font-weight:700; padding:4px 10px; border-radius:20px; text-transform:uppercase; letter-spacing:0.5px; }
+        .badge-green { background:var(--green-bg);color:var(--green);border:1px solid rgba(102,187,106,0.3); }
+        .badge-red { background:var(--red-bg);color:var(--red);border:1px solid rgba(239,83,80,0.3); }
+        .badge-yellow { background:rgba(255,214,0,0.1);color:var(--yellow);border:1px solid rgba(255,214,0,0.3); }
+        .badge-blue { background:rgba(66,165,245,0.1);color:var(--blue);border:1px solid rgba(66,165,245,0.3); }
+        .badge-orange { background:rgba(255,167,38,0.1);color:var(--orange);border:1px solid rgba(255,167,38,0.3); }
+        .badge-soy { background:rgba(139,195,74,0.1);color:var(--soy);border:1px solid rgba(139,195,74,0.3); }
+
+        /* PRICE HERO */
+        .price-hero {
+            background:linear-gradient(135deg,rgba(27,94,32,0.35) 0%,rgba(13,59,15,0.5) 100%);
+            border:1px solid var(--primary); border-radius:16px; padding:28px; text-align:center;
+            margin-bottom:20px; position:relative; overflow:hidden;
+        }
+        .price-hero::after { content:'🫘'; position:absolute; right:20px; top:50%; transform:translateY(-50%); font-size:5rem; opacity:0.06; }
+        .price-hero-label { font-size:0.8rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:2px; margin-bottom:8px; font-weight:600; }
+        .price-hero-value { font-family:'JetBrains Mono',monospace; font-size:3rem; font-weight:800; color:var(--soy); line-height:1; margin-bottom:6px; }
+        .price-hero-sub { font-size:0.85rem; color:var(--text-secondary); }
+        .price-hero-sub .var-up { color:var(--green);font-weight:700; }
+        .price-hero-sub .var-down { color:var(--red);font-weight:700; }
+
+        /* GRIDS */
+        .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+        .grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+        .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+
+        .mini-card { background:var(--bg-card-alt); border:1px solid var(--border); border-radius:12px; padding:16px; text-align:center; }
+        .mini-card-label { font-size:0.65rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:6px; font-weight:600; }
+        .mini-card-value { font-family:'JetBrains Mono',monospace; font-size:1.15rem; font-weight:700; color:var(--text-primary); }
+        .mini-card-var { font-size:0.7rem; font-weight:600; margin-top:4px; }
+
+        /* TABLE */
+        .table-responsive { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+        table { width:100%; border-collapse:collapse; font-size:0.82rem; }
+        thead th { background:var(--bg-card-alt); color:var(--text-muted); font-weight:600; text-transform:uppercase; font-size:0.65rem; letter-spacing:0.5px; padding:10px 12px; text-align:left; white-space:nowrap; border-bottom:2px solid var(--border); }
+        tbody td { padding:10px 12px; border-bottom:1px solid var(--border); font-family:'JetBrains Mono',monospace; font-size:0.8rem; white-space:nowrap; }
+        tbody tr:hover { background:rgba(139,195,74,0.04); }
+        .val-up { color:var(--green); font-weight:600; }
+        .val-down { color:var(--red); font-weight:600; }
+
+        .chart-container { background:var(--bg-card-alt); border-radius:12px; padding:20px; margin:16px 0; }
+
+        .analysis-box {
+            background:linear-gradient(135deg,rgba(27,94,32,0.1) 0%,rgba(13,59,15,0.2) 100%);
+            border-left:4px solid var(--soy); border-radius:0 12px 12px 0;
+            padding:20px 24px; margin:16px 0;
+        }
+        .analysis-box h4 { color:var(--soy); font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
+        .analysis-box p { color:var(--text-secondary); font-size:0.88rem; line-height:1.75; }
+
+        .alert-box { border-radius:12px; padding:16px 20px; margin:12px 0; display:flex; align-items:flex-start; gap:12px; }
+        .alert-box.warning { background:rgba(255,167,38,0.08); border:1px solid rgba(255,167,38,0.25); }
+        .alert-box.danger { background:rgba(239,83,80,0.08); border:1px solid rgba(239,83,80,0.25); }
+        .alert-box.info { background:rgba(66,165,245,0.08); border:1px solid rgba(66,165,245,0.25); }
+        .alert-box.success { background:rgba(102,187,106,0.08); border:1px solid rgba(102,187,106,0.25); }
+        .alert-icon { font-size:1.3rem; flex-shrink:0; margin-top:2px; }
+        .alert-content { flex:1; }
+        .alert-content strong { display:block; font-size:0.82rem; margin-bottom:4px; }
+        .alert-content p { font-size:0.8rem; color:var(--text-secondary); line-height:1.6; }
+
+        .scenario-card { border-radius:14px; padding:20px; border:1px solid; margin-bottom:12px; }
+        .scenario-card.bullish { background:rgba(102,187,106,0.05); border-color:rgba(102,187,106,0.2); }
+        .scenario-card.bearish { background:rgba(239,83,80,0.05); border-color:rgba(239,83,80,0.2); }
+        .scenario-card.neutral { background:rgba(255,214,0,0.05); border-color:rgba(255,214,0,0.2); }
+        .scenario-header { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+        .scenario-prob { font-family:'JetBrains Mono',monospace; font-size:1.4rem; font-weight:800; }
+        .scenario-card.bullish .scenario-prob { color:var(--green); }
+        .scenario-card.bearish .scenario-prob { color:var(--red); }
+        .scenario-card.neutral .scenario-prob { color:var(--yellow); }
+        .scenario-label { font-size:0.9rem; font-weight:700; }
+        .scenario-desc { font-size:0.82rem; color:var(--text-secondary); line-height:1.65; }
+        .scenario-range { font-family:'JetBrains Mono',monospace; font-size:0.85rem; font-weight:700; color:var(--soy); margin-top:8px; }
+
+        .geo-pill {
+            display:inline-flex; align-items:center; gap:6px;
+            background:var(--bg-card-alt); border:1px solid var(--border);
+            border-radius:8px; padding:8px 14px; margin:4px; font-size:0.78rem;
+        }
+        .geo-pill .flag { font-size:1rem; }
+
+        .divider { height:1px; background:linear-gradient(to right,transparent,var(--border),transparent); margin:28px 0; }
+
+        .pulse-dot { width:8px;height:8px;background:var(--soy);border-radius:50%;display:inline-block;animation:pulse 2s infinite;margin-right:6px; }
+        @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(139,195,74,0.5)} 70%{box-shadow:0 0 0 8px rgba(139,195,74,0)} 100%{box-shadow:0 0 0 0 rgba(139,195,74,0)} }
+
+        /* DUAL PRICE */
+        .dual-price { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px; }
+        .dual-price-card {
+            background:linear-gradient(135deg,rgba(27,94,32,0.2) 0%,rgba(13,59,15,0.3) 100%);
+            border:1px solid var(--primary); border-radius:16px; padding:22px; text-align:center;
+            position:relative; overflow:hidden;
+        }
+        .dual-price-card .label { font-size:0.7rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:6px; font-weight:600; }
+        .dual-price-card .value { font-family:'JetBrains Mono',monospace; font-size:2.2rem; font-weight:800; color:var(--soy); line-height:1; margin-bottom:4px; }
+        .dual-price-card .sub { font-size:0.78rem; color:var(--text-secondary); }
+
+        /* FOOTER */
+        .footer { background:var(--bg-card); border-top:3px solid var(--primary); padding:40px 0 24px; }
+        .footer-content { display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:start; }
+        .footer-author h3 { font-size:1.1rem; font-weight:800; color:var(--soy); margin-bottom:4px; }
+        .footer-author .role { font-size:0.8rem; color:var(--green); font-weight:600; margin-bottom:2px; }
+        .footer-author .sub-role { font-size:0.75rem; color:var(--text-muted); line-height:1.5; margin-bottom:12px; }
+        .footer-contact-item { display:flex; align-items:center; gap:8px; font-size:0.78rem; color:var(--text-secondary); margin-bottom:6px; }
+        .footer-social { display:flex; gap:12px; margin-top:12px; }
+        .social-tag { background:var(--bg-card-alt); border:1px solid var(--border); border-radius:8px; padding:6px 12px; font-size:0.72rem; color:var(--text-secondary); font-weight:600; }
+        .footer-disclaimer { text-align:right; }
+        .footer-disclaimer p { font-size:0.68rem; color:var(--text-muted); line-height:1.7; }
+        .footer-bottom { text-align:center; margin-top:28px; padding-top:16px; border-top:1px solid var(--border); }
+        .footer-bottom p { font-size:0.68rem; color:var(--text-muted); }
+        .footer-motto { color:var(--soy)!important; font-weight:700; font-size:0.78rem!important; margin-bottom:4px; }
+
+        .watermark { position:fixed;bottom:10px;right:10px;opacity:0.03;font-size:4rem;font-weight:900;color:var(--primary);pointer-events:none;z-index:0; }
+
+        @media (max-width:768px) {
+            .header-content { flex-direction:column; text-align:center; }
+            .logo-area { flex-direction:column; }
+            .header-badge { width:100%; }
+            .price-hero-value { font-size:2.4rem; }
+            .dual-price { grid-template-columns:1fr; }
+            .dual-price-card .value { font-size:1.8rem; }
+            .grid-2,.grid-3,.grid-4 { grid-template-columns:1fr 1fr; }
+            .footer-content { grid-template-columns:1fr; text-align:center; }
+            .footer-disclaimer { text-align:center; }
+            .footer-social { justify-content:center; }
+            .card { padding:18px; }
+            .section-title h2 { font-size:1rem; }
+        }
+        @media (max-width:480px) {
+            .grid-2,.grid-3,.grid-4 { grid-template-columns:1fr; }
+            .price-hero-value { font-size:2rem; }
+            .dual-price-card .value { font-size:1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="watermark">RURAL IN</div>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="container">
+        <div class="header-content">
+            <div class="logo-area">
+                <div class="logo-placeholder">
+                    <svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg" width="70" height="70">
+                        <rect width="70" height="70" rx="14" fill="white"/>
+                        <rect x="4" y="4" width="62" height="62" rx="10" fill="#1B5E20"/>
+                        <text x="35" y="28" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="900" fill="#8BC34A">RURAL</text>
+                        <text x="35" y="46" text-anchor="middle" font-family="Inter,sans-serif" font-size="16" font-weight="900" fill="white">IN</text>
+                        <line x1="14" y1="52" x2="56" y2="52" stroke="#8BC34A" stroke-width="2"/>
+                        <text x="35" y="62" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" font-weight="600" fill="#C8E6C9">INTELIGÊNCIA AGRO</text>
+                    </svg>
+                </div>
+                <div class="header-title">
+                    <h1>RADAR AGRO <span>| SOJA</span></h1>
+                    <p>Mercado da Soja — Informativo de Fechamento</p>
+                </div>
+            </div>
+            <div class="header-badge">
+                <div class="date">Segunda-feira, 23 de Março de 2026</div>
+                <div class="time">🫘 Fechamento do Dia</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- TICKER -->
+<div class="ticker-bar">
+    <div class="container">
+        <div class="ticker-items">
+            <div class="ticker-item">
+                <span class="ticker-label">CEPEA Paranaguá</span>
+                <span class="ticker-value">R$ 129,87/sc</span>
+                <span class="ticker-var down">-0,57%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-label">CEPEA Paraná</span>
+                <span class="ticker-value">R$ 123,41/sc</span>
+                <span class="ticker-var up">+0,69%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-label">CBOT Mai/26</span>
+                <span class="ticker-value">US$ 11,65/bu</span>
+                <span class="ticker-var up">+0,28%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-label">US$/sc Pnguá</span>
+                <span class="ticker-value">US$ 24,82</span>
+                <span class="ticker-var neutral">Ref.</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-label">Var. Mês Pnguá</span>
+                <span class="ticker-value">+2,40%</span>
+                <span class="ticker-var up">↑ Alta</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-label">Dólar</span>
+                <span class="ticker-value">R$ 5,23</span>
+                <span class="ticker-var down">-0,75%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-label">Prêmio Mar/26</span>
+                <span class="ticker-value">-US$ 0,25/bu</span>
+                <span class="ticker-var down">Negativo</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MAIN -->
+<main class="main-content">
+    <div class="container">
+
+        <!-- DUAL PRICE -->
+        <div class="dual-price">
+            <div class="dual-price-card">
+                <div class="label"><span class="pulse-dot"></span>CEPEA/Esalq — Paranaguá (Porto)</div>
+                <div class="value">R$ 129,87</div>
+                <div class="sub">Var. Dia: <span style="color:var(--red);font-weight:700;">-0,57%</span> &nbsp;|&nbsp; Mês: <span style="color:var(--green);font-weight:700;">+2,40%</span> &nbsp;|&nbsp; US$ 24,82/sc</div>
+            </div>
+            <div class="dual-price-card">
+                <div class="label"><span class="pulse-dot"></span>CEPEA/Esalq — Paraná (Interior)</div>
+                <div class="value">R$ 123,41</div>
+                <div class="sub">Var. Dia: <span style="color:var(--green);font-weight:700;">+0,69%</span> &nbsp;|&nbsp; Mês: <span style="color:var(--green);font-weight:700;">+2,25%</span> &nbsp;|&nbsp; US$ 23,20/sc</div>
+            </div>
+        </div>
+
+        <!-- GRID RESUMO -->
+        <div class="grid-4" style="margin-bottom:24px;">
+            <div class="mini-card">
+                <div class="mini-card-label">Máxima Mês (Pnguá)</div>
+                <div class="mini-card-value">R$ 131,18</div>
+                <div class="mini-card-var" style="color:var(--soy);">06/03</div>
+            </div>
+            <div class="mini-card">
+                <div class="mini-card-label">Mínima Mês (Pnguá)</div>
+                <div class="mini-card-value">R$ 126,83</div>
+                <div class="mini-card-var" style="color:var(--text-muted);">01/03</div>
+            </div>
+            <div class="mini-card">
+                <div class="mini-card-label">CBOT Mai/26</div>
+                <div class="mini-card-value">US$ 11,65</div>
+                <div class="mini-card-var" style="color:var(--green);">+0,28%</div>
+            </div>
+            <div class="mini-card">
+                <div class="mini-card-label">Safra BR 25/26</div>
+                <div class="mini-card-value">179,5 Mi t</div>
+                <div class="mini-card-var" style="color:var(--soy);">Recorde</div>
+            </div>
+        </div>
+
+        <!-- SÉRIE PARANAGUÁ -->
+        <div class="section-title">
+            <div class="section-icon">📈</div>
+            <h2>Indicador CEPEA — <span>Paranaguá (Porto) Março/2026</span></h2>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Série Diária — Soja Paranaguá/PR (R$/sc 60kg)</div>
+                <span class="badge badge-soy">REFERÊNCIA EXPORTAÇÃO</span>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr><th>Data</th><th>Paranaguá R$/sc</th><th>Var. Dia</th><th>Var. Mês</th><th>US$/sc</th><th>Paraná R$/sc</th><th>Var. Dia PR</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="color:var(--soy);font-weight:700;font-family:Inter,sans-serif;">23/03</td><td style="color:var(--soy);font-weight:700;">129,87</td><td class="val-down">-0,57%</td><td class="val-up">+2,40%</td><td>24,82</td><td>123,41*</td><td class="val-up">+0,69%*</td></tr>
+                        <tr><td style="font-family:Inter,sans-serif;color:var(--text-secondary);">20/03</td><td>130,61</td><td class="val-up">+0,95%</td><td class="val-up">+2,98%</td><td>24,55</td><td>123,41</td><td class="val-up">+0,69%</td></tr>
+                        <tr><td style="font-family:Inter,sans-serif;color:var(--text-secondary);">19/03</td><td>129,38</td><td class="val-up">+1,66%</td><td class="val-up">+2,01%</td><td>24,81</td><td>122,56</td><td class="val-up">+1,25%</td></tr>
+                        <tr><td style="font-family:Inter,sans-serif;color:var(--text-secondary);">18/03</td><td>127,27</td><td class="val-up">+0,12%</td><td class="val-up">+0,35%</td><td>24,34</td><td>121,05</td><td class="val-up">+0,23%</td></tr>
+                        <tr><td style="font-family:Inter,sans-serif;color:var(--text-secondary);">17/03</td><td>127,12</td><td class="val-down">-1,73%</td><td class="val-up">+0,23%</td><td>24,42</td><td>120,77</td><td class="val-down">-1,23%</td></tr>
+                        <tr><td style="font-family:Inter,sans-serif;color:var(--text-secondary);">16/03</td><td>129,36</td><td class="val-down">-0,65%</td><td class="val-up">+1,99%</td><td>24,73</td><td>122,28</td><td class="val-down">-0,78%</td></tr>
+                        <tr><td style="font-family:Inter,sans-serif;color:var(--text-secondary);">13/03</td><td>130,20</td><td class="val-down">-0,51%</td><td class="val-up">+2,66%</td><td>24,51</td><td>—</td><td>—</td></tr>
+                        <tr><td style="font-family:Inter,sans-serif;color:var(--text-secondary);">12/03</td><td>130,87</td><td class="val-up">+1,22%</td><td class="val-up">+3,19%</td><td>24,99</td><td>—</td><td>—</td></tr>
+                        <tr><td style="font-family:Inter,sans-serif;color:var(--text-secondary);">11/03</td><td>129,29</td><td class="val-up">+0,38%</td><td class="val-up">+1,94%</td><td>25,04</td><td>—</td><td>—</td></tr>
+                        <tr><td style="font-family:Inter,sans-serif;color:var(--text-secondary);">10/03</td><td>128,80</td><td class="val-down">-0,94%</td><td class="val-up">+1,55%</td><td>24,96</td><td>—</td><td>—</td></tr>
+                        <tr><td style="font-family:Inter,sans-serif;color:var(--text-secondary);">09/03</td><td>130,02</td><td class="val-down">-0,88%</td><td class="val-up">+2,52%</td><td>25,14</td><td>—</td><td>—</td></tr>
+                        <tr><td style="font-family:Inter,sans-serif;color:var(--text-secondary);">06/03</td><td>131,18</td><td class="val-up">+1,27%</td><td class="val-up">+3,43%</td><td>24,99</td><td>—</td><td>—</td></tr>
+                        <tr><td style="font-family:Inter,sans-serif;color:var(--text-secondary);">05/03</td><td>129,54</td><td class="val-up">+1,04%</td><td class="val-up">+2,14%</td><td>24,53</td><td>—</td><td>—</td></tr>
+                        <tr><td style="font-family:Inter,sans-serif;color:var(--text-secondary);">04/03</td><td>128,21</td><td class="val-down">-0,35%</td><td class="val-up">+1,09%</td><td>24,57</td><td>—</td><td>—</td></tr>
+                        <tr><td style="font-family:Inter,sans-serif;color:var(--text-secondary);">03/03</td><td>128,66</td><td class="val-up">+1,09%</td><td class="val-up">+1,44%</td><td>24,41</td><td>—</td><td>—</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="font-size:0.68rem;color:var(--text-muted);margin-top:8px;">* Paraná interior — último dado disponível 20/03. Fonte: CEPEA/Esalq.</p>
+        </div>
+
+        <!-- GRÁFICO PRINCIPAL -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Gráfico — Indicador CEPEA Soja Paranaguá — Março/2026</div>
+                <span class="badge badge-blue">ANÁLISE TÉCNICA</span>
+            </div>
+            <div class="chart-container">
+                <svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="soyArea" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#8BC34A" stop-opacity="0.3"/>
+                            <stop offset="100%" stop-color="#8BC34A" stop-opacity="0.02"/>
+                        </linearGradient>
+                        <linearGradient id="soyLine" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0%" stop-color="#1B5E20"/>
+                            <stop offset="50%" stop-color="#388E3C"/>
+                            <stop offset="100%" stop-color="#8BC34A"/>
+                        </linearGradient>
+                        <filter id="glow3">
+                            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                            <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                        </filter>
+                    </defs>
+
+                    <!-- Grid lines -->
+                    <line x1="60" y1="40" x2="760" y2="40" stroke="#1E3A1F" stroke-width="0.5" stroke-dasharray="4"/>
+                    <line x1="60" y1="100" x2="760" y2="100" stroke="#1E3A1F" stroke-width="0.5" stroke-dasharray="4"/>
+                    <line x1="60" y1="160" x2="760" y2="160" stroke="#1E3A1F" stroke-width="0.5" stroke-dasharray="4"/>
+                    <line x1="60" y1="220" x2="760" y2="220" stroke="#1E3A1F" stroke-width="0.5" stroke-dasharray="4"/>
+                    <line x1="60" y1="280" x2="760" y2="280" stroke="#1E3A1F" stroke-width="0.5" stroke-dasharray="4"/>
+
+                    <!-- Y axis: range 126-132, 6 units over 240px = 40px/unit
+                         y = 280 - (val - 126) * 40
+                         03/03: 128.66 -> 280 - 2.66*40 = 280-106.4 = 173.6
+                         04/03: 128.21 -> 280 - 2.21*40 = 280-88.4 = 191.6
+                         05/03: 129.54 -> 280 - 3.54*40 = 280-141.6 = 138.4
+                         06/03: 131.18 -> 280 - 5.18*40 = 280-207.2 = 72.8
+                         09/03: 130.02 -> 280 - 4.02*40 = 280-160.8 = 119.2
+                         10/03: 128.80 -> 280 - 2.80*40 = 280-112 = 168
+                         11/03: 129.29 -> 280 - 3.29*40 = 280-131.6 = 148.4
+                         12/03: 130.87 -> 280 - 4.87*40 = 280-194.8 = 85.2
+                         13/03: 130.20 -> 280 - 4.20*40 = 280-168 = 112
+                         16/03: 129.36 -> 280 - 3.36*40 = 280-134.4 = 145.6
+                         17/03: 127.12 -> 280 - 1.12*40 = 280-44.8 = 235.2
+                         18/03: 127.27 -> 280 - 1.27*40 = 280-50.8 = 229.2
+                         19/03: 129.38 -> 280 - 3.38*40 = 280-135.2 = 144.8
+                         20/03: 130.61 -> 280 - 4.61*40 = 280-184.4 = 95.6
+                         23/03: 129.87 -> 280 - 3.87*40 = 280-154.8 = 125.2
+                    -->
+
+                    <text x="52" y="44" fill="#6B8F6E" font-size="10" text-anchor="end" font-family="JetBrains Mono,monospace">132,00</text>
+                    <text x="52" y="104" fill="#6B8F6E" font-size="10" text-anchor="end" font-family="JetBrains Mono,monospace">130,50</text>
+                    <text x="52" y="164" fill="#6B8F6E" font-size="10" text-anchor="end" font-family="JetBrains Mono,monospace">129,00</text>
+                    <text x="52" y="224" fill="#6B8F6E" font-size="10" text-anchor="end" font-family="JetBrains Mono,monospace">127,50</text>
+                    <text x="52" y="284" fill="#6B8F6E" font-size="10" text-anchor="end" font-family="JetBrains Mono,monospace">126,00</text>
+
+                    <!-- Area fill -->
+                    <polygon points="84,173.6 130,191.6 176,138.4 222,72.8 268,119.2 314,168 360,148.4 406,85.2 452,112 498,145.6 544,235.2 590,229.2 636,144.8 682,95.6 728,125.2 728,280 84,280" fill="url(#soyArea)"/>
+
+                    <!-- Line -->
+                    <polyline points="84,173.6 130,191.6 176,138.4 222,72.8 268,119.2 314,168 360,148.4 406,85.2 452,112 498,145.6 544,235.2 590,229.2 636,144.8 682,95.6 728,125.2" fill="none" stroke="url(#soyLine)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow3)"/>
+
+                    <!-- Points -->
+                    <circle cx="84" cy="173.6" r="4" fill="#1B5E20" stroke="#388E3C" stroke-width="1.5"/>
+                    <circle cx="130" cy="191.6" r="3.5" fill="#1B5E20" stroke="#388E3C" stroke-width="1.5"/>
+                    <circle cx="176" cy="138.4" r="3.5" fill="#388E3C" stroke="#8BC34A" stroke-width="1.5"/>
+                    <circle cx="222" cy="72.8" r="5" fill="#66BB6A" stroke="#66BB6A" stroke-width="2"/>
+                    <circle cx="268" cy="119.2" r="3.5" fill="#388E3C" stroke="#8BC34A" stroke-width="1.5"/>
+                    <circle cx="314" cy="168" r="3.5" fill="#1B5E20" stroke="#388E3C" stroke-width="1.5"/>
+                    <circle cx="360" cy="148.4" r="3.5" fill="#388E3C" stroke="#8BC34A" stroke-width="1.5"/>
+                    <circle cx="406" cy="85.2" r="4" fill="#66BB6A" stroke="#66BB6A" stroke-width="1.5"/>
+                    <circle cx="452" cy="112" r="3.5" fill="#388E3C" stroke="#8BC34A" stroke-width="1.5"/>
+                    <circle cx="498" cy="145.6" r="3.5" fill="#388E3C" stroke="#8BC34A" stroke-width="1.5"/>
+                    <circle cx="544" cy="235.2" r="5" fill="#EF5350" stroke="#EF5350" stroke-width="2"/>
+                    <circle cx="590" cy="229.2" r="3.5" fill="#EF5350" stroke="#EF5350" stroke-width="1.5"/>
+                    <circle cx="636" cy="144.8" r="3.5" fill="#388E3C" stroke="#8BC34A" stroke-width="1.5"/>
+                    <circle cx="682" cy="95.6" r="3.5" fill="#66BB6A" stroke="#8BC34A" stroke-width="1.5"/>
+                    <circle cx="728" cy="125.2" r="5" fill="#8BC34A" stroke="#8BC34A" stroke-width="2"/>
+
+                    <!-- Max annotation (06/03 R$131.18) -->
+                    <line x1="222" y1="72.8" x2="222" y2="50" stroke="#66BB6A" stroke-width="0.8" stroke-dasharray="3"/>
+                    <rect x="186" y="32" width="72" height="18" rx="4" fill="rgba(102,187,106,0.15)" stroke="#66BB6A" stroke-width="0.5"/>
+                    <text x="222" y="44" text-anchor="middle" fill="#66BB6A" font-size="8" font-weight="700" font-family="JetBrains Mono,monospace">131,18 MAX</text>
+
+                    <!-- Drop annotation (17/03 R$127.12 -1.73%) -->
+                    <line x1="544" y1="235.2" x2="544" y2="258" stroke="#EF5350" stroke-width="0.8" stroke-dasharray="3"/>
+                    <rect x="502" y="260" width="84" height="18" rx="4" fill="rgba(239,83,80,0.15)" stroke="#EF5350" stroke-width="0.5"/>
+                    <text x="544" y="272" text-anchor="middle" fill="#EF5350" font-size="8" font-weight="600" font-family="JetBrains Mono,monospace">127,12 -1,73%</text>
+
+                    <!-- Today annotation -->
+                    <line x1="728" y1="125.2" x2="728" y2="102" stroke="#8BC34A" stroke-width="0.8" stroke-dasharray="3"/>
+                    <rect x="688" y="84" width="82" height="18" rx="4" fill="rgba(139,195,74,0.2)" stroke="#8BC34A" stroke-width="0.5"/>
+                    <text x="728" y="96" text-anchor="middle" fill="#8BC34A" font-size="8" font-weight="700" font-family="JetBrains Mono,monospace">129,87 HOJE</text>
+
+                    <!-- Support 127.00 -> y=280-1*40=240 -->
+                    <line x1="60" y1="240" x2="760" y2="240" stroke="#EF5350" stroke-width="1" stroke-dasharray="6,3" opacity="0.45"/>
+                    <text x="765" y="244" fill="#EF5350" font-size="8" font-family="JetBrains Mono,monospace" opacity="0.7">Sup. 127,00</text>
+
+                    <!-- Resistance 131.00 -> y=280-5*40=80 -->
+                    <line x1="60" y1="80" x2="760" y2="80" stroke="#66BB6A" stroke-width="1" stroke-dasharray="6,3" opacity="0.45"/>
+                    <text x="765" y="84" fill="#66BB6A" font-size="8" font-family="JetBrains Mono,monospace" opacity="0.7">Res. 131,00</text>
+
+                    <!-- Channel center ~129.00 -> y=160 -->
+                    <line x1="60" y1="160" x2="760" y2="160" stroke="#8BC34A" stroke-width="0.8" stroke-dasharray="4,4" opacity="0.3"/>
+
+                    <!-- X axis labels -->
+                    <text x="84" y="305" fill="#6B8F6E" font-size="8" text-anchor="middle" font-family="JetBrains Mono,monospace">03</text>
+                    <text x="176" y="305" fill="#6B8F6E" font-size="8" text-anchor="middle" font-family="JetBrains Mono,monospace">05</text>
+                    <text x="268" y="305" fill="#6B8F6E" font-size="8" text-anchor="middle" font-family="JetBrains Mono,monospace">09</text>
+                    <text x="360" y="305" fill="#6B8F6E" font-size="8" text-anchor="middle" font-family="JetBrains Mono,monospace">11</text>
+                    <text x="452" y="305" fill="#6B8F6E" font-size="8" text-anchor="middle" font-family="JetBrains Mono,monospace">13</text>
+                    <text x="544" y="305" fill="#6B8F6E" font-size="8" text-anchor="middle" font-family="JetBrains Mono,monospace">17</text>
+                    <text x="636" y="305" fill="#6B8F6E" font-size="8" text-anchor="middle" font-family="JetBrains Mono,monospace">19</text>
+                    <text x="728" y="305" fill="#8BC34A" font-size="8" text-anchor="middle" font-weight="700" font-family="JetBrains Mono,monospace">23</text>
+                    <text x="410" y="330" fill="#6B8F6E" font-size="9" text-anchor="middle" font-family="Inter,sans-serif">Março 2026 — Indicador CEPEA Paranaguá (dias úteis)</text>
+
+                    <!-- Legend -->
+                    <rect x="80" y="15" width="8" height="3" rx="1" fill="#388E3C"/>
+                    <text x="92" y="19" fill="#C8E6C9" font-size="8" font-family="Inter,sans-serif">CEPEA Paranaguá</text>
+                    <rect x="200" y="15" width="8" height="3" rx="1" fill="#EF5350"/>
+                    <text x="212" y="19" fill="#EF5350" font-size="8" font-family="Inter,sans-serif">Suporte R$127</text>
+                    <rect x="300" y="15" width="8" height="3" rx="1" fill="#66BB6A"/>
+                    <text x="312" y="19" fill="#66BB6A" font-size="8" font-family="Inter,sans-serif">Resistência R$131</text>
+                </svg>
+            </div>
+            <div class="analysis-box">
+                <h4>🔍 Análise Técnica — Leitura Grafista</h4>
+                <p>Março apresenta um padrão gráfico de <strong>"W" irregular"</strong> (duplo fundo em R$ 127,12 no dia 17/03 e R$ 127,27 no dia 18/03). O mês abriu em R$ 126,83, subiu rápido até a máxima de <strong>R$ 131,18 (06/03)</strong>, sofreu <strong>crash de -5,71% em Chicago no dia 16/03</strong> (realização de lucros + geopolítica) que derrubou o indicador até R$ 127,12, e desde então recuperou com força até R$ 130,61 (20/03).</p>
+                <p style="margin-top:10px;">Hoje (23/03) o indicador Paranaguá recuou levemente para <strong>R$ 129,87 (-0,57%)</strong>, posicionando-se no <strong>meio do canal R$ 127-131</strong>. A formação sugere <strong>consolidação com viés de alta moderada</strong>. A <strong>resistência de R$ 131,00</strong> precisa ser rompida com volume para sinalizar novo leg de alta. O suporte em <strong>R$ 127,00</strong> é sólido (testado 2 vezes e respeitado). Volatilidade elevada — amplitude de R$ 4 no mês (~3%).</p>
+            </div>
+        </div>
+
+        <!-- COTAÇÕES REGIONAIS -->
+        <div class="section-title">
+            <div class="section-icon">🫘</div>
+            <h2>Cotações Regionais — <span>Mercado Físico</span></h2>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Preços por Praça — Soja Saca 60kg</div>
+                <span class="badge badge-yellow">REFERÊNCIA SEMANAL</span>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr><th>Região / Praça</th><th>Preço (R$/sc)</th><th>Var.</th><th>Perfil</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="color:var(--soy);font-weight:700;font-family:Inter,sans-serif;">Paranaguá/PR (Porto CEPEA)</td><td style="color:var(--soy);font-weight:700;">129,87</td><td class="val-down">-0,57%</td><td>Exportação</td></tr>
+                        <tr><td style="font-family:Inter,sans-serif;color:var(--text-secondary);">Ponta Grossa/PR</td><td>123,00</td><td class="val-up">+0,83%</td><td>Indústria/Consumo</td></tr>
+                        <tr><td style="font-family:Inter,sans-serif;color:var(--text-secondary);">Rio do Sul/SC (Cravil)</td><td>120,00</td><td class="val-down">-0,83%</td><td>Interior Sul</td></tr>
+                        <tr><td style="font-family:Inter,sans-serif;color:var(--text-secondary);">Não-Me-Toque/RS (Cotrijal)</td><td>117,00</td><td style="color:var(--text-muted);">0,00%</td><td>Interior RS</td></tr>
+                        <tr><td style="font-family:Inter,sans-serif;color:var(--text-secondary);">Pato Branco/PR</td><td>115,50</td><td class="val-down">-0,86%</td><td>Interior PR</td></tr>
+                        <tr><td style="font-family:Inter,sans-serif;color:var(--text-secondary);">Campo Grande/MS</td><td>112,00</td><td class="val-up">+1,82%</td><td>Centro-Oeste</td></tr>
+                        <tr><td style="font-family:Inter,sans-serif;color:var(--text-secondary);">Luís Eduardo Magalhães/BA</td><td>113,00</td><td class="val-up">+0,89%</td><td>MATOPIBA</td></tr>
+                        <tr><td style="font-family:Inter,sans-serif;color:var(--text-secondary);">Rio Verde/GO</td><td>108,00</td><td class="val-down">-4,42%</td><td>Centro-Oeste</td></tr>
+                        <tr><td style="font-family:Inter,sans-serif;color:var(--text-secondary);">Rondonópolis/MT</td><td>107,00</td><td class="val-down">-2,27%</td><td>Produção MT</td></tr>
+                        <tr><td style="font-family:Inter,sans-serif;color:var(--text-secondary);">Primavera do Leste/MT</td><td style="color:var(--red);">102,00</td><td class="val-down">-2,86%</td><td>Produção MT</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="analysis-box">
+                <h4>📐 Análise da Disparidade de Preços</h4>
+                <p>A soja exibe <strong>spread de R$ 27,87 entre Paranaguá (R$ 129,87) e Primavera do Leste/MT (R$ 102,00)</strong> — uma diferença de <strong>27,4%</strong>. Esse gap reflete frete + basis + logística. Rio Verde/GO sofreu queda de R$ 5 em um dia (16/03), mostrando como regiões produtoras são mais sensíveis a choques de Chicago. Os prêmios de exportação permanecem <strong>negativos (Mar: -US$ 0,25/bu)</strong>, pressionando margens. A safra recorde brasileira comprime prêmios e torna o produtor do interior mais vulnerável.</p>
+            </div>
+        </div>
+
+        <!-- CBOT & INTERNACIONAL -->
+        <div class="section-title">
+            <div class="section-icon">🌎</div>
+            <h2>Chicago & Mercado Internacional — <span>CBOT</span></h2>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">CBOT — Soja Futuros (US$/bushel)</div>
+                <span class="badge badge-orange">REFERÊNCIA GLOBAL</span>
+            </div>
+            <div class="grid-4" style="margin-bottom:16px;">
+                <div class="mini-card">
+                    <div class="mini-card-label">Mai/26</div>
+                    <div class="mini-card-value" style="color:var(--soy);">US$ 11,65</div>
+                    <div class="mini-card-var" style="color:var(--green);">+0,28%</div>
+                </div>
+                <div class="mini-card">
+                    <div class="mini-card-label">Jul/26</div>
+                    <div class="mini-card-value">US$ 11,71</div>
+                    <div class="mini-card-var" style="color:var(--green);">+0,32%</div>
+                </div>
+                <div class="mini-card">
+                    <div class="mini-card-label">Set/26</div>
+                    <div class="mini-card-value">US$ 11,32</div>
+                    <div class="mini-card-var" style="color:var(--green);">+0,87%</div>
+                </div>
+                <div class="mini-card">
+                    <div class="mini-card-label">52 Sem. Max</div>
+                    <div class="mini-card-value">US$ 12,23</div>
+                    <div class="mini-card-var" style="color:var(--text-muted);">High 52w</div>
+                </div>
+            </div>
+
+            <div class="grid-3" style="margin-bottom:16px;">
+                <div class="mini-card">
+                    <div class="mini-card-label">B3 CME Mai/26</div>
+                    <div class="mini-card-value" style="color:var(--soy);">US$ 25,47/sc</div>
+                    <div class="mini-card-var" style="color:var(--text-muted);">-0,04%</div>
+                </div>
+                <div class="mini-card">
+                    <div class="mini-card-label">Prêmio Mar/26</div>
+                    <div class="mini-card-value" style="color:var(--red);">-US$ 0,25/bu</div>
+                    <div class="mini-card-var" style="color:var(--red);">Negativo</div>
+                </div>
+                <div class="mini-card">
+                    <div class="mini-card-label">Prêmio Jun/26</div>
+                    <div class="mini-card-value" style="color:var(--green);">+US$ 0,05/bu</div>
+                    <div class="mini-card-var" style="color:var(--green);">Positivo</div>
+                </div>
+            </div>
+
+            <div class="analysis-box">
+                <h4>🔎 Leitura de Chicago</h4>
+                <p>A soja em Chicago tocou <strong>US$ 12,14/bu em março</strong> (maior nível desde maio/2024), impulsionada por <strong>especulação em óleos vegetais, alta do petróleo e tensão Oriente Médio</strong>. Porém, sofreu forte realização de -5,71% no dia 16/03 após Trump sinalizar possível adiamento da cúpula EUA-China. O mercado opera em faixa volátil de <strong>US$ 11,50 a 11,70</strong>. Fundos permanecem <strong>pesadamente net long</strong> — o que gera vulnerabilidade a novas liquidações. A safra recorde do Brasil (179,5 mi ton) e prêmios negativos limitam potencial de alta estrutural.</p>
+            </div>
+        </div>
+
+        <!-- ANÁLISE FUNDAMENTALISTA -->
+        <div class="section-title">
+            <div class="section-icon">🧠</div>
+            <h2>Análise Fundamentalista — <span>Drivers do Mercado</span></h2>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Fatores de Oferta, Demanda e Comércio Global</div>
+                <span class="badge badge-green">ANÁLISE INTEGRADA</span>
+            </div>
+
+            <div class="alert-box danger">
+                <span class="alert-icon">🔴</span>
+                <div class="alert-content">
+                    <strong style="color:var(--red);">SAFRA RECORDE BR 2025/26 — Pressão estrutural de oferta</strong>
+                    <p>O Brasil colhe a <strong>maior safra de soja da história: 177,8-179,5 milhões de toneladas</strong> (Conab/USDA). A colheita atingiu ~51% da área, atrasada vs 2024 mas avançando. Volume massivo: 6,5 bilhões de bushels. A saturação global é o principal fator baixista. Estoques mundiais em recomposição. Preços globais enfrentam <strong>"teto estrutural"</strong> de oferta abundante.</p>
+                </div>
+            </div>
+
+            <div class="alert-box warning">
+                <span class="alert-icon">🟡</span>
+                <div class="alert-content">
+                    <strong style="color:var(--orange);">MARGENS DO PRODUTOR NO LIMITE — Breakeven em vista</strong>
+                    <p>Segundo análise da Farmdoc/Illinois, as margens da soja brasileira estão nas <strong>mínimas em quase 20 anos</strong>. Custos altos (insumos, ureia, diesel) combinados com preços fracos e prêmios negativos comprimem a rentabilidade. Em MT, custo estimado ultrapassa R$ 95-100/sc — com preço a R$ 102-107/sc, a margem líquida é <strong>inferior a 5%</strong>. Isso pode frear a expansão de área para 2026/27.</p>
+                </div>
+            </div>
+
+            <div class="alert-box info">
+                <span class="alert-icon">🔵</span>
+                <div class="alert-content">
+                    <strong style="color:var(--blue);">CHINA — Demanda forte mas com sinais de desaceleração</strong>
+                    <p>A China absorve <strong>80% das exportações brasileiras de soja</strong>. Embarques do BR para China subiram <strong>+80% a/a</strong> no início de 2026. Porém, há sinais de <strong>desaceleração no ritmo de compras</strong>. O novo protocolo de inspeção sanitária (exigido pela China) causou <strong>suspensão temporária de embarques da Cargill</strong> e atrasos em certificações, gerando incerteza logística justamente no pico da safra.</p>
+                </div>
+            </div>
+
+            <div class="alert-box success">
+                <span class="alert-icon">🟢</span>
+                <div class="alert-content">
+                    <strong style="color:var(--green);">DEMANDA INTERNA FIRME — Biodiesel + Crush</strong>
+                    <p>O esmagamento doméstico opera em níveis recordes, puxado pela <strong>demanda de biodiesel</strong> (mandato B15) e farelo para ração animal. A demanda por <strong>óleo de soja</strong> sustenta preços do complexo e oferece piso para o grão. No cenário dos EUA, o crush doméstico também bate recordes, sustentando Chicago acima de US$ 11/bu.</p>
+                </div>
+            </div>
+
+            <div class="alert-box danger">
+                <span class="alert-icon">⚠️</span>
+                <div class="alert-content">
+                    <strong style="color:var(--red);">EUA-CHINA — Risco de ruptura diplomática</strong>
+                    <p>Trump condicionou cúpula com Xi Jinping à cooperação chinesa no Estreito de Ormuz. Possível <strong>adiamento da reunião de fim de março</strong> gerou sell-off de -5,71% em Chicago (16/03). O cenário tarifário mudou: após a Suprema Corte derrubar as tarifas IEEPA, Trump adotou <strong>"Plano B" com tarifa global de 15%</strong> (Trade Act of 1974). Incerteza total sobre fluxos comerciais EUA-China. <strong>Fundos net long vulneráveis</strong> a qualquer manchete negativa.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FATORES GEOPOLÍTICOS -->
+        <div class="section-title">
+            <div class="section-icon">🌍</div>
+            <h2>Radar Macro & Geopolítico — <span>Fique de Olho</span></h2>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Fatores que podem mover a soja nos próximos dias</div>
+                <span class="badge badge-red">⚠️ MONITORAR</span>
+            </div>
+
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;">
+                <div class="geo-pill"><span class="flag">🇺🇸🇨🇳</span> <span style="color:var(--text-secondary);">Cúpula Trump-Xi: adiamento = bearish Chicago</span></div>
+                <div class="geo-pill"><span class="flag">📋</span> <span style="color:var(--text-secondary);">Tarifa 15% global (Plan B): custo para importador</span></div>
+                <div class="geo-pill"><span class="flag">🇧🇷🇨🇳</span> <span style="color:var(--text-secondary);">Inspeção sanitária: Cargill suspendeu embarques</span></div>
+                <div class="geo-pill"><span class="flag">⛽</span> <span style="color:var(--text-secondary);">Petróleo >US$100/bbl: puxa óleos vegetais + biodiesel</span></div>
+                <div class="geo-pill"><span class="flag">🇮🇷</span> <span style="color:var(--text-secondary);">Estreito de Ormuz: risco logístico marítimo global</span></div>
+                <div class="geo-pill"><span class="flag">💵</span> <span style="color:var(--text-secondary);">Dólar em queda (R$ 5,23): comprime receita exportador</span></div>
+                <div class="geo-pill"><span class="flag">📊</span> <span style="color:var(--text-secondary);">WASDE Abril (09/04): próximo relatório USDA chave</span></div>
+                <div class="geo-pill"><span class="flag">📦</span> <span style="color:var(--text-secondary);">Prêmios negativos em Paranaguá: BR menos competitivo</span></div>
+                <div class="geo-pill"><span class="flag">🇦🇷</span> <span style="color:var(--text-secondary);">Argentina: safra em queda (-1mi ton USDA)</span></div>
+            </div>
+
+            <div class="analysis-box">
+                <h4>🔎 Leitura Macro-Geopolítica para a Soja</h4>
+                <p><strong>1) Triângulo EUA-China-Brasil:</strong> A soja é o commodity mais sensível à geopolítica global. A indefinição sobre a cúpula Trump-Xi determina se a China compra mais dos EUA ou concentra tudo no Brasil. Com tarifa de 15%, a soja americana fica menos competitiva — beneficia o BR em volume, mas pressiona preços globais pela abundância.</p>
+                <p style="margin-top:8px;"><strong>2) Petróleo e Biocombustíveis:</strong> Com petróleo acima de US$ 100/bbl, o complexo biodiesel ganha competitividade. Isso sustenta preços de <strong>óleo de soja e farelo</strong>, criando um piso para o grão mesmo em cenário de oferta recorde. É o principal contrapeso altista atualmente.</p>
+                <p style="margin-top:8px;"><strong>3) Crise do Inspeção Sanitária:</strong> A suspensão da Cargill nos embarques BR→China por problemas de certificação é um <strong>evento disruptivo de curto prazo</strong>. Se resolvido rapidamente, efeito neutro. Se prolongado, pode travar a logística de exportação na janela de pico (mar-mai), gerando acúmulo nos portos e pressão baixista interna.</p>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- CENÁRIOS -->
+        <div class="section-title">
+            <div class="section-icon">🔮</div>
+            <h2>Projeção — <span>Terça (24/03) e Quarta (25/03)</span></h2>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Cenários para os Próximos 2 Dias — Soja Paranaguá</div>
+                <span class="badge badge-yellow">PROJEÇÃO RURAL IN</span>
+            </div>
+
+            <div class="scenario-card neutral">
+                <div class="scenario-header">
+                    <span class="scenario-prob">45%</span>
+                    <span class="scenario-label" style="color:var(--yellow);">🟡 CENÁRIO BASE — Acomodação no meio do canal</span>
+                </div>
+                <p class="scenario-desc">O consultor Vlamir Brandalizze resumiu bem: <em>"Não vejo espaço para quedas bruscas, mas faltam fatores para dizer que a soja vai subir"</em>. O mercado se posiciona em zona de acomodação, com compradores e vendedores em equilíbrio. Chicago estável na faixa US$ 11,55-11,70 sem novas manchetes. Demanda interna firme (biodiesel + crush) segura o piso, enquanto a safra recorde limita o teto. Leve oscilação para cima e para baixo.</p>
+                <div class="scenario-range">📍 Paranaguá: R$ 129,00 – R$ 131,00/sc &nbsp;|&nbsp; Paraná: R$ 122,00 – R$ 124,00/sc</div>
+            </div>
+
+            <div class="scenario-card bullish">
+                <div class="scenario-header">
+                    <span class="scenario-prob">25%</span>
+                    <span class="scenario-label" style="color:var(--green);">🟢 CENÁRIO ALTISTA — Petróleo + Óleos + Chicago</span>
+                </div>
+                <p class="scenario-desc">Se o <strong>petróleo continuar em alta</strong> (escalada Oriente Médio) ou se surgir <strong>sinal positivo da relação EUA-China</strong> (nova compra chinesa de soja americana), Chicago pode testar novamente US$ 11,80-12,00. A <strong>alta nos óleos vegetais e farelo</strong> puxa o complexo inteiro. Combinado com qualquer valorização do dólar (frete do exportador melhora), Paranaguá poderia buscar R$ 131-132.</p>
+                <div class="scenario-range">📍 Paranaguá: R$ 131,00 – R$ 132,50/sc &nbsp;|&nbsp; Paraná: R$ 124,00 – R$ 126,00/sc</div>
+            </div>
+
+            <div class="scenario-card bearish">
+                <div class="scenario-header">
+                    <span class="scenario-prob">30%</span>
+                    <span class="scenario-label" style="color:var(--red);">🔴 CENÁRIO DE BAIXA — Liquidação + Safra + Inspeção</span>
+                </div>
+                <p class="scenario-desc">O risco de baixa é <strong>relevante (30%)</strong>: fundos estão pesadamente net long em soja e óleos — qualquer manchete negativa (adiamento formal da cúpula, Trump ampliar tarifa, ou piora na crise de inspeção sanitária) pode desencadear <strong>nova rodada de liquidação</strong>. A colheita brasileira avançando comprime basis e prêmios. Se Chicago perder US$ 11,50, a cascata pode levar o indicador a testar R$ 127-128 novamente.</p>
+                <div class="scenario-range">📍 Paranaguá: R$ 127,00 – R$ 129,00/sc &nbsp;|&nbsp; Paraná: R$ 119,00 – R$ 121,00/sc</div>
+            </div>
+
+            <div class="analysis-box">
+                <h4>💡 Recomendação Estratégica ao Produtor — Soja</h4>
+                <p><strong>Para quem está colhendo e tem soja disponível:</strong> O patamar de R$ 129-130/sc em Paranaguá é o melhor nível desde dezembro/2025. Considere <strong>comercializar 40-60%</strong> nos níveis atuais, aproveitando o acumulado de +2,4% no mês. Margens estão apertadas e risco de queda existe — proteger receita agora é gestão de risco responsável.</p>
+                <p style="margin-top:8px;"><strong>Para quem está no interior (GO, MT, MS):</strong> Com preços entre R$ 102-112/sc e custos acima de R$ 95-100/sc, a margem é mínima. Avalie se compensa <strong>armazenar e aguardar melhora no prêmio</strong> (jun/26: +US$ 0,05/bu vs mar: -US$ 0,25/bu) ou se o custo de armazenagem corrói o ganho potencial. Faça a conta.</p>
+                <p style="margin-top:8px;"><strong>Dólar e hedge:</strong> O dólar a R$ 5,23 está em patamar relativamente baixo. Se você tem receita em dólar (exportação direta), considere <strong>hedge cambial</strong> para proteger contra nova queda. Cada centavo no dólar impacta ~R$ 2,50/sc no preço do produtor exportador.</p>
+            </div>
+        </div>
+
+        <!-- RESUMO EXECUTIVO -->
+        <div class="section-title">
+            <div class="section-icon">📋</div>
+            <h2>Resumo Executivo — <span>Quadro Sintético</span></h2>
+        </div>
+
+        <div class="grid-3" style="margin-bottom:24px;">
+            <div class="mini-card" style="border-color:var(--yellow);">
+                <div class="mini-card-label">Tendência Curto Prazo</div>
+                <div class="mini-card-value" style="color:var(--yellow);">LATERAL</div>
+                <div class="mini-card-var" style="color:var(--yellow);">⬌ Acomodação</div>
+            </div>
+            <div class="mini-card" style="border-color:var(--red);">
+                <div class="mini-card-label">Tendência Médio Prazo</div>
+                <div class="mini-card-value" style="color:var(--red);">BAIXISTA</div>
+                <div class="mini-card-var" style="color:var(--red);">⬇ Safra recorde</div>
+            </div>
+            <div class="mini-card" style="border-color:var(--orange);">
+                <div class="mini-card-label">Risco Chave</div>
+                <div class="mini-card-value" style="color:var(--orange);">GEOPOLÍTICA</div>
+                <div class="mini-card-var" style="color:var(--orange);">🇺🇸🇨🇳 EUA-China</div>
+            </div>
+        </div>
+
+        <div class="grid-4">
+            <div class="mini-card">
+                <div class="mini-card-label">Suporte Pnguá</div>
+                <div class="mini-card-value" style="color:var(--red);">R$ 127,00</div>
+            </div>
+            <div class="mini-card">
+                <div class="mini-card-label">Resistência Pnguá</div>
+                <div class="mini-card-value" style="color:var(--green);">R$ 131,00</div>
+            </div>
+            <div class="mini-card">
+                <div class="mini-card-label">Suporte CBOT</div>
+                <div class="mini-card-value" style="color:var(--red);">US$ 11,50</div>
+            </div>
+            <div class="mini-card">
+                <div class="mini-card-label">Resist. CBOT</div>
+                <div class="mini-card-value" style="color:var(--green);">US$ 12,14</div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-author">
+                <p style="font-size:0.7rem;color:var(--soy);font-weight:700;margin-bottom:10px;">ANÁLISE E CONSTRUÇÃO</p>
+                <h3>Dr. Sidney Souza</h3>
+                <p class="role">Economista Agrícola — Estrategista Econômico do Produtor</p>
+                <p class="sub-role">Especialista em economia da fazenda e gestão de risco no agro</p>
+                <p class="sub-role" style="color:var(--soy);font-weight:600;font-style:italic;">"Transformamos dados da fazenda em decisões econômicas"</p>
+                <p class="sub-role" style="color:var(--text-secondary);">"Ajudamos produtores a entender se o mercado sustenta seu negócio"</p>
+                <div class="footer-contact-item"><span class="icon">📧</span><span>sidneyagro@gmail.com</span></div>
+                <div class="footer-contact-item"><span class="icon">📱</span><span>(64) 9 9226-6886</span></div>
+                <div class="footer-social">
+                    <span class="social-tag">📍 @ruralin.ai</span>
+                    <span class="social-tag">📍 @sidneyagrosa</span>
+                </div>
+            </div>
+            <div class="footer-disclaimer">
+                <div style="margin-bottom:16px;">
+                    <svg viewBox="0 0 120 50" xmlns="http://www.w3.org/2000/svg" width="120">
+                        <rect width="120" height="50" rx="8" fill="#1B5E20"/>
+                        <text x="60" y="22" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="900" fill="#8BC34A">RURAL</text>
+                        <text x="60" y="38" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="900" fill="white">IN</text>
+                        <line x1="20" y1="44" x2="100" y2="44" stroke="#8BC34A" stroke-width="1.5"/>
+                    </svg>
+                </div>
+                <p><strong style="color:var(--text-secondary);">Aviso Legal:</strong> Este informativo tem caráter educacional e analítico. Não constitui recomendação de investimento. As projeções são baseadas em dados públicos e metodologia proprietária. Decisões de comercialização são de exclusiva responsabilidade do produtor.</p>
+                <p style="margin-top:8px;"><strong style="color:var(--text-secondary);">Fontes:</strong> CEPEA/Esalq, B3, CBOT/CME, Conab, USDA, ANEC, AgRural, T&F Consultoria, Brandalizze Consulting, Hedgepoint, Notícias Agrícolas, Globo Rural, Farmdoc Illinois, Investing.com, Commodity Board.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-motto">🫘 Transformamos dados da fazenda em decisões econômicas</p>
+            <p>© 2026 Rural IN — Inteligência Agro | Todos os direitos reservados</p>
+            <p style="margin-top:4px;">Radar Agro Soja — Edição 23/03/2026 — Segunda-feira</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
