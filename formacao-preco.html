@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formação de Preço & Custo de Produção — Commodities | Rural IN</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#080d16;color:#e0e0e0;padding:16px;min-height:100vh}
+.ctn{max-width:1320px;margin:0 auto}
+
+/* HEADER */
+.hdr{background:linear-gradient(135deg,#1a5e1a,#0d3b0d 50%,#1a5e1a);border-radius:16px 16px 0 0;padding:22px 28px;text-align:center;border-bottom:3px solid #4CAF50;position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4z'/%3E%3C/g%3E%3C/svg%3E")}
+.hdr h1{font-size:1.45em;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:2px;position:relative;z-index:1}
+.hdr .sub{font-size:.88em;color:#a5d6a7;margin-top:5px;font-weight:500;position:relative;z-index:1}
+.hdr .brand{font-size:.76em;color:#81c784;margin-top:3px;font-weight:600;position:relative;z-index:1}
+.main{background:#0f1724;border-radius:0 0 16px 16px;padding:22px;border:1px solid #1e3a2f;border-top:none}
+
+/* TABS */
+.tabs{display:flex;gap:4px;margin-bottom:20px;background:#0a1018;border-radius:10px;padding:4px}
+.tab-btn{flex:1;padding:12px;border:none;background:transparent;color:#6b7280;font-family:'Inter',sans-serif;font-size:.82em;font-weight:700;cursor:pointer;border-radius:8px;text-transform:uppercase;letter-spacing:.5px;transition:all .2s}
+.tab-btn.active{background:#1a2e1a;color:#4CAF50;box-shadow:0 2px 10px rgba(76,175,80,.15)}
+.tab-btn:hover:not(.active){color:#9ca3af;background:rgba(255,255,255,.03)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* COMMODITY SELECTOR */
+.cmd-sel{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:20px}
+.cmd-btn{background:#1a2332;border:2px solid #2a3a4a;border-radius:11px;padding:14px 6px;text-align:center;cursor:pointer;transition:all .22s;display:flex;flex-direction:column;align-items:center;gap:4px}
+.cmd-btn:hover{border-color:#4a6a4a;transform:translateY(-2px)}
+.cmd-btn.on{border-color:#4CAF50;background:rgba(76,175,80,.1);box-shadow:0 0 18px rgba(76,175,80,.18)}
+.cmd-btn .ic{font-size:1.8em}.cmd-btn .nm{font-size:.72em;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.5px}
+.cmd-btn.on .nm{color:#4CAF50}
+
+/* LOCATION */
+.loc-sec{background:linear-gradient(135deg,#0d1f0d,#152515);border:2px solid #2e7d32;border-radius:13px;padding:18px 22px;margin-bottom:20px}
+.loc-sec h3{font-size:.85em;color:#4CAF50;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;font-weight:800}
+.loc-grid{display:grid;grid-template-columns:170px 1fr 190px;gap:10px;align-items:end}
+.lf label{display:block;font-size:.74em;color:#81c784;font-weight:600;margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px}
+.lf select,.lf input{width:100%;padding:9px 12px;background:#0a1320;border:1px solid #374151;border-radius:7px;color:#e5e7eb;font-size:.9em;font-weight:600;font-family:'Inter',sans-serif;transition:border-color .2s;appearance:none}
+.lf select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%234CAF50' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:34px;cursor:pointer}
+.lf select:focus,.lf input:focus{outline:none;border-color:#4CAF50;box-shadow:0 0 0 3px rgba(76,175,80,.13)}
+.acw{position:relative}.acl{position:absolute;top:100%;left:0;right:0;background:#1a2332;border:1px solid #4CAF50;border-top:none;border-radius:0 0 8px 8px;max-height:230px;overflow-y:auto;z-index:1000;display:none}
+.acl.on{display:block}.aci{padding:9px 12px;cursor:pointer;font-size:.84em;font-weight:500;color:#d1d5db;border-bottom:1px solid #2a3a4a;transition:background .12s}
+.aci:hover,.aci.sel{background:rgba(76,175,80,.14);color:#4CAF50}.aci .hl{color:#4CAF50;font-weight:700}.aci:last-child{border-bottom:none}
+.acl::-webkit-scrollbar{width:5px}.acl::-webkit-scrollbar-thumb{background:#4CAF50;border-radius:3px}
+.ls{font-size:.74em;color:#6b7280;margin-top:8px}.ls.ok{color:#4CAF50}.ls.ld{color:#ffd740}.ls.er{color:#ef5350}
+.lb{display:inline-flex;align-items:center;gap:6px;background:rgba(76,175,80,.08);border:1px solid #2e7d32;padding:5px 14px;border-radius:20px;font-size:.8em;color:#4CAF50;font-weight:700;margin-top:8px}
+.lb .cn{color:#fff;font-weight:800}
+.ibcr{font-size:.68em;color:#4a5568;margin-top:5px;text-align:right}.ibcr a{color:#6b7280;text-decoration:none}
+
+/* SECTIONS */
+.stl{font-size:.82em;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;font-weight:700;color:#4CAF50}
+.stl.yl{color:#ffd740}
+
+/* INPUTS */
+.ig{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px;margin-bottom:20px}
+.igrp{background:#1a2332;border-radius:11px;padding:15px;border:1px solid #2a3a4a}
+.igrp h3{font-size:.82em;color:#4CAF50;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;font-weight:700;display:flex;align-items:center;gap:5px}
+.ir{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px}.ir:last-child{margin-bottom:0}
+.ir label{font-size:.78em;color:#9ca3af;font-weight:500}
+.ir input[type="number"]{width:115px;padding:5px 9px;background:#0a1320;border:1px solid #374151;border-radius:6px;color:#e5e7eb;font-size:.88em;font-weight:600;text-align:right;font-family:'Inter',sans-serif;transition:border-color .2s}
+.ir input:focus{outline:none;border-color:#4CAF50;box-shadow:0 0 0 2px rgba(76,175,80,.13)}
+.ir input.hlg{border-color:#4CAF50;background:rgba(76,175,80,.07)}
+
+/* SCENARIOS */
+.sg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
+.sc{background:#1a2332;border-radius:11px;padding:14px;border:2px solid #2a3a4a}
+.sc.n{border-color:#388e3c}.sc.o{border-color:#1976d2}.sc.b{border-color:#d32f2f}.sc.e{border-color:#f9a825}
+.sc h4{font-size:.76em;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-weight:700;text-align:center}
+.sc.n h4{color:#4CAF50}.sc.o h4{color:#42a5f5}.sc.b h4{color:#ef5350}.sc.e h4{color:#ffd740}
+.sc .ir input{width:95px;font-size:.82em}
+
+/* BUTTON */
+.btn{display:block;width:100%;padding:13px;background:linear-gradient(135deg,#388e3c,#2e7d32);color:#fff;border:none;border-radius:9px;font-size:.95em;font-weight:700;cursor:pointer;text-transform:uppercase;letter-spacing:1px;margin-bottom:20px;font-family:'Inter',sans-serif;transition:all .2s}
+.btn:hover{background:linear-gradient(135deg,#43a047,#388e3c);transform:translateY(-1px);box-shadow:0 4px 14px rgba(76,175,80,.28)}
+
+/* TABLE */
+.tw{overflow-x:auto;border-radius:11px;border:1px solid #2a3a4a}
+table{width:100%;border-collapse:collapse;font-size:.82em}
+thead th{background:#1a2332;color:#e5e7eb;padding:10px 14px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;font-size:.82em;border-bottom:2px solid #374151;text-align:center;white-space:nowrap}
+thead th:first-child{text-align:left;min-width:210px}
+thead th.ca{background:#1e293b;color:#94a3b8}
+thead th.cn{background:#1a3a2a;color:#4CAF50}
+thead th.co{background:#1a2a3a;color:#42a5f5}
+thead th.cb{background:#3a1a1a;color:#ef5350}
+thead th.ce{background:#3a3a1a;color:#ffd740}
+tbody td{padding:9px 14px;border-bottom:1px solid #1e2d3d;text-align:center;font-weight:500;white-space:nowrap}
+tbody td:first-child{text-align:left;color:#9ca3af;font-weight:600;background:#0c1220}
+tbody tr:hover{background:rgba(76,175,80,.02)}
+.rs td{background:#0b1320!important;border-top:2px solid #2a4a3a;padding:5px 14px}
+.rs td:first-child{color:#4CAF50;font-size:.76em;text-transform:uppercase;letter-spacing:1px;font-weight:700}
+.rh td{background:rgba(76,175,80,.06)!important;font-weight:700;color:#4CAF50}
+.rd td{background:rgba(239,83,80,.04)!important;color:#ef9a9a;font-weight:600}
+.ru td{background:rgba(66,165,245,.05)!important;font-weight:700;color:#90caf9}
+.rf td{background:rgba(76,175,80,.1)!important;font-weight:800;font-size:1em;color:#4CAF50;border-top:2px solid #4CAF50}
+.rm td{background:rgba(255,215,64,.08)!important;font-weight:800;font-size:1em;color:#ffd740;border-top:2px solid #f9a825}
+.rbe td{background:rgba(239,83,80,.08)!important;font-weight:800;font-size:1em;border-top:2px solid #ef5350}
+.vg{color:#4CAF50!important}.vb{color:#42a5f5!important}.vr{color:#ef5350!important}.vy{color:#ffd740!important}.vn{color:#94a3b8!important}
+
+/* COST SECTION */
+.cost-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin-bottom:20px}
+.cost-card{background:#1a2332;border-radius:11px;padding:16px;border:1px solid #2a3a4a}
+.cost-card h3{font-size:.82em;color:#ffd740;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;font-weight:700;display:flex;align-items:center;gap:6px}
+.cost-card .ir label{font-size:.76em}
+.cost-total{background:rgba(255,215,64,.08);border:1px solid #f9a825;border-radius:11px;padding:16px;margin-bottom:20px}
+.cost-total .ct-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.ct-item{text-align:center;padding:10px}
+.ct-item .ct-label{font-size:.72em;color:#ffd740;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;font-weight:600}
+.ct-item .ct-value{font-size:1.4em;font-weight:900;color:#fff}
+.ct-item .ct-sub{font-size:.72em;color:#81c784;margin-top:2px}
+
+/* MARGIN INDICATOR */
+.margin-bar{height:8px;border-radius:4px;background:#1a2332;margin-top:4px;overflow:hidden;position:relative}
+.margin-fill{height:100%;border-radius:4px;transition:width .5s}
+.margin-positive{background:linear-gradient(90deg,#2e7d32,#4CAF50)}
+.margin-negative{background:linear-gradient(90deg,#d32f2f,#ef5350)}
+
+/* INFO */
+.ibox{background:linear-gradient(135deg,#1a2a1a,#0d1a0d);border:1px solid #2e7d32;border-radius:9px;padding:14px 18px;margin-top:16px}
+.ibox h4{color:#4CAF50;font-size:.82em;margin-bottom:6px;text-transform:uppercase;letter-spacing:1px}
+.ibox p{color:#81c784;font-size:.78em;line-height:1.6}
+.ibox code{background:rgba(76,175,80,.15);padding:1px 5px;border-radius:3px;font-size:.88em;color:#a5d6a7}
+
+.ftr{text-align:center;margin-top:16px;padding:14px;color:#4a5568;font-size:.72em}
+
+/* RESPONSIVE */
+@media(max-width:900px){.cmd-sel{grid-template-columns:repeat(3,1fr)}.sg{grid-template-columns:repeat(2,1fr)}.loc-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){body{padding:8px}.hdr{padding:14px}.hdr h1{font-size:1.05em}.main{padding:12px}.cmd-sel{grid-template-columns:repeat(2,1fr)}.ig,.sg,.loc-grid,.cost-grid{grid-template-columns:1fr}table{font-size:.72em}thead th,tbody td{padding:7px 8px}.cmd-btn .ic{font-size:1.3em}.tabs{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="ctn">
+<div class="hdr">
+    <h1 id="hdrT">📊 Formação de Preço & Custo de Produção</h1>
+    <div class="sub" id="hdrS">Selecione a commodity e o município</div>
+    <div class="brand">RURAL IN — Inteligência para o Agronegócio</div>
+</div>
+<div class="main">
+
+<!-- COMMODITY -->
+<div class="cmd-sel" id="cmdSel">
+    <div class="cmd-btn on" data-c="soja" onclick="selCmd('soja')"><span class="ic">🫘</span><span class="nm">Soja</span></div>
+    <div class="cmd-btn" data-c="milho" onclick="selCmd('milho')"><span class="ic">🌽</span><span class="nm">Milho</span></div>
+    <div class="cmd-btn" data-c="boi" onclick="selCmd('boi')"><span class="ic">🐂</span><span class="nm">Boi Gordo</span></div>
+    <div class="cmd-btn" data-c="algodao" onclick="selCmd('algodao')"><span class="ic">🏵️</span><span class="nm">Algodão</span></div>
+    <div class="cmd-btn" data-c="cafe" onclick="selCmd('cafe')"><span class="ic">☕</span><span class="nm">Café</span></div>
+    <div class="cmd-btn" data-c="trigo" onclick="selCmd('trigo')"><span class="ic">🌾</span><span class="nm">Trigo</span></div>
+</div>
+
+<!-- LOCALIZAÇÃO -->
+<div class="loc-sec">
+    <h3>📍 Localização — API IBGE (5.570+ municípios)</h3>
+    <div class="loc-grid">
+        <div class="lf"><label>Estado</label><select id="selUF" onchange="loadMun()"><option value="">Selecione...</option></select></div>
+        <div class="lf"><label>Município</label><div class="acw"><input type="text" id="inpMun" placeholder="Selecione o estado..." autocomplete="off" disabled oninput="filtMun()" onfocus="filtMun()"><div class="acl" id="acL"></div></div></div>
+        <div class="lf"><label id="lblPorto">Porto Referência</label><select id="selP" onchange="updBadge()"></select></div>
+    </div>
+    <div class="ls ld" id="locS">⏳ Carregando IBGE...</div>
+    <div id="locB" style="display:none"><div class="lb">📍 <span class="cn" id="bC">—</span> → <span id="bP">—</span></div></div>
+    <div class="ibcr">Fonte: <a href="https://servicodados.ibge.gov.br/api/docs/localidades" target="_blank">API IBGE Localidades</a></div>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('paridade')">📈 Paridade & Cenários</button>
+    <button class="tab-btn" onclick="switchTab('custo')">💰 Custo de Produção</button>
+    <button class="tab-btn" onclick="switchTab('resultado')">🎯 Resultado Final & Margem</button>
+</div>
+
+<!-- ============ TAB 1: PARIDADE ============ -->
+<div class="tab-panel active" id="tab-paridade">
+    <h3 class="stl">📊 Dados de Mercado</h3>
+    <div class="ig" id="inpBase"></div>
+    <h3 class="stl yl">🎯 Cenários</h3>
+    <div class="sg" id="scenG"></div>
+    <button class="btn" onclick="recalc()">⚡ Recalcular Cenários</button>
+    <div class="tw"><table><thead><tr>
+        <th id="thO">📍 Origem → Destino</th>
+        <th class="ca">📌 ATUAL</th><th class="cn">🟢 NEUTRO</th><th class="co">🔵 OTIMISTA</th><th class="cb">🔴 BAIXISTA</th><th class="ce">⭐ ESTRATÉGIA</th>
+    </tr></thead><tbody id="tbP"></tbody></table></div>
+</div>
+
+<!-- ============ TAB 2: CUSTO DE PRODUÇÃO ============ -->
+<div class="tab-panel" id="tab-custo">
+    <h3 class="stl" style="color:#ffd740">💰 Custo de Produção — <span id="custLabel">Soja</span> Safra 25/26</h3>
+    <p style="font-size:.78em;color:#6b7280;margin-bottom:16px">Preencha os valores por hectare. Os custos por saca/arroba e o break-even serão calculados automaticamente.</p>
+
+    <div class="cost-grid" id="costGrid"></div>
+
+    <button class="btn" onclick="recalcCusto()">⚡ Recalcular Custo de Produção</button>
+
+    <!-- TOTALIZADOR -->
+    <div class="cost-total" id="costTotal"></div>
+
+    <div class="ibox">
+        <h4>📐 Referências CONAB/IMEA — Safra 25/26</h4>
+        <p id="custRef"></p>
+    </div>
+</div>
+
+<!-- ============ TAB 3: RESULTADO FINAL ============ -->
+<div class="tab-panel" id="tab-resultado">
+    <h3 class="stl" style="color:#ffd740">🎯 Resultado Final — Receita × Custo × Margem</h3>
+    <p style="font-size:.78em;color:#6b7280;margin-bottom:16px">Cruzamento automático da Paridade de Exportação com o Custo de Produção. A margem já desconta todos os custos.</p>
+
+    <div class="tw"><table><thead><tr>
+        <th id="thR">📍 Resultado por Cenário</th>
+        <th class="ca">📌 ATUAL</th><th class="cn">🟢 NEUTRO</th><th class="co">🔵 OTIMISTA</th><th class="cb">🔴 BAIXISTA</th><th class="ce">⭐ ESTRATÉGIA</th>
+    </tr></thead><tbody id="tbR"></tbody></table></div>
+
+    <div class="ibox" style="margin-top:16px;border-color:#f9a825">
+        <h4 style="color:#ffd740">📊 Interpretação</h4>
+        <p id="interpText" style="color:#e0c97a"></p>
+    </div>
+</div>
+
+</div>
+<div class="ftr">RURAL IN — Dr. Sidney Souza, Economista Agrícola | CBOT/CME · ICE · CEPEA · B3 · BCB · IBGE · CONAB | <span id="dtA"></span></div>
+</div>
+
+<script>
+// ================================================================
+// DADOS DAS COMMODITIES
+// ================================================================
+const CMD = {
+soja:{
+    nome:'Soja',icon:'🫘',bolsa:'CBOT',unBolsa:'US$/bu',fator:36.7454,sacTon:16.6667,unLocal:'R$/Sc 60kg',unUSD:'US$/Sc 60kg',tipo:'exp',
+    atual:{b:11.635,p:-0.25,d:5.235},neutro:{b:11.70,p:-0.20,d:5.25},otimista:{b:12.20,p:0.10,d:5.35},baixista:{b:10.80,p:-0.50,d:5.00},estrategia:{b:11.70,p:-0.10,d:5.25},
+    frete:280,fob:10,out:3,
+    portos:[{id:'paranagua',n:'Paranaguá/PR'},{id:'santos',n:'Santos/SP'},{id:'riogrande',n:'Rio Grande/RS'},{id:'saoluis',n:'São Luís/MA'},{id:'barcarena',n:'Barcarena/PA'},{id:'arconorte',n:'Arco Norte'}],
+    custos:{
+        sementes:550,fertilizantes:1900,defensivos:1250,opMecanizada:650,maoObra:180,
+        transInt:200,armazenagem:80,seguro:120,assistencia:60,
+        deprec:350,adminGeral:180,juros:280,rendaTerra:900,
+        produtividade:55
+    },
+    custRef:'<strong>Soja Safra 25/26:</strong> Custo médio GO: ~R$ 5.600/ha (CONAB Rio Verde). MS: R$ 6.116/ha (APROSOJA). MT: R$ 4.174/ha (IMEA, sem terra). Produtividade break-even: 51 sc/ha (GO), 56 sc/ha (MT).'
+},
+milho:{
+    nome:'Milho',icon:'🌽',bolsa:'CBOT',unBolsa:'US$/bu',fator:39.368,sacTon:16.6667,unLocal:'R$/Sc 60kg',unUSD:'US$/Sc 60kg',tipo:'exp',
+    atual:{b:4.6675,p:-0.15,d:5.235},neutro:{b:4.70,p:-0.10,d:5.25},otimista:{b:5.00,p:0.05,d:5.35},baixista:{b:4.30,p:-0.30,d:5.00},estrategia:{b:4.70,p:-0.05,d:5.25},
+    frete:260,fob:10,out:3,
+    portos:[{id:'paranagua',n:'Paranaguá/PR'},{id:'santos',n:'Santos/SP'},{id:'saoluis',n:'São Luís/MA'},{id:'arconorte',n:'Arco Norte'}],
+    custos:{sementes:380,fertilizantes:1400,defensivos:800,opMecanizada:550,maoObra:140,transInt:160,armazenagem:60,seguro:80,assistencia:40,deprec:300,adminGeral:140,juros:220,rendaTerra:600,produtividade:100},
+    custRef:'<strong>Milho 2ª Safra 25/26:</strong> MT: R$ 3.306/ha (IMEA). GO/MS: ~R$ 4.500–5.000/ha. Produtividade break-even: ~65 sc/ha (MT), ~80 sc/ha (GO). Custos com fertilizantes: +6,1% vs safra anterior.'
+},
+boi:{
+    nome:'Boi Gordo',icon:'🐂',bolsa:'CEPEA/B3',unBolsa:'R$/@',fator:1,sacTon:1,unLocal:'R$/@',unUSD:'US$/@',tipo:'pec',
+    atual:{b:350.65,p:0,d:5.235},neutro:{b:355,p:0,d:5.25},otimista:{b:370,p:0,d:5.35},baixista:{b:330,p:0,d:5.00},estrategia:{b:355,p:0,d:5.25},
+    frete:5,fob:0,out:0,funr:1.5,senar:0.2,
+    portos:[{id:'sp',n:'São Paulo/SP (CEPEA)'},{id:'go',n:'Goiás/GO'},{id:'mt',n:'Mato Grosso/MT'},{id:'ms',n:'Mato Grosso do Sul/MS'},{id:'mg',n:'Minas Gerais/MG'},{id:'pa',n:'Pará/PA'},{id:'to',n:'Tocantins/TO'}],
+    custos:{pastagem:120,suplementacao:180,sal:35,sanidade:65,maoObra:80,energia:25,manutCerca:30,mineraliz:40,deprec:55,adminGeral:30,juros:45,rendaTerra:90,pesoCompra:15,precoCompra:310,tempoEngorda:12,pesoVenda:20,rendCarcaca:52},
+    custRef:'<strong>Boi Gordo 25/26:</strong> CEPEA SP: R$ 350,65/@ (20/03). Custo médio recria/engorda GO: ~R$ 290-310/@. Margem operacional: 12-18%. Rendimento carcaça frigoríficos: 52-54%.'
+},
+algodao:{
+    nome:'Algodão',icon:'🏵️',bolsa:'ICE/NY',unBolsa:'¢/lb',fator:2204.62,sacTon:66.6667,unLocal:'R$/@ pluma',unUSD:'US$/@ pluma',tipo:'alg',
+    atual:{b:66,p:-2,d:5.235},neutro:{b:68,p:-1.5,d:5.25},otimista:{b:72,p:0,d:5.35},baixista:{b:60,p:-4,d:5.00},estrategia:{b:68,p:-1,d:5.25},
+    frete:220,fob:8,out:2,
+    portos:[{id:'santos',n:'Santos/SP'},{id:'salvador',n:'Salvador/BA'},{id:'saoluis',n:'São Luís/MA'}],
+    custos:{sementes:420,fertilizantes:2800,defensivos:2200,opMecanizada:900,maoObra:250,regulador:350,desfolhante:280,transInt:300,armazenagem:150,seguro:200,assistencia:80,deprec:500,adminGeral:250,juros:400,rendaTerra:1200,produtividade:280},
+    custRef:'<strong>Algodão 25/26:</strong> MT: R$ 10.770/ha (IMEA). Fertilizantes: -3,2% vs ago/25. Produtividade média: 280 @/ha (pluma). CEPEA pluma: R$ 374,45/@ (20/03). Custo alto exige gestão rigorosa.'
+},
+cafe:{
+    nome:'Café Arábica',icon:'☕',bolsa:'ICE/NY',unBolsa:'¢/lb',fator:132.277,sacTon:16.6667,unLocal:'R$/Sc 60kg',unUSD:'US$/Sc 60kg',tipo:'caf',
+    atual:{b:365,p:-10,d:5.235},neutro:{b:370,p:-8,d:5.25},otimista:{b:400,p:0,d:5.35},baixista:{b:330,p:-15,d:5.00},estrategia:{b:370,p:-5,d:5.25},
+    frete:180,fob:5,out:2,
+    portos:[{id:'santos',n:'Santos/SP'},{id:'vitoria',n:'Vitória/ES'}],
+    custos:{mudas:200,fertilizantes:3200,defensivos:1800,opMecanizada:600,maoObra:2500,colheita:1800,transInt:250,benefic:300,seguro:180,assistencia:100,deprec:450,adminGeral:200,juros:380,rendaTerra:1500,produtividade:35},
+    custRef:'<strong>Café Arábica 25/26:</strong> CEPEA: R$ 1.927/sc (20/03). Mão de obra e colheita: maiores custos (~30%). Produtividade média MG/SP: 30-40 sc/ha. Break-even: ~28 sc/ha em regiões tradicionais.'
+},
+trigo:{
+    nome:'Trigo',icon:'🌾',bolsa:'CBOT',unBolsa:'US$/bu',fator:36.7437,sacTon:16.6667,unLocal:'R$/Sc 60kg',unUSD:'US$/Sc 60kg',tipo:'exp',
+    atual:{b:6.0175,p:-0.20,d:5.235},neutro:{b:6.10,p:-0.15,d:5.25},otimista:{b:6.50,p:0,d:5.35},baixista:{b:5.50,p:-0.40,d:5.00},estrategia:{b:6.10,p:-0.10,d:5.25},
+    frete:200,fob:10,out:3,
+    portos:[{id:'paranagua',n:'Paranaguá/PR'},{id:'riogrande',n:'Rio Grande/RS'}],
+    custos:{sementes:350,fertilizantes:1100,defensivos:650,opMecanizada:480,maoObra:120,transInt:140,armazenagem:50,seguro:70,assistencia:35,deprec:250,adminGeral:120,juros:180,rendaTerra:500,produtividade:50},
+    custRef:'<strong>Trigo 25/26:</strong> Custo médio PR/RS: ~R$ 3.800–4.200/ha. CBOT: US$ 6,02/bu (20/03). CEPEA Trigo PR: R$ 1.090/ton. Break-even: ~45 sc/ha. Fertilizantes respondem por ~28% do custo.'
+}
+};
+
+// ================================================================
+// ESTADO
+// ================================================================
+let cmdAt='soja',munC=[],munS=null,acI=-1,custoAtual={};
+const pN=o=>o.n||o.nome||'';
+
+// ================================================================
+// TABS
+// ================================================================
+function switchTab(id){
+    document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.toggle('active',['paridade','custo','resultado'][i]===id));
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active',p.id==='tab-'+id));
+    if(id==='resultado'){recalc();recalcCusto();renderResultado();}
+}
+
+// ================================================================
+// COMMODITY
+// ================================================================
+function selCmd(id){
+    cmdAt=id;const c=CMD[id];
+    document.querySelectorAll('.cmd-btn').forEach(b=>b.classList.toggle('on',b.dataset.c===id));
+    document.getElementById('hdrT').textContent=`${c.icon} ${c.nome} — Preço & Custo de Produção`;
+    document.getElementById('custLabel').textContent=c.nome;
+    updPortos(c);renderBase(c);renderScen(c);renderCostInputs(c);updBadge();recalc();recalcCusto();
+}
+
+function updPortos(c){
+    const s=document.getElementById('selP'),l=document.getElementById('lblPorto');
+    s.innerHTML='';l.textContent=c.tipo==='pec'?'Praça Referência':'Porto Referência';
+    c.portos.forEach(p=>{const o=document.createElement('option');o.value=p.id;o.textContent=p.n;s.appendChild(o)});
+}
+
+// ================================================================
+// INPUTS BASE
+// ================================================================
+function renderBase(c){
+    const isPec=c.tipo==='pec';
+    let h='';
+    if(isPec){
+        h=`<div class="igrp"><h3>📈 CEPEA/B3</h3>
+        <div class="ir"><label>Indicador (R$/@)</label><input type="number" id="bA" value="${c.atual.b}" step="0.05"></div>
+        <div class="ir"><label>Dólar (R$)</label><input type="number" id="dA" value="${c.atual.d}" step="0.001"></div></div>
+        <div class="igrp"><h3>💰 Tributos</h3>
+        <div class="ir"><label>FUNRURAL (%)</label><input type="number" id="funr" value="${c.funr}" step="0.1" class="hlg"></div>
+        <div class="ir"><label>SENAR (%)</label><input type="number" id="senr" value="${c.senar}" step="0.1" class="hlg"></div></div>
+        <div class="igrp"><h3>🚛 Custos</h3>
+        <div class="ir"><label>Frete (R$/@)</label><input type="number" id="frA" value="${c.frete}" step="0.5"></div></div>`;
+    } else {
+        const uL=c.tipo==='alg'?'¢/lb':c.tipo==='caf'?'¢/lb':c.unBolsa;
+        h=`<div class="igrp"><h3>📈 ${c.bolsa}</h3>
+        <div class="ir"><label>Cotação (${uL})</label><input type="number" id="bA" value="${c.atual.b}" step="0.01"></div>
+        <div class="ir"><label>Prêmio</label><input type="number" id="pA" value="${c.atual.p}" step="0.01"></div>
+        <div class="ir"><label>Dólar (R$)</label><input type="number" id="dA" value="${c.atual.d}" step="0.001"></div></div>
+        <div class="igrp"><h3>🔄 Conversão</h3>
+        <div class="ir"><label>Fator</label><input type="number" id="fcv" value="${c.fator}" step="0.001" class="hlg"></div>
+        <div class="ir"><label>${isPec?'@/Ton':'Sacas/Ton'}</label><input type="number" id="stv" value="${c.sacTon}" step="0.001" class="hlg"></div></div>
+        <div class="igrp"><h3>🚛 Custos Logísticos</h3>
+        <div class="ir"><label>Frete (R$/ton)</label><input type="number" id="frA" value="${c.frete}" step="1"></div>
+        <div class="ir"><label>Fobbings (US$/ton)</label><input type="number" id="fbA" value="${c.fob}" step="0.5"></div>
+        <div class="ir"><label>Outras (US$/ton)</label><input type="number" id="ouA" value="${c.out}" step="0.5"></div></div>`;
+    }
+    document.getElementById('inpBase').innerHTML=h;
+    document.querySelectorAll('#inpBase input').forEach(i=>{i.addEventListener('change',recalc);i.addEventListener('keyup',e=>{if(e.key==='Enter')recalc()})});
+}
+
+function renderScen(c){
+    const isPec=c.tipo==='pec';
+    const mkCard=(cls,tit,suf,v)=>{
+        let h=`<div class="sc ${cls}"><h4>${tit}</h4>`;
+        h+=`<div class="ir"><label>${isPec?'R$/@':'Cotação'}</label><input type="number" id="b_${suf}" value="${v.b}" step="0.01"></div>`;
+        if(!isPec) h+=`<div class="ir"><label>Prêmio</label><input type="number" id="p_${suf}" value="${v.p}" step="0.01"></div>`;
+        h+=`<div class="ir"><label>Dólar</label><input type="number" id="d_${suf}" value="${v.d}" step="0.01"></div></div>`;
+        return h;
+    };
+    document.getElementById('scenG').innerHTML=
+        mkCard('n','🟢 Neutro','n',c.neutro)+mkCard('o','🔵 Otimista','o',c.otimista)+
+        mkCard('b','🔴 Baixista','b',c.baixista)+mkCard('e','⭐ Estratégia','e',c.estrategia);
+    document.querySelectorAll('#scenG input').forEach(i=>{i.addEventListener('change',recalc);i.addEventListener('keyup',e=>{if(e.key==='Enter')recalc()})});
+}
+
+// ================================================================
+// CUSTO DE PRODUÇÃO INPUTS
+// ================================================================
+function renderCostInputs(c){
+    const ct=c.custos;const isPec=c.tipo==='pec';
+    let h='';
+    if(isPec){
+        h=`<div class="cost-card"><h3>🌿 Pastagem & Nutrição (R$/cab/mês)</h3>
+        <div class="ir"><label>Manutenção Pastagem</label><input type="number" id="c_pastagem" value="${ct.pastagem}" step="1"></div>
+        <div class="ir"><label>Suplementação/Ração</label><input type="number" id="c_suplem" value="${ct.suplementacao}" step="1"></div>
+        <div class="ir"><label>Sal Mineral</label><input type="number" id="c_sal" value="${ct.sal}" step="1"></div>
+        <div class="ir"><label>Mineralização</label><input type="number" id="c_mineral" value="${ct.mineraliz}" step="1"></div></div>
+        <div class="cost-card"><h3>🏥 Sanidade & Mão de Obra (R$/cab/mês)</h3>
+        <div class="ir"><label>Sanidade/Vacinas</label><input type="number" id="c_sanid" value="${ct.sanidade}" step="1"></div>
+        <div class="ir"><label>Mão de Obra</label><input type="number" id="c_mo" value="${ct.maoObra}" step="1"></div>
+        <div class="ir"><label>Energia/Água</label><input type="number" id="c_ener" value="${ct.energia}" step="1"></div>
+        <div class="ir"><label>Manutenção Cercas</label><input type="number" id="c_cerca" value="${ct.manutCerca}" step="1"></div></div>
+        <div class="cost-card"><h3>📋 Fixos & Compra (R$/cab)</h3>
+        <div class="ir"><label>Depreciação</label><input type="number" id="c_deprec" value="${ct.deprec}" step="1"></div>
+        <div class="ir"><label>Administração</label><input type="number" id="c_admin" value="${ct.adminGeral}" step="1"></div>
+        <div class="ir"><label>Juros/Financ.</label><input type="number" id="c_juros" value="${ct.juros}" step="1"></div>
+        <div class="ir"><label>Renda da Terra</label><input type="number" id="c_terra" value="${ct.rendaTerra}" step="1"></div></div>
+        <div class="cost-card"><h3>🐂 Dados do Animal</h3>
+        <div class="ir"><label>Peso Compra (@)</label><input type="number" id="c_pesoC" value="${ct.pesoCompra}" step="0.5"></div>
+        <div class="ir"><label>Preço Compra (R$/@)</label><input type="number" id="c_precoC" value="${ct.precoCompra}" step="1"></div>
+        <div class="ir"><label>Tempo Engorda (meses)</label><input type="number" id="c_tempo" value="${ct.tempoEngorda}" step="1"></div>
+        <div class="ir"><label>Peso Venda (@)</label><input type="number" id="c_pesoV" value="${ct.pesoVenda}" step="0.5"></div></div>`;
+    } else {
+        const unProd = c.tipo==='alg' ? '@ pluma/ha' : 'sc/ha';
+        h=`<div class="cost-card"><h3>🌱 Insumos (R$/ha)</h3>
+        <div class="ir"><label>Sementes/Mudas</label><input type="number" id="c_sem" value="${ct.sementes||ct.mudas||0}" step="1"></div>
+        <div class="ir"><label>Fertilizantes</label><input type="number" id="c_fert" value="${ct.fertilizantes}" step="1"></div>
+        <div class="ir"><label>Defensivos</label><input type="number" id="c_def" value="${ct.defensivos}" step="1"></div>
+        ${ct.regulador?`<div class="ir"><label>Regulador Crescimento</label><input type="number" id="c_reg" value="${ct.regulador}" step="1"></div>`:''}
+        ${ct.desfolhante?`<div class="ir"><label>Desfolhante</label><input type="number" id="c_desf" value="${ct.desfolhante}" step="1"></div>`:''}</div>
+        <div class="cost-card"><h3>🚜 Operações (R$/ha)</h3>
+        <div class="ir"><label>Op. Mecanizada</label><input type="number" id="c_mec" value="${ct.opMecanizada}" step="1"></div>
+        <div class="ir"><label>Mão de Obra ${ct.colheita?'(pré-colheita)':''}</label><input type="number" id="c_mo" value="${ct.maoObra}" step="1"></div>
+        ${ct.colheita?`<div class="ir"><label>Colheita</label><input type="number" id="c_colh" value="${ct.colheita}" step="1"></div>`:''}
+        <div class="ir"><label>Transp. Interno</label><input type="number" id="c_ti" value="${ct.transInt}" step="1"></div></div>
+        <div class="cost-card"><h3>📦 Pós-Colheita (R$/ha)</h3>
+        <div class="ir"><label>Armazenagem</label><input type="number" id="c_arm" value="${ct.armazenagem||0}" step="1"></div>
+        ${ct.benefic?`<div class="ir"><label>Beneficiamento</label><input type="number" id="c_ben" value="${ct.benefic}" step="1"></div>`:''}
+        <div class="ir"><label>Seguro Rural</label><input type="number" id="c_seg" value="${ct.seguro}" step="1"></div>
+        <div class="ir"><label>Assistência Técnica</label><input type="number" id="c_ast" value="${ct.assistencia}" step="1"></div></div>
+        <div class="cost-card"><h3>📋 Custos Fixos (R$/ha)</h3>
+        <div class="ir"><label>Depreciação</label><input type="number" id="c_dep" value="${ct.deprec}" step="1"></div>
+        <div class="ir"><label>Administração</label><input type="number" id="c_adm" value="${ct.adminGeral}" step="1"></div>
+        <div class="ir"><label>Juros/Financiamento</label><input type="number" id="c_jur" value="${ct.juros}" step="1"></div>
+        <div class="ir"><label>Renda da Terra</label><input type="number" id="c_ter" value="${ct.rendaTerra}" step="1"></div>
+        <div class="ir"><label style="color:#4CAF50;font-weight:700">Produtividade (${unProd})</label><input type="number" id="c_prod" value="${ct.produtividade}" step="1" class="hlg"></div></div>`;
+    }
+    document.getElementById('costGrid').innerHTML=h;
+    document.getElementById('custRef').innerHTML=c.custRef;
+    document.querySelectorAll('#costGrid input').forEach(i=>{i.addEventListener('change',recalcCusto);i.addEventListener('keyup',e=>{if(e.key==='Enter')recalcCusto()})});
+    recalcCusto();
+}
+
+// ================================================================
+// CÁLCULOS — PARIDADE
+// ================================================================
+function gv(id){const el=document.getElementById(id);return el?(parseFloat(el.value)||0):0}
+function fm(v,d=2){return v.toFixed(d)}
+
+function calcExp(b,p,d,f,s,fr,fb,ou){
+    const fob=(b+p)*f,fru=fr/d,dep=fru+fb+ou,rt=fob-dep,rs=rt/s,rb=rs*d;
+    return{b,p,d,fob,fr,fru,fb,ou,dep,rt,rs,rb};
+}
+function calcBoi(ind,d,fn,sn,ft){
+    const br=ind,dF=br*(fn/100),dS=br*(sn/100),lq=br-dF-dS-ft,lu=lq/d;
+    return{ind,d,br,dF,dS,ft,lq,lu};
+}
+function calcAlg(cl,p,d,lb,at,fr,fb,ou){
+    const fc=cl+p,ft=(fc/100)*lb,fa=ft/at,fru=fr/d,dep=fru+fb+ou,da=dep/at,ra=fa-da,rb=ra*d;
+    return{cl,p,d,fc,ft,fa,fr,fru,dep,da,ra,rb};
+}
+function calcCaf(cl,p,d,ls,st,fr,fb,ou){
+    const fc=cl+p,fs=(fc/100)*ls,fru=fr/d,dt=fru+fb+ou,ds=dt/st,rs=fs-ds,rb=rs*d;
+    return{cl,p,d,fc,fs,fr,fru,dt,ds,rs,rb};
+}
+
+function recalc(){
+    const c=CMD[cmdAt],t=c.tipo;let html='';
+    if(t==='exp'){
+        const f=gv('fcv'),s=gv('stv'),fr=gv('frA'),fb=gv('fbA'),ou=gv('ouA');
+        const cn={a:calcExp(gv('bA'),gv('pA'),gv('dA'),f,s,fr,fb,ou),n:calcExp(gv('b_n'),gv('p_n'),gv('d_n'),f,s,fr,fb,ou),o:calcExp(gv('b_o'),gv('p_o'),gv('d_o'),f,s,fr,fb,ou),b:calcExp(gv('b_b'),gv('p_b'),gv('d_b'),f,s,fr,fb,ou),e:calcExp(gv('b_e'),gv('p_e'),gv('d_e'),f,s,fr,fb,ou)};
+        html=tblExp(cn,c);
+    } else if(t==='pec'){
+        const fn=gv('funr'),sn=gv('senr'),ft=gv('frA');
+        const cn={a:calcBoi(gv('bA'),gv('dA'),fn,sn,ft),n:calcBoi(gv('b_n'),gv('d_n'),fn,sn,ft),o:calcBoi(gv('b_o'),gv('d_o'),fn,sn,ft),b:calcBoi(gv('b_b'),gv('d_b'),fn,sn,ft),e:calcBoi(gv('b_e'),gv('d_e'),fn,sn,ft)};
+        html=tblBoi(cn);
+    } else if(t==='alg'){
+        const lb=gv('fcv'),at=gv('stv'),fr=gv('frA'),fb=gv('fbA'),ou=gv('ouA');
+        const cn={a:calcAlg(gv('bA'),gv('pA'),gv('dA'),lb,at,fr,fb,ou),n:calcAlg(gv('b_n'),gv('p_n'),gv('d_n'),lb,at,fr,fb,ou),o:calcAlg(gv('b_o'),gv('p_o'),gv('d_o'),lb,at,fr,fb,ou),b:calcAlg(gv('b_b'),gv('p_b'),gv('d_b'),lb,at,fr,fb,ou),e:calcAlg(gv('b_e'),gv('p_e'),gv('d_e'),lb,at,fr,fb,ou)};
+        html=tblAlg(cn);
+    } else if(t==='caf'){
+        const ls=gv('fcv'),st=gv('stv'),fr=gv('frA'),fb=gv('fbA'),ou=gv('ouA');
+        const cn={a:calcCaf(gv('bA'),gv('pA'),gv('dA'),ls,st,fr,fb,ou),n:calcCaf(gv('b_n'),gv('p_n'),gv('d_n'),ls,st,fr,fb,ou),o:calcCaf(gv('b_o'),gv('p_o'),gv('d_o'),ls,st,fr,fb,ou),b:calcCaf(gv('b_b'),gv('p_b'),gv('d_b'),ls,st,fr,fb,ou),e:calcCaf(gv('b_e'),gv('p_e'),gv('d_e'),ls,st,fr,fb,ou)};
+        html=tblCaf(cn);
+    }
+    document.getElementById('tbP').innerHTML=html;
+}
+
+function r5(a,n,o,b,e,d=2,pf=''){return`<td class="vn">${pf}${fm(a,d)}</td><td class="vg">${pf}${fm(n,d)}</td><td class="vb">${pf}${fm(o,d)}</td><td class="vr">${pf}${fm(b,d)}</td><td class="vy">${pf}${fm(e,d)}</td>`}
+
+function tblExp(c,cfg){
+    return`<tr class="rs"><td colspan="6">FORMAÇÃO FOB</td></tr>
+    <tr><td>${cfg.bolsa} (${cfg.unBolsa})</td>${r5(c.a.b,c.n.b,c.o.b,c.b.b,c.e.b,4)}</tr>
+    <tr><td>Prêmio</td>${r5(c.a.p,c.n.p,c.o.p,c.b.p,c.e.p)}</tr>
+    <tr><td>Dólar (R$)</td>${r5(c.a.d,c.n.d,c.o.d,c.b.d,c.e.d,3)}</tr>
+    <tr class="rh"><td>💰 FOB (US$/ton)</td>${r5(c.a.fob,c.n.fob,c.o.fob,c.b.fob,c.e.fob,2,'$ ')}</tr>
+    <tr class="rs"><td colspan="6">DESPESAS</td></tr>
+    <tr><td>Frete (R$/ton)</td>${r5(c.a.fr,c.n.fr,c.o.fr,c.b.fr,c.e.fr,2,'R$ ')}</tr>
+    <tr><td>Frete (US$/ton)</td>${r5(c.a.fru,c.n.fru,c.o.fru,c.b.fru,c.e.fru,2,'$ ')}</tr>
+    <tr class="rd"><td>📦 Desp. Total (US$/ton)</td>${r5(c.a.dep,c.n.dep,c.o.dep,c.b.dep,c.e.dep,2,'$ ')}</tr>
+    <tr class="rs"><td colspan="6">RECEITA PRODUTOR</td></tr>
+    <tr class="ru"><td>Receita (US$/ton)</td>${r5(c.a.rt,c.n.rt,c.o.rt,c.b.rt,c.e.rt,2,'$ ')}</tr>
+    <tr class="ru"><td>Receita (${cfg.unUSD})</td>${r5(c.a.rs,c.n.rs,c.o.rs,c.b.rs,c.e.rs,2,'$ ')}</tr>
+    <tr class="rf"><td>🎯 RECEITA (${cfg.unLocal})</td>${r5(c.a.rb,c.n.rb,c.o.rb,c.b.rb,c.e.rb,2,'R$ ')}</tr>`;
+}
+function tblBoi(c){
+    return`<tr class="rs"><td colspan="6">INDICADOR BOI GORDO</td></tr>
+    <tr><td>CEPEA/B3 (R$/@)</td>${r5(c.a.ind,c.n.ind,c.o.ind,c.b.ind,c.e.ind,2,'R$ ')}</tr>
+    <tr><td>Dólar (R$)</td>${r5(c.a.d,c.n.d,c.o.d,c.b.d,c.e.d,3)}</tr>
+    <tr class="rs"><td colspan="6">DEDUÇÕES</td></tr>
+    <tr><td>FUNRURAL</td>${r5(c.a.dF,c.n.dF,c.o.dF,c.b.dF,c.e.dF,2,'-R$ ')}</tr>
+    <tr><td>SENAR</td>${r5(c.a.dS,c.n.dS,c.o.dS,c.b.dS,c.e.dS,2,'-R$ ')}</tr>
+    <tr class="rd"><td>🚛 Frete (R$/@)</td>${r5(c.a.ft,c.n.ft,c.o.ft,c.b.ft,c.e.ft,2,'-R$ ')}</tr>
+    <tr class="rs"><td colspan="6">RECEITA</td></tr>
+    <tr class="ru"><td>Líquido (US$/@)</td>${r5(c.a.lu,c.n.lu,c.o.lu,c.b.lu,c.e.lu,2,'$ ')}</tr>
+    <tr class="rf"><td>🎯 LÍQUIDO (R$/@)</td>${r5(c.a.lq,c.n.lq,c.o.lq,c.b.lq,c.e.lq,2,'R$ ')}</tr>`;
+}
+function tblAlg(c){
+    return`<tr class="rs"><td colspan="6">FORMAÇÃO FOB ALGODÃO</td></tr>
+    <tr><td>ICE NY (¢/lb)</td>${r5(c.a.cl,c.n.cl,c.o.cl,c.b.cl,c.e.cl)}</tr>
+    <tr><td>Prêmio (¢/lb)</td>${r5(c.a.p,c.n.p,c.o.p,c.b.p,c.e.p)}</tr>
+    <tr><td>Dólar (R$)</td>${r5(c.a.d,c.n.d,c.o.d,c.b.d,c.e.d,3)}</tr>
+    <tr class="rh"><td>💰 FOB (US$/ton)</td>${r5(c.a.ft,c.n.ft,c.o.ft,c.b.ft,c.e.ft,2,'$ ')}</tr>
+    <tr><td>FOB (US$/@ pluma)</td>${r5(c.a.fa,c.n.fa,c.o.fa,c.b.fa,c.e.fa,2,'$ ')}</tr>
+    <tr class="rs"><td colspan="6">DESPESAS</td></tr>
+    <tr class="rd"><td>📦 Desp. (US$/@)</td>${r5(c.a.da,c.n.da,c.o.da,c.b.da,c.e.da,2,'$ ')}</tr>
+    <tr class="rs"><td colspan="6">RECEITA</td></tr>
+    <tr class="ru"><td>Receita (US$/@)</td>${r5(c.a.ra,c.n.ra,c.o.ra,c.b.ra,c.e.ra,2,'$ ')}</tr>
+    <tr class="rf"><td>🎯 RECEITA (R$/@)</td>${r5(c.a.rb,c.n.rb,c.o.rb,c.b.rb,c.e.rb,2,'R$ ')}</tr>`;
+}
+function tblCaf(c){
+    return`<tr class="rs"><td colspan="6">FORMAÇÃO FOB CAFÉ</td></tr>
+    <tr><td>ICE NY (¢/lb)</td>${r5(c.a.cl,c.n.cl,c.o.cl,c.b.cl,c.e.cl)}</tr>
+    <tr><td>Diferencial (¢/lb)</td>${r5(c.a.p,c.n.p,c.o.p,c.b.p,c.e.p)}</tr>
+    <tr><td>Dólar (R$)</td>${r5(c.a.d,c.n.d,c.o.d,c.b.d,c.e.d,3)}</tr>
+    <tr class="rh"><td>💰 FOB (US$/sc)</td>${r5(c.a.fs,c.n.fs,c.o.fs,c.b.fs,c.e.fs,2,'$ ')}</tr>
+    <tr class="rs"><td colspan="6">DESPESAS</td></tr>
+    <tr class="rd"><td>📦 Desp. (US$/sc)</td>${r5(c.a.ds,c.n.ds,c.o.ds,c.b.ds,c.e.ds,2,'$ ')}</tr>
+    <tr class="rs"><td colspan="6">RECEITA</td></tr>
+    <tr class="ru"><td>Receita (US$/sc)</td>${r5(c.a.rs,c.n.rs,c.o.rs,c.b.rs,c.e.rs,2,'$ ')}</tr>
+    <tr class="rf"><td>🎯 RECEITA (R$/sc)</td>${r5(c.a.rb,c.n.rb,c.o.rb,c.b.rb,c.e.rb,2,'R$ ')}</tr>`;
+}
+
+// ================================================================
+// CÁLCULOS — CUSTO DE PRODUÇÃO
+// ================================================================
+function recalcCusto(){
+    const c=CMD[cmdAt],isPec=c.tipo==='pec';
+    let custoHa=0,custoUn=0,prod=0,breakEven=0;
+    if(isPec){
+        const past=gv('c_pastagem'),sup=gv('c_suplem'),sal=gv('c_sal'),min=gv('c_mineral');
+        const san=gv('c_sanid'),mo=gv('c_mo'),en=gv('c_ener'),cer=gv('c_cerca');
+        const dep=gv('c_deprec'),adm=gv('c_admin'),jur=gv('c_juros'),ter=gv('c_terra');
+        const pesoC=gv('c_pesoC'),precoC=gv('c_precoC'),tempo=gv('c_tempo'),pesoV=gv('c_pesoV');
+        const custoMensal=past+sup+sal+min+san+mo+en+cer;
+        const custoVariavel=custoMensal*tempo;
+        const custoFixo=dep+adm+jur+ter;
+        const custoCompra=pesoC*precoC;
+        const custoTotal=custoCompra+custoVariavel+custoFixo;
+        const arrobasGanhas=pesoV-pesoC;
+        custoUn=arrobasGanhas>0?custoTotal/pesoV:0;
+        prod=pesoV;
+        custoAtual={total:custoTotal,porUnidade:custoUn,prod:pesoV,unidade:'R$/@',custoCompra,custoVariavel,custoFixo,arrobasGanhas};
+        document.getElementById('costTotal').innerHTML=`<div class="ct-grid">
+            <div class="ct-item"><div class="ct-label">Custo Compra</div><div class="ct-value">R$ ${fm(custoCompra)}</div><div class="ct-sub">${fm(pesoC)} @ × R$ ${fm(precoC)}</div></div>
+            <div class="ct-item"><div class="ct-label">Custo Variável (${tempo}m)</div><div class="ct-value">R$ ${fm(custoVariavel)}</div><div class="ct-sub">R$ ${fm(custoMensal)}/mês × ${tempo}</div></div>
+            <div class="ct-item"><div class="ct-label">Custo Fixo</div><div class="ct-value">R$ ${fm(custoFixo)}</div></div>
+            <div class="ct-item"><div class="ct-label">💰 Custo Total/Cab</div><div class="ct-value" style="color:#ffd740">R$ ${fm(custoTotal)}</div></div>
+            <div class="ct-item"><div class="ct-label">🎯 Custo por @</div><div class="ct-value" style="color:#ef5350">R$ ${fm(custoUn)}</div><div class="ct-sub">${fm(pesoV)} @ de venda</div></div>
+            <div class="ct-item"><div class="ct-label">@ Ganhas</div><div class="ct-value" style="color:#4CAF50">${fm(arrobasGanhas)} @</div></div></div>`;
+    } else {
+        const sem=gv('c_sem'),fer=gv('c_fert'),def=gv('c_def'),mec=gv('c_mec'),mo=gv('c_mo');
+        const ti=gv('c_ti'),arm=gv('c_arm'),seg=gv('c_seg'),ast=gv('c_ast');
+        const dep=gv('c_dep'),adm=gv('c_adm'),jur=gv('c_jur'),ter=gv('c_ter');
+        prod=gv('c_prod');
+        const reg=gv('c_reg')||0,desf=gv('c_desf')||0,colh=gv('c_colh')||0,ben=gv('c_ben')||0;
+        const insumos=sem+fer+def+reg+desf;
+        const operacional=mec+mo+colh+ti;
+        const posColheita=arm+ben+seg+ast;
+        const fixo=dep+adm+jur+ter;
+        custoHa=insumos+operacional+posColheita+fixo;
+        custoUn=prod>0?custoHa/prod:0;
+        const unLbl=c.tipo==='alg'?'@':'sc';
+        custoAtual={total:custoHa,porUnidade:custoUn,prod,unidade:`R$/${unLbl}`,insumos,operacional,posColheita,fixo};
+        document.getElementById('costTotal').innerHTML=`<div class="ct-grid">
+            <div class="ct-item"><div class="ct-label">🌱 Insumos</div><div class="ct-value">R$ ${fm(insumos)}</div><div class="ct-sub">${fm(insumos/custoHa*100,1)}% do total</div></div>
+            <div class="ct-item"><div class="ct-label">🚜 Operações</div><div class="ct-value">R$ ${fm(operacional)}</div><div class="ct-sub">${fm(operacional/custoHa*100,1)}%</div></div>
+            <div class="ct-item"><div class="ct-label">📦 Pós-Colheita</div><div class="ct-value">R$ ${fm(posColheita)}</div><div class="ct-sub">${fm(posColheita/custoHa*100,1)}%</div></div>
+            <div class="ct-item"><div class="ct-label">📋 Fixos</div><div class="ct-value">R$ ${fm(fixo)}</div><div class="ct-sub">${fm(fixo/custoHa*100,1)}%</div></div>
+            <div class="ct-item"><div class="ct-label">💰 Custo Total/ha</div><div class="ct-value" style="color:#ffd740">R$ ${fm(custoHa)}</div></div>
+            <div class="ct-item"><div class="ct-label">🎯 Custo/${unLbl}</div><div class="ct-value" style="color:#ef5350">R$ ${fm(custoUn)}</div><div class="ct-sub">Produt.: ${fm(prod,0)} ${unLbl}/ha</div></div></div>`;
+    }
+}
+
+// ================================================================
+// TAB 3 — RESULTADO FINAL (MARGEM)
+// ================================================================
+function renderResultado(){
+    recalc();recalcCusto();
+    const c=CMD[cmdAt],t=c.tipo;
+    // Obter receitas dos cenários
+    let recA=0,recN=0,recO=0,recB=0,recE=0;
+    if(t==='exp'){
+        const f=gv('fcv'),s=gv('stv'),fr=gv('frA'),fb=gv('fbA'),ou=gv('ouA');
+        recA=calcExp(gv('bA'),gv('pA'),gv('dA'),f,s,fr,fb,ou).rb;
+        recN=calcExp(gv('b_n'),gv('p_n'),gv('d_n'),f,s,fr,fb,ou).rb;
+        recO=calcExp(gv('b_o'),gv('p_o'),gv('d_o'),f,s,fr,fb,ou).rb;
+        recB=calcExp(gv('b_b'),gv('p_b'),gv('d_b'),f,s,fr,fb,ou).rb;
+        recE=calcExp(gv('b_e'),gv('p_e'),gv('d_e'),f,s,fr,fb,ou).rb;
+    } else if(t==='pec'){
+        const fn=gv('funr'),sn=gv('senr'),ft=gv('frA');
+        recA=calcBoi(gv('bA'),gv('dA'),fn,sn,ft).lq;
+        recN=calcBoi(gv('b_n'),gv('d_n'),fn,sn,ft).lq;
+        recO=calcBoi(gv('b_o'),gv('d_o'),fn,sn,ft).lq;
+        recB=calcBoi(gv('b_b'),gv('d_b'),fn,sn,ft).lq;
+        recE=calcBoi(gv('b_e'),gv('d_e'),fn,sn,ft).lq;
+    } else if(t==='alg'){
+        const lb=gv('fcv'),at=gv('stv'),fr=gv('frA'),fb=gv('fbA'),ou=gv('ouA');
+        recA=calcAlg(gv('bA'),gv('pA'),gv('dA'),lb,at,fr,fb,ou).rb;
+        recN=calcAlg(gv('b_n'),gv('p_n'),gv('d_n'),lb,at,fr,fb,ou).rb;
+        recO=calcAlg(gv('b_o'),gv('p_o'),gv('d_o'),lb,at,fr,fb,ou).rb;
+        recB=calcAlg(gv('b_b'),gv('p_b'),gv('d_b'),lb,at,fr,fb,ou).rb;
+        recE=calcAlg(gv('b_e'),gv('p_e'),gv('d_e'),lb,at,fr,fb,ou).rb;
+    } else if(t==='caf'){
+        const ls=gv('fcv'),st=gv('stv'),fr=gv('frA'),fb=gv('fbA'),ou=gv('ouA');
+        recA=calcCaf(gv('bA'),gv('pA'),gv('dA'),ls,st,fr,fb,ou).rb;
+        recN=calcCaf(gv('b_n'),gv('p_n'),gv('d_n'),ls,st,fr,fb,ou).rb;
+        recO=calcCaf(gv('b_o'),gv('p_o'),gv('d_o'),ls,st,fr,fb,ou).rb;
+        recB=calcCaf(gv('b_b'),gv('p_b'),gv('d_b'),ls,st,fr,fb,ou).rb;
+        recE=calcCaf(gv('b_e'),gv('p_e'),gv('d_e'),ls,st,fr,fb,ou).rb;
+    }
+
+    const cu=custoAtual.porUnidade||0;
+    const un=c.unLocal;
+    const isPec=t==='pec';
+    const prod=custoAtual.prod||0;
+    const custoTotalHa=custoAtual.total||0;
+
+    const mA=recA-cu,mN=recN-cu,mO=recO-cu,mB=recB-cu,mE=recE-cu;
+    const mpA=recA>0?(mA/recA*100):0,mpN=recN>0?(mN/recN*100):0,mpO=recO>0?(mO/recO*100):0,mpB=recB>0?(mB/recB*100):0,mpE=recE>0?(mE/recE*100):0;
+
+    // Receita/ha
+    const rhA=isPec?0:recA*prod,rhN=isPec?0:recN*prod,rhO=isPec?0:recO*prod,rhB=isPec?0:recB*prod,rhE=isPec?0:recE*prod;
+    // Lucro/ha
+    const lhA=rhA-custoTotalHa,lhN=rhN-custoTotalHa,lhO=rhO-custoTotalHa,lhB=rhB-custoTotalHa,lhE=rhE-custoTotalHa;
+
+    function mCor(v){return v>=0?'vg':'vr'}
+    function r5m(a,n,o,b,e,d=2,pf=''){
+        return`<td class="${mCor(a)}">${pf}${fm(a,d)}</td><td class="${mCor(n)}">${pf}${fm(n,d)}</td><td class="${mCor(o)}">${pf}${fm(o,d)}</td><td class="${mCor(b)}">${pf}${fm(b,d)}</td><td class="${mCor(e)}">${pf}${fm(e,d)}</td>`;
+    }
+
+    let html=`
+    <tr class="rs"><td colspan="6">RECEITA × CUSTO (${un})</td></tr>
+    <tr class="ru"><td>Receita (${un})</td>${r5(recA,recN,recO,recB,recE,2,'R$ ')}</tr>
+    <tr class="rd"><td>(-) Custo Produção (${un})</td><td class="vr">R$ ${fm(cu)}</td><td class="vr">R$ ${fm(cu)}</td><td class="vr">R$ ${fm(cu)}</td><td class="vr">R$ ${fm(cu)}</td><td class="vr">R$ ${fm(cu)}</td></tr>
+    <tr class="rm"><td>🎯 MARGEM (${un})</td>${r5m(mA,mN,mO,mB,mE,2,'R$ ')}</tr>
+    <tr><td>Margem (%)</td>${r5m(mpA,mpN,mpO,mpB,mpE,1,'')}
+    </tr>`;
+
+    if(!isPec){
+        html+=`
+        <tr class="rs"><td colspan="6">RESULTADO POR HECTARE (${fm(prod,0)} ${t==='alg'?'@':'sc'}/ha)</td></tr>
+        <tr class="ru"><td>Receita Bruta (R$/ha)</td>${r5(rhA,rhN,rhO,rhB,rhE,2,'R$ ')}</tr>
+        <tr class="rd"><td>(-) Custo Total (R$/ha)</td><td class="vr">R$ ${fm(custoTotalHa)}</td><td class="vr">R$ ${fm(custoTotalHa)}</td><td class="vr">R$ ${fm(custoTotalHa)}</td><td class="vr">R$ ${fm(custoTotalHa)}</td><td class="vr">R$ ${fm(custoTotalHa)}</td></tr>
+        <tr class="rbe"><td>💰 LUCRO/PREJUÍZO (R$/ha)</td>${r5m(lhA,lhN,lhO,lhB,lhE,2,'R$ ')}</tr>`;
+    }
+
+    document.getElementById('tbR').innerHTML=html;
+
+    // Interpretação
+    let interp='';
+    if(mA>0){interp+=`✅ <strong>Cenário Atual:</strong> Margem positiva de R$ ${fm(mA)}/${t==='pec'?'@':'sc'} (${fm(mpA,1)}%). `;}
+    else{interp+=`⚠️ <strong>Cenário Atual:</strong> Margem NEGATIVA de R$ ${fm(mA)}/${t==='pec'?'@':'sc'}. Atenção! `;}
+    if(mB>0){interp+=`🟢 Mesmo no cenário baixista, há margem de R$ ${fm(mB)}. `;}
+    else{interp+=`🔴 No cenário baixista, prejuízo de R$ ${fm(Math.abs(mB))}/${t==='pec'?'@':'sc'}. Considere travar preços! `;}
+    if(!isPec && prod>0){
+        const be=custoTotalHa/recA;
+        interp+=`<br><br>📐 <strong>Break-even:</strong> ${fm(be,1)} ${t==='alg'?'@':'sc'}/ha necessárias para cobrir o custo com o preço atual.`;
+    }
+    document.getElementById('interpText').innerHTML=interp;
+}
+
+// ================================================================
+// IBGE
+// ================================================================
+async function loadUFs(){
+    try{
+        const r=await fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome');
+        const u=await r.json();const s=document.getElementById('selUF');
+        s.innerHTML='<option value="">Selecione...</option>';
+        u.forEach(uf=>{const o=document.createElement('option');o.value=uf.id;o.textContent=`${uf.nome} (${uf.sigla})`;o.dataset.s=uf.sigla;s.appendChild(o)});
+        s.value='52';document.getElementById('locS').className='ls ok';document.getElementById('locS').textContent=`✅ ${u.length} estados`;loadMun();
+    }catch(e){document.getElementById('locS').className='ls er';document.getElementById('locS').textContent='❌ Erro IBGE'}
+}
+async function loadMun(){
+    const uid=document.getElementById('selUF').value,inp=document.getElementById('inpMun');
+    if(!uid){inp.disabled=true;inp.value='';munC=[];return}
+    inp.disabled=true;inp.value='';inp.placeholder='Carregando...';
+    try{
+        const r=await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uid}/municipios?orderBy=nome`);
+        munC=await r.json();inp.disabled=false;inp.placeholder=`Digite (${munC.length} municípios)...`;inp.focus();
+        const sig=document.getElementById('selUF').selectedOptions[0].dataset.s;
+        document.getElementById('locS').className='ls ok';document.getElementById('locS').textContent=`✅ ${munC.length} municípios de ${sig}`;
+    }catch(e){document.getElementById('locS').className='ls er';document.getElementById('locS').textContent='❌ Erro'}
+}
+function filtMun(){
+    const inp=document.getElementById('inpMun'),l=document.getElementById('acL'),t=inp.value.trim().toLowerCase();acI=-1;
+    if(t.length<1){l.classList.remove('on');return}
+    const nr=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();const tn=nr(t);
+    const fl=munC.filter(m=>nr(m.nome).includes(tn)).slice(0,20);
+    if(!fl.length){l.innerHTML='<div class="aci" style="color:#6b7280;cursor:default">Nenhum encontrado</div>';l.classList.add('on');return}
+    l.innerHTML=fl.map((m,i)=>{const mn=nr(m.nome),idx=mn.indexOf(tn);let h=m.nome;if(idx>=0)h=m.nome.substring(0,idx)+'<span class="hl">'+m.nome.substring(idx,idx+t.length)+'</span>'+m.nome.substring(idx+t.length);return`<div class="aci" data-n="${m.nome}" data-id="${m.id}" onclick="selMun('${m.nome.replace(/'/g,"\\'")}','${m.id}')" onmouseover="acI=${i};hlAc()">${h}</div>`}).join('');
+    l.classList.add('on');
+}
+function hlAc(){document.querySelectorAll('.aci').forEach((e,i)=>e.classList.toggle('sel',i===acI))}
+function selMun(n,id){
+    document.getElementById('inpMun').value=n;document.getElementById('acL').classList.remove('on');
+    const sig=document.getElementById('selUF').selectedOptions[0].dataset.s;munS={nome:n,id,uf:sig};updBadge();recalc();
+}
+function updBadge(){
+    if(!munS)return;const p=document.getElementById('selP');const pn=p.options[p.selectedIndex]?.textContent||'';
+    document.getElementById('locB').style.display='block';document.getElementById('bC').textContent=`${munS.nome}/${munS.uf}`;document.getElementById('bP').textContent=pn;
+    document.getElementById('hdrS').textContent=`${CMD[cmdAt].nome} | ${munS.nome}/${munS.uf} → ${pn}`;
+    document.getElementById('thO').textContent=`📍 ${munS.nome}/${munS.uf} → ${pn}`;
+    document.getElementById('thR').textContent=`📍 ${munS.nome}/${munS.uf} | Resultado`;
+}
+
+// TECLADO
+document.addEventListener('DOMContentLoaded',()=>{
+    const inp=document.getElementById('inpMun'),l=document.getElementById('acL');
+    inp.addEventListener('keydown',e=>{const items=l.querySelectorAll('.aci[data-n]');if(!items.length)return;
+        if(e.key==='ArrowDown'){e.preventDefault();acI=Math.min(acI+1,items.length-1);hlAc();items[acI]?.scrollIntoView({block:'nearest'})}
+        else if(e.key==='ArrowUp'){e.preventDefault();acI=Math.max(acI-1,0);hlAc();items[acI]?.scrollIntoView({block:'nearest'})}
+        else if(e.key==='Enter'){e.preventDefault();if(acI>=0&&items[acI])selMun(items[acI].dataset.n,items[acI].dataset.id)}
+        else if(e.key==='Escape')l.classList.remove('on')});
+    document.addEventListener('click',e=>{if(!e.target.closest('.acw'))l.classList.remove('on')});
+    document.getElementById('selP').addEventListener('change',updBadge);
+});
+
+// INIT
+document.getElementById('dtA').textContent=new Date().toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'});
+loadUFs();selCmd('soja');
+</script>
+</body>
+</html>
