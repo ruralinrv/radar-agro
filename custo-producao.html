@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custo de Produção — Formação por Atividade | Rural IN</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#0a0f1a;color:#e0e0e0;padding:16px;min-height:100vh}
+.ctn{max-width:1380px;margin:0 auto}
+
+/* HEADER */
+.hdr{background:linear-gradient(135deg,#1a5e1a,#0d3b0d 50%,#1a5e1a);border-radius:16px 16px 0 0;padding:22px 28px;text-align:center;border-bottom:3px solid #4CAF50;position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4z'/%3E%3C/g%3E%3C/svg%3E")}
+.hdr h1{font-size:1.4em;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:2px;position:relative;z-index:1}
+.hdr .sub{font-size:.85em;color:#a5d6a7;margin-top:5px;font-weight:500;position:relative;z-index:1}
+.hdr .brand{font-size:.76em;color:#81c784;margin-top:3px;font-weight:600;position:relative;z-index:1}
+.main{background:#111827;border-radius:0 0 16px 16px;padding:22px;border:1px solid #1e3a2f;border-top:none}
+
+/* COMMODITY */
+.cmd-sel{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:20px}
+.cmd-btn{background:#1a2332;border:2px solid #2a3a4a;border-radius:11px;padding:14px 6px;text-align:center;cursor:pointer;transition:all .22s;display:flex;flex-direction:column;align-items:center;gap:4px}
+.cmd-btn:hover{border-color:#4a6a4a;transform:translateY(-2px)}
+.cmd-btn.on{border-color:#4CAF50;background:rgba(76,175,80,.1);box-shadow:0 0 18px rgba(76,175,80,.18)}
+.cmd-btn .ic{font-size:1.7em}.cmd-btn .nm{font-size:.72em;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.5px}
+.cmd-btn.on .nm{color:#4CAF50}
+
+/* SECTION */
+.stl{font-size:.82em;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;font-weight:700;color:#4CAF50;display:flex;align-items:center;gap:8px}
+.stl.yl{color:#ffd740}
+
+/* SAFRA INFO */
+.safra-bar{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-bottom:20px}
+.sf-card{background:#1a2332;border-radius:11px;padding:14px;border:1px solid #2a3a4a}
+.sf-card label{display:block;font-size:.72em;color:#81c784;font-weight:600;margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px}
+.sf-card input,.sf-card select{width:100%;padding:8px 12px;background:#0a1320;border:1px solid #374151;border-radius:7px;color:#e5e7eb;font-size:.9em;font-weight:600;font-family:'Inter',sans-serif}
+.sf-card input:focus,.sf-card select:focus{outline:none;border-color:#4CAF50;box-shadow:0 0 0 3px rgba(76,175,80,.13)}
+
+/* ATIVIDADES TABLE */
+.act-section{margin-bottom:20px}
+.cat-header{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#1a2e1a,#0d1f0d);border:1px solid #2e7d32;border-radius:10px;padding:12px 16px;margin-bottom:8px;cursor:pointer;transition:all .2s}
+.cat-header:hover{background:linear-gradient(135deg,#1a3a1a,#0d2a0d)}
+.cat-header h4{font-size:.82em;color:#4CAF50;text-transform:uppercase;letter-spacing:1px;font-weight:700;display:flex;align-items:center;gap:8px}
+.cat-header .cat-total{font-size:.95em;font-weight:800;color:#fff}
+.cat-header .cat-pct{font-size:.72em;color:#81c784;margin-left:8px}
+.cat-body{margin-bottom:16px}
+.act-table{width:100%;border-collapse:collapse;font-size:.82em;margin-bottom:4px}
+.act-table th{background:#0f1923;color:#9ca3af;padding:8px 10px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;font-size:.72em;text-align:left;border-bottom:1px solid #2a3a4a}
+.act-table th.r{text-align:right}
+.act-table th.c{text-align:center}
+.act-table td{padding:6px 10px;border-bottom:1px solid #1e2d3d;vertical-align:middle}
+.act-table td input{width:100%;padding:5px 8px;background:#0a1320;border:1px solid #2a3a4a;border-radius:5px;color:#e5e7eb;font-size:.88em;font-weight:500;font-family:'Inter',sans-serif}
+.act-table td input.num{text-align:right;width:100px;font-weight:600}
+.act-table td input:focus{outline:none;border-color:#4CAF50}
+.act-table td .val{text-align:right;font-weight:700;color:#ffd740;white-space:nowrap}
+.act-table td .del-btn{background:none;border:none;color:#ef5350;cursor:pointer;font-size:1.1em;padding:2px 6px;border-radius:4px;transition:background .15s}
+.act-table td .del-btn:hover{background:rgba(239,83,80,.15)}
+.add-row-btn{background:rgba(76,175,80,.08);border:1px dashed #4CAF50;border-radius:8px;padding:8px 16px;color:#4CAF50;font-size:.78em;font-weight:600;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:6px;font-family:'Inter',sans-serif}
+.add-row-btn:hover{background:rgba(76,175,80,.15)}
+
+/* TOTAIS */
+.totals-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:20px}
+.tot-card{background:#1a2332;border-radius:11px;padding:16px;text-align:center;border:1px solid #2a3a4a}
+.tot-card.destaque{border-color:#4CAF50;background:rgba(76,175,80,.08)}
+.tot-card.alerta{border-color:#f9a825;background:rgba(249,168,37,.06)}
+.tot-card.perigo{border-color:#ef5350;background:rgba(239,83,80,.06)}
+.tot-card .tl{font-size:.68em;color:#9ca3af;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;font-weight:600}
+.tot-card .tv{font-size:1.35em;font-weight:900;color:#fff}
+.tot-card .ts{font-size:.72em;color:#81c784;margin-top:3px}
+.tot-card.destaque .tv{color:#4CAF50}
+.tot-card.alerta .tv{color:#ffd740}
+.tot-card.perigo .tv{color:#ef5350}
+
+/* CENÁRIOS */
+.cen-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
+.cen-card{background:#1a2332;border-radius:11px;padding:14px;border:2px solid #2a3a4a}
+.cen-card.n{border-color:#388e3c}.cen-card.o{border-color:#1976d2}.cen-card.b{border-color:#d32f2f}.cen-card.e{border-color:#f9a825}
+.cen-card h4{font-size:.76em;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;font-weight:700;text-align:center}
+.cen-card.n h4{color:#4CAF50}.cen-card.o h4{color:#42a5f5}.cen-card.b h4{color:#ef5350}.cen-card.e h4{color:#ffd740}
+.cen-card .input-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.cen-card .input-row:last-child{margin-bottom:0}
+.cen-card .input-row label{font-size:.76em;color:#9ca3af;font-weight:500}
+.cen-card .input-row input{width:95px;padding:5px 8px;background:#0a1320;border:1px solid #374151;border-radius:5px;color:#e5e7eb;font-size:.85em;font-weight:600;text-align:right;font-family:'Inter',sans-serif}
+.cen-card .input-row input:focus{outline:none;border-color:#4CAF50}
+
+/* RESULTADO */
+.res-table{width:100%;border-collapse:collapse;font-size:.85em;margin-bottom:20px}
+.res-table th{background:#1a2332;color:#e5e7eb;padding:10px 14px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;font-size:.82em;border-bottom:2px solid #374151;text-align:center;white-space:nowrap}
+.res-table th:first-child{text-align:left;min-width:220px}
+.res-table th.ca{background:#1e293b;color:#94a3b8}
+.res-table th.cn{background:#1a3a2a;color:#4CAF50}
+.res-table th.co{background:#1a2a3a;color:#42a5f5}
+.res-table th.cb{background:#3a1a1a;color:#ef5350}
+.res-table th.ce{background:#3a3a1a;color:#ffd740}
+.res-table td{padding:9px 14px;border-bottom:1px solid #1e2d3d;text-align:center;font-weight:500;white-space:nowrap}
+.res-table td:first-child{text-align:left;color:#9ca3af;font-weight:600;background:#0f1620}
+.rw-sec td{background:#0d1520!important;border-top:2px solid #2a4a3a;padding:5px 14px}
+.rw-sec td:first-child{color:#4CAF50;font-size:.78em;text-transform:uppercase;letter-spacing:1px;font-weight:700}
+.rw-hl td{background:rgba(76,175,80,.06)!important;font-weight:700;color:#4CAF50}
+.rw-dp td{background:rgba(239,83,80,.04)!important;color:#ef9a9a;font-weight:600}
+.rw-fi td{background:rgba(76,175,80,.1)!important;font-weight:800;font-size:1em;color:#4CAF50;border-top:2px solid #4CAF50}
+.rw-mg td{background:rgba(255,215,64,.08)!important;font-weight:800;font-size:1em;border-top:2px solid #f9a825}
+.vg{color:#4CAF50!important}.vb{color:#42a5f5!important}.vr{color:#ef5350!important}.vy{color:#ffd740!important}.vn{color:#94a3b8!important}
+
+/* RÉGUA EQUILÍBRIO */
+.be-section{margin:24px 0}
+.be-bar-wrap{position:relative;height:60px;background:#1a2332;border-radius:12px;border:1px solid #2a3a4a;overflow:visible;margin:30px 16px 24px}
+.be-bar{position:absolute;top:0;left:0;height:100%;border-radius:12px;transition:width .5s}
+.be-fill-loss{background:linear-gradient(90deg,#b71c1c,#ef5350)}
+.be-fill-profit{background:linear-gradient(90deg,#ef5350,#f9a825 40%,#4CAF50)}
+.be-marker{position:absolute;top:-22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;z-index:10;transition:left .5s}
+.be-marker .dot{width:3px;height:78px;border-radius:2px}
+.be-marker .tag{font-size:.68em;font-weight:700;padding:3px 8px;border-radius:5px;white-space:nowrap;margin-top:4px}
+.be-mk-be .dot{background:#ffd740}.be-mk-be .tag{background:#f9a825;color:#000}
+.be-mk-prod .dot{background:#4CAF50}.be-mk-prod .tag{background:#4CAF50;color:#000}
+.be-mk-at .dot{background:#94a3b8;border:1px dashed #94a3b8;background:transparent}.be-mk-at .tag{background:#475569;color:#e5e7eb}
+.be-labels{display:flex;justify-content:space-between;padding:0 16px;margin-top:4px}
+.be-labels span{font-size:.68em;color:#6b7280;font-weight:600}
+.be-legend{display:flex;gap:20px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+.be-legend .item{display:flex;align-items:center;gap:5px;font-size:.72em;color:#9ca3af;font-weight:600}
+.be-legend .item .sq{width:12px;height:12px;border-radius:3px}
+
+/* BTN */
+.btn{display:block;width:100%;padding:13px;background:linear-gradient(135deg,#388e3c,#2e7d32);color:#fff;border:none;border-radius:9px;font-size:.95em;font-weight:700;cursor:pointer;text-transform:uppercase;letter-spacing:1px;margin-bottom:20px;font-family:'Inter',sans-serif;transition:all .2s}
+.btn:hover{background:linear-gradient(135deg,#43a047,#388e3c);transform:translateY(-1px);box-shadow:0 4px 14px rgba(76,175,80,.28)}
+
+/* CHARTS */
+.charts-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.chart-card{background:#1a2332;border:1px solid #2a3a4a;border-radius:12px;padding:18px}
+.chart-card h4{font-size:.8em;color:#4CAF50;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;font-weight:700;text-align:center}
+.chart-card canvas{max-height:310px}
+.chart-card.full{grid-column:1/-1}
+
+/* INFO */
+.ibox{background:linear-gradient(135deg,#1a2a1a,#0d1a0d);border:1px solid #2e7d32;border-radius:9px;padding:14px 18px;margin-top:16px}
+.ibox h4{color:#4CAF50;font-size:.82em;margin-bottom:6px;text-transform:uppercase;letter-spacing:1px}
+.ibox p{color:#81c784;font-size:.78em;line-height:1.6}
+.ibox code{background:rgba(76,175,80,.15);padding:1px 5px;border-radius:3px;font-size:.88em;color:#a5d6a7}
+
+.ftr{text-align:center;margin-top:16px;padding:14px;color:#4a5568;font-size:.72em}
+
+@media(max-width:900px){.cmd-sel{grid-template-columns:repeat(3,1fr)}.safra-bar{grid-template-columns:1fr 1fr}.cen-grid{grid-template-columns:repeat(2,1fr)}.charts-grid{grid-template-columns:1fr}}
+@media(max-width:600px){body{padding:8px}.hdr{padding:14px}.hdr h1{font-size:1em}.main{padding:12px}.cmd-sel{grid-template-columns:repeat(2,1fr)}.safra-bar,.cen-grid{grid-template-columns:1fr}.totals-grid{grid-template-columns:1fr 1fr}.charts-grid{grid-template-columns:1fr}.act-table{font-size:.72em}}
+</style>
+</head>
+<body>
+<div class="ctn">
+<div class="hdr">
+    <h1 id="hdrT">💰 Custo de Produção — Formação por Atividade</h1>
+    <div class="sub" id="hdrS">Monte sua planilha detalhada · Cenários · Ponto de Equilíbrio</div>
+    <div class="brand">RURAL IN — Inteligência para o Agronegócio | Safra 2025/26</div>
+</div>
+<div class="main">
+
+<!-- COMMODITY -->
+<h3 class="stl">🏷️ Escolha a Cultura</h3>
+<div class="cmd-sel" id="cmdSel">
+    <div class="cmd-btn on" data-c="soja" onclick="selCmd('soja')"><span class="ic">🫘</span><span class="nm">Soja</span></div>
+    <div class="cmd-btn" data-c="milho" onclick="selCmd('milho')"><span class="ic">🌽</span><span class="nm">Milho 2ª Safra</span></div>
+    <div class="cmd-btn" data-c="algodao" onclick="selCmd('algodao')"><span class="ic">🏵️</span><span class="nm">Algodão</span></div>
+    <div class="cmd-btn" data-c="cafe" onclick="selCmd('cafe')"><span class="ic">☕</span><span class="nm">Café</span></div>
+    <div class="cmd-btn" data-c="trigo" onclick="selCmd('trigo')"><span class="ic">🌾</span><span class="nm">Trigo</span></div>
+    <div class="cmd-btn" data-c="feijao" onclick="selCmd('feijao')"><span class="ic">🫘</span><span class="nm">Feijão</span></div>
+</div>
+
+<!-- SAFRA INFO -->
+<h3 class="stl">📋 Informações da Safra</h3>
+<div class="safra-bar">
+    <div class="sf-card"><label>Safra</label><input type="text" id="sfSafra" value="2025/26"></div>
+    <div class="sf-card"><label>Área (hectares)</label><input type="number" id="sfArea" value="500" step="1"></div>
+    <div class="sf-card"><label id="lblProd">Produtividade Esperada (sc/ha)</label><input type="number" id="sfProd" value="55" step="1"></div>
+    <div class="sf-card"><label id="lblPreco">Preço Médio Esperado (R$/sc)</label><input type="number" id="sfPreco" value="128" step="0.5"></div>
+</div>
+
+<!-- ATIVIDADES -->
+<h3 class="stl yl">💰 Planilha de Custo por Atividade (R$/ha)</h3>
+<p style="font-size:.76em;color:#6b7280;margin-bottom:14px">Adicione, edite ou remova itens em cada categoria. Os totais atualizam automaticamente.</p>
+
+<div id="actContainer"></div>
+
+<!-- TOTALIZADORES -->
+<h3 class="stl" style="margin-top:20px">📊 Resumo do Custo de Produção</h3>
+<div class="totals-grid" id="totGrid"></div>
+
+<!-- CENÁRIOS -->
+<h3 class="stl yl" style="margin-top:20px">🎯 Cenários de Receita (Produtividade × Preço)</h3>
+<div class="cen-grid" id="cenGrid">
+    <div class="cen-card n"><h4>🟢 Neutro</h4>
+        <div class="input-row"><label>Produtividade</label><input type="number" id="cn_prod" value="55" step="1"></div>
+        <div class="input-row"><label>Preço (R$)</label><input type="number" id="cn_preco" value="128" step="0.5"></div>
+    </div>
+    <div class="cen-card o"><h4>🔵 Otimista</h4>
+        <div class="input-row"><label>Produtividade</label><input type="number" id="co_prod" value="62" step="1"></div>
+        <div class="input-row"><label>Preço (R$)</label><input type="number" id="co_preco" value="140" step="0.5"></div>
+    </div>
+    <div class="cen-card b"><h4>🔴 Pessimista</h4>
+        <div class="input-row"><label>Produtividade</label><input type="number" id="cb_prod" value="45" step="1"></div>
+        <div class="input-row"><label>Preço (R$)</label><input type="number" id="cb_preco" value="110" step="0.5"></div>
+    </div>
+    <div class="cen-card e"><h4>⭐ Estratégia</h4>
+        <div class="input-row"><label>Produtividade</label><input type="number" id="ce_prod" value="55" step="1"></div>
+        <div class="input-row"><label>Preço (R$)</label><input type="number" id="ce_preco" value="135" step="0.5"></div>
+    </div>
+</div>
+
+<!-- BOTÃO -->
+<button class="btn" onclick="recalc()">⚡ Recalcular Cenários & Gráficos</button>
+
+<!-- RESULTADO -->
+<div style="overflow-x:auto;border-radius:12px;border:1px solid #2a3a4a;margin-bottom:20px">
+<table class="res-table"><thead><tr>
+    <th>📍 Resultado por Cenário</th>
+    <th class="ca">📌 ATUAL</th><th class="cn">🟢 NEUTRO</th><th class="co">🔵 OTIMISTA</th><th class="cb">🔴 PESSIMISTA</th><th class="ce">⭐ ESTRATÉGIA</th>
+</tr></thead><tbody id="tbRes"></tbody></table>
+</div>
+
+<!-- RÉGUA DO PONTO DE EQUILÍBRIO -->
+<h3 class="stl yl">📐 Régua do Ponto de Equilíbrio</h3>
+<div class="be-section" id="beSection"></div>
+
+<!-- GRÁFICOS -->
+<h3 class="stl" style="margin-top:24px">📊 Análise Visual</h3>
+<div class="charts-grid">
+    <div class="chart-card"><h4>📊 Composição do Custo por Categoria</h4><canvas id="chPizza"></canvas></div>
+    <div class="chart-card"><h4>📊 Receita × Custo por Cenário (R$/ha)</h4><canvas id="chBarras"></canvas></div>
+    <div class="chart-card"><h4>📈 Margem Líquida por Cenário (%)</h4><canvas id="chMargem"></canvas></div>
+    <div class="chart-card"><h4>📐 Lucro/Prejuízo por Cenário (R$/ha)</h4><canvas id="chLucro"></canvas></div>
+</div>
+
+<div class="ibox" id="infoBox"></div>
+</div>
+<div class="ftr">RURAL IN — Dr. Sidney Souza, Economista Agrícola | CONAB · APROSOJA · IMEA · CEPEA | <span id="dtA"></span></div>
+</div>
+
+<script>
+// ================================================================
+// TEMPLATES DE CUSTO POR CULTURA
+// ================================================================
+const CULTURAS = {
+soja:{nome:'Soja',icon:'🫘',unProd:'sc/ha',unPreco:'R$/sc',prodDef:55,precoDef:128,
+    neutro:{prod:55,preco:128},otimista:{prod:62,preco:140},pessimista:{prod:45,preco:110},estrategia:{prod:55,preco:135},
+    categorias:[
+        {id:'sementes',nome:'🌱 Sementes & Tratamento',items:[
+            {desc:'Semente Soja IPRO (Intacta)',prod:'Semente certificada',un:'kg',qtd:55,preco:6.20},
+            {desc:'Tratamento de Sementes',prod:'Fungicida + Inseticida TS',un:'dose/ha',qtd:1,preco:85},
+            {desc:'Inoculante',prod:'Bradyrhizobium',un:'dose/ha',qtd:2,preco:12}
+        ]},
+        {id:'fertilizantes',nome:'🧪 Fertilizantes & Corretivos',items:[
+            {desc:'Adubação de Base (MAP)',prod:'MAP 11-52-00',un:'kg',qtd:200,preco:3.90},
+            {desc:'Adubação de Cobertura (KCl)',prod:'KCl 60%',un:'kg',qtd:150,preco:2.80},
+            {desc:'Micronutrientes',prod:'FTE BR-12 / CoMo',un:'kg',qtd:5,preco:18},
+            {desc:'Calcário Dolomítico',prod:'PRNT 85%',un:'ton',qtd:0.5,preco:180},
+            {desc:'Gesso Agrícola',prod:'Gesso',un:'ton',qtd:0.3,preco:120}
+        ]},
+        {id:'defensivos',nome:'🛡️ Defensivos Agrícolas',items:[
+            {desc:'Herbicida Pré-Emergente',prod:'Sulfentrazone + Diuron',un:'L/ha',qtd:1.5,preco:95},
+            {desc:'Herbicida Pós-Emergente',prod:'Glifosato',un:'L/ha',qtd:3,preco:22},
+            {desc:'Fungicida 1ª Aplicação',prod:'Triazol + Estrobilurina',un:'L/ha',qtd:0.5,preco:185},
+            {desc:'Fungicida 2ª Aplicação',prod:'Carboxamida + Triazol',un:'L/ha',qtd:0.4,preco:220},
+            {desc:'Fungicida 3ª Aplicação',prod:'Multissítio + Triazol',un:'L/ha',qtd:0.5,preco:160},
+            {desc:'Inseticida (Lagarta)',prod:'Diamida + Piretróide',un:'L/ha',qtd:0.2,preco:280},
+            {desc:'Inseticida (Percevejo)',prod:'Neonicotinóide',un:'L/ha',qtd:0.25,preco:120},
+            {desc:'Adjuvante/Óleo Mineral',prod:'Óleo mineral / vegetal',un:'L/ha',qtd:1.5,preco:14}
+        ]},
+        {id:'operacoes',nome:'🚜 Operações Mecanizadas',items:[
+            {desc:'Dessecação Pré-Plantio',prod:'Pulverização terrestre',un:'ha',qtd:1,preco:55},
+            {desc:'Plantio',prod:'Plantadeira + trator',un:'ha',qtd:1,preco:180},
+            {desc:'Pulverização (5 aplic.)',prod:'Pulverizador autopropelido',un:'aplic.',qtd:5,preco:45},
+            {desc:'Colheita Mecanizada',prod:'Colheitadeira',un:'ha',qtd:1,preco:250}
+        ]},
+        {id:'poscolheita',nome:'📦 Pós-Colheita & Logística',items:[
+            {desc:'Transporte Interno',prod:'Transbordo fazenda→armazém',un:'sc',qtd:55,preco:2.50},
+            {desc:'Secagem/Limpeza',prod:'Unidade armazenadora',un:'sc',qtd:55,preco:1.80},
+            {desc:'Armazenagem',prod:'Armazém (60 dias)',un:'sc',qtd:55,preco:1.20}
+        ]},
+        {id:'fixos',nome:'📋 Custos Fixos & Administrativos',items:[
+            {desc:'Depreciação Máquinas',prod:'Pró-rata/ha',un:'ha',qtd:1,preco:320},
+            {desc:'Mão de Obra Fixa',prod:'Funcionários (rateio)',un:'ha',qtd:1,preco:140},
+            {desc:'Assistência Técnica',prod:'Agrônomo/consultoria',un:'ha',qtd:1,preco:55},
+            {desc:'Seguro Rural',prod:'PROAGRO/Seguro privado',un:'ha',qtd:1,preco:110},
+            {desc:'Administração/Contabil.',prod:'Contabilidade + ERP',un:'ha',qtd:1,preco:45},
+            {desc:'Juros/Financiamento',prod:'Custeio (8,5% a.a.)',un:'ha',qtd:1,preco:260},
+            {desc:'Renda da Terra',prod:'Arrendamento',un:'sc',qtd:12,preco:128}
+        ]}
+    ]
+},
+milho:{nome:'Milho 2ª Safra',icon:'🌽',unProd:'sc/ha',unPreco:'R$/sc',prodDef:100,precoDef:55,
+    neutro:{prod:100,preco:55},otimista:{prod:120,preco:65},pessimista:{prod:75,preco:42},estrategia:{prod:100,preco:60},
+    categorias:[
+        {id:'sementes',nome:'🌱 Sementes',items:[
+            {desc:'Semente Milho Híbrido Bt',prod:'Híbrido VT PRO 3',un:'sc 60mil',qtd:1,preco:380}
+        ]},
+        {id:'fertilizantes',nome:'🧪 Fertilizantes',items:[
+            {desc:'Adubação de Base',prod:'08-28-16',un:'kg',qtd:300,preco:2.60},
+            {desc:'Cobertura Nitrogenada',prod:'Uréia 45%N',un:'kg',qtd:150,preco:2.40}
+        ]},
+        {id:'defensivos',nome:'🛡️ Defensivos',items:[
+            {desc:'Herbicida',prod:'Atrazina + Tembotriona',un:'L/ha',qtd:5,preco:22},
+            {desc:'Inseticida',prod:'Metomil + Diamida',un:'L/ha',qtd:0.3,preco:180},
+            {desc:'Fungicida',prod:'Estrobilurina + Triazol',un:'L/ha',qtd:0.4,preco:170}
+        ]},
+        {id:'operacoes',nome:'🚜 Operações',items:[
+            {desc:'Plantio',prod:'Plantadeira',un:'ha',qtd:1,preco:160},
+            {desc:'Pulverização (3x)',prod:'Autopropelido',un:'aplic.',qtd:3,preco:45},
+            {desc:'Colheita',prod:'Colheitadeira',un:'ha',qtd:1,preco:230}
+        ]},
+        {id:'poscolheita',nome:'📦 Pós-Colheita',items:[
+            {desc:'Transporte + Secagem',prod:'Frete + UBS',un:'sc',qtd:100,preco:3.50}
+        ]},
+        {id:'fixos',nome:'📋 Custos Fixos',items:[
+            {desc:'Depreciação',prod:'Pró-rata',un:'ha',qtd:1,preco:280},
+            {desc:'Mão de Obra Fixa',prod:'Rateio',un:'ha',qtd:1,preco:110},
+            {desc:'Seguro + Juros',prod:'Custeio',un:'ha',qtd:1,preco:200},
+            {desc:'Renda da Terra',prod:'Arrendamento',un:'sc',qtd:8,preco:55}
+        ]}
+    ]
+},
+algodao:{nome:'Algodão',icon:'🏵️',unProd:'@/ha',unPreco:'R$/@',prodDef:280,precoDef:140,
+    neutro:{prod:280,preco:140},otimista:{prod:310,preco:160},pessimista:{prod:230,preco:115},estrategia:{prod:280,preco:150},
+    categorias:[
+        {id:'sementes',nome:'🌱 Sementes',items:[{desc:'Semente Algodão Bt',prod:'TMG 81 WS3',un:'kg',qtd:10,preco:42}]},
+        {id:'fertilizantes',nome:'🧪 Fertilizantes',items:[{desc:'Adubação Base + Cobertura',prod:'NPK + Uréia + KCl',un:'ha',qtd:1,preco:2800}]},
+        {id:'defensivos',nome:'🛡️ Defensivos',items:[
+            {desc:'Herbicidas',prod:'Pré + Pós emergente',un:'ha',qtd:1,preco:450},
+            {desc:'Fungicidas (6 aplic.)',prod:'Multissítio + Sistêmico',un:'ha',qtd:1,preco:850},
+            {desc:'Inseticidas',prod:'Bicudo + Lagarta',un:'ha',qtd:1,preco:650},
+            {desc:'Regulador Crescimento',prod:'Cloreto Mepiquat',un:'ha',qtd:1,preco:350},
+            {desc:'Desfolhante/Maturador',prod:'Thidiazuron + Etefon',un:'ha',qtd:1,preco:280}
+        ]},
+        {id:'operacoes',nome:'🚜 Operações',items:[{desc:'Plantio + Pulv. + Colheita',prod:'Mecanização completa',un:'ha',qtd:1,preco:900}]},
+        {id:'poscolheita',nome:'📦 Pós-Colheita',items:[{desc:'Frete + Algodoeira',prod:'Beneficiamento',un:'ha',qtd:1,preco:450}]},
+        {id:'fixos',nome:'📋 Custos Fixos',items:[
+            {desc:'Depreciação + Adm + Juros',prod:'Fixos gerais',un:'ha',qtd:1,preco:930},
+            {desc:'Renda da Terra',prod:'Arrendamento',un:'ha',qtd:1,preco:1800}
+        ]}
+    ]
+},
+cafe:{nome:'Café Arábica',icon:'☕',unProd:'sc/ha',unPreco:'R$/sc',prodDef:35,precoDef:1900,
+    neutro:{prod:35,preco:1900},otimista:{prod:42,preco:2200},pessimista:{prod:25,preco:1500},estrategia:{prod:35,preco:2050},
+    categorias:[
+        {id:'insumos',nome:'🌱 Insumos',items:[
+            {desc:'Fertilizantes',prod:'NPK + Micro + Foliar',un:'ha',qtd:1,preco:3200},
+            {desc:'Defensivos',prod:'Fungicida + Inseticida + Herbicida',un:'ha',qtd:1,preco:1800}
+        ]},
+        {id:'operacoes',nome:'🚜 Operações & Colheita',items:[
+            {desc:'Operações Mecanizadas',prod:'Pulv. + Roçada + Colheita mec.',un:'ha',qtd:1,preco:600},
+            {desc:'Mão de Obra Colheita',prod:'Apanha manual + repasse',un:'ha',qtd:1,preco:1800},
+            {desc:'Mão de Obra Geral',prod:'Tratos culturais',un:'ha',qtd:1,preco:2500}
+        ]},
+        {id:'poscolheita',nome:'📦 Pós-Colheita',items:[
+            {desc:'Beneficiamento + Transp.',prod:'Lavação + Secagem + Frete',un:'ha',qtd:1,preco:550}
+        ]},
+        {id:'fixos',nome:'📋 Custos Fixos',items:[
+            {desc:'Depreciação + Adm + Seguro',prod:'Fixos',un:'ha',qtd:1,preco:650},
+            {desc:'Juros + Terra',prod:'Financ. + Arrend.',un:'ha',qtd:1,preco:1880}
+        ]}
+    ]
+},
+trigo:{nome:'Trigo',icon:'🌾',unProd:'sc/ha',unPreco:'R$/sc',prodDef:50,precoDef:68,
+    neutro:{prod:50,preco:68},otimista:{prod:60,preco:78},pessimista:{prod:38,preco:55},estrategia:{prod:50,preco:72},
+    categorias:[
+        {id:'sementes',nome:'🌱 Sementes',items:[{desc:'Semente Trigo',prod:'BRS 264 / TBIO Sonic',un:'kg',qtd:140,preco:2.50}]},
+        {id:'fertilizantes',nome:'🧪 Fertilizantes',items:[
+            {desc:'Adubação Base',prod:'08-28-16',un:'kg',qtd:250,preco:2.60},
+            {desc:'Cobertura N',prod:'Uréia',un:'kg',qtd:100,preco:2.40}
+        ]},
+        {id:'defensivos',nome:'🛡️ Defensivos',items:[
+            {desc:'Herbicida',prod:'Metsulfuron + 2,4-D',un:'ha',qtd:1,preco:85},
+            {desc:'Fungicidas (3 aplic.)',prod:'Triazol + Estrobilurina',un:'ha',qtd:1,preco:350},
+            {desc:'Inseticida',prod:'Pulgão + Percevejo',un:'ha',qtd:1,preco:80}
+        ]},
+        {id:'operacoes',nome:'🚜 Operações',items:[
+            {desc:'Plantio + Pulv. + Colheita',prod:'Mecanização',un:'ha',qtd:1,preco:480}
+        ]},
+        {id:'fixos',nome:'📋 Custos Fixos',items:[
+            {desc:'Depreciação + Adm + Juros + Terra',prod:'Fixos',un:'ha',qtd:1,preco:1050}
+        ]}
+    ]
+},
+feijao:{nome:'Feijão',icon:'🫘',unProd:'sc/ha',unPreco:'R$/sc',prodDef:30,precoDef:280,
+    neutro:{prod:30,preco:280},otimista:{prod:38,preco:340},pessimista:{prod:22,preco:210},estrategia:{prod:30,preco:310},
+    categorias:[
+        {id:'sementes',nome:'🌱 Sementes',items:[{desc:'Semente Feijão',prod:'Carioca / Preto',un:'kg',qtd:60,preco:7.50}]},
+        {id:'fertilizantes',nome:'🧪 Fertilizantes',items:[{desc:'Adubação Base + Cobertura',prod:'NPK + Uréia',un:'ha',qtd:1,preco:1200}]},
+        {id:'defensivos',nome:'🛡️ Defensivos',items:[{desc:'Herbicida + Fungicida + Inseticida',prod:'Pacote completo',un:'ha',qtd:1,preco:800}]},
+        {id:'operacoes',nome:'🚜 Operações',items:[{desc:'Plantio + Pulv. + Colheita',prod:'Irrigação pivô',un:'ha',qtd:1,preco:1200}]},
+        {id:'fixos',nome:'📋 Custos Fixos',items:[{desc:'Depr. + Adm + Juros + Irrigação + Terra',prod:'Fixos',un:'ha',qtd:1,preco:1800}]}
+    ]
+}
+};
+
+// ================================================================
+// ESTADO
+// ================================================================
+let cmdAt='soja';
+let catData={};
+let charts={pizza:null,barras:null,margem:null,lucro:null};
+
+// ================================================================
+// INICIALIZAR
+// ================================================================
+function selCmd(id){
+    cmdAt=id;const c=CULTURAS[id];
+    document.querySelectorAll('.cmd-btn').forEach(b=>b.classList.toggle('on',b.dataset.c===id));
+    document.getElementById('hdrT').textContent=`${c.icon} Custo de Produção — ${c.nome}`;
+    document.getElementById('lblProd').textContent=`Produtividade Esperada (${c.unProd})`;
+    document.getElementById('lblPreco').textContent=`Preço Médio Esperado (${c.unPreco})`;
+    document.getElementById('sfProd').value=c.prodDef;
+    document.getElementById('sfPreco').value=c.precoDef;
+    document.getElementById('cn_prod').value=c.neutro.prod;document.getElementById('cn_preco').value=c.neutro.preco;
+    document.getElementById('co_prod').value=c.otimista.prod;document.getElementById('co_preco').value=c.otimista.preco;
+    document.getElementById('cb_prod').value=c.pessimista.prod;document.getElementById('cb_preco').value=c.pessimista.preco;
+    document.getElementById('ce_prod').value=c.estrategia.prod;document.getElementById('ce_preco').value=c.estrategia.preco;
+    initCatData(c);renderActs();recalc();
+}
+
+function initCatData(c){
+    catData={};
+    c.categorias.forEach(cat=>{catData[cat.id]={nome:cat.nome,items:cat.items.map(it=>({...it}))}});
+}
+
+// ================================================================
+// RENDERIZAR ATIVIDADES
+// ================================================================
+function renderActs(){
+    const container=document.getElementById('actContainer');
+    let html='';
+    Object.keys(catData).forEach(catId=>{
+        const cat=catData[catId];
+        const catTotal=cat.items.reduce((s,it)=>s+(it.qtd*it.preco),0);
+        html+=`<div class="act-section" id="cat_${catId}">
+        <div class="cat-header" onclick="toggleCat('${catId}')">
+            <h4>${cat.nome}</h4>
+            <div><span class="cat-total">R$ ${catTotal.toFixed(2)}/ha</span></div>
+        </div>
+        <div class="cat-body" id="body_${catId}">
+        <table class="act-table"><thead><tr>
+            <th style="width:22%">Atividade/Operação</th>
+            <th style="width:22%">Produto/Serviço</th>
+            <th class="c" style="width:8%">Unidade</th>
+            <th class="r" style="width:10%">Qtd/ha</th>
+            <th class="r" style="width:12%">R$/Unid</th>
+            <th class="r" style="width:14%">Total R$/ha</th>
+            <th class="c" style="width:5%">🗑️</th>
+        </tr></thead><tbody>`;
+        cat.items.forEach((it,i)=>{
+            const tot=it.qtd*it.preco;
+            html+=`<tr>
+                <td><input type="text" value="${it.desc}" onchange="updItem('${catId}',${i},'desc',this.value)"></td>
+                <td><input type="text" value="${it.prod}" onchange="updItem('${catId}',${i},'prod',this.value)"></td>
+                <td><input type="text" value="${it.un}" style="text-align:center;width:70px" onchange="updItem('${catId}',${i},'un',this.value)"></td>
+                <td><input type="number" class="num" value="${it.qtd}" step="0.01" onchange="updItemN('${catId}',${i},'qtd',this.value)"></td>
+                <td><input type="number" class="num" value="${it.preco}" step="0.01" onchange="updItemN('${catId}',${i},'preco',this.value)"></td>
+                <td><div class="val">R$ ${tot.toFixed(2)}</div></td>
+                <td><button class="del-btn" onclick="delItem('${catId}',${i})">✕</button></td>
+            </tr>`;
+        });
+        html+=`</tbody></table>
+        <button class="add-row-btn" onclick="addItem('${catId}')">➕ Adicionar item em ${cat.nome}</button>
+        </div></div>`;
+    });
+    container.innerHTML=html;
+}
+
+function toggleCat(id){const b=document.getElementById('body_'+id);b.style.display=b.style.display==='none'?'block':'none'}
+function updItem(cat,i,k,v){catData[cat].items[i][k]=v}
+function updItemN(cat,i,k,v){catData[cat].items[i][k]=parseFloat(v)||0;renderActs();recalc()}
+function delItem(cat,i){catData[cat].items.splice(i,1);renderActs();recalc()}
+function addItem(cat){catData[cat].items.push({desc:'Nova atividade',prod:'',un:'ha',qtd:1,preco:0});renderActs();recalc()}
+
+// ================================================================
+// CÁLCULOS
+// ================================================================
+function gv(id){const el=document.getElementById(id);return el?(parseFloat(el.value)||0):0}
+
+function getCustoTotal(){
+    let total=0;const cats={};
+    Object.keys(catData).forEach(k=>{
+        const cTotal=catData[k].items.reduce((s,it)=>s+(it.qtd*it.preco),0);
+        cats[k]={nome:catData[k].nome,total:cTotal};total+=cTotal;
+    });
+    return{total,cats};
+}
+
+function recalc(){
+    const c=CULTURAS[cmdAt];
+    const{total:custoHa,cats}=getCustoTotal();
+    const area=gv('sfArea')||1;
+    const prodAt=gv('sfProd'),precoAt=gv('sfPreco');
+    const custoUn=prodAt>0?custoHa/prodAt:0;
+    const custoTotal=custoHa*area;
+    const receitaHa=prodAt*precoAt;
+    const lucroHa=receitaHa-custoHa;
+    const margemPct=receitaHa>0?(lucroHa/receitaHa*100):0;
+    const beProdu=precoAt>0?custoHa/precoAt:0;
+    const bePreco=prodAt>0?custoHa/prodAt:0;
+
+    // Totais
+    document.getElementById('totGrid').innerHTML=`
+    <div class="tot-card alerta"><div class="tl">💰 Custo Total/ha</div><div class="tv">R$ ${custoHa.toFixed(2)}</div><div class="ts">${Object.values(cats).length} categorias</div></div>
+    <div class="tot-card alerta"><div class="tl">💰 Custo Total Fazenda</div><div class="tv">R$ ${(custoTotal/1000).toFixed(1)} mil</div><div class="ts">${area} hectares</div></div>
+    <div class="tot-card"><div class="tl">📊 Custo por ${c.unProd.split('/')[0]}</div><div class="tv">R$ ${custoUn.toFixed(2)}</div><div class="ts">${prodAt} ${c.unProd}</div></div>
+    <div class="tot-card destaque"><div class="tl">📈 Receita Esperada/ha</div><div class="tv">R$ ${receitaHa.toFixed(2)}</div><div class="ts">${prodAt} × R$ ${precoAt}</div></div>
+    <div class="tot-card ${lucroHa>=0?'destaque':'perigo'}"><div class="tl">${lucroHa>=0?'✅ Lucro':'❌ Prejuízo'}/ha</div><div class="tv">R$ ${lucroHa.toFixed(2)}</div><div class="ts">Margem: ${margemPct.toFixed(1)}%</div></div>
+    <div class="tot-card"><div class="tl">📐 Break-Even Produtiv.</div><div class="tv">${beProdu.toFixed(1)} ${c.unProd}</div><div class="ts">Mínimo p/ cobrir custo</div></div>
+    <div class="tot-card"><div class="tl">📐 Break-Even Preço</div><div class="tv">R$ ${bePreco.toFixed(2)}</div><div class="ts">Preço mín. p/ empatar</div></div>
+    <div class="tot-card ${margemPct>20?'destaque':margemPct>0?'alerta':'perigo'}"><div class="tl">🎯 Margem Líquida</div><div class="tv">${margemPct.toFixed(1)}%</div><div class="ts">${margemPct>20?'Confortável':margemPct>10?'Apertada':margemPct>0?'Crítica':'Prejuízo!'}</div></div>`;
+
+    // Cenários
+    const cens=[
+        {n:'Atual',prod:prodAt,preco:precoAt,cls:'vn'},
+        {n:'Neutro',prod:gv('cn_prod'),preco:gv('cn_preco'),cls:'vg'},
+        {n:'Otimista',prod:gv('co_prod'),preco:gv('co_preco'),cls:'vb'},
+        {n:'Pessimista',prod:gv('cb_prod'),preco:gv('cb_preco'),cls:'vr'},
+        {n:'Estratégia',prod:gv('ce_prod'),preco:gv('ce_preco'),cls:'vy'}
+    ];
+    const cenRes=cens.map(s=>{
+        const rec=s.prod*s.preco;const luc=rec-custoHa;const mg=rec>0?(luc/rec*100):0;
+        const be=s.preco>0?custoHa/s.preco:0;
+        return{...s,recHa:rec,lucHa:luc,mg,be,custoUn:s.prod>0?custoHa/s.prod:0};
+    });
+
+    // Tabela resultado
+    let th='';
+    function td5(vals,d=2,pf=''){return vals.map((v,i)=>{const cls=i===0?'vn':i===1?'vg':i===2?'vb':i===3?'vr':'vy';return`<td class="${cls}">${pf}${v.toFixed(d)}</td>`}).join('')}
+    function tdM(vals,d=2,pf=''){return vals.map((v,i)=>{const cls=v>=0?'vg':'vr';return`<td class="${cls}">${pf}${v.toFixed(d)}</td>`}).join('')}
+
+    th=`<tr class="rw-sec"><td colspan="6">CUSTO DE PRODUÇÃO</td></tr>
+    <tr class="rw-dp"><td>Custo Total (R$/ha)</td>${cenRes.map(()=>`<td class="vr">R$ ${custoHa.toFixed(2)}</td>`).join('')}</tr>
+    <tr><td>Custo por ${c.unProd.split('/')[0]}</td>${td5(cenRes.map(s=>s.custoUn),2,'R$ ')}</tr>
+    <tr class="rw-sec"><td colspan="6">RECEITA BRUTA</td></tr>
+    <tr><td>Produtividade (${c.unProd})</td>${td5(cenRes.map(s=>s.prod),1)}</tr>
+    <tr><td>Preço (${c.unPreco})</td>${td5(cenRes.map(s=>s.preco),2,'R$ ')}</tr>
+    <tr class="rw-hl"><td>Receita Bruta (R$/ha)</td>${td5(cenRes.map(s=>s.recHa),2,'R$ ')}</tr>
+    <tr class="rw-sec"><td colspan="6">RESULTADO</td></tr>
+    <tr class="rw-fi"><td>🎯 ${cenRes[0].lucHa>=0?'LUCRO':'RESULTADO'} (R$/ha)</td>${tdM(cenRes.map(s=>s.lucHa),2,'R$ ')}</tr>
+    <tr class="rw-mg"><td>📊 Margem Líquida (%)</td>${tdM(cenRes.map(s=>s.mg),1)}</tr>
+    <tr><td>📐 Break-Even (${c.unProd})</td>${td5(cenRes.map(s=>s.be),1)}</tr>
+    <tr><td>💰 Lucro Fazenda (R$ mil)</td>${tdM(cenRes.map(s=>s.lucHa*area/1000),1,'R$ ')}</tr>`;
+    document.getElementById('tbRes').innerHTML=th;
+
+    // RÉGUA DO PONTO DE EQUILÍBRIO
+    renderRegua(cenRes,c,custoHa);
+
+    // GRÁFICOS
+    renderCharts(cats,cenRes,c,custoHa);
+
+    // INFO
+    document.getElementById('infoBox').innerHTML=`<h4>📐 Fórmulas & Referências — ${c.nome} Safra 25/26</h4>
+    <p>
+    <code>Custo Total/ha</code> = Σ(Qtd × Preço) de todas as atividades<br>
+    <code>Custo por ${c.unProd.split('/')[0]}</code> = Custo Total/ha ÷ Produtividade<br>
+    <code>Receita Bruta/ha</code> = Produtividade × Preço<br>
+    <code>Lucro/ha</code> = Receita − Custo Total<br>
+    <code>Break-Even Produtividade</code> = Custo Total/ha ÷ Preço<br>
+    <code>Break-Even Preço</code> = Custo Total/ha ÷ Produtividade<br><br>
+    <strong>Ref. CONAB/APROSOJA 25/26:</strong> Soja GO: R$ 5.311/ha (Rio Verde). MS: R$ 6.116/ha. MT: R$ 4.174/ha (IMEA). Fertilizantes: ~32-38% do custo total. Margens 25/26 apertadas: +6,1% nos custos.
+    </p>`;
+}
+
+// ================================================================
+// RÉGUA DO PONTO DE EQUILÍBRIO
+// ================================================================
+function renderRegua(cenRes,c,custoHa){
+    const prodAt=cenRes[0].prod;
+    const precoAt=cenRes[0].preco;
+    const be=precoAt>0?custoHa/precoAt:0;
+    const maxProd=Math.max(...cenRes.map(s=>s.prod),be)*1.3;
+    const bePct=maxProd>0?(be/maxProd*100):50;
+    const prodPct=maxProd>0?(prodAt/maxProd*100):50;
+
+    let markers='';
+    // Cenários markers
+    const mkColors=[{n:'Atual',prod:cenRes[0].prod,cls:'be-mk-at',c:'#94a3b8'},{n:'Neutro',prod:cenRes[1].prod,cls:'',c:'#4CAF50'},{n:'Otimista',prod:cenRes[2].prod,cls:'',c:'#42a5f5'},{n:'Pessimista',prod:cenRes[3].prod,cls:'',c:'#ef5350'}];
+
+    let html=`
+    <div class="be-bar-wrap">
+        <div class="be-bar be-fill-profit" style="width:${Math.min(prodPct,100)}%;background:linear-gradient(90deg,#b71c1c 0%,#ef5350 ${bePct/prodPct*100}%,#f9a825 ${bePct/prodPct*100}%,#4CAF50 100%)"></div>
+        <div class="be-marker be-mk-be" style="left:${Math.min(bePct,98)}%">
+            <div class="dot"></div>
+            <div class="tag">⚖️ BE: ${be.toFixed(1)} ${c.unProd}</div>
+        </div>
+        <div class="be-marker be-mk-prod" style="left:${Math.min(prodPct,98)}%">
+            <div class="dot"></div>
+            <div class="tag">🎯 Atual: ${prodAt} ${c.unProd}</div>
+        </div>
+    </div>
+    <div class="be-labels"><span>0 ${c.unProd}</span><span>ZONA DE PREJUÍZO ← → ZONA DE LUCRO</span><span>${maxProd.toFixed(0)} ${c.unProd}</span></div>
+    <div class="be-legend">
+        <div class="item"><div class="sq" style="background:#ef5350"></div> Prejuízo (abaixo do BE)</div>
+        <div class="item"><div class="sq" style="background:#ffd740"></div> Ponto de Equilíbrio: ${be.toFixed(1)} ${c.unProd}</div>
+        <div class="item"><div class="sq" style="background:#4CAF50"></div> Lucro (acima do BE)</div>
+        <div class="item"><div class="sq" style="background:#94a3b8"></div> Produt. Atual: ${prodAt} ${c.unProd}</div>
+    </div>`;
+    document.getElementById('beSection').innerHTML=html;
+}
+
+// ================================================================
+// GRÁFICOS
+// ================================================================
+Chart.defaults.color='#9ca3af';Chart.defaults.font.family='Inter';Chart.defaults.font.size=11;
+
+function destroyCharts(){Object.keys(charts).forEach(k=>{if(charts[k])charts[k].destroy();charts[k]=null})}
+
+function renderCharts(cats,cenRes,c,custoHa){
+    destroyCharts();
+
+    // 1. PIZZA — Composição do custo
+    const catNames=Object.values(cats).map(c=>c.nome.replace(/^[^\s]+\s/,''));
+    const catVals=Object.values(cats).map(c=>c.total);
+    const catColors=['rgba(76,175,80,.7)','rgba(66,165,245,.7)','rgba(239,83,80,.7)','rgba(255,167,38,.7)','rgba(171,71,188,.7)','rgba(255,215,64,.7)','rgba(0,188,212,.7)'];
+    charts.pizza=new Chart(document.getElementById('chPizza'),{type:'doughnut',
+        data:{labels:catNames,datasets:[{data:catVals,backgroundColor:catColors.slice(0,catVals.length),borderColor:'#111827',borderWidth:3,hoverOffset:10}]},
+        options:{responsive:true,maintainAspectRatio:true,cutout:'50%',plugins:{legend:{position:'right',labels:{boxWidth:14,padding:10,font:{family:'Inter',weight:'600',size:11},color:'#9ca3af'}},
+        tooltip:{backgroundColor:'#1a2332',titleColor:'#4CAF50',bodyColor:'#e5e7eb',borderColor:'#4CAF50',borderWidth:1,padding:12,cornerRadius:8,callbacks:{label:ctx=>{const t=ctx.dataset.data.reduce((a,b)=>a+b,0);const pct=t>0?((ctx.parsed/t)*100).toFixed(1):0;return` ${ctx.label}: R$ ${ctx.parsed.toFixed(0)} (${pct}%)`}}}}}});
+
+    // 2. BARRAS — Receita x Custo
+    const lbls=cenRes.map(s=>s.n);
+    charts.barras=new Chart(document.getElementById('chBarras'),{type:'bar',
+        data:{labels:lbls,datasets:[
+            {label:'Receita (R$/ha)',data:cenRes.map(s=>s.recHa),backgroundColor:['rgba(148,163,184,.5)','rgba(76,175,80,.5)','rgba(66,165,245,.5)','rgba(239,83,80,.5)','rgba(255,215,64,.5)'],borderColor:['#94a3b8','#4CAF50','#42a5f5','#ef5350','#ffd740'],borderWidth:2,borderRadius:6},
+            {label:'Custo (R$/ha)',data:cenRes.map(()=>custoHa),backgroundColor:'rgba(239,83,80,.15)',borderColor:'#ef5350',borderWidth:2,borderRadius:6,borderDash:[5,5]}
+        ]},
+        options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{boxWidth:14,font:{family:'Inter',weight:'600'},color:'#9ca3af'}},
+        tooltip:{backgroundColor:'#1a2332',titleColor:'#4CAF50',bodyColor:'#e5e7eb',borderColor:'#4CAF50',borderWidth:1,padding:12,cornerRadius:8,callbacks:{label:ctx=>`${ctx.dataset.label}: R$ ${ctx.parsed.y.toFixed(0)}`}}},
+        scales:{y:{beginAtZero:true,grid:{color:'rgba(255,255,255,.05)'},ticks:{callback:v=>'R$ '+v.toLocaleString('pt-BR'),font:{family:'Inter',weight:'600'}}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600'}}}}}});
+
+    // 3. MARGEM %
+    const mgVals=cenRes.map(s=>s.mg);
+    const mgColors=mgVals.map(v=>v>=20?'rgba(76,175,80,.7)':v>=0?'rgba(255,215,64,.7)':'rgba(239,83,80,.7)');
+    const mgBorders=mgVals.map(v=>v>=20?'#4CAF50':v>=0?'#ffd740':'#ef5350');
+    charts.margem=new Chart(document.getElementById('chMargem'),{type:'bar',
+        data:{labels:lbls,datasets:[{label:'Margem %',data:mgVals,backgroundColor:mgColors,borderColor:mgBorders,borderWidth:2,borderRadius:6}]},
+        options:{responsive:true,maintainAspectRatio:true,indexAxis:'y',plugins:{legend:{display:false},
+        tooltip:{backgroundColor:'#1a2332',titleColor:'#4CAF50',bodyColor:'#e5e7eb',borderColor:'#4CAF50',borderWidth:1,padding:12,cornerRadius:8,callbacks:{label:ctx=>ctx.parsed.x.toFixed(1)+'%'}}},
+        scales:{x:{grid:{color:'rgba(255,255,255,.05)'},ticks:{callback:v=>v+'%',font:{family:'Inter',weight:'600'}}},y:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:12}}}}}});
+
+    // 4. LUCRO/PREJUÍZO
+    const lucVals=cenRes.map(s=>s.lucHa);
+    const lucColors=lucVals.map(v=>v>=0?'rgba(76,175,80,.7)':'rgba(239,83,80,.7)');
+    const lucBorders=lucVals.map(v=>v>=0?'#4CAF50':'#ef5350');
+    charts.lucro=new Chart(document.getElementById('chLucro'),{type:'bar',
+        data:{labels:lbls,datasets:[{label:'R$/ha',data:lucVals,backgroundColor:lucColors,borderColor:lucBorders,borderWidth:2,borderRadius:6,borderSkipped:false}]},
+        options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},
+        tooltip:{backgroundColor:'#1a2332',titleColor:'#4CAF50',bodyColor:'#e5e7eb',borderColor:'#4CAF50',borderWidth:1,padding:12,cornerRadius:8,callbacks:{label:ctx=>'R$ '+ctx.parsed.y.toFixed(0)+'/ha'}},
+        annotation:{annotations:{zeroLine:{type:'line',yMin:0,yMax:0,borderColor:'#ffd740',borderWidth:2,borderDash:[6,4],label:{display:true,content:'BREAK-EVEN',position:'start',backgroundColor:'#f9a825',color:'#000',font:{size:10,weight:'bold'},padding:4}}}}},
+        scales:{y:{grid:{color:'rgba(255,255,255,.05)'},ticks:{callback:v=>'R$ '+v.toLocaleString('pt-BR'),font:{family:'Inter',weight:'600'}}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600'}}}}}});
+}
+
+// ================================================================
+// INIT
+// ================================================================
+document.getElementById('dtA').textContent=new Date().toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'});
+document.querySelectorAll('.safra-bar input, .cen-card input').forEach(i=>{i.addEventListener('change',recalc);i.addEventListener('keyup',e=>{if(e.key==='Enter')recalc()})});
+selCmd('soja');
+</script>
+</body>
+</html>
