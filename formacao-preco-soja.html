@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formação de Preço - Soja Paridade Exportação | Rural IN</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0f1a;
+            color: #e0e0e0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, #1a5e1a 0%, #0d3b0d 50%, #1a5e1a 100%);
+            border-radius: 16px 16px 0 0;
+            padding: 24px 32px;
+            text-align: center;
+            border-bottom: 3px solid #4CAF50;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .header h1 {
+            font-size: 1.6em;
+            font-weight: 900;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .subtitle {
+            font-size: 0.95em;
+            color: #a5d6a7;
+            margin-top: 6px;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .brand {
+            font-size: 0.8em;
+            color: #81c784;
+            margin-top: 4px;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            background: #111827;
+            border-radius: 0 0 16px 16px;
+            padding: 24px;
+            border: 1px solid #1e3a2f;
+            border-top: none;
+        }
+
+        /* ===================== */
+        /* LOCALIZAÇÃO DO PRODUTOR */
+        /* ===================== */
+        .location-section {
+            background: linear-gradient(135deg, #0d1f0d, #1a2e1a);
+            border: 2px solid #2e7d32;
+            border-radius: 14px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .location-section h3 {
+            font-size: 0.9em;
+            color: #4CAF50;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 16px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 180px 1fr 180px;
+            gap: 12px;
+            align-items: end;
+        }
+
+        .loc-field label {
+            display: block;
+            font-size: 0.78em;
+            color: #81c784;
+            font-weight: 600;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .loc-field select,
+        .loc-field input {
+            width: 100%;
+            padding: 10px 14px;
+            background: #0f1923;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            color: #e5e7eb;
+            font-size: 0.95em;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.2s;
+            appearance: none;
+        }
+
+        .loc-field select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%234CAF50' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 36px;
+            cursor: pointer;
+        }
+
+        .loc-field select:focus,
+        .loc-field input:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.15);
+        }
+
+        /* Autocomplete */
+        .autocomplete-wrapper {
+            position: relative;
+        }
+
+        .autocomplete-list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #1a2332;
+            border: 1px solid #4CAF50;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            max-height: 250px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+        }
+
+        .autocomplete-list.active {
+            display: block;
+        }
+
+        .autocomplete-item {
+            padding: 10px 14px;
+            cursor: pointer;
+            font-size: 0.88em;
+            font-weight: 500;
+            color: #d1d5db;
+            border-bottom: 1px solid #2a3a4a;
+            transition: background 0.15s;
+        }
+
+        .autocomplete-item:hover,
+        .autocomplete-item.selected {
+            background: rgba(76, 175, 80, 0.15);
+            color: #4CAF50;
+        }
+
+        .autocomplete-item .match {
+            color: #4CAF50;
+            font-weight: 700;
+        }
+
+        .autocomplete-item:last-child {
+            border-bottom: none;
+        }
+
+        .loc-status {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 10px;
+            font-size: 0.78em;
+            color: #6b7280;
+        }
+
+        .loc-status.ready { color: #4CAF50; }
+        .loc-status.loading { color: #ffd740; }
+        .loc-status.error { color: #ef5350; }
+
+        .loc-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid #2e7d32;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82em;
+            color: #4CAF50;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        .loc-badge .city-name { color: #fff; font-weight: 800; }
+
+        .porto-field {
+            margin-top: 10px;
+        }
+
+        /* INPUTS SECTION */
+        .section-title {
+            color: #4CAF50;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .inputs-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .input-group {
+            background: #1a2332;
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid #2a3a4a;
+        }
+
+        .input-group h3 {
+            font-size: 0.85em;
+            color: #4CAF50;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .input-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .input-row:last-child { margin-bottom: 0; }
+
+        .input-row label {
+            font-size: 0.82em;
+            color: #9ca3af;
+            font-weight: 500;
+        }
+
+        .input-row input[type="number"] {
+            width: 120px;
+            padding: 6px 10px;
+            background: #0f1923;
+            border: 1px solid #374151;
+            border-radius: 6px;
+            color: #e5e7eb;
+            font-size: 0.9em;
+            font-weight: 600;
+            text-align: right;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.2s;
+        }
+
+        .input-row input[type="number"]:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.15);
+        }
+
+        .input-row input.highlight-green {
+            border-color: #4CAF50;
+            background: rgba(76, 175, 80, 0.08);
+        }
+
+        /* CENARIOS */
+        .scenario-inputs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .scenario-card {
+            background: #1a2332;
+            border-radius: 12px;
+            padding: 16px;
+            border: 2px solid #2a3a4a;
+        }
+
+        .scenario-card.neutro { border-color: #388e3c; }
+        .scenario-card.otimista { border-color: #1976d2; }
+        .scenario-card.baixista { border-color: #d32f2f; }
+        .scenario-card.estrategia { border-color: #f9a825; }
+
+        .scenario-card h4 {
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .scenario-card.neutro h4 { color: #4CAF50; }
+        .scenario-card.otimista h4 { color: #42a5f5; }
+        .scenario-card.baixista h4 { color: #ef5350; }
+        .scenario-card.estrategia h4 { color: #ffd740; }
+
+        .scenario-card .input-row input[type="number"] { width: 100px; font-size: 0.85em; }
+
+        /* BUTTON */
+        .btn-calc {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #388e3c, #2e7d32);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s;
+        }
+
+        .btn-calc:hover {
+            background: linear-gradient(135deg, #43a047, #388e3c);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        /* TABLE */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid #2a3a4a;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85em;
+        }
+
+        thead th {
+            background: #1a2332;
+            color: #e5e7eb;
+            padding: 12px 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.85em;
+            border-bottom: 2px solid #374151;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        thead th:first-child { text-align: left; min-width: 220px; }
+        thead th.col-atual { background: #1e293b; color: #94a3b8; }
+        thead th.col-neutro { background: #1a3a2a; color: #4CAF50; }
+        thead th.col-otimista { background: #1a2a3a; color: #42a5f5; }
+        thead th.col-baixista { background: #3a1a1a; color: #ef5350; }
+        thead th.col-estrategia { background: #3a3a1a; color: #ffd740; }
+
+        tbody td {
+            padding: 10px 16px;
+            border-bottom: 1px solid #1e2d3d;
+            text-align: center;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        tbody td:first-child {
+            text-align: left;
+            color: #9ca3af;
+            font-weight: 600;
+            background: #0f1620;
+        }
+
+        tbody tr:hover { background: rgba(76, 175, 80, 0.03); }
+
+        .row-section td {
+            background: #0d1520 !important;
+            border-top: 2px solid #2a4a3a;
+            padding: 6px 16px;
+        }
+
+        .row-section td:first-child {
+            color: #4CAF50;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .row-highlight td {
+            background: rgba(76, 175, 80, 0.06) !important;
+            font-weight: 700;
+            color: #4CAF50;
+        }
+
+        .row-despesa td {
+            background: rgba(239, 83, 80, 0.05) !important;
+            color: #ef9a9a;
+            font-weight: 600;
+        }
+
+        .row-receita-usd td {
+            background: rgba(66, 165, 245, 0.06) !important;
+            font-weight: 700;
+            color: #90caf9;
+        }
+
+        .row-receita-final td {
+            background: rgba(76, 175, 80, 0.12) !important;
+            font-weight: 800;
+            font-size: 1.05em;
+            color: #4CAF50;
+            border-top: 2px solid #4CAF50;
+        }
+
+        .val-green { color: #4CAF50 !important; }
+        .val-blue { color: #42a5f5 !important; }
+        .val-red { color: #ef5350 !important; }
+        .val-yellow { color: #ffd740 !important; }
+        .val-neutral { color: #94a3b8 !important; }
+
+        /* DYNAMIC HEADER LABEL */
+        #headerLocal {
+            transition: all 0.3s;
+        }
+
+        /* INFO BOX */
+        .info-box {
+            background: linear-gradient(135deg, #1a2a1a, #0d1a0d);
+            border: 1px solid #2e7d32;
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-top: 20px;
+        }
+
+        .info-box h4 {
+            color: #4CAF50;
+            font-size: 0.85em;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-box p {
+            color: #81c784;
+            font-size: 0.82em;
+            line-height: 1.6;
+        }
+
+        .info-box code {
+            background: rgba(76, 175, 80, 0.15);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #a5d6a7;
+        }
+
+        .ibge-credit {
+            font-size: 0.72em;
+            color: #4a5568;
+            margin-top: 6px;
+            text-align: right;
+        }
+
+        .ibge-credit a { color: #6b7280; text-decoration: none; }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 16px;
+            color: #4a5568;
+            font-size: 0.75em;
+        }
+
+        /* Scrollbar */
+        .autocomplete-list::-webkit-scrollbar { width: 6px; }
+        .autocomplete-list::-webkit-scrollbar-track { background: #1a2332; }
+        .autocomplete-list::-webkit-scrollbar-thumb { background: #4CAF50; border-radius: 3px; }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .scenario-inputs { grid-template-columns: repeat(2, 1fr); }
+            .location-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            .header { padding: 16px; }
+            .header h1 { font-size: 1.1em; }
+            .main-content { padding: 12px; }
+            .inputs-section { grid-template-columns: 1fr; }
+            .scenario-inputs { grid-template-columns: 1fr; }
+            .location-grid { grid-template-columns: 1fr; }
+            table { font-size: 0.75em; }
+            thead th, tbody td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- HEADER -->
+        <div class="header">
+            <h1>🫘 Soja — Paridade Exportação</h1>
+            <div class="subtitle" id="headerLocal">Formação de Preço | Safra 25/26 | Selecione seu município abaixo</div>
+            <div class="brand">RURAL IN — Inteligência para o Agronegócio</div>
+        </div>
+
+        <div class="main-content">
+
+            <!-- ======================== -->
+            <!-- SELEÇÃO DE MUNICÍPIO     -->
+            <!-- ======================== -->
+            <div class="location-section">
+                <h3>📍 Localização do Produtor — Dados IBGE</h3>
+
+                <div class="location-grid">
+                    <!-- UF -->
+                    <div class="loc-field">
+                        <label>Estado (UF)</label>
+                        <select id="selectUF" onchange="carregarMunicipios()">
+                            <option value="">Selecione...</option>
+                        </select>
+                    </div>
+
+                    <!-- MUNICÍPIO COM AUTOCOMPLETE -->
+                    <div class="loc-field">
+                        <label>Município</label>
+                        <div class="autocomplete-wrapper">
+                            <input type="text" id="inputMunicipio" placeholder="Digite o nome do município..."
+                                   autocomplete="off" disabled oninput="filtrarMunicipios()" onfocus="filtrarMunicipios()">
+                            <div class="autocomplete-list" id="listaMunicipios"></div>
+                        </div>
+                    </div>
+
+                    <!-- PORTO DE REFERÊNCIA -->
+                    <div class="loc-field">
+                        <label>Porto Referência</label>
+                        <select id="selectPorto">
+                            <option value="paranagua">Paranaguá/PR</option>
+                            <option value="santos">Santos/SP</option>
+                            <option value="riogrande">Rio Grande/RS</option>
+                            <option value="saoluis">São Luís/MA</option>
+                            <option value="barcarena">Barcarena/PA</option>
+                            <option value="salvadorbahia">Salvador/BA</option>
+                            <option value="arcoNorte">Arco Norte</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- STATUS -->
+                <div class="loc-status" id="locStatus">
+                    <span>⏳</span> Carregando dados do IBGE...
+                </div>
+
+                <!-- BADGE MUNICÍPIO SELECIONADO -->
+                <div id="locBadge" style="display:none;">
+                    <div class="loc-badge">
+                        📍 Origem: <span class="city-name" id="badgeCidade">—</span>
+                        &nbsp;→&nbsp; Porto: <span id="badgePorto">—</span>
+                    </div>
+                </div>
+
+                <div class="ibge-credit">
+                    Fonte: <a href="https://servicodados.ibge.gov.br/api/docs/localidades" target="_blank">API IBGE Localidades v1</a> — 5.570 municípios
+                </div>
+            </div>
+
+            <!-- ======================== -->
+            <!-- DADOS BASE               -->
+            <!-- ======================== -->
+            <h3 class="section-title">📊 Dados Base — Edite os valores e clique em Recalcular</h3>
+
+            <div class="inputs-section">
+                <div class="input-group">
+                    <h3>📈 Mercado Atual</h3>
+                    <div class="input-row">
+                        <label>CBOT Atual (US$/bu)</label>
+                        <input type="number" id="cbot_atual" value="10.1025" step="0.0025">
+                    </div>
+                    <div class="input-row">
+                        <label>Prêmio Atual (US$/bu)</label>
+                        <input type="number" id="premio_atual" value="-0.25" step="0.01">
+                    </div>
+                    <div class="input-row">
+                        <label>Dólar Atual (R$)</label>
+                        <input type="number" id="dolar_atual" value="5.235" step="0.001">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <h3>🔄 Fatores de Conversão</h3>
+                    <div class="input-row">
+                        <label>Bushel → Tonelada</label>
+                        <input type="number" id="fator_conv" value="36.7454" step="0.0001" class="highlight-green">
+                    </div>
+                    <div class="input-row">
+                        <label>Sacas por Tonelada</label>
+                        <input type="number" id="sacas_ton" value="16.6667" step="0.0001" class="highlight-green">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <h3>🚛 Custos Logísticos</h3>
+                    <div class="input-row">
+                        <label>Frete (R$/ton)</label>
+                        <input type="number" id="frete_rs" value="280.00" step="1">
+                    </div>
+                    <div class="input-row">
+                        <label>Fobbings (US$/ton)</label>
+                        <input type="number" id="fobbings" value="10.00" step="0.5">
+                    </div>
+                    <div class="input-row">
+                        <label>Outras Despesas (US$/ton)</label>
+                        <input type="number" id="outras_desp" value="3.00" step="0.5">
+                    </div>
+                </div>
+            </div>
+
+            <!-- CENÁRIOS -->
+            <h3 class="section-title">🎯 Cenários de Preço — Edite livremente</h3>
+
+            <div class="scenario-inputs">
+                <div class="scenario-card neutro">
+                    <h4>🟢 Neutro</h4>
+                    <div class="input-row"><label>CBOT</label><input type="number" id="cbot_neutro" value="10.20" step="0.01"></div>
+                    <div class="input-row"><label>Prêmio</label><input type="number" id="premio_neutro" value="-0.20" step="0.01"></div>
+                    <div class="input-row"><label>Dólar</label><input type="number" id="dolar_neutro" value="5.25" step="0.01"></div>
+                </div>
+                <div class="scenario-card otimista">
+                    <h4>🔵 Otimista</h4>
+                    <div class="input-row"><label>CBOT</label><input type="number" id="cbot_otimista" value="10.80" step="0.01"></div>
+                    <div class="input-row"><label>Prêmio</label><input type="number" id="premio_otimista" value="0.10" step="0.01"></div>
+                    <div class="input-row"><label>Dólar</label><input type="number" id="dolar_otimista" value="5.35" step="0.01"></div>
+                </div>
+                <div class="scenario-card baixista">
+                    <h4>🔴 Baixista</h4>
+                    <div class="input-row"><label>CBOT</label><input type="number" id="cbot_baixista" value="9.50" step="0.01"></div>
+                    <div class="input-row"><label>Prêmio</label><input type="number" id="premio_baixista" value="-0.50" step="0.01"></div>
+                    <div class="input-row"><label>Dólar</label><input type="number" id="dolar_baixista" value="5.00" step="0.01"></div>
+                </div>
+                <div class="scenario-card estrategia">
+                    <h4>⭐ Estratégia</h4>
+                    <div class="input-row"><label>CBOT</label><input type="number" id="cbot_estrategia" value="10.20" step="0.01"></div>
+                    <div class="input-row"><label>Prêmio</label><input type="number" id="premio_estrategia" value="-0.10" step="0.01"></div>
+                    <div class="input-row"><label>Dólar</label><input type="number" id="dolar_estrategia" value="5.25" step="0.01"></div>
+                </div>
+            </div>
+
+            <!-- BOTÃO -->
+            <button class="btn-calc" onclick="recalcular()">⚡ Recalcular Todos os Cenários</button>
+
+            <!-- TABELA -->
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th id="thOrigem">📍 Origem → Porto</th>
+                            <th class="col-atual">📌 ATUAL</th>
+                            <th class="col-neutro">🟢 NEUTRO</th>
+                            <th class="col-otimista">🔵 OTIMISTA</th>
+                            <th class="col-baixista">🔴 BAIXISTA</th>
+                            <th class="col-estrategia">⭐ ESTRATÉGIA</th>
+                        </tr>
+                    </thead>
+                    <tbody id="corpoTabela"></tbody>
+                </table>
+            </div>
+
+            <!-- FÓRMULAS -->
+            <div class="info-box">
+                <h4>📐 Fórmulas Utilizadas</h4>
+                <p>
+                    <code>Preço FOB (US$/ton)</code> = (CBOT + Prêmio) × 36,7454<br>
+                    <code>Frete (US$/ton)</code> = Frete R$ ÷ Dólar<br>
+                    <code>Despesa Total (US$/ton)</code> = Frete US$ + Fobbings + Outras<br>
+                    <code>Receita (US$/ton)</code> = FOB − Despesa Total<br>
+                    <code>Receita (US$/sc)</code> = Receita US$/ton ÷ 16,6667<br>
+                    <code>Receita (R$/sc)</code> = Receita US$/sc × Dólar
+                </p>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            RURAL IN — Inteligência para o Agronegócio | Dr. Sidney Souza — Economista Agrícola<br>
+            Dados: CBOT/CME, CEPEA/Esalq, BCB, IBGE | <span id="dataAtualizacao"></span>
+        </div>
+    </div>
+
+    <script>
+    // ================================
+    // VARIÁVEIS GLOBAIS
+    // ================================
+    let municipiosCache = [];
+    let municipioSelecionado = null;
+    let indiceSelecionado = -1;
+
+    const portosNomes = {
+        paranagua: 'Paranaguá/PR',
+        santos: 'Santos/SP',
+        riogrande: 'Rio Grande/RS',
+        saoluis: 'São Luís/MA',
+        barcarena: 'Barcarena/PA',
+        salvadorbahia: 'Salvador/BA',
+        arcoNorte: 'Arco Norte (Miritituba/PA)'
+    };
+
+    // ================================
+    // 1. CARREGAR UFs DO IBGE
+    // ================================
+    async function carregarUFs() {
+        const status = document.getElementById('locStatus');
+        status.className = 'loc-status loading';
+        status.innerHTML = '<span>⏳</span> Carregando estados do IBGE...';
+
+        try {
+            const resp = await fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome');
+            const ufs = await resp.json();
+
+            const select = document.getElementById('selectUF');
+            select.innerHTML = '<option value="">Selecione o Estado...</option>';
+
+            ufs.forEach(uf => {
+                const opt = document.createElement('option');
+                opt.value = uf.id;
+                opt.textContent = `${uf.nome} (${uf.sigla})`;
+                opt.dataset.sigla = uf.sigla;
+                select.appendChild(opt);
+            });
+
+            // Pré-seleciona Goiás (ID 52)
+            select.value = '52';
+
+            status.className = 'loc-status ready';
+            status.innerHTML = `<span>✅</span> ${ufs.length} estados carregados — Selecione o estado e depois o município`;
+
+            // Auto-carrega municípios de GO
+            carregarMunicipios();
+
+        } catch (e) {
+            status.className = 'loc-status error';
+            status.innerHTML = '<span>❌</span> Erro ao carregar estados. Verifique sua conexão.';
+            console.error('Erro IBGE UFs:', e);
+        }
+    }
+
+    // ================================
+    // 2. CARREGAR MUNICÍPIOS DO ESTADO
+    // ================================
+    async function carregarMunicipios() {
+        const ufId = document.getElementById('selectUF').value;
+        const input = document.getElementById('inputMunicipio');
+        const status = document.getElementById('locStatus');
+        const lista = document.getElementById('listaMunicipios');
+
+        if (!ufId) {
+            input.disabled = true;
+            input.value = '';
+            municipiosCache = [];
+            lista.classList.remove('active');
+            return;
+        }
+
+        input.disabled = true;
+        input.value = '';
+        input.placeholder = 'Carregando municípios...';
+        status.className = 'loc-status loading';
+        status.innerHTML = '<span>⏳</span> Buscando municípios no IBGE...';
+
+        try {
+            const resp = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${ufId}/municipios?orderBy=nome`);
+            municipiosCache = await resp.json();
+
+            input.disabled = false;
+            input.placeholder = `Digite o município (${municipiosCache.length} encontrados)...`;
+            input.focus();
+
+            const ufSelect = document.getElementById('selectUF');
+            const sigla = ufSelect.options[ufSelect.selectedIndex].dataset.sigla;
+
+            status.className = 'loc-status ready';
+            status.innerHTML = `<span>✅</span> ${municipiosCache.length} municípios de ${sigla} carregados — Comece a digitar`;
+
+        } catch (e) {
+            status.className = 'loc-status error';
+            status.innerHTML = '<span>❌</span> Erro ao carregar municípios. Tente novamente.';
+            console.error('Erro IBGE Municípios:', e);
+        }
+    }
+
+    // ================================
+    // 3. FILTRO / AUTOCOMPLETE
+    // ================================
+    function filtrarMunicipios() {
+        const input = document.getElementById('inputMunicipio');
+        const lista = document.getElementById('listaMunicipios');
+        const termo = input.value.trim().toLowerCase();
+        indiceSelecionado = -1;
+
+        if (termo.length < 1) {
+            lista.classList.remove('active');
+            return;
+        }
+
+        // Remove acentos para busca
+        const normalize = (str) => str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+        const termoNorm = normalize(termo);
+
+        const filtrados = municipiosCache.filter(m =>
+            normalize(m.nome).includes(termoNorm)
+        ).slice(0, 20); // Limita a 20 resultados
+
+        if (filtrados.length === 0) {
+            lista.innerHTML = '<div class="autocomplete-item" style="color:#6b7280; cursor:default;">Nenhum município encontrado</div>';
+            lista.classList.add('active');
+            return;
+        }
+
+        lista.innerHTML = filtrados.map((m, i) => {
+            // Destaca o trecho que combina
+            const nomeNorm = normalize(m.nome);
+            const idx = nomeNorm.indexOf(termoNorm);
+            let nomeHTML = m.nome;
+            if (idx >= 0) {
+                const antes = m.nome.substring(0, idx);
+                const match = m.nome.substring(idx, idx + termo.length);
+                const depois = m.nome.substring(idx + termo.length);
+                nomeHTML = `${antes}<span class="match">${match}</span>${depois}`;
+            }
+
+            return `<div class="autocomplete-item" data-index="${i}" data-id="${m.id}" data-nome="${m.nome}"
+                        onclick="selecionarMunicipio('${m.nome}', '${m.id}')"
+                        onmouseover="indiceSelecionado=${i};highlightItem()">
+                        ${nomeHTML}
+                    </div>`;
+        }).join('');
+
+        lista.classList.add('active');
+    }
+
+    function highlightItem() {
+        const items = document.querySelectorAll('.autocomplete-item');
+        items.forEach((item, i) => {
+            item.classList.toggle('selected', i === indiceSelecionado);
+        });
+    }
+
+    // ================================
+    // 4. SELEÇÃO DO MUNICÍPIO
+    // ================================
+    function selecionarMunicipio(nome, id) {
+        const input = document.getElementById('inputMunicipio');
+        const lista = document.getElementById('listaMunicipios');
+        const ufSelect = document.getElementById('selectUF');
+        const sigla = ufSelect.options[ufSelect.selectedIndex].dataset.sigla;
+        const porto = document.getElementById('selectPorto');
+        const portoNome = portosNomes[porto.value] || porto.value;
+
+        input.value = nome;
+        lista.classList.remove('active');
+        municipioSelecionado = { nome, id, uf: sigla };
+
+        // Atualiza badge
+        const badge = document.getElementById('locBadge');
+        badge.style.display = 'block';
+        document.getElementById('badgeCidade').textContent = `${nome}/${sigla}`;
+        document.getElementById('badgePorto').textContent = portoNome;
+
+        // Atualiza header
+        document.getElementById('headerLocal').textContent =
+            `Formação de Preço | Safra 25/26 | ${nome}/${sigla} → ${portoNome}`;
+
+        // Atualiza header da tabela
+        document.getElementById('thOrigem').textContent =
+            `📍 ${nome}/${sigla} → ${portoNome}`;
+
+        // Status
+        const status = document.getElementById('locStatus');
+        status.className = 'loc-status ready';
+        status.innerHTML = `<span>✅</span> Município selecionado: <strong>${nome}/${sigla}</strong> (IBGE: ${id})`;
+
+        recalcular();
+    }
+
+    // ================================
+    // 5. NAVEGAÇÃO POR TECLADO
+    // ================================
+    document.addEventListener('DOMContentLoaded', () => {
+        const input = document.getElementById('inputMunicipio');
+        const lista = document.getElementById('listaMunicipios');
+
+        input.addEventListener('keydown', (e) => {
+            const items = lista.querySelectorAll('.autocomplete-item[data-nome]');
+            if (!items.length) return;
+
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                indiceSelecionado = Math.min(indiceSelecionado + 1, items.length - 1);
+                highlightItem();
+                items[indiceSelecionado]?.scrollIntoView({ block: 'nearest' });
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                indiceSelecionado = Math.max(indiceSelecionado - 1, 0);
+                highlightItem();
+                items[indiceSelecionado]?.scrollIntoView({ block: 'nearest' });
+            } else if (e.key === 'Enter') {
+                e.preventDefault();
+                if (indiceSelecionado >= 0 && items[indiceSelecionado]) {
+                    const nome = items[indiceSelecionado].dataset.nome;
+                    const id = items[indiceSelecionado].dataset.id;
+                    selecionarMunicipio(nome, id);
+                }
+            } else if (e.key === 'Escape') {
+                lista.classList.remove('active');
+            }
+        });
+
+        // Fechar ao clicar fora
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.autocomplete-wrapper')) {
+                lista.classList.remove('active');
+            }
+        });
+
+        // Atualizar badge ao trocar porto
+        document.getElementById('selectPorto').addEventListener('change', () => {
+            if (municipioSelecionado) {
+                selecionarMunicipio(municipioSelecionado.nome, municipioSelecionado.id);
+            }
+        });
+    });
+
+    // ================================
+    // 6. CÁLCULOS
+    // ================================
+    function getVal(id) {
+        return parseFloat(document.getElementById(id).value) || 0;
+    }
+
+    function fmt(val, decimals = 2) {
+        return val.toFixed(decimals);
+    }
+
+    function calcCenario(cbot, premio, dolar, fatorConv, sacasTon, freteRS, fobbings, outrasDesp) {
+        const precoFOB = (cbot + premio) * fatorConv;
+        const freteUSD = freteRS / dolar;
+        const despesaTotal = freteUSD + fobbings + outrasDesp;
+        const receitaTon = precoFOB - despesaTotal;
+        const receitaSCusd = receitaTon / sacasTon;
+        const receitaSCbrl = receitaSCusd * dolar;
+        return { cbot, premio, dolar, precoFOB, freteRS, freteUSD, fobbings, outrasDesp, despesaTotal, receitaTon, receitaSCusd, receitaSCbrl };
+    }
+
+    function recalcular() {
+        const fc = getVal('fator_conv'), st = getVal('sacas_ton');
+        const fr = getVal('frete_rs'), fb = getVal('fobbings'), od = getVal('outras_desp');
+
+        const c = {
+            a: calcCenario(getVal('cbot_atual'), getVal('premio_atual'), getVal('dolar_atual'), fc, st, fr, fb, od),
+            n: calcCenario(getVal('cbot_neutro'), getVal('premio_neutro'), getVal('dolar_neutro'), fc, st, fr, fb, od),
+            o: calcCenario(getVal('cbot_otimista'), getVal('premio_otimista'), getVal('dolar_otimista'), fc, st, fr, fb, od),
+            b: calcCenario(getVal('cbot_baixista'), getVal('premio_baixista'), getVal('dolar_baixista'), fc, st, fr, fb, od),
+            e: calcCenario(getVal('cbot_estrategia'), getVal('premio_estrategia'), getVal('dolar_estrategia'), fc, st, fr, fb, od)
+        };
+
+        document.getElementById('corpoTabela').innerHTML = `
+            <tr class="row-section"><td colspan="6">FORMAÇÃO DO PREÇO FOB</td></tr>
+            <tr>
+                <td>CBOT [US$/Bushel]</td>
+                <td class="val-neutral">${fmt(c.a.cbot,4)}</td>
+                <td class="val-green">${fmt(c.n.cbot,2)}</td>
+                <td class="val-blue">${fmt(c.o.cbot,2)}</td>
+                <td class="val-red">${fmt(c.b.cbot,2)}</td>
+                <td class="val-yellow">${fmt(c.e.cbot,2)}</td>
+            </tr>
+            <tr>
+                <td>Prêmio [US$/Bushel]</td>
+                <td class="val-neutral">${fmt(c.a.premio,2)}</td>
+                <td class="val-green">${fmt(c.n.premio,2)}</td>
+                <td class="val-blue">${fmt(c.o.premio,2)}</td>
+                <td class="val-red">${fmt(c.b.premio,2)}</td>
+                <td class="val-yellow">${fmt(c.e.premio,2)}</td>
+            </tr>
+            <tr>
+                <td>Conversão FOB (fator)</td>
+                <td>${fmt(fc,4)}</td><td>${fmt(fc,4)}</td><td>${fmt(fc,4)}</td><td>${fmt(fc,4)}</td><td>${fmt(fc,4)}</td>
+            </tr>
+            <tr>
+                <td>Cotação Dólar (R$)</td>
+                <td class="val-neutral">${fmt(c.a.dolar,3)}</td>
+                <td class="val-green">${fmt(c.n.dolar,2)}</td>
+                <td class="val-blue">${fmt(c.o.dolar,2)}</td>
+                <td class="val-red">${fmt(c.b.dolar,2)}</td>
+                <td class="val-yellow">${fmt(c.e.dolar,2)}</td>
+            </tr>
+            <tr class="row-highlight">
+                <td>💰 Preço FOB Porto (US$/ton)</td>
+                <td>$ ${fmt(c.a.precoFOB)}</td><td>$ ${fmt(c.n.precoFOB)}</td><td>$ ${fmt(c.o.precoFOB)}</td><td>$ ${fmt(c.b.precoFOB)}</td><td>$ ${fmt(c.e.precoFOB)}</td>
+            </tr>
+
+            <tr class="row-section"><td colspan="6">DESPESAS LOGÍSTICAS</td></tr>
+            <tr>
+                <td>Frete [R$/ton]</td>
+                <td>R$ ${fmt(c.a.freteRS)}</td><td>R$ ${fmt(c.n.freteRS)}</td><td>R$ ${fmt(c.o.freteRS)}</td><td>R$ ${fmt(c.b.freteRS)}</td><td>R$ ${fmt(c.e.freteRS)}</td>
+            </tr>
+            <tr>
+                <td>Frete [US$/ton]</td>
+                <td>$ ${fmt(c.a.freteUSD)}</td><td>$ ${fmt(c.n.freteUSD)}</td><td>$ ${fmt(c.o.freteUSD)}</td><td>$ ${fmt(c.b.freteUSD)}</td><td>$ ${fmt(c.e.freteUSD)}</td>
+            </tr>
+            <tr>
+                <td>Fobbings [US$/ton]</td>
+                <td>$ ${fmt(fb)}</td><td>$ ${fmt(fb)}</td><td>$ ${fmt(fb)}</td><td>$ ${fmt(fb)}</td><td>$ ${fmt(fb)}</td>
+            </tr>
+            <tr>
+                <td>Outras Despesas [US$/ton]</td>
+                <td>$ ${fmt(od)}</td><td>$ ${fmt(od)}</td><td>$ ${fmt(od)}</td><td>$ ${fmt(od)}</td><td>$ ${fmt(od)}</td>
+            </tr>
+            <tr class="row-despesa">
+                <td>📦 Despesa Total (US$/ton)</td>
+                <td>$ ${fmt(c.a.despesaTotal)}</td><td>$ ${fmt(c.n.despesaTotal)}</td><td>$ ${fmt(c.o.despesaTotal)}</td><td>$ ${fmt(c.b.despesaTotal)}</td><td>$ ${fmt(c.e.despesaTotal)}</td>
+            </tr>
+
+            <tr class="row-section"><td colspan="6">RECEITA LÍQUIDA PRODUTOR</td></tr>
+            <tr class="row-receita-usd">
+                <td>Receita [US$/Tonelada]</td>
+                <td>$ ${fmt(c.a.receitaTon)}</td><td>$ ${fmt(c.n.receitaTon)}</td><td>$ ${fmt(c.o.receitaTon)}</td><td>$ ${fmt(c.b.receitaTon)}</td><td>$ ${fmt(c.e.receitaTon)}</td>
+            </tr>
+            <tr class="row-receita-usd">
+                <td>Receita [US$/Sc 60kg]</td>
+                <td>$ ${fmt(c.a.receitaSCusd)}</td><td>$ ${fmt(c.n.receitaSCusd)}</td><td>$ ${fmt(c.o.receitaSCusd)}</td><td>$ ${fmt(c.b.receitaSCusd)}</td><td>$ ${fmt(c.e.receitaSCusd)}</td>
+            </tr>
+            <tr class="row-receita-final">
+                <td>🎯 RECEITA [R$/Sc 60kg]</td>
+                <td>R$ ${fmt(c.a.receitaSCbrl)}</td><td>R$ ${fmt(c.n.receitaSCbrl)}</td><td>R$ ${fmt(c.o.receitaSCbrl)}</td><td>R$ ${fmt(c.b.receitaSCbrl)}</td><td>R$ ${fmt(c.e.receitaSCbrl)}</td>
+            </tr>
+        `;
+    }
+
+    // ================================
+    // 7. INICIALIZAÇÃO
+    // ================================
+    document.getElementById('dataAtualizacao').textContent =
+        new Date().toLocaleDateString('pt-BR', { day:'2-digit', month:'2-digit', year:'numeric' });
+
+    // Auto-recalcula ao mudar inputs
+    document.querySelectorAll('input[type="number"]').forEach(input => {
+        input.addEventListener('change', recalcular);
+        input.addEventListener('keyup', e => { if (e.key === 'Enter') recalcular(); });
+    });
+
+    // Carrega tudo
+    carregarUFs();
+    recalcular();
+    </script>
+</body>
+</html>
