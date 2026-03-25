@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radar Agro Soja — 25/03/2026 | Rural IN</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#060b14;color:#e0e0e0;min-height:100vh}
+.pg{max-width:940px;margin:0 auto;padding:10px}
+.topbar{background:linear-gradient(90deg,#0d1520,#1a1d10,#0d1520);padding:10px 20px;border-radius:14px 14px 0 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #3a3d10;flex-wrap:wrap;gap:8px}
+.topbar .logo{display:flex;align-items:center;gap:12px}
+.topbar .logo-ic{width:52px;height:52px;background:linear-gradient(135deg,#8bc34a,#558b2f);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.6em;box-shadow:0 4px 20px rgba(139,195,74,.25);position:relative;overflow:hidden}
+.topbar .logo-ic::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,.1));border-radius:12px}
+.topbar .logo-txt h2{font-size:1.1em;font-weight:900;color:#fff;letter-spacing:1.5px}
+.topbar .logo-txt small{font-size:.65em;color:#aed581;font-weight:600;display:block}
+.topbar .ed{text-align:right}
+.topbar .ed .dt{font-size:.92em;font-weight:800;color:#ffd740}
+.topbar .ed .inf{font-size:.64em;color:#6b7280;font-weight:600}
+.hdr{background:linear-gradient(135deg,#33691e,#1b5e20 50%,#827717);padding:24px 20px;text-align:center;border-bottom:3px solid #8bc34a;position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 30px,rgba(255,255,255,.01) 30px,rgba(255,255,255,.01) 60px)}
+.hdr h1{font-size:1.5em;font-weight:900;color:#fff;position:relative;z-index:1;text-transform:uppercase;letter-spacing:3px}
+.hdr .sub{font-size:.82em;color:#c5e1a5;margin-top:6px;font-weight:500;position:relative;z-index:1}
+.hdr .pills{margin-top:12px;display:flex;justify-content:center;gap:6px;flex-wrap:wrap;position:relative;z-index:1}
+.pill{padding:5px 14px;border-radius:22px;font-size:.7em;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.pill-g{background:rgba(139,195,74,.18);color:#c5e1a5;border:1px solid rgba(139,195,74,.4)}
+.pill-y{background:rgba(255,215,64,.12);color:#ffd740;border:1px solid rgba(255,215,64,.3)}
+.pill-r{background:rgba(239,83,80,.12);color:#ef5350;border:1px solid rgba(239,83,80,.3)}
+.pill-b{background:rgba(66,165,245,.12);color:#42a5f5;border:1px solid rgba(66,165,245,.3)}
+.mn{background:#0e1521;padding:22px;border:1px solid #1e2a1e;border-top:none}
+.flash{background:linear-gradient(135deg,#1a2510,#1e2a15);border:2px solid #558b2f;border-radius:14px;padding:20px;margin-bottom:20px;display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;box-shadow:0 0 30px rgba(139,195,74,.06)}
+.flash .emo{font-size:3em;text-align:center}
+.flash .txt h3{font-size:.88em;color:#c5e1a5;font-weight:800;text-transform:uppercase;letter-spacing:1.5px}
+.flash .txt p{font-size:.84em;color:#aed581;margin-top:5px;line-height:1.75}
+.flash .big{text-align:center}
+.flash .big .num{font-size:2.2em;font-weight:900;color:#fff;line-height:1}
+.flash .big .var{font-size:.95em;font-weight:800;margin-top:4px}
+.flash .big .lbl{font-size:.58em;color:#9ccc65;font-weight:600;margin-top:2px}
+.gauge-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:9px;margin-bottom:20px}
+.g{background:#131e2c;border-radius:11px;padding:13px 8px;text-align:center;border:1px solid #1e2e3e;position:relative;overflow:hidden}
+.g::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.g.gu::before{background:linear-gradient(90deg,#33691e,#c5e1a5)}.g.gd::before{background:linear-gradient(90deg,#b71c1c,#ef5350)}.g.gn::before{background:linear-gradient(90deg,#e65100,#ffd740)}.g.gb::before{background:linear-gradient(90deg,#0d47a1,#42a5f5)}
+.g .gl{font-size:.56em;color:#78909c;text-transform:uppercase;letter-spacing:.8px;font-weight:700;margin-bottom:4px}
+.g .gv{font-size:1.2em;font-weight:900;color:#fff}
+.g .gs{font-size:.7em;margin-top:3px;font-weight:700}
+.g.gu .gv{color:#c5e1a5}.g.gu .gs{color:#8bc34a}
+.g.gd .gv{color:#ef5350}.g.gd .gs{color:#ef5350}
+.g.gn .gv{color:#ffd740}.g.gn .gs{color:#ffa726}
+.g.gb .gv{color:#42a5f5}.g.gb .gs{color:#42a5f5}
+.stl{font-size:.82em;text-transform:uppercase;letter-spacing:1.5px;font-weight:800;color:#8bc34a;margin:22px 0 12px;display:flex;align-items:center;gap:8px;padding-bottom:8px;border-bottom:1px solid #1e2a1e}
+.chc{background:#131e2c;border:1px solid #1e2e3e;border-radius:12px;padding:16px;margin-bottom:14px}
+.chc h4{font-size:.76em;color:#c5e1a5;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;font-weight:700;text-align:center}
+.chc canvas{max-height:280px}
+.chg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.sem-row{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:20px}
+.sem{border-radius:12px;padding:12px 6px;text-align:center;border:2px solid;position:relative;overflow:hidden}
+.sem::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px}
+.sem .sl{font-size:.58em;color:#78909c;text-transform:uppercase;letter-spacing:.5px;font-weight:700;margin-bottom:3px}
+.sem .sv{font-size:1.05em;font-weight:900}
+.sem .ss{font-size:.66em;font-weight:700;margin-top:2px}
+.sem .sico{font-size:1.3em;margin-bottom:3px}
+.sm-g{border-color:#558b2f;background:rgba(139,195,74,.04)}.sm-g::after{background:#8bc34a}.sm-g .sv{color:#c5e1a5}.sm-g .ss{color:#8bc34a}
+.sm-r{border-color:#c62828;background:rgba(239,83,80,.04)}.sm-r::after{background:#ef5350}.sm-r .sv{color:#ef5350}.sm-r .ss{color:#ef5350}
+.sm-y{border-color:#e65100;background:rgba(255,167,38,.04)}.sm-y::after{background:#ffa726}.sm-y .sv{color:#ffd740}.sm-y .ss{color:#ffa726}
+.sm-b{border-color:#1565c0;background:rgba(66,165,245,.04)}.sm-b::after{background:#42a5f5}.sm-b .sv{color:#42a5f5}.sm-b .ss{color:#42a5f5}
+.tb{width:100%;border-collapse:collapse;font-size:.78em;margin-bottom:16px;border-radius:10px;overflow:hidden}
+.tb th{background:#0e1825;color:#78909c;padding:9px 10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;font-size:.68em;text-align:left;border-bottom:2px solid #1e2e3e}
+.tb th:not(:first-child){text-align:right}
+.tb td{padding:7px 10px;border-bottom:1px solid #141f2e;font-weight:500}
+.tb td:not(:first-child){text-align:right}
+.tb .pn{color:#e5e7eb;font-weight:600}
+.anl{border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:4px solid;background:linear-gradient(90deg,rgba(0,0,0,.2),transparent)}
+.anl h4{font-size:.76em;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-weight:800}
+.anl p{font-size:.83em;line-height:1.8;color:#b0bec5}
+.anl .hl{color:#ffd740;font-weight:700}.anl .ps{color:#c5e1a5;font-weight:700}.anl .ng{color:#ef5350;font-weight:700}.anl .bl{color:#42a5f5;font-weight:700}
+.anl-g{border-color:#8bc34a}.anl-g h4{color:#c5e1a5}
+.anl-r{border-color:#ef5350}.anl-r h4{color:#ef5350}
+.anl-y{border-color:#ffa726}.anl-y h4{color:#ffd740}
+.anl-b{border-color:#42a5f5}.anl-b h4{color:#42a5f5}
+.anl-w{border-color:#fff}.anl-w h4{color:#fff}
+.thermo{background:#131e2c;border-radius:14px;padding:18px;border:1px solid #1e2e3e;margin-bottom:14px}
+.thermo h4{text-align:center;font-size:.76em;color:#c5e1a5;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:14px}
+.th-bar{height:20px;background:linear-gradient(90deg,#b71c1c 0%,#ef5350 20%,#ff9800 35%,#ffd740 50%,#8bc34a 65%,#558b2f 80%,#33691e 100%);border-radius:10px;position:relative;margin:28px 10px 12px}
+.th-mk{position:absolute;top:-24px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center}
+.th-mk .arr{width:3px;height:44px;border-radius:2px;background:#fff;box-shadow:0 0 8px rgba(255,255,255,.3)}
+.th-mk .lbl{font-size:.66em;font-weight:800;padding:4px 10px;border-radius:6px;white-space:nowrap;margin-top:4px;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.th-labels{display:flex;justify-content:space-between;padding:0 10px;font-size:.64em;color:#546e7a;font-weight:700}
+.alrt{border-radius:10px;padding:14px 16px;margin-bottom:12px;display:flex;gap:12px;align-items:flex-start;border:1px solid}
+.alrt .ai{font-size:1.4em;flex-shrink:0}
+.alrt h5{font-size:.72em;text-transform:uppercase;letter-spacing:.5px;font-weight:700;margin-bottom:3px}
+.alrt p{font-size:.78em;line-height:1.65}
+.al-w{border-color:#e65100;background:rgba(255,152,0,.04)}.al-w h5{color:#ffa726}.al-w p{color:#ffe0b2}
+.al-g{border-color:#558b2f;background:rgba(139,195,74,.04)}.al-g h5{color:#c5e1a5}.al-g p{color:#c8e6c9}
+.al-d{border-color:#c62828;background:rgba(239,83,80,.04)}.al-d h5{color:#ef5350}.al-d p{color:#ef9a9a}
+.al-b{border-color:#1565c0;background:rgba(66,165,245,.04)}.al-b h5{color:#42a5f5}.al-b p{color:#bbdefb}
+.sc-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.sc{border-radius:12px;padding:16px;border:2px solid}
+.sc h4{font-size:.74em;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-weight:800}
+.sc p{font-size:.78em;line-height:1.7}
+.sc ul{font-size:.76em;line-height:1.8;padding-left:16px;margin-top:6px}
+.sc-g{background:rgba(139,195,74,.04);border-color:#558b2f}.sc-g h4{color:#c5e1a5}.sc-g p,.sc-g li{color:#aed581}
+.sc-r{background:rgba(239,83,80,.03);border-color:#c62828}.sc-r h4{color:#ef5350}.sc-r p,.sc-r li{color:#ef9a9a}
+.proj-g{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.proj{background:#131e2c;border-radius:12px;padding:18px;text-align:center;border:1px solid #1e2e3e;position:relative;overflow:hidden}
+.proj::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.proj.pup::before{background:linear-gradient(90deg,#558b2f,#c5e1a5)}
+.proj.pnt::before{background:linear-gradient(90deg,#e65100,#ffd740)}
+.proj .pd{font-size:.66em;color:#78909c;text-transform:uppercase;letter-spacing:1px;font-weight:700}
+.proj .pv{font-size:1.6em;font-weight:900;margin:8px 0 4px}
+.proj .pr{font-size:.7em;color:#546e7a;font-weight:600}
+.proj .pvs{font-size:.76em;font-weight:700;padding:5px 16px;border-radius:22px;display:inline-block;margin-top:8px}
+.proj.pup .pv{color:#c5e1a5}.proj.pup .pvs{background:rgba(139,195,74,.12);color:#c5e1a5}
+.proj.pnt .pv{color:#ffd740}.proj.pnt .pvs{background:rgba(255,215,64,.12);color:#ffd740}
+.cred{background:linear-gradient(135deg,#101e10,#1a2a15);border:2px solid #558b2f;border-radius:16px;padding:24px;margin-top:22px;box-shadow:0 0 30px rgba(139,195,74,.06)}
+.cred-in{display:flex;gap:20px;align-items:center}
+.cred-av{width:72px;height:72px;background:linear-gradient(135deg,#689f38,#33691e);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.9em;flex-shrink:0;box-shadow:0 4px 20px rgba(139,195,74,.3);position:relative}
+.cred-av::after{content:'';position:absolute;inset:-3px;border-radius:50%;border:2px solid rgba(197,225,165,.3)}
+.cred h3{font-size:1em;font-weight:900;color:#fff}
+.cred .ti{font-size:.76em;color:#c5e1a5;font-weight:700;margin-top:2px}
+.cred .ds{font-size:.72em;color:#9ccc65;margin-top:5px;line-height:1.5;font-style:italic}
+.cred .ct{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px}
+.cred .ct a,.cred .ct span{font-size:.7em;color:#aed581;text-decoration:none;display:flex;align-items:center;gap:4px;font-weight:600;padding:4px 10px;background:rgba(255,255,255,.03);border-radius:6px;border:1px solid rgba(139,195,74,.15)}
+.cred .ct a:hover{background:rgba(139,195,74,.1);color:#fff}
+.disc{margin-top:16px;padding:14px;background:rgba(255,255,255,.02);border-radius:10px;font-size:.64em;color:#37474f;line-height:1.6;text-align:center;border:1px solid rgba(255,255,255,.03)}
+.ftr{text-align:center;padding:14px;font-size:.66em;color:#263238;border-radius:0 0 14px 14px;background:#060b14}
+@media(max-width:768px){.topbar{flex-direction:column;text-align:center;gap:8px}.topbar .ed{text-align:center}.hdr h1{font-size:1.1em}.flash{grid-template-columns:1fr;text-align:center}.gauge-row{grid-template-columns:repeat(3,1fr)}.sem-row{grid-template-columns:repeat(3,1fr)}.chg,.sc-grid,.proj-g{grid-template-columns:1fr}.cred-in{flex-direction:column;text-align:center}.cred .ct{justify-content:center}}
+@media(max-width:420px){.gauge-row,.sem-row{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="pg">
+<div class="topbar">
+    <div class="logo"><div class="logo-ic">🫘</div><div class="logo-txt"><h2>RURAL IN</h2><small>Inteligência para o Agronegócio</small></div></div>
+    <div class="ed"><div class="dt">Quarta, 25 de Março de 2026</div><div class="inf">Radar Agro Soja · Edição Diária · Fechamento do Mercado</div></div>
+</div>
+<div class="hdr">
+    <h1>🫘 Radar Agro — Soja</h1>
+    <div class="sub">Fechamento 25/03/2026 · Análise Fundamentalista & Técnica · Chicago · B3 · Físico</div>
+    <div class="pills">
+        <span class="pill pill-r">CEPEA R$ 129,25 ▼ -0,69%</span>
+        <span class="pill pill-g">CBOT Mai US$ 11,72 ▲ +1,45%</span>
+        <span class="pill pill-g">B3 Mai US$ 25,84 ▲ +1,53%</span>
+        <span class="pill pill-b">BR 52% da Soja da China</span>
+        <span class="pill pill-y">DÓLAR R$ 5,238</span>
+    </div>
+</div>
+<div class="mn">
+
+<!-- FLASH -->
+<div class="flash">
+    <div class="emo">🫘</div>
+    <div class="txt">
+        <h3>Chicago Dispara +1,45% — Mas CEPEA Recua com Dólar e Prêmios</h3>
+        <p>A soja em <strong>Chicago</strong> fechou 25/03 em forte alta: maio a <strong>US$ 11,7175/bu (+16,75 cents)</strong>, após queda na sessão anterior. Movimento de recuperação técnica e expectativa por negociações EUA-China. Porém, o indicador <strong>CEPEA Paranaguá recuou para R$ 129,25/sc (-0,69%)</strong>, pressionado pela <strong>queda nos prêmios de exportação</strong> (até -20 cents/bu) e câmbio estável. Mercado físico interno sem alteração na maioria das praças.</p>
+    </div>
+    <div class="big">
+        <div class="num">129,25</div>
+        <div class="var" style="color:#ef5350">▼ -0,69%</div>
+        <div class="lbl">R$/sc CEPEA Paranaguá</div>
+    </div>
+</div>
+
+<!-- PAINEL -->
+<div class="gauge-row">
+    <div class="g gd"><div class="gl">CEPEA Paranaguá</div><div class="gv">R$ 129,25</div><div class="gs">▼ -0,69%</div></div>
+    <div class="g gu"><div class="gl">CEPEA Paraná</div><div class="gv">R$ 122,87</div><div class="gs">▲ +0,12%</div></div>
+    <div class="g gu"><div class="gl">CBOT Mai/26</div><div class="gv">$11,7175</div><div class="gs">▲ +1,45%</div></div>
+    <div class="g gu"><div class="gl">CBOT Jul/26</div><div class="gv">$11,8775</div><div class="gs">▲ +1,39%</div></div>
+    <div class="g gu"><div class="gl">B3 Mai/26</div><div class="gv">$25,84</div><div class="gs">▲ +1,53%</div></div>
+    <div class="g gu"><div class="gl">B3 Jul/26</div><div class="gv">$26,15</div><div class="gs">▲ +1,36%</div></div>
+    <div class="g gn"><div class="gl">Dólar Ptax</div><div class="gv">R$ 5,238</div><div class="gs">≈ +0,07%</div></div>
+    <div class="g gn"><div class="gl">Prêmio Mar PGua</div><div class="gv">-25 ¢/bu</div><div class="gs">Pressão</div></div>
+    <div class="g gn"><div class="gl">Prêmio Abr PGua</div><div class="gv">-15 ¢/bu</div><div class="gs">Estável</div></div>
+    <div class="g gb"><div class="gl">Farelo CBOT</div><div class="gv">$322,80</div><div class="gs">Leve alta</div></div>
+    <div class="g gn"><div class="gl">Óleo CBOT</div><div class="gv">52,80 ¢</div><div class="gs">Recuo</div></div>
+    <div class="g gu"><div class="gl">Brent Oil</div><div class="gv">$98,78</div><div class="gs">▲ +2,36%</div></div>
+</div>
+
+<!-- SEMÁFORO -->
+<h3 class="stl">🚦 Semáforo da Semana — CEPEA Paranaguá (R$/sc)</h3>
+<div class="sem-row">
+    <div class="sem sm-r"><div class="sico">🔴</div><div class="sl">Seg 23/03</div><div class="sv">R$ 129,87</div><div class="ss">-0,57%</div></div>
+    <div class="sem sm-g"><div class="sico">🟢</div><div class="sl">Ter 24/03</div><div class="sv">R$ 130,15</div><div class="ss">+0,22%</div></div>
+    <div class="sem sm-r"><div class="sico">🔴</div><div class="sl">Qua 25/03</div><div class="sv">R$ 129,25</div><div class="ss">-0,69%</div></div>
+    <div class="sem sm-b"><div class="sico">📊</div><div class="sl">Qui 26/03</div><div class="sv">—</div><div class="ss">Projeção</div></div>
+    <div class="sem sm-b"><div class="sico">📊</div><div class="sl">Sex 27/03</div><div class="sv">—</div><div class="ss">Projeção</div></div>
+</div>
+
+<!-- GRÁFICOS -->
+<h3 class="stl">📈 Evolução CEPEA Paranaguá — Março 2026</h3>
+<div class="chc"><h4>Indicador CEPEA/Esalq Paranaguá — Soja (R$/sc 60kg)</h4><canvas id="ch1"></canvas></div>
+
+<h3 class="stl">📊 Chicago CBOT — Evolução Semanal Soja Maio/26</h3>
+<div class="chg">
+    <div class="chc"><h4>CBOT Soja Mai/26 (US$/bu) — Março</h4><canvas id="ch2"></canvas></div>
+    <div class="chc"><h4>Variação Diária CBOT Mai/26 (cents/bu)</h4><canvas id="ch3"></canvas></div>
+</div>
+
+<!-- FUTUROS B3 & CBOT -->
+<h3 class="stl">📋 Curva de Futuros — Fechamento 25/03</h3>
+<div class="chg">
+    <div class="chc"><h4>CBOT Soja — Curva Forward (US$/bu)</h4><canvas id="ch4"></canvas></div>
+    <div class="chc"><h4>B3 Soja CME — Curva Forward (US$/sc 60kg)</h4><canvas id="ch5"></canvas></div>
+</div>
+<table class="tb">
+<thead><tr><th>Contrato</th><th>CBOT (US$/bu)</th><th>Var.</th><th>B3 (US$/sc)</th><th>Var.</th></tr></thead>
+<tbody>
+<tr><td class="pn">Mai/26</td><td>US$ 11,7175</td><td style="color:#8bc34a">+1,45%</td><td>US$ 25,84</td><td style="color:#8bc34a">+1,53%</td></tr>
+<tr><td class="pn">Jul/26</td><td>US$ 11,8775</td><td style="color:#8bc34a">+1,39%</td><td>US$ 26,15</td><td style="color:#8bc34a">+1,36%</td></tr>
+<tr><td class="pn">Ago/26</td><td>US$ 11,8025</td><td style="color:#8bc34a">+1,16%</td><td>US$ 26,00</td><td style="color:#8bc34a">+0,97%</td></tr>
+<tr><td class="pn">Set/26</td><td>US$ 11,5225</td><td style="color:#8bc34a">+0,77%</td><td>—</td><td>—</td></tr>
+<tr><td class="pn">Nov/26</td><td>—</td><td>—</td><td>US$ 25,40</td><td style="color:#8bc34a">+0,79%</td></tr>
+</tbody>
+</table>
+
+<!-- FÍSICO -->
+<h3 class="stl">📍 Mercado Físico — Praças Regionais (R$/sc 60kg)</h3>
+<div class="chc"><h4>Comparativo Praças — Soja Disponível (R$/sc)</h4><canvas id="ch6"></canvas></div>
+<table class="tb">
+<thead><tr><th>Praça</th><th>R$/sc</th><th>Var.</th><th>Região</th></tr></thead>
+<tbody>
+<tr><td class="pn">Paranaguá/PR (CEPEA)</td><td>R$ 129,25</td><td style="color:#ef5350">-0,69%</td><td>Porto</td></tr>
+<tr><td class="pn">Porto Rio Grande/RS</td><td>R$ 128,80</td><td style="color:#8bc34a">+0,99%</td><td>Porto</td></tr>
+<tr><td class="pn">Castro/PR (Base PG)</td><td>R$ 123,00</td><td style="color:#ffd740">0,00%</td><td>Paraná</td></tr>
+<tr><td class="pn">Pato Branco/PR</td><td>R$ 118,00</td><td style="color:#ffd740">0,00%</td><td>Paraná</td></tr>
+<tr><td class="pn">Não-Me-Toque/RS</td><td>R$ 116,00</td><td style="color:#ffd740">0,00%</td><td>RS</td></tr>
+<tr><td class="pn">Cascavel/PR</td><td>R$ 115,20</td><td style="color:#ffd740">0,00%</td><td>Paraná</td></tr>
+<tr><td class="pn">Rio Verde/GO</td><td>R$ 106,39</td><td style="color:#8bc34a">+0,83%</td><td>Sul GO</td></tr>
+<tr><td class="pn">Rondonópolis/MT</td><td>R$ 103,80</td><td style="color:#8bc34a">+1,40%</td><td>Sudeste MT</td></tr>
+<tr><td class="pn">Sorriso/MT</td><td>R$ 99,85</td><td style="color:#8bc34a">+1,34%</td><td>Norte MT</td></tr>
+<tr><td class="pn">Dourados/MS</td><td>R$ 103,72</td><td style="color:#ef5350">-0,12%</td><td>Leste MS</td></tr>
+<tr><td class="pn">Barreiras/BA</td><td>R$ 113,30</td><td style="color:#8bc34a">+1,58%</td><td>Oeste BA</td></tr>
+</tbody>
+</table>
+
+<!-- ANÁLISES -->
+<h3 class="stl">🔍 Análise Fundamentalista</h3>
+<div class="anl anl-g">
+    <h4>🌍 Exportações — Brasil Lidera com 52% da Soja para a China</h4>
+    <p>O Brasil consolidou posição de <span class="ps">maior fornecedor de soja à China em 2026</span>, com <span class="hl">6,56 milhões de toneladas</span> no 1º bimestre (+83% a/a). Os EUA despencaram 84%, para apenas 1,49 mi t. A Anec estima exportações brasileiras de <span class="hl">16,32 mi t em março</span>. O USDA projeta o Brasil atendendo <span class="ps">61% da demanda global</span>. Porém, <span class="ng">prêmios de exportação caíram até -20 cents/bu</span> após suspensão temporária de embarques por tradings (Cargill, Bunge, LDC, Amaggi, Olam) devido a controles fitossanitários mais rigorosos da China.</p>
+</div>
+<div class="anl anl-r">
+    <h4>⚠️ Prêmios & Tradings — Suspensão de Embarques Pressiona Preço Interno</h4>
+    <p>Grandes tradings <span class="ng">suspenderam temporariamente embarques para a China</span> por questões fitossanitárias. A Cargill (15-16% dos embarques BR→China) liderou o movimento, seguida por Olam, Amaggi, LDC e Bunge. Os <span class="ng">prêmios recuaram até -25 cents/bu em Paranaguá</span> para março. O Ministro Fávaro disse que o governo negociará com a China os requisitos. Apesar da turbulência, o fluxo total de soja brasileira <span class="ps">se mantém</span> — navios parados serão recebidos. Custo logístico e tempo de desembaraço aumentam.</p>
+</div>
+<div class="anl anl-b">
+    <h4>📊 Chicago — Recuperação Técnica Após Queda Limite em 16/03</h4>
+    <p>Chicago viveu um <span class="ng">dia de pânico em 16/03 com queda-limite de 70 cents</span> (mai de US$ 12,25 → US$ 11,55). Desde então, o mercado oscila entre <span class="hl">US$ 11,55 e US$ 11,72</span>, muito abaixo dos US$ 12,25 pré-crash. Hoje a alta de <span class="ps">+16,75 cents (+1,45%)</span> reflete: (1) recuperação técnica; (2) cobertura de posições vendidas; (3) expectativa pela cúpula Trump-Xi (adiada ~1,5 mês); (4) farelo com suporte. O <span class="ng">óleo de soja recuou</span>, limitando ganhos. Spread mai-set estreitou — mercado menos invertido.</p>
+</div>
+<div class="anl anl-y">
+    <h4>🌾 Safra Brasil — Colheita Avançando e Pressionando Oferta</h4>
+    <p>A colheita da soja brasileira 2025/26 avança com <span class="hl">produção recorde estimada em ~180 mi t</span> (USDA). A entrada de safra pressiona os preços internos — sazonal esperado para o período. O frete rodoviário sobe com a logística intensificada e o <span class="ng">Brent próximo de US$ 100</span>. Pecuaristas consultados pelo CEPEA estão <span class="ps">mais ativos nas vendas</span>, buscando honrar compromissos financeiros e aproveitar a recuperação cambial. Liquidez no spot aumentou.</p>
+</div>
+
+<!-- TÉCNICA -->
+<h3 class="stl">📐 Análise Técnica</h3>
+<div class="anl anl-w">
+    <h4>📊 Leitura Gráfica — CEPEA & CBOT</h4>
+    <p><strong>CEPEA Paranaguá:</strong> O indicador oscila em <span class="hl">range lateral entre R$ 127,12 e R$ 131,18</span> desde início de março. Hoje a R$ 129,25 está no <span class="bl">meio do canal</span>. Suporte em <span class="hl">R$ 127,12</span> (mínima de 17/03). Resistência em <span class="hl">R$ 131,18</span> (máxima de 06/03). O acumulado do mês é positivo em <span class="ps">+1,91%</span>, mas a volatilidade é alta (amplitude de R$ 4,06). Sem definição de tendência no curto prazo.</p>
+    <p style="margin-top:10px"><strong>CBOT Mai/26:</strong> Após o <span class="ng">crash de 16/03 (limite de baixa US$ 11,55)</span>, o mercado testou suporte e reagiu. A alta de hoje (+1,45%) busca a <span class="hl">resistência de US$ 11,75-11,80</span>. Se romper, pode buscar US$ 12,00. Se falhar, retesta suporte em <span class="ng">US$ 11,50</span>. O volume comprador está mais leve que o vendedor — recuperação frágil. RSI saiu do sobrevendido (30→45). <span class="bl">Viés neutro-altista de curto prazo.</span></p>
+</div>
+
+<!-- TERMÔMETROS -->
+<h3 class="stl">🌡️ Termômetros de Análise</h3>
+<div class="thermo">
+    <h4>🌡️ Viés Geral do Mercado — Próximos 2 Dias</h4>
+    <div class="th-bar"><div class="th-mk" style="left:52%"><div class="arr"></div><div class="lbl" style="background:#ffd740;color:#000">NEUTRO → LEVE ALTA</div></div></div>
+    <div class="th-labels"><span>🔴 Forte Baixa</span><span>🟡 Neutro</span><span>🟢 Forte Alta</span></div>
+</div>
+<div class="chg">
+    <div class="thermo">
+        <h4>🌍 Força da Exportação BR</h4>
+        <div class="th-bar"><div class="th-mk" style="left:60%"><div class="arr"></div><div class="lbl" style="background:#8bc34a;color:#000">FIRME (16 mi t/mês)</div></div></div>
+        <div class="th-labels"><span>Fraca</span><span>Normal</span><span>Recorde</span></div>
+    </div>
+    <div class="thermo">
+        <h4>💵 Pressão dos Prêmios</h4>
+        <div class="th-bar"><div class="th-mk" style="left:30%"><div class="arr"></div><div class="lbl" style="background:#ef5350;color:#fff">NEGATIVOS (-25¢)</div></div></div>
+        <div class="th-labels"><span>Muito Neg.</span><span>Zero</span><span>Positivos</span></div>
+    </div>
+</div>
+<div class="chg">
+    <div class="thermo">
+        <h4>📊 Chicago — Momentum</h4>
+        <div class="th-bar"><div class="th-mk" style="left:55%"><div class="arr"></div><div class="lbl" style="background:#ffd740;color:#000">RECUPERAÇÃO FRÁGIL</div></div></div>
+        <div class="th-labels"><span>Sobrevendido</span><span>Neutro</span><span>Sobrecomprado</span></div>
+    </div>
+    <div class="thermo">
+        <h4>💰 Margem do Produtor (GO)</h4>
+        <div class="th-bar"><div class="th-mk" style="left:38%"><div class="arr"></div><div class="lbl" style="background:#ffa726;color:#000">APERTADA</div></div></div>
+        <div class="th-labels"><span>Negativa</span><span>Apertada</span><span>Confortável</span></div>
+    </div>
+</div>
+
+<!-- CENÁRIOS -->
+<h3 class="stl">🎯 Cenários para Quinta (26/03) e Sexta (27/03)</h3>
+<div class="sc-grid">
+    <div class="sc sc-g">
+        <h4>🟢 Cenário Altista (45% de probabilidade)</h4>
+        <p>📌 <strong>CEPEA:</strong> R$ 130 – R$ 132<br>📌 <strong>CBOT Mai:</strong> US$ 11,75 – US$ 11,95</p>
+        <ul>
+            <li>Chicago mantém rally de recuperação (rompe US$ 11,75)</li>
+            <li>Resolução parcial do impasse fitossanitário com China</li>
+            <li>Prêmios se estabilizam ou melhoram</li>
+            <li>Dólar avança acima de R$ 5,25 (positivo para exportador)</li>
+            <li>Novidades positivas sobre encontro Trump-Xi</li>
+            <li>Farelo com suporte sustenta complexo soja</li>
+        </ul>
+    </div>
+    <div class="sc sc-r">
+        <h4>🔴 Cenário Baixista (55% de probabilidade)</h4>
+        <p>📌 <strong>CEPEA:</strong> R$ 127 – R$ 129<br>📌 <strong>CBOT Mai:</strong> US$ 11,45 – US$ 11,60</p>
+        <ul>
+            <li>Prêmios continuam negativos com impasse fitossanitário</li>
+            <li>Pressão sazonal da colheita brasileira recorde (180 mi t)</li>
+            <li>Óleo de soja volta a cair, puxando complexo</li>
+            <li>Novas realizações em CBOT após recuperação de hoje</li>
+            <li>Adiamento da cúpula Trump-Xi gera incerteza</li>
+            <li>Volume recorde de posições vendidas em aberto</li>
+        </ul>
+    </div>
+</div>
+
+<!-- PROJEÇÃO -->
+<h3 class="stl">📅 Projeção de Preço — Próximos 2 Dias</h3>
+<div class="proj-g">
+    <div class="proj pnt"><div class="pd">Quinta-feira · 26/03/2026</div><div class="pv">R$ 128 – 131</div><div class="pr">CEPEA Paranaguá (R$/sc)</div><div class="pvs">↔️ NEUTRO COM VOLATILIDADE</div></div>
+    <div class="proj pnt"><div class="pd">Sexta-feira · 27/03/2026</div><div class="pv">R$ 128 – 132</div><div class="pr">CEPEA Paranaguá (R$/sc)</div><div class="pvs">↔️ DEPENDE DE CHICAGO + PRÊMIOS</div></div>
+</div>
+<div class="anl anl-y">
+    <h4>🧠 Racional da Projeção</h4>
+    <p>A projeção de <span class="hl">viés neutro com alta volatilidade</span> reflete o cabo de guerra entre fatores: De um lado, Chicago recuperou forte hoje (+1,45%), o que pode puxar o CEPEA para cima amanhã. Do outro, os <span class="ng">prêmios negativos (-25¢/bu)</span>, a <span class="ng">pressão da colheita recorde</span> e o <span class="ng">impasse fitossanitário</span> com a China limitam a alta interna. A relação <span class="bl">Chicago × Câmbio × Prêmio</span> está desalinhada: CBOT sobe, mas prêmios caem, anulando o ganho no porto. O produtor de <span class="hl">Goiás recebe ~R$ 106/sc</span> — margem apertada com custo de produção estimado em R$ 96-102/sc. Monitorar: (1) decisão sobre fitossanitário; (2) sequência do rally em CBOT; (3) câmbio.</p>
+</div>
+
+<!-- VISUAL EXTRA -->
+<h3 class="stl">📊 Painéis Visuais — Análise Comparativa</h3>
+<div class="chg">
+    <div class="chc"><h4>📊 Decomposição do Preço Paranaguá (R$/sc)</h4><canvas id="ch7"></canvas></div>
+    <div class="chc"><h4>📈 CBOT vs CEPEA — Correlação Março (%)</h4><canvas id="ch8"></canvas></div>
+</div>
+
+<!-- MACRO -->
+<h3 class="stl">🌐 Fatores Macro & Geopolíticos no Radar</h3>
+<div class="alrt al-d"><div class="ai">🇺🇸🇨🇳</div><div><h5>Guerra Comercial EUA-China — Cúpula Adiada ~1,5 mês</h5><p>Trump adiou viagem a Pequim. A incerteza pressiona mercados. Importações chinesas de soja dos EUA caíram 84% no bimestre. Qualquer sinalização positiva pode levar Chicago de volta a US$ 12+. Fator de alta volatilidade.</p></div></div>
+<div class="alrt al-w"><div class="ai">🇧🇷🇨🇳</div><div><h5>Impasse Fitossanitário Brasil-China — Prêmios Negativos</h5><p>Controles mais rigorosos da China + suspensão por tradings geraram queda de prêmios de até -20¢/bu. Ministro Fávaro em negociação. Resolução pode reverter pressão nos preços internos rapidamente.</p></div></div>
+<div class="alrt al-g"><div class="ai">🌾</div><div><h5>Safra Brasil Recorde — 180 Mi t (USDA) / Colheita Avançando</h5><p>Produção recorde pressiona sazonalmente os preços. Exportações em 108 mi t em 2025, com meta de 110+ mi t em 2026. Armazenagem sob pressão em MT e GO.</p></div></div>
+<div class="alrt al-w"><div class="ai">⛽</div><div><h5>Petróleo Brent US$ 98,78 — Impacto em Biodiesel e Frete</h5><p>Brent próximo de US$ 100 sustenta óleo de soja (biodiesel) mas encarece frete rodoviário. Conflito no Oriente Médio + possível fechamento do Estreito de Ormuz no radar. Duplo impacto: alta para óleo, custo para produtor.</p></div></div>
+<div class="alrt al-b"><div class="ai">🇪🇺</div><div><h5>Mercosul-UE — Potencial Ampliação de Mercado</h5><p>Acordo provisório em maio/26 pode abrir novas rotas para soja e derivados brasileiros. Europa busca diversificar fornecedores pós-conflito Oriente Médio.</p></div></div>
+
+<!-- CREDENCIAL -->
+<div class="cred">
+    <div class="cred-in">
+        <div class="cred-av">👨‍💼</div>
+        <div>
+            <h3>Dr. Sidney Souza</h3>
+            <div class="ti">Economista Agrícola · Estrategista Econômico do Produtor</div>
+            <div class="ds">Especialista em economia da fazenda e gestão de risco no agro<br>Transformamos dados da fazenda em decisões econômicas<br>Ajudamos produtores a entender se o mercado sustenta seu negócio</div>
+            <div class="ct">
+                <a href="mailto:sidneyagro@gmail.com">📧 sidneyagro@gmail.com</a>
+                <a href="https://wa.me/5564992266886">📱 (64) 9 9226-6886</a>
+                <span>📸 @ruralin.ai</span>
+                <span>📸 @sidneyagrosa</span>
+            </div>
+        </div>
+    </div>
+    <div class="disc">⚠️ <strong>Disclaimer:</strong> Material exclusivamente informativo e educacional. Não constitui recomendação de compra ou venda. Decisões de comercialização são de responsabilidade do produtor. Fontes: CEPEA/Esalq, CME Group, B3, Scot, Anec, USDA, SECEX, Forbes, Exame, CNN Brasil, Notícias Agrícolas, Farmnews, Grão Direto.</div>
+</div>
+</div>
+<div class="ftr">RURAL IN © 2026 · Inteligência para o Agronegócio · Dr. Sidney Souza · Rio Verde/GO 🇧🇷</div>
+</div>
+
+<script>
+Chart.defaults.color='#78909c';Chart.defaults.font.family='Inter';Chart.defaults.font.size=11;
+const df={family:'Inter',weight:'600'};
+const tt={backgroundColor:'#131e2c',titleColor:'#c5e1a5',bodyColor:'#e5e7eb',borderColor:'#558b2f',borderWidth:1,padding:12,cornerRadius:8};
+
+// 1. CEPEA MARÇO
+const d1=['04','05','06','09','10','11','12','13','16','17','18','19','20','23','24','25'];
+const v1=[126.80,129.54,131.18,130.02,128.80,129.29,130.87,130.20,129.36,127.12,127.27,129.38,130.61,129.87,130.15,129.25];
+new Chart(document.getElementById('ch1'),{type:'line',data:{labels:d1.map(d=>d+'/03'),datasets:[{label:'R$/sc',data:v1,borderColor:'#8bc34a',backgroundColor:'rgba(139,195,74,.06)',borderWidth:3,fill:true,tension:.3,pointRadius:v1.map((_,i)=>i===v1.length-1?8:3),pointBackgroundColor:v1.map((_,i)=>i===v1.length-1?'#ffd740':'#8bc34a')}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:{...tt,callbacks:{label:c=>'R$ '+c.parsed.y.toFixed(2)}},annotation:{annotations:{
+sup:{type:'line',yMin:127.12,yMax:127.12,borderColor:'#ef5350',borderWidth:1.5,borderDash:[6,4],label:{display:true,content:'Suporte 127,12',position:'start',backgroundColor:'#ef5350',color:'#fff',font:{size:9,weight:'bold'},padding:3}},
+res:{type:'line',yMin:131.18,yMax:131.18,borderColor:'#42a5f5',borderWidth:1.5,borderDash:[6,4],label:{display:true,content:'Resist. 131,18',position:'end',backgroundColor:'#42a5f5',color:'#fff',font:{size:9,weight:'bold'},padding:3}},
+media:{type:'line',yMin:129.30,yMax:129.30,borderColor:'rgba(255,215,64,.3)',borderWidth:1,borderDash:[4,4]}
+}}},scales:{y:{min:125,max:133,grid:{color:'rgba(255,255,255,.04)'},ticks:{callback:v=>'R$ '+v,font:df}},x:{grid:{display:false},ticks:{font:df,maxRotation:45}}}}});
+
+// 2. CBOT MARÇO
+const cb_d=['16','17','18','19','20','23','24','25'];
+const cb_v=[11.55,11.57,11.6175,11.685,11.6125,11.635,11.55,11.7175];
+new Chart(document.getElementById('ch2'),{type:'line',data:{labels:cb_d.map(d=>d+'/03'),datasets:[{label:'US$/bu',data:cb_v,borderColor:'#42a5f5',backgroundColor:'rgba(66,165,245,.06)',borderWidth:3,fill:true,tension:.3,pointRadius:cb_v.map((_,i)=>i===cb_v.length-1?8:i===0?6:3),pointBackgroundColor:cb_v.map((_,i)=>i===cb_v.length-1?'#8bc34a':i===0?'#ef5350':'#42a5f5')}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:{...tt,callbacks:{label:c=>'US$ '+c.parsed.y.toFixed(4)}},annotation:{annotations:{crash:{type:'point',xValue:0,yValue:11.55,backgroundColor:'#ef5350',radius:0,label:{display:true,content:'Crash 16/03',position:'start',backgroundColor:'#ef5350',color:'#fff',font:{size:8,weight:'bold'},padding:3}}}}},scales:{y:{min:11.40,max:11.80,grid:{color:'rgba(255,255,255,.04)'},ticks:{callback:v=>'$'+v.toFixed(2),font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+
+// 3. VAR CBOT
+const cb_var=[-70,+2,+4.75,+6.75,-7.25,+2.25,-8.50,+16.75];
+new Chart(document.getElementById('ch3'),{type:'bar',data:{labels:cb_d.map(d=>d+'/03'),datasets:[{data:cb_var,backgroundColor:cb_var.map(v=>v>=0?'rgba(139,195,74,.5)':'rgba(239,83,80,.5)'),borderColor:cb_var.map(v=>v>=0?'#8bc34a':'#ef5350'),borderWidth:2,borderRadius:6}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:{...tt,callbacks:{label:c=>(c.parsed.y>=0?'+':'')+c.parsed.y.toFixed(2)+' ¢/bu'}},annotation:{annotations:{z:{type:'line',yMin:0,yMax:0,borderColor:'#ffd740',borderWidth:1.5,borderDash:[5,4]}}}},scales:{y:{grid:{color:'rgba(255,255,255,.04)'},ticks:{callback:v=>(v>=0?'+':'')+v+' ¢',font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+
+// 4. CBOT FORWARD
+const cfm=['Mai/26','Jul/26','Ago/26','Set/26'];
+const cfv=[11.7175,11.8775,11.8025,11.5225];
+new Chart(document.getElementById('ch4'),{type:'bar',data:{labels:cfm,datasets:[{data:cfv,backgroundColor:['rgba(139,195,74,.5)','rgba(139,195,74,.6)','rgba(255,215,64,.4)','rgba(239,83,80,.4)'],borderColor:['#8bc34a','#8bc34a','#ffd740','#ef5350'],borderWidth:2,borderRadius:8}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:{...tt,callbacks:{label:c=>'US$ '+c.parsed.y.toFixed(4)}}},scales:{y:{min:11.3,max:12.0,grid:{color:'rgba(255,255,255,.04)'},ticks:{callback:v=>'$'+v.toFixed(2),font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+
+// 5. B3 FORWARD
+const bfm=['Mai/26','Jul/26','Ago/26','Nov/26'];
+const bfv=[25.84,26.15,26.00,25.40];
+new Chart(document.getElementById('ch5'),{type:'bar',data:{labels:bfm,datasets:[{data:bfv,backgroundColor:['rgba(66,165,245,.5)','rgba(66,165,245,.6)','rgba(255,215,64,.4)','rgba(239,83,80,.4)'],borderColor:['#42a5f5','#42a5f5','#ffd740','#ef5350'],borderWidth:2,borderRadius:8}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:{...tt,callbacks:{label:c=>'US$ '+c.parsed.y.toFixed(2)+'/sc'}}},scales:{y:{min:24.5,max:27,grid:{color:'rgba(255,255,255,.04)'},ticks:{callback:v=>'$'+v.toFixed(1),font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+
+// 6. PRAÇAS
+const pn=['Paranaguá','P.R.Grande','Castro/PR','Pato Branco','Não-Me-Toque','Cascavel','Rio Verde/GO','Rondon./MT','Sorriso/MT','Dourados/MS','Barreiras/BA'];
+const pv=[129.25,128.80,123,118,116,115.20,106.39,103.80,99.85,103.72,113.30];
+const pc=pv.map(v=>v>=125?'rgba(139,195,74,.5)':v>=115?'rgba(66,165,245,.4)':v>=105?'rgba(255,215,64,.4)':'rgba(239,83,80,.4)');
+new Chart(document.getElementById('ch6'),{type:'bar',data:{labels:pn,datasets:[{data:pv,backgroundColor:pc,borderColor:pv.map(v=>v>=125?'#8bc34a':v>=115?'#42a5f5':v>=105?'#ffd740':'#ef5350'),borderWidth:2,borderRadius:5}]},
+options:{responsive:true,maintainAspectRatio:true,indexAxis:'y',plugins:{legend:{display:false},tooltip:{...tt,callbacks:{label:c=>'R$ '+c.parsed.x.toFixed(2)+'/sc'}},annotation:{annotations:{custo:{type:'line',xMin:100,xMax:100,borderColor:'#ef5350',borderWidth:1.5,borderDash:[5,4],label:{display:true,content:'Custo ~R$100',position:'start',backgroundColor:'#ef5350',color:'#fff',font:{size:8,weight:'bold'},padding:2}}}}},scales:{x:{min:90,max:135,grid:{color:'rgba(255,255,255,.04)'},ticks:{callback:v=>'R$ '+v,font:df}},y:{grid:{display:false},ticks:{font:{...df,size:9}}}}}});
+
+// 7. DECOMPOSIÇÃO
+new Chart(document.getElementById('ch7'),{type:'bar',data:{labels:['CBOT\n(~R$116)','Prêmio\n(-R$2,5)','Câmbio\nEfeito','Basis\nInterno','CEPEA\nPgua 129,25'],datasets:[{data:[116,-2.5,8,7.75,129.25],backgroundColor:['rgba(66,165,245,.5)','rgba(239,83,80,.5)','rgba(139,195,74,.4)','rgba(255,215,64,.4)','rgba(139,195,74,.6)'],borderColor:['#42a5f5','#ef5350','#8bc34a','#ffd740','#8bc34a'],borderWidth:2,borderRadius:6}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:{...tt}},scales:{y:{grid:{color:'rgba(255,255,255,.04)'},ticks:{callback:v=>'R$ '+v,font:df}},x:{grid:{display:false},ticks:{font:{...df,size:9}}}}}});
+
+// 8. CORRELAÇÃO
+const corD=['16','17','18','19','20','23','24','25'];
+const corCb=[-5.72,-0.17,0.41,0.58,-0.62,0.19,-0.73,1.45];
+const corCp=[undefined,-1.73,0.12,1.66,0.95,-0.57,0.22,-0.69];
+new Chart(document.getElementById('ch8'),{type:'line',data:{labels:corD.map(d=>d+'/03'),datasets:[
+{label:'CBOT %',data:corCb,borderColor:'#42a5f5',borderWidth:2,tension:.3,pointRadius:3},
+{label:'CEPEA %',data:corCp,borderColor:'#8bc34a',borderWidth:2,tension:.3,pointRadius:3,borderDash:[5,3]}
+]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:14}},tooltip:{...tt},annotation:{annotations:{z:{type:'line',yMin:0,yMax:0,borderColor:'rgba(255,215,64,.3)',borderWidth:1,borderDash:[4,4]}}}},scales:{y:{grid:{color:'rgba(255,255,255,.04)'},ticks:{callback:v=>v+'%',font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+</script>
+</body>
+</html>
