@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radar Agro Fertilizantes — 25/03/2026 | Rural IN</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:#060a12;color:#e0e0e0;min-height:100vh}.pg{max-width:940px;margin:0 auto;padding:10px}
+.topbar{background:linear-gradient(90deg,#0d1520,#0a1a2a,#0d1520);padding:10px 20px;border-radius:14px 14px 0 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #1a3050;flex-wrap:wrap;gap:8px}
+.topbar .logo{display:flex;align-items:center;gap:12px}.topbar .logo-ic{width:52px;height:52px;background:linear-gradient(135deg,#00bcd4,#006064);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.6em;box-shadow:0 4px 20px rgba(0,188,212,.25)}.topbar .logo-txt h2{font-size:1.1em;font-weight:900;color:#fff;letter-spacing:1.5px}.topbar .logo-txt small{font-size:.65em;color:#80deea;font-weight:600;display:block}.topbar .ed{text-align:right}.topbar .ed .dt{font-size:.92em;font-weight:800;color:#ffd740}.topbar .ed .inf{font-size:.64em;color:#6b7280;font-weight:600}
+.hdr{background:linear-gradient(135deg,#006064,#004d40 50%,#01579b);padding:24px 20px;text-align:center;border-bottom:3px solid #00bcd4;position:relative;overflow:hidden}.hdr::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 30px,rgba(255,255,255,.02) 30px,rgba(255,255,255,.02) 60px)}.hdr h1{font-size:1.45em;font-weight:900;color:#fff;position:relative;z-index:1;text-transform:uppercase;letter-spacing:3px}.hdr .sub{font-size:.82em;color:#b2ebf2;margin-top:6px;font-weight:500;position:relative;z-index:1}.hdr .pills{margin-top:12px;display:flex;justify-content:center;gap:6px;flex-wrap:wrap;position:relative;z-index:1}
+.pill{padding:5px 13px;border-radius:22px;font-size:.68em;font-weight:700;text-transform:uppercase;letter-spacing:.5px}.pill-c{background:rgba(0,188,212,.18);color:#80deea;border:1px solid rgba(0,188,212,.4)}.pill-r{background:rgba(239,83,80,.12);color:#ef5350;border:1px solid rgba(239,83,80,.3)}.pill-y{background:rgba(255,215,64,.12);color:#ffd740;border:1px solid rgba(255,215,64,.3)}.pill-g{background:rgba(76,175,80,.15);color:#81c784;border:1px solid rgba(76,175,80,.3)}.pill-b{background:rgba(66,165,245,.12);color:#42a5f5;border:1px solid rgba(66,165,245,.3)}
+.mn{background:#0e1521;padding:22px;border:1px solid #152030;border-top:none}
+.flash{background:linear-gradient(135deg,#0a1a28,#0d2030);border:2px solid #00838f;border-radius:14px;padding:20px;margin-bottom:20px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;box-shadow:0 0 30px rgba(0,188,212,.06)}.flash .emo{font-size:3em;text-align:center}.flash .txt h3{font-size:.88em;color:#80deea;font-weight:800;text-transform:uppercase;letter-spacing:1.5px}.flash .txt p{font-size:.83em;color:#b2ebf2;margin-top:5px;line-height:1.75}
+.gr{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:9px;margin-bottom:20px}
+.gc{background:#131e2c;border-radius:11px;padding:14px 8px;text-align:center;border:1px solid #1e2e3e;position:relative;overflow:hidden}.gc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}.gc.cu::before{background:linear-gradient(90deg,#b71c1c,#ef5350)}.gc.cd::before{background:linear-gradient(90deg,#006064,#80deea)}.gc.cn::before{background:linear-gradient(90deg,#5d4037,#ffd740)}.gc.cb::before{background:linear-gradient(90deg,#0d47a1,#42a5f5)}
+.gc .gl{font-size:.56em;color:#78909c;text-transform:uppercase;letter-spacing:.8px;font-weight:700;margin-bottom:4px}.gc .gv{font-size:1.15em;font-weight:900}.gc .gs{font-size:.68em;margin-top:3px;font-weight:700}.gc .gsub{font-size:.56em;color:#546e7a;margin-top:1px}
+.gc.cu .gv{color:#ef5350}.gc.cu .gs{color:#ef5350}.gc.cd .gv{color:#80deea}.gc.cd .gs{color:#00bcd4}.gc.cn .gv{color:#ffd740}.gc.cn .gs{color:#ffa726}.gc.cb .gv{color:#42a5f5}.gc.cb .gs{color:#42a5f5}
+.stl{font-size:.8em;text-transform:uppercase;letter-spacing:1.5px;font-weight:800;color:#00bcd4;margin:22px 0 12px;display:flex;align-items:center;gap:8px;padding-bottom:8px;border-bottom:1px solid #152030}
+.chc{background:#131e2c;border:1px solid #1e2e3e;border-radius:12px;padding:16px;margin-bottom:14px}.chc h4{font-size:.74em;color:#80deea;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;font-weight:700;text-align:center}.chc canvas{max-height:280px}.chg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.anl{border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:4px solid;background:linear-gradient(90deg,rgba(0,0,0,.2),transparent)}.anl h4{font-size:.76em;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-weight:800}.anl p{font-size:.83em;line-height:1.8;color:#b0bec5}.anl .hl{color:#ffd740;font-weight:700}.anl .ps{color:#81c784;font-weight:700}.anl .ng{color:#ef5350;font-weight:700}.anl .bl{color:#80deea;font-weight:700}
+.anl-c{border-color:#00bcd4}.anl-c h4{color:#80deea}.anl-r{border-color:#ef5350}.anl-r h4{color:#ef5350}.anl-y{border-color:#ffa726}.anl-y h4{color:#ffd740}.anl-g{border-color:#4CAF50}.anl-g h4{color:#81c784}.anl-b{border-color:#42a5f5}.anl-b h4{color:#42a5f5}.anl-w{border-color:#fff}.anl-w h4{color:#fff}
+.thermo{background:#131e2c;border-radius:14px;padding:18px;border:1px solid #1e2e3e;margin-bottom:14px}.thermo h4{text-align:center;font-size:.74em;color:#80deea;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:14px}.th-bar{height:20px;background:linear-gradient(90deg,#1b5e20 0%,#4CAF50 20%,#8bc34a 35%,#ffd740 50%,#ff9800 65%,#ef5350 80%,#b71c1c 100%);border-radius:10px;position:relative;margin:28px 10px 12px}.th-mk{position:absolute;top:-24px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center}.th-mk .arr{width:3px;height:44px;border-radius:2px;background:#fff;box-shadow:0 0 8px rgba(255,255,255,.3)}.th-mk .lbl{font-size:.66em;font-weight:800;padding:4px 10px;border-radius:6px;white-space:nowrap;margin-top:4px;box-shadow:0 2px 8px rgba(0,0,0,.3)}.th-labels{display:flex;justify-content:space-between;padding:0 10px;font-size:.64em;color:#546e7a;font-weight:700}
+.alrt{border-radius:10px;padding:14px 16px;margin-bottom:12px;display:flex;gap:12px;align-items:flex-start;border:1px solid}.alrt .ai{font-size:1.4em;flex-shrink:0}.alrt h5{font-size:.72em;text-transform:uppercase;letter-spacing:.5px;font-weight:700;margin-bottom:3px}.alrt p{font-size:.78em;line-height:1.65}
+.al-w{border-color:#e65100;background:rgba(255,152,0,.04)}.al-w h5{color:#ffa726}.al-w p{color:#ffe0b2}.al-g{border-color:#2e7d32;background:rgba(76,175,80,.04)}.al-g h5{color:#81c784}.al-g p{color:#c8e6c9}.al-d{border-color:#c62828;background:rgba(239,83,80,.04)}.al-d h5{color:#ef5350}.al-d p{color:#ef9a9a}.al-b{border-color:#1565c0;background:rgba(66,165,245,.04)}.al-b h5{color:#42a5f5}.al-b p{color:#bbdefb}.al-c{border-color:#00838f;background:rgba(0,188,212,.04)}.al-c h5{color:#80deea}.al-c p{color:#b2ebf2}
+.sc-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}.sc{border-radius:12px;padding:16px;border:2px solid}.sc h4{font-size:.74em;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-weight:800}.sc p{font-size:.78em;line-height:1.7}.sc ul{font-size:.76em;line-height:1.8;padding-left:16px;margin-top:6px}.sc-g{background:rgba(76,175,80,.04);border-color:#2e7d32}.sc-g h4{color:#81c784}.sc-g p,.sc-g li{color:#a5d6a7}.sc-r{background:rgba(239,83,80,.03);border-color:#c62828}.sc-r h4{color:#ef5350}.sc-r p,.sc-r li{color:#ef9a9a}
+/* FEIRA */
+.feira-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:16px}.feira{background:#131e2c;border-radius:12px;padding:14px;border:1px solid #1e2e3e;position:relative;overflow:hidden}.feira::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#00bcd4,#ffd740)}.feira .fn{font-size:.82em;font-weight:800;color:#fff;margin-bottom:4px}.feira .fd{font-size:.7em;color:#80deea;font-weight:600}.feira .fl{font-size:.66em;color:#78909c;margin-top:2px}.feira .ft{font-size:.64em;color:#ffd740;font-weight:700;margin-top:6px;padding:3px 10px;background:rgba(255,215,64,.08);border-radius:4px;display:inline-block}
+.proj-g{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}.proj{background:#131e2c;border-radius:12px;padding:18px;text-align:center;border:1px solid #1e2e3e;position:relative;overflow:hidden}.proj::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}.proj.pu::before{background:linear-gradient(90deg,#b71c1c,#ef5350)}.proj.pn::before{background:linear-gradient(90deg,#006064,#80deea)}.proj .pd{font-size:.66em;color:#78909c;text-transform:uppercase;letter-spacing:1px;font-weight:700}.proj .pv{font-size:1.1em;font-weight:900;margin:8px 0 4px}.proj .pr{font-size:.68em;color:#546e7a;font-weight:600}.proj .pvs{font-size:.74em;font-weight:700;padding:5px 16px;border-radius:22px;display:inline-block;margin-top:8px}.proj.pu .pv{color:#ef5350}.proj.pu .pvs{background:rgba(239,83,80,.12);color:#ef5350}.proj.pn .pv{color:#80deea}.proj.pn .pvs{background:rgba(0,188,212,.12);color:#80deea}
+.cred{background:linear-gradient(135deg,#081a20,#0d2530);border:2px solid #00838f;border-radius:16px;padding:24px;margin-top:22px}.cred-in{display:flex;gap:20px;align-items:center}.cred-av{width:72px;height:72px;background:linear-gradient(135deg,#00bcd4,#006064);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.9em;flex-shrink:0;box-shadow:0 4px 20px rgba(0,188,212,.3)}.cred h3{font-size:1em;font-weight:900;color:#fff}.cred .ti{font-size:.76em;color:#80deea;font-weight:700;margin-top:2px}.cred .ds{font-size:.72em;color:#4dd0e1;margin-top:5px;line-height:1.5;font-style:italic}.cred .ct{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px}.cred .ct a,.cred .ct span{font-size:.7em;color:#b2ebf2;text-decoration:none;display:flex;align-items:center;gap:4px;font-weight:600;padding:4px 10px;background:rgba(255,255,255,.03);border-radius:6px;border:1px solid rgba(0,188,212,.15)}.cred .ct a:hover{background:rgba(0,188,212,.1);color:#fff}
+.disc{margin-top:16px;padding:14px;background:rgba(255,255,255,.02);border-radius:10px;font-size:.64em;color:#37474f;line-height:1.6;text-align:center;border:1px solid rgba(255,255,255,.03)}
+.ftr{text-align:center;padding:14px;font-size:.66em;color:#263238;border-radius:0 0 14px 14px;background:#060a12}
+@media(max-width:768px){.topbar{flex-direction:column;text-align:center;gap:8px}.topbar .ed{text-align:center}.hdr h1{font-size:1.05em}.flash{grid-template-columns:1fr;text-align:center}.gr{grid-template-columns:repeat(3,1fr)}.chg,.sc-grid,.proj-g{grid-template-columns:1fr}.cred-in{flex-direction:column;text-align:center}.cred .ct{justify-content:center}.feira-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.gr{grid-template-columns:repeat(2,1fr)}.feira-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="pg">
+<div class="topbar">
+    <div class="logo"><div class="logo-ic">🧪</div><div class="logo-txt"><h2>RURAL IN</h2><small>Inteligência para o Agronegócio</small></div></div>
+    <div class="ed"><div class="dt">Quarta, 25 de Março de 2026</div><div class="inf">Radar Agro Fertilizantes · Edição Especial · Análise de Mercado</div></div>
+</div>
+<div class="hdr">
+    <h1>🧪 Radar Agro — Fertilizantes</h1>
+    <div class="sub">Panorama 25/03/2026 · Ureia · MAP · KCl · Safra 26/27 · Feiras · Barter · Geopolítica</div>
+    <div class="pills">
+        <span class="pill pill-r">UREIA +35% em 2 semanas</span>
+        <span class="pill pill-r">MAP ~US$ 1.000/t no interior</span>
+        <span class="pill pill-y">KCl US$ 370-380 CFR</span>
+        <span class="pill pill-c">Import. Brasil ▼ queda</span>
+        <span class="pill pill-g">🎪 Feiras: Janela de Barter!</span>
+    </div>
+</div>
+<div class="mn">
+
+<!-- FLASH -->
+<div class="flash">
+    <div class="emo">⚠️</div>
+    <div class="txt">
+        <h3>Alerta: Fertilizantes em Forte Alta — Guerra no Oriente Médio Pressiona</h3>
+        <p>O mercado de fertilizantes vive o momento mais tenso desde 2022. A <strong>ureia CFR Brasil disparou +35% em 2 semanas</strong>, de ~US$ 475 para US$ 500-550/t, impulsionada pelo conflito no Oriente Médio. O <strong>MAP voltou a US$ 1.000/t no interior do Brasil</strong> — patamar de 2022. Importações de ureia caíram <strong>-33%</strong> no 1ºT/2026. Relação de troca soja/fertilizante é a <strong>pior em anos</strong>. Sulfato de amônio (+19% nas importações) ganha espaço como alternativa. Produtor que não posicionou para a safra 26/27 precisa monitorar <strong>feiras agro</strong> como janela de oportunidade em barter.</p>
+    </div>
+</div>
+
+<!-- PAINEL -->
+<div class="gr">
+    <div class="gc cu"><div class="gl">Ureia CFR BR</div><div class="gv">$500-550/t</div><div class="gs">▲ +35% (2 sem)</div><div class="gsub">Granulada</div></div>
+    <div class="gc cu"><div class="gl">MAP CFR BR</div><div class="gv">$730-740/t</div><div class="gs">▲ Estável/Alta</div><div class="gsub">11-52-00</div></div>
+    <div class="gc cu"><div class="gl">MAP Interior</div><div class="gv">~$1.000/t</div><div class="gs">▲ Nível 2022!</div><div class="gsub">No produtor</div></div>
+    <div class="gc cn"><div class="gl">KCl CFR BR</div><div class="gv">$370-380/t</div><div class="gs">≈ Estável</div><div class="gsub">MOP/Potássio</div></div>
+    <div class="gc cd"><div class="gl">SAM CFR BR</div><div class="gv">$220-230/t</div><div class="gs">▲ Alta leve</div><div class="gsub">Alternativa N</div></div>
+    <div class="gc cu"><div class="gl">SSP Interior</div><div class="gv">Pressionado</div><div class="gs">▲ Alta</div><div class="gsub">Fosfatado</div></div>
+    <div class="gc cn"><div class="gl">IPCF (Fev)</div><div class="gv">1,28</div><div class="gs">▲ vs 1,20 (Jan)</div><div class="gsub">Poder de Compra</div></div>
+    <div class="gc cu"><div class="gl">Brent Oil</div><div class="gv">$98,78</div><div class="gs">▲ +2,36%</div><div class="gsub">Pressiona N</div></div>
+    <div class="gc cn"><div class="gl">Dólar</div><div class="gv">R$ 5,238</div><div class="gs">≈ Estável</div><div class="gsub">Encarece import.</div></div>
+    <div class="gc cu"><div class="gl">Gás Natural</div><div class="gv">Pressionado</div><div class="gs">▲ Conflito</div><div class="gsub">Insumo Ureia</div></div>
+    <div class="gc cd"><div class="gl">Import. Ureia BR</div><div class="gv">-33%</div><div class="gs">▼ 1ºT 2026</div><div class="gsub">Queda forte</div></div>
+    <div class="gc cb"><div class="gl">Import. SAM BR</div><div class="gv">+19%</div><div class="gs">▲ Substituição</div><div class="gsub">Recorde 2025</div></div>
+</div>
+
+<!-- GRÁFICOS -->
+<h3 class="stl">📊 Evolução dos Preços — Fertilizantes CFR Brasil</h3>
+<div class="chc"><h4>Ureia · MAP · KCl — CFR Brasil (US$/t) · Set/25 a Mar/26</h4><canvas id="ch1"></canvas></div>
+
+<h3 class="stl">📈 Análise Comparativa</h3>
+<div class="chg">
+    <div class="chc"><h4>Variação Acumulada 2026 (%)</h4><canvas id="ch2"></canvas></div>
+    <div class="chc"><h4>Relação de Troca: Sacas Soja / t Fertilizante</h4><canvas id="ch3"></canvas></div>
+</div>
+
+<div class="chg">
+    <div class="chc"><h4>Importações BR — Comparativo 1ºT 2025 vs 2026</h4><canvas id="ch4"></canvas></div>
+    <div class="chc"><h4>Origem Ureia Importada pelo BR (%)</h4><canvas id="ch5"></canvas></div>
+</div>
+
+<!-- ANÁLISES -->
+<h3 class="stl">🔍 Análise Fundamentalista por Nutriente</h3>
+
+<div class="anl anl-r">
+    <h4>🔴 Nitrogênio (N) — Ureia Dispara +35%: Oriente Médio é o Epicentro</h4>
+    <p>A ureia granulada CFR Brasil saltou de <span class="ng">~US$ 475/t para US$ 500-550/t em apenas 2 semanas</span> — a alta mais violenta desde a crise de 2022. O gatilho: <span class="ng">conflito no Oriente Médio</span>, região que detém <span class="hl">35% do comércio marítimo global de ureia</span>. Irã e Omã responderam por 18,4% das importações brasileiras em 2025. Produtores da região avaliaram disponibilidade, custos de frete pelo <span class="ng">Estreito de Ormuz</span> dispararam. A maioria dos participantes <span class="ng">retirou ofertas de compra e venda</span> (Argus). Importações de ureia pelo Brasil caíram <span class="ng">-33% no 1ºT/2026</span>. Alternativa: <span class="bl">sulfato de amônio (SAM)</span>, cujas importações subiram +19% e superaram as de ureia pela 1ª vez em 2025 (7,8 mi t vs 7,7 mi t).</p>
+</div>
+<div class="anl anl-y">
+    <h4>🟡 Fósforo (P) — MAP de Volta a US$ 1.000/t: Relação de Troca Destruída</h4>
+    <p>O MAP 11-52 permanece em <span class="hl">US$ 730-740/t CFR Brasil</span>, mas no interior do país o preço chega a <span class="ng">~US$ 1.000/t — patamar de 2022</span>. A diferença: em 2022 a soja estava acima de R$ 180/sc. Hoje, com soja a R$ 106/sc em Goiás, a <span class="ng">relação de troca é a pior da série</span>. Antes do conflito, o fósforo já operava em equilíbrio delicado oferta/demanda. A <span class="ng">China sinalizou novas medidas protecionistas</span> para fosfatados — pode restringir exportações, apertando ainda mais o balanço global. A Arábia Saudita (24% do MAP importado pelo BR em 2025) mantém operações, mas embarques via Estreito podem ser afetados.</p>
+</div>
+<div class="anl anl-c">
+    <h4>🔵 Potássio (K) — KCl Estável por Ora, mas em Observação</h4>
+    <p>O cloreto de potássio (MOP/KCl) foi o <span class="bl">menos afetado</span> pelo conflito no curto prazo: <span class="hl">US$ 370-380/t CFR Brasil</span>, praticamente estável. As fontes de potássio (Canadá, Rússia, Belarus) estão fora da zona de conflito direta. Porém, a <span class="hl">Rússia segue como fornecedor-chave</span> e qualquer escalada de sanções pode pressionar. A China pode demandar mais potássio se restringir fosfatados. O produtor brasileiro deve aproveitar a <span class="ps">estabilidade relativa do KCl</span> para posicionar agora.</p>
+</div>
+
+<!-- TÉCNICA -->
+<h3 class="stl">📐 Análise Técnica — Tendências de Preço</h3>
+<div class="anl anl-w">
+    <h4>📊 Leitura Gráfica dos Fertilizantes</h4>
+    <p><strong>Ureia:</strong> Rompeu violentamente a <span class="ng">resistência de US$ 500/t</span>. Sem teto definido enquanto o conflito perdurar. Suporte anterior vira piso: <span class="hl">US$ 475/t</span>. Se escalar para US$ 600+, repete nível de 2022. <span class="ng">Tendência de alta forte.</span></p>
+    <p style="margin-top:8px"><strong>MAP:</strong> Lateralizou entre <span class="hl">US$ 640-740/t CFR</span> por meses e agora rompe para cima. No interior, <span class="ng">US$ 1.000/t é resistência psicológica</span>. Acima disso, território de 2022. <span class="ng">Tendência de alta.</span></p>
+    <p style="margin-top:8px"><strong>KCl:</strong> Opera em <span class="bl">range lateral US$ 360-380/t</span> desde jan/26. <span class="bl">Sem pressão direcional no curto prazo.</span> Janela de compra para quem ainda não posicionou.</p>
+</div>
+
+<!-- TERMÔMETROS -->
+<h3 class="stl">🌡️ Termômetros de Alerta</h3>
+<div class="thermo">
+    <h4>⚠️ Nível de Alerta Geral — Fertilizantes</h4>
+    <div class="th-bar"><div class="th-mk" style="left:72%"><div class="arr"></div><div class="lbl" style="background:#ef5350;color:#fff">ALERTA ALTO</div></div></div>
+    <div class="th-labels"><span>🟢 Tranquilo</span><span>🟡 Atenção</span><span>🔴 Crítico</span></div>
+</div>
+<div class="chg">
+    <div class="thermo"><h4>🧪 Ureia — Pressão de Preço</h4>
+        <div class="th-bar"><div class="th-mk" style="left:82%"><div class="arr"></div><div class="lbl" style="background:#b71c1c;color:#fff">CRÍTICO (+35%)</div></div></div>
+        <div class="th-labels"><span>Barato</span><span>Normal</span><span>Caro</span></div>
+    </div>
+    <div class="thermo"><h4>🧪 MAP — Pressão de Preço</h4>
+        <div class="th-bar"><div class="th-mk" style="left:75%"><div class="arr"></div><div class="lbl" style="background:#ef5350;color:#fff">ALTO ($1.000 int.)</div></div></div>
+        <div class="th-labels"><span>Barato</span><span>Normal</span><span>Caro</span></div>
+    </div>
+</div>
+<div class="chg">
+    <div class="thermo"><h4>🧪 KCl — Pressão de Preço</h4>
+        <div class="th-bar"><div class="th-mk" style="left:48%"><div class="arr"></div><div class="lbl" style="background:#ffd740;color:#000">MODERADO ($370-380)</div></div></div>
+        <div class="th-labels"><span>Barato</span><span>Normal</span><span>Caro</span></div>
+    </div>
+    <div class="thermo"><h4>💰 Relação de Troca Soja/Fert.</h4>
+        <div class="th-bar"><div class="th-mk" style="left:78%"><div class="arr"></div><div class="lbl" style="background:#ef5350;color:#fff">PIOR EM ANOS</div></div></div>
+        <div class="th-labels"><span>Favorável</span><span>Neutra</span><span>Desfavorável</span></div>
+    </div>
+</div>
+
+<!-- FEIRAS -->
+<h3 class="stl">🎪 Feiras Agro — Janela de Oportunidade para Barter Safra 26/27</h3>
+<div class="anl anl-g">
+    <h4>💡 Estratégia: Feiras Como Oportunidade de Posicionamento</h4>
+    <p>Produtor que <span class="ps">ainda não posicionou fertilizante para a safra 26/27</span> precisa ficar atento: as feiras agro do 1º semestre são historicamente o momento em que <span class="hl">empresas e cooperativas lançam campanhas agressivas de barter</span> (troca de grãos por insumos). Em um cenário de preços elevados, as <span class="ps">condições de feira podem ser significativamente melhores</span> que o balcão — especialmente para quem troca soja ou milho da safra 25/26 por fertilizantes da 26/27. O poder de negociação é maior em eventos presenciais, com <span class="hl">desconto por volume, condições especiais de frete e parcelamento</span>.</p>
+</div>
+
+<div class="feira-grid">
+    <div class="feira"><div class="fn">🎪 Tecnoshow Comigo</div><div class="fd">📅 7 a 11 de Abril/2026</div><div class="fl">📍 Rio Verde/GO</div><div class="ft">🔥 PRÓXIMA — Oportunidade local!</div></div>
+    <div class="feira"><div class="fn">🎪 Agrishow 2026</div><div class="fd">📅 27 Abr a 01 Mai/2026</div><div class="fl">📍 Ribeirão Preto/SP</div><div class="ft">🏆 Maior feira agro do Brasil</div></div>
+    <div class="feira"><div class="fn">🎪 AgroBrasília</div><div class="fd">📅 Mai/2026</div><div class="fl">📍 Brasília/DF</div><div class="ft">📊 Foco no Cerrado</div></div>
+    <div class="feira"><div class="fn">🎪 Bahia Farm Show</div><div class="fd">📅 Jun/2026</div><div class="fl">📍 Luís Eduardo Magalhães/BA</div><div class="ft">🌾 MATOPIBA em foco</div></div>
+    <div class="feira"><div class="fn">🎪 TecnoAgro</div><div class="fd">📅 Já realizada (17-19 Mar)</div><div class="fl">📍 Chapadão do Sul/MS</div><div class="ft">✅ +21 mil visitantes</div></div>
+    <div class="feira"><div class="fn">🎪 Show Safra</div><div class="fd">📅 Mar/2026 (realizada)</div><div class="fl">📍 Maracaju/MS</div><div class="ft">✅ Encerrada</div></div>
+</div>
+
+<div class="anl anl-y">
+    <h4>📋 Checklist do Produtor — Posicionamento na Feira</h4>
+    <p>1. <span class="hl">Faça simulação de custo</span> antes da feira: calcule a relação de troca soja/milho por tonelada de cada nutriente<br>
+    2. <span class="ps">Priorize KCl agora</span> — está no menor patamar relativo e pode subir com qualquer escalada<br>
+    3. <span class="bl">Avalie sulfato de amônio</span> como alternativa à ureia — menor concentração mas custo/efetivo pode ser melhor<br>
+    4. <span class="hl">Negocie barter com soja/milho disponível</span> — grão na mão é moeda forte<br>
+    5. <span class="ng">Cuidado com a tentação de esperar</span> — o cenário geopolítico pode piorar e preços subirem mais<br>
+    6. Compare condições entre <span class="ps">cooperativas e revendas</span> — feiras permitem negociação lado a lado<br>
+    7. <span class="hl">Parcele estrategicamente</span> — Selic alta pesa no custo financeiro do estoque</p>
+</div>
+
+<!-- CENÁRIOS -->
+<h3 class="stl">🎯 Cenários para os Próximos Dias e Semanas</h3>
+<div class="sc-grid">
+    <div class="sc sc-r">
+        <h4>🔴 Cenário de Alta (60% probabilidade)</h4>
+        <p>📌 <strong>Ureia:</strong> US$ 550 – 600/t CFR</p>
+        <p>📌 <strong>MAP:</strong> US$ 750 – 800/t CFR</p>
+        <ul>
+            <li>Conflito no Oriente Médio escala — Ormuz comprometido</li>
+            <li>China restringe exportação de fosfatados</li>
+            <li>Gás natural em alta pressiona custos de produção</li>
+            <li>Corrida para compras antes da safra 26/27</li>
+            <li>Importações brasileiras seguem em queda (-33%)</li>
+        </ul>
+    </div>
+    <div class="sc sc-g">
+        <h4>🟢 Cenário de Acomodação (40% probabilidade)</h4>
+        <p>📌 <strong>Ureia:</strong> US$ 480 – 520/t CFR</p>
+        <p>📌 <strong>MAP:</strong> US$ 700 – 740/t CFR</p>
+        <ul>
+            <li>Cessar-fogo ou desescalada no Oriente Médio</li>
+            <li>China flexibiliza exportações de fosfatados</li>
+            <li>Demanda sazonal baixa no Brasil (entre-safras)</li>
+            <li>Produtor segura compras — demanda mais fraca</li>
+            <li>Dólar recua abaixo de R$ 5,15</li>
+        </ul>
+    </div>
+</div>
+
+<h3 class="stl">📅 Projeção Curto Prazo (26-27/03)</h3>
+<div class="proj-g">
+    <div class="proj pu"><div class="pd">Ureia CFR Brasil</div><div class="pv">US$ 520 – 560/t</div><div class="pr">Viés de alta se conflito persistir</div><div class="pvs">▲ PRESSÃO ALTISTA</div></div>
+    <div class="proj pn"><div class="pd">KCl CFR Brasil</div><div class="pv">US$ 370 – 385/t</div><div class="pr">Estável — janela de compra</div><div class="pvs">↔️ ESTÁVEL — COMPRE</div></div>
+</div>
+
+<div class="anl anl-c">
+    <h4>🧠 Racional Estratégico para o Produtor</h4>
+    <p>O mercado de fertilizantes está em <span class="ng">modo de crise</span>. A combinação de <span class="ng">conflito no Oriente Médio + China protecionista + estoques ajustados</span> cria um cenário estruturalmente altista. Para o produtor de Goiás que recebe <span class="hl">soja a R$ 106/sc e milho a R$ 58/sc</span>, a relação de troca é desfavorável. Estratégia recomendada: <span class="ps">(1) Posicionar KCl imediatamente</span> — menor risco de alta; <span class="ps">(2) Avaliar SAM como substituto parcial da ureia</span>; <span class="ps">(3) Usar as feiras (Tecnoshow 7-11/abr, Agrishow 27/abr)</span> como palco de negociação — condições de barter tendem a ser melhores; <span class="hl">(4) Travar câmbio em operações dolarizadas</span>; (5) Parcelar com cautela — Selic alta encarece financiamento.</p>
+</div>
+
+<!-- GRÁFICOS EXTRAS -->
+<h3 class="stl">📊 Painéis Visuais Complementares</h3>
+<div class="chg">
+    <div class="chc"><h4>📊 Custo Estimado NPK por Hectare (Soja GO)</h4><canvas id="ch6"></canvas></div>
+    <div class="chc"><h4>📈 Ureia: Comparação Pré vs Pós Conflito</h4><canvas id="ch7"></canvas></div>
+</div>
+
+<!-- MACRO -->
+<h3 class="stl">🌐 Fatores Macro & Geopolíticos</h3>
+<div class="alrt al-d"><div class="ai">💥</div><div><h5>Conflito no Oriente Médio — Driver #1 dos Fertilizantes</h5><p>Região detém 35% do comércio marítimo de ureia. Estreito de Ormuz é rota crítica. Irã + Omã = 18,4% da ureia brasileira. Qualquer interrupção logística pressiona preços globalmente. Brent a US$ 98,78 encarece gás natural (insumo da ureia).</p></div></div>
+<div class="alrt al-w"><div class="ai">🇨🇳</div><div><h5>China — Protecionismo em Fosfatados</h5><p>Novas medidas protecionistas chinesas para fosfatados podem restringir exportações. China é o maior produtor mundial de MAP/DAP. Se concretizar, aperto global de fosfatados se intensifica.</p></div></div>
+<div class="alrt al-b"><div class="ai">🇷🇺</div><div><h5>Rússia/Belarus — Fornecedores de Potássio sob Sanções</h5><p>Sanções ocidentais sobre Rússia e Belarus seguem no radar. Canadá e Rússia são os maiores produtores de potássio. Qualquer endurecimento pode afetar KCl.</p></div></div>
+<div class="alrt al-c"><div class="ai">🇧🇷</div><div><h5>Plano Nacional de Fertilizantes — Não Saiu do Papel</h5><p>Brasil importa ~85% dos fertilizantes. Plano Nacional prometido segue sem avanço concreto, segundo relato de senadora. Dependência externa continua como vulnerabilidade estratégica.</p></div></div>
+<div class="alrt al-w"><div class="ai">💱</div><div><h5>Câmbio R$ 5,238 · Selic Elevada</h5><p>Dólar estável encarece compra em reais de insumos dolarizados. Selic alta eleva custo financeiro de estocar fertilizante. Produtor precisa calcular custo total (preço + frete + juros).</p></div></div>
+
+<!-- CREDENCIAL -->
+<div class="cred">
+    <div class="cred-in">
+        <div class="cred-av">👨‍💼</div>
+        <div>
+            <h3>Dr. Sidney Souza</h3>
+            <div class="ti">Economista Agrícola · Estrategista Econômico do Produtor</div>
+            <div class="ds">Especialista em economia da fazenda e gestão de risco no agro<br>Transformamos dados da fazenda em decisões econômicas<br>Ajudamos produtores a entender se o mercado sustenta seu negócio</div>
+            <div class="ct">
+                <a href="mailto:sidneyagro@gmail.com">📧 sidneyagro@gmail.com</a>
+                <a href="https://wa.me/5564992266886">📱 (64) 9 9226-6886</a>
+                <span>📸 @ruralin.ai</span>
+                <span>📸 @sidneyagrosa</span>
+            </div>
+        </div>
+    </div>
+    <div class="disc">⚠️ <strong>Disclaimer:</strong> Material exclusivamente informativo e educacional. Não constitui recomendação de compra. Fontes: Argus, StoneX, AgroPlanning, Farmnews, Itaú BBA, Agrolink, CONAB, ANDA, SECEX, Globo Rural, Forbes, CNN Brasil.</div>
+</div>
+</div>
+<div class="ftr">RURAL IN © 2026 · Inteligência para o Agronegócio · Dr. Sidney Souza · Rio Verde/GO 🇧🇷</div>
+</div>
+
+<script>
+Chart.defaults.color='#78909c';Chart.defaults.font.family='Inter';Chart.defaults.font.size=11;
+const df={family:'Inter',weight:'600'};
+const tt={backgroundColor:'#131e2c',titleColor:'#80deea',bodyColor:'#e5e7eb',borderColor:'#00838f',borderWidth:1,padding:12,cornerRadius:8};
+
+// 1. EVOLUÇÃO CFR
+const m1=['Set/25','Out/25','Nov/25','Dez/25','Jan/26','Fev/26','Mar/26 (1ª)','Mar/26 (3ª)'];
+const ur=[420,430,415,395,412,475,500,540];
+const mp=[660,670,660,640,640,690,730,740];
+const kc=[350,355,355,350,360,370,375,378];
+new Chart(document.getElementById('ch1'),{type:'line',data:{labels:m1,datasets:[
+{label:'Ureia',data:ur,borderColor:'#ef5350',backgroundColor:'rgba(239,83,80,.06)',borderWidth:3,fill:false,tension:.3,pointRadius:ur.map((_,i)=>i>=6?7:3),pointBackgroundColor:ur.map((_,i)=>i>=6?'#ef5350':'rgba(239,83,80,.6)')},
+{label:'MAP',data:mp,borderColor:'#ffd740',backgroundColor:'rgba(255,215,64,.06)',borderWidth:3,fill:false,tension:.3,pointRadius:3},
+{label:'KCl',data:kc,borderColor:'#00bcd4',backgroundColor:'rgba(0,188,212,.06)',borderWidth:3,fill:false,tension:.3,pointRadius:3}
+]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:14}},tooltip:{...tt,callbacks:{label:c=>c.dataset.label+': US$ '+c.parsed.y+'/t'}},annotation:{annotations:{conflito:{type:'line',xMin:5.5,xMax:5.5,borderColor:'rgba(239,83,80,.5)',borderWidth:2,borderDash:[6,4],label:{display:true,content:'⚠️ Conflito O.Médio',position:'start',backgroundColor:'#ef5350',color:'#fff',font:{size:9,weight:'bold'},padding:3}}}}},scales:{y:{min:300,max:800,grid:{color:'rgba(255,255,255,.04)'},ticks:{callback:v=>'$'+v,font:df}},x:{grid:{display:false},ticks:{font:{...df,size:9},maxRotation:30}}}}});
+
+// 2. VAR ACUMULADA
+const vn=['Ureia','MAP','KCl','SAM','Brent'];
+const vv=[35,15.6,5.1,10,18];
+new Chart(document.getElementById('ch2'),{type:'bar',data:{labels:vn,datasets:[{data:vv,backgroundColor:vv.map(v=>v>=30?'rgba(239,83,80,.6)':v>=10?'rgba(255,215,64,.5)':'rgba(0,188,212,.5)'),borderColor:vv.map(v=>v>=30?'#ef5350':v>=10?'#ffd740':'#00bcd4'),borderWidth:2,borderRadius:6}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:{...tt,callbacks:{label:c=>'+'+c.parsed.y.toFixed(1)+'%'}}},scales:{y:{grid:{color:'rgba(255,255,255,.04)'},ticks:{callback:v=>'+'+v+'%',font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+
+// 3. RELAÇÃO DE TROCA
+const rt_l=['Ureia','MAP','KCl'];
+const rt_atual=[4.8,6.8,3.3];
+const rt_ideal=[3.2,4.5,2.8];
+new Chart(document.getElementById('ch3'),{type:'bar',data:{labels:rt_l,datasets:[
+{label:'Atual (Mar/26)',data:rt_atual,backgroundColor:'rgba(239,83,80,.5)',borderColor:'#ef5350',borderWidth:2,borderRadius:6},
+{label:'Ideal (Média 5a)',data:rt_ideal,backgroundColor:'rgba(0,188,212,.4)',borderColor:'#00bcd4',borderWidth:2,borderRadius:6}
+]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:14}},tooltip:{...tt,callbacks:{label:c=>c.parsed.y.toFixed(1)+' sc soja/t'}}},scales:{y:{grid:{color:'rgba(255,255,255,.04)'},ticks:{callback:v=>v+' sc',font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+
+// 4. IMPORTAÇÕES
+const im_l=['Ureia','SAM','MAP','KCl'];
+const im_25=[2.8,2.2,1.6,2.4];
+const im_26=[1.9,2.6,1.3,2.2];
+new Chart(document.getElementById('ch4'),{type:'bar',data:{labels:im_l,datasets:[
+{label:'1ºT 2025 (mi t)',data:im_25,backgroundColor:'rgba(66,165,245,.4)',borderColor:'#42a5f5',borderWidth:2,borderRadius:6},
+{label:'1ºT 2026 (mi t)',data:im_26,backgroundColor:'rgba(0,188,212,.5)',borderColor:'#00bcd4',borderWidth:2,borderRadius:6}
+]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:14}},tooltip:{...tt,callbacks:{label:c=>c.parsed.y.toFixed(1)+' mi t'}}},scales:{y:{grid:{color:'rgba(255,255,255,.04)'},ticks:{callback:v=>v+' mi',font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+
+// 5. ORIGEM UREIA
+new Chart(document.getElementById('ch5'),{type:'doughnut',data:{labels:['Irã/Omã (O.Médio)','China','Rússia','Outros','Egito'],datasets:[{data:[18.4,22,15,30.6,14],backgroundColor:['#ef5350','#ffd740','#42a5f5','#78909c','#80deea'],borderColor:'#131e2c',borderWidth:3}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{position:'bottom',labels:{font:{...df,size:10},boxWidth:12,padding:10}},tooltip:{...tt,callbacks:{label:c=>c.label+': '+c.parsed+'%'}}}}});
+
+// 6. CUSTO NPK
+const cn=['N (Ureia)','P (MAP)','K (KCl)','Frete/Log','Total/ha'];
+const cv=[420,680,310,180,1590];
+new Chart(document.getElementById('ch6'),{type:'bar',data:{labels:cn,datasets:[{data:cv,backgroundColor:['rgba(239,83,80,.5)','rgba(255,215,64,.5)','rgba(0,188,212,.5)','rgba(120,144,156,.4)','rgba(255,255,255,.15)'],borderColor:['#ef5350','#ffd740','#00bcd4','#78909c','#fff'],borderWidth:2,borderRadius:6}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:{...tt,callbacks:{label:c=>'R$ '+c.parsed.y+'/ha'}},annotation:{annotations:{t:{type:'label',xValue:4,yValue:1650,content:'~R$ 1.590/ha',font:{size:12,weight:'bold'},color:'#ffd740'}}}},scales:{y:{grid:{color:'rgba(255,255,255,.04)'},ticks:{callback:v=>'R$ '+v,font:df}},x:{grid:{display:false},ticks:{font:{...df,size:9}}}}}});
+
+// 7. UREIA PRÉ vs PÓS
+const up_l=['Pré-conflito\n(Fev/26)','Pico conflito\n(Mar 1ªsem)','Atual\n(Mar 3ªsem)','Cenário\nBaixista','Cenário\nAltista'];
+const up_v=[475,500,540,490,600];
+const up_c=up_v.map(v=>v>=550?'rgba(239,83,80,.6)':v>=500?'rgba(255,215,64,.5)':'rgba(0,188,212,.5)');
+new Chart(document.getElementById('ch7'),{type:'bar',data:{labels:up_l,datasets:[{data:up_v,backgroundColor:up_c,borderColor:up_v.map(v=>v>=550?'#ef5350':v>=500?'#ffd740':'#00bcd4'),borderWidth:2,borderRadius:8}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:{...tt,callbacks:{label:c=>'US$ '+c.parsed.y+'/t CFR'}},annotation:{annotations:{ref:{type:'line',yMin:475,yMax:475,borderColor:'#00bcd4',borderWidth:1.5,borderDash:[5,4],label:{display:true,content:'Pré-conflito $475',position:'start',backgroundColor:'rgba(0,188,212,.8)',color:'#fff',font:{size:8,weight:'bold'},padding:2}}}}},scales:{y:{min:400,max:650,grid:{color:'rgba(255,255,255,.04)'},ticks:{callback:v=>'$'+v,font:df}},x:{grid:{display:false},ticks:{font:{...df,size:9},maxRotation:0}}}}});
+</script>
+</body>
+</html>
