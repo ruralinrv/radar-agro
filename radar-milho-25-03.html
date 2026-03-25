@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radar Agro Milho — 25/03/2026 | Rural IN</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#060a12;color:#e0e0e0;min-height:100vh}
+.pg{max-width:940px;margin:0 auto;padding:10px}
+.topbar{background:linear-gradient(90deg,#0d1520,#1c1a0a,#0d1520);padding:10px 20px;border-radius:14px 14px 0 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #4a3d10;flex-wrap:wrap;gap:8px}
+.topbar .logo{display:flex;align-items:center;gap:12px}
+.topbar .logo-ic{width:52px;height:52px;background:linear-gradient(135deg,#ff8f00,#e65100);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.6em;box-shadow:0 4px 20px rgba(255,143,0,.25)}
+.topbar .logo-txt h2{font-size:1.1em;font-weight:900;color:#fff;letter-spacing:1.5px}
+.topbar .logo-txt small{font-size:.65em;color:#ffcc80;font-weight:600;display:block}
+.topbar .ed{text-align:right}
+.topbar .ed .dt{font-size:.92em;font-weight:800;color:#ffd740}
+.topbar .ed .inf{font-size:.64em;color:#6b7280;font-weight:600}
+.hdr{background:linear-gradient(135deg,#e65100,#bf360c 50%,#ff6f00);padding:24px 20px;text-align:center;border-bottom:3px solid #ff8f00;position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 30px,rgba(255,255,255,.02) 30px,rgba(255,255,255,.02) 60px)}
+.hdr h1{font-size:1.5em;font-weight:900;color:#fff;position:relative;z-index:1;text-transform:uppercase;letter-spacing:3px}
+.hdr .sub{font-size:.82em;color:#ffe0b2;margin-top:6px;font-weight:500;position:relative;z-index:1}
+.hdr .pills{margin-top:12px;display:flex;justify-content:center;gap:6px;flex-wrap:wrap;position:relative;z-index:1}
+.pill{padding:5px 14px;border-radius:22px;font-size:.7em;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.pill-o{background:rgba(255,143,0,.2);color:#ffcc80;border:1px solid rgba(255,143,0,.4)}
+.pill-g{background:rgba(76,175,80,.15);color:#81c784;border:1px solid rgba(76,175,80,.3)}
+.pill-r{background:rgba(239,83,80,.12);color:#ef5350;border:1px solid rgba(239,83,80,.3)}
+.pill-b{background:rgba(66,165,245,.12);color:#42a5f5;border:1px solid rgba(66,165,245,.3)}
+.pill-y{background:rgba(255,215,64,.12);color:#ffd740;border:1px solid rgba(255,215,64,.3)}
+.mn{background:#0e1521;padding:22px;border:1px solid #1e2518;border-top:none}
+.flash{background:linear-gradient(135deg,#1a1508,#1e1a0a);border:2px solid #e65100;border-radius:14px;padding:20px;margin-bottom:20px;display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;box-shadow:0 0 30px rgba(255,143,0,.06)}
+.flash .emo{font-size:3em;text-align:center}
+.flash .txt h3{font-size:.88em;color:#ffcc80;font-weight:800;text-transform:uppercase;letter-spacing:1.5px}
+.flash .txt p{font-size:.84em;color:#ffe0b2;margin-top:5px;line-height:1.75}
+.flash .big{text-align:center}
+.flash .big .num{font-size:2.2em;font-weight:900;color:#fff;line-height:1}
+.flash .big .var{font-size:.95em;font-weight:800;margin-top:4px}
+.flash .big .lbl{font-size:.58em;color:#ffcc80;font-weight:600;margin-top:2px}
+.gr{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;margin-bottom:20px}
+.gc{background:#131e2c;border-radius:11px;padding:13px 8px;text-align:center;border:1px solid #1e2e3e;position:relative;overflow:hidden}
+.gc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.gc.cu::before{background:linear-gradient(90deg,#e65100,#ffcc80)}.gc.cd::before{background:linear-gradient(90deg,#b71c1c,#ef5350)}.gc.cn::before{background:linear-gradient(90deg,#5d4037,#ffd740)}.gc.cb::before{background:linear-gradient(90deg,#0d47a1,#42a5f5)}
+.gc .gl{font-size:.56em;color:#78909c;text-transform:uppercase;letter-spacing:.8px;font-weight:700;margin-bottom:4px}
+.gc .gv{font-size:1.2em;font-weight:900}
+.gc .gs{font-size:.7em;margin-top:3px;font-weight:700}
+.gc.cu .gv{color:#ffcc80}.gc.cu .gs{color:#ff8f00}
+.gc.cd .gv{color:#ef5350}.gc.cd .gs{color:#ef5350}
+.gc.cn .gv{color:#ffd740}.gc.cn .gs{color:#ffa726}
+.gc.cb .gv{color:#42a5f5}.gc.cb .gs{color:#42a5f5}
+.stl{font-size:.82em;text-transform:uppercase;letter-spacing:1.5px;font-weight:800;color:#ff8f00;margin:22px 0 12px;display:flex;align-items:center;gap:8px;padding-bottom:8px;border-bottom:1px solid #2a1e0a}
+.chc{background:#131e2c;border:1px solid #1e2e3e;border-radius:12px;padding:16px;margin-bottom:14px}
+.chc h4{font-size:.76em;color:#ffcc80;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;font-weight:700;text-align:center}
+.chc canvas{max-height:280px}
+.chg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.sem-row{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:20px}
+.sem{border-radius:12px;padding:12px 6px;text-align:center;border:2px solid;position:relative;overflow:hidden}
+.sem::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px}
+.sem .sl{font-size:.58em;color:#78909c;text-transform:uppercase;letter-spacing:.5px;font-weight:700;margin-bottom:3px}
+.sem .sv{font-size:1.05em;font-weight:900}
+.sem .ss{font-size:.66em;font-weight:700;margin-top:2px}
+.sem .sico{font-size:1.3em;margin-bottom:3px}
+.so{border-color:#e65100;background:rgba(255,143,0,.04)}.so::after{background:#ff8f00}.so .sv{color:#ffcc80}.so .ss{color:#ff8f00}
+.sr{border-color:#c62828;background:rgba(239,83,80,.04)}.sr::after{background:#ef5350}.sr .sv{color:#ef5350}.sr .ss{color:#ef5350}
+.sg{border-color:#2e7d32;background:rgba(76,175,80,.04)}.sg::after{background:#4CAF50}.sg .sv{color:#81c784}.sg .ss{color:#4CAF50}
+.sb{border-color:#1565c0;background:rgba(66,165,245,.04)}.sb::after{background:#42a5f5}.sb .sv{color:#42a5f5}.sb .ss{color:#42a5f5}
+.tb{width:100%;border-collapse:collapse;font-size:.78em;margin-bottom:16px;border-radius:10px;overflow:hidden}
+.tb th{background:#0e1825;color:#78909c;padding:9px 10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;font-size:.68em;text-align:left;border-bottom:2px solid #1e2e3e}
+.tb th:not(:first-child){text-align:right}
+.tb td{padding:7px 10px;border-bottom:1px solid #141f2e;font-weight:500}
+.tb td:not(:first-child){text-align:right}
+.tb .pn{color:#e5e7eb;font-weight:600}
+.anl{border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:4px solid;background:linear-gradient(90deg,rgba(0,0,0,.2),transparent)}
+.anl h4{font-size:.76em;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-weight:800}
+.anl p{font-size:.83em;line-height:1.8;color:#b0bec5}
+.anl .hl{color:#ffd740;font-weight:700}.anl .ps{color:#81c784;font-weight:700}.anl .ng{color:#ef5350;font-weight:700}.anl .bl{color:#42a5f5;font-weight:700}.anl .or{color:#ffcc80;font-weight:700}
+.anl-o{border-color:#ff8f00}.anl-o h4{color:#ffcc80}
+.anl-r{border-color:#ef5350}.anl-r h4{color:#ef5350}
+.anl-y{border-color:#ffa726}.anl-y h4{color:#ffd740}
+.anl-b{border-color:#42a5f5}.anl-b h4{color:#42a5f5}
+.anl-g{border-color:#4CAF50}.anl-g h4{color:#81c784}
+.anl-w{border-color:#fff}.anl-w h4{color:#fff}
+.thermo{background:#131e2c;border-radius:14px;padding:18px;border:1px solid #1e2e3e;margin-bottom:14px}
+.thermo h4{text-align:center;font-size:.76em;color:#ffcc80;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:14px}
+.th-bar{height:20px;background:linear-gradient(90deg,#b71c1c 0%,#ef5350 20%,#ff9800 35%,#ffd740 50%,#8bc34a 65%,#4CAF50 80%,#1b5e20 100%);border-radius:10px;position:relative;margin:28px 10px 12px}
+.th-mk{position:absolute;top:-24px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center}
+.th-mk .arr{width:3px;height:44px;border-radius:2px;background:#fff;box-shadow:0 0 8px rgba(255,255,255,.3)}
+.th-mk .lbl{font-size:.66em;font-weight:800;padding:4px 10px;border-radius:6px;white-space:nowrap;margin-top:4px;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.th-labels{display:flex;justify-content:space-between;padding:0 10px;font-size:.64em;color:#546e7a;font-weight:700}
+.alrt{border-radius:10px;padding:14px 16px;margin-bottom:12px;display:flex;gap:12px;align-items:flex-start;border:1px solid}
+.alrt .ai{font-size:1.4em;flex-shrink:0}
+.alrt h5{font-size:.72em;text-transform:uppercase;letter-spacing:.5px;font-weight:700;margin-bottom:3px}
+.alrt p{font-size:.78em;line-height:1.65}
+.al-w{border-color:#e65100;background:rgba(255,152,0,.04)}.al-w h5{color:#ffa726}.al-w p{color:#ffe0b2}
+.al-g{border-color:#2e7d32;background:rgba(76,175,80,.04)}.al-g h5{color:#81c784}.al-g p{color:#c8e6c9}
+.al-d{border-color:#c62828;background:rgba(239,83,80,.04)}.al-d h5{color:#ef5350}.al-d p{color:#ef9a9a}
+.al-b{border-color:#1565c0;background:rgba(66,165,245,.04)}.al-b h5{color:#42a5f5}.al-b p{color:#bbdefb}
+.sc-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.sc{border-radius:12px;padding:16px;border:2px solid}
+.sc h4{font-size:.74em;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-weight:800}
+.sc p{font-size:.78em;line-height:1.7}
+.sc ul{font-size:.76em;line-height:1.8;padding-left:16px;margin-top:6px}
+.sc-g{background:rgba(76,175,80,.04);border-color:#2e7d32}.sc-g h4{color:#81c784}.sc-g p,.sc-g li{color:#a5d6a7}
+.sc-r{background:rgba(239,83,80,.03);border-color:#c62828}.sc-r h4{color:#ef5350}.sc-r p,.sc-r li{color:#ef9a9a}
+.proj-g{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.proj{background:#131e2c;border-radius:12px;padding:18px;text-align:center;border:1px solid #1e2e3e;position:relative;overflow:hidden}
+.proj::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.proj.pu::before{background:linear-gradient(90deg,#e65100,#ffcc80)}
+.proj.pn::before{background:linear-gradient(90deg,#5d4037,#ffd740)}
+.proj .pd{font-size:.66em;color:#78909c;text-transform:uppercase;letter-spacing:1px;font-weight:700}
+.proj .pv{font-size:1.6em;font-weight:900;margin:8px 0 4px}
+.proj .pr{font-size:.7em;color:#546e7a;font-weight:600}
+.proj .pvs{font-size:.76em;font-weight:700;padding:5px 16px;border-radius:22px;display:inline-block;margin-top:8px}
+.proj.pu .pv{color:#ffcc80}.proj.pu .pvs{background:rgba(255,143,0,.12);color:#ffcc80}
+.proj.pn .pv{color:#ffd740}.proj.pn .pvs{background:rgba(255,215,64,.12);color:#ffd740}
+.cred{background:linear-gradient(135deg,#1a1508,#1e1a0d);border:2px solid #e65100;border-radius:16px;padding:24px;margin-top:22px;box-shadow:0 0 30px rgba(255,143,0,.06)}
+.cred-in{display:flex;gap:20px;align-items:center}
+.cred-av{width:72px;height:72px;background:linear-gradient(135deg,#ff8f00,#e65100);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.9em;flex-shrink:0;box-shadow:0 4px 20px rgba(255,143,0,.3)}
+.cred-av::after{content:'';position:absolute;inset:-3px;border-radius:50%;border:2px solid rgba(255,204,128,.3)}
+.cred h3{font-size:1em;font-weight:900;color:#fff}
+.cred .ti{font-size:.76em;color:#ffcc80;font-weight:700;margin-top:2px}
+.cred .ds{font-size:.72em;color:#ffa726;margin-top:5px;line-height:1.5;font-style:italic}
+.cred .ct{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px}
+.cred .ct a,.cred .ct span{font-size:.7em;color:#ffe0b2;text-decoration:none;display:flex;align-items:center;gap:4px;font-weight:600;padding:4px 10px;background:rgba(255,255,255,.03);border-radius:6px;border:1px solid rgba(255,143,0,.15)}
+.cred .ct a:hover{background:rgba(255,143,0,.1);color:#fff}
+.disc{margin-top:16px;padding:14px;background:rgba(255,255,255,.02);border-radius:10px;font-size:.64em;color:#37474f;line-height:1.6;text-align:center;border:1px solid rgba(255,255,255,.03)}
+.ftr{text-align:center;padding:14px;font-size:.66em;color:#263238;border-radius:0 0 14px 14px;background:#060a12}
+@media(max-width:768px){.topbar{flex-direction:column;text-align:center;gap:8px}.topbar .ed{text-align:center}.hdr h1{font-size:1.1em}.flash{grid-template-columns:1fr;text-align:center}.gr{grid-template-columns:repeat(3,1fr)}.sem-row{grid-template-columns:repeat(3,1fr)}.chg,.sc-grid,.proj-g{grid-template-columns:1fr}.cred-in{flex-direction:column;text-align:center}.cred .ct{justify-content:center}}
+@media(max-width:420px){.gr,.sem-row{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="pg">
+<div class="topbar">
+    <div class="logo"><div class="logo-ic">🌽</div><div class="logo-txt"><h2>RURAL IN</h2><small>Inteligência para o Agronegócio</small></div></div>
+    <div class="ed"><div class="dt">Quarta, 25 de Março de 2026</div><div class="inf">Radar Agro Milho · Edição Diária · Fechamento do Mercado</div></div>
+</div>
+<div class="hdr">
+    <h1>🌽 Radar Agro — Milho</h1>
+    <div class="sub">Fechamento 25/03/2026 · Análise Fundamentalista & Técnica · CBOT · B3 · Físico</div>
+    <div class="pills">
+        <span class="pill pill-r">CEPEA R$ 70,45 ▼ -0,79%</span>
+        <span class="pill pill-g">CBOT Mai US$ 4,67 ▲ +1,03%</span>
+        <span class="pill pill-o">B3 Mai R$ 72,05 ▲ +0,19%</span>
+        <span class="pill pill-y">Safrinha Atrasada -18pp</span>
+        <span class="pill pill-b">Estoques 6% Consumo</span>
+    </div>
+</div>
+<div class="mn">
+
+<!-- FLASH -->
+<div class="flash">
+    <div class="emo">🌽</div>
+    <div class="txt">
+        <h3>CEPEA Recua pela 3ª Sessão — Físico Travado, Chicago Sobe</h3>
+        <p>O indicador CEPEA/Esalq fechou 25/03 a <strong>R$ 70,45/sc (-0,79%)</strong> — 3ª queda consecutiva e maior baixa diária em 2 semanas. O físico segue <strong>travado</strong>: produtor focado na colheita da soja e no plantio da safrinha, indústria cautelosa. Na contramão, <strong>Chicago subiu +1,03%</strong> (mai US$ 4,6725), sustentado por petróleo a US$ 98,78 e demanda de etanol. B3 lateral: mai/26 a <strong>R$ 72,05</strong> (+0,19%). Divergência interno × externo é o tema central.</p>
+    </div>
+    <div class="big">
+        <div class="num">70,45</div>
+        <div class="var" style="color:#ef5350">▼ -0,79%</div>
+        <div class="lbl">R$/sc CEPEA 25/03</div>
+    </div>
+</div>
+
+<!-- PAINEL -->
+<div class="gr">
+    <div class="gc cd"><div class="gl">CEPEA Campinas</div><div class="gv">R$ 70,45</div><div class="gs">▼ -0,79%</div></div>
+    <div class="gc cu"><div class="gl">CBOT Mai/26</div><div class="gv">$4,6725</div><div class="gs">▲ +1,03%</div></div>
+    <div class="gc cu"><div class="gl">CBOT Jul/26</div><div class="gv">$4,7775</div><div class="gs">▲ +1,11%</div></div>
+    <div class="gc cu"><div class="gl">B3 Mai/26</div><div class="gv">R$ 72,05</div><div class="gs">▲ +0,19%</div></div>
+    <div class="gc cu"><div class="gl">B3 Jul/26</div><div class="gv">R$ 71,25</div><div class="gs">▲ +0,21%</div></div>
+    <div class="gc cn"><div class="gl">B3 Set/26</div><div class="gv">R$ 71,50</div><div class="gs">= 0,00%</div></div>
+    <div class="gc cu"><div class="gl">B3 Jan/27</div><div class="gv">R$ 75,30</div><div class="gs">▲ +0,27%</div></div>
+    <div class="gc cn"><div class="gl">Dólar Ptax</div><div class="gv">R$ 5,238</div><div class="gs">+0,07%</div></div>
+    <div class="gc cu"><div class="gl">Brent Oil</div><div class="gv">$98,78</div><div class="gs">▲ +2,36%</div></div>
+    <div class="gc cb"><div class="gl">Etanol CBOT</div><div class="gv">Aquecido</div><div class="gs">🔥 Petróleo</div></div>
+    <div class="gc cd"><div class="gl">Safrinha Plan.</div><div class="gv">~60%</div><div class="gs">-18pp Atraso</div></div>
+    <div class="gc cn"><div class="gl">Estoque/Cons.</div><div class="gv">6%</div><div class="gs">Mín. Hist.</div></div>
+</div>
+
+<!-- SEMÁFORO -->
+<h3 class="stl">🚦 Semáforo da Semana — CEPEA (R$/sc)</h3>
+<div class="sem-row">
+    <div class="sem sr"><div class="sico">🔴</div><div class="sl">Seg 23/03</div><div class="sv">R$ 71,25</div><div class="ss">-0,17%</div></div>
+    <div class="sem sr"><div class="sico">🔴</div><div class="sl">Ter 24/03</div><div class="sv">R$ 71,01</div><div class="ss">-0,34%</div></div>
+    <div class="sem sr"><div class="sico">🔴</div><div class="sl">Qua 25/03</div><div class="sv">R$ 70,45</div><div class="ss">-0,79%</div></div>
+    <div class="sem sb"><div class="sico">📊</div><div class="sl">Qui 26/03</div><div class="sv">—</div><div class="ss">Projeção</div></div>
+    <div class="sem sb"><div class="sico">📊</div><div class="sl">Sex 27/03</div><div class="sv">—</div><div class="ss">Projeção</div></div>
+</div>
+
+<!-- GRÁFICOS -->
+<h3 class="stl">📈 Evolução CEPEA Milho — Março 2026</h3>
+<div class="chc"><h4>Indicador CEPEA/Esalq — Milho (R$/sc 60kg) · Março</h4><canvas id="ch1"></canvas></div>
+
+<h3 class="stl">📊 Chicago CBOT Milho Mai/26 — Semana</h3>
+<div class="chg">
+    <div class="chc"><h4>CBOT Milho Mai/26 (cents/bu)</h4><canvas id="ch2"></canvas></div>
+    <div class="chc"><h4>Variação Diária CBOT (cents)</h4><canvas id="ch3"></canvas></div>
+</div>
+
+<!-- FUTUROS B3 -->
+<h3 class="stl">📋 Futuros B3 · Fechamento 25/03</h3>
+<div class="chg">
+    <div class="chc"><h4>Curva B3 Milho (R$/sc)</h4><canvas id="ch4"></canvas></div>
+    <div class="chc"><h4>Curva CBOT Milho (cents/bu)</h4><canvas id="ch5"></canvas></div>
+</div>
+<table class="tb">
+<thead><tr><th>Contrato</th><th>B3 (R$/sc)</th><th>Var.</th><th>CBOT (US$/bu)</th><th>Var.</th></tr></thead>
+<tbody>
+<tr><td class="pn">Mai/26</td><td>R$ 72,05</td><td style="color:#81c784">+0,19%</td><td>US$ 4,6725</td><td style="color:#81c784">+1,03%</td></tr>
+<tr><td class="pn">Jul/26</td><td>R$ 71,25</td><td style="color:#81c784">+0,21%</td><td>US$ 4,7775</td><td style="color:#81c784">+1,11%</td></tr>
+<tr><td class="pn">Set/26</td><td>R$ 71,50</td><td style="color:#ffd740">=0,00%</td><td>US$ 4,7975</td><td style="color:#81c784">+1,00%</td></tr>
+<tr><td class="pn">Dez/26</td><td>—</td><td>—</td><td>US$ 4,9325</td><td style="color:#81c784">+0,87%</td></tr>
+<tr><td class="pn">Jan/27</td><td style="color:#ffcc80;font-weight:800">R$ 75,30</td><td style="color:#81c784">+0,27%</td><td>—</td><td>—</td></tr>
+<tr><td class="pn">Mar/27</td><td>R$ 76,29</td><td style="color:#ef5350">-0,14%</td><td>—</td><td>—</td></tr>
+</tbody>
+</table>
+
+<!-- PRAÇAS -->
+<h3 class="stl">📍 Mercado Físico — Praças Regionais (R$/sc)</h3>
+<div class="chc"><h4>Comparativo Praças — Milho Disponível (R$/sc 60kg)</h4><canvas id="ch6"></canvas></div>
+<table class="tb">
+<thead><tr><th>Praça</th><th>R$/sc</th><th>Var.</th><th>Região</th></tr></thead>
+<tbody>
+<tr><td class="pn">Campinas/SP CIF</td><td>R$ 75,00</td><td style="color:#ef5350">-1,32%</td><td>Referência</td></tr>
+<tr><td class="pn">Mogiana/SP</td><td>R$ 71,00</td><td style="color:#81c784">+1,43%</td><td>SP Interior</td></tr>
+<tr><td class="pn">CEPEA Campinas</td><td>R$ 70,45</td><td style="color:#ef5350">-0,79%</td><td>Indicador</td></tr>
+<tr><td class="pn">Paranaguá/PR</td><td>R$ 65,30</td><td style="color:#81c784">+1,19%</td><td>Porto</td></tr>
+<tr><td class="pn">Castro/PR</td><td>R$ 65,00</td><td style="color:#ffd740">0,00%</td><td>Paraná</td></tr>
+<tr><td class="pn">Erechim/RS</td><td>R$ 64,50</td><td style="color:#ffd740">0,00%</td><td>RS</td></tr>
+<tr><td class="pn">Rio Verde/GO</td><td>R$ 58,65</td><td style="color:#ef5350">-0,69%</td><td>Sul GO</td></tr>
+<tr><td class="pn">Dourados/MS</td><td>R$ 57,80</td><td style="color:#81c784">+1,35%</td><td>MS</td></tr>
+<tr><td class="pn">Não-Me-Toque/RS</td><td>R$ 56,00</td><td style="color:#ffd740">0,00%</td><td>RS</td></tr>
+<tr><td class="pn">Rondonópolis/MT</td><td>R$ 55,00</td><td style="color:#ef5350">-1,79%</td><td>MT</td></tr>
+<tr><td class="pn">Sorriso/MT</td><td>R$ 46,90</td><td style="color:#81c784">+3,00%</td><td>Norte MT</td></tr>
+</tbody>
+</table>
+
+<!-- ANÁLISE FUNDAMENTALISTA -->
+<h3 class="stl">🔍 Análise Fundamentalista</h3>
+<div class="anl anl-o">
+    <h4>🌾 Oferta — Safrinha Atrasada e Estoques no Menor Nível</h4>
+    <p>O fator mais crítico do milho em 2026: <span class="ng">plantio da safrinha atrasado em 18 pontos percentuais</span> vs 2025. Com apenas ~60% da área semeada no Centro-Sul até a última semana, a <span class="hl">janela ideal está se fechando</span>. O atraso na colheita da soja encurtou o calendário. Produção nacional projetada em <span class="hl">138,27 mi t (-2,05%)</span> com produtividade esperada de 102,84 sc/ha <span class="ng">(-4,54%)</span>. Os estoques de passagem estão em <span class="ng">~6% do consumo — menor patamar da série histórica</span>. Estoques finais estimados em 11,56 mi t. Esse é o fundamento mais altista do mercado.</p>
+</div>
+<div class="anl anl-r">
+    <h4>⚠️ Físico Travado — Colheita e Risco de Greve Dominam</h4>
+    <p>O mercado físico está <span class="ng">travado</span>. Produtor concentra maquinário na colheita da soja e plantio da safrinha — sem tempo para negociar milho no balcão. Indústria tenta recompor estoques, mas <span class="ng">esbarra na ameaça de greve dos caminhoneiros</span> que encurta margem de negociação das tradings. Frete em tendência de alta com <span class="hl">Brent próximo de US$ 100</span>. O CEPEA confirmou a retração tática: menos liquidez = menos referências de preço. Resultado: <span class="ng">3 quedas consecutivas no CEPEA</span> mesmo com fundamentos altistas.</p>
+</div>
+<div class="anl anl-g">
+    <h4>📈 Chicago — Petróleo e Etanol Sustentam Milho</h4>
+    <p>CBOT milho mai/26 fechou a <span class="ps">US$ 4,6725 (+1,03%)</span>, marcando alta consistente. O motor: <span class="hl">Brent a US$ 98,78 (+2,36%)</span> turbina a atratividade do etanol americano (base milho). Conflito no Oriente Médio sustenta petróleo — se prolongar, pode levar milho a testar <span class="ps">US$ 4,80-4,90/bu</span>. A curva CBOT mostra <span class="bl">carry positivo</span>: set/26 a $4,7975 e dez/26 a $4,9325 — mercado precificando aperto no 2ºsem. Vendas semanais de exportação dos EUA em foco.</p>
+</div>
+<div class="anl anl-b">
+    <h4>🏭 Demanda — Etanol de Milho Brasil + Ração = Consumo Aquecido</h4>
+    <p>O consumo doméstico projetado em <span class="bl">94,56 mi t</span> é sustentado por: (1) <span class="hl">ração animal</span> — maior demandante, com pecuária e avicultura aquecidas; (2) <span class="ps">etanol de milho</span> — indústria em expansão, especialmente em MT, e ganha competitividade com petróleo alto; (3) exportações estimadas em <span class="hl">46,50 mi t (+3,3%)</span>. O spread <span class="or">B3 jan/27 (R$ 75,30) vs mai/26 (R$ 72,05) = +R$ 3,25</span> mostra o mercado precificando aperto no período de entressafra.</p>
+</div>
+
+<!-- TÉCNICA -->
+<h3 class="stl">📐 Análise Técnica</h3>
+<div class="anl anl-w">
+    <h4>📊 Leitura Gráfica — CEPEA & CBOT</h4>
+    <p><strong>CEPEA:</strong> O indicador atingiu <span class="hl">topo do mês em R$ 72,10 (16/03)</span> e desde então vem recuando — 5 das últimas 7 sessões foram de queda. Formação de <span class="ng">topo descendente</span>. Suporte imediato em <span class="hl">R$ 70,00</span> (psicológico e base de março). Se perder, busca <span class="ng">R$ 69,50</span> (suporte de fev). Resistência em R$ 72,10. O acumulado do mês ainda é positivo (<span class="ps">+1,32%</span>), mas o momentum virou negativo.</p>
+    <p style="margin-top:10px"><strong>CBOT:</strong> O milho opera em <span class="ps">tendência de alta</span> mais consistente que o físico brasileiro. Mai/26 saiu de US$ 4,50 (mínima de março) para US$ 4,67 hoje. A <span class="bl">faixa de 52 semanas vai de US$ 3,91 a US$ 4,95</span>, e o milho está no terço superior. Suporte em <span class="hl">US$ 4,55</span>. Se romper US$ 4,70-4,75, pode buscar <span class="ps">US$ 4,80+</span>. RSI em 58 — espaço para alta.</p>
+</div>
+
+<!-- TERMÔMETROS -->
+<h3 class="stl">🌡️ Termômetros de Análise</h3>
+<div class="thermo">
+    <h4>🌡️ Viés Geral — Próximos 2 Dias</h4>
+    <div class="th-bar"><div class="th-mk" style="left:45%"><div class="arr"></div><div class="lbl" style="background:#ffd740;color:#000">NEUTRO → LEVE BAIXA FÍSICA</div></div></div>
+    <div class="th-labels"><span>🔴 Forte Baixa</span><span>🟡 Neutro</span><span>🟢 Forte Alta</span></div>
+</div>
+<div class="chg">
+    <div class="thermo">
+        <h4>⚠️ Risco Safrinha (Clima)</h4>
+        <div class="th-bar"><div class="th-mk" style="left:70%"><div class="arr"></div><div class="lbl" style="background:#ff8f00;color:#fff">ELEVADO (Atraso -18pp)</div></div></div>
+        <div class="th-labels"><span>Normal</span><span>Atenção</span><span>Crítico</span></div>
+    </div>
+    <div class="thermo">
+        <h4>📦 Nível de Estoques</h4>
+        <div class="th-bar"><div class="th-mk" style="left:18%"><div class="arr"></div><div class="lbl" style="background:#ef5350;color:#fff">MÍN. HISTÓRICO (6%)</div></div></div>
+        <div class="th-labels"><span>Crítico</span><span>Apertado</span><span>Confortável</span></div>
+    </div>
+</div>
+<div class="chg">
+    <div class="thermo">
+        <h4>🏭 Demanda Interna</h4>
+        <div class="th-bar"><div class="th-mk" style="left:68%"><div class="arr"></div><div class="lbl" style="background:#81c784;color:#000">AQUECIDA (94,5 mi t)</div></div></div>
+        <div class="th-labels"><span>Fraca</span><span>Normal</span><span>Forte</span></div>
+    </div>
+    <div class="thermo">
+        <h4>⛽ Impacto Petróleo/Etanol</h4>
+        <div class="th-bar"><div class="th-mk" style="left:74%"><div class="arr"></div><div class="lbl" style="background:#81c784;color:#000">ALTISTA ($98,78)</div></div></div>
+        <div class="th-labels"><span>Negativo</span><span>Neutro</span><span>Muito Altista</span></div>
+    </div>
+</div>
+
+<!-- CENÁRIOS -->
+<h3 class="stl">🎯 Cenários para Quinta (26/03) e Sexta (27/03)</h3>
+<div class="sc-grid">
+    <div class="sc sc-g">
+        <h4>🟢 Cenário Altista (40% probabilidade)</h4>
+        <p>📌 <strong>CEPEA:</strong> R$ 71 – R$ 72<br>📌 <strong>CBOT Mai:</strong> US$ 4,70 – US$ 4,80</p>
+        <ul>
+            <li>Chicago mantém rally com petróleo em alta</li>
+            <li>Produtor retoma vendas pós-colheita → liquidez melhora</li>
+            <li>Indústria acelera compras por medo de greve</li>
+            <li>Clima adverso na safrinha gera alerta e compras</li>
+            <li>Estoques mínimos impedem quedas fortes</li>
+        </ul>
+    </div>
+    <div class="sc sc-r">
+        <h4>🔴 Cenário Baixista (60% probabilidade)</h4>
+        <p>📌 <strong>CEPEA:</strong> R$ 69,50 – R$ 70,50<br>📌 <strong>CBOT Mai:</strong> US$ 4,55 – US$ 4,65</p>
+        <ul>
+            <li>Físico continua travado — sem liquidez no balcão</li>
+            <li>CEPEA perde R$ 70 e testa suporte de R$ 69,50</li>
+            <li>Pressão sazonal de colheita + final de mês</li>
+            <li>Chicago realiza após alta recente se Brent recuar</li>
+            <li>B3 lateral sem catalisador de curto prazo</li>
+        </ul>
+    </div>
+</div>
+
+<h3 class="stl">📅 Projeção de Preço — Próximos 2 Dias</h3>
+<div class="proj-g">
+    <div class="proj pn"><div class="pd">Quinta-feira · 26/03/2026</div><div class="pv">R$ 69,80 – 71,00</div><div class="pr">CEPEA Campinas (R$/sc)</div><div class="pvs">↔️ NEUTRO COM VIÉS DE BAIXA</div></div>
+    <div class="proj pn"><div class="pd">Sexta-feira · 27/03/2026</div><div class="pv">R$ 69,50 – 71,20</div><div class="pr">CEPEA Campinas (R$/sc)</div><div class="pvs">↔️ DEPENDE DE LIQUIDEZ + CBOT</div></div>
+</div>
+<div class="anl anl-y">
+    <h4>🧠 Racional da Projeção</h4>
+    <p>O viés de <span class="hl">leve baixa no físico</span> reflete a desconexão entre fundamentos de médio prazo (altistas) e dinâmica de curto prazo (baixista). O <span class="ng">físico está travado</span> — sem negócios = CEPEA tende a acomodar. A <span class="ng">3ª queda consecutiva</span> mostra momentum negativo. Porém, os fundamentos são <span class="ps">estruturalmente altistas</span>: safrinha atrasada, estoques mínimos, demanda aquecida. O milho é um <span class="or">"altista disfarçado de baixista"</span> — quando a liquidez voltar (pós-colheita soja), os preços devem refletir os fundamentos. <span class="bl">GO (Rio Verde) a R$ 58,65</span> — margem apertada com custo de produção safrinha em ~R$ 52-56/sc.</p>
+</div>
+
+<!-- VISUAL EXTRA -->
+<h3 class="stl">📊 Painéis Visuais</h3>
+<div class="chg">
+    <div class="chc"><h4>📊 CEPEA vs B3 vs CBOT — Divergência (R$/sc convertido)</h4><canvas id="ch7"></canvas></div>
+    <div class="chc"><h4>📈 B3: Carry Jan/27 vs Mai/26 (R$/sc)</h4><canvas id="ch8"></canvas></div>
+</div>
+
+<!-- MACRO -->
+<h3 class="stl">🌐 Fatores Macro & Geopolíticos</h3>
+<div class="alrt al-w"><div class="ai">⛽</div><div><h5>Petróleo Brent US$ 98,78 — Principal Driver do Milho</h5><p>Conflito no Oriente Médio mantém petróleo próximo de US$ 100. Impacto duplo: (1) encarece frete de grãos no Brasil; (2) turbina demanda por etanol de milho nos EUA e Brasil. Correlação milho-petróleo está no maior nível desde 2022.</p></div></div>
+<div class="alrt al-d"><div class="ai">🚛</div><div><h5>Risco de Greve de Caminhoneiros no Brasil</h5><p>Ameaça de paralisação no transporte rodoviário afasta negociações e encurta margem das tradings. Se concretizada, pode travar logística no pico da colheita — efeito altista abrupto no curto prazo.</p></div></div>
+<div class="alrt al-w"><div class="ai">🌧️</div><div><h5>Clima Safrinha — Janela Crítica Março-Abril</h5><p>Atraso de 18pp no plantio coloca boa parte da safrinha em risco climático. Abril é mês decisivo: chuvas regulares = safra ok. Seca antecipada = quebra de produtividade e preços em alta.</p></div></div>
+<div class="alrt al-g"><div class="ai">🇺🇸🇨🇳</div><div><h5>EUA-China — Impasse Comercial</h5><p>Adiamento da cúpula Trump-Xi gera incerteza no comércio global de grãos. China pode redirecionar compras de milho — Brasil como alternativa. Monitorar relatório USDA de plantio EUA (31/03).</p></div></div>
+<div class="alrt al-b"><div class="ai">🏭</div><div><h5>Etanol de Milho Brasil — Expansão em MT</h5><p>Novas usinas de etanol de milho em MT ampliam demanda estrutural. Setor deve consumir +15% em 2026 vs 2025. Preço do etanol acompanha petróleo — positivo para milho.</p></div></div>
+
+<!-- CREDENCIAL -->
+<div class="cred">
+    <div class="cred-in">
+        <div class="cred-av">👨‍💼</div>
+        <div>
+            <h3>Dr. Sidney Souza</h3>
+            <div class="ti">Economista Agrícola · Estrategista Econômico do Produtor</div>
+            <div class="ds">Especialista em economia da fazenda e gestão de risco no agro<br>Transformamos dados da fazenda em decisões econômicas<br>Ajudamos produtores a entender se o mercado sustenta seu negócio</div>
+            <div class="ct">
+                <a href="mailto:sidneyagro@gmail.com">📧 sidneyagro@gmail.com</a>
+                <a href="https://wa.me/5564992266886">📱 (64) 9 9226-6886</a>
+                <span>📸 @ruralin.ai</span>
+                <span>📸 @sidneyagrosa</span>
+            </div>
+        </div>
+    </div>
+    <div class="disc">⚠️ <strong>Disclaimer:</strong> Material exclusivamente informativo e educacional. Não constitui recomendação de compra ou venda. Fontes: CEPEA/Esalq, CME Group, B3, Safras & Mercado, CONAB, Imea, USDA, Notícias Agrícolas, Farmnews, Broto Notícias, Grão Direto, Ponta Agro.</div>
+</div>
+</div>
+<div class="ftr">RURAL IN © 2026 · Inteligência para o Agronegócio · Dr. Sidney Souza · Rio Verde/GO 🇧🇷</div>
+</div>
+
+<script>
+Chart.defaults.color='#78909c';Chart.defaults.font.family='Inter';Chart.defaults.font.size=11;
+const df={family:'Inter',weight:'600'};
+const tt={backgroundColor:'#131e2c',titleColor:'#ffcc80',bodyColor:'#e5e7eb',borderColor:'#e65100',borderWidth:1,padding:12,cornerRadius:8};
+
+// 1. CEPEA MARÇO
+const d1=['05','06','09','10','11','12','13','16','17','18','19','20','23','24','25'];
+const v1=[70.24,70.56,70.63,71.09,71.32,71.56,71.98,72.10,72.02,71.20,71.63,71.37,71.25,71.01,70.45];
+new Chart(document.getElementById('ch1'),{type:'line',data:{labels:d1.map(d=>d+'/03'),datasets:[{label:'R$/sc',data:v1,borderColor:'#ff8f00',backgroundColor:'rgba(255,143,0,.06)',borderWidth:3,fill:true,tension:.3,pointRadius:v1.map((_,i)=>i===v1.length-1?8:i===7?6:3),pointBackgroundColor:v1.map((_,i)=>i===v1.length-1?'#ef5350':i===7?'#81c784':'#ff8f00')}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:{...tt,callbacks:{label:c=>'R$ '+c.parsed.y.toFixed(2)}},annotation:{annotations:{
+topo:{type:'point',xValue:7,yValue:72.10,radius:0,label:{display:true,content:'Topo R$ 72,10',backgroundColor:'#81c784',color:'#000',font:{size:9,weight:'bold'},padding:3}},
+sup:{type:'line',yMin:70.00,yMax:70.00,borderColor:'#ef5350',borderWidth:1.5,borderDash:[6,4],label:{display:true,content:'Suporte R$ 70,00',position:'start',backgroundColor:'#ef5350',color:'#fff',font:{size:9,weight:'bold'},padding:3}},
+res:{type:'line',yMin:72.10,yMax:72.10,borderColor:'#42a5f5',borderWidth:1.5,borderDash:[6,4],label:{display:true,content:'Resist. R$ 72,10',position:'end',backgroundColor:'#42a5f5',color:'#fff',font:{size:8,weight:'bold'},padding:3}}
+}}},scales:{y:{min:69,max:73.5,grid:{color:'rgba(255,255,255,.04)'},ticks:{callback:v=>'R$ '+v.toFixed(1),font:df}},x:{grid:{display:false},ticks:{font:df,maxRotation:45}}}}});
+
+// 2. CBOT SEMANA
+const cd2=['17','18','19','20','23','24','25'];
+const cv2=[456.25,461.50,466.25,459.00,461.25,462.50,467.25];
+new Chart(document.getElementById('ch2'),{type:'line',data:{labels:cd2.map(d=>d+'/03'),datasets:[{label:'cents/bu',data:cv2,borderColor:'#42a5f5',backgroundColor:'rgba(66,165,245,.06)',borderWidth:3,fill:true,tension:.3,pointRadius:cv2.map((_,i)=>i===cv2.length-1?8:3),pointBackgroundColor:cv2.map((_,i)=>i===cv2.length-1?'#81c784':'#42a5f5')}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:{...tt,callbacks:{label:c=>c.parsed.y.toFixed(2)+' ¢/bu'}}},scales:{y:{min:450,max:475,grid:{color:'rgba(255,255,255,.04)'},ticks:{callback:v=>v+' ¢',font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+
+// 3. VAR CBOT
+const vr3=[-8.25,+4.75,+6.75,-7.25,+2.25,+1.25,+4.75];
+new Chart(document.getElementById('ch3'),{type:'bar',data:{labels:cd2.map(d=>d+'/03'),datasets:[{data:vr3,backgroundColor:vr3.map(v=>v>=0?'rgba(255,143,0,.5)':'rgba(239,83,80,.5)'),borderColor:vr3.map(v=>v>=0?'#ff8f00':'#ef5350'),borderWidth:2,borderRadius:6}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:{...tt,callbacks:{label:c=>(c.parsed.y>=0?'+':'')+c.parsed.y.toFixed(2)+' ¢'}},annotation:{annotations:{z:{type:'line',yMin:0,yMax:0,borderColor:'#ffd740',borderWidth:1.5,borderDash:[5,4]}}}},scales:{y:{grid:{color:'rgba(255,255,255,.04)'},ticks:{callback:v=>(v>=0?'+':'')+v+' ¢',font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+
+// 4. B3 FORWARD
+const bm=['Mai/26','Jul/26','Set/26','Jan/27','Mar/27','Mai/27'];
+const bv=[72.05,71.25,71.50,75.30,76.29,75.00];
+const bc=bv.map(v=>v>=75?'rgba(239,83,80,.5)':v>=72?'rgba(255,143,0,.5)':'rgba(66,165,245,.4)');
+new Chart(document.getElementById('ch4'),{type:'bar',data:{labels:bm,datasets:[{data:bv,backgroundColor:bc,borderColor:bv.map(v=>v>=75?'#ef5350':v>=72?'#ff8f00':'#42a5f5'),borderWidth:2,borderRadius:8}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:{...tt,callbacks:{label:c=>'R$ '+c.parsed.y.toFixed(2)}},annotation:{annotations:{cepea:{type:'line',yMin:70.45,yMax:70.45,borderColor:'#fff',borderWidth:1.5,borderDash:[5,4],label:{display:true,content:'CEPEA 70,45',position:'end',backgroundColor:'rgba(255,255,255,.8)',color:'#000',font:{size:8,weight:'bold'},padding:2}}}}},scales:{y:{min:68,max:78,grid:{color:'rgba(255,255,255,.04)'},ticks:{callback:v=>'R$ '+v,font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+
+// 5. CBOT FORWARD
+const cm=['Mai/26','Jul/26','Set/26','Dez/26'];
+const ccv=[467.25,477.75,479.75,493.25];
+new Chart(document.getElementById('ch5'),{type:'bar',data:{labels:cm,datasets:[{data:ccv,backgroundColor:['rgba(255,143,0,.5)','rgba(255,143,0,.55)','rgba(255,143,0,.6)','rgba(239,83,80,.5)'],borderColor:['#ff8f00','#ff8f00','#ff8f00','#ef5350'],borderWidth:2,borderRadius:8}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:{...tt,callbacks:{label:c=>c.parsed.y.toFixed(2)+' ¢/bu'}}},scales:{y:{min:450,max:500,grid:{color:'rgba(255,255,255,.04)'},ticks:{callback:v=>v+' ¢',font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+
+// 6. PRAÇAS
+const pn=['Campinas CIF','Mogiana/SP','CEPEA','Paranaguá','Castro/PR','Erechim/RS','Rio Verde/GO','Dourados/MS','NMT/RS','Rondon./MT','Sorriso/MT'];
+const pv=[75,71,70.45,65.30,65,64.50,58.65,57.80,56,55,46.90];
+const pc6=pv.map(v=>v>=70?'rgba(255,143,0,.5)':v>=60?'rgba(66,165,245,.4)':v>=55?'rgba(255,215,64,.4)':'rgba(239,83,80,.4)');
+new Chart(document.getElementById('ch6'),{type:'bar',data:{labels:pn,datasets:[{data:pv,backgroundColor:pc6,borderColor:pv.map(v=>v>=70?'#ff8f00':v>=60?'#42a5f5':v>=55?'#ffd740':'#ef5350'),borderWidth:2,borderRadius:5}]},
+options:{responsive:true,maintainAspectRatio:true,indexAxis:'y',plugins:{legend:{display:false},tooltip:{...tt,callbacks:{label:c=>'R$ '+c.parsed.x.toFixed(2)+'/sc'}},annotation:{annotations:{custo:{type:'line',xMin:55,xMax:55,borderColor:'#ef5350',borderWidth:1.5,borderDash:[5,4],label:{display:true,content:'Custo ~R$55',position:'start',backgroundColor:'#ef5350',color:'#fff',font:{size:8,weight:'bold'},padding:2}}}}},scales:{x:{min:40,max:80,grid:{color:'rgba(255,255,255,.04)'},ticks:{callback:v=>'R$ '+v,font:df}},y:{grid:{display:false},ticks:{font:{...df,size:9}}}}}});
+
+// 7. DIVERGÊNCIA
+const div_d=['17','18','19','20','23','24','25'];
+const div_cepea=[72.02,71.20,71.63,71.37,71.25,71.01,70.45];
+const div_b3=[72.80,72.20,72.60,72.10,72.20,71.91,72.05];
+const div_cbot=[72.50,73.10,73.80,72.70,73.10,73.30,74.00];
+new Chart(document.getElementById('ch7'),{type:'line',data:{labels:div_d.map(d=>d+'/03'),datasets:[
+{label:'CEPEA',data:div_cepea,borderColor:'#ff8f00',borderWidth:2.5,tension:.3,pointRadius:3},
+{label:'B3 Mai',data:div_b3,borderColor:'#42a5f5',borderWidth:2,tension:.3,pointRadius:3,borderDash:[5,3]},
+{label:'CBOT conv.',data:div_cbot,borderColor:'#81c784',borderWidth:2,tension:.3,pointRadius:3,borderDash:[2,2]}
+]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:14}},tooltip:{...tt}},scales:{y:{min:69,max:76,grid:{color:'rgba(255,255,255,.04)'},ticks:{callback:v=>'R$ '+v,font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+
+// 8. CARRY
+const carry_l=['Mai/26','Jul/26','Set/26','Jan/27','Mar/27'];
+const carry_v=[0,71.25-72.05,71.50-72.05,75.30-72.05,76.29-72.05];
+new Chart(document.getElementById('ch8'),{type:'bar',data:{labels:carry_l,datasets:[{label:'Spread vs Mai/26',data:carry_v,backgroundColor:carry_v.map(v=>v>=0?'rgba(255,143,0,.6)':'rgba(66,165,245,.4)'),borderColor:carry_v.map(v=>v>=0?'#ff8f00':'#42a5f5'),borderWidth:2,borderRadius:6}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:{...tt,callbacks:{label:c=>(c.parsed.y>=0?'+':'')+c.parsed.y.toFixed(2)+' R$/sc'}},annotation:{annotations:{z:{type:'line',yMin:0,yMax:0,borderColor:'#ffd740',borderWidth:1.5,borderDash:[5,4]},ent:{type:'label',xValue:3,yValue:3.8,content:['Entressafra','= Prêmio +R$3,25'],font:{size:10,weight:'bold'},color:'#ffcc80'}}}},scales:{y:{grid:{color:'rgba(255,255,255,.04)'},ticks:{callback:v=>(v>=0?'+':'')+v.toFixed(1),font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+</script>
+</body>
+</html>
