@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radar Agro Soja — 27/03/2026 | Rural IN</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#060806;color:#c8d5c0;min-height:100vh}
+.pg{max-width:960px;margin:0 auto;padding:10px}
+.topbar{background:linear-gradient(90deg,#0c140c,#101a10,#0c140c);padding:12px 20px;border-radius:14px 14px 0 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #1a3a1a;flex-wrap:wrap;gap:8px}
+.topbar .logo{display:flex;align-items:center;gap:12px}
+.topbar .logo-ic{width:54px;height:54px;background:linear-gradient(135deg,#4CAF50,#1b5e20);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.7em;box-shadow:0 4px 25px rgba(76,175,80,.25)}
+.topbar .logo-txt h2{font-size:1.05em;font-weight:900;color:#fff;letter-spacing:1.5px}
+.topbar .logo-txt small{font-size:.62em;color:#81c784;font-weight:600;display:block}
+.topbar .ed{text-align:right}
+.topbar .ed .dt{font-size:.88em;font-weight:800;color:#81c784}
+.topbar .ed .inf{font-size:.62em;color:#4a6a42;font-weight:600}
+.hdr{background:linear-gradient(135deg,#0a1a08,#081210 50%,#060a06);padding:36px 24px 30px;text-align:center;border-bottom:3px solid #4CAF50;position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(76,175,80,.06) 0%,transparent 70%)}
+.hdr .tag-top{display:inline-block;background:linear-gradient(135deg,#4CAF50,#1b5e20);color:#fff;font-size:.58em;font-weight:800;letter-spacing:3px;padding:4px 14px;border-radius:20px;text-transform:uppercase;margin-bottom:10px;position:relative;z-index:1}
+.hdr h1{font-family:'Playfair Display',serif;font-size:1.6em;font-weight:900;color:#fff;position:relative;z-index:1;line-height:1.3;max-width:780px;margin:0 auto}
+.hdr .sub{font-size:.80em;color:#81c784;margin-top:10px;font-weight:500;position:relative;z-index:1;line-height:1.6}
+.hdr .mkt{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px;position:relative;z-index:1}
+.hdr .mkt .mi{background:rgba(76,175,80,.06);border:1px solid rgba(76,175,80,.18);border-radius:10px;padding:7px 12px;text-align:center;min-width:110px}
+.hdr .mkt .mi .ml{font-size:.55em;color:#5a8a52;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.hdr .mkt .mi .mv{font-size:1.05em;font-weight:900;margin-top:2px}
+.hdr .mkt .mi .mc{font-size:.60em;font-weight:700;margin-top:1px}
+.up{color:#81c784}.dn{color:#ef5350}.nt{color:#ffd740}.wh{color:#fff}
+.mn{background:#080a06;padding:20px;border:1px solid #121a10;border-top:none}
+.stl{font-size:.76em;text-transform:uppercase;letter-spacing:2px;font-weight:800;color:#4CAF50;margin:22px 0 12px;display:flex;align-items:center;gap:10px;padding-bottom:8px;border-bottom:1px solid #121a10}
+.tx{font-size:.84em;line-height:1.95;color:#a0b898;margin-bottom:14px;text-align:justify}
+.tx strong{color:#d4e8cc;font-weight:700}
+.tx .hl{color:#ffd740;font-weight:700}
+.tx .ng{color:#ef5350;font-weight:700}
+.tx .ps{color:#81c784;font-weight:700}
+.chc{background:#0a0e08;border:1px solid #141e12;border-radius:12px;padding:14px;margin-bottom:12px}
+.chc h4{font-size:.68em;color:#81c784;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-weight:700;text-align:center}
+.chc canvas{max-height:270px}
+.chg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.thermo{background:#0a0e08;border-radius:12px;padding:14px;border:1px solid #141e12;margin-bottom:10px}
+.thermo h4{text-align:center;font-size:.68em;color:#81c784;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:12px}
+.th-bar{height:16px;background:linear-gradient(90deg,#b71c1c 0%,#ef5350 20%,#ff9800 38%,#ffd740 50%,#8bc34a 65%,#4CAF50 80%,#1b5e20 100%);border-radius:10px;position:relative;margin:26px 8px 8px}
+.th-mk{position:absolute;top:-22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center}
+.th-mk .arr{width:3px;height:38px;border-radius:2px;background:#fff;box-shadow:0 0 6px rgba(255,255,255,.3)}
+.th-mk .lbl{font-size:.60em;font-weight:800;padding:3px 7px;border-radius:5px;white-space:nowrap;margin-top:3px}
+.th-labels{display:flex;justify-content:space-between;padding:0 8px;font-size:.58em;color:#3a5a32;font-weight:700}
+.dg{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;margin-bottom:14px}
+.dc{background:#0a0e08;border-radius:10px;padding:12px;border:1px solid #141e12;text-align:center}
+.dc .dl{font-size:.54em;color:#4CAF50;text-transform:uppercase;letter-spacing:1.2px;font-weight:700;margin-bottom:4px}
+.dc .dv{font-size:1.2em;font-weight:900;color:#fff}
+.dc .ds{font-size:.66em;color:#5a8a52;margin-top:3px;line-height:1.4}
+.alt{background:linear-gradient(135deg,#0a1208,#0c1008);border-left:4px solid #4CAF50;border-radius:0 10px 10px 0;padding:14px;margin-bottom:10px}
+.alt h5{font-size:.72em;color:#4CAF50;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
+.alt p{font-size:.80em;color:#a0b898;line-height:1.8}
+.alt p strong{color:#d4e8cc}
+.bld{background:linear-gradient(135deg,#0c1408,#101a0c);border:2px solid #4CAF50;border-radius:14px;padding:20px;margin:16px 0;text-align:center;box-shadow:0 0 30px rgba(76,175,80,.04)}
+.bld h3{font-family:'Playfair Display',serif;font-size:1.15em;color:#fff;margin-bottom:8px;line-height:1.4}
+.bld p{font-size:.82em;color:#81c784;line-height:1.8}
+.tbl{width:100%;border-collapse:collapse;margin-bottom:12px;font-size:.72em}
+.tbl th{background:#0c1408;color:#4CAF50;padding:8px 6px;text-align:center;font-weight:700;text-transform:uppercase;letter-spacing:.5px;font-size:.80em;border-bottom:2px solid #1a3a1a}
+.tbl td{padding:7px 5px;text-align:center;border-bottom:1px solid #121a10;color:#a0b898}
+.tbl tr:hover td{background:rgba(76,175,80,.03)}
+.proj{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.proj-c{background:#0a0e08;border-radius:10px;padding:14px;border:1px solid #141e12;text-align:center}
+.proj-c .pl{font-size:.56em;color:#4CAF50;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:5px}
+.proj-c .pv{font-size:1.3em;font-weight:900;color:#fff;margin-bottom:3px}
+.proj-c .pd{font-size:.68em;color:#5a8a52;line-height:1.5}
+.geo{display:grid;grid-template-columns:1fr;gap:7px;margin-bottom:12px}
+.geo-i{background:rgba(76,175,80,.03);border:1px solid rgba(76,175,80,.1);border-radius:10px;padding:10px 14px;display:flex;gap:10px;align-items:flex-start}
+.geo-i .gi{font-size:1.2em;flex-shrink:0}
+.geo-i .gt{font-size:.72em;font-weight:800;color:#d4e8cc}
+.geo-i .gd{font-size:.70em;color:#5a8a52;line-height:1.6;margin-top:2px}
+.sep{text-align:center;margin:22px 0;color:#1a3a1a;font-size:1em;letter-spacing:10px}
+.cred{background:linear-gradient(135deg,#0c140c,#101a10);border:2px solid #1a3a1a;border-radius:16px;padding:20px;margin-top:18px}
+.cred-in{display:flex;gap:16px;align-items:center}
+.cred-av{width:64px;height:64px;background:linear-gradient(135deg,#4CAF50,#1b5e20);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.7em;flex-shrink:0;box-shadow:0 4px 18px rgba(76,175,80,.25)}
+.cred h3{font-size:.92em;font-weight:900;color:#fff}
+.cred .ti{font-size:.70em;color:#81c784;font-weight:700;margin-top:2px}
+.cred .dsc{font-size:.66em;color:#5a8a52;margin-top:4px;line-height:1.5;font-style:italic}
+.cred .ct{margin-top:8px;display:flex;flex-wrap:wrap;gap:5px}
+.cred .ct a,.cred .ct span{font-size:.64em;color:#a0b898;text-decoration:none;display:flex;align-items:center;gap:3px;font-weight:600;padding:3px 7px;background:rgba(76,175,80,.06);border-radius:6px;border:1px solid rgba(76,175,80,.12)}
+.cred .ct a:hover{background:rgba(76,175,80,.12);color:#fff}
+.disc{margin-top:12px;padding:10px;background:rgba(255,255,255,.02);border-radius:8px;font-size:.58em;color:#1e301a;line-height:1.6;text-align:center;border:1px solid rgba(255,255,255,.02)}
+.ftr{text-align:center;padding:10px;font-size:.60em;color:#0e180c;border-radius:0 0 14px 14px;background:#060806}
+@media(max-width:768px){.topbar{flex-direction:column;text-align:center}.topbar .ed{text-align:center}.hdr h1{font-size:1.2em}.chg{grid-template-columns:1fr}.cred-in{flex-direction:column;text-align:center}.cred .ct{justify-content:center}.dg{grid-template-columns:1fr 1fr}.proj{grid-template-columns:1fr}.hdr .mkt .mi{min-width:95px}}
+@media(max-width:420px){.dg{grid-template-columns:1fr}.hdr h1{font-size:1.05em}.hdr .mkt{flex-direction:column;align-items:center}}
+</style>
+</head>
+<body>
+<div class="pg">
+
+<div class="topbar">
+<div class="logo"><div class="logo-ic">🫘</div><div class="logo-txt"><h2>RURAL IN</h2><small>Inteligencia para o Agronegocio</small></div></div>
+<div class="ed"><div class="dt">Sexta-feira, 27 de Marco de 2026</div><div class="inf">Radar Agro Soja · Fechamento Semanal · Semana 24-27/Mar</div></div>
+</div>
+
+<div class="hdr">
+<div class="tag-top">Radar Agro Soja · Fechamento Semanal</div>
+<h1>CBOT Recupera com Oleo e Biocombustiveis, CEPEA Volta a R$ 130 e USDA Decide na Segunda</h1>
+<div class="sub">Semana volátil: Chicago oscilou entre US$ 11,55 e US$ 11,76/bu, puxada pelo petroleo e expectativa de biocombustiveis. No Brasil, safra recorde de 184,7 mi t pressiona, mas produtor segura venda.</div>
+<div class="mkt">
+<div class="mi"><div class="ml">CBOT Mai/26</div><div class="mv wh">US$ 11,76/bu</div><div class="mc up">+2,75 pts (sexta)</div></div>
+<div class="mi"><div class="ml">CEPEA Paranagua</div><div class="mv wh">R$ 130,37/sc</div><div class="mc up">+0,87% (qui 26/3)</div></div>
+<div class="mi"><div class="ml">CEPEA Var. Mes</div><div class="mv wh">+2,79%</div><div class="mc up">Acumula alta em marco</div></div>
+<div class="mi"><div class="ml">Dolar Comercial</div><div class="mv wh">R$ 5,24</div><div class="mc dn">Queda favorece import.</div></div>
+<div class="mi"><div class="ml">Brent</div><div class="mv wh">US$ 98-99/bbl</div><div class="mc up">Puxa oleo de soja</div></div>
+<div class="mi"><div class="ml">Safra BR 25/26</div><div class="mv nt">184,7 mi t</div><div class="mc dn">Recorde pressiona</div></div>
+</div>
+</div>
+
+<div class="mn">
+
+<h3 class="stl">📋 Resumo Executivo da Semana</h3>
+
+<p class="tx">A semana de 24 a 27 de marco foi marcada por <span class="hl">volatilidade intensa em Chicago</span>, com o contrato maio/26 oscilando entre <strong>US$ 11,55 (terca 24/3) e US$ 11,76 (sexta 27/3)</strong>. O driver principal da semana foi o <span class="ps">complexo oleo de soja/petroleo</span>: o Brent acima de US$ 98/bbl, impulsionado pelas tensoes no Oriente Medio, arrastou o oleo de soja e, por consequencia, o grao. O <span class="hl">farelo tambem sustentou</span>, operando nos maiores patamares desde 2024.</p>
+
+<p class="tx">No Brasil, o indicador CEPEA Paranagua recuperou na quinta (26/3) para <strong>R$ 130,37/sc (+0,87%)</strong>, acumulando <span class="ps">+2,79% no mes</span>. Porem, a saca chegou a cair para R$ 129,25 na quarta (25/3), quando a Agroconsult elevou a projecao de safra para <span class="ng">184,7 milhoes de toneladas</span> — novo recorde. O mercado fisico opera lateralizado com <strong>produtores segurando a soja recem-colhida</strong>, cautelosos com frete, geopolitica e incerteza sobre exigencias fitossanitarias da China.</p>
+
+<div class="sep">. . .</div>
+
+<h3 class="stl">📊 Painel CBOT — Evolucao Semanal Chicago</h3>
+
+<table class="tbl">
+<thead><tr><th>Data</th><th>Mai/26 (US$/bu)</th><th>Var. Dia</th><th>Driver Principal</th></tr></thead>
+<tbody>
+<tr><td>Seg 23/3</td><td>11,6350</td><td style="color:#81c784">+0,19%</td><td>Leve alta tecnica</td></tr>
+<tr><td>Ter 24/3</td><td style="color:#ef5350;font-weight:700">11,5500</td><td style="color:#ef5350">-0,73%</td><td>Oferta BR + sem Trump-Xi</td></tr>
+<tr><td>Qua 25/3</td><td style="color:#81c784;font-weight:700">11,7175</td><td style="color:#81c784">+1,45%</td><td>Oleo/Petroleo rally</td></tr>
+<tr><td>Qui 26/3</td><td>11,7375</td><td style="color:#81c784">+0,17%</td><td>Vendas EUA + biodiesel</td></tr>
+<tr><td style="color:#ffd740">Sex 27/3*</td><td style="color:#81c784;font-weight:800">~11,76</td><td style="color:#81c784">+0,19%</td><td>Oleo forte + posicionamento USDA</td></tr>
+</tbody>
+</table>
+<p style="font-size:.60em;color:#3a5a32;text-align:center;margin-top:-8px">*Cotacao intraday 7h BRT — fechamento pode variar</p>
+
+<div class="chc">
+<h4>CBOT Soja Mai/26 — Semana Completa (US$/bu)</h4>
+<canvas id="ch1"></canvas>
+</div>
+
+<div class="chg">
+<div class="chc">
+<h4>CEPEA Paranagua — Marco/2026 (R$/sc)</h4>
+<canvas id="ch2"></canvas>
+</div>
+<div class="chc">
+<h4>CBOT Mai/26 vs Brent — Correlacao na Semana</h4>
+<canvas id="ch3"></canvas>
+</div>
+</div>
+
+<div class="sep">. . .</div>
+
+<h3 class="stl">🔍 Analise Fundamentalista</h3>
+
+<div class="dg">
+<div class="dc"><div class="dl">Safra BR 25/26</div><div class="dv ng">184,7 mi t</div><div class="ds">Recorde. Agroconsult.<br>Acima de 182,2 mi t (jan).</div></div>
+<div class="dc"><div class="dl">Colheita BR</div><div class="dv nt">~75% da area</div><div class="ds">Avancando bem.<br>Pressao de oferta.</div></div>
+<div class="dc"><div class="dl">Vendas EUA (sem.)</div><div class="dv ps">668,9 mil t</div><div class="ds">+124% vs sem. anterior.<br>China principal destino.</div></div>
+<div class="dc"><div class="dl">Oleo de Soja</div><div class="dv ps">EM ALTA</div><div class="ds">Brent $98-99 puxa.<br>Biodiesel EUA no radar.</div></div>
+<div class="dc"><div class="dl">Farelo de Soja</div><div class="dv ps">MAIOR DESDE 2024</div><div class="ds">Sustenta o grao.<br>Crush margin subindo.</div></div>
+<div class="dc"><div class="dl">Premio Paranagua</div><div class="dv ng">PRESSIONADO</div><div class="ds">Fitossanitario CN.<br>Cargas devolvidas.</div></div>
+<div class="dc"><div class="dl">Trump-Xi</div><div class="dv nt">14-15 MAI</div><div class="ds">Confirmado Pequim.<br>Cotas soja no pauta.</div></div>
+<div class="dc"><div class="dl">USDA Area 26/27</div><div class="dv nt">31 DE MARCO</div><div class="ds">Relatorio segunda-feira.<br>Mercado se posiciona.</div></div>
+<div class="dc"><div class="dl">Dolar</div><div class="dv" style="color:#fff">R$ 5,24</div><div class="ds">Queda beneficia import.<br>Pressiona receita em R$.</div></div>
+</div>
+
+<div class="alt">
+<h5>🇧🇷 Brasil — Oferta Recorde com Comercializacao Travada</h5>
+<p>A safra 25/26 caminha para <strong>184,7 mi t</strong> (Agroconsult) — a maior da historia. A colheita avanca em ritmo forte, mas o produtor <strong>segura a venda</strong>, cauteloso com frete (diesel em alta), geopolitica e exigencias fitossanitarias chinesas. No fisico, a semana foi lateral: <strong>Rio Verde (GO) R$ 107/sc, Rondonopolis (MT) R$ 106, Cascavel (PR) R$ 116, Passo Fundo (RS) R$ 122</strong>. Portos entre R$ 127-130/sc. Premios pressionados por fitossanitario — <span class="ng">cargas devolvidas nos portos</span>.</p>
+</div>
+
+<div class="alt">
+<h5>🇺🇸 EUA — Vendas Fortes e Biodiesel no Horizonte</h5>
+<p>Vendas semanais americanas saltaram para <strong>668,9 mil t</strong> (+124% vs semana anterior), com <span class="ps">China como principal destino</span>. O mercado aguarda anuncio do governo sobre <strong>aumento da mistura de biocombustiveis</strong>, previsto para sexta (27/3). Se confirmado, e altista para oleo de soja e, por arraste, para o grao. Relatorio USDA de area para 26/27 sai dia <span class="hl">31/mar (segunda)</span> — expectativa de aumento na area plantada.</p>
+</div>
+
+<div class="alt">
+<h5>⛽ Petroleo e Oleo de Soja — O Driver Oculto</h5>
+<p>O <strong>Brent acima de US$ 98/bbl</strong> (tensoes Ormuz + guerra Oriente Medio) tem sido o <span class="ps">principal vetor de alta em Chicago esta semana</span>. Petroleo caro = energia cara = biocombustiveis mais competitivos = demanda por oleo de soja sobe. A correlacao CBOT-Brent esta <strong>elevada</strong>. Qualquer escalada no conflito puxa Chicago junto. Qualquer cessar-fogo derruba.</p>
+</div>
+
+<div class="sep">. . .</div>
+
+<h3 class="stl">📈 Analise Tecnica — Leitura do Grafico</h3>
+
+<p class="tx">O contrato maio/26 na CBOT desenhou um <span class="ps">fundo em US$ 11,55 na terca (24/3)</span> e reagiu com forca na quarta (+1,45%), formando um <strong>candle de reversao</strong>. A media movel de 7 dias cruza para cima, confirmando retomada de momento positivo. <span class="hl">Suporte imediato em US$ 11,55</span> e <span class="ng">resistencia em US$ 11,80-11,85</span> (topo de marco). Rompimento abre espaco tecnico ate US$ 12,00-12,10.</p>
+
+<p class="tx">No CEPEA, o indicador Paranagua <span class="ps">formou suporte em R$ 127,12 (17/3)</span> e recuperou para R$ 130,37 (26/3). A resistencia esta nos <strong>R$ 131,18 (6/3)</strong>. O indicador acumula <span class="ps">+2,79% no mes</span> apesar da safra recorde — sinal de que o piso esta sendo bem defendido pela retracao do produtor.</p>
+
+<div class="chc">
+<h4>CEPEA Paranagua Marco Completo — Suporte/Resistencia (R$/sc)</h4>
+<canvas id="ch4"></canvas>
+</div>
+
+<div class="sep">. . .</div>
+
+<h3 class="stl">🌡️ Termometros de Conjuntura</h3>
+
+<div class="chg">
+<div class="thermo"><h4>Oferta Global de Soja</h4>
+<div class="th-bar"><div class="th-mk" style="left:18%"><div class="arr"></div><div class="lbl" style="background:#ef5350;color:#fff">ABUNDANTE</div></div></div>
+<div class="th-labels"><span>Excesso</span><span>Equilibrada</span><span>Escassa</span></div>
+</div>
+<div class="thermo"><h4>Demanda China por Soja BR</h4>
+<div class="th-bar"><div class="th-mk" style="left:60%"><div class="arr"></div><div class="lbl" style="background:#8bc34a;color:#000">FIRME</div></div></div>
+<div class="th-labels"><span>Fraca</span><span>Normal</span><span>Forte</span></div>
+</div>
+</div>
+
+<div class="chg">
+<div class="thermo"><h4>Pressao do Dolar sobre Receita BR</h4>
+<div class="th-bar"><div class="th-mk" style="left:38%"><div class="arr"></div><div class="lbl" style="background:#ff9800;color:#000">MODERADA</div></div></div>
+<div class="th-labels"><span>Alta ($ baixo)</span><span>Neutra</span><span>Baixa ($ alto)</span></div>
+</div>
+<div class="thermo"><h4>Impacto do Petroleo na CBOT</h4>
+<div class="th-bar"><div class="th-mk" style="left:82%"><div class="arr"></div><div class="lbl" style="background:#4CAF50;color:#fff">FORTE ALTA</div></div></div>
+<div class="th-labels"><span>Baixista</span><span>Neutro</span><span>Altista</span></div>
+</div>
+</div>
+
+<div class="chg">
+<div class="thermo"><h4>Ritmo de Comercializacao BR</h4>
+<div class="th-bar"><div class="th-mk" style="left:30%"><div class="arr"></div><div class="lbl" style="background:#ef5350;color:#fff">TRAVADO</div></div></div>
+<div class="th-labels"><span>Parado</span><span>Normal</span><span>Acelerado</span></div>
+</div>
+<div class="thermo"><h4>Volatilidade Geral do Mercado</h4>
+<div class="th-bar"><div class="th-mk" style="left:75%"><div class="arr"></div><div class="lbl" style="background:#ff9800;color:#000">ELEVADA</div></div></div>
+<div class="th-labels"><span>Baixa</span><span>Normal</span><span>Extrema</span></div>
+</div>
+</div>
+
+<div class="sep">. . .</div>
+
+<h3 class="stl">🗺️ Mapa de Precos — Fisico Brasil (R$/sc 60kg)</h3>
+
+<div class="dg">
+<div class="dc"><div class="dl">Rio Verde GO</div><div class="dv" style="color:#fff">R$ 107</div><div class="ds">Referencia Cerrado</div></div>
+<div class="dc"><div class="dl">Rondonopolis MT</div><div class="dv" style="color:#fff">R$ 106</div><div class="ds">Maior produtor</div></div>
+<div class="dc"><div class="dl">Norte MT</div><div class="dv" style="color:#ef5350">R$ 99-100</div><div class="ds">Menor base</div></div>
+<div class="dc"><div class="dl">Campo Grande MS</div><div class="dv" style="color:#fff">R$ 113</div><div class="ds">Estavel na semana</div></div>
+<div class="dc"><div class="dl">Cascavel PR</div><div class="dv" style="color:#fff">R$ 116</div><div class="ds">Recuo de R$ 5 no mes</div></div>
+<div class="dc"><div class="dl">Ponta Grossa PR</div><div class="dv" style="color:#fff">R$ 123</div><div class="ds">Referencia Sul</div></div>
+<div class="dc"><div class="dl">Passo Fundo RS</div><div class="dv" style="color:#fff">R$ 122</div><div class="ds">Recuperou na semana</div></div>
+<div class="dc"><div class="dl">LEM Bahia</div><div class="dv" style="color:#fff">R$ 116,50</div><div class="ds">Matopiba</div></div>
+<div class="dc"><div class="dl">Paranagua PR</div><div class="dv ps">R$ 130,37</div><div class="ds">CEPEA Indicador</div></div>
+<div class="dc"><div class="dl">Rio Grande RS</div><div class="dv" style="color:#fff">R$ 128,80</div><div class="ds">Porto Sul</div></div>
+</div>
+
+<div class="chc">
+<h4>Precos Fisicos Brasil — Comparativo Regional (R$/sc)</h4>
+<canvas id="ch5"></canvas>
+</div>
+
+<div class="sep">. . .</div>
+
+<h3 class="stl">🌐 Radar Geopolitico e Macro</h3>
+
+<div class="geo">
+<div class="geo-i"><div class="gi">📊</div><div><div class="gt">USDA Relatorio de Area — 31/Mar (Segunda!)</div><div class="gd">O relatório mais esperado do trimestre. Expectativa de aumento na area de soja nos EUA para 26/27. Se area vier acima do esperado = baixista para CBOT. Se vier abaixo = altista. O mercado esta se posicionando AGORA. Este e O evento da proxima semana.</div></div></div>
+<div class="geo-i"><div class="gi">🇨🇳</div><div><div class="gt">China: Fitossanitario + Encontro Trump-Xi (14-15/Mai)</div><div class="gd">Exigencias fitossanitarias causaram devolucao de cargas nos portos BR. Premios pressionados. Encontro Trump-Xi confirmado para maio em Pequim — pauta inclui cotas de soja americana. Se houver acordo, pode redirecionar demanda chinesa dos EUA, pressionando premios BR.</div></div></div>
+<div class="geo-i"><div class="gi">⛽</div><div><div class="gt">Oriente Medio e Petroleo: O Fio que Puxa Chicago</div><div class="gd">Brent acima de US$ 98. Tensoes no Estreito de Ormuz. Brasil negociou rota alternativa com Turquia. Petroleo caro = biodiesel competitivo = oleo de soja em alta = CBOT sustentada. Qualquer cessar-fogo EUA-Ira derruba petroleo e, por arraste, a soja.</div></div></div>
+<div class="geo-i"><div class="gi">🇦🇷</div><div><div class="gt">Argentina: Clima Favoravel Pressiona</div><div class="gd">Condicoes climaticas favoraveis para safra argentina reforçam vies de oferta abundante na America do Sul. Combinado com safra recorde BR, mercado global bem abastecido. Limite para altas.</div></div></div>
+<div class="geo-i"><div class="gi">🌿</div><div><div class="gt">Biocombustiveis EUA: O Coringa da Semana</div><div class="gd">Governo americano deve anunciar hoje (27/3) novas exigencias de mistura de biocombustiveis. Se confirmado aumento, e ALTISTA forte para oleo de soja e puxa o grao. Reuniao produtores + governo na sexta.</div></div></div>
+</div>
+
+<div class="sep">. . .</div>
+
+<h3 class="stl">🎯 Projecao para Proxima Semana (30/Mar - 03/Abr)</h3>
+
+<div class="bld">
+<h3>VIES: NEUTRO COM VOLATILIDADE ELEVADA</h3>
+<p>Semana dominada pelo relatorio USDA de area (31/3). Mercado pode ter reacao forte em qualquer direcao. Petroleo e geopolitica seguem como variaveis-curinga. Producao recorde BR limita altas sustentadas no fisico.</p>
+</div>
+
+<div class="proj">
+<div class="proj-c"><div class="pl">CBOT Mai/26</div><div class="pv" style="color:#ffd740">US$ 11,50 - 11,95</div><div class="pd">Se USDA vier altista: teste US$ 11,90-12,00.<br>Se baixista: retorno ao suporte US$ 11,45-11,50.</div></div>
+<div class="proj-c"><div class="pl">CEPEA Paranagua</div><div class="pv" style="color:#ffd740">R$ 128 - R$ 133</div><div class="pd">Depende de CBOT + dolar.<br>Produtor segurando limita queda.<br>Piso R$ 127, teto R$ 133.</div></div>
+<div class="proj-c"><div class="pl">Rio Verde GO</div><div class="pv" style="color:#ffd740">R$ 105 - R$ 110</div><div class="pd">Lateralizado. Safra local<br>avancando. Base pressionada<br>pelo frete + fitossanitario.</div></div>
+<div class="proj-c"><div class="pl">Dolar</div><div class="pv" style="color:#ffd740">R$ 5,18 - R$ 5,32</div><div class="pd">Selic 14,75% ancora.<br>Volatilidade externa pode<br>gerar oscilacao pontual.</div></div>
+</div>
+
+<div class="chc">
+<h4>Cenarios para CBOT Mai/26 — Proxima Semana</h4>
+<canvas id="ch6"></canvas>
+</div>
+
+<div class="sep">. . .</div>
+
+<h3 class="stl">💡 Estrategia Rural IN para o Sojicultor</h3>
+
+<div class="alt">
+<h5>Quem Ainda Tem Soja na Mao</h5>
+<p><span class="hl"><strong>Esperar o relatorio USDA (31/3) antes de fechar lotes grandes.</strong></span> Se area EUA vier menor que o esperado, CBOT pode buscar US$ 12,00 e melhorar as condicoes de venda. Se vier maior, o suporte esta em US$ 11,45 — ainda acima do piso de marco. <strong>Nao venda em panico.</strong> O petroleo esta sustentando e o produtor que segura tem poder.</p>
+</div>
+
+<div class="alt">
+<h5>Quem Precisa Fazer Caixa</h5>
+<p>Se precisa vender agora, <span class="ps"><strong>priorize mercado interno</strong></span> onde os premios sao menos afetados pelo fitossanitario. Pracas como <strong>LEM (R$ 116,50), Campo Grande (R$ 113) e Ponta Grossa (R$ 123)</strong> estao pagando melhor que porto neste momento. Avalie barter para insumos da safra 26/27 — a relacao de troca soja/MAP pode melhorar com Tecnoshow (7-11/abr).</p>
+</div>
+
+<div class="alt">
+<h5>Quem Pensa na Safra 26/27</h5>
+<p>O custo de producao esta subindo (fertilizantes +6,1%, Selic 14,75%). <span class="ng"><strong>Faca a conta antes de plantar.</strong></span> Com soja a R$ 106/sc em Rio Verde e custo de R$ 7.118/ha, voce precisa de <strong>67 sc/ha so para empatar</strong>. Se sua produtividade media e 60 sc/ha, <span class="ng">o numero nao fecha sem gestao</span>. Rural IN ajuda voce a simular cenarios antes de decidir.</p>
+</div>
+
+<div class="sep">. . .</div>
+
+<h3 class="stl">📊 Radar de Conjuntura — Visao Completa</h3>
+
+<div class="chg">
+<div class="chc">
+<h4>Radar Fundamentalista — Soja Semana 27/03</h4>
+<canvas id="ch7"></canvas>
+</div>
+<div class="chc">
+<h4>Composicao do Preco da Soja BR (R$/sc)</h4>
+<canvas id="ch8"></canvas>
+</div>
+</div>
+
+<!-- CREDENCIAL -->
+<div class="cred">
+<div class="cred-in">
+<div class="cred-av">👨‍💼</div>
+<div>
+<h3>Dr. Sidney Souza</h3>
+<div class="ti">Economista Agricola · Estrategista Economico do Produtor</div>
+<div class="dsc">Especialista em economia da fazenda e gestao de risco no agro<br>Transformamos dados da fazenda em decisoes economicas<br>Ajudamos produtores a entender se o mercado sustenta seu negocio</div>
+<div class="ct">
+<a href="mailto:sidneyagro@gmail.com">📧 sidneyagro@gmail.com</a>
+<a href="https://wa.me/5564992266886">📱 (64) 9 9226-6886</a>
+<span>📸 @ruralin.ai</span>
+</div>
+</div>
+</div>
+<div class="disc">Informativo analitico e educacional. Nao constitui recomendacao de compra ou venda. Dados: CBOT/CME Group, CEPEA/Esalq-USP, Safras & Mercado, Agroconsult, AgRural, Granar, Scot Consultoria, USDA, Grao Direto, Noticias Agricolas, Globo Rural. Analise e construcao: Dr. Sidney Souza — Rural IN.</div>
+</div>
+
+</div>
+<div class="ftr">RURAL IN 2026 · Inteligencia para o Agronegocio · Rio Verde/GO</div>
+</div>
+
+<script>
+Chart.defaults.color='#4a6a42';Chart.defaults.font.family='Inter';Chart.defaults.font.size=11;
+var df={family:'Inter',weight:'600'};
+var tt={backgroundColor:'#0a0e08',titleColor:'#4CAF50',bodyColor:'#c8d5c0',borderColor:'#1a3a1a',borderWidth:1,padding:12,cornerRadius:8};
+
+// 1 — CBOT SEMANA
+new Chart(document.getElementById('ch1').getContext('2d'),{
+type:'line',data:{labels:['Sex 20/3','Seg 23/3','Ter 24/3','Qua 25/3','Qui 26/3','Sex 27/3*'],
+datasets:[{label:'CBOT Mai/26 (US$/bu)',data:[11.685,11.635,11.55,11.7175,11.7375,11.76],
+borderColor:'#4CAF50',backgroundColor:'rgba(76,175,80,0.06)',borderWidth:3,fill:true,tension:0.3,pointRadius:5,
+pointBackgroundColor:['#4CAF50','#ffd740','#ef5350','#81c784','#81c784','#81c784']}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,
+annotation:{annotations:{
+fundo:{type:'label',xValue:2,yValue:11.52,content:['Fundo US$ 11,55'],font:{size:9,weight:'bold'},color:'#ef5350'},
+rally:{type:'label',xValue:3,yValue:11.75,content:['+1,45% Rally'],font:{size:9,weight:'bold'},color:'#81c784'},
+sup:{type:'line',yMin:11.55,yMax:11.55,borderColor:'rgba(239,83,80,0.3)',borderWidth:1.5,borderDash:[4,3]},
+res:{type:'line',yMin:11.80,yMax:11.80,borderColor:'rgba(255,215,64,0.3)',borderWidth:1.5,borderDash:[4,3],label:{display:true,content:'Resist. US$ 11,80',position:'end',backgroundColor:'rgba(255,215,64,0.5)',color:'#000',font:{size:7,weight:'bold'},padding:2}}
+}}},scales:{y:{min:11.45,max:11.90,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return 'US$ '+v.toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:8}}}}}
+});
+
+// 2 — CEPEA MARCO
+new Chart(document.getElementById('ch2').getContext('2d'),{
+type:'line',data:{labels:['06/3','09','10','11','12','13','16','17','18','19','20','23','24','25','26'],
+datasets:[{label:'CEPEA Pgua (R$/sc)',data:[131.18,130.02,128.80,129.29,130.87,130.20,129.36,127.12,127.27,129.38,130.61,129.87,130.15,129.25,130.37],
+borderColor:'#4CAF50',backgroundColor:'rgba(76,175,80,0.05)',borderWidth:2.5,fill:true,tension:0.3,pointRadius:3,pointBackgroundColor:'#4CAF50'}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,
+annotation:{annotations:{
+sup:{type:'line',yMin:127.12,yMax:127.12,borderColor:'rgba(129,199,132,0.4)',borderWidth:1.5,borderDash:[4,3],label:{display:true,content:'Suporte R$ 127,12',position:'start',backgroundColor:'rgba(129,199,132,0.6)',color:'#000',font:{size:7,weight:'bold'},padding:2}},
+res:{type:'line',yMin:131.18,yMax:131.18,borderColor:'rgba(239,83,80,0.4)',borderWidth:1.5,borderDash:[4,3],label:{display:true,content:'Resist. R$ 131,18',position:'end',backgroundColor:'rgba(239,83,80,0.5)',color:'#fff',font:{size:7,weight:'bold'},padding:2}}
+}}},scales:{y:{min:125,max:133,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return 'R$ '+v;},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7},maxRotation:45}}}}
+});
+
+// 3 — CBOT vs BRENT
+new Chart(document.getElementById('ch3').getContext('2d'),{
+type:'line',data:{labels:['Seg 23','Ter 24','Qua 25','Qui 26','Sex 27*'],
+datasets:[{label:'CBOT Mai (US$/bu)',data:[11.635,11.55,11.7175,11.7375,11.76],borderColor:'#4CAF50',borderWidth:2.5,tension:0.3,pointRadius:4,yAxisID:'y',fill:false,pointBackgroundColor:'#4CAF50'},
+{label:'Brent (US$/bbl)',data:[94.5,98.5,97.8,98.2,99.0],borderColor:'#ff9800',borderWidth:2,tension:0.3,pointRadius:4,yAxisID:'y1',fill:false,borderDash:[5,3],pointBackgroundColor:'#ff9800'}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},
+scales:{y:{min:11.45,max:11.85,position:'left',grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return 'US$ '+v.toFixed(2);},font:df},title:{display:true,text:'Soja',color:'#4a6a42',font:{family:'Inter',weight:'600',size:8}}},
+y1:{min:92,max:101,position:'right',grid:{display:false},ticks:{callback:function(v){return '$'+v;},font:df},title:{display:true,text:'Brent',color:'#4a6a42',font:{family:'Inter',weight:'600',size:8}}},
+x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:8}}}}}
+});
+
+// 4 — CEPEA COMPLETO
+new Chart(document.getElementById('ch4').getContext('2d'),{
+type:'line',data:{labels:['06','09','10','11','12','13','16','17','18','19','20','23','24','25','26'],
+datasets:[{label:'CEPEA Pgua',data:[131.18,130.02,128.80,129.29,130.87,130.20,129.36,127.12,127.27,129.38,130.61,129.87,130.15,129.25,130.37],
+borderColor:'#4CAF50',borderWidth:2.5,tension:0.2,pointRadius:4,fill:false,pointBackgroundColor:'#4CAF50'},
+{label:'MM7',data:[null,null,null,null,null,null,129.96,129.38,129.27,129.18,129.14,128.94,129.11,129.34,129.84],
+borderColor:'#64b5f6',borderWidth:1.5,tension:0.3,pointRadius:0,fill:false,borderDash:[4,2]}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt,
+annotation:{annotations:{
+sup:{type:'line',yMin:127.12,yMax:127.12,borderColor:'rgba(129,199,132,0.5)',borderWidth:2,borderDash:[6,3],label:{display:true,content:'SUPORTE R$ 127,12',position:'start',backgroundColor:'rgba(129,199,132,0.7)',color:'#000',font:{size:8,weight:'bold'},padding:3}},
+res:{type:'line',yMin:131.18,yMax:131.18,borderColor:'rgba(239,83,80,0.5)',borderWidth:2,borderDash:[6,3],label:{display:true,content:'RESIST. R$ 131,18',position:'end',backgroundColor:'rgba(239,83,80,0.6)',color:'#fff',font:{size:8,weight:'bold'},padding:3}},
+rec:{type:'box',xMin:10,xMax:14,backgroundColor:'rgba(129,199,132,0.03)',borderColor:'transparent'}
+}}},scales:{y:{min:125,max:133,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return 'R$ '+v;},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:8}},title:{display:true,text:'Dias Marco/2026',color:'#4a6a42',font:{family:'Inter',weight:'600',size:8}}}}}
+});
+
+// 5 — PRECOS REGIONAIS
+new Chart(document.getElementById('ch5').getContext('2d'),{
+type:'bar',data:{labels:['Norte MT','Rondo. MT','Rio Verde GO','C.Grande MS','LEM BA','Cascavel PR','P.Fundo RS','P.Grossa PR','Rio Grande','Paranagua'],
+datasets:[{data:[99.85,106,107,113,116.50,116,122,123,128.80,130.37],
+backgroundColor:['rgba(239,83,80,0.4)','rgba(255,152,0,0.4)','rgba(255,215,64,0.4)','rgba(76,175,80,0.3)','rgba(76,175,80,0.3)','rgba(76,175,80,0.3)','rgba(76,175,80,0.4)','rgba(76,175,80,0.4)','rgba(76,175,80,0.5)','rgba(129,199,132,0.5)'],
+borderColor:['#ef5350','#ff9800','#ffd740','#4CAF50','#4CAF50','#4CAF50','#4CAF50','#4CAF50','#81c784','#81c784'],
+borderWidth:2,borderRadius:6}]},
+options:{responsive:true,maintainAspectRatio:true,indexAxis:'y',plugins:{legend:{display:false},
+tooltip:{backgroundColor:'#0a0e08',titleColor:'#4CAF50',bodyColor:'#c8d5c0',borderColor:'#1a3a1a',borderWidth:1,padding:12,cornerRadius:8,callbacks:{label:function(c){return 'R$ '+c.parsed.x.toFixed(2)+'/sc';}}}},
+scales:{x:{min:90,max:140,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return 'R$ '+v;},font:df}},y:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:8}}}}}
+});
+
+// 6 — CENARIOS PROXIMA SEMANA
+new Chart(document.getElementById('ch6').getContext('2d'),{
+type:'bar',data:{labels:['USDA Baixista','Base (Neutro)','USDA Altista','Petroleo Dispara'],
+datasets:[
+{label:'Piso (US$/bu)',data:[11.45,11.55,11.70,11.75],backgroundColor:'rgba(239,83,80,0.3)',borderColor:'#ef5350',borderWidth:1.5,borderRadius:4},
+{label:'Teto (US$/bu)',data:[11.65,11.80,11.95,12.10],backgroundColor:'rgba(129,199,132,0.3)',borderColor:'#81c784',borderWidth:1.5,borderRadius:4}
+]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},
+tooltip:{backgroundColor:'#0a0e08',titleColor:'#4CAF50',bodyColor:'#c8d5c0',borderColor:'#1a3a1a',borderWidth:1,padding:12,cornerRadius:8,callbacks:{label:function(c){return c.dataset.label+': US$ '+c.parsed.y.toFixed(2);}}}},
+scales:{y:{min:11.30,max:12.20,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return 'US$ '+v.toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:8}}}}}
+});
+
+// 7 — RADAR FUNDAMENTALISTA
+new Chart(document.getElementById('ch7').getContext('2d'),{
+type:'radar',data:{labels:['Oferta Global','Demanda CN','CBOT Tecnico','Premio BR','Petroleo/Oleo','Cambio'],
+datasets:[{label:'Semana 27/03',data:[30,65,70,35,85,50],backgroundColor:'rgba(76,175,80,0.12)',borderColor:'#4CAF50',borderWidth:2.5,pointBackgroundColor:'#4CAF50',pointRadius:5},
+{label:'Semana 20/03',data:[28,62,55,40,70,55],backgroundColor:'rgba(74,106,66,0.08)',borderColor:'#4a6a42',borderWidth:1.5,pointBackgroundColor:'#4a6a42',pointRadius:3,borderDash:[4,2]}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},
+scales:{r:{min:0,max:100,ticks:{display:false,stepSize:20},grid:{color:'rgba(255,255,255,0.06)'},pointLabels:{font:{family:'Inter',weight:'600',size:9},color:'#81c784'}}}}
+});
+
+// 8 — COMPOSICAO PRECO
+new Chart(document.getElementById('ch8').getContext('2d'),{
+type:'doughnut',data:{labels:['CBOT (base)','Premio/Desconto','Cambio (R$/US$)','Frete/Logistica'],
+datasets:[{data:[55,12,25,8],backgroundColor:['#4CAF50','#ef5350','#ffd740','#64b5f6'],borderColor:'#0a0e08',borderWidth:3}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{position:'bottom',labels:{font:df,color:'#a0b898',padding:10,boxWidth:12}},tooltip:tt}}
+});
+</script>
+</body>
+</html>

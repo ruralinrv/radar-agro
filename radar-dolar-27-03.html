@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radar Agro Dolar — 27/03/2026 | Rural IN</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#040608;color:#b8c8d8;min-height:100vh}
+.pg{max-width:960px;margin:0 auto;padding:10px}
+.topbar{background:linear-gradient(90deg,#0a1018,#0e1420,#0a1018);padding:12px 20px;border-radius:14px 14px 0 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #1a2838;flex-wrap:wrap;gap:8px}
+.topbar .logo{display:flex;align-items:center;gap:12px}
+.topbar .logo-ic{width:54px;height:54px;background:linear-gradient(135deg,#4CAF50,#1B5E20);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.7em;box-shadow:0 4px 25px rgba(76,175,80,.2)}
+.topbar .logo-txt h2{font-size:1.05em;font-weight:900;color:#fff;letter-spacing:1.5px}
+.topbar .logo-txt small{font-size:.62em;color:#66BB6A;font-weight:600;display:block}
+.topbar .ed{text-align:right}
+.topbar .ed .dt{font-size:.88em;font-weight:800;color:#66BB6A}
+.topbar .ed .inf{font-size:.62em;color:#4a6070;font-weight:600}
+.hdr{background:linear-gradient(135deg,#060a10,#080c14 50%,#040810);padding:36px 24px 30px;text-align:center;border-bottom:3px solid #4CAF50;position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(76,175,80,.04) 0%,transparent 70%)}
+.hdr .tag-top{display:inline-block;background:linear-gradient(135deg,#4CAF50,#1B5E20);color:#fff;font-size:.58em;font-weight:800;letter-spacing:3px;padding:4px 14px;border-radius:20px;text-transform:uppercase;margin-bottom:10px;z-index:1;position:relative}
+.hdr h1{font-family:'Playfair Display',serif;font-size:1.45em;font-weight:900;color:#fff;position:relative;z-index:1;line-height:1.3;max-width:800px;margin:0 auto}
+.hdr .sub{font-size:.78em;color:#78a088;margin-top:10px;font-weight:500;position:relative;z-index:1;line-height:1.6}
+.hdr .mkt{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px;position:relative;z-index:1}
+.hdr .mkt .mi{background:rgba(76,175,80,.05);border:1px solid rgba(76,175,80,.15);border-radius:10px;padding:7px 12px;text-align:center;min-width:108px}
+.hdr .mkt .mi .ml{font-size:.52em;color:#508860;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.hdr .mkt .mi .mv{font-size:1em;font-weight:900;margin-top:2px}
+.hdr .mkt .mi .mc{font-size:.56em;font-weight:700;margin-top:1px}
+.up{color:#81c784}.dn{color:#ef5350}.nt{color:#ffd740}.wh{color:#fff}
+.mn{background:#060810;padding:20px;border:1px solid #121c28;border-top:none}
+.stl{font-size:.76em;text-transform:uppercase;letter-spacing:2px;font-weight:800;color:#66BB6A;margin:22px 0 12px;display:flex;align-items:center;gap:10px;padding-bottom:8px;border-bottom:1px solid #121c28}
+.tx{font-size:.82em;line-height:1.95;color:#7898a8;margin-bottom:14px;text-align:justify}
+.tx strong{color:#b8d0e0;font-weight:700}
+.tx .hl{color:#66BB6A;font-weight:700}
+.tx .ng{color:#ef5350;font-weight:700}
+.tx .ps{color:#81c784;font-weight:700}
+.chc{background:#0a0e14;border:1px solid #162030;border-radius:12px;padding:14px;margin-bottom:12px}
+.chc h4{font-size:.66em;color:#78a088;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-weight:700;text-align:center}
+.chc canvas{max-height:260px}
+.chg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.thermo{background:#0a0e14;border-radius:12px;padding:14px;border:1px solid #162030;margin-bottom:10px}
+.thermo h4{text-align:center;font-size:.66em;color:#78a088;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:12px}
+.th-bar{height:16px;background:linear-gradient(90deg,#1b5e20 0%,#4CAF50 20%,#8bc34a 35%,#ffd740 50%,#ff9800 65%,#ef5350 80%,#b71c1c 100%);border-radius:10px;position:relative;margin:26px 8px 8px}
+.th-mk{position:absolute;top:-22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center}
+.th-mk .arr{width:3px;height:38px;border-radius:2px;background:#fff;box-shadow:0 0 6px rgba(255,255,255,.3)}
+.th-mk .lbl{font-size:.58em;font-weight:800;padding:3px 7px;border-radius:5px;white-space:nowrap;margin-top:3px}
+.th-labels{display:flex;justify-content:space-between;padding:0 8px;font-size:.56em;color:#2a4050;font-weight:700}
+.dg{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:8px;margin-bottom:14px}
+.dc{background:#0a0e14;border-radius:10px;padding:11px;border:1px solid #162030;text-align:center}
+.dc .dl{font-size:.52em;color:#66BB6A;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:4px}
+.dc .dv{font-size:1.15em;font-weight:900;color:#fff}
+.dc .ds{font-size:.62em;color:#4a6070;margin-top:3px;line-height:1.4}
+.alt{background:linear-gradient(135deg,#080c12,#0c1018);border-left:4px solid #4CAF50;border-radius:0 10px 10px 0;padding:14px;margin-bottom:10px}
+.alt h5{font-size:.70em;color:#66BB6A;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
+.alt p{font-size:.78em;color:#7898a8;line-height:1.8}
+.alt p strong{color:#b8d0e0}
+.bld{background:linear-gradient(135deg,#0c1018,#101820);border:2px solid #4CAF50;border-radius:14px;padding:20px;margin:16px 0;text-align:center;box-shadow:0 0 30px rgba(76,175,80,.04)}
+.bld h3{font-family:'Playfair Display',serif;font-size:1.1em;color:#fff;margin-bottom:8px;line-height:1.4}
+.bld p{font-size:.80em;color:#78a088;line-height:1.8}
+.tbl{width:100%;border-collapse:collapse;margin-bottom:12px;font-size:.70em}
+.tbl th{background:#0c1018;color:#66BB6A;padding:7px 5px;text-align:center;font-weight:700;text-transform:uppercase;letter-spacing:.5px;font-size:.78em;border-bottom:2px solid #1e3040}
+.tbl td{padding:6px 4px;text-align:center;border-bottom:1px solid #121c28;color:#7898a8}
+.tbl tr:hover td{background:rgba(76,175,80,.02)}
+.proj{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.proj-c{background:#0a0e14;border-radius:10px;padding:13px;border:1px solid #162030;text-align:center}
+.proj-c .pl{font-size:.54em;color:#66BB6A;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:5px}
+.proj-c .pv{font-size:1.2em;font-weight:900;color:#fff;margin-bottom:3px}
+.proj-c .pd{font-size:.66em;color:#4a6070;line-height:1.5}
+.geo{display:grid;grid-template-columns:1fr;gap:7px;margin-bottom:12px}
+.geo-i{background:rgba(76,175,80,.03);border:1px solid rgba(76,175,80,.08);border-radius:10px;padding:10px 14px;display:flex;gap:10px;align-items:flex-start}
+.geo-i .gi{font-size:1.2em;flex-shrink:0}
+.geo-i .gt{font-size:.70em;font-weight:800;color:#b8d0e0}
+.geo-i .gd{font-size:.68em;color:#4a6070;line-height:1.6;margin-top:2px}
+.sep{text-align:center;margin:20px 0;color:#121c28;font-size:1em;letter-spacing:10px}
+.imp{background:linear-gradient(135deg,#0c1018,#101820);border:1px solid #162030;border-radius:12px;padding:16px;margin-bottom:12px}
+.imp h4{font-size:.72em;color:#66BB6A;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;text-align:center}
+.imp-g{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px}
+.imp-i{text-align:center;padding:10px;background:rgba(76,175,80,.03);border-radius:8px;border:1px solid rgba(76,175,80,.08)}
+.imp-i .il{font-size:.50em;color:#4a6070;text-transform:uppercase;font-weight:700;letter-spacing:1px}
+.imp-i .iv{font-size:.90em;font-weight:900;color:#fff;margin:3px 0}
+.imp-i .id{font-size:.58em;color:#508860}
+.cred{background:linear-gradient(135deg,#0a0e14,#0e1218);border:2px solid #1a2838;border-radius:16px;padding:18px;margin-top:16px}
+.cred-in{display:flex;gap:14px;align-items:center}
+.cred-av{width:60px;height:60px;background:linear-gradient(135deg,#4CAF50,#1B5E20);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6em;flex-shrink:0;box-shadow:0 4px 18px rgba(76,175,80,.2)}
+.cred h3{font-size:.90em;font-weight:900;color:#fff}
+.cred .ti{font-size:.68em;color:#66BB6A;font-weight:700;margin-top:2px}
+.cred .dsc{font-size:.64em;color:#4a6070;margin-top:4px;line-height:1.5;font-style:italic}
+.cred .ct{margin-top:8px;display:flex;flex-wrap:wrap;gap:5px}
+.cred .ct a,.cred .ct span{font-size:.62em;color:#7898a8;text-decoration:none;display:flex;align-items:center;gap:3px;font-weight:600;padding:3px 7px;background:rgba(76,175,80,.05);border-radius:6px;border:1px solid rgba(76,175,80,.1)}
+.cred .ct a:hover{background:rgba(76,175,80,.12);color:#fff}
+.disc{margin-top:10px;padding:10px;background:rgba(255,255,255,.02);border-radius:8px;font-size:.56em;color:#121c28;line-height:1.6;text-align:center}
+.ftr{text-align:center;padding:10px;font-size:.58em;color:#0a0e14;border-radius:0 0 14px 14px;background:#040608}
+@media(max-width:768px){.topbar{flex-direction:column;text-align:center}.topbar .ed{text-align:center}.hdr h1{font-size:1.15em}.chg{grid-template-columns:1fr}.cred-in{flex-direction:column;text-align:center}.cred .ct{justify-content:center}.dg{grid-template-columns:1fr 1fr}.proj{grid-template-columns:1fr}.hdr .mkt .mi{min-width:90px}.imp-g{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.dg{grid-template-columns:1fr}.hdr h1{font-size:1em}.hdr .mkt{flex-direction:column;align-items:center}.imp-g{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="pg">
+<div class="topbar">
+<div class="logo"><div class="logo-ic">💲</div><div class="logo-txt"><h2>RURAL IN</h2><small>Inteligencia para o Agronegocio</small></div></div>
+<div class="ed"><div class="dt">Sexta-feira, 27 de Marco de 2026</div><div class="inf">Radar Agro Dolar · Fechamento Semanal · Semana 24-27/Mar</div></div>
+</div>
+
+<div class="hdr">
+<div class="tag-top">Radar Agro Dolar · Fechamento Semanal</div>
+<h1>Dolar a R$ 5,24: Copom Cortou Selic, Fed Segurou Juros e Ormuz Dita o Ritmo. O Que Muda na Receita da Fazenda?</h1>
+<div class="sub">Semana de volatilidade extrema: R$ 5,31 (max) a R$ 5,21 (min). Copom cortou Selic para 14,50% (1o corte desde mai/24). Fed manteve 3,50-3,75%. DXY oscilou entre 99 e 100,5. Petroleo a US$ 100-106. Real resistiu — mas por quanto tempo?</div>
+<div class="mkt">
+<div class="mi"><div class="ml">Dolar Comercial</div><div class="mv wh">R$ 5,239</div><div class="mc dn">-1,45% na semana</div></div>
+<div class="mi"><div class="ml">Semana: Max/Min</div><div class="mv nt">5,31 / 5,21</div><div class="mc dn">Range de 10 cts!</div></div>
+<div class="mi"><div class="ml">DXY (Dollar Index)</div><div class="mv wh">~99,4</div><div class="mc dn">Rejeitou 100,5</div></div>
+<div class="mi"><div class="ml">Selic (Nova)</div><div class="mv ps">14,50%</div><div class="mc dn">1o corte desde mai/24</div></div>
+<div class="mi"><div class="ml">Fed Funds</div><div class="mv wh">3,50-3,75%</div><div class="mc dn">Manteve. 1 corte em 26</div></div>
+<div class="mi"><div class="ml">Brent</div><div class="mv ng">US$ 100-106</div><div class="mc up">Volatil com Ormuz</div></div>
+</div>
+</div>
+
+<div class="mn">
+
+<h3 class="stl">📋 Resumo Executivo da Semana</h3>
+
+<p class="tx">A semana do dolar foi uma <span class="hl">montanha-russa ditada pelo Oriente Medio</span>. Na segunda (23/3), Trump anunciou "conversas produtivas" com o Ira — dolar despencou, Brent caiu 13%, e o real comemorou. Mas o <span class="ng">Ira negou negociacoes</span>, ataques continuaram, e na quinta (26/3) o dolar voltou a subir para R$ 5,28 com petroleo batendo US$ 106. Na sexta (27/3), com alguma acomodacao, fechou em <strong>R$ 5,239</strong>.</p>
+
+<p class="tx">Dois eventos de politica monetaria definiram a semana: o <span class="ps">Fed manteve juros em 3,50-3,75%</span> (quarta 18/3), sinalizando apenas <strong>1 corte em 2026</strong> (dez ou jan/27) — inflacao teimosa por causa do petroleo. E o <span class="hl">Copom cortou a Selic de 14,75% para 14,50%</span> (primeira queda desde mai/24), sinalizando cautela. No cambio, o efeito foi <strong>neutro a ligeiramente negativo</strong> para o real — Selic menor = carry menor = dolar tende a ganhar forca. Mas o diferencial de <strong>+10,75 p.p. (14,50% - 3,75%)</strong> ainda e enorme e atrai capital.</p>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">📊 Painel Cambial — Semana Completa</h3>
+
+<table class="tbl">
+<thead><tr><th>Data</th><th>USD/BRL</th><th>Var. Dia</th><th>DXY</th><th>Brent</th><th>Driver</th></tr></thead>
+<tbody>
+<tr><td>Sex 20/3</td><td>5,315</td><td style="color:#ef5350">+0,9%</td><td>100,2</td><td>$105</td><td>Brent >$100, aversao risco</td></tr>
+<tr><td>Seg 23/3</td><td style="color:#81c784">5,241</td><td style="color:#81c784">-1,4%</td><td style="color:#81c784">99,1</td><td>$90</td><td>Trump: "conversas com Ira"</td></tr>
+<tr><td>Ter 24/3</td><td>5,255</td><td style="color:#ef5350">+0,3%</td><td>99,4</td><td>$96</td><td>Ira nega. Ata Copom.</td></tr>
+<tr><td>Qua 25/3</td><td style="color:#81c784">5,221</td><td style="color:#81c784">-0,6%</td><td>99,4</td><td>$100</td><td>Risco geopolitico arrefece</td></tr>
+<tr><td>Qui 26/3</td><td>5,257</td><td style="color:#ef5350">+0,7%</td><td>99,8</td><td>$106</td><td>Brent $106! BC vende US$ 1bi</td></tr>
+<tr><td style="color:#66BB6A">Sex 27/3</td><td style="font-weight:800;color:#fff">5,239</td><td style="color:#81c784">-0,3%</td><td>99,4</td><td>$103</td><td>Acomodacao / fim de semana</td></tr>
+</tbody>
+</table>
+
+<div class="chc">
+<h4>USD/BRL — Marco/2026 Completo</h4>
+<canvas id="ch1"></canvas>
+</div>
+
+<div class="chg">
+<div class="chc">
+<h4>DXY (Dollar Index) — Marco</h4>
+<canvas id="ch2"></canvas>
+</div>
+<div class="chc">
+<h4>Brent vs USD/BRL — Correlacao Inversa (Semana)</h4>
+<canvas id="ch3"></canvas>
+</div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">💰 Impacto Direto na Receita da Fazenda</h3>
+
+<div class="imp">
+<h4>Quanto Vale Sua Saca em R$ com Esse Dolar?</h4>
+<div class="imp-g">
+<div class="imp-i"><div class="il">Soja (CBOT $11,67/bu)</div><div class="iv up">R$ 126,50/sc</div><div class="id">Dolar + Chicago</div></div>
+<div class="imp-i"><div class="il">Milho (CBOT $4,67/bu)</div><div class="iv up">R$ 70,34/sc</div><div class="id">CEPEA Campinas</div></div>
+<div class="imp-i"><div class="il">Cafe Arabica (~$2,95/lb)</div><div class="iv up">~R$ 1.968/sc</div><div class="id">Historicamente alto</div></div>
+<div class="imp-i"><div class="il">Algodao (~65 cts/lb)</div><div class="iv up">R$ 3,80/lp</div><div class="id">Maxima de 2026</div></div>
+<div class="imp-i"><div class="il">Trigo (CBOT $6,05/bu)</div><div class="iv up">R$ 1.269/t</div><div class="id">+7,7% no mes</div></div>
+<div class="imp-i"><div class="il">Diferencial Selic-Fed</div><div class="iv ps">+10,75 p.p.</div><div class="id">Carry trade ativo</div></div>
+</div>
+</div>
+
+<div class="alt">
+<h5>💲 Por Que o Dolar Importa Mais que Chicago para Sua Saca</h5>
+<p>Produtor, preste atencao: <strong>uma variacao de R$ 0,10 no dolar</strong> (ex: de R$ 5,24 para R$ 5,34) equivale a <span class="ps">R$ 2-3/sc na soja, R$ 1,50/sc no milho e R$ 30-40/sc no cafe</span>. Na semana, o dolar oscilou <span class="ng">R$ 0,10 (de 5,21 a 5,31)</span>. Isso sozinho pode representar <strong>R$ 2-3/sc de ganho ou perda no cafe e trigo</strong>. <span class="hl">O cambio e o multiplicador silencioso da sua receita.</span></p>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🔍 Os 5 Vetores do Cambio Agora</h3>
+
+<div class="dg">
+<div class="dc"><div class="dl">Copom: Selic 14,50%</div><div class="dv ps">1o CORTE</div><div class="ds">Desde mai/24. Tom cauteloso.<br>Proximo em abr/26.<br>Carry cai, mas segue alto.</div></div>
+<div class="dc"><div class="dl">Fed: 3,50-3,75%</div><div class="dv wh">MANTEVE</div><div class="ds">1 corte em 26 (dez).<br>Inflacao teimosa (petroleo).<br>Dolar forte globalmente.</div></div>
+<div class="dc"><div class="dl">DXY (Dollar Index)</div><div class="dv nt">~99,4</div><div class="ds">Rejeitou 100,5 (max).<br>Suporte 98,8.<br>Oscila com Ormuz.</div></div>
+<div class="dc"><div class="dl">Brent / Petroleo</div><div class="dv ng">US$ 100-106</div><div class="ds">BR exporta petroleo.<br>Mas diesel caro = inflacao.<br>Efeito ambiguo.</div></div>
+<div class="dc"><div class="dl">BC: "Casadao"</div><div class="dv ps">US$ 1 BI vendido</div><div class="ds">BC vendeu US$ 1bi spot<br>+ swap reverso quinta.<br>Intervencao firme.</div></div>
+<div class="dc"><div class="dl">IPCA-15 Marco</div><div class="dv ng">EM ALTA</div><div class="ds">Previa inflacao subiu.<br>Pressao de combustiveis<br>e alimentos.</div></div>
+</div>
+
+<div class="alt">
+<h5>🏦 Copom Cortou Selic: O Que Muda para o Cambio?</h5>
+<p>O corte de <strong>14,75% para 14,50%</strong> foi o primeiro desde maio/2024. O Copom sinalizou <span class="hl">cautela</span> — nao e inicio de ciclo de cortes agressivos. O diferencial com o Fed segue <span class="ps">+10,75 pontos percentuais</span>, atraindo capital estrangeiro (carry trade). Mas cada novo corte reduz esse diferencial e <span class="ng">tende a enfraquecer o real</span>. BBVA projeta <strong>real levemente mais fraco</strong> no 2o semestre por Selic em queda + incerteza pre-eleitoral.</p>
+</div>
+
+<div class="alt">
+<h5>⛽ O Petroleo e o Dolar: Relacao Ambigua para o Brasil</h5>
+<p>Brasil e <span class="ps">exportador liquido de petroleo</span> — preco alto gera receita em dolares e ajuda o real. Mas <span class="ng">diesel e gasolina sobem</span>, pressionam inflacao e frete agricola, e podem forcar o Copom a pausar cortes. O Brent oscilou entre <strong>US$ 90 e US$ 106</strong> na semana — a maior volatilidade desde 2022. <span class="hl">Enquanto Ormuz estiver fechado, o petroleo dita o ritmo do dolar no Brasil.</span></p>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">📈 Analise Tecnica</h3>
+
+<p class="tx">O USD/BRL operou na semana entre <span class="ng">R$ 5,21 (min quarta) e R$ 5,31 (max sexta anterior)</span> — range de 10 centavos, volatilidade elevada. O <span class="hl">suporte imediato esta em R$ 5,20</span> (testado duas vezes e segurou). A <span class="ng">resistencia em R$ 5,28-5,32</span>. O dolar acumula <strong>queda de ~5,3% no ano</strong> (saiu de R$ 5,54 em jan para R$ 5,24). A MM20 esta em ~R$ 5,26, e o preco atual esta abaixo — <span class="ps">sinal de tendencia de baixa de curto prazo</span>. Mas o <strong>Ormuz pode inverter tudo em horas</strong>.</p>
+
+<div class="chc">
+<h4>USD/BRL Marco — Suporte, Resistencia e MM20</h4>
+<canvas id="ch4"></canvas>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🌡️ Termometros de Conjuntura</h3>
+
+<div class="chg">
+<div class="thermo"><h4>Diferencial Selic - Fed (Carry)</h4>
+<div class="th-bar"><div class="th-mk" style="left:20%"><div class="arr"></div><div class="lbl" style="background:#4CAF50;color:#fff">ALTO (+10,75 p.p.)</div></div></div>
+<div class="th-labels"><span>Atrai capital</span><span>Neutro</span><span>Repele capital</span></div>
+</div>
+<div class="thermo"><h4>Volatilidade Cambial</h4>
+<div class="th-bar"><div class="th-mk" style="left:85%"><div class="arr"></div><div class="lbl" style="background:#b71c1c;color:#fff">EXTREMA</div></div></div>
+<div class="th-labels"><span>Baixa</span><span>Normal</span><span>Extrema</span></div>
+</div>
+</div>
+<div class="chg">
+<div class="thermo"><h4>Atuacao do BC (Intervencao)</h4>
+<div class="th-bar"><div class="th-mk" style="left:22%"><div class="arr"></div><div class="lbl" style="background:#4CAF50;color:#fff">ATIVA (US$1bi)</div></div></div>
+<div class="th-labels"><span>Forte</span><span>Moderada</span><span>Ausente</span></div>
+</div>
+<div class="thermo"><h4>Risco Geopolitico (Ormuz)</h4>
+<div class="th-bar"><div class="th-mk" style="left:82%"><div class="arr"></div><div class="lbl" style="background:#b71c1c;color:#fff">SEVERO</div></div></div>
+<div class="th-labels"><span>Baixo</span><span>Moderado</span><span>Severo</span></div>
+</div>
+</div>
+<div class="chg">
+<div class="thermo"><h4>USD/BRL — Tendencia Curto Prazo</h4>
+<div class="th-bar"><div class="th-mk" style="left:42%"><div class="arr"></div><div class="lbl" style="background:#ffd740;color:#000">LATERAL-VOLATIL</div></div></div>
+<div class="th-labels"><span>Real forte</span><span>Neutro</span><span>Dolar forte</span></div>
+</div>
+<div class="thermo"><h4>Inflacao (Pressao sobre Copom)</h4>
+<div class="th-bar"><div class="th-mk" style="left:70%"><div class="arr"></div><div class="lbl" style="background:#ef5350;color:#fff">PRESSIONADA</div></div></div>
+<div class="th-labels"><span>Baixa</span><span>Meta</span><span>Acima</span></div>
+</div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🌐 Radar Geopolitico e Macro</h3>
+
+<div class="geo">
+<div class="geo-i"><div class="gi">⛽</div><div><div class="gt">Ormuz Aberto/Fechado = +/- R$ 0,10 no Dolar</div><div class="gd">Segunda: Trump anuncia pausa = Brent cai 13% = dolar despenca para R$ 5,24. Quinta: ataques continuam = Brent $106 = dolar sobe para R$ 5,28. O estreito e o "gatilho" do cambio. Pausa de 10 dias (ate 06/abr) da algum alivio, mas Ormuz segue fechado para tanqueiros.</div></div></div>
+<div class="geo-i"><div class="gi">🏦</div><div><div class="gt">Fed: So 1 Corte em 2026 — Dolar Global Forte</div><div class="gd">Fed manteve 3,50-3,75%. PCE projetado 2,7%. Petroleo alto = inflacao teimosa = Fed cauteloso. Mercado agora precifica 1 corte em dez/26 ou jan/27. Dolar global fica forte. DXY segue perto de 100.</div></div></div>
+<div class="geo-i"><div class="gi">🇧🇷</div><div><div class="gt">Copom: Selic 14,50% + Proximo Corte Abr/26?</div><div class="gd">Primeiro corte desde mai/24. Tom cauteloso no comunicado. Proximo Copom: 28-29/abr. Se inflacao (IPCA) subir com combustiveis, pode pausar. Se aliviar, corta mais 25 bps. Cada corte reduz carry e tende a pressionar real.</div></div></div>
+<div class="geo-i"><div class="gi">🛡️</div><div><div class="gt">BC Vendeu US$ 1 Bi — "Casadao" Agressivo</div><div class="gd">Na quinta (26/3), BC fez leilao spot de US$1 bi + swap reverso de US$1 bi simultaneos. Operacao "casadao" injeta liquidez no mercado a vista em momentos de estresse. Mostra que BC esta ativo e nao vai deixar dolar disparar.</div></div></div>
+<div class="geo-i"><div class="gi">📊</div><div><div class="gt">PIB BR 2026: 1,7% (BBVA) — Desacelerado</div><div class="gd">BBVA projeta crescimento de 1,7% em 2026 (vs 2,3% em 2025). Desaceleracao + Selic em queda + pre-eleicao 2026 = tendencia de depreciacao suave do real no 2o semestre. Mas curto prazo: carry alto segura.</div></div></div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🎯 Projecao para Proxima Semana (30/Mar - 03/Abr)</h3>
+
+<div class="bld">
+<h3>VIES: LATERAL COM VOLATILIDADE EXTREMA</h3>
+<p>Dolar refem do Ormuz. Qualquer noticia de cessar-fogo = R$ 5,15-5,20. Escalada = R$ 5,30-5,40. USDA area (31/3) pode mexer com commodities e afetar cambio indiretamente. BC segue interventor ativo. Pausa de ataques ate 06/abr traz algum alivio.</p>
+</div>
+
+<div class="proj">
+<div class="proj-c"><div class="pl">USD/BRL</div><div class="pv" style="color:#ffd740">R$ 5,15 - R$ 5,35</div><div class="pd">Suporte: R$ 5,20.<br>Resistencia: R$ 5,32.<br>Ormuz define tudo.</div></div>
+<div class="proj-c"><div class="pl">DXY</div><div class="pv" style="color:#ffd740">98,5 - 100,5</div><div class="pd">Suporte: 98,8.<br>Resistencia: 100,0-100,5.<br>Fed hawk = piso firme.</div></div>
+<div class="proj-c"><div class="pl">Brent</div><div class="pv" style="color:#ef5350">US$ 95 - US$ 110</div><div class="pd">Range absurdo.<br>Pausa ate 06/abr alivia.<br>Mas Ormuz fechado.</div></div>
+<div class="proj-c"><div class="pl">Selic (Prox. Copom)</div><div class="pv" style="color:#ffd740">28-29/Abr</div><div class="pd">Se IPCA aliviar: -25bps.<br>Se petroleo escalar: pausa.<br>Mercado dividido.</div></div>
+</div>
+
+<div class="chc">
+<h4>Cenarios USD/BRL — Proxima Semana</h4>
+<canvas id="ch5"></canvas>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">💡 Estrategia Rural IN para o Produtor</h3>
+
+<div class="alt">
+<h5>Dolar e Sua Receita: A Regra dos 10 Centavos</h5>
+<p>Cada <span class="ps">R$ 0,10 de variacao no dolar</span> impacta: <strong>Soja +R$ 2-3/sc, Milho +R$ 1,50/sc, Cafe +R$ 30-40/sc, Algodao +R$ 0,06-0,08/lp, Trigo +R$ 20-30/t</strong>. Na semana, o dolar oscilou R$ 0,10. <span class="hl">Voce precisa monitorar o cambio TANTO QUANTO a CBOT</span>.</p>
+</div>
+
+<div class="alt">
+<h5>Quando Travar Cambio?</h5>
+<p>Dolar a R$ 5,24 esta <span class="ps">5,3% abaixo de janeiro (R$ 5,54)</span>. Se voce travou acima de R$ 5,40, <strong>otimo — mantenha</strong>. Se nao travou, o momento e delicado: dolar pode ir a R$ 5,15 (cessar-fogo) ou R$ 5,40 (escalada). <span class="hl">Estrategia: trave 40% da receita de exportacao no nivel atual</span>. Se dolar cair, voce protegeu. Se subir, voce tem 60% aberto.</p>
+</div>
+
+<div class="alt">
+<h5>Quem Compra Insumo Importado</h5>
+<p>Fertilizantes, defensivos e pecas: <span class="ng">dolar mais caro = custo maior</span>. Se precisa de insumo para plantio de inverno (abr-jun), <strong>antecipe compras agora</strong> com dolar a R$ 5,24 — se Ormuz escalar, dolar pode ir a R$ 5,40 e seu custo sobe 3%.</p>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">📊 Visao Completa</h3>
+
+<div class="chg">
+<div class="chc">
+<h4>Radar Fundamentalista — Dolar 27/03</h4>
+<canvas id="ch6"></canvas>
+</div>
+<div class="chc">
+<h4>USD/BRL 2026 — Trajetoria do Ano</h4>
+<canvas id="ch7"></canvas>
+</div>
+</div>
+
+<div class="chc">
+<h4>Selic vs Fed Funds — Diferencial Historico</h4>
+<canvas id="ch8"></canvas>
+</div>
+
+<div class="cred">
+<div class="cred-in">
+<div class="cred-av">👨‍💼</div>
+<div>
+<h3>Dr. Sidney Souza</h3>
+<div class="ti">Economista Agricola · Estrategista Economico do Produtor</div>
+<div class="dsc">Especialista em economia da fazenda e gestao de risco no agro<br>Transformamos dados da fazenda em decisoes economicas<br>Ajudamos produtores a entender se o mercado sustenta seu negocio</div>
+<div class="ct">
+<a href="mailto:sidneyagro@gmail.com">📧 sidneyagro@gmail.com</a>
+<a href="https://wa.me/5564992266886">📱 (64) 9 9226-6886</a>
+<span>📸 @ruralin.ai</span>
+</div>
+</div>
+</div>
+<div class="disc">Informativo analitico e educacional. Nao constitui recomendacao de compra ou venda. Dados: BCB, CME/FedWatch, ICE/DXY, CEPEA/Esalq-USP, Wise, Investing.com, ADVFN, CNBC, FXStreet, Trading Economics, BBVA Research, UOL Economia, Reuters, Barchart. Analise e construcao: Dr. Sidney Souza — Rural IN.</div>
+</div>
+</div>
+<div class="ftr">RURAL IN 2026 · Inteligencia para o Agronegocio · Rio Verde/GO</div>
+</div>
+
+<script>
+Chart.defaults.color='#3a5060';Chart.defaults.font.family='Inter';Chart.defaults.font.size=11;
+var df={family:'Inter',weight:'600'};
+var tt={backgroundColor:'#0a0e14',titleColor:'#66BB6A',bodyColor:'#b8c8d8',borderColor:'#1e3040',borderWidth:1,padding:12,cornerRadius:8};
+
+// 1 — USD/BRL MARCO
+new Chart(document.getElementById('ch1').getContext('2d'),{
+type:'line',data:{labels:['02','04','06','09','11','13','16','17','18','19','20','23','24','25','26','27'],
+datasets:[{label:'USD/BRL',data:[5.28,5.22,5.32,5.31,5.16,5.28,5.23,5.20,5.22,5.21,5.32,5.24,5.26,5.21,5.26,5.24],
+borderColor:'#4CAF50',backgroundColor:'rgba(76,175,80,0.06)',borderWidth:2.5,fill:true,tension:0.3,pointRadius:2.5,pointBackgroundColor:'#4CAF50'}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,
+annotation:{annotations:{
+sup:{type:'line',yMin:5.20,yMax:5.20,borderColor:'rgba(129,199,132,0.5)',borderWidth:2,borderDash:[4,3],label:{display:true,content:'SUPORTE R$ 5,20',position:'start',backgroundColor:'rgba(129,199,132,0.5)',color:'#000',font:{size:7,weight:'bold'},padding:2}},
+res:{type:'line',yMin:5.32,yMax:5.32,borderColor:'rgba(239,83,80,0.5)',borderWidth:2,borderDash:[4,3],label:{display:true,content:'RESIST. R$ 5,32',position:'end',backgroundColor:'rgba(239,83,80,0.4)',color:'#fff',font:{size:7,weight:'bold'},padding:2}}
+}}},scales:{y:{min:5.10,max:5.40,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'R$ '+v.toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}
+});
+
+// 2 — DXY
+new Chart(document.getElementById('ch2').getContext('2d'),{
+type:'line',data:{labels:['06','10','13','17','18','20','23','24','25','26','27'],
+datasets:[{label:'DXY',data:[99.2,99.7,100.0,99.9,100.5,100.2,99.1,99.4,99.4,99.8,99.4],
+borderColor:'#64b5f6',backgroundColor:'rgba(100,181,246,0.06)',borderWidth:2.5,fill:true,tension:0.3,pointRadius:3,pointBackgroundColor:'#64b5f6'}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,
+annotation:{annotations:{
+cem:{type:'line',yMin:100,yMax:100,borderColor:'rgba(255,215,64,0.4)',borderWidth:1.5,borderDash:[4,3],label:{display:true,content:'100 (PSICOLOGICO)',position:'end',backgroundColor:'rgba(255,215,64,0.5)',color:'#000',font:{size:7,weight:'bold'},padding:2}}
+}}},scales:{y:{min:98,max:101.5,grid:{color:'rgba(255,255,255,0.03)'},ticks:{font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}
+});
+
+// 3 — BRENT vs USD/BRL
+new Chart(document.getElementById('ch3').getContext('2d'),{
+type:'line',data:{labels:['Sex 20','Seg 23','Ter 24','Qua 25','Qui 26','Sex 27'],
+datasets:[{label:'Brent (US$/bbl)',data:[105,90,96,100,106,103],borderColor:'#ef5350',borderWidth:2,tension:0.3,pointRadius:4,yAxisID:'y',fill:false,pointBackgroundColor:'#ef5350'},
+{label:'USD/BRL',data:[5.32,5.24,5.26,5.22,5.26,5.24],borderColor:'#4CAF50',borderWidth:2,tension:0.3,pointRadius:4,yAxisID:'y1',fill:false,borderDash:[5,3],pointBackgroundColor:'#4CAF50'}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},
+scales:{y:{min:85,max:115,position:'left',grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'$'+v;},font:df},title:{display:true,text:'Brent',color:'#3a5060',font:df}},
+y1:{min:5.15,max:5.38,position:'right',grid:{display:false},ticks:{callback:function(v){return'R$'+v.toFixed(2);},font:df},title:{display:true,text:'USD/BRL',color:'#3a5060',font:df}},
+x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}
+});
+
+// 4 — TECNICO
+new Chart(document.getElementById('ch4').getContext('2d'),{
+type:'line',data:{labels:['09','11','13','16','18','20','23','25','27'],
+datasets:[{label:'USD/BRL',data:[5.31,5.16,5.28,5.23,5.22,5.32,5.24,5.21,5.24],borderColor:'#4CAF50',borderWidth:2.5,tension:0.3,pointRadius:4,fill:false,pointBackgroundColor:'#4CAF50'},
+{label:'MM20 (~R$5,26)',data:[5.27,5.26,5.26,5.26,5.26,5.26,5.26,5.26,5.26],borderColor:'#ffd740',borderWidth:1.5,tension:0,pointRadius:0,fill:false,borderDash:[4,2]}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt,
+annotation:{annotations:{
+sup:{type:'line',yMin:5.20,yMax:5.20,borderColor:'rgba(129,199,132,0.6)',borderWidth:2,borderDash:[6,3],label:{display:true,content:'SUPORTE R$ 5,20',position:'start',backgroundColor:'rgba(129,199,132,0.6)',color:'#000',font:{size:8,weight:'bold'},padding:3}},
+res:{type:'line',yMin:5.32,yMax:5.32,borderColor:'rgba(239,83,80,0.6)',borderWidth:2,borderDash:[6,3],label:{display:true,content:'RESIST. R$ 5,32',position:'end',backgroundColor:'rgba(239,83,80,0.5)',color:'#fff',font:{size:8,weight:'bold'},padding:3}}
+}}},scales:{y:{min:5.10,max:5.40,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'R$ '+v.toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}
+});
+
+// 5 — CENARIOS
+new Chart(document.getElementById('ch5').getContext('2d'),{
+type:'bar',data:{labels:['Cessar-fogo Real','Base (Neutro)','Escalada Moderada','Guerra Total'],
+datasets:[
+{label:'Piso (R$)',data:[5.08,5.18,5.28,5.35],backgroundColor:'rgba(129,199,132,0.3)',borderColor:'#81c784',borderWidth:1.5,borderRadius:4},
+{label:'Teto (R$)',data:[5.20,5.30,5.40,5.55],backgroundColor:'rgba(239,83,80,0.3)',borderColor:'#ef5350',borderWidth:1.5,borderRadius:4}
+]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:{...tt,callbacks:{label:function(c){return c.dataset.label+': R$ '+c.parsed.y.toFixed(2);}}}},
+scales:{y:{min:5.00,max:5.60,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'R$ '+v.toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}
+});
+
+// 6 — RADAR
+new Chart(document.getElementById('ch6').getContext('2d'),{
+type:'radar',data:{labels:['Carry (Selic-Fed)','Geopolitica/Ormuz','Intervencao BC','Petroleo/Inflacao','DXY Global','Fiscal/Crescimento'],
+datasets:[{label:'Favorece Real',data:[85,25,80,50,40,45],backgroundColor:'rgba(76,175,80,0.10)',borderColor:'#4CAF50',borderWidth:2.5,pointBackgroundColor:'#4CAF50',pointRadius:5},
+{label:'Favorece Dolar',data:[20,90,20,65,70,60],backgroundColor:'rgba(239,83,80,0.08)',borderColor:'#ef5350',borderWidth:2,pointBackgroundColor:'#ef5350',pointRadius:4,borderDash:[4,2]}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},
+scales:{r:{min:0,max:100,ticks:{display:false,stepSize:20},grid:{color:'rgba(255,255,255,0.06)'},pointLabels:{font:{family:'Inter',weight:'600',size:8},color:'#78a088'}}}}
+});
+
+// 7 — USD/BRL ANO
+new Chart(document.getElementById('ch7').getContext('2d'),{
+type:'line',data:{labels:['Jan/26','Fev/26','Mar/26*'],
+datasets:[{label:'USD/BRL (media)',data:[5.54,5.38,5.26],borderColor:'#4CAF50',backgroundColor:'rgba(76,175,80,0.08)',borderWidth:3,fill:true,tension:0.3,pointRadius:6,
+pointBackgroundColor:['#ef5350','#ffd740','#81c784']}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,
+annotation:{annotations:{
+q:{type:'label',xValue:2,yValue:5.16,content:['-5,3% no ano'],font:{size:10,weight:'bold'},color:'#81c784'}
+}}},scales:{y:{min:5.10,max:5.60,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'R$ '+v.toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:df}}}}
+});
+
+// 8 — SELIC vs FED
+new Chart(document.getElementById('ch8').getContext('2d'),{
+type:'bar',data:{labels:['Jan/26','Fev/26','Mar/26'],
+datasets:[
+{label:'Selic (%)',data:[14.75,14.75,14.50],backgroundColor:'rgba(76,175,80,0.4)',borderColor:'#4CAF50',borderWidth:2,borderRadius:4},
+{label:'Fed Funds (%)',data:[3.75,3.75,3.75],backgroundColor:'rgba(100,181,246,0.3)',borderColor:'#64b5f6',borderWidth:2,borderRadius:4},
+{label:'Diferencial (p.p.)',data:[11.00,11.00,10.75],backgroundColor:'rgba(255,215,64,0.2)',borderColor:'#ffd740',borderWidth:2,borderRadius:4,type:'line',tension:0.3,pointRadius:5,pointBackgroundColor:'#ffd740',fill:false,yAxisID:'y'}
+]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},
+scales:{y:{min:0,max:16,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return v+'%';},font:df}},x:{grid:{display:false},ticks:{font:df}}}}
+});
+</script>
+</body>
+</html>

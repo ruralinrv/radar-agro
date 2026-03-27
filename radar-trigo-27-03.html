@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radar Agro Trigo — 27/03/2026 | Rural IN</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#060608;color:#c0c8d8;min-height:100vh}
+.pg{max-width:960px;margin:0 auto;padding:10px}
+.topbar{background:linear-gradient(90deg,#0c0e14,#101420,#0c0e14);padding:12px 20px;border-radius:14px 14px 0 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #1e2838;flex-wrap:wrap;gap:8px}
+.topbar .logo{display:flex;align-items:center;gap:12px}
+.topbar .logo-ic{width:54px;height:54px;background:linear-gradient(135deg,#FFB74D,#E65100);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.7em;box-shadow:0 4px 25px rgba(255,183,77,.2)}
+.topbar .logo-txt h2{font-size:1.05em;font-weight:900;color:#fff;letter-spacing:1.5px}
+.topbar .logo-txt small{font-size:.62em;color:#FFB74D;font-weight:600;display:block}
+.topbar .ed{text-align:right}
+.topbar .ed .dt{font-size:.88em;font-weight:800;color:#FFB74D}
+.topbar .ed .inf{font-size:.62em;color:#5a6878;font-weight:600}
+.hdr{background:linear-gradient(135deg,#0a0c12,#080a10 50%,#060810);padding:36px 24px 30px;text-align:center;border-bottom:3px solid #FFB74D;position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(255,183,77,.05) 0%,transparent 70%)}
+.hdr .tag-top{display:inline-block;background:linear-gradient(135deg,#FFB74D,#E65100);color:#fff;font-size:.58em;font-weight:800;letter-spacing:3px;padding:4px 14px;border-radius:20px;text-transform:uppercase;margin-bottom:10px;z-index:1;position:relative}
+.hdr h1{font-family:'Playfair Display',serif;font-size:1.5em;font-weight:900;color:#fff;position:relative;z-index:1;line-height:1.3;max-width:800px;margin:0 auto}
+.hdr .sub{font-size:.78em;color:#b09060;margin-top:10px;font-weight:500;position:relative;z-index:1;line-height:1.6}
+.hdr .mkt{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px;position:relative;z-index:1}
+.hdr .mkt .mi{background:rgba(255,183,77,.05);border:1px solid rgba(255,183,77,.15);border-radius:10px;padding:7px 12px;text-align:center;min-width:108px}
+.hdr .mkt .mi .ml{font-size:.52em;color:#7a6040;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.hdr .mkt .mi .mv{font-size:1em;font-weight:900;margin-top:2px}
+.hdr .mkt .mi .mc{font-size:.56em;font-weight:700;margin-top:1px}
+.up{color:#81c784}.dn{color:#ef5350}.nt{color:#ffd740}.wh{color:#fff}
+.mn{background:#080a0e;padding:20px;border:1px solid #141820;border-top:none}
+.stl{font-size:.76em;text-transform:uppercase;letter-spacing:2px;font-weight:800;color:#FFB74D;margin:22px 0 12px;display:flex;align-items:center;gap:10px;padding-bottom:8px;border-bottom:1px solid #141820}
+.tx{font-size:.82em;line-height:1.95;color:#8898a8;margin-bottom:14px;text-align:justify}
+.tx strong{color:#c8d0e0;font-weight:700}
+.tx .hl{color:#FFB74D;font-weight:700}
+.tx .ng{color:#ef5350;font-weight:700}
+.tx .ps{color:#81c784;font-weight:700}
+.chc{background:#0c0e12;border:1px solid #1a2030;border-radius:12px;padding:14px;margin-bottom:12px}
+.chc h4{font-size:.66em;color:#b09060;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-weight:700;text-align:center}
+.chc canvas{max-height:260px}
+.chg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.thermo{background:#0c0e12;border-radius:12px;padding:14px;border:1px solid #1a2030;margin-bottom:10px}
+.thermo h4{text-align:center;font-size:.66em;color:#b09060;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:12px}
+.th-bar{height:16px;background:linear-gradient(90deg,#b71c1c 0%,#ef5350 20%,#ff9800 38%,#ffd740 50%,#8bc34a 65%,#4CAF50 80%,#1b5e20 100%);border-radius:10px;position:relative;margin:26px 8px 8px}
+.th-mk{position:absolute;top:-22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center}
+.th-mk .arr{width:3px;height:38px;border-radius:2px;background:#fff;box-shadow:0 0 6px rgba(255,255,255,.3)}
+.th-mk .lbl{font-size:.58em;font-weight:800;padding:3px 7px;border-radius:5px;white-space:nowrap;margin-top:3px}
+.th-labels{display:flex;justify-content:space-between;padding:0 8px;font-size:.56em;color:#3a4858;font-weight:700}
+.dg{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:8px;margin-bottom:14px}
+.dc{background:#0c0e12;border-radius:10px;padding:11px;border:1px solid #1a2030;text-align:center}
+.dc .dl{font-size:.52em;color:#FFB74D;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:4px}
+.dc .dv{font-size:1.15em;font-weight:900;color:#fff}
+.dc .ds{font-size:.62em;color:#5a6878;margin-top:3px;line-height:1.4}
+.alt{background:linear-gradient(135deg,#0c0e10,#101218);border-left:4px solid #FFB74D;border-radius:0 10px 10px 0;padding:14px;margin-bottom:10px}
+.alt h5{font-size:.70em;color:#FFB74D;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
+.alt p{font-size:.78em;color:#8898a8;line-height:1.8}
+.alt p strong{color:#c8d0e0}
+.bld{background:linear-gradient(135deg,#101218,#141820);border:2px solid #FFB74D;border-radius:14px;padding:20px;margin:16px 0;text-align:center;box-shadow:0 0 30px rgba(255,183,77,.04)}
+.bld h3{font-family:'Playfair Display',serif;font-size:1.1em;color:#fff;margin-bottom:8px;line-height:1.4}
+.bld p{font-size:.80em;color:#b09060;line-height:1.8}
+.tbl{width:100%;border-collapse:collapse;margin-bottom:12px;font-size:.70em}
+.tbl th{background:#101218;color:#FFB74D;padding:7px 5px;text-align:center;font-weight:700;text-transform:uppercase;letter-spacing:.5px;font-size:.78em;border-bottom:2px solid #2a3040}
+.tbl td{padding:6px 4px;text-align:center;border-bottom:1px solid #141820;color:#8898a8}
+.tbl tr:hover td{background:rgba(255,183,77,.02)}
+.proj{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.proj-c{background:#0c0e12;border-radius:10px;padding:13px;border:1px solid #1a2030;text-align:center}
+.proj-c .pl{font-size:.54em;color:#FFB74D;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:5px}
+.proj-c .pv{font-size:1.2em;font-weight:900;color:#fff;margin-bottom:3px}
+.proj-c .pd{font-size:.66em;color:#5a6878;line-height:1.5}
+.geo{display:grid;grid-template-columns:1fr;gap:7px;margin-bottom:12px}
+.geo-i{background:rgba(255,183,77,.03);border:1px solid rgba(255,183,77,.08);border-radius:10px;padding:10px 14px;display:flex;gap:10px;align-items:flex-start}
+.geo-i .gi{font-size:1.2em;flex-shrink:0}
+.geo-i .gt{font-size:.70em;font-weight:800;color:#c8d0e0}
+.geo-i .gd{font-size:.68em;color:#5a6878;line-height:1.6;margin-top:2px}
+.sep{text-align:center;margin:20px 0;color:#1a2030;font-size:1em;letter-spacing:10px}
+.cred{background:linear-gradient(135deg,#0c0e12,#101218);border:2px solid #1e2838;border-radius:16px;padding:18px;margin-top:16px}
+.cred-in{display:flex;gap:14px;align-items:center}
+.cred-av{width:60px;height:60px;background:linear-gradient(135deg,#FFB74D,#E65100);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6em;flex-shrink:0;box-shadow:0 4px 18px rgba(255,183,77,.2)}
+.cred h3{font-size:.90em;font-weight:900;color:#fff}
+.cred .ti{font-size:.68em;color:#FFB74D;font-weight:700;margin-top:2px}
+.cred .dsc{font-size:.64em;color:#5a6878;margin-top:4px;line-height:1.5;font-style:italic}
+.cred .ct{margin-top:8px;display:flex;flex-wrap:wrap;gap:5px}
+.cred .ct a,.cred .ct span{font-size:.62em;color:#8898a8;text-decoration:none;display:flex;align-items:center;gap:3px;font-weight:600;padding:3px 7px;background:rgba(255,183,77,.05);border-radius:6px;border:1px solid rgba(255,183,77,.1)}
+.cred .ct a:hover{background:rgba(255,183,77,.12);color:#fff}
+.disc{margin-top:10px;padding:10px;background:rgba(255,255,255,.02);border-radius:8px;font-size:.56em;color:#141820;line-height:1.6;text-align:center}
+.ftr{text-align:center;padding:10px;font-size:.58em;color:#0c0e12;border-radius:0 0 14px 14px;background:#060608}
+@media(max-width:768px){.topbar{flex-direction:column;text-align:center}.topbar .ed{text-align:center}.hdr h1{font-size:1.15em}.chg{grid-template-columns:1fr}.cred-in{flex-direction:column;text-align:center}.cred .ct{justify-content:center}.dg{grid-template-columns:1fr 1fr}.proj{grid-template-columns:1fr}.hdr .mkt .mi{min-width:90px}}
+@media(max-width:420px){.dg{grid-template-columns:1fr}.hdr h1{font-size:1em}.hdr .mkt{flex-direction:column;align-items:center}}
+</style>
+</head>
+<body>
+<div class="pg">
+<div class="topbar">
+<div class="logo"><div class="logo-ic">🌾</div><div class="logo-txt"><h2>RURAL IN</h2><small>Inteligencia para o Agronegocio</small></div></div>
+<div class="ed"><div class="dt">Sexta-feira, 27 de Marco de 2026</div><div class="inf">Radar Agro Trigo · Fechamento Semanal · Semana 24-27/Mar</div></div>
+</div>
+
+<div class="hdr">
+<div class="tag-top">Radar Agro Trigo · Fechamento Semanal</div>
+<h1>Trigo Dispara: CBOT Mai Bate US$ 6,05/bu e CEPEA Salta +7,7% no Mes. Crise de Fertilizantes e Ormuz Reescrevem o Jogo</h1>
+<div class="sub">Chicago acumulou 3 altas seguidas (+2,6% na semana). CEPEA Parana saltou de R$ 1.178/t para R$ 1.269/t. Fertilizantes em crise, Russia no radar, vendas EUA fortes (397 mil t) e plantio de inverno BR sob pressao de custos.</div>
+<div class="mkt">
+<div class="mi"><div class="ml">CBOT Mai/26</div><div class="mv wh">US$ 6,05/bu</div><div class="mc up">+1,21% (qui 26/3)</div></div>
+<div class="mi"><div class="ml">CEPEA PR</div><div class="mv wh">R$ 1.268,96/t</div><div class="mc up">+7,71% no mes</div></div>
+<div class="mi"><div class="ml">CEPEA RS</div><div class="mv wh">R$ 1.129,56/t</div><div class="mc up">+0,31% (qui)</div></div>
+<div class="mi"><div class="ml">Vendas EUA (sem)</div><div class="mv ps">397,2 mil t</div><div class="mc up">Acima do esperado</div></div>
+<div class="mi"><div class="ml">Prod. Mundial 25/26</div><div class="mv ps">842 mi t</div><div class="mc up">USDA: recorde</div></div>
+<div class="mi"><div class="ml">Russia 26/27</div><div class="mv ng">83,8 mi t</div><div class="mc dn">vs 89,5 em 25/26</div></div>
+</div>
+</div>
+
+<div class="mn">
+
+<h3 class="stl">📋 Resumo Executivo da Semana</h3>
+
+<p class="tx">A semana de 24 a 27 de marco consolidou o <span class="ps">rally do trigo</span>. Chicago mai/26 subiu de US$ 5,87 (segunda) para <strong>US$ 6,05 (quinta)</strong> — <span class="ps">3 altas consecutivas, acumulando +2,9% na semana</span>. O ponto alto: <span class="hl">quinta-feira (26/3) com +1,21%</span>, impulsionado por vendas semanais americanas de <strong>397,2 mil toneladas</strong> (USDA) e preocupacoes com custos de insumos para plantio 26/27.</p>
+
+<p class="tx">No Brasil, o CEPEA Parana saltou para <strong>R$ 1.268,96/t</strong> nesta sexta — alta de <span class="ps">+7,71% no mes</span>, o maior avanco mensal de 2026. A semana trouxe um salto expressivo na quarta (25/3): <strong>+1,22% em um dia</strong>. O mercado fisico no PR opera entre <strong>R$ 65-66/sc</strong>, com negociacoes firmes. RS em R$ 1.129/t, abaixo do PR mas tambem em alta.</p>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">📊 Painel CBOT — Semana Completa</h3>
+
+<table class="tbl">
+<thead><tr><th>Data</th><th>CBOT Mai/26 (US$/bu)</th><th>Var. Dia</th><th>Driver</th></tr></thead>
+<tbody>
+<tr><td>Sex 20/3</td><td style="color:#ef5350">5,9525</td><td style="color:#ef5350">-2,10%</td><td>Chuvas EUA + realizacao</td></tr>
+<tr><td>Seg 23/3</td><td style="color:#ef5350">5,8775</td><td style="color:#ef5350">-1,26%</td><td>Oferta global otimista</td></tr>
+<tr><td>Ter 24/3</td><td style="color:#81c784">5,9000</td><td style="color:#81c784">+0,38%</td><td>Ajuste tecnico</td></tr>
+<tr><td>Qua 25/3</td><td style="color:#81c784">5,9775</td><td style="color:#81c784">+1,31%</td><td>Euronext + deficit hidrico</td></tr>
+<tr><td>Qui 26/3</td><td style="color:#81c784;font-weight:700">6,0500</td><td style="color:#81c784">+1,21%</td><td>Vendas EUA 397 mil t</td></tr>
+<tr><td style="color:#FFB74D">Sex 27/3</td><td style="font-weight:800;color:#fff">6,0500</td><td>0,00%</td><td>Estabilidade pre-USDA</td></tr>
+</tbody>
+</table>
+
+<div class="chc">
+<h4>CBOT Trigo Mai/26 — Marco Completo (US$/bu)</h4>
+<canvas id="ch1"></canvas>
+</div>
+
+<div class="chg">
+<div class="chc">
+<h4>CEPEA Parana — Marco/2026 (R$/t)</h4>
+<canvas id="ch2"></canvas>
+</div>
+<div class="chc">
+<h4>Fisico Brasil — Comparativo Regional (R$/sc)</h4>
+<canvas id="ch3"></canvas>
+</div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🔍 Os 3 Pilares da Alta do Trigo</h3>
+
+<div class="dg">
+<div class="dc"><div class="dl">Fertilizantes em Crise</div><div class="dv ng">ORMUZ FECHADO</div><div class="ds">1/3 do fert. maritimo<br>passa pelo Ormuz. Ureia<br>e amonia dispararam.</div></div>
+<div class="dc"><div class="dl">Russia 26/27</div><div class="dv ng">83,8 mi t</div><div class="ds">SovEcon: queda vs 89,5<br>em 25/26. Area -1,3%.<br>Maior exportador cai.</div></div>
+<div class="dc"><div class="dl">Vendas EUA Fortes</div><div class="dv ps">397,2 mil t</div><div class="ds">Filipinas, Taiwan, Mexico.<br>Total: 24,09 mi t no ciclo.<br>Acima de 24/25.</div></div>
+<div class="dc"><div class="dl">Deficit Hidrico EUA</div><div class="dv ng">GRANDES PLANICIES</div><div class="ds">Trigo inverno: baixa<br>umidade. Produtividade<br>em risco. Premio sobe.</div></div>
+<div class="dc"><div class="dl">Euronext em Alta</div><div class="dv ps">HIGH 7 MESES</div><div class="ds">Trigo europeu proximo<br>da maxima. Short covering.<br>Puxa Chicago junto.</div></div>
+<div class="dc"><div class="dl">Prod. Mundial 25/26</div><div class="dv ps">842 mi t (USDA)</div><div class="ds">Recorde. Estoques:<br>277 mi t (5y high).<br>Oferta nao falta.</div></div>
+<div class="dc"><div class="dl">CEPEA PR</div><div class="dv ps">R$ 1.268,96/t</div><div class="ds">+7,71% no mes.<br>Maior alta de 2026.<br>Entressafra + CBOT.</div></div>
+<div class="dc"><div class="dl">Plantio BR 26/27</div><div class="dv nt">CUSTOS ALTOS</div><div class="ds">Fertilizantes caros.<br>Area pode encolher.<br>Decisao em abr/mai.</div></div>
+<div class="dc"><div class="dl">Estoques Finais</div><div class="dv" style="color:#fff">277 mi t</div><div class="ds">USDA: -0,6 mi vs fev.<br>Mas maior em 5 anos.<br>Nao falta trigo.</div></div>
+</div>
+
+<div class="alt">
+<h5>💣 A Crise dos Fertilizantes: O Motor Oculto do Trigo</h5>
+<p>O bloqueio do Estreito de Ormuz cortou <span class="ng">1/3 do transporte maritimo global de fertilizantes</span> — ureia, amonia e fosfatos. Resultado: precos de nitrogenados <strong>dispararam</strong>. Trigo e a cultura que mais depende de nitrogenio. Se o custo do fertilizante nao cai, <span class="hl">produtores no mundo inteiro plantam menos trigo em 26/27</span> — na Russia a area ja caiu 1,3%, e a SovEcon projeta <span class="ng">producao russa em 83,8 mi t vs 89,5 mi t</span>. Nos EUA, pode haver migracao de area de milho (mais nitrogenio) para soja (menos). Menos trigo plantado = <span class="ps">alta estrutural no medio prazo</span>.</p>
+</div>
+
+<div class="alt">
+<h5>🇧🇷 Brasil: Comprador de Trigo sob Pressao</h5>
+<p>O Brasil <strong>importa ~50% do trigo que consome</strong>. CEPEA PR subiu <span class="ps">+7,71% em marco</span>. O produtor brasileiro de trigo ganha com a alta, mas o <strong>moinho e a padaria pagam mais</strong>. Para quem vai plantar trigo no PR/RS (abr-jun), o cenario e ambiguo: <span class="ps">preco de venda sobe</span>, mas <span class="ng">custo de producao tambem (fertilizante +6%, diesel +7%)</span>. A margem depende de produtividade — <span class="hl">faca a conta antes de plantar</span>.</p>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">📈 Analise Tecnica</h3>
+
+<p class="tx">CBOT mai/26 <span class="ps">recuperou do fundo de US$ 5,87 (segunda 23/3) e bateu US$ 6,05 (quinta 26/3)</span> — 3 altas seguidas. A <span class="hl">barreira de US$ 6,00 foi rompida e agora vira suporte</span>. Resistencia em <span class="ng">US$ 6,17-6,35</span> (topo de 6/3, quando subiu 5,65%). A faixa de 52 semanas e US$ 4,92 - US$ 6,35, e estamos a 95% do topo. MM7 cruzou para cima — <span class="ps">momento positivo confirmado</span>.</p>
+
+<p class="tx">No CEPEA PR, o suporte esta em <strong>R$ 1.250/t</strong> e a resistencia em <strong>R$ 1.280-1.290/t</strong>. A tendencia de marco e <span class="ps">claramente altista</span>: de R$ 1.178/t no final de fev para R$ 1.268/t — <strong>7,7% de valorizacao limpa</strong>.</p>
+
+<div class="chc">
+<h4>CBOT Trigo Marco — Suportes, Resistencias e Faixa 52 Semanas</h4>
+<canvas id="ch4"></canvas>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🌡️ Termometros de Conjuntura</h3>
+
+<div class="chg">
+<div class="thermo"><h4>Oferta Global 25/26</h4>
+<div class="th-bar"><div class="th-mk" style="left:72%"><div class="arr"></div><div class="lbl" style="background:#8bc34a;color:#000">CONFORTAVEL</div></div></div>
+<div class="th-labels"><span>Escassa</span><span>Normal</span><span>Abundante</span></div>
+</div>
+<div class="thermo"><h4>Crise Fertilizantes (Impacto 26/27)</h4>
+<div class="th-bar"><div class="th-mk" style="left:18%"><div class="arr"></div><div class="lbl" style="background:#b71c1c;color:#fff">SEVERA</div></div></div>
+<div class="th-labels"><span>Critica</span><span>Moderada</span><span>Sem impacto</span></div>
+</div>
+</div>
+<div class="chg">
+<div class="thermo"><h4>Demanda / Export. EUA</h4>
+<div class="th-bar"><div class="th-mk" style="left:75%"><div class="arr"></div><div class="lbl" style="background:#4CAF50;color:#fff">FORTE</div></div></div>
+<div class="th-labels"><span>Fraca</span><span>Normal</span><span>Forte</span></div>
+</div>
+<div class="thermo"><h4>Risco Clima Trigo Inverno EUA</h4>
+<div class="th-bar"><div class="th-mk" style="left:35%"><div class="arr"></div><div class="lbl" style="background:#ff9800;color:#000">MODERADO-ALTO</div></div></div>
+<div class="th-labels"><span>Critico</span><span>Normal</span><span>Bom</span></div>
+</div>
+</div>
+<div class="chg">
+<div class="thermo"><h4>CBOT — Tendencia de Curto Prazo</h4>
+<div class="th-bar"><div class="th-mk" style="left:78%"><div class="arr"></div><div class="lbl" style="background:#4CAF50;color:#fff">ALTISTA</div></div></div>
+<div class="th-labels"><span>Baixista</span><span>Neutro</span><span>Altista</span></div>
+</div>
+<div class="thermo"><h4>Custo de Producao BR (Plantio 26/27)</h4>
+<div class="th-bar"><div class="th-mk" style="left:22%"><div class="arr"></div><div class="lbl" style="background:#ef5350;color:#fff">ELEVADO</div></div></div>
+<div class="th-labels"><span>Inviavel</span><span>Gerenciavel</span><span>Confortavel</span></div>
+</div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🌐 Radar Geopolitico e Macro</h3>
+
+<div class="geo">
+<div class="geo-i"><div class="gi">💣</div><div><div class="gt">Ormuz + Fertilizantes: A Bomba-Relogio do Trigo</div><div class="gd">1/3 dos fertilizantes maritimos passa pelo Ormuz. Bloqueio desde fev/26 cortou ureia e amonia. Nitrogenados dispararam. Trigo e a cultura mais afetada por custo de N. Menos nitrogenio = menos produtividade ou menos area plantada = menos trigo no mundo em 26/27.</div></div></div>
+<div class="geo-i"><div class="gi">🇷🇺</div><div><div class="gt">Russia: Maior Exportador Planta Menos e Fornece Intel ao Ira</div><div class="gd">SovEcon: producao russa 26/27 em 83,8 mi t (vs 89,5 mi). Area -1,3%. E a Russia estaria fornecendo inteligencia militar ao Ira sobre posicoes americanas. Proximidade do maior exportador de trigo ao conflito = premio de risco geopolitico no cereal.</div></div></div>
+<div class="geo-i"><div class="gi">🌧️</div><div><div class="gt">Deficit Hidrico nas Grandes Planicies (EUA)</div><div class="gd">Trigo de inverno nos EUA enfrenta baixa umidade em fase sensivel do desenvolvimento. Chuvas previstas para proxima semana podem aliviar. Se nao vierem: produtividade cai e Chicago sobe.</div></div></div>
+<div class="geo-i"><div class="gi">🇧🇷</div><div><div class="gt">Plantio BR 26/27: Custos Podem Encolher Area</div><div class="gd">Fertilizantes +6%, diesel +7%, Selic 14,75%. Custo de producao do trigo no PR/RS sobe. Se precos de venda nao compensarem, area pode encolher. Decisao do produtor em abr/mai. Tecnoshow (7-11/abr) pode trazer indicativos.</div></div></div>
+<div class="geo-i"><div class="gi">📊</div><div><div class="gt">USDA Area 31/Mar — Impacto Indireto no Trigo</div><div class="gd">Relatorio USDA de area (segunda 31/3) foca milho e soja, mas se area de milho cair (por custo de N), parte pode migrar para trigo de primavera. Monitorar atentamente.</div></div></div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🎯 Projecao para Proxima Semana (30/Mar - 03/Abr)</h3>
+
+<div class="bld">
+<h3>VIES: ALTISTA COM SUPORTE EM US$ 6,00</h3>
+<p>US$ 6,00 virou suporte apos rompimento. Fertilizantes, Russia, deficit hidrico e vendas fortes sustentam. Risco: chuvas nas Grandes Planicies aliviam e fundos realizam. USDA area (31/3) pode afetar indiretamente.</p>
+</div>
+
+<div class="proj">
+<div class="proj-c"><div class="pl">CBOT Mai/26</div><div class="pv" style="color:#81c784">US$ 5,90 - 6,25</div><div class="pd">Suporte: US$ 6,00 (novo).<br>Resistencia: US$ 6,17-6,35.<br>Chuva EUA = risco queda.</div></div>
+<div class="proj-c"><div class="pl">CEPEA Parana</div><div class="pv" style="color:#81c784">R$ 1.250 - R$ 1.300/t</div><div class="pd">+7,7% no mes sustenta.<br>Teto em R$ 1.290/t.<br>Dolar + CBOT definem.</div></div>
+<div class="proj-c"><div class="pl">Fisico PR/SC</div><div class="pv" style="color:#ffd740">R$ 64 - R$ 67/sc</div><div class="pd">Entressafra sustenta.<br>Moinho demandando.<br>Lateral com vies de alta.</div></div>
+<div class="proj-c"><div class="pl">Fisico RS</div><div class="pv" style="color:#ffd740">R$ 58 - R$ 61/sc</div><div class="pd">Base abaixo do PR.<br>Estoque remanescente.<br>Alta mais contida.</div></div>
+</div>
+
+<div class="chc">
+<h4>Cenarios CBOT Trigo — Proxima Semana</h4>
+<canvas id="ch5"></canvas>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">💡 Estrategia Rural IN</h3>
+
+<div class="alt">
+<h5>Quem Tem Trigo em Estoque (PR/RS)</h5>
+<p><span class="ps"><strong>Momento favoravel para vender.</strong></span> CEPEA PR em R$ 1.268/t e o melhor patamar de 2026 (+7,7% mes). Chicago rompeu US$ 6,00. Se tem estoque da safra anterior, <strong>aproveite a janela</strong> — a nova safra (colheita out-nov) pode pressionar se clima ajudar. Escale vendas: <strong>40% agora, 30% se CBOT buscar US$ 6,20, 30% reserva</strong>.</p>
+</div>
+
+<div class="alt">
+<h5>Quem Vai Plantar Trigo 26/27 (Abr-Jun)</h5>
+<p><span class="ng"><strong>Faca a conta do custo antes de decidir area.</strong></span> Fertilizantes nitrogenados estao caros (Ormuz fechado). Diesel +7%. Selic 14,75% encarece capital. O preco de venda esta bom (R$ 65/sc), mas <strong>so vale a pena se a produtividade pagar o custo</strong>. Simule: com custo de R$ 4.800/ha e produtividade de 75 sc/ha, voce precisa de R$ 64/sc para empatar. <span class="hl">Margem apertada — negocie adubo antes e trave preco na B3</span>.</p>
+</div>
+
+<div class="alt">
+<h5>Moageiros e Compradores</h5>
+<p>CEPEA subiu <span class="ng">7,7% em marco</span> e a tendencia e altista. <strong>Antecipe compras de trigo nacional para abr/mai</strong> antes que o mercado precifique mais risco de fertilizantes. Se depende de importacao, <span class="ng">frete maritimo esta 30-40% mais caro por Ormuz</span>. Argentina exporta a preco mais baixo (recorde de 19,5 mi t) — <strong>avalie origem Argentina com prioridade</strong>.</p>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">📊 Visao Completa</h3>
+
+<div class="chg">
+<div class="chc">
+<h4>Radar Fundamentalista — Trigo 27/03</h4>
+<canvas id="ch6"></canvas>
+</div>
+<div class="chc">
+<h4>Balanco Mundial USDA 25/26 (mi t)</h4>
+<canvas id="ch7"></canvas>
+</div>
+</div>
+
+<div class="chc">
+<h4>CEPEA PR vs CBOT Mai/26 — Correlacao Marco</h4>
+<canvas id="ch8"></canvas>
+</div>
+
+<div class="cred">
+<div class="cred-in">
+<div class="cred-av">👨‍💼</div>
+<div>
+<h3>Dr. Sidney Souza</h3>
+<div class="ti">Economista Agricola · Estrategista Economico do Produtor</div>
+<div class="dsc">Especialista em economia da fazenda e gestao de risco no agro<br>Transformamos dados da fazenda em decisoes economicas<br>Ajudamos produtores a entender se o mercado sustenta seu negocio</div>
+<div class="ct">
+<a href="mailto:sidneyagro@gmail.com">📧 sidneyagro@gmail.com</a>
+<a href="https://wa.me/5564992266886">📱 (64) 9 9226-6886</a>
+<span>📸 @ruralin.ai</span>
+</div>
+</div>
+</div>
+<div class="disc">Informativo analitico e educacional. Nao constitui recomendacao de compra ou venda. Dados: CBOT/CME, CEPEA/Esalq-USP, USDA/WASDE, Conab, SovEcon, StoneX, Safras & Mercado, Granar, T&F Consultoria, Abitrigo, CNN Brasil, Globo Rural, Noticias Agricolas, Barchart, Euronext, Fastmarkets, AgroNews. Analise e construcao: Dr. Sidney Souza — Rural IN.</div>
+</div>
+</div>
+<div class="ftr">RURAL IN 2026 · Inteligencia para o Agronegocio · Rio Verde/GO</div>
+</div>
+
+<script>
+Chart.defaults.color='#4a5868';Chart.defaults.font.family='Inter';Chart.defaults.font.size=11;
+var df={family:'Inter',weight:'600'};
+var tt={backgroundColor:'#0c0e12',titleColor:'#FFB74D',bodyColor:'#c0c8d8',borderColor:'#2a3040',borderWidth:1,padding:12,cornerRadius:8};
+
+// 1 — CBOT MARCO
+new Chart(document.getElementById('ch1').getContext('2d'),{
+type:'line',data:{labels:['06','09','10','11','12','13','16','17','18','19','20','23','24','25','26','27'],
+datasets:[{label:'CBOT Mai/26 (US$/bu)',data:[6.1675,6.04,5.98,5.82,5.98,5.90,5.94,5.88,6.0425,6.06,5.9525,5.8775,5.90,5.9775,6.05,6.05],
+borderColor:'#FFB74D',backgroundColor:'rgba(255,183,77,0.06)',borderWidth:2.5,fill:true,tension:0.3,pointRadius:2.5,pointBackgroundColor:'#FFB74D'}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,
+annotation:{annotations:{
+topo:{type:'line',yMin:6.1675,yMax:6.1675,borderColor:'rgba(239,83,80,0.4)',borderWidth:1.5,borderDash:[4,3],label:{display:true,content:'Topo $6,17 (06/3)',position:'end',backgroundColor:'rgba(239,83,80,0.4)',color:'#fff',font:{size:7,weight:'bold'},padding:2}},
+sup:{type:'line',yMin:5.87,yMax:5.87,borderColor:'rgba(129,199,132,0.4)',borderWidth:1.5,borderDash:[4,3],label:{display:true,content:'Suporte $5,87',position:'start',backgroundColor:'rgba(129,199,132,0.5)',color:'#000',font:{size:7,weight:'bold'},padding:2}},
+six:{type:'line',yMin:6.00,yMax:6.00,borderColor:'rgba(255,215,64,0.3)',borderWidth:1,borderDash:[2,2]}
+}}},scales:{y:{min:5.75,max:6.25,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'$'+v.toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}
+});
+
+// 2 — CEPEA PR
+new Chart(document.getElementById('ch2').getContext('2d'),{
+type:'line',data:{labels:['09','10','11','12','13','16','17','18','19','20','23','24','25','26','27'],
+datasets:[{label:'CEPEA PR (R$/t)',data:[1209.02,1211.34,1210.08,1217.19,1219.92,1223.46,1224.33,1249.19,1251.18,1251.47,1251.49,1253.22,1268.54,1272.01,1268.96],
+borderColor:'#FFB74D',backgroundColor:'rgba(255,183,77,0.06)',borderWidth:2.5,fill:true,tension:0.3,pointRadius:2.5,pointBackgroundColor:'#FFB74D'}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,
+annotation:{annotations:{
+sup:{type:'line',yMin:1209,yMax:1209,borderColor:'rgba(129,199,132,0.4)',borderWidth:1.5,borderDash:[4,3],label:{display:true,content:'Inicio Mar R$ 1.209',position:'start',backgroundColor:'rgba(129,199,132,0.4)',color:'#000',font:{size:7,weight:'bold'},padding:2}},
+hi:{type:'label',xValue:13,yValue:1285,content:['+7,7% no mes'],font:{size:9,weight:'bold'},color:'#81c784'}
+}}},scales:{y:{min:1190,max:1300,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'R$ '+v;},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}
+});
+
+// 3 — FISICO REGIONAL
+new Chart(document.getElementById('ch3').getContext('2d'),{
+type:'bar',data:{labels:['Nao-Me-Toque RS','Nonoai RS','Palma Sola SC','Ubirata PR','Pato Branco PR','Castro PR','M.C. Rondon PR'],
+datasets:[{data:[59,59,65,65,65,66,66],
+backgroundColor:['rgba(100,181,246,0.3)','rgba(100,181,246,0.3)','rgba(255,183,77,0.3)','rgba(255,183,77,0.3)','rgba(255,183,77,0.3)','rgba(129,199,132,0.4)','rgba(129,199,132,0.4)'],
+borderColor:['#64b5f6','#64b5f6','#FFB74D','#FFB74D','#FFB74D','#81c784','#81c784'],borderWidth:2,borderRadius:5}]},
+options:{responsive:true,maintainAspectRatio:true,indexAxis:'y',plugins:{legend:{display:false},tooltip:{...tt,callbacks:{label:function(c){return'R$ '+c.parsed.x.toFixed(2)+'/sc';}}}},
+scales:{x:{min:55,max:70,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'R$ '+v;},font:df}},y:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}
+});
+
+// 4 — TECNICO CBOT FAIXA 52 SEMANAS
+new Chart(document.getElementById('ch4').getContext('2d'),{
+type:'line',data:{labels:['06','09','11','13','16','18','20','23','25','27'],
+datasets:[{label:'CBOT Mai/26',data:[6.1675,6.04,5.82,5.90,5.94,6.0425,5.9525,5.8775,5.9775,6.05],
+borderColor:'#FFB74D',borderWidth:2.5,tension:0.3,pointRadius:4,fill:false,pointBackgroundColor:'#FFB74D'},
+{label:'MM7',data:[null,null,null,5.96,5.95,5.97,5.96,5.94,5.95,5.98],
+borderColor:'#64b5f6',borderWidth:1.5,tension:0.3,pointRadius:0,fill:false,borderDash:[4,2]}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt,
+annotation:{annotations:{
+top52:{type:'line',yMin:6.35,yMax:6.35,borderColor:'rgba(239,83,80,0.5)',borderWidth:2,borderDash:[6,3],label:{display:true,content:'TOPO 52 SEM. US$ 6,35',position:'end',backgroundColor:'rgba(239,83,80,0.5)',color:'#fff',font:{size:8,weight:'bold'},padding:3}},
+low52:{type:'line',yMin:4.92,yMax:4.92,borderColor:'rgba(129,199,132,0.3)',borderWidth:1,borderDash:[6,3],label:{display:true,content:'LOW 52 SEM. US$ 4,92',position:'start',backgroundColor:'rgba(129,199,132,0.4)',color:'#000',font:{size:7,weight:'bold'},padding:2}},
+six:{type:'line',yMin:6.00,yMax:6.00,borderColor:'rgba(255,215,64,0.4)',borderWidth:1.5,borderDash:[3,3],label:{display:true,content:'US$ 6,00 (NOVO SUPORTE)',position:'start',backgroundColor:'rgba(255,215,64,0.5)',color:'#000',font:{size:7,weight:'bold'},padding:2}}
+}}},scales:{y:{min:4.80,max:6.50,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'$'+v.toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}
+});
+
+// 5 — CENARIOS
+new Chart(document.getElementById('ch5').getContext('2d'),{
+type:'bar',data:{labels:['Chuva EUA + Realizacao','Base (Neutro)','Sem Chuva + Fert. Caro','Escalada Ormuz'],
+datasets:[
+{label:'Piso (US$/bu)',data:[5.85,5.95,6.05,6.15],backgroundColor:'rgba(239,83,80,0.3)',borderColor:'#ef5350',borderWidth:1.5,borderRadius:4},
+{label:'Teto (US$/bu)',data:[6.00,6.15,6.30,6.45],backgroundColor:'rgba(129,199,132,0.3)',borderColor:'#81c784',borderWidth:1.5,borderRadius:4}
+]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:{...tt,callbacks:{label:function(c){return c.dataset.label+': US$ '+c.parsed.y.toFixed(2);}}}},
+scales:{y:{min:5.70,max:6.60,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'$'+v.toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}
+});
+
+// 6 — RADAR FUND.
+new Chart(document.getElementById('ch6').getContext('2d'),{
+type:'radar',data:{labels:['Oferta Global','Crise Fertilizantes','Demanda/Export.','Clima EUA','Geopolitica Russia','Custo Prod. BR'],
+datasets:[{label:'Sem. 27/03',data:[70,90,78,60,85,30],backgroundColor:'rgba(255,183,77,0.10)',borderColor:'#FFB74D',borderWidth:2.5,pointBackgroundColor:'#FFB74D',pointRadius:5},
+{label:'Sem. 20/03',data:[72,80,70,55,78,35],backgroundColor:'rgba(74,88,104,0.08)',borderColor:'#4a5868',borderWidth:1.5,pointBackgroundColor:'#4a5868',pointRadius:3,borderDash:[4,2]}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},
+scales:{r:{min:0,max:100,ticks:{display:false,stepSize:20},grid:{color:'rgba(255,255,255,0.06)'},pointLabels:{font:{family:'Inter',weight:'600',size:8},color:'#b09060'}}}}
+});
+
+// 7 — BALANCO USDA
+new Chart(document.getElementById('ch7').getContext('2d'),{
+type:'bar',data:{labels:['Producao','Consumo','Exportacao','Estoques Finais'],
+datasets:[
+{label:'24/25',data:[800,810,210,260],backgroundColor:'rgba(90,104,120,0.3)',borderColor:'#4a5868',borderWidth:1.5,borderRadius:4},
+{label:'25/26 (USDA)',data:[842,825,222,277],backgroundColor:'rgba(255,183,77,0.3)',borderColor:'#FFB74D',borderWidth:1.5,borderRadius:4}
+]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},
+scales:{y:{min:150,max:900,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return v+' mi t';},font:df}},x:{grid:{display:false},ticks:{font:df}}}}
+});
+
+// 8 — CEPEA vs CBOT
+new Chart(document.getElementById('ch8').getContext('2d'),{
+type:'line',data:{labels:['09','10','11','12','13','16','17','18','19','20','23','24','25','26','27'],
+datasets:[{label:'CEPEA PR (R$/t)',data:[1209,1211,1210,1217,1220,1223,1224,1249,1251,1251,1251,1253,1268,1272,1269],
+borderColor:'#FFB74D',borderWidth:2.5,tension:0.3,pointRadius:2,yAxisID:'y',fill:false,pointBackgroundColor:'#FFB74D'},
+{label:'CBOT Mai (US$/bu)',data:[6.04,5.98,5.82,5.98,5.90,5.94,5.88,6.04,6.06,5.95,5.87,5.90,5.97,6.05,6.05],
+borderColor:'#64b5f6',borderWidth:2,tension:0.3,pointRadius:2,yAxisID:'y1',fill:false,borderDash:[5,3],pointBackgroundColor:'#64b5f6'}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},
+scales:{y:{min:1190,max:1290,position:'left',grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'R$ '+v;},font:df},title:{display:true,text:'CEPEA',color:'#4a5868',font:{family:'Inter',weight:'600',size:8}}},
+y1:{min:5.75,max:6.20,position:'right',grid:{display:false},ticks:{callback:function(v){return'$'+v.toFixed(2);},font:df},title:{display:true,text:'CBOT',color:'#4a5868',font:{family:'Inter',weight:'600',size:8}}},
+x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}
+});
+</script>
+</body>
+</html>

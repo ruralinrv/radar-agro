@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radar Agro Cafe — 27/03/2026 | Rural IN</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#0a0604;color:#d8c8b0;min-height:100vh}
+.pg{max-width:960px;margin:0 auto;padding:10px}
+.topbar{background:linear-gradient(90deg,#160e08,#1e1610,#160e08);padding:12px 20px;border-radius:14px 14px 0 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #3e2818;flex-wrap:wrap;gap:8px}
+.topbar .logo{display:flex;align-items:center;gap:12px}
+.topbar .logo-ic{width:54px;height:54px;background:linear-gradient(135deg,#8D6E63,#3E2723);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.7em;box-shadow:0 4px 25px rgba(141,110,99,.25)}
+.topbar .logo-txt h2{font-size:1.05em;font-weight:900;color:#fff;letter-spacing:1.5px}
+.topbar .logo-txt small{font-size:.62em;color:#A1887F;font-weight:600;display:block}
+.topbar .ed{text-align:right}
+.topbar .ed .dt{font-size:.88em;font-weight:800;color:#A1887F}
+.topbar .ed .inf{font-size:.62em;color:#6d5040;font-weight:600}
+.hdr{background:linear-gradient(135deg,#140c06,#100a08 50%,#0c0804);padding:36px 24px 30px;text-align:center;border-bottom:3px solid #8D6E63;position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(141,110,99,.06) 0%,transparent 70%)}
+.hdr .tag-top{display:inline-block;background:linear-gradient(135deg,#8D6E63,#3E2723);color:#fff;font-size:.58em;font-weight:800;letter-spacing:3px;padding:4px 14px;border-radius:20px;text-transform:uppercase;margin-bottom:10px;position:relative;z-index:1}
+.hdr h1{font-family:'Playfair Display',serif;font-size:1.5em;font-weight:900;color:#fff;position:relative;z-index:1;line-height:1.3;max-width:800px;margin:0 auto}
+.hdr .sub{font-size:.78em;color:#A1887F;margin-top:10px;font-weight:500;position:relative;z-index:1;line-height:1.6}
+.hdr .mkt{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px;position:relative;z-index:1}
+.hdr .mkt .mi{background:rgba(141,110,99,.06);border:1px solid rgba(141,110,99,.18);border-radius:10px;padding:7px 12px;text-align:center;min-width:110px}
+.hdr .mkt .mi .ml{font-size:.52em;color:#7d5e48;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.hdr .mkt .mi .mv{font-size:1em;font-weight:900;margin-top:2px}
+.hdr .mkt .mi .mc{font-size:.56em;font-weight:700;margin-top:1px}
+.up{color:#81c784}.dn{color:#ef5350}.nt{color:#ffd740}.wh{color:#fff}
+.mn{background:#0c0806;padding:20px;border:1px solid #1e1810;border-top:none}
+.stl{font-size:.76em;text-transform:uppercase;letter-spacing:2px;font-weight:800;color:#A1887F;margin:22px 0 12px;display:flex;align-items:center;gap:10px;padding-bottom:8px;border-bottom:1px solid #1e1810}
+.tx{font-size:.82em;line-height:1.95;color:#a09080;margin-bottom:14px;text-align:justify}
+.tx strong{color:#d8c8b0;font-weight:700}
+.tx .hl{color:#A1887F;font-weight:700}
+.tx .ng{color:#ef5350;font-weight:700}
+.tx .ps{color:#81c784;font-weight:700}
+.chc{background:#100c08;border:1px solid #201810;border-radius:12px;padding:14px;margin-bottom:12px}
+.chc h4{font-size:.66em;color:#A1887F;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-weight:700;text-align:center}
+.chc canvas{max-height:260px}
+.chg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.thermo{background:#100c08;border-radius:12px;padding:14px;border:1px solid #201810;margin-bottom:10px}
+.thermo h4{text-align:center;font-size:.66em;color:#A1887F;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:12px}
+.th-bar{height:16px;background:linear-gradient(90deg,#b71c1c 0%,#ef5350 20%,#ff9800 38%,#ffd740 50%,#8bc34a 65%,#4CAF50 80%,#1b5e20 100%);border-radius:10px;position:relative;margin:26px 8px 8px}
+.th-mk{position:absolute;top:-22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center}
+.th-mk .arr{width:3px;height:38px;border-radius:2px;background:#fff;box-shadow:0 0 6px rgba(255,255,255,.3)}
+.th-mk .lbl{font-size:.58em;font-weight:800;padding:3px 7px;border-radius:5px;white-space:nowrap;margin-top:3px}
+.th-labels{display:flex;justify-content:space-between;padding:0 8px;font-size:.56em;color:#4a3828;font-weight:700}
+.dg{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:8px;margin-bottom:14px}
+.dc{background:#100c08;border-radius:10px;padding:11px;border:1px solid #201810;text-align:center}
+.dc .dl{font-size:.52em;color:#A1887F;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:4px}
+.dc .dv{font-size:1.15em;font-weight:900;color:#fff}
+.dc .ds{font-size:.62em;color:#6d5040;margin-top:3px;line-height:1.4}
+.alt{background:linear-gradient(135deg,#100c06,#140e08);border-left:4px solid #8D6E63;border-radius:0 10px 10px 0;padding:14px;margin-bottom:10px}
+.alt h5{font-size:.70em;color:#A1887F;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
+.alt p{font-size:.78em;color:#a09080;line-height:1.8}
+.alt p strong{color:#d8c8b0}
+.bld{background:linear-gradient(135deg,#140e08,#181208);border:2px solid #8D6E63;border-radius:14px;padding:20px;margin:16px 0;text-align:center;box-shadow:0 0 30px rgba(141,110,99,.04)}
+.bld h3{font-family:'Playfair Display',serif;font-size:1.1em;color:#fff;margin-bottom:8px;line-height:1.4}
+.bld p{font-size:.80em;color:#A1887F;line-height:1.8}
+.tbl{width:100%;border-collapse:collapse;margin-bottom:12px;font-size:.70em}
+.tbl th{background:#140e08;color:#A1887F;padding:7px 5px;text-align:center;font-weight:700;text-transform:uppercase;letter-spacing:.5px;font-size:.78em;border-bottom:2px solid #3e2818}
+.tbl td{padding:6px 4px;text-align:center;border-bottom:1px solid #1e1810;color:#a09080}
+.tbl tr:hover td{background:rgba(141,110,99,.03)}
+.proj{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.proj-c{background:#100c08;border-radius:10px;padding:13px;border:1px solid #201810;text-align:center}
+.proj-c .pl{font-size:.54em;color:#A1887F;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:5px}
+.proj-c .pv{font-size:1.2em;font-weight:900;color:#fff;margin-bottom:3px}
+.proj-c .pd{font-size:.66em;color:#6d5040;line-height:1.5}
+.geo{display:grid;grid-template-columns:1fr;gap:7px;margin-bottom:12px}
+.geo-i{background:rgba(141,110,99,.03);border:1px solid rgba(141,110,99,.1);border-radius:10px;padding:10px 14px;display:flex;gap:10px;align-items:flex-start}
+.geo-i .gi{font-size:1.2em;flex-shrink:0}
+.geo-i .gt{font-size:.70em;font-weight:800;color:#d8c8b0}
+.geo-i .gd{font-size:.68em;color:#6d5040;line-height:1.6;margin-top:2px}
+.sep{text-align:center;margin:20px 0;color:#2e1e10;font-size:1em;letter-spacing:10px}
+.cred{background:linear-gradient(135deg,#100c08,#160e08);border:2px solid #2e1e10;border-radius:16px;padding:18px;margin-top:16px}
+.cred-in{display:flex;gap:14px;align-items:center}
+.cred-av{width:60px;height:60px;background:linear-gradient(135deg,#8D6E63,#3E2723);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6em;flex-shrink:0;box-shadow:0 4px 18px rgba(141,110,99,.2)}
+.cred h3{font-size:.90em;font-weight:900;color:#fff}
+.cred .ti{font-size:.68em;color:#A1887F;font-weight:700;margin-top:2px}
+.cred .dsc{font-size:.64em;color:#6d5040;margin-top:4px;line-height:1.5;font-style:italic}
+.cred .ct{margin-top:8px;display:flex;flex-wrap:wrap;gap:5px}
+.cred .ct a,.cred .ct span{font-size:.62em;color:#a09080;text-decoration:none;display:flex;align-items:center;gap:3px;font-weight:600;padding:3px 7px;background:rgba(141,110,99,.06);border-radius:6px;border:1px solid rgba(141,110,99,.1)}
+.cred .ct a:hover{background:rgba(141,110,99,.12);color:#fff}
+.disc{margin-top:10px;padding:10px;background:rgba(255,255,255,.02);border-radius:8px;font-size:.56em;color:#1e1810;line-height:1.6;text-align:center}
+.ftr{text-align:center;padding:10px;font-size:.58em;color:#140e08;border-radius:0 0 14px 14px;background:#0a0604}
+@media(max-width:768px){.topbar{flex-direction:column;text-align:center}.topbar .ed{text-align:center}.hdr h1{font-size:1.15em}.chg{grid-template-columns:1fr}.cred-in{flex-direction:column;text-align:center}.cred .ct{justify-content:center}.dg{grid-template-columns:1fr 1fr}.proj{grid-template-columns:1fr}.hdr .mkt .mi{min-width:90px}}
+@media(max-width:420px){.dg{grid-template-columns:1fr}.hdr h1{font-size:1em}.hdr .mkt{flex-direction:column;align-items:center}}
+</style>
+</head>
+<body>
+<div class="pg">
+<div class="topbar">
+<div class="logo"><div class="logo-ic">☕</div><div class="logo-txt"><h2>RURAL IN</h2><small>Inteligencia para o Agronegocio</small></div></div>
+<div class="ed"><div class="dt">Sexta-feira, 27 de Marco de 2026</div><div class="inf">Radar Agro Cafe · Fechamento Semanal · Semana 24-27/Mar</div></div>
+</div>
+
+<div class="hdr">
+<div class="tag-top">Radar Agro Cafe · Fechamento Semanal</div>
+<h1>Safra Recorde vs. Ormuz Fechado: o Cabo de Guerra que Define o Cafe em 2026</h1>
+<div class="sub">Arabica em NY oscila perto de US$ 2,95/lb (+2,9% sexta 20/3). CEPEA arabica entre R$ 1.900-1.970/sc. StoneX: safra BR recorde 75,3 mi sacas pressiona. Mas Ormuz fechado sustenta premium logistico. Mercado bipolar.</div>
+<div class="mkt">
+<div class="mi"><div class="ml">NY Mai/26 Arabica</div><div class="mv wh">~US$ 2,95/lb</div><div class="mc up">Rally na sexta 20/3</div></div>
+<div class="mi"><div class="ml">CEPEA Arabica SP</div><div class="mv wh">~R$ 1.968/sc</div><div class="mc up">+9,5% no mes</div></div>
+<div class="mi"><div class="ml">Londres Robusta Mai</div><div class="mv wh">US$ 3.669/t</div><div class="mc up">+2,5% (qui)</div></div>
+<div class="mi"><div class="ml">CEPEA Robusta ES</div><div class="mv wh">~R$ 1.017/sc</div><div class="mc dn">-1,5% no mes</div></div>
+<div class="mi"><div class="ml">Safra BR 26/27</div><div class="mv ng">75,3 mi sacas</div><div class="mc dn">RECORDE (StoneX)</div></div>
+<div class="mi"><div class="ml">Export. BR Fev</div><div class="mv ng">-27% a/a</div><div class="mc dn">Logistica comprimida</div></div>
+</div>
+</div>
+
+<div class="mn">
+
+<h3 class="stl">📋 Resumo Executivo da Semana</h3>
+
+<p class="tx">O mercado de cafe em marco de 2026 vive um <span class="hl">cabo de guerra historico</span>: de um lado, a <span class="ng">maior safra brasileira de todos os tempos</span> (75,3 mi sacas, StoneX) pressiona precos; do outro, o <span class="ps">fechamento do Estreito de Ormuz</span> disparou custos de frete, seguro e combustivel, criando um <strong>premio logistico</strong> que sustenta as cotacoes. O resultado: <strong>volatilidade extrema</strong>.</p>
+
+<p class="tx">Na semana, NY arabica oscilou entre <span class="ng">US$ 2,87/lb (queda de -2,8% na quarta 11/3 com chuvas em MG)</span> e <span class="ps">~US$ 2,95-3,00/lb (rally de +2,9% na sexta 20/3 com Ormuz)</span>. O CEPEA arabica saiu de R$ 1.797/sc no final de fevereiro para <strong>~R$ 1.968/sc</strong> nesta semana — alta de <span class="ps">+9,5% no mes</span>. Ja o <span class="hl">robusta diverge</span>: Londres subiu (US$ 3.669/t, +2,5%), mas CEPEA robusta caiu <span class="ng">-1,5% no mes</span>, pressionado pela perspectiva de safra grande de conilon no ES.</p>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">📊 Painel de Precos — Arabica e Robusta</h3>
+
+<table class="tbl">
+<thead><tr><th>Indicador</th><th>Fev/26 (fechamento)</th><th>Marco/26 (atual)</th><th>Var. Mes</th></tr></thead>
+<tbody>
+<tr><td>CEPEA Arabica SP</td><td>R$ 1.797,61/sc</td><td style="color:#81c784;font-weight:700">~R$ 1.968/sc</td><td style="color:#81c784">+9,5%</td></tr>
+<tr><td>NY Arabica Mai/26</td><td>~US$ 2,75/lb (low 24/2)</td><td style="color:#81c784;font-weight:700">~US$ 2,95/lb</td><td style="color:#81c784">+7,3%</td></tr>
+<tr><td>CEPEA Robusta ES</td><td>R$ 1.032,75/sc</td><td style="font-weight:700">~R$ 1.017/sc</td><td style="color:#ef5350">-1,5%</td></tr>
+<tr><td>Londres Robusta Mai/26</td><td>~US$ 3.550/t</td><td style="color:#81c784;font-weight:700">US$ 3.669/t</td><td style="color:#81c784">+3,4%</td></tr>
+<tr><td>ICE Arabica Estoques</td><td>528 mil sacas</td><td style="color:#ef5350;font-weight:700">585,6 mil sacas</td><td style="color:#ef5350">+10,9%</td></tr>
+<tr><td>ICE Robusta Estoques</td><td>~4.700 lotes</td><td style="color:#81c784;font-weight:700">4.257 lotes (2m low)</td><td style="color:#81c784">-9,4%</td></tr>
+</tbody>
+</table>
+
+<div class="chg">
+<div class="chc">
+<h4>CEPEA Arabica SP — Marco/2026 (R$/sc)</h4>
+<canvas id="ch1"></canvas>
+</div>
+<div class="chc">
+<h4>NY Arabica vs Londres Robusta — Marco (Indice Normalizado)</h4>
+<canvas id="ch2"></canvas>
+</div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🔍 Os 2 Lados do Cabo de Guerra</h3>
+
+<div class="dg">
+<div class="dc" style="border-color:#ef5350"><div class="dl">🐻 Forca Baixista</div><div class="dv ng">SAFRA RECORDE</div><div class="ds">StoneX: 75,3 mi sacas<br>BR 26/27. Maior da historia.</div></div>
+<div class="dc" style="border-color:#81c784"><div class="dl">🐂 Forca Altista</div><div class="dv ps">ORMUZ FECHADO</div><div class="ds">Frete, seguro e diesel<br>disparam. Premium logistico.</div></div>
+<div class="dc" style="border-color:#ef5350"><div class="dl">🐻 Estoques ICE Arabica</div><div class="dv ng">585,6 mil sacas</div><div class="ds">Alta de 5,75 meses.<br>Oferta abundante.</div></div>
+<div class="dc" style="border-color:#81c784"><div class="dl">🐂 Estoques ICE Robusta</div><div class="dv ps">4.257 lotes (low)</div><div class="ds">Menor em 2 meses.<br>Short covering ativo.</div></div>
+<div class="dc" style="border-color:#ef5350"><div class="dl">🐻 Chuvas MG</div><div class="dv ng">139% da media</div><div class="ds">Somar: 57,7mm/semana.<br>Alivia preocupacao safra.</div></div>
+<div class="dc" style="border-color:#81c784"><div class="dl">🐂 Export. BR Fev</div><div class="dv ps">-27% a/a</div><div class="ds">Cecafe: 2,3 mi sacas.<br>Logistica comprimida.</div></div>
+<div class="dc" style="border-color:#ef5350"><div class="dl">🐻 Conab 26/27</div><div class="dv ng">RECORDE</div><div class="ds">Producao sobe com area<br>e produtividade maiores.</div></div>
+<div class="dc" style="border-color:#81c784"><div class="dl">🐂 Petroleo US$ 99</div><div class="dv ps">FRETE CARO</div><div class="ds">Ormuz = rotas longas.<br>Custo importador sobe.</div></div>
+</div>
+
+<div class="alt">
+<h5>☕ Arabica: Entre a Safra Recorde e o Premium de Guerra</h5>
+<p>A <span class="ng">StoneX elevou a estimativa da safra BR 26/27 para 75,3 mi sacas</span> — recorde absoluto. Os estoques ICE arabica subiram para 585,6 mil sacas (high de 5,75 meses). Em condicoes normais, isso seria <strong>desastre para precos</strong>. Mas o fechamento do Ormuz criou um <span class="ps">premium logistico</span>: frete maritimo, seguro e combustivel dispararam. Exportacoes brasileiras de fevereiro cairam <strong>27% a/a</strong>. O cafe fisico nao chega ao destino no tempo normal. Resultado: <span class="hl">NY nao cai como deveria</span>.</p>
+</div>
+
+<div class="alt">
+<h5>☕ Robusta: Estoques Apertados vs. Safra Conilon Grande</h5>
+<p>O robusta vive dinamica propria: <span class="ps">estoques ICE cairam para minima de 2 meses (4.257 lotes)</span>, gerando short covering em Londres (+2,5% na quinta). <strong>Vietna retém vendas</strong> — produtores cautelosos com riscos logisticos. Mas no Brasil, a perspectiva de <span class="ng">safra grande de conilon no ES pressiona CEPEA robusta (-1,5% mes)</span>. Resultado: <strong>Londres sobe, CEPEA cai</strong> — descolamento que abre oportunidades de arbitragem.</p>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">📈 Analise Tecnica</h3>
+
+<p class="tx">NY arabica mai/26 formou <span class="ps">fundo em ~US$ 2,75/lb em 24/fev (low de 16 meses)</span> e desde entao construiu recuperacao ate ~US$ 2,95-3,00. A <span class="hl">resistencia critica esta em US$ 3,00/lb</span> — barreira psicologica. Se romper, abre espaco ate US$ 3,15. <span class="ng">Suporte em US$ 2,80</span>. A volatilidade e a maior do ano — swings de 3% em um dia sao rotina. Para o CEPEA arabica, o suporte esta em <strong>R$ 1.870/sc</strong> e a resistencia em <strong>R$ 1.970-2.000</strong>.</p>
+
+<div class="chc">
+<h4>CEPEA Arabica Marco — Suporte e Resistencia (R$/sc)</h4>
+<canvas id="ch3"></canvas>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🌡️ Termometros de Conjuntura</h3>
+
+<div class="chg">
+<div class="thermo"><h4>Oferta Global Arabica (Safra BR)</h4>
+<div class="th-bar"><div class="th-mk" style="left:18%"><div class="arr"></div><div class="lbl" style="background:#ef5350;color:#fff">ABUNDANTE</div></div></div>
+<div class="th-labels"><span>Excesso</span><span>Equilibrada</span><span>Escassa</span></div>
+</div>
+<div class="thermo"><h4>Disrupcao Logistica (Ormuz)</h4>
+<div class="th-bar"><div class="th-mk" style="left:15%"><div class="arr"></div><div class="lbl" style="background:#b71c1c;color:#fff">SEVERA</div></div></div>
+<div class="th-labels"><span>Critica</span><span>Normal</span><span>Livre</span></div>
+</div>
+</div>
+<div class="chg">
+<div class="thermo"><h4>Estoques ICE Arabica</h4>
+<div class="th-bar"><div class="th-mk" style="left:72%"><div class="arr"></div><div class="lbl" style="background:#8bc34a;color:#000">SUBINDO</div></div></div>
+<div class="th-labels"><span>Baixo</span><span>Normal</span><span>Alto</span></div>
+</div>
+<div class="thermo"><h4>Estoques ICE Robusta</h4>
+<div class="th-bar"><div class="th-mk" style="left:28%"><div class="arr"></div><div class="lbl" style="background:#ef5350;color:#fff">EM QUEDA</div></div></div>
+<div class="th-labels"><span>Baixo</span><span>Normal</span><span>Alto</span></div>
+</div>
+</div>
+<div class="chg">
+<div class="thermo"><h4>Volatilidade do Mercado</h4>
+<div class="th-bar"><div class="th-mk" style="left:88%"><div class="arr"></div><div class="lbl" style="background:#b71c1c;color:#fff">EXTREMA</div></div></div>
+<div class="th-labels"><span>Baixa</span><span>Normal</span><span>Extrema</span></div>
+</div>
+<div class="thermo"><h4>Poder do Produtor Arabica</h4>
+<div class="th-bar"><div class="th-mk" style="left:58%"><div class="arr"></div><div class="lbl" style="background:#ffd740;color:#000">MODERADO</div></div></div>
+<div class="th-labels"><span>Baixo</span><span>Medio</span><span>Alto</span></div>
+</div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🌐 Radar Geopolitico e Macro</h3>
+
+<div class="geo">
+<div class="geo-i"><div class="gi">⛽</div><div><div class="gt">Estreito de Ormuz Fechado — O Fator #1 do Cafe em 2026</div><div class="gd">Fechamento do Ormuz disparou frete maritimo global, seguro e combustivel. Rotas alternativas sao mais longas e caras. Exportacoes BR cairam 27% em fev. Enquanto Ormuz nao reabrir, o premium logistico sustenta precos mesmo com safra recorde. Cessar-fogo EUA-Ira removeria esse suporte de uma vez.</div></div></div>
+<div class="geo-i"><div class="gi">🇧🇷</div><div><div class="gt">Safra 26/27: 75,3 mi Sacas — Recorde Historico</div><div class="gd">StoneX elevou projecao de 70,7 mi (nov/25) para 75,3 mi sacas. Conab tambem projeta recorde. Chuvas abundantes em MG (139% da media) garantem bom desenvolvimento. Bienal favoravel. E a maior safra desde 2021 — e maior da historia. Fator baixista estrutural.</div></div></div>
+<div class="geo-i"><div class="gi">🇻🇳</div><div><div class="gt">Vietna Retem Vendas — Robusta Aperta</div><div class="gd">Produtores vietnamitas cautelosos com riscos logisticos da guerra nao vendem. Estoques ICE robusta caem para minima de 2 meses. Short covering em Londres. Se Vietna continuar retendo, robusta pode ter rally adicional.</div></div></div>
+<div class="geo-i"><div class="gi">💱</div><div><div class="gt">Dolar a R$ 5,26 — Sustenta Receita do Produtor</div><div class="gd">Dolar relativamente firme sustenta exportacao e receita em R$. Selic a 14,75% ancora cambio. Se dolar cair, CEPEA perde suporte. Referencia NY arabica convertida: ~R$ 2.041/sc — acima do fisico, indicando margem.</div></div></div>
+<div class="geo-i"><div class="gi">📊</div><div><div class="gt">Fev/26: Media Arabica Menor Desde Jul/25</div><div class="gd">Media de fevereiro (R$ 1.864/sc) foi a mais baixa desde julho/25. Mas marco reverteu com forca (+9,5%). Patamar atual ainda e o 3o maior para marco na serie historica do CEPEA. Nao e barato — e alto, so nao e o pico.</div></div></div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🎯 Projecao para Proxima Semana (30/Mar - 03/Abr)</h3>
+
+<div class="bld">
+<h3>VIES: NEUTRO COM VOLATILIDADE EXTREMA</h3>
+<p>O cabo de guerra continua. Safra recorde puxa para baixo, Ormuz puxa para cima. Qualquer noticia de cessar-fogo derruba. Qualquer escalada sustenta. USDA area (31/3) pode afetar indiretamente. Mercado para traders — produtor precisa de estrategia.</p>
+</div>
+
+<div class="proj">
+<div class="proj-c"><div class="pl">NY Arabica Mai/26</div><div class="pv" style="color:#ffd740">US$ 2,80 - 3,10/lb</div><div class="pd">Suporte: US$ 2,80.<br>Resistencia: US$ 3,00-3,10.<br>Ormuz define direcao.</div></div>
+<div class="proj-c"><div class="pl">CEPEA Arabica SP</div><div class="pv" style="color:#ffd740">R$ 1.900 - R$ 2.050</div><div class="pd">Suporte: R$ 1.870.<br>Teto: R$ 2.000+.<br>Dolar + NY combinam.</div></div>
+<div class="proj-c"><div class="pl">Londres Robusta Mai</div><div class="pv" style="color:#81c784">US$ 3.500 - 3.750/t</div><div class="pd">Estoques apertados.<br>Vietna retendo.<br>Vies altista.</div></div>
+<div class="proj-c"><div class="pl">CEPEA Robusta ES</div><div class="pv" style="color:#ffd740">R$ 990 - R$ 1.040</div><div class="pd">Safra conilon grande.<br>Lateralizado.<br>Demanda torrefadora define.</div></div>
+</div>
+
+<div class="chc">
+<h4>Cenarios NY Arabica — Proxima Semana</h4>
+<canvas id="ch4"></canvas>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">💡 Estrategia Rural IN</h3>
+
+<div class="alt">
+<h5>Produtor de Arabica</h5>
+<p><span class="hl"><strong>Momento de venda fracionada.</strong></span> Precos em R$ 1.950-1.970/sc sao <strong>historicamente elevados</strong> (3o maior para marco). Nao segure tudo esperando R$ 2.100+ — a safra recorde e real e vai pesar. Mas nao venda tudo — <span class="ps">Ormuz sustenta premium</span>. Estrategia: <strong>venda 30-40% agora, guarde 30% para pico de entressafra (jun-ago), e proteja 30% na B3/NY</strong>.</p>
+</div>
+
+<div class="alt">
+<h5>Produtor de Conilon/Robusta</h5>
+<p>CEPEA robusta esta <span class="ng">pressionado pela safra grande do ES</span> (~R$ 1.017/sc). Mas Londres esta subindo — o descolamento e <span class="ps">oportunidade para quem exporta diretamente</span>. Se voce so vende no mercado interno, o cenario e lateral. <strong>Monitore estoques ICE robusta</strong> — se continuarem caindo, Londres puxa CEPEA.</p>
+</div>
+
+<div class="alt">
+<h5>Para Ambos: Gestao de Risco e Obrigatoria</h5>
+<p>A volatilidade e <span class="ng">a maior do ano — swings de 3% em um dia</span>. Sem hedge, voce esta jogando roleta. <strong>Considere puts em NY para proteger piso a US$ 2,80</strong>. Ou trave parcela na cooperativa com preco minimo. <span class="hl">O mercado pode cair R$ 200/sc em uma semana se houver cessar-fogo no Ormuz</span>. Protecao nao e pessimismo — e profissionalismo.</p>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">📊 Visao Completa</h3>
+
+<div class="chg">
+<div class="chc">
+<h4>Radar Fundamentalista — Cafe 27/03</h4>
+<canvas id="ch5"></canvas>
+</div>
+<div class="chc">
+<h4>Arabica vs Robusta — Trajetoria Jan-Mar/26 (Indice 100=Jan)</h4>
+<canvas id="ch6"></canvas>
+</div>
+</div>
+
+<div class="chc">
+<h4>Evolucao CEPEA Arabica — Fev a Mar/2026 (R$/sc)</h4>
+<canvas id="ch7"></canvas>
+</div>
+
+<div class="cred">
+<div class="cred-in">
+<div class="cred-av">👨‍💼</div>
+<div>
+<h3>Dr. Sidney Souza</h3>
+<div class="ti">Economista Agricola · Estrategista Economico do Produtor</div>
+<div class="dsc">Especialista em economia da fazenda e gestao de risco no agro<br>Transformamos dados da fazenda em decisoes economicas<br>Ajudamos produtores a entender se o mercado sustenta seu negocio</div>
+<div class="ct">
+<a href="mailto:sidneyagro@gmail.com">📧 sidneyagro@gmail.com</a>
+<a href="https://wa.me/5564992266886">📱 (64) 9 9226-6886</a>
+<span>📸 @ruralin.ai</span>
+</div>
+</div>
+</div>
+<div class="disc">Informativo analitico e educacional. Nao constitui recomendacao de compra ou venda. Dados: ICE/NY, ICE Futures Europe/Londres, CEPEA/Esalq-USP, StoneX, Conab, Cecafe, Safras & Mercado, Barchart, Somar Meteorologia, USDA, Globo Rural, Noticias Agricolas, Revista Cafeicultura. Analise e construcao: Dr. Sidney Souza — Rural IN.</div>
+</div>
+</div>
+<div class="ftr">RURAL IN 2026 · Inteligencia para o Agronegocio · Rio Verde/GO</div>
+</div>
+
+<script>
+Chart.defaults.color='#5a4838';Chart.defaults.font.family='Inter';Chart.defaults.font.size=11;
+var df={family:'Inter',weight:'600'};
+var tt={backgroundColor:'#100c08',titleColor:'#A1887F',bodyColor:'#d8c8b0',borderColor:'#3e2818',borderWidth:1,padding:12,cornerRadius:8};
+
+// 1 — CEPEA ARABICA MARCO
+new Chart(document.getElementById('ch1').getContext('2d'),{
+type:'line',data:{labels:['02/3','03','04','05','06','09','10','11','12','13','16','17','18','19','20','23','24','25','26','27*'],
+datasets:[{label:'CEPEA Arabica (R$/sc)',data:[1840.71,1853.29,1859.96,1874.79,1913.12,1929.37,1918.60,1872.75,1901.07,1878.47,1908.03,1908.03,1930,1940,1955,1948,1955,1960,1965,1968],
+borderColor:'#8D6E63',backgroundColor:'rgba(141,110,99,0.06)',borderWidth:2.5,fill:true,tension:0.3,pointRadius:2,pointBackgroundColor:'#8D6E63'}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,
+annotation:{annotations:{
+sup:{type:'line',yMin:1870,yMax:1870,borderColor:'rgba(129,199,132,0.4)',borderWidth:1.5,borderDash:[4,3],label:{display:true,content:'Suporte R$ 1.870',position:'start',backgroundColor:'rgba(129,199,132,0.5)',color:'#000',font:{size:7,weight:'bold'},padding:2}},
+res:{type:'line',yMin:1970,yMax:1970,borderColor:'rgba(239,83,80,0.4)',borderWidth:1.5,borderDash:[4,3],label:{display:true,content:'Resist. R$ 1.970',position:'end',backgroundColor:'rgba(239,83,80,0.4)',color:'#fff',font:{size:7,weight:'bold'},padding:2}},
+fev:{type:'label',xValue:0,yValue:1825,content:['Fundo Fev: R$ 1.797'],font:{size:8,weight:'bold'},color:'#ef5350'}
+}}},scales:{y:{min:1780,max:2000,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'R$ '+v;},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:6},maxRotation:45}}}}
+});
+
+// 2 — NY vs LONDRES NORMALIZADO
+new Chart(document.getElementById('ch2').getContext('2d'),{
+type:'line',data:{labels:['01/3','06','11','13','16','18','20','23','25','27*'],
+datasets:[{label:'NY Arabica (base 100)',data:[100,103.5,99,101.5,103,101.5,105,104,104.5,105.5],borderColor:'#8D6E63',borderWidth:2.5,tension:0.3,pointRadius:3,fill:false,pointBackgroundColor:'#8D6E63'},
+{label:'Londres Robusta (base 100)',data:[100,101,97,99,100.5,101.5,103,102,103.5,104],borderColor:'#81c784',borderWidth:2,tension:0.3,pointRadius:3,fill:false,borderDash:[5,3],pointBackgroundColor:'#81c784'}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},
+scales:{y:{min:94,max:108,grid:{color:'rgba(255,255,255,0.03)'},ticks:{font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}
+});
+
+// 3 — TECNICO CEPEA
+new Chart(document.getElementById('ch3').getContext('2d'),{
+type:'line',data:{labels:['02','03','04','05','06','09','10','11','12','13','16','17','18','19','20','23','24','25','26','27'],
+datasets:[{label:'CEPEA Arabica',data:[1840.71,1853.29,1859.96,1874.79,1913.12,1929.37,1918.60,1872.75,1901.07,1878.47,1908.03,1908.03,1930,1940,1955,1948,1955,1960,1965,1968],
+borderColor:'#8D6E63',borderWidth:2.5,tension:0.2,pointRadius:2,fill:false,pointBackgroundColor:'#8D6E63'},
+{label:'MM7',data:[null,null,null,null,null,null,1884,1889,1896,1895,1896,1901,1904,1911,1919,1927,1934,1941,1949,1957],
+borderColor:'#64b5f6',borderWidth:1.5,tension:0.3,pointRadius:0,fill:false,borderDash:[4,2]}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt,
+annotation:{annotations:{
+sup:{type:'line',yMin:1870,yMax:1870,borderColor:'rgba(129,199,132,0.5)',borderWidth:2,borderDash:[6,3],label:{display:true,content:'SUPORTE R$ 1.870',position:'start',backgroundColor:'rgba(129,199,132,0.6)',color:'#000',font:{size:7,weight:'bold'},padding:2}},
+res:{type:'line',yMin:1970,yMax:1970,borderColor:'rgba(239,83,80,0.5)',borderWidth:2,borderDash:[6,3],label:{display:true,content:'RESIST. R$ 1.970-2.000',position:'end',backgroundColor:'rgba(239,83,80,0.5)',color:'#fff',font:{size:7,weight:'bold'},padding:2}}
+}}},scales:{y:{min:1820,max:2010,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'R$ '+v;},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:6}}}}}
+});
+
+// 4 — CENARIOS
+new Chart(document.getElementById('ch4').getContext('2d'),{
+type:'bar',data:{labels:['Cessar-fogo Ormuz','Base (Neutro)','Ormuz + Seca MG','Escalada Total'],
+datasets:[
+{label:'Piso (US$/lb)',data:[2.60,2.80,2.90,3.00],backgroundColor:'rgba(239,83,80,0.3)',borderColor:'#ef5350',borderWidth:1.5,borderRadius:4},
+{label:'Teto (US$/lb)',data:[2.80,3.00,3.15,3.30],backgroundColor:'rgba(129,199,132,0.3)',borderColor:'#81c784',borderWidth:1.5,borderRadius:4}
+]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},
+scales:{y:{min:2.40,max:3.40,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'US$ '+v.toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}
+});
+
+// 5 — RADAR FUNDAMENTALISTA
+new Chart(document.getElementById('ch5').getContext('2d'),{
+type:'radar',data:{labels:['Oferta (Safra BR)','Disrupcao Logistica','Demanda Global','Estoques ICE Arb.','Estoques ICE Rob.','Cambio/Dolar'],
+datasets:[{label:'Baixista',data:[90,20,55,75,30,50],backgroundColor:'rgba(239,83,80,0.08)',borderColor:'#ef5350',borderWidth:2,pointBackgroundColor:'#ef5350',pointRadius:4},
+{label:'Altista',data:[15,90,60,30,80,60],backgroundColor:'rgba(129,199,132,0.08)',borderColor:'#81c784',borderWidth:2,pointBackgroundColor:'#81c784',pointRadius:4}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},
+scales:{r:{min:0,max:100,ticks:{display:false,stepSize:20},grid:{color:'rgba(255,255,255,0.06)'},pointLabels:{font:{family:'Inter',weight:'600',size:8},color:'#A1887F'}}}}
+});
+
+// 6 — ARABICA vs ROBUSTA INDICE
+new Chart(document.getElementById('ch6').getContext('2d'),{
+type:'line',data:{labels:['Jan/26','Fev/26','Mar/26*'],
+datasets:[{label:'Arabica CEPEA',data:[100,85.7,93.9],borderColor:'#8D6E63',borderWidth:3,tension:0.3,pointRadius:5,fill:false,pointBackgroundColor:['#8D6E63','#ef5350','#81c784']},
+{label:'Robusta CEPEA',data:[100,85.3,83.8],borderColor:'#81c784',borderWidth:2,tension:0.3,pointRadius:5,fill:false,borderDash:[5,3],pointBackgroundColor:['#81c784','#ef5350','#ef5350']}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt,
+annotation:{annotations:{
+div:{type:'label',xValue:2,yValue:89,content:['Arabica recupera,','Robusta nao'],font:{size:9,weight:'bold'},color:'#ffd740',textAlign:'center'}
+}}},scales:{y:{min:78,max:105,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return v;},font:df},title:{display:true,text:'Indice (Jan=100)',color:'#5a4838',font:{family:'Inter',weight:'600',size:8}}},x:{grid:{display:false},ticks:{font:df}}}}
+});
+
+// 7 — EVOLUCAO FEV-MAR
+new Chart(document.getElementById('ch7').getContext('2d'),{
+type:'line',data:{labels:['27/2','02/3','05/3','09/3','11/3','13/3','16/3','18/3','20/3','23/3','25/3','27/3*'],
+datasets:[{label:'CEPEA Arabica (R$/sc)',data:[1797.61,1840.71,1874.79,1929.37,1872.75,1878.47,1908.03,1930,1955,1948,1960,1968],
+borderColor:'#8D6E63',backgroundColor:'rgba(141,110,99,0.08)',borderWidth:3,fill:true,tension:0.3,pointRadius:4,
+pointBackgroundColor:['#ef5350','#81c784','#81c784','#81c784','#ef5350','#ef5350','#81c784','#81c784','#81c784','#ffd740','#81c784','#81c784']}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,
+annotation:{annotations:{
+fundo:{type:'label',xValue:0,yValue:1780,content:['FUNDO FEV','R$ 1.797'],font:{size:9,weight:'bold'},color:'#ef5350',textAlign:'center'},
+rec:{type:'label',xValue:11,yValue:1985,content:['RECUPERACAO','R$ 1.968 (+9,5%)'],font:{size:9,weight:'bold'},color:'#81c784',textAlign:'center'}
+}}},scales:{y:{min:1760,max:2000,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'R$ '+v;},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7},maxRotation:30}}}}
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radar Agro Algodao — 27/03/2026 | Rural IN</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#080608;color:#d0c8d8;min-height:100vh}
+.pg{max-width:960px;margin:0 auto;padding:10px}
+.topbar{background:linear-gradient(90deg,#120e14,#181420,#120e14);padding:12px 20px;border-radius:14px 14px 0 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #302848;flex-wrap:wrap;gap:8px}
+.topbar .logo{display:flex;align-items:center;gap:12px}
+.topbar .logo-ic{width:54px;height:54px;background:linear-gradient(135deg,#CE93D8,#6A1B9A);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.7em;box-shadow:0 4px 25px rgba(206,147,216,.2)}
+.topbar .logo-txt h2{font-size:1.05em;font-weight:900;color:#fff;letter-spacing:1.5px}
+.topbar .logo-txt small{font-size:.62em;color:#CE93D8;font-weight:600;display:block}
+.topbar .ed{text-align:right}
+.topbar .ed .dt{font-size:.88em;font-weight:800;color:#CE93D8}
+.topbar .ed .inf{font-size:.62em;color:#6a5880;font-weight:600}
+.hdr{background:linear-gradient(135deg,#140e18,#100a16 50%,#0c0810);padding:36px 24px 30px;text-align:center;border-bottom:3px solid #CE93D8;position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(206,147,216,.05) 0%,transparent 70%)}
+.hdr .tag-top{display:inline-block;background:linear-gradient(135deg,#CE93D8,#6A1B9A);color:#fff;font-size:.58em;font-weight:800;letter-spacing:3px;padding:4px 14px;border-radius:20px;text-transform:uppercase;margin-bottom:10px;position:relative;z-index:1}
+.hdr h1{font-family:'Playfair Display',serif;font-size:1.55em;font-weight:900;color:#fff;position:relative;z-index:1;line-height:1.3;max-width:780px;margin:0 auto}
+.hdr .sub{font-size:.80em;color:#b898c8;margin-top:10px;font-weight:500;position:relative;z-index:1;line-height:1.6}
+.hdr .mkt{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px;position:relative;z-index:1}
+.hdr .mkt .mi{background:rgba(206,147,216,.05);border:1px solid rgba(206,147,216,.15);border-radius:10px;padding:7px 12px;text-align:center;min-width:110px}
+.hdr .mkt .mi .ml{font-size:.54em;color:#8a6898;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.hdr .mkt .mi .mv{font-size:1.05em;font-weight:900;margin-top:2px}
+.hdr .mkt .mi .mc{font-size:.58em;font-weight:700;margin-top:1px}
+.up{color:#81c784}.dn{color:#ef5350}.nt{color:#ffd740}.wh{color:#fff}
+.mn{background:#0a080c;padding:20px;border:1px solid #181420;border-top:none}
+.stl{font-size:.76em;text-transform:uppercase;letter-spacing:2px;font-weight:800;color:#CE93D8;margin:22px 0 12px;display:flex;align-items:center;gap:10px;padding-bottom:8px;border-bottom:1px solid #181420}
+.tx{font-size:.84em;line-height:1.95;color:#a098b0;margin-bottom:14px;text-align:justify}
+.tx strong{color:#d8c8e8;font-weight:700}
+.tx .hl{color:#CE93D8;font-weight:700}
+.tx .ng{color:#ef5350;font-weight:700}
+.tx .ps{color:#81c784;font-weight:700}
+.chc{background:#0e0c10;border:1px solid #1e1828;border-radius:12px;padding:14px;margin-bottom:12px}
+.chc h4{font-size:.68em;color:#b898c8;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-weight:700;text-align:center}
+.chc canvas{max-height:270px}
+.chg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.thermo{background:#0e0c10;border-radius:12px;padding:14px;border:1px solid #1e1828;margin-bottom:10px}
+.thermo h4{text-align:center;font-size:.68em;color:#b898c8;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:12px}
+.th-bar{height:16px;background:linear-gradient(90deg,#b71c1c 0%,#ef5350 20%,#ff9800 38%,#ffd740 50%,#8bc34a 65%,#4CAF50 80%,#1b5e20 100%);border-radius:10px;position:relative;margin:26px 8px 8px}
+.th-mk{position:absolute;top:-22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center}
+.th-mk .arr{width:3px;height:38px;border-radius:2px;background:#fff;box-shadow:0 0 6px rgba(255,255,255,.3)}
+.th-mk .lbl{font-size:.60em;font-weight:800;padding:3px 7px;border-radius:5px;white-space:nowrap;margin-top:3px}
+.th-labels{display:flex;justify-content:space-between;padding:0 8px;font-size:.58em;color:#4a3860;font-weight:700}
+.dg{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;margin-bottom:14px}
+.dc{background:#0e0c10;border-radius:10px;padding:12px;border:1px solid #1e1828;text-align:center}
+.dc .dl{font-size:.54em;color:#CE93D8;text-transform:uppercase;letter-spacing:1.2px;font-weight:700;margin-bottom:4px}
+.dc .dv{font-size:1.2em;font-weight:900;color:#fff}
+.dc .ds{font-size:.66em;color:#6a5880;margin-top:3px;line-height:1.4}
+.alt{background:linear-gradient(135deg,#0e0c10,#121018);border-left:4px solid #CE93D8;border-radius:0 10px 10px 0;padding:14px;margin-bottom:10px}
+.alt h5{font-size:.72em;color:#CE93D8;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
+.alt p{font-size:.80em;color:#a098b0;line-height:1.8}
+.alt p strong{color:#d8c8e8}
+.bld{background:linear-gradient(135deg,#121018,#161020);border:2px solid #CE93D8;border-radius:14px;padding:20px;margin:16px 0;text-align:center;box-shadow:0 0 30px rgba(206,147,216,.04)}
+.bld h3{font-family:'Playfair Display',serif;font-size:1.15em;color:#fff;margin-bottom:8px;line-height:1.4}
+.bld p{font-size:.82em;color:#b898c8;line-height:1.8}
+.tbl{width:100%;border-collapse:collapse;margin-bottom:12px;font-size:.72em}
+.tbl th{background:#121018;color:#CE93D8;padding:8px 6px;text-align:center;font-weight:700;text-transform:uppercase;letter-spacing:.5px;font-size:.80em;border-bottom:2px solid #302848}
+.tbl td{padding:7px 5px;text-align:center;border-bottom:1px solid #181420;color:#a098b0}
+.tbl tr:hover td{background:rgba(206,147,216,.02)}
+.proj{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.proj-c{background:#0e0c10;border-radius:10px;padding:14px;border:1px solid #1e1828;text-align:center}
+.proj-c .pl{font-size:.56em;color:#CE93D8;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:5px}
+.proj-c .pv{font-size:1.3em;font-weight:900;color:#fff;margin-bottom:3px}
+.proj-c .pd{font-size:.68em;color:#6a5880;line-height:1.5}
+.geo{display:grid;grid-template-columns:1fr;gap:7px;margin-bottom:12px}
+.geo-i{background:rgba(206,147,216,.03);border:1px solid rgba(206,147,216,.08);border-radius:10px;padding:10px 14px;display:flex;gap:10px;align-items:flex-start}
+.geo-i .gi{font-size:1.2em;flex-shrink:0}
+.geo-i .gt{font-size:.72em;font-weight:800;color:#d8c8e8}
+.geo-i .gd{font-size:.70em;color:#6a5880;line-height:1.6;margin-top:2px}
+.sep{text-align:center;margin:22px 0;color:#201830;font-size:1em;letter-spacing:10px}
+.cred{background:linear-gradient(135deg,#0e0c10,#121018);border:2px solid #302848;border-radius:16px;padding:20px;margin-top:18px}
+.cred-in{display:flex;gap:16px;align-items:center}
+.cred-av{width:64px;height:64px;background:linear-gradient(135deg,#CE93D8,#6A1B9A);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.7em;flex-shrink:0;box-shadow:0 4px 18px rgba(206,147,216,.2)}
+.cred h3{font-size:.92em;font-weight:900;color:#fff}
+.cred .ti{font-size:.70em;color:#CE93D8;font-weight:700;margin-top:2px}
+.cred .dsc{font-size:.66em;color:#6a5880;margin-top:4px;line-height:1.5;font-style:italic}
+.cred .ct{margin-top:8px;display:flex;flex-wrap:wrap;gap:5px}
+.cred .ct a,.cred .ct span{font-size:.64em;color:#a098b0;text-decoration:none;display:flex;align-items:center;gap:3px;font-weight:600;padding:3px 7px;background:rgba(206,147,216,.05);border-radius:6px;border:1px solid rgba(206,147,216,.1)}
+.cred .ct a:hover{background:rgba(206,147,216,.1);color:#fff}
+.disc{margin-top:12px;padding:10px;background:rgba(255,255,255,.02);border-radius:8px;font-size:.58em;color:#1e1828;line-height:1.6;text-align:center;border:1px solid rgba(255,255,255,.02)}
+.ftr{text-align:center;padding:10px;font-size:.60em;color:#120e14;border-radius:0 0 14px 14px;background:#080608}
+@media(max-width:768px){.topbar{flex-direction:column;text-align:center}.topbar .ed{text-align:center}.hdr h1{font-size:1.2em}.chg{grid-template-columns:1fr}.cred-in{flex-direction:column;text-align:center}.cred .ct{justify-content:center}.dg{grid-template-columns:1fr 1fr}.proj{grid-template-columns:1fr}.hdr .mkt .mi{min-width:95px}}
+@media(max-width:420px){.dg{grid-template-columns:1fr}.hdr h1{font-size:1.05em}.hdr .mkt{flex-direction:column;align-items:center}}
+</style>
+</head>
+<body>
+<div class="pg">
+<div class="topbar">
+<div class="logo"><div class="logo-ic">🏵️</div><div class="logo-txt"><h2>RURAL IN</h2><small>Inteligencia para o Agronegocio</small></div></div>
+<div class="ed"><div class="dt">Sexta-feira, 27 de Marco de 2026</div><div class="inf">Radar Agro Algodao · Fechamento Semanal · Semana 24-27/Mar</div></div>
+</div>
+
+<div class="hdr">
+<div class="tag-top">Radar Agro Algodao · Fechamento Semanal</div>
+<h1>Pluma Dispara +2,4% em Um Dia e Bate R$ 3,80/lp: Maior Nivel do Ano. O Rally E Real?</h1>
+<div class="sub">Indicador CEPEA saltou de R$ 3,52 no inicio de marco para R$ 3,80 nesta sexta — alta de 8,09% no mes. Entressafra, diesel caro, poliester +16% e NY em alta criam tempestade perfeita para a pluma.</div>
+<div class="mkt">
+<div class="mi"><div class="ml">CEPEA Pluma</div><div class="mv wh">R$ 3,8077/lp</div><div class="mc up">+2,41% (sex 27/3)</div></div>
+<div class="mi"><div class="ml">CEPEA Var. Mes</div><div class="mv ps">+8,09%</div><div class="mc up">Maior alta de 2026</div></div>
+<div class="mi"><div class="ml">NY Mai/26</div><div class="mv wh">~65,3 cts/lb</div><div class="mc up">Acima de fev (62,4)</div></div>
+<div class="mi"><div class="ml">Cotlook A Index</div><div class="mv wh">75,2 cts/lb</div><div class="mc up">vs 74,1 (fev)</div></div>
+<div class="mi"><div class="ml">Poliester</div><div class="mv ng">+16,3% sem.</div><div class="mc up">Petroleo puxa rival</div></div>
+<div class="mi"><div class="ml">Prod. BR 26/27</div><div class="mv nt">Queda 3,6%</div><div class="mc dn">Conab: area e prod. menores</div></div>
+</div>
+</div>
+
+<div class="mn">
+
+<h3 class="stl">📋 Resumo Executivo da Semana</h3>
+
+<p class="tx">A semana de 24 a 27 de marco sera lembrada pelo <span class="ps">salto da pluma na sexta-feira (27/3): +2,41% em um unico dia</span>, levando o indicador CEPEA/Esalq para <strong>R$ 3,8077/lp</strong> — o <span class="hl">maior patamar de 2026</span>. No acumulado de marco, a alta e de <span class="ps">+8,09%</span>, a mais intensa do ano. Para contexto: entre outubro/2025 e fevereiro/2026, a pluma estava "travada" na faixa de <strong>R$ 3,40 a R$ 3,50</strong>. Em tres semanas, rompeu todos os tetos.</p>
+
+<p class="tx">Os drivers sao multiplos e convergentes: <span class="hl">entressafra brasileira</span> com oferta restrita, <span class="hl">NY e Cotlook em alta</span>, <span class="hl">diesel e frete encarecendo logistica</span>, <span class="hl">poliester +16,3% por causa do petroleo</span> (fibra sintetica rival ficou mais cara, favorecendo algodao) e <span class="ps">vendedores extremamente firmes nos precos pedidos</span>. Compradores com necessidade imediata cederam e pagaram mais — especialmente por lotes com especificacao desejada.</p>
+
+<div class="sep">. . .</div>
+
+<h3 class="stl">📊 Painel CEPEA — Evolucao Detalhada</h3>
+
+<table class="tbl">
+<thead><tr><th>Data</th><th>CEPEA (R$/lp)</th><th>Var. Dia</th><th>Var. Mes</th></tr></thead>
+<tbody>
+<tr><td>Sex 20/3</td><td>3,7445</td><td style="color:#81c784">+0,72%</td><td style="color:#81c784">+6,30%</td></tr>
+<tr><td>Seg 23/3</td><td>3,7008</td><td style="color:#ef5350">-1,17%</td><td style="color:#81c784">+5,06%</td></tr>
+<tr><td>Ter 24/3</td><td>3,7161</td><td style="color:#81c784">+0,41%</td><td style="color:#81c784">+5,49%</td></tr>
+<tr><td>Qua 25/3</td><td>3,7158</td><td style="color:#ef5350">-0,01%</td><td style="color:#81c784">+5,48%</td></tr>
+<tr><td>Qui 26/3</td><td>3,7180</td><td style="color:#81c784">+0,06%</td><td style="color:#81c784">+5,54%</td></tr>
+<tr><td style="color:#CE93D8;font-weight:800">Sex 27/3</td><td style="font-weight:900;color:#81c784">3,8077</td><td style="color:#81c784;font-weight:700">+2,41%</td><td style="color:#81c784;font-weight:700">+8,09%</td></tr>
+</tbody>
+</table>
+
+<div class="chc">
+<h4>CEPEA Algodao Pluma — Marco/2026 Completo (centavos R$/lp)</h4>
+<canvas id="ch1"></canvas>
+</div>
+
+<div class="chg">
+<div class="chc">
+<h4>Rally de Marco: De R$ 3,52 a R$ 3,80 (+8,09%)</h4>
+<canvas id="ch2"></canvas>
+</div>
+<div class="chc">
+<h4>NY Algodao vs Cotlook A Index (cts US$/lb)</h4>
+<canvas id="ch3"></canvas>
+</div>
+</div>
+
+<div class="sep">. . .</div>
+
+<h3 class="stl">🔍 Analise Fundamentalista — Os 6 Pilares da Alta</h3>
+
+<div class="dg">
+<div class="dc"><div class="dl">Entressafra BR</div><div class="dv ng">OFERTA RESTRITA</div><div class="ds">Colheita so em Jun/Jul.<br>Vendedores firmes.</div></div>
+<div class="dc"><div class="dl">NY Mai/26</div><div class="dv ps">65,3 cts/lb</div><div class="ds">Acima dos 62,4 de fev.<br>Suporte internacional.</div></div>
+<div class="dc"><div class="dl">Cotlook A Index</div><div class="dv ps">75,2 cts/lb</div><div class="ds">vs 74,1 (fev).<br>Paridade export. sobe.</div></div>
+<div class="dc"><div class="dl">Poliester</div><div class="dv ps">+16,3% sem.</div><div class="ds">Petroleo $99 = rival<br>mais caro = algodao ganha.</div></div>
+<div class="dc"><div class="dl">Preco vs Paridade</div><div class="dv hl">+3,7% acima</div><div class="ds">Mercado interno paga<br>mais que exportacao.</div></div>
+<div class="dc"><div class="dl">Prod. BR 25/26</div><div class="dv ps">USDA: +800 mil fardos</div><div class="ds">Area expandiu. Maior<br>producao. Pesa no medio prazo.</div></div>
+<div class="dc"><div class="dl">Prod. BR 26/27</div><div class="dv ng">Queda 3,6%</div><div class="ds">Conab: area e produtividade<br>menores. Chuva excessiva.</div></div>
+<div class="dc"><div class="dl">Prod. Mundial 26/27</div><div class="dv ng">-3,2% (USDA)</div><div class="ds">China, BR e EUA<br>produzem menos.</div></div>
+<div class="dc"><div class="dl">Consumo Mundial 26/27</div><div class="dv ps">+1,17%</div><div class="ds">Maior em 6 anos.<br>26,15 mi t (USDA).</div></div>
+</div>
+
+<div class="alt">
+<h5>🏵️ Entressafra + Vendedor Firme = Comprador Cede</h5>
+<p>O Brasil esta em <strong>plena entressafra</strong> — a colheita da nova safra so comeca em junho/julho. Ate la, a oferta e limitada a <span class="ng">estoques remanescentes e contratos a termo</span>. Vendedores sabem disso e <strong>nao cedem nos precos</strong>. Compradores com necessidade urgente (industria textil) estao <span class="ps">pagando R$ 3,80/lp — o maior valor do ano</span>. Desde outubro/25, quando a pluma estava em R$ 3,40-3,50, o salto e de <strong>+9 a +12%</strong>.</p>
+</div>
+
+<div class="alt">
+<h5>⛽ O Efeito Poliester: Quando o Petroleo Ajuda o Algodao</h5>
+<p>O <span class="hl">poliester subiu 16,3% em uma semana</span> por causa do petroleo acima de US$ 98/bbl. Poliester e a principal fibra concorrente do algodao. Quando fica mais caro, a <span class="ps">industria textil migra parte da demanda para algodao</span>, sustentando precos da pluma. Enquanto o conflito no Oriente Medio mantiver petroleo elevado, <strong>o algodao tem um aliado improvavel: a guerra</strong>.</p>
+</div>
+
+<div class="alt">
+<h5>🌍 USDA: Mundo Vai Produzir Menos e Consumir Mais em 26/27</h5>
+<p>Projecao USDA para 26/27: producao mundial <span class="ng">-3,2%</span> (25,26 mi t), com China, Brasil e EUA produzindo menos. Consumo global <span class="ps">+1,17%</span> (26,15 mi t) — <strong>maior em 6 anos</strong>. Estoques finais apertam. India amplia importacoes. Cenario estrutural e <span class="ps">altista para o medio prazo</span>. A safra 25/26 (atual) teve revisao do USDA: Brasil +800 mil fardos, China +500 mil — mas consumo caiu 100 mil. Estoques subiram 1,3 mi fardos.</p>
+</div>
+
+<div class="sep">. . .</div>
+
+<h3 class="stl">📈 Analise Tecnica</h3>
+
+<p class="tx">O CEPEA rompeu nesta sexta a <span class="ps">barreira dos R$ 3,75/lp que atuava como resistencia desde meados de marco</span>, e projetou diretamente para R$ 3,80. O movimento de +2,41% em um dia, com volume, configura um <strong>breakout tecnico</strong>. O <span class="hl">suporte imediato agora e R$ 3,71-3,72</span> (zona de congestao da semana). A proxima resistencia tecnica esta em <span class="ng">R$ 3,85-3,90</span>. A MM7 cruzou fortemente para cima — <span class="ps">momento positivo confirmado</span>.</p>
+
+<p class="tx">Em NY, o contrato mais proximo opera em <strong>~65,3 cts/lb</strong>, acima dos 62,4 de fevereiro. A Cotlook A Index em 75,2 cts/lb confirma paridade de exportacao sustentada. O algodao esta em <span class="ps">tendencia de alta no curto e medio prazo</span> — tanto no mercado domestico quanto internacional.</p>
+
+<div class="chc">
+<h4>CEPEA Marco — Suporte, Resistencia e Breakout (centavos R$/lp)</h4>
+<canvas id="ch4"></canvas>
+</div>
+
+<div class="sep">. . .</div>
+
+<h3 class="stl">🌡️ Termometros de Conjuntura</h3>
+
+<div class="chg">
+<div class="thermo"><h4>Oferta Domestica (Entressafra)</h4>
+<div class="th-bar"><div class="th-mk" style="left:22%"><div class="arr"></div><div class="lbl" style="background:#ef5350;color:#fff">RESTRITA</div></div></div>
+<div class="th-labels"><span>Escassa</span><span>Normal</span><span>Farta</span></div>
+</div>
+<div class="thermo"><h4>Demanda Industria Textil</h4>
+<div class="th-bar"><div class="th-mk" style="left:68%"><div class="arr"></div><div class="lbl" style="background:#8bc34a;color:#000">FIRME</div></div></div>
+<div class="th-labels"><span>Fraca</span><span>Normal</span><span>Forte</span></div>
+</div>
+</div>
+<div class="chg">
+<div class="thermo"><h4>Pressao do Poliester (Rival)</h4>
+<div class="th-bar"><div class="th-mk" style="left:85%"><div class="arr"></div><div class="lbl" style="background:#4CAF50;color:#fff">ALTISTA P/ ALGODAO</div></div></div>
+<div class="th-labels"><span>Favorece rival</span><span>Neutro</span><span>Favorece algodao</span></div>
+</div>
+<div class="thermo"><h4>NY + Cotlook (Internacional)</h4>
+<div class="th-bar"><div class="th-mk" style="left:65%"><div class="arr"></div><div class="lbl" style="background:#8bc34a;color:#000">SUPORTE</div></div></div>
+<div class="th-labels"><span>Baixista</span><span>Neutro</span><span>Altista</span></div>
+</div>
+</div>
+<div class="chg">
+<div class="thermo"><h4>Tendencia de Preco (Curto Prazo)</h4>
+<div class="th-bar"><div class="th-mk" style="left:80%"><div class="arr"></div><div class="lbl" style="background:#4CAF50;color:#fff">ALTISTA FORTE</div></div></div>
+<div class="th-labels"><span>Baixista</span><span>Neutro</span><span>Altista</span></div>
+</div>
+<div class="thermo"><h4>Risco Geopolitico (Frete/Insumos)</h4>
+<div class="th-bar"><div class="th-mk" style="left:35%"><div class="arr"></div><div class="lbl" style="background:#ff9800;color:#000">ELEVADO</div></div></div>
+<div class="th-labels"><span>Alto</span><span>Moderado</span><span>Baixo</span></div>
+</div>
+</div>
+
+<div class="sep">. . .</div>
+
+<h3 class="stl">🌐 Radar Geopolitico e Macro</h3>
+
+<div class="geo">
+<div class="geo-i"><div class="gi">⛽</div><div><div class="gt">Petroleo US$ 99 = Poliester +16% = Algodao Ganha</div><div class="gd">Brent acima de US$ 98/bbl mantem custo do poliester elevado. Fibra sintetica mais cara empurra demanda textil para algodao. Enquanto petroleo seguir alto, e altista para a pluma. Cessar-fogo no Oriente Medio e risco de reversao.</div></div></div>
+<div class="geo-i"><div class="gi">🚛</div><div><div class="gt">Diesel e Frete: Encarece e Sustenta</div><div class="gd">Diesel em alta pressiona custo de entrega da pluma. Vendedores repassam custo para o preco. Frete disputado com soja (colheita) e milho. Resultado: oferta spot fica ainda mais cara.</div></div></div>
+<div class="geo-i"><div class="gi">🇧🇷</div><div><div class="gt">Conab: Safra 26/27 Menor (Area e Produtividade)</div><div class="gd">Area estimada em 2,0 mi ha (vs 2,1 mi 25/26). Produtividade -3,6% por excesso de chuva na semeadura. Producao menor no proximo ciclo e altista de medio prazo.</div></div></div>
+<div class="geo-i"><div class="gi">🌍</div><div><div class="gt">USDA: Mundo Produz Menos, Consome Mais em 26/27</div><div class="gd">Producao mundial -3,2%. Consumo +1,17% — maior em 6 anos. Estoques apertam. India importando mais. Cenario global construtivo para precos.</div></div></div>
+<div class="geo-i"><div class="gi">🇮🇳</div><div><div class="gt">India Amplia Importacoes — Oportunidade para o BR</div><div class="gd">USDA elevou projecao de importacao da India. Com a India comprando mais, Brasil como 2o maior exportador mundial se beneficia. Demanda adicional para pluma brasileira.</div></div></div>
+</div>
+
+<div class="sep">. . .</div>
+
+<h3 class="stl">🎯 Projecao para Proxima Semana (30/Mar - 03/Abr)</h3>
+
+<div class="bld">
+<h3>VIES: ALTISTA COM ACELERACAO</h3>
+<p>O breakout de sexta (R$ 3,80) mudou o patamar. Entressafra sustenta, poliester empurra, NY apoia. Proxima resistencia: R$ 3,85-3,90. Risco de reversao so com queda abrupta do petroleo ou melhora inesperada na oferta.</p>
+</div>
+
+<div class="proj">
+<div class="proj-c"><div class="pl">CEPEA Pluma</div><div class="pv" style="color:#81c784">R$ 3,75 - R$ 3,92</div><div class="pd">Suporte: R$ 3,72.<br>Alvo: R$ 3,85-3,90.<br>Breakout abre espaco.</div></div>
+<div class="proj-c"><div class="pl">NY Mai/26</div><div class="pv" style="color:#81c784">64 - 67 cts/lb</div><div class="pd">Suporte: 63 cts.<br>Petroleo e India sustentam.<br>USDA area 31/3 no radar.</div></div>
+<div class="proj-c"><div class="pl">Rondonopolis MT</div><div class="pv" style="color:#ffd740">R$ 110 - R$ 115/@</div><div class="pd">Produtor firme.<br>Paridade jul/26:<br>R$ 115,79/@ (+0,92%).</div></div>
+<div class="proj-c"><div class="pl">Poliester</div><div class="pv" style="color:#ffd740">DEPENDE DO BRENT</div><div class="pd">Se Brent > $95: continua<br>caro = altista algodao.<br>Se cair: pressiona pluma.</div></div>
+</div>
+
+<div class="chc">
+<h4>Cenarios CEPEA Pluma — Proxima Semana</h4>
+<canvas id="ch5"></canvas>
+</div>
+
+<div class="sep">. . .</div>
+
+<h3 class="stl">💡 Estrategia Rural IN</h3>
+
+<div class="alt">
+<h5>Quem Tem Pluma em Estoque</h5>
+<p><span class="ps"><strong>Momento excelente para negociar.</strong></span> Voce esta vendendo na maxima de 2026 (R$ 3,80/lp). Compradores com urgencia estao pagando acima da paridade de exportacao (+3,7%). <strong>Nao venda tudo de uma vez</strong> — escale as vendas. Se o rally continuar, R$ 3,85-3,90 e possivel. Mas proteja ao menos 50% da posicao nos niveis atuais — <span class="ng">a alta do petroleo pode reverter com cessar-fogo</span>.</p>
+</div>
+
+<div class="alt">
+<h5>Quem Tem Contratos a Termo</h5>
+<p>Se travou a R$ 3,40-3,50/lp entre out/25 e fev/26, <span class="ng"><strong>a diferenca para o mercado atual e de 9-12%</strong></span>. Avalie se ha flexibilidade contratual. Para novos contratos, <strong>negocie com base na realidade atual</strong>: entressafra, poliester caro, NY em alta. O produtor tem poder neste momento.</p>
+</div>
+
+<div class="alt">
+<h5>Quem Planeja Safra 26/27</h5>
+<p>Conab projeta <span class="ng">area e produtividade menores</span> para 26/27. USDA preve producao mundial -3,2% e consumo +1,17%. <span class="ps"><strong>O cenario de medio prazo e construtivo para quem planta algodao.</strong></span> Porem, <strong>faca a conta do custo</strong>: insumos +6%, diesel em alta, Selic 14,75%. Margem depende de produtividade — <span class="hl">chuva excessiva na semeadura ja reduziu perspectiva em 3,6%</span>.</p>
+</div>
+
+<div class="sep">. . .</div>
+
+<h3 class="stl">📊 Visao Completa</h3>
+
+<div class="chg">
+<div class="chc">
+<h4>Radar Fundamentalista — Algodao 27/03</h4>
+<canvas id="ch6"></canvas>
+</div>
+<div class="chc">
+<h4>Balanco Global 26/27 (USDA) — mi t</h4>
+<canvas id="ch7"></canvas>
+</div>
+</div>
+
+<div class="chc">
+<h4>CEPEA Algodao — Evolucao Trimestral Out/25 a Mar/26 (R$/lp)</h4>
+<canvas id="ch8"></canvas>
+</div>
+
+<div class="cred">
+<div class="cred-in">
+<div class="cred-av">👨‍💼</div>
+<div>
+<h3>Dr. Sidney Souza</h3>
+<div class="ti">Economista Agricola · Estrategista Economico do Produtor</div>
+<div class="dsc">Especialista em economia da fazenda e gestao de risco no agro<br>Transformamos dados da fazenda em decisoes economicas<br>Ajudamos produtores a entender se o mercado sustenta seu negocio</div>
+<div class="ct">
+<a href="mailto:sidneyagro@gmail.com">📧 sidneyagro@gmail.com</a>
+<a href="https://wa.me/5564992266886">📱 (64) 9 9226-6886</a>
+<span>📸 @ruralin.ai</span>
+</div>
+</div>
+</div>
+<div class="disc">Informativo analitico e educacional. Nao constitui recomendacao de compra ou venda. Dados: CEPEA/Esalq-USP, ICE/NY, Cotlook, USDA/WASDE, Conab, Imea, Scot Consultoria, Safras & Mercado, CottonWorks, Globo Rural, Noticias Agricolas, Agrolink, Portal do Agronegocio. Analise e construcao: Dr. Sidney Souza — Rural IN.</div>
+</div>
+</div>
+<div class="ftr">RURAL IN 2026 · Inteligencia para o Agronegocio · Rio Verde/GO</div>
+</div>
+
+<script>
+Chart.defaults.color='#5a4870';Chart.defaults.font.family='Inter';Chart.defaults.font.size=11;
+var df={family:'Inter',weight:'600'};
+var tt={backgroundColor:'#0e0c10',titleColor:'#CE93D8',bodyColor:'#d0c8d8',borderColor:'#302848',borderWidth:1,padding:12,cornerRadius:8};
+
+// 1 — CEPEA MARCO COMPLETO
+new Chart(document.getElementById('ch1').getContext('2d'),{
+type:'line',data:{labels:['09','10','11','12','13','16','17','18','19','20','23','24','25','26','27'],
+datasets:[{label:'CEPEA (cts R$/lp)',data:[355.47,353.10,352.83,361.32,364.34,365.01,366.09,371.12,371.79,374.45,370.08,371.61,371.58,371.80,380.77],
+borderColor:'#CE93D8',backgroundColor:'rgba(206,147,216,0.06)',borderWidth:2.5,fill:true,tension:0.3,pointRadius:[3,3,3,3,3,3,3,3,3,3,3,3,3,3,6],
+pointBackgroundColor:['#CE93D8','#CE93D8','#CE93D8','#CE93D8','#CE93D8','#CE93D8','#CE93D8','#CE93D8','#CE93D8','#CE93D8','#CE93D8','#CE93D8','#CE93D8','#CE93D8','#81c784']}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,
+annotation:{annotations:{
+breakout:{type:'label',xValue:14,yValue:384,content:['BREAKOUT!','R$ 3,80 (+2,4%)'],font:{size:9,weight:'bold'},color:'#81c784',textAlign:'center'},
+res:{type:'line',yMin:374.45,yMax:374.45,borderColor:'rgba(129,199,132,0.3)',borderWidth:1.5,borderDash:[4,3],label:{display:true,content:'Resist. antiga R$ 3,74',position:'start',backgroundColor:'rgba(129,199,132,0.4)',color:'#000',font:{size:7,weight:'bold'},padding:2}},
+faixa:{type:'line',yMin:352,yMax:352,borderColor:'rgba(239,83,80,0.3)',borderWidth:1.5,borderDash:[4,3],label:{display:true,content:'Piso Out/25-Fev/26: R$ 3,40-3,52',position:'end',backgroundColor:'rgba(239,83,80,0.4)',color:'#fff',font:{size:7,weight:'bold'},padding:2}}
+}}},scales:{y:{min:348,max:388,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return(v/100).toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}
+});
+
+// 2 — RALLY DE MARCO
+new Chart(document.getElementById('ch2').getContext('2d'),{
+type:'bar',data:{labels:['01-10/Mar','11-17/Mar','18-22/Mar','23-27/Mar'],
+datasets:[{label:'CEPEA Medio (R$/lp)',data:[3.53,3.63,3.72,3.76],
+backgroundColor:['rgba(206,147,216,0.2)','rgba(206,147,216,0.3)','rgba(206,147,216,0.4)','rgba(129,199,132,0.5)'],
+borderColor:['#CE93D8','#CE93D8','#CE93D8','#81c784'],borderWidth:2,borderRadius:6}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},
+tooltip:{backgroundColor:'#0e0c10',titleColor:'#CE93D8',bodyColor:'#d0c8d8',borderColor:'#302848',borderWidth:1,padding:12,cornerRadius:8,callbacks:{label:function(c){return'R$ '+c.parsed.y.toFixed(2)+'/lp';}}}},
+scales:{y:{min:3.40,max:3.85,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'R$ '+v.toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:8}}}}}
+});
+
+// 3 — NY vs COTLOOK
+new Chart(document.getElementById('ch3').getContext('2d'),{
+type:'bar',data:{labels:['Fevereiro/26','Marco/26 (parcial)'],
+datasets:[
+{label:'NY (cts/lb)',data:[62.4,65.3],backgroundColor:'rgba(206,147,216,0.4)',borderColor:'#CE93D8',borderWidth:2,borderRadius:4},
+{label:'Cotlook A (cts/lb)',data:[74.1,75.2],backgroundColor:'rgba(129,199,132,0.3)',borderColor:'#81c784',borderWidth:2,borderRadius:4}
+]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},
+scales:{y:{min:55,max:80,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return v+' cts';},font:df}},x:{grid:{display:false},ticks:{font:df}}}}
+});
+
+// 4 — TECNICO COM MM7
+new Chart(document.getElementById('ch4').getContext('2d'),{
+type:'line',data:{labels:['09','10','11','12','13','16','17','18','19','20','23','24','25','26','27'],
+datasets:[{label:'CEPEA',data:[355.47,353.10,352.83,361.32,364.34,365.01,366.09,371.12,371.79,374.45,370.08,371.61,371.58,371.80,380.77],
+borderColor:'#CE93D8',borderWidth:2.5,tension:0.2,pointRadius:3,fill:false,pointBackgroundColor:'#CE93D8'},
+{label:'MM7',data:[null,null,null,null,null,null,359.74,361.96,364.64,367.59,369.13,370.03,370.67,371.63,374.01],
+borderColor:'#64b5f6',borderWidth:1.5,tension:0.3,pointRadius:0,fill:false,borderDash:[4,2]}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt,
+annotation:{annotations:{
+sup:{type:'line',yMin:371,yMax:371,borderColor:'rgba(129,199,132,0.5)',borderWidth:2,borderDash:[6,3],label:{display:true,content:'NOVO SUPORTE R$ 3,71',position:'start',backgroundColor:'rgba(129,199,132,0.6)',color:'#000',font:{size:8,weight:'bold'},padding:3}},
+alvo:{type:'line',yMin:390,yMax:390,borderColor:'rgba(255,215,64,0.4)',borderWidth:1.5,borderDash:[6,3],label:{display:true,content:'ALVO R$ 3,90',position:'end',backgroundColor:'rgba(255,215,64,0.5)',color:'#000',font:{size:8,weight:'bold'},padding:3}},
+brk:{type:'box',xMin:13,xMax:14,backgroundColor:'rgba(129,199,132,0.04)',borderColor:'transparent'}
+}}},scales:{y:{min:348,max:395,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return(v/100).toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}
+});
+
+// 5 — CENARIOS PROXIMA SEMANA
+new Chart(document.getElementById('ch5').getContext('2d'),{
+type:'bar',data:{labels:['Petroleo Cai','Base (Neutro)','Entressafra Aperta','Petroleo Dispara'],
+datasets:[
+{label:'Piso (R$/lp)',data:[3.68,3.72,3.78,3.80],backgroundColor:'rgba(239,83,80,0.3)',borderColor:'#ef5350',borderWidth:1.5,borderRadius:4},
+{label:'Teto (R$/lp)',data:[3.78,3.85,3.92,3.98],backgroundColor:'rgba(129,199,132,0.3)',borderColor:'#81c784',borderWidth:1.5,borderRadius:4}
+]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},
+tooltip:{backgroundColor:'#0e0c10',titleColor:'#CE93D8',bodyColor:'#d0c8d8',borderColor:'#302848',borderWidth:1,padding:12,cornerRadius:8,callbacks:{label:function(c){return c.dataset.label+': R$ '+c.parsed.y.toFixed(2);}}}},
+scales:{y:{min:3.60,max:4.05,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'R$ '+v.toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}
+});
+
+// 6 — RADAR
+new Chart(document.getElementById('ch6').getContext('2d'),{
+type:'radar',data:{labels:['Oferta Spot BR','Demanda Textil','NY/Cotlook','Poliester (rival caro)','Logistica/Frete','Safra 26/27'],
+datasets:[{label:'Sem. 27/03',data:[25,70,72,88,30,35],backgroundColor:'rgba(206,147,216,0.10)',borderColor:'#CE93D8',borderWidth:2.5,pointBackgroundColor:'#CE93D8',pointRadius:5},
+{label:'Sem. 20/03',data:[30,65,68,70,35,35],backgroundColor:'rgba(90,72,112,0.08)',borderColor:'#5a4870',borderWidth:1.5,pointBackgroundColor:'#5a4870',pointRadius:3,borderDash:[4,2]}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},
+scales:{r:{min:0,max:100,ticks:{display:false,stepSize:20},grid:{color:'rgba(255,255,255,0.06)'},pointLabels:{font:{family:'Inter',weight:'600',size:9},color:'#b898c8'}}}}
+});
+
+// 7 — BALANCO GLOBAL
+new Chart(document.getElementById('ch7').getContext('2d'),{
+type:'bar',data:{labels:['Producao','Consumo','Estoques Finais'],
+datasets:[
+{label:'25/26 (USDA)',data:[26.34,25.82,16.36],backgroundColor:'rgba(206,147,216,0.3)',borderColor:'#CE93D8',borderWidth:2,borderRadius:4},
+{label:'26/27 (USDA proj.)',data:[25.26,26.15,15.50],backgroundColor:'rgba(129,199,132,0.3)',borderColor:'#81c784',borderWidth:2,borderRadius:4}
+]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},
+scales:{y:{min:12,max:28,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return v+' mi t';},font:df}},x:{grid:{display:false},ticks:{font:df}}}}
+});
+
+// 8 — EVOLUCAO TRIMESTRAL
+new Chart(document.getElementById('ch8').getContext('2d'),{
+type:'line',data:{labels:['Out/25','Nov/25','Dez/25','Jan/26','Fev/26','Mar/26*'],
+datasets:[{label:'CEPEA (R$/lp)',data:[3.42,3.45,3.48,3.50,3.52,3.80],
+borderColor:'#CE93D8',backgroundColor:'rgba(206,147,216,0.06)',borderWidth:3,fill:true,tension:0.3,pointRadius:[4,4,4,4,4,7],
+pointBackgroundColor:['#5a4870','#5a4870','#5a4870','#5a4870','#5a4870','#81c784']}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,
+annotation:{annotations:{
+faixa:{type:'box',yMin:340,yMax:352,backgroundColor:'rgba(239,83,80,0.04)',borderColor:'rgba(239,83,80,0.15)',label:{display:true,content:'Zona de congestao Out-Fev',position:'start',font:{size:8,weight:'bold'},color:'#ef5350'}},
+brk:{type:'label',xValue:5,yValue:386,content:['BREAKOUT','R$ 3,80 (+8%)'],font:{size:10,weight:'bold'},color:'#81c784',textAlign:'center'}
+}}},scales:{y:{min:335,max:395,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return(v/100).toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:df}}}}
+});
+</script>
+</body>
+</html>
