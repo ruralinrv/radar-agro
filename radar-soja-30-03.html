@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radar Agro Soja — 30/03/2026 | Rural IN</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#040608;color:#a0b8c8;min-height:100vh}
+.pg{max-width:960px;margin:0 auto;padding:10px}
+.topbar{background:linear-gradient(90deg,#080e12,#0c1418,#080e12);padding:12px 20px;border-radius:14px 14px 0 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #102830;flex-wrap:wrap;gap:8px}
+.topbar .logo{display:flex;align-items:center;gap:12px}
+.topbar .logo-ic{width:54px;height:54px;background:linear-gradient(135deg,#66BB6A,#2E7D32);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.7em;box-shadow:0 4px 25px rgba(102,187,106,.2)}
+.topbar .logo-txt h2{font-size:1.05em;font-weight:900;color:#fff;letter-spacing:1.5px}
+.topbar .logo-txt small{font-size:.62em;color:#66BB6A;font-weight:600;display:block}
+.topbar .ed{text-align:right}
+.topbar .ed .dt{font-size:.88em;font-weight:800;color:#66BB6A}
+.topbar .ed .inf{font-size:.62em;color:#2E7D32;font-weight:600}
+.hdr{background:linear-gradient(135deg,#060a0e,#080c10 50%,#040608);padding:36px 24px 30px;text-align:center;border-bottom:3px solid #66BB6A;position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(102,187,106,.04) 0%,transparent 70%)}
+.hdr .tag-top{display:inline-block;background:linear-gradient(135deg,#66BB6A,#2E7D32);color:#fff;font-size:.58em;font-weight:800;letter-spacing:3px;padding:4px 14px;border-radius:20px;text-transform:uppercase;margin-bottom:10px;z-index:1;position:relative}
+.hdr h1{font-family:'Playfair Display',serif;font-size:1.3em;font-weight:900;color:#fff;position:relative;z-index:1;line-height:1.3;max-width:820px;margin:0 auto}
+.hdr .sub{font-size:.78em;color:#4a7858;margin-top:10px;font-weight:500;position:relative;z-index:1;line-height:1.6}
+.hdr .mkt{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px;position:relative;z-index:1}
+.hdr .mkt .mi{background:rgba(102,187,106,.04);border:1px solid rgba(102,187,106,.12);border-radius:10px;padding:7px 12px;text-align:center;min-width:108px}
+.hdr .mkt .mi .ml{font-size:.52em;color:#2E7D32;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.hdr .mkt .mi .mv{font-size:1em;font-weight:900;margin-top:2px}
+.hdr .mkt .mi .mc{font-size:.56em;font-weight:700;margin-top:1px}
+.up{color:#81c784}.dn{color:#ef5350}.nt{color:#ffd740}.wh{color:#fff}
+.mn{background:#040608;padding:20px;border:1px solid #0c1418;border-top:none}
+.stl{font-size:.76em;text-transform:uppercase;letter-spacing:2px;font-weight:800;color:#66BB6A;margin:22px 0 12px;display:flex;align-items:center;gap:10px;padding-bottom:8px;border-bottom:1px solid #0c1418}
+.tx{font-size:.82em;line-height:1.95;color:#5a8868;margin-bottom:14px;text-align:justify}
+.tx strong{color:#a0c8b0;font-weight:700}
+.tx .hl{color:#66BB6A;font-weight:700}
+.tx .ng{color:#ef5350;font-weight:700}
+.tx .ps{color:#81c784;font-weight:700}
+.chc{background:#060a0e;border:1px solid #102018;border-radius:12px;padding:14px;margin-bottom:12px}
+.chc h4{font-size:.66em;color:#4a7858;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-weight:700;text-align:center}
+.chc canvas{max-height:260px}
+.chg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.thermo{background:#060a0e;border-radius:12px;padding:14px;border:1px solid #102018;margin-bottom:10px}
+.thermo h4{text-align:center;font-size:.66em;color:#4a7858;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:12px}
+.th-bar{height:16px;background:linear-gradient(90deg,#b71c1c 0%,#ef5350 18%,#ff9800 33%,#ffd740 50%,#8bc34a 68%,#4CAF50 82%,#1b5e20 100%);border-radius:10px;position:relative;margin:26px 8px 8px}
+.th-mk{position:absolute;top:-22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center}
+.th-mk .arr{width:3px;height:38px;border-radius:2px;background:#fff;box-shadow:0 0 6px rgba(255,255,255,.3)}
+.th-mk .lbl{font-size:.58em;font-weight:800;padding:3px 7px;border-radius:5px;white-space:nowrap;margin-top:3px}
+.th-labels{display:flex;justify-content:space-between;padding:0 8px;font-size:.56em;color:#1a2818;font-weight:700}
+.dg{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-bottom:14px}
+.dc{background:#060a0e;border-radius:10px;padding:11px;border:1px solid #102018;text-align:center}
+.dc .dl{font-size:.52em;color:#66BB6A;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:4px}
+.dc .dv{font-size:1.12em;font-weight:900;color:#fff}
+.dc .ds{font-size:.62em;color:#2E7D32;margin-top:3px;line-height:1.4}
+.alt{background:linear-gradient(135deg,#060a0e,#080e10);border-left:4px solid #66BB6A;border-radius:0 10px 10px 0;padding:14px;margin-bottom:10px}
+.alt h5{font-size:.70em;color:#66BB6A;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
+.alt p{font-size:.78em;color:#5a8868;line-height:1.8}
+.alt p strong{color:#a0c8b0}
+.bld{background:linear-gradient(135deg,#080e10,#0c1416);border:2px solid #66BB6A;border-radius:14px;padding:20px;margin:16px 0;text-align:center;box-shadow:0 0 30px rgba(102,187,106,.03)}
+.bld h3{font-family:'Playfair Display',serif;font-size:1.08em;color:#fff;margin-bottom:8px;line-height:1.4}
+.bld p{font-size:.80em;color:#5a8868;line-height:1.8}
+.tbl{width:100%;border-collapse:collapse;margin-bottom:12px;font-size:.70em}
+.tbl th{background:#080e10;color:#66BB6A;padding:7px 5px;text-align:center;font-weight:700;text-transform:uppercase;letter-spacing:.5px;font-size:.78em;border-bottom:2px solid #1a3020}
+.tbl td{padding:6px 4px;text-align:center;border-bottom:1px solid #0c1418;color:#5a8868}
+.tbl tr:hover td{background:rgba(102,187,106,.02)}
+.proj{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.proj-c{background:#060a0e;border-radius:10px;padding:13px;border:1px solid #102018;text-align:center}
+.proj-c .pl{font-size:.54em;color:#66BB6A;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:5px}
+.proj-c .pv{font-size:1.2em;font-weight:900;color:#fff;margin-bottom:3px}
+.proj-c .pd{font-size:.66em;color:#2E7D32;line-height:1.5}
+.geo{display:grid;grid-template-columns:1fr;gap:7px;margin-bottom:12px}
+.geo-i{background:rgba(102,187,106,.02);border:1px solid rgba(102,187,106,.06);border-radius:10px;padding:10px 14px;display:flex;gap:10px;align-items:flex-start}
+.geo-i .gi{font-size:1.2em;flex-shrink:0}
+.geo-i .gt{font-size:.70em;font-weight:800;color:#a0c8b0}
+.geo-i .gd{font-size:.68em;color:#2E7D32;line-height:1.6;margin-top:2px}
+.sep{text-align:center;margin:20px 0;color:#0c1418;font-size:1em;letter-spacing:10px}
+.warn{background:linear-gradient(135deg,#060a0e,#081008);border:2px solid #66BB6A;border-radius:14px;padding:18px;margin:12px 0;text-align:center;box-shadow:0 0 20px rgba(102,187,106,.03)}
+.warn h4{color:#66BB6A;font-size:.82em;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.warn p{font-size:.76em;color:#5a8868;line-height:1.8}
+.cred{background:linear-gradient(135deg,#060a0e,#0a100e);border:2px solid #102018;border-radius:16px;padding:18px;margin-top:16px}
+.cred-in{display:flex;gap:14px;align-items:center}
+.cred-av{width:60px;height:60px;background:linear-gradient(135deg,#66BB6A,#2E7D32);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6em;flex-shrink:0;box-shadow:0 4px 18px rgba(102,187,106,.15)}
+.cred h3{font-size:.90em;font-weight:900;color:#fff}
+.cred .ti{font-size:.68em;color:#66BB6A;font-weight:700;margin-top:2px}
+.cred .dsc{font-size:.64em;color:#2E7D32;margin-top:4px;line-height:1.5;font-style:italic}
+.cred .ct{margin-top:8px;display:flex;flex-wrap:wrap;gap:5px}
+.cred .ct a,.cred .ct span{font-size:.62em;color:#5a8868;text-decoration:none;display:flex;align-items:center;gap:3px;font-weight:600;padding:3px 7px;background:rgba(102,187,106,.04);border-radius:6px;border:1px solid rgba(102,187,106,.08)}
+.cred .ct a:hover{background:rgba(102,187,106,.10);color:#fff}
+.disc{margin-top:10px;padding:10px;background:rgba(255,255,255,.02);border-radius:8px;font-size:.56em;color:#0c1418;line-height:1.6;text-align:center}
+.ftr{text-align:center;padding:10px;font-size:.58em;color:#060a0e;border-radius:0 0 14px 14px;background:#040608}
+@media(max-width:768px){.topbar{flex-direction:column;text-align:center}.topbar .ed{text-align:center}.hdr h1{font-size:1.05em}.chg{grid-template-columns:1fr}.cred-in{flex-direction:column;text-align:center}.cred .ct{justify-content:center}.dg{grid-template-columns:1fr 1fr}.proj{grid-template-columns:1fr}.hdr .mkt .mi{min-width:90px}}
+@media(max-width:420px){.dg{grid-template-columns:1fr}.hdr h1{font-size:.92em}.hdr .mkt{flex-direction:column;align-items:center}}
+</style>
+</head>
+<body>
+<div class="pg">
+<div class="topbar">
+<div class="logo"><div class="logo-ic">🫘</div><div class="logo-txt"><h2>RURAL IN</h2><small>Inteligencia para o Agronegocio</small></div></div>
+<div class="ed"><div class="dt">Segunda-feira, 30 de Marco de 2026</div><div class="inf">Radar Agro Soja · Fechamento do Dia · Edicao Especial Pre-USDA</div></div>
+</div>
+
+<div class="hdr">
+<div class="tag-top">Radar Agro Soja · Fechamento 30/Mar/2026</div>
+<h1>Soja Estavel em Chicago, Oleo Dispara +2% e USDA Chega Amanha: Area Maior nos EUA e a Equacao Brasil-China-Petroleo Que Define Tudo</h1>
+<div class="sub">CBOT Mai: US$ 11,5975/bu (+0,04%). Oleo de soja: +2% puxado por Brent $100+. CEPEA Paranagua: R$ 129,59/sc (-0,32%). Export. BR mar: 16,3 mi t. China comprou +82,7% de soja BR no bim vs -83,7% dos EUA. USDA Plantings amanha: area de soja +5% nos EUA (85 mi acres). Trump-Xi: reuniao mai/15 em Pequim. Biodiesel: mandato maior nos EUA? Tudo se decide esta semana.</div>
+<div class="mkt">
+<div class="mi"><div class="ml">CBOT Mai/26</div><div class="mv wh">US$ 11,5975</div><div class="mc up">+0,04% (hoje)</div></div>
+<div class="mi"><div class="ml">CBOT Jul/26</div><div class="mv wh">US$ 11,75</div><div class="mc dn">-0,02%</div></div>
+<div class="mi"><div class="ml">Oleo Soja CBOT</div><div class="mv ps">+2,0%</div><div class="mc up">Petroleo puxa</div></div>
+<div class="mi"><div class="ml">CEPEA Paranagua</div><div class="mv wh">R$ 129,59/sc</div><div class="mc dn">-0,32% | +2,18% mes</div></div>
+<div class="mi"><div class="ml">CEPEA Parana</div><div class="mv wh">R$ 123,00/sc</div><div class="mc dn">-0,89%</div></div>
+<div class="mi"><div class="ml">Premio Pguá Mar</div><div class="mv dn">-15 c/bu</div><div class="mc dn">Colheita pressiona</div></div>
+</div>
+</div>
+
+<div class="mn">
+
+<div class="warn">
+<h4>⚡ USDA Prospective Plantings — Amanha 31/03 as 13h (Brasilia)</h4>
+<p>Mercado espera <strong>area de soja +5% nos EUA</strong> (85 mi acres vs 81,2 mi). Mais area = mais oferta futura = <span style="color:#ef5350;font-weight:700">PRESSAO BAIXISTA</span>. Porem: (1) oleo de soja e biodiesel dao suporte; (2) China comprando forte do BR; (3) Trump-Xi mai/15 pode destravar compras EUA. Se area vier >86 mi: negativo. Se <84 mi: positivo. E o dado que define a direcao da semana.</p>
+</div>
+
+<h3 class="stl">📋 O Que Aconteceu Hoje — 30/03</h3>
+
+<p class="tx">A soja <span class="ps">abriu em alta de +7-9 cents</span> na CBOT na manha, puxada pelo <span class="hl">oleo de soja (+2%)</span> que acompanha Brent acima de US$ 100. Mas ao longo do dia, <span class="ng">devolveu quase tudo</span> e fechou praticamente estavel: Mai US$ 11,5975 (+0,50 cents, +0,04%). O mercado esta em <strong>modo de espera</strong> antes do USDA Plantings amanha (31/3).</p>
+
+<p class="tx">No Brasil, o CEPEA Paranagua fechou em <span class="ng">R$ 129,59/sc (-0,32%)</span>, acumulando +2,18% no mes. Os <span class="hl">premios nos portos estao negativos</span> (-15 cents Paranagua mar) — reflexo da <strong>colheita gigante de 180 mi t</strong> que pressiona a oferta. As exportacoes de marco devem atingir <span class="ps">16,3 mi t</span> — recorde potencial para o mes. A China comprou <span class="ps">+82,7% de soja brasileira</span> no 1o bim, enquanto <span class="ng">importacoes dos EUA despencaram -83,7%</span>. O Brasil domina o mercado chines.</p>
+
+<div class="alt">
+<h5>⚖️ A Queda de Braco: Oleo Puxa pra Cima, Oferta BR Puxa pra Baixo</h5>
+<p>O mercado da soja vive uma <strong>disputa entre forcas opostas</strong>. De um lado: <span class="ps">oleo de soja +2% (petroleo/biodiesel) + vendas EUA fortes (669 mil t/semana) + Trump-Xi em maio</span>. Do outro: <span class="ng">safra BR de 180 mi t + premios negativos + area EUA +5% (USDA amanha) + China com barreiras fitossanitarias</span>. Resultado: <span class="hl">soja lateral com viés levemente altista pelo oleo</span>, mas qualquer surpresa do USDA define a direcao.</p>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">📊 Painel de Precos — Semana e Mes</h3>
+
+<table class="tbl">
+<thead><tr><th>Data</th><th>CBOT Mai (US$/bu)</th><th>Var.</th><th>CEPEA Pguá (R$/sc)</th><th>Var.</th><th>Driver</th></tr></thead>
+<tbody>
+<tr><td>Sex 20/3</td><td>11,6125</td><td style="color:#ef5350">-0,85%</td><td>130,61</td><td style="color:#81c784">+0,95%</td><td>Realizacao + câmbio</td></tr>
+<tr><td>Seg 23/3</td><td>11,6350</td><td style="color:#81c784">+0,19%</td><td>129,87</td><td style="color:#ef5350">-0,57%</td><td>China compras</td></tr>
+<tr><td>Ter 24/3</td><td style="color:#ef5350">11,5500</td><td style="color:#ef5350">-0,73%</td><td>130,15</td><td style="color:#81c784">+0,22%</td><td>Petroleo desaba, volta</td></tr>
+<tr><td>Qua 25/3</td><td style="color:#81c784;font-weight:700">11,7175</td><td style="color:#81c784;font-weight:700">+1,45%</td><td>129,25</td><td style="color:#ef5350">-0,69%</td><td style="color:#81c784">Oleo dispara + vendas EUA</td></tr>
+<tr><td>Qui 26/3</td><td>11,7375</td><td style="color:#81c784">+0,17%</td><td>130,37</td><td style="color:#81c784">+0,87%</td><td>Biodiesel EUA + petroleo</td></tr>
+<tr><td>Sex 27/3</td><td style="color:#ef5350">11,5925</td><td style="color:#ef5350">-1,24%</td><td>130,01</td><td style="color:#ef5350">-0,28%</td><td style="color:#ef5350">Realizacao pre-USDA</td></tr>
+<tr><td style="color:#66BB6A;font-weight:700">Seg 30/3</td><td style="font-weight:800">11,5975</td><td style="color:#81c784">+0,04%</td><td style="font-weight:700">129,59</td><td style="color:#ef5350">-0,32%</td><td style="color:#66BB6A">Oleo +2%, grao lateral</td></tr>
+</tbody>
+</table>
+
+<div class="chg">
+<div class="chc">
+<h4>CBOT Soja Mai/26 — Marco Completo (US$/bu)</h4>
+<canvas id="ch1"></canvas>
+</div>
+<div class="chc">
+<h4>CEPEA Paranagua — Marco (R$/sc 60kg)</h4>
+<canvas id="ch2"></canvas>
+</div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🔍 Os 8 Fundamentos da Soja em Marco</h3>
+
+<div class="dg">
+<div class="dc" style="border-color:#81c784"><div class="dl">1. Oleo Soja + Petroleo</div><div class="dv ps">+2% HOJE</div><div class="ds">Brent $100+ → oleo sobe.<br>Biodiesel ganha competit.<br>Puxa grao pra cima.</div></div>
+<div class="dc" style="border-color:#81c784"><div class="dl">2. China Compra BR</div><div class="dv ps">+82,7% bim</div><div class="ds">6,56 mi t jan-fev.<br>EUA desabou -83,7%.<br>Brasil domina.</div></div>
+<div class="dc" style="border-color:#ef5350"><div class="dl">3. Safra BR 180 mi t</div><div class="dv ng">RECORDE</div><div class="ds">Pressiona premios.<br>-15c Paranagua mar.<br>Oferta abundante.</div></div>
+<div class="dc" style="border-color:#ef5350"><div class="dl">4. Area EUA +5%</div><div class="dv ng">85 mi acres</div><div class="ds">USDA Plantings amanha.<br>Mais area = mais oferta.<br>Pressao 26/27.</div></div>
+<div class="dc" style="border-color:#81c784"><div class="dl">5. Vendas EUA Fortes</div><div class="dv ps">669 mil t/sem</div><div class="ds">Acima expectativa.<br>China principal dest.<br>Demanda firme.</div></div>
+<div class="dc" style="border-color:#ffd740"><div class="dl">6. Trump-Xi Mai/15</div><div class="dv nt">BEIJING</div><div class="ds">Cupula pode definir<br>compras soja EUA.<br>Mercado monitora.</div></div>
+<div class="dc" style="border-color:#81c784"><div class="dl">7. Biodiesel EUA</div><div class="dv ps">MANDATO MAIOR?</div><div class="ds">Governo Trump discute<br>aumento mistura biodiesel.<br>Oleo de soja beneficiado.</div></div>
+<div class="dc" style="border-color:#ffd740"><div class="dl">8. Dolar/Cambio</div><div class="dv nt">R$ 5,24</div><div class="ds">Dolar mais alto = soja<br>em reais mais cara.<br>Mas limita Chicago.</div></div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🇨🇳🇧🇷 Brasil Domina a China — A Maior Mudanca de 2026</h3>
+
+<p class="tx">A maior mudanca estrutural do mercado de soja em 2026: <span class="ps">o Brasil tomou o lugar dos EUA como fornecedor quase exclusivo da China</span>. No 1o bim, a China importou <strong>6,56 mi t do Brasil (+82,7%)</strong> e apenas <strong>1,49 mi t dos EUA (-83,7%)</strong>. As tensoes tarifarias Trump-Xi atrasaram compras americanas. Importadores privados chineses <span class="hl">evitaram soja EUA pela tarifa e migraram para o Brasil</span>.</p>
+
+<p class="tx">Mas ha riscos: <span class="ng">controles fitossanitarios mais rigorosos da China + desembaraco alfandegario lento</span> podem reduzir ritmo de chegadas BR nos proximos meses. Ministro da Agricultura do BR esta negociando requisitos de inspecao. A reuniao <span class="hl">Trump-Xi em 15/mai em Pequim</span> pode mudar a dinamica — se houver acordo, China volta a comprar forte dos EUA e <span class="ng">preco BR pode perder premio</span>.</p>
+
+<div class="chg">
+<div class="chc">
+<h4>China: Importacao Soja Jan-Fev (mi t) — BR vs EUA</h4>
+<canvas id="ch3"></canvas>
+</div>
+<div class="chc">
+<h4>Exportacoes BR de Soja — Mar/26 (mi t)</h4>
+<canvas id="ch4"></canvas>
+</div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">📈 Analise Tecnica — CBOT Soja</h3>
+
+<p class="tx">O Mai/26 oscilou entre <span class="ng">US$ 11,55 (vale 24/3)</span> e <span class="ps">US$ 11,74 (pico 26/3)</span> na semana — <strong>range de 19 cents</strong>. Hoje fechou em US$ 11,5975 — <span class="hl">no meio do range</span>. O <span class="ps">suporte esta em US$ 11,50</span> (media movel 20d). A <span class="ng">resistencia em US$ 11,75-11,80</span>. Se USDA confirmar area >85 mi acres amanha, pode <span class="ng">testar US$ 11,40-11,50</span>. Se area <84 mi ou mandato biodiesel maior, pode <span class="ps">romper US$ 11,80 e buscar US$ 12,00</span>.</p>
+
+<div class="chc">
+<h4>CBOT Mai/26 — Suportes, Resistencias e Cenarios USDA</h4>
+<canvas id="ch5"></canvas>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🌡️ Termometros</h3>
+
+<div class="chg">
+<div class="thermo"><h4>Tendencia CBOT Grao — Curto Prazo</h4>
+<div class="th-bar"><div class="th-mk" style="left:50%"><div class="arr"></div><div class="lbl" style="background:#ffd740;color:#000">LATERAL (espera USDA)</div></div></div>
+<div class="th-labels"><span>Baixista</span><span>Neutro</span><span>Altista</span></div>
+</div>
+<div class="thermo"><h4>Oleo de Soja — Tendencia</h4>
+<div class="th-bar"><div class="th-mk" style="left:78%"><div class="arr"></div><div class="lbl" style="background:#4CAF50;color:#fff">ALTISTA (petroleo + biodiesel)</div></div></div>
+<div class="th-labels"><span>Baixista</span><span>Neutro</span><span>Altista</span></div>
+</div>
+</div>
+<div class="chg">
+<div class="thermo"><h4>Oferta Global (BR 180mi t + EUA +5% area)</h4>
+<div class="th-bar"><div class="th-mk" style="left:80%"><div class="arr"></div><div class="lbl" style="background:#ef5350;color:#fff">ABUNDANTE</div></div></div>
+<div class="th-labels"><span>Escassa</span><span>Normal</span><span>Abundante</span></div>
+</div>
+<div class="thermo"><h4>Demanda China</h4>
+<div class="th-bar"><div class="th-mk" style="left:72%"><div class="arr"></div><div class="lbl" style="background:#4CAF50;color:#fff">FORTE (108mi t 26/27)</div></div></div>
+<div class="th-labels"><span>Fraca</span><span>Normal</span><span>Forte</span></div>
+</div>
+</div>
+<div class="chg">
+<div class="thermo"><h4>Premio Porto Paranagua</h4>
+<div class="th-bar"><div class="th-mk" style="left:28%"><div class="arr"></div><div class="lbl" style="background:#ef5350;color:#fff">NEGATIVO (-15c mar)</div></div></div>
+<div class="th-labels"><span>Negativo</span><span>Neutro</span><span>Positivo</span></div>
+</div>
+<div class="thermo"><h4>Volatilidade Pre-USDA</h4>
+<div class="th-bar"><div class="th-mk" style="left:78%"><div class="arr"></div><div class="lbl" style="background:#ef5350;color:#fff">ALTA</div></div></div>
+<div class="th-labels"><span>Baixa</span><span>Normal</span><span>Extrema</span></div>
+</div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🎯 Proximos 2 Dias — Terca 31/3 e Quarta 01/4</h3>
+
+<div class="bld">
+<h3>TERCA 31/3: DIA D — USDA Plantings + Stocks (13h Brasilia)</h3>
+<p>Dois relatorios no mesmo dia: <strong>Prospective Plantings</strong> (area soja 26/27) e <strong>Quarterly Stocks</strong> (estoques 01/mar). Mercado espera 85 mi acres de soja (+5%). Se area >86 mi: <span style="color:#ef5350;font-weight:700">baixista</span>. Se <84 mi: <span style="color:#81c784;font-weight:700">altista</span>. Volatilidade extrema — movimentos de 20-30 cents possiveis no dia.</p>
+</div>
+
+<div class="proj">
+<div class="proj-c" style="border-color:#81c784"><div class="pl">Cenario A: Area < 84 mi acres</div><div class="pv" style="color:#81c784">US$ 11,80 - 12,10</div><div class="pd">Rally forte.<br>Soja fixa N → substitui milho.<br>CEPEA puxa R$ 132+.</div></div>
+<div class="proj-c" style="border-color:#ef5350"><div class="pl">Cenario B: Area > 86 mi acres</div><div class="pv" style="color:#ef5350">US$ 11,30 - 11,50</div><div class="pd">Correcao. Oferta 26/27<br>pesa. Premio BR negativo<br>pode ampliar.</div></div>
+<div class="proj-c" style="border-color:#ffd740"><div class="pl">Cenario C: Area 84-86 mi (em linha)</div><div class="pv" style="color:#ffd740">US$ 11,50 - 11,75</div><div class="pd">Neutro. Mercado digere.<br>Foco volta para oleo<br>e reuniao Trump-Xi.</div></div>
+<div class="proj-c" style="border-color:#66BB6A"><div class="pl">Quarta 01/4: Pos-USDA + Inicio 2T</div><div class="pv wh">DIRECIONAL</div><div class="pd">Se rally terca: continuacao.<br>Inicio abril = reposicionamento.<br>Oleo segue chave.</div></div>
+</div>
+
+<div class="chc">
+<h4>Cenarios CBOT Mai — Proximos 2 Dias por Resultado USDA</h4>
+<canvas id="ch6"></canvas>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🌐 Radar Macro e Geopolitico</h3>
+
+<div class="geo">
+<div class="geo-i"><div class="gi">📊</div><div><div class="gt">USDA Plantings + Stocks — 31/3 as 13h</div><div class="gd">Area soja esperada: 85 mi acres (+5%). Se confirmar: oferta 26/27 sobe para 121 mi t nos EUA. Mais oferta = baixista para grao, mas oleo pode compensar. Estoques trimestrais tambem saem — se menores que esperado, da suporte. Dois dados no mesmo dia = volatilidade extrema.</div></div></div>
+<div class="geo-i"><div class="gi">🇨🇳🇺🇸</div><div><div class="gt">Trump-Xi: Reuniao 14-15/Mai em Pequim</div><div class="gd">Confirmada (depois adiada 1,5 mes). Se acontecer: pode definir volume de compras de soja EUA pela China. Se destravar: China volta a comprar dos EUA e demanda por soja BR pode cair. Se nao acontecer ou falhar: Brasil segue dominando. Mercado precifica esperanca de acordo.</div></div></div>
+<div class="geo-i"><div class="gi">⛽</div><div><div class="gt">Petroleo Brent $100+ e Biodiesel</div><div class="gd">Ormuz fechado = petroleo caro. Governo Trump discute aumento no mandato de biodiesel. Se confirmar: oleo de soja sobe forte (materia-prima). Oleo puxa grao. E o principal fator altista de curto prazo. Sem ele, soja ja teria caido mais com a oferta recorde.</div></div></div>
+<div class="geo-i"><div class="gi">🇧🇷</div><div><div class="gt">Safra BR 180 mi t + Exportacoes 16 mi t/mar</div><div class="gd">Maior safra da historia. Colheita avanca (>75%). Premios negativos nos portos (-15c mar). Anec estima 16,3 mi t em marco — recorde potencial. Chuvas em Paranagua atrasaram fev (-1 mi t). Março compensa. Oferta abundante limita altas em R$ no fisico.</div></div></div>
+<div class="geo-i"><div class="gi">🌱</div><div><div class="gt">Fitossanitario China: Risco de Desaceleracao</div><div class="gd">China endurece controles fitossanitarios na soja BR. Desembaraco alfandegario lento. Ministro Carlos Favaro negocia requisitos. Se China apertar: embarques BR desaceleram, premios podem melhorar (menos oferta no porto). Ou: cria gargalo e pressiona comprador chines a voltar para EUA.</div></div></div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">💡 Estrategia Rural IN para o Sojicultor</h3>
+
+<div class="alt">
+<h5>🌾 Colheu e Nao Vendeu? Atencao ao USDA Amanha</h5>
+<p>Se o USDA confirmar <span class="ng">area > 85 mi acres nos EUA</span>, o mercado pode corrigir e <span class="ng">premios no porto ficam mais negativos</span>. Se voce tem soja em estoque e nao travou preco: <span class="hl">considere vender 30-40% ANTES do USDA</span>. R$ 129/sc em Paranagua e R$ 123/sc no PR sao precos razoaveis no contexto de safra recorde. Se preferir arriscar: espere o USDA — mas saiba que area maior = preço cai.</p>
+</div>
+
+<div class="alt">
+<h5>⛽ Oleo de Soja: O Grande Aliado do Preco</h5>
+<p>Enquanto petroleo estiver acima de US$ 100 e biodiesel for incentivado, <span class="ps">oleo de soja sustenta o grao</span>. Se Ormuz reabrir ou petroleo cair: esse suporte desaparece. <span class="hl">Monitore Brent e politica de biodiesel EUA</span> — sao os indicadores-chave para decidir quando vender.</p>
+</div>
+
+<div class="alt">
+<h5>🇨🇳 A Carta Trump-Xi</h5>
+<p>Se a reuniao de 15/mai resultar em <strong>acordo de compras de soja EUA</strong>: demanda por soja BR pode cair e premios pioram. Se <strong>nao houver acordo</strong>: Brasil segue dominando e premios eventualmente melhoram (abr-jun positivos). <span class="hl">Trave vendas de mai-jun com premio positivo (+10c jun) se possivel.</span></p>
+</div>
+
+<div class="alt">
+<h5>📈 Fisico vs CBOT: Onde Esta a Oportunidade</h5>
+<p>CBOT esta lateral. Fisico BR esta <span class="ng">pressionado pela colheita</span>. Premio negativo (-15c mar) tende a <span class="ps">melhorar em abr-jun</span> conforme colheita encerra e embarques normalizam. <span class="hl">Se pode armazenar: segurar soja para vender com premio positivo em jun (+10c) pode render R$ 3-5/sc a mais.</span> Mas custo de armazenagem e juros pesam — faca a conta.</p>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">📊 Visao Completa</h3>
+
+<div class="chg">
+<div class="chc">
+<h4>Radar Fundamentalista — Soja 30/03</h4>
+<canvas id="ch7"></canvas>
+</div>
+<div class="chc">
+<h4>CBOT Soja 2026 — Trajetoria do Ano (US$/bu)</h4>
+<canvas id="ch8"></canvas>
+</div>
+</div>
+
+<div class="chc">
+<h4>Premios Soja Paranagua — Mar a Jun (US$ cents/bu)</h4>
+<canvas id="ch9"></canvas>
+</div>
+
+<div class="cred">
+<div class="cred-in">
+<div class="cred-av">👨‍💼</div>
+<div>
+<h3>Dr. Sidney Souza</h3>
+<div class="ti">Economista Agricola · Estrategista Economico do Produtor</div>
+<div class="dsc">Especialista em economia da fazenda e gestao de risco no agro<br>Transformamos dados da fazenda em decisoes economicas<br>Ajudamos produtores a entender se o mercado sustenta seu negocio</div>
+<div class="ct">
+<a href="mailto:sidneyagro@gmail.com">📧 sidneyagro@gmail.com</a>
+<a href="https://wa.me/5564992266886">📱 (64) 9 9226-6886</a>
+<span>📸 @ruralin.ai</span>
+</div>
+</div>
+</div>
+<div class="disc">Informativo analitico e educacional. Nao constitui recomendacao de compra ou venda. Dados: CME Group, CEPEA/Esalq-USP, B3, USDA, Anec, Safras&Mercado, Forbes Agro, Globo Rural, Noticias Agricolas, CompreRural, Agro Estadao, TheAgriBiz, Investing.com, Agromundo. Analise e construcao: Dr. Sidney Souza — Rural IN.</div>
+</div>
+</div>
+<div class="ftr">RURAL IN 2026 · Inteligencia para o Agronegocio · Rio Verde/GO</div>
+</div>
+
+<script>
+Chart.defaults.color='#1a3020';Chart.defaults.font.family='Inter';Chart.defaults.font.size=11;
+var df={family:'Inter',weight:'600'};
+var tt={backgroundColor:'#060a0e',titleColor:'#66BB6A',bodyColor:'#a0c8b0',borderColor:'#1a3020',borderWidth:1,padding:12,cornerRadius:8};
+
+// 1 — CBOT MARCO
+new Chart(document.getElementById('ch1').getContext('2d'),{
+type:'line',data:{labels:['02','05','09','11','13','17','19','20','23','24','25','26','27','30'],
+datasets:[{label:'CBOT Mai (US$/bu)',data:[10.62,10.73,10.80,11.05,11.20,11.55,11.65,11.61,11.635,11.55,11.7175,11.7375,11.5925,11.5975],
+borderColor:'#66BB6A',backgroundColor:'rgba(102,187,106,0.06)',borderWidth:2.5,fill:true,tension:0.3,pointRadius:2.5,
+pointBackgroundColor:function(c){var i=c.dataIndex;return i===10||i===11?'#81c784':i===12?'#ef5350':'#66BB6A';}}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,
+annotation:{annotations:{
+sup:{type:'line',yMin:11.50,yMax:11.50,borderColor:'rgba(129,199,132,0.4)',borderWidth:1.5,borderDash:[4,3],label:{display:true,content:'SUPORTE $11,50',position:'start',backgroundColor:'rgba(129,199,132,0.4)',color:'#000',font:{size:7,weight:'bold'},padding:2}},
+res:{type:'line',yMin:11.75,yMax:11.75,borderColor:'rgba(239,83,80,0.3)',borderWidth:1.5,borderDash:[4,3],label:{display:true,content:'RESIST. $11,75',position:'end',backgroundColor:'rgba(239,83,80,0.3)',color:'#fff',font:{size:7,weight:'bold'},padding:2}},
+usda:{type:'label',xValue:13,yValue:11.45,content:['USDA','AMANHA'],font:{size:8,weight:'bold'},color:'#66BB6A'}
+}}},scales:{y:{min:10.50,max:11.90,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'$'+v.toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}
+});
+
+// 2 — CEPEA
+new Chart(document.getElementById('ch2').getContext('2d'),{
+type:'line',data:{labels:['10','11','12','13','16','17','18','19','20','23','24','25','26','27','30'],
+datasets:[{label:'CEPEA Paranagua (R$/sc)',data:[128.80,129.29,130.87,130.20,129.36,127.12,127.27,129.38,130.61,129.87,130.15,129.25,130.37,130.01,129.59],
+borderColor:'#81c784',backgroundColor:'rgba(129,199,132,0.06)',borderWidth:2.5,fill:true,tension:0.3,pointRadius:2.5,pointBackgroundColor:'#81c784'}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,
+annotation:{annotations:{
+r130:{type:'line',yMin:130,yMax:130,borderColor:'rgba(255,215,64,0.3)',borderWidth:1.5,borderDash:[4,3],label:{display:true,content:'REFERENCIA R$ 130',position:'center',backgroundColor:'rgba(255,215,64,0.3)',color:'#000',font:{size:7,weight:'bold'},padding:2}}
+}}},scales:{y:{min:126,max:132,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'R$ '+v.toFixed(0);},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}
+});
+
+// 3 — CHINA BR vs EUA
+new Chart(document.getElementById('ch3').getContext('2d'),{
+type:'bar',data:{labels:['Jan-Fev 2025','Jan-Fev 2026'],
+datasets:[{label:'Brasil (mi t)',data:[3.59,6.56],backgroundColor:['rgba(102,187,106,0.25)','rgba(102,187,106,0.5)'],borderColor:['#66BB6A','#66BB6A'],borderWidth:2,borderRadius:6},
+{label:'EUA (mi t)',data:[9.13,1.49],backgroundColor:['rgba(239,83,80,0.25)','rgba(239,83,80,0.5)'],borderColor:['#ef5350','#ef5350'],borderWidth:2,borderRadius:6}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt,
+annotation:{annotations:{
+br:{type:'label',xValue:1,yValue:7.2,content:['+82,7%'],font:{size:10,weight:'bold'},color:'#81c784'},
+eua:{type:'label',xValue:1,yValue:2.2,content:['-83,7%'],font:{size:10,weight:'bold'},color:'#ef5350'}
+}}},scales:{y:{min:0,max:10,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return v+' mi t';},font:df}},x:{grid:{display:false},ticks:{font:df}}}}
+});
+
+// 4 — EXPORT BR MAR
+new Chart(document.getElementById('ch4').getContext('2d'),{
+type:'bar',data:{labels:['Fev/26\n(chuvas)','Mar/26\n(projetado)','Mar/25'],
+datasets:[{label:'Soja BR (mi t)',data:[8.9,16.3,15.7],
+backgroundColor:['rgba(239,83,80,0.3)','rgba(102,187,106,0.5)','rgba(255,215,64,0.3)'],
+borderColor:['#ef5350','#66BB6A','#ffd740'],borderWidth:2,borderRadius:6}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,
+annotation:{annotations:{
+rec:{type:'label',xValue:1,yValue:17,content:['RECORDE?','16,3 mi t'],font:{size:9,weight:'bold'},color:'#81c784'}
+}}},scales:{y:{min:0,max:18,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return v+' mi t';},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}
+});
+
+// 5 — TECNICO
+new Chart(document.getElementById('ch5').getContext('2d'),{
+type:'line',data:{labels:['23/3','24','25','26','27','30','31*','01/4*'],
+datasets:[{label:'CBOT Mai',data:[11.635,11.55,11.7175,11.7375,11.5925,11.5975,null,null],
+borderColor:'#66BB6A',borderWidth:2.5,tension:0.3,pointRadius:3,fill:false,pointBackgroundColor:'#66BB6A'},
+{label:'Cen. A (area <84mi)',data:[null,null,null,null,null,11.5975,11.85,12.05],
+borderColor:'#81c784',borderWidth:2,tension:0.3,pointRadius:3,fill:false,borderDash:[5,3],pointBackgroundColor:'#81c784'},
+{label:'Cen. B (area >86mi)',data:[null,null,null,null,null,11.5975,11.40,11.30],
+borderColor:'#ef5350',borderWidth:2,tension:0.3,pointRadius:3,fill:false,borderDash:[5,3],pointBackgroundColor:'#ef5350'},
+{label:'Cen. C (em linha)',data:[null,null,null,null,null,11.5975,11.60,11.65],
+borderColor:'#ffd740',borderWidth:1.5,tension:0.3,pointRadius:2,fill:false,borderDash:[3,3],pointBackgroundColor:'#ffd740'}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt,
+annotation:{annotations:{
+usda:{type:'line',xMin:6,xMax:6,borderColor:'rgba(102,187,106,0.6)',borderWidth:2,borderDash:[6,3],label:{display:true,content:'USDA 31/3',backgroundColor:'rgba(102,187,106,0.6)',color:'#000',font:{size:8,weight:'bold'},padding:3}}
+}}},scales:{y:{min:11.20,max:12.20,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'$'+v.toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}
+});
+
+// 6 — CENARIOS BARRA
+new Chart(document.getElementById('ch6').getContext('2d'),{
+type:'bar',data:{labels:['Area <84mi\n(Altista)','84-85mi\n(Leve alta)','85-86mi\n(Neutro)','>86mi\n(Baixista)'],
+datasets:[
+{label:'CBOT Mai (US$/bu)',data:[11.90,11.72,11.58,11.38],backgroundColor:['rgba(129,199,132,0.5)','rgba(129,199,132,0.3)','rgba(255,215,64,0.3)','rgba(239,83,80,0.4)'],
+borderColor:['#81c784','#81c784','#ffd740','#ef5350'],borderWidth:2,borderRadius:6},
+{label:'CEPEA Impacto (R$/sc)',data:[134,131,129,125],backgroundColor:['rgba(129,199,132,0.2)','rgba(129,199,132,0.15)','rgba(255,215,64,0.15)','rgba(239,83,80,0.2)'],
+borderColor:['#81c784','#81c784','#ffd740','#ef5350'],borderWidth:1.5,borderRadius:6,borderDash:[3,3]}
+]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},
+scales:{y:{min:11.00,max:12.20,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){if(v<20)return'$'+v.toFixed(2);return'R$'+v;},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:6}}}}}
+});
+
+// 7 — RADAR
+new Chart(document.getElementById('ch7').getContext('2d'),{
+type:'radar',data:{labels:['Oleo/Biodiesel','Demanda China','Oferta BR','Area EUA 26/27','Vendas EUA','Trump-Xi','Dolar'],
+datasets:[{label:'Altista',data:[85,75,20,25,72,55,60],backgroundColor:'rgba(102,187,106,0.08)',borderColor:'#66BB6A',borderWidth:2.5,pointBackgroundColor:'#66BB6A',pointRadius:5},
+{label:'Baixista',data:[15,30,85,80,28,40,35],backgroundColor:'rgba(239,83,80,0.06)',borderColor:'#ef5350',borderWidth:1.5,pointBackgroundColor:'#ef5350',pointRadius:3,borderDash:[4,2]}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},
+scales:{r:{min:0,max:100,ticks:{display:false,stepSize:20},grid:{color:'rgba(255,255,255,0.06)'},pointLabels:{font:{family:'Inter',weight:'600',size:7},color:'#4a7858'}}}}
+});
+
+// 8 — ANO
+new Chart(document.getElementById('ch8').getContext('2d'),{
+type:'line',data:{labels:['Jan/02','Jan/15','Fev/02','Fev/16','Mar/02','Mar/16','Mar/30'],
+datasets:[{label:'CBOT Mai (US$/bu)',data:[10.22,10.55,10.80,11.15,11.42,11.55,11.60],
+borderColor:'#66BB6A',backgroundColor:'rgba(102,187,106,0.06)',borderWidth:3,fill:true,tension:0.3,pointRadius:4,
+pointBackgroundColor:['#ef5350','#ffd740','#ffd740','#81c784','#81c784','#81c784','#81c784']}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,
+annotation:{annotations:{
+rally:{type:'label',xValue:6,yValue:11.75,content:['+13,5% no ano'],font:{size:10,weight:'bold'},color:'#81c784'}
+}}},scales:{y:{min:10.00,max:12.00,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'$'+v.toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}
+});
+
+// 9 — PREMIOS
+new Chart(document.getElementById('ch9').getContext('2d'),{
+type:'bar',data:{labels:['Marco','Abril','Maio','Junho'],
+datasets:[{label:'Premio (US$ cents/bu)',data:[-15,-10,-5,+10],
+backgroundColor:function(c){return c.parsed.y>=0?'rgba(129,199,132,0.4)':'rgba(239,83,80,0.4)';},
+borderColor:function(c){return c.parsed.y>=0?'#81c784':'#ef5350';},borderWidth:2,borderRadius:4}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:{...tt,callbacks:{label:function(c){return(c.parsed.y>0?'+':'')+c.parsed.y+'c/bu';}}}},
+scales:{y:{min:-20,max:15,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return(v>0?'+':'')+v+'c';},font:df}},x:{grid:{display:false},ticks:{font:df}}}}
+});
+</script>
+</body>
+</html>
