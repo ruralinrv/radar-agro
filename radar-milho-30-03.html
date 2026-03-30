@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radar Agro Milho — 30/03/2026 | Rural IN</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#04060a;color:#b8c8a8;min-height:100vh}
+.pg{max-width:960px;margin:0 auto;padding:10px}
+.topbar{background:linear-gradient(90deg,#0a100e,#0e1812,#0a100e);padding:12px 20px;border-radius:14px 14px 0 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #1a2818;flex-wrap:wrap;gap:8px}
+.topbar .logo{display:flex;align-items:center;gap:12px}
+.topbar .logo-ic{width:54px;height:54px;background:linear-gradient(135deg,#FDD835,#F9A825);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.7em;box-shadow:0 4px 25px rgba(253,216,53,.2)}
+.topbar .logo-txt h2{font-size:1.05em;font-weight:900;color:#fff;letter-spacing:1.5px}
+.topbar .logo-txt small{font-size:.62em;color:#FDD835;font-weight:600;display:block}
+.topbar .ed{text-align:right}
+.topbar .ed .dt{font-size:.88em;font-weight:800;color:#FDD835}
+.topbar .ed .inf{font-size:.62em;color:#4a5838;font-weight:600}
+.hdr{background:linear-gradient(135deg,#060a08,#080e0a 50%,#040806);padding:36px 24px 30px;text-align:center;border-bottom:3px solid #FDD835;position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(253,216,53,.04) 0%,transparent 70%)}
+.hdr .tag-top{display:inline-block;background:linear-gradient(135deg,#FDD835,#F9A825);color:#000;font-size:.58em;font-weight:800;letter-spacing:3px;padding:4px 14px;border-radius:20px;text-transform:uppercase;margin-bottom:10px;z-index:1;position:relative}
+.hdr h1{font-family:'Playfair Display',serif;font-size:1.4em;font-weight:900;color:#fff;position:relative;z-index:1;line-height:1.3;max-width:820px;margin:0 auto}
+.hdr .sub{font-size:.78em;color:#7a9868;margin-top:10px;font-weight:500;position:relative;z-index:1;line-height:1.6}
+.hdr .mkt{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px;position:relative;z-index:1}
+.hdr .mkt .mi{background:rgba(253,216,53,.04);border:1px solid rgba(253,216,53,.12);border-radius:10px;padding:7px 12px;text-align:center;min-width:108px}
+.hdr .mkt .mi .ml{font-size:.52em;color:#6a8048;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.hdr .mkt .mi .mv{font-size:1em;font-weight:900;margin-top:2px}
+.hdr .mkt .mi .mc{font-size:.56em;font-weight:700;margin-top:1px}
+.up{color:#81c784}.dn{color:#ef5350}.nt{color:#ffd740}.wh{color:#fff}
+.mn{background:#060a08;padding:20px;border:1px solid #121c18;border-top:none}
+.stl{font-size:.76em;text-transform:uppercase;letter-spacing:2px;font-weight:800;color:#FDD835;margin:22px 0 12px;display:flex;align-items:center;gap:10px;padding-bottom:8px;border-bottom:1px solid #121c18}
+.tx{font-size:.82em;line-height:1.95;color:#7a9868;margin-bottom:14px;text-align:justify}
+.tx strong{color:#b8d0a8;font-weight:700}
+.tx .hl{color:#FDD835;font-weight:700}
+.tx .ng{color:#ef5350;font-weight:700}
+.tx .ps{color:#81c784;font-weight:700}
+.chc{background:#0a0e0c;border:1px solid #162018;border-radius:12px;padding:14px;margin-bottom:12px}
+.chc h4{font-size:.66em;color:#7a9868;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-weight:700;text-align:center}
+.chc canvas{max-height:260px}
+.chg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.thermo{background:#0a0e0c;border-radius:12px;padding:14px;border:1px solid #162018;margin-bottom:10px}
+.thermo h4{text-align:center;font-size:.66em;color:#7a9868;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:12px}
+.th-bar{height:16px;background:linear-gradient(90deg,#b71c1c 0%,#ef5350 18%,#ff9800 33%,#ffd740 50%,#8bc34a 68%,#4CAF50 82%,#1b5e20 100%);border-radius:10px;position:relative;margin:26px 8px 8px}
+.th-mk{position:absolute;top:-22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center}
+.th-mk .arr{width:3px;height:38px;border-radius:2px;background:#fff;box-shadow:0 0 6px rgba(255,255,255,.3)}
+.th-mk .lbl{font-size:.58em;font-weight:800;padding:3px 7px;border-radius:5px;white-space:nowrap;margin-top:3px}
+.th-labels{display:flex;justify-content:space-between;padding:0 8px;font-size:.56em;color:#2a3828;font-weight:700}
+.dg{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-bottom:14px}
+.dc{background:#0a0e0c;border-radius:10px;padding:11px;border:1px solid #162018;text-align:center}
+.dc .dl{font-size:.52em;color:#FDD835;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:4px}
+.dc .dv{font-size:1.15em;font-weight:900;color:#fff}
+.dc .ds{font-size:.62em;color:#4a5838;margin-top:3px;line-height:1.4}
+.alt{background:linear-gradient(135deg,#080c0a,#0c1210);border-left:4px solid #FDD835;border-radius:0 10px 10px 0;padding:14px;margin-bottom:10px}
+.alt h5{font-size:.70em;color:#FDD835;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
+.alt p{font-size:.78em;color:#7a9868;line-height:1.8}
+.alt p strong{color:#b8d0a8}
+.bld{background:linear-gradient(135deg,#0c1210,#101a16);border:2px solid #FDD835;border-radius:14px;padding:20px;margin:16px 0;text-align:center;box-shadow:0 0 30px rgba(253,216,53,.03)}
+.bld h3{font-family:'Playfair Display',serif;font-size:1.08em;color:#fff;margin-bottom:8px;line-height:1.4}
+.bld p{font-size:.80em;color:#7a9868;line-height:1.8}
+.tbl{width:100%;border-collapse:collapse;margin-bottom:12px;font-size:.70em}
+.tbl th{background:#0c1210;color:#FDD835;padding:7px 5px;text-align:center;font-weight:700;text-transform:uppercase;letter-spacing:.5px;font-size:.78em;border-bottom:2px solid #1e3020}
+.tbl td{padding:6px 4px;text-align:center;border-bottom:1px solid #121c18;color:#7a9868}
+.tbl tr:hover td{background:rgba(253,216,53,.02)}
+.proj{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.proj-c{background:#0a0e0c;border-radius:10px;padding:13px;border:1px solid #162018;text-align:center}
+.proj-c .pl{font-size:.54em;color:#FDD835;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:5px}
+.proj-c .pv{font-size:1.2em;font-weight:900;color:#fff;margin-bottom:3px}
+.proj-c .pd{font-size:.66em;color:#4a5838;line-height:1.5}
+.geo{display:grid;grid-template-columns:1fr;gap:7px;margin-bottom:12px}
+.geo-i{background:rgba(253,216,53,.02);border:1px solid rgba(253,216,53,.06);border-radius:10px;padding:10px 14px;display:flex;gap:10px;align-items:flex-start}
+.geo-i .gi{font-size:1.2em;flex-shrink:0}
+.geo-i .gt{font-size:.70em;font-weight:800;color:#b8d0a8}
+.geo-i .gd{font-size:.68em;color:#4a5838;line-height:1.6;margin-top:2px}
+.sep{text-align:center;margin:20px 0;color:#121c18;font-size:1em;letter-spacing:10px}
+.warn{background:linear-gradient(135deg,#0c1608,#081208);border:2px solid #FDD835;border-radius:14px;padding:18px;margin:12px 0;text-align:center;box-shadow:0 0 20px rgba(253,216,53,.03)}
+.warn h4{color:#FDD835;font-size:.82em;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.warn p{font-size:.76em;color:#7a9868;line-height:1.8}
+.cred{background:linear-gradient(135deg,#0a0e0c,#0e1410);border:2px solid #1a2818;border-radius:16px;padding:18px;margin-top:16px}
+.cred-in{display:flex;gap:14px;align-items:center}
+.cred-av{width:60px;height:60px;background:linear-gradient(135deg,#FDD835,#F9A825);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6em;flex-shrink:0;box-shadow:0 4px 18px rgba(253,216,53,.15)}
+.cred h3{font-size:.90em;font-weight:900;color:#fff}
+.cred .ti{font-size:.68em;color:#FDD835;font-weight:700;margin-top:2px}
+.cred .dsc{font-size:.64em;color:#4a5838;margin-top:4px;line-height:1.5;font-style:italic}
+.cred .ct{margin-top:8px;display:flex;flex-wrap:wrap;gap:5px}
+.cred .ct a,.cred .ct span{font-size:.62em;color:#7a9868;text-decoration:none;display:flex;align-items:center;gap:3px;font-weight:600;padding:3px 7px;background:rgba(253,216,53,.04);border-radius:6px;border:1px solid rgba(253,216,53,.08)}
+.cred .ct a:hover{background:rgba(253,216,53,.10);color:#fff}
+.disc{margin-top:10px;padding:10px;background:rgba(255,255,255,.02);border-radius:8px;font-size:.56em;color:#121c18;line-height:1.6;text-align:center}
+.ftr{text-align:center;padding:10px;font-size:.58em;color:#0a0e0c;border-radius:0 0 14px 14px;background:#04060a}
+@media(max-width:768px){.topbar{flex-direction:column;text-align:center}.topbar .ed{text-align:center}.hdr h1{font-size:1.1em}.chg{grid-template-columns:1fr}.cred-in{flex-direction:column;text-align:center}.cred .ct{justify-content:center}.dg{grid-template-columns:1fr 1fr}.proj{grid-template-columns:1fr}.hdr .mkt .mi{min-width:90px}}
+@media(max-width:420px){.dg{grid-template-columns:1fr}.hdr h1{font-size:.95em}.hdr .mkt{flex-direction:column;align-items:center}}
+</style>
+</head>
+<body>
+<div class="pg">
+<div class="topbar">
+<div class="logo"><div class="logo-ic">🌽</div><div class="logo-txt"><h2>RURAL IN</h2><small>Inteligencia para o Agronegocio</small></div></div>
+<div class="ed"><div class="dt">Segunda-feira, 30 de Marco de 2026</div><div class="inf">Radar Agro Milho · Fechamento do Dia · Foco USDA 31/3</div></div>
+</div>
+
+<div class="hdr">
+<div class="tag-top">Radar Agro Milho · Fechamento 30/Mar · Edicao Especial USDA</div>
+<h1>Milho Recua -1,35% em Chicago Antes do USDA: Realizacao de Lucros ou Sinal de Topo? Tudo o Que Decidira os Proximos 2 Dias</h1>
+<div class="sub">CBOT Mai/26: US$ 4,5575/bu (-6,25 cts). CEPEA Campinas: R$ 70,34/sc (estavel). B3 Mai: R$ 72,46/sc. Milho subiu +6,59% no mes com Ormuz, etanol e custos. Hoje realizou lucros antes do USDA Prospective Plantings (amanha 31/3). Mercado espera MENOS area de milho nos EUA — se confirmar, rally pode voltar com forca.</div>
+<div class="mkt">
+<div class="mi"><div class="ml">CBOT Mai/26</div><div class="mv dn">US$ 4,5575</div><div class="mc dn">-1,35% (hoje)</div></div>
+<div class="mi"><div class="ml">CBOT Jul/26</div><div class="mv dn">US$ 4,675</div><div class="mc dn">-1,27%</div></div>
+<div class="mi"><div class="ml">CBOT Dez/26</div><div class="mv dn">US$ 4,84</div><div class="mc dn">-1,27%</div></div>
+<div class="mi"><div class="ml">CEPEA Campinas</div><div class="mv wh">R$ 70,34/sc</div><div class="mc up">+1,16% no mes</div></div>
+<div class="mi"><div class="ml">B3 Mai/26</div><div class="mv wh">R$ 72,46/sc</div><div class="mc up">Firme</div></div>
+<div class="mi"><div class="ml">Mes de Marco</div><div class="mv ps">+6,59% CBOT</div><div class="mc up">Proximo de maxima 2025</div></div>
+</div>
+</div>
+
+<div class="mn">
+
+<div class="warn">
+<h4>⚡ USDA Prospective Plantings — Amanha 31/03 as 13h (Brasilia)</h4>
+<p>O relatorio mais importante do 1o semestre para o milho. Mercado espera <strong>reducao de area plantada nos EUA</strong>. Fertilizantes e diesel caros (Ormuz) desestimulam milho. Se area vier MENOR que o esperado: <strong>rally forte</strong>. Se vier maior: <strong>correcao continua</strong>. E o evento que define a direcao dos proximos 30 dias.</p>
+</div>
+
+<h3 class="stl">📋 O Que Aconteceu Hoje — 30/03</h3>
+
+<p class="tx">O milho <span class="ng">recuou 1,35% em Chicago</span> nesta segunda-feira, com o contrato Mai/26 fechando a US$ 4,5575/bu — <strong>queda de 6,25 cents</strong>. O movimento e de <span class="hl">realizacao de lucros classica</span> antes do relatorio USDA Prospective Plantings, que sai amanha (31/3) as 13h (Brasilia). Depois de subir +6,59% no mes, os fundos de investimento <span class="ng">zeraram posicoes para nao serem pegos na contramao</span> do dado.</p>
+
+<p class="tx">Mas o fundamento que fez o milho <span class="ps">subir forte em marco inteiro</span> segue intacto: <strong>(1)</strong> petroleo elevado (Brent US$ 100-106) encarece fertilizantes nitrogenados e diesel — <span class="hl">custo de producao de milho sobe</span>; <strong>(2)</strong> etanol americano (feito de milho) fica mais competitivo com petroleo alto; <strong>(3)</strong> vendas semanais de exportacao EUA fortes (68,9 mi t comprometidas vs 53 mi ano passado); <strong>(4)</strong> oferta spot brasileira restrita — produtores focam em soja e semeadura da safrinha.</p>
+
+<div class="alt">
+<h5>🧐 Hoje Foi Queda ou Oportunidade?</h5>
+<p><strong>Resposta curta: realizacao tecnica.</strong> O milho subiu de US$ 4,33 (inicio mar) para US$ 4,67 (pico semana passada) — <span class="ps">+7,9% em 3 semanas</span>. E normal realizar antes de um dado como o USDA. A queda de hoje <span class="hl">NAO muda o fundamento altista</span> de custo de producao + Ormuz + etanol + exportacoes fortes. Se o USDA confirmar menos area amanha, <span class="ps">o milho pode recuperar tudo em um dia</span>.</p>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">📊 Painel — Evolucao da Semana e do Mes</h3>
+
+<table class="tbl">
+<thead><tr><th>Data</th><th>CBOT Mai (US$/bu)</th><th>Var. Dia</th><th>CEPEA (R$/sc)</th><th>Var. Dia</th><th>Driver</th></tr></thead>
+<tbody>
+<tr><td>Sex 20/3</td><td>4,655</td><td style="color:#ef5350">-0,43%</td><td>71,37</td><td style="color:#ef5350">-0,36%</td><td>Petroleo volátil, cautela</td></tr>
+<tr><td>Seg 23/3</td><td>4,595</td><td style="color:#ef5350">-1,29%</td><td>71,25</td><td style="color:#ef5350">-0,17%</td><td>Trump/Ira: petroleo desaba</td></tr>
+<tr><td>Ter 24/3</td><td style="color:#81c784">4,625</td><td style="color:#81c784">+0,65%</td><td>71,01</td><td style="color:#ef5350">-0,34%</td><td>Ata Copom + recuperacao</td></tr>
+<tr><td>Qua 25/3</td><td style="color:#81c784">4,6725</td><td style="color:#81c784">+1,03%</td><td>70,45</td><td style="color:#ef5350">-0,79%</td><td>Petroleo sobe, etanol puxa</td></tr>
+<tr><td>Qui 26/3</td><td>4,670</td><td>-0,05%</td><td>70,33</td><td>-0,17%</td><td>Estabilidade pre-USDA</td></tr>
+<tr><td>Sex 27/3</td><td>4,620</td><td style="color:#ef5350">-1,07%</td><td>70,34</td><td>+0,01%</td><td>Realizacao de lucros</td></tr>
+<tr><td style="color:#FDD835;font-weight:700">Seg 30/3</td><td style="color:#ef5350;font-weight:800">4,5575</td><td style="color:#ef5350;font-weight:700">-1,35%</td><td style="font-weight:700">70,34*</td><td>-</td><td style="color:#FDD835">Realizacao antes USDA</td></tr>
+</tbody>
+</table>
+
+<div class="chc">
+<h4>CBOT Milho Mai/26 — Marco Completo (US$/bu)</h4>
+<canvas id="ch1"></canvas>
+</div>
+
+<div class="chg">
+<div class="chc">
+<h4>CEPEA Campinas — Marco (R$/sc 60kg)</h4>
+<canvas id="ch2"></canvas>
+</div>
+<div class="chc">
+<h4>Brent (US$/bbl) vs Milho CBOT — Correlacao de Marco</h4>
+<canvas id="ch3"></canvas>
+</div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🔍 Os 6 Fundamentos Que Fizeram o Milho Subir +6,6% em Marco</h3>
+
+<div class="dg">
+<div class="dc" style="border-color:#FDD835"><div class="dl">1. Ormuz → Fertilizantes Caros</div><div class="dv ng">NITROGENIO ↑↑</div><div class="ds">Milho e intensivo em N.<br>Ureia futura abr: +65%!<br>Custo de produção explode.</div></div>
+<div class="dc" style="border-color:#FDD835"><div class="dl">2. Petroleo Alto → Etanol</div><div class="dv ps">BRENT $100-106</div><div class="ds">Etanol de milho (EUA)<br>fica mais competitivo.<br>Puxa demanda.</div></div>
+<div class="dc" style="border-color:#FDD835"><div class="dl">3. Exportações EUA Fortes</div><div class="dv ps">68,9 mi t</div><div class="ds">Comprometidas vs 53 mi<br>ano passado. Mexico lidera.<br>+30% ano/ano.</div></div>
+<div class="dc" style="border-color:#FDD835"><div class="dl">4. Oferta Spot BR Restrita</div><div class="dv nt">VENDEDOR FIRME</div><div class="ds">Produtor foca soja +<br>semeadura safrinha.<br>Comprador disputa.</div></div>
+<div class="dc" style="border-color:#FDD835"><div class="dl">5. Diesel Caro → Frete ↑</div><div class="dv ng">ORMUZ FECHADO</div><div class="ds">Diesel sobe no BR.<br>Frete disputa acirrada.<br>Custo logístico sobe.</div></div>
+<div class="dc" style="border-color:#FDD835"><div class="dl">6. Area EUA Pode Cair</div><div class="dv nt">USDA AMANHA</div><div class="ds">Custos altos → menos<br>area de milho nos EUA.<br>Mercado precifica.</div></div>
+</div>
+
+<div class="alt">
+<h5>⛽ A Conexão Ormuz → Ureia → Milho (Cadeia de Transmissão)</h5>
+<p>O milho e a <span class="ps">cultura mais dependente de nitrogenio</span> entre os graos. Ureia (fertilizante nitrogenado) e produzida a partir de gas natural. Ormuz fechado = gas natural caro = <span class="ng">ureia futura abril: +65% no mes!</span> Se custo sobe, produtor americano <strong>planta menos milho e mais soja</strong> (que fixa nitrogenio). Resultado: <span class="hl">menos area de milho = preco sobe</span>. Esse e o mecanismo que fez o milho subir +6,6% em marco — e que o USDA pode confirmar amanha.</p>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">📈 Analise Tecnica — Milho CBOT</h3>
+
+<p class="tx">O Mai/26 fez <span class="ps">rally de US$ 4,33 (inicio mar) para US$ 4,67 (pico 25/3)</span> — +7,9%. Hoje corrigiu para US$ 4,5575 — devolveu 33% do rally. O <span class="hl">suporte imediato esta em US$ 4,50/bu</span> (media movel 20 dias e suporte tecnico). A <span class="ng">resistencia em US$ 4,67-4,70</span>. Se o USDA confirmar menos area amanha, <span class="ps">o rompimento de US$ 4,70 abre caminho para US$ 4,85-4,90</span> (maximas de mai/2025). Se area vier maior que esperada, <span class="ng">pode testar US$ 4,45-4,40</span>.</p>
+
+<div class="chc">
+<h4>CBOT Mai/26 — Suportes, Resistencias e Cenarios (US$/bu)</h4>
+<canvas id="ch4"></canvas>
+</div>
+
+<p class="tx">No Brasil, o <span class="hl">CEPEA Campinas esta em R$ 70,34/sc</span> — estavel na semana, mas acumula +1,16% no mes. A B3 Mai esta em R$ 72,46/sc. O mercado fisico brasileiro reage <strong>menos que Chicago</strong> porque a oferta da safra verao e safrinha esta no radar. Mas se CBOT subir forte com USDA, <span class="ps">puxa o fisico brasileiro junto</span>.</p>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🌡️ Termometros</h3>
+
+<div class="chg">
+<div class="thermo"><h4>Tendencia CBOT — Curto Prazo</h4>
+<div class="th-bar"><div class="th-mk" style="left:55%"><div class="arr"></div><div class="lbl" style="background:#ffd740;color:#000">LATERAL-ALTISTA</div></div></div>
+<div class="th-labels"><span>Baixista</span><span>Neutro</span><span>Altista</span></div>
+</div>
+<div class="thermo"><h4>Volatilidade — Pre-USDA</h4>
+<div class="th-bar"><div class="th-mk" style="left:82%"><div class="arr"></div><div class="lbl" style="background:#ef5350;color:#fff">EXTREMA</div></div></div>
+<div class="th-labels"><span>Baixa</span><span>Normal</span><span>Extrema</span></div>
+</div>
+</div>
+<div class="chg">
+<div class="thermo"><h4>Custo Producao Milho (Fertiliz.)</h4>
+<div class="th-bar"><div class="th-mk" style="left:85%"><div class="arr"></div><div class="lbl" style="background:#b71c1c;color:#fff">PRESSIONADO (Ureia +65%)</div></div></div>
+<div class="th-labels"><span>Baixo</span><span>Normal</span><span>Elevado</span></div>
+</div>
+<div class="thermo"><h4>Demanda Etanol EUA</h4>
+<div class="th-bar"><div class="th-mk" style="left:78%"><div class="arr"></div><div class="lbl" style="background:#4CAF50;color:#fff">FORTE (Petroleo $100+)</div></div></div>
+<div class="th-labels"><span>Fraca</span><span>Normal</span><span>Forte</span></div>
+</div>
+</div>
+<div class="chg">
+<div class="thermo"><h4>Oferta Fisica Brasil (Spot)</h4>
+<div class="th-bar"><div class="th-mk" style="left:30%"><div class="arr"></div><div class="lbl" style="background:#ff9800;color:#000">RESTRITA</div></div></div>
+<div class="th-labels"><span>Escassa</span><span>Normal</span><span>Abundante</span></div>
+</div>
+<div class="thermo"><h4>Exportacoes EUA (Comprometidas)</h4>
+<div class="th-bar"><div class="th-mk" style="left:80%"><div class="arr"></div><div class="lbl" style="background:#4CAF50;color:#fff">RECORDES (68,9 mi t)</div></div></div>
+<div class="th-labels"><span>Fracas</span><span>Normais</span><span>Recordes</span></div>
+</div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🎯 Os Proximos 2 Dias — O Que Esperar</h3>
+
+<div class="bld">
+<h3>TERCA 31/3: DIA D — USDA PROSPECTIVE PLANTINGS (13h)</h3>
+<p>O dado mais importante do semestre. Mercado espera menos area de milho (custos altos desincentivam). Se confirmar: <strong>rally de 2-4% possivel no dia</strong>. Se area vier maior: <strong>queda de 1-3%</strong>. Volatilidade extrema — atenção total.</p>
+</div>
+
+<div class="proj">
+<div class="proj-c" style="border-color:#81c784"><div class="pl">Cenario A: USDA Confirma Menos Area</div><div class="pv" style="color:#81c784">US$ 4,70 - 4,85</div><div class="pd">Rally forte.<br>Rompimento de resistencia.<br>Puxa CEPEA para R$ 72+.</div></div>
+<div class="proj-c" style="border-color:#ef5350"><div class="pl">Cenario B: USDA Area Maior</div><div class="pv" style="color:#ef5350">US$ 4,40 - 4,50</div><div class="pd">Correcao se aprofunda.<br>Testa suporte de US$ 4,40.<br>CEPEA testa R$ 68.</div></div>
+<div class="proj-c" style="border-color:#ffd740"><div class="pl">Cenario C: USDA em Linha</div><div class="pv" style="color:#ffd740">US$ 4,55 - 4,65</div><div class="pd">Neutro.<br>Mercado digere.<br>Lateral por 2-3 dias.</div></div>
+<div class="proj-c" style="border-color:#FDD835"><div class="pl">Quarta 01/4: Reacao Pos-USDA</div><div class="pv wh">DIRECIONAL</div><div class="pd">Se rally terca: continuacao.<br>Se queda: busca suporte.<br>Volume alto esperado.</div></div>
+</div>
+
+<div class="chc">
+<h4>Cenarios CBOT — Proximos 2 Dias por Resultado USDA</h4>
+<canvas id="ch5"></canvas>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🌐 Radar Macro e Geopolitico</h3>
+
+<div class="geo">
+<div class="geo-i"><div class="gi">📊</div><div><div class="gt">USDA Prospective Plantings — 31/3 as 13h (Brasilia)</div><div class="gd">Relatorio anual de intencao de plantio dos EUA. Mercado espera reducao de area de milho por custo de fertilizantes (Ormuz). E reducao de milho + aumento de soja. Se area < 90 mi acres: muito altista. Se > 92 mi: baixista. Faixa esperada: 89-91 mi acres.</div></div></div>
+<div class="geo-i"><div class="gi">⛽</div><div><div class="gt">Ormuz Continua Fechado — Fertilizantes em Crise</div><div class="gd">Pausa de ataques EUA ate 06/abr. Mas Ormuz segue bloqueado para tanqueiros. Ureia abril: +65% no mes! Gas natural caro = fertilizante nitrogenado caro = custo de milho sobe. Africa do Sul ja tem escassez de combustivel no campo. Efeito global.</div></div></div>
+<div class="geo-i"><div class="gi">🇺🇸</div><div><div class="gt">Biocombustiveis: Casa Branca Pode Anunciar Mais Biodiesel</div><div class="gd">Governo Trump pode confirmar aumento na mistura de biocombustiveis. Se subir mandato de biodiesel: oleo de soja sobe, soja sobe, e milho para etanol ganha competitividade indireta. Anuncio esperado esta semana.</div></div></div>
+<div class="geo-i"><div class="gi">🌾</div><div><div class="gt">Safrinha BR: Semeadura em Andamento — Clima e Chave</div><div class="gd">Safrinha 2025/26 sendo plantada em GO, MT, MS, PR. Janela ideal ate final de marco (apertando). Se clima estressar a safrinha, preco BR sobe independente de Chicago. Estoques de passagem estao confortaveis (12,68 mi t Conab), mas mercado fisico esta restrito.</div></div></div>
+<div class="geo-i"><div class="gi">🚛</div><div><div class="gt">Frete e Paralisacoes — Risco Logístico no BR</div><div class="gd">CEPEA alerta para incertezas com possiveis paralisacoes no transporte de cargas. Diesel mais caro = frete mais caro = custo de comercializacao sobe. Isso restringe ainda mais a oferta no spot e sustenta precos.</div></div></div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">💡 Estrategia Rural IN para o Produtor</h3>
+
+<div class="alt">
+<h5>Vendeu Milho Safra Verao? Parabens — Precos em Alta</h5>
+<p>Se vendeu acima de R$ 70/sc: <strong>precos estao nos melhores niveis desde dez/25</strong>. O CEPEA acumula +1,16% no mes e os fundamentos (Ormuz, etanol, exportacoes) sustentam. <span class="hl">Nao havia motivo para pressa, e agora o preco premia a paciencia.</span></p>
+</div>
+
+<div class="alt">
+<h5>Tem Milho em Estoque? Aguarde o USDA Amanha</h5>
+<p>Se o USDA confirmar <span class="ps">menos area de milho nos EUA</span>, o preco pode dar um salto de 2-4% em Chicago e <strong>puxar o fisico brasileiro</strong>. <span class="hl">Nao venda hoje — espere pelo dado amanha as 13h.</span> Se o dado vier altista, aproveite a onda para <strong>travar 30-40% da posicao</strong> no pico pos-relatorio.</p>
+</div>
+
+<div class="alt">
+<h5>Safrinha: Quem Esta Plantando</h5>
+<p>O custo de producao subiu (ureia +65%, diesel caro). <strong>Faca a conta atualizada.</strong> Se custo esta em R$ 4.500/ha e produtividade esperada de 90 sc/ha, precisa de R$ 50/sc para empatar. Com milho a R$ 70+, a <span class="ps">margem ainda e confortavel</span>. Mas se ureia subir mais, o breakeven aperta. <span class="hl">Trave ao menos 30% da safrinha no preco atual da B3 (R$ 72/sc mai, R$ 71/sc set).</span></p>
+</div>
+
+<div class="alt">
+<h5>Comprador de Milho (Avicultura, Suinocultura, Confinamento)</h5>
+<p>Se o USDA confirmar menos area: <span class="ng">precos vao subir no medio prazo</span>. <strong>Antecipe compras</strong> antes do relatorio se possivel. Se o dado vier neutro ou maior area, voce ganha tempo. <span class="hl">Recomendacao: garanta cobertura de 30 dias antes de amanha.</span></p>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">📊 Visao Completa</h3>
+
+<div class="chg">
+<div class="chc">
+<h4>Radar Fundamentalista — Milho 30/03</h4>
+<canvas id="ch6"></canvas>
+</div>
+<div class="chc">
+<h4>CBOT Milho — 2026 Ano (US$/bu Mai)</h4>
+<canvas id="ch7"></canvas>
+</div>
+</div>
+
+<div class="chc">
+<h4>Impacto Historico do USDA Plantings no Milho (Variacao % no Dia)</h4>
+<canvas id="ch8"></canvas>
+</div>
+
+<div class="cred">
+<div class="cred-in">
+<div class="cred-av">👨‍💼</div>
+<div>
+<h3>Dr. Sidney Souza</h3>
+<div class="ti">Economista Agricola · Estrategista Economico do Produtor</div>
+<div class="dsc">Especialista em economia da fazenda e gestao de risco no agro<br>Transformamos dados da fazenda em decisoes economicas<br>Ajudamos produtores a entender se o mercado sustenta seu negocio</div>
+<div class="ct">
+<a href="mailto:sidneyagro@gmail.com">📧 sidneyagro@gmail.com</a>
+<a href="https://wa.me/5564992266886">📱 (64) 9 9226-6886</a>
+<span>📸 @ruralin.ai</span>
+</div>
+</div>
+</div>
+<div class="disc">Informativo analitico e educacional. Nao constitui recomendacao de compra ou venda. Dados: CME Group, CEPEA/Esalq-USP, B3, Conab, USDA, Trading Economics, Noticias Agricolas, Globo Rural, Barchart, FeedFood, FarmNews, Portal DBO, Investing.com, TradingView. Analise e construcao: Dr. Sidney Souza — Rural IN.</div>
+</div>
+</div>
+<div class="ftr">RURAL IN 2026 · Inteligencia para o Agronegocio · Rio Verde/GO</div>
+</div>
+
+<script>
+Chart.defaults.color='#3a4830';Chart.defaults.font.family='Inter';Chart.defaults.font.size=11;
+var df={family:'Inter',weight:'600'};
+var tt={backgroundColor:'#0a0e0c',titleColor:'#FDD835',bodyColor:'#b8c8a8',borderColor:'#1e3020',borderWidth:1,padding:12,cornerRadius:8};
+
+// 1 — CBOT MARCO
+new Chart(document.getElementById('ch1').getContext('2d'),{
+type:'line',data:{labels:['02','04','06','09','11','13','16','18','20','23','24','25','26','27','30'],
+datasets:[{label:'CBOT Mai/26 (US$/bu)',data:[4.33,4.36,4.40,4.42,4.38,4.46,4.50,4.54,4.655,4.595,4.625,4.6725,4.670,4.620,4.5575],
+borderColor:'#FDD835',backgroundColor:'rgba(253,216,53,0.06)',borderWidth:2.5,fill:true,tension:0.3,pointRadius:2.5,
+pointBackgroundColor:function(c){return c.dataIndex===14?'#ef5350':c.dataIndex>=9&&c.dataIndex<=12?'#81c784':'#FDD835';}}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,
+annotation:{annotations:{
+sup:{type:'line',yMin:4.50,yMax:4.50,borderColor:'rgba(129,199,132,0.4)',borderWidth:1.5,borderDash:[4,3],label:{display:true,content:'SUPORTE US$ 4,50',position:'start',backgroundColor:'rgba(129,199,132,0.4)',color:'#000',font:{size:7,weight:'bold'},padding:2}},
+res:{type:'line',yMin:4.67,yMax:4.67,borderColor:'rgba(239,83,80,0.4)',borderWidth:1.5,borderDash:[4,3],label:{display:true,content:'RESIST. US$ 4,67',position:'end',backgroundColor:'rgba(239,83,80,0.4)',color:'#fff',font:{size:7,weight:'bold'},padding:2}},
+usda:{type:'label',xValue:14,yValue:4.50,content:['USDA','AMANHA'],font:{size:8,weight:'bold'},color:'#FDD835'}
+}}},scales:{y:{min:4.25,max:4.80,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'$'+v.toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}
+});
+
+// 2 — CEPEA
+new Chart(document.getElementById('ch2').getContext('2d'),{
+type:'line',data:{labels:['09','10','11','12','13','16','17','18','19','20','23','24','25','26','27'],
+datasets:[{label:'CEPEA Campinas (R$/sc)',data:[70.63,71.09,71.32,71.56,71.98,72.10,72.02,71.20,71.63,71.37,71.25,71.01,70.45,70.33,70.34],
+borderColor:'#81c784',backgroundColor:'rgba(129,199,132,0.06)',borderWidth:2.5,fill:true,tension:0.3,pointRadius:2.5,pointBackgroundColor:'#81c784'}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,
+annotation:{annotations:{
+r70:{type:'line',yMin:70,yMax:70,borderColor:'rgba(253,216,53,0.3)',borderWidth:1.5,borderDash:[4,3],label:{display:true,content:'PISO R$ 70',position:'start',backgroundColor:'rgba(253,216,53,0.4)',color:'#000',font:{size:7,weight:'bold'},padding:2}}
+}}},scales:{y:{min:69.5,max:72.5,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'R$ '+v.toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}
+});
+
+// 3 — BRENT vs MILHO
+new Chart(document.getElementById('ch3').getContext('2d'),{
+type:'line',data:{labels:['06','10','13','18','20','23','25','27','30'],
+datasets:[{label:'Brent (US$/bbl)',data:[92,96,102,100,105,90,100,103,100],borderColor:'#ef5350',borderWidth:2,tension:0.3,pointRadius:3,yAxisID:'y',fill:false,pointBackgroundColor:'#ef5350'},
+{label:'CBOT Mai (US$/bu)',data:[4.40,4.42,4.46,4.54,4.655,4.595,4.6725,4.620,4.5575],borderColor:'#FDD835',borderWidth:2,tension:0.3,pointRadius:3,yAxisID:'y1',fill:false,borderDash:[5,3],pointBackgroundColor:'#FDD835'}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},
+scales:{y:{min:85,max:110,position:'left',grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'$'+v;},font:df},title:{display:true,text:'Brent',color:'#3a4830',font:df}},
+y1:{min:4.30,max:4.80,position:'right',grid:{display:false},ticks:{callback:function(v){return'$'+v.toFixed(2);},font:df},title:{display:true,text:'Milho',color:'#3a4830',font:df}},
+x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}
+});
+
+// 4 — TECNICO
+new Chart(document.getElementById('ch4').getContext('2d'),{
+type:'line',data:{labels:['20/3','23','24','25','26','27','30','31*','01/4*'],
+datasets:[{label:'CBOT Mai/26',data:[4.655,4.595,4.625,4.6725,4.670,4.620,4.5575,null,null],
+borderColor:'#FDD835',borderWidth:2.5,tension:0.3,pointRadius:3,fill:false,pointBackgroundColor:'#FDD835'},
+{label:'Cenario A (area-)',data:[null,null,null,null,null,null,4.5575,4.72,4.82],
+borderColor:'#81c784',borderWidth:2,tension:0.3,pointRadius:3,fill:false,borderDash:[5,3],pointBackgroundColor:'#81c784'},
+{label:'Cenario B (area+)',data:[null,null,null,null,null,null,4.5575,4.45,4.42],
+borderColor:'#ef5350',borderWidth:2,tension:0.3,pointRadius:3,fill:false,borderDash:[5,3],pointBackgroundColor:'#ef5350'},
+{label:'Cenario C (neutro)',data:[null,null,null,null,null,null,4.5575,4.58,4.60],
+borderColor:'#ffd740',borderWidth:1.5,tension:0.3,pointRadius:2,fill:false,borderDash:[3,3],pointBackgroundColor:'#ffd740'}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt,
+annotation:{annotations:{
+usda:{type:'line',xMin:7,xMax:7,borderColor:'rgba(253,216,53,0.6)',borderWidth:2,borderDash:[6,3],label:{display:true,content:'USDA 31/3',backgroundColor:'rgba(253,216,53,0.6)',color:'#000',font:{size:8,weight:'bold'},padding:3}}
+}}},scales:{y:{min:4.35,max:4.90,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'$'+v.toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}
+});
+
+// 5 — CENARIOS BARRA
+new Chart(document.getElementById('ch5').getContext('2d'),{
+type:'bar',data:{labels:['Area < 89mi ac\n(Muito Altista)','89-90mi ac\n(Altista)','90-91mi ac\n(Neutro)','> 92mi ac\n(Baixista)'],
+datasets:[
+{label:'CBOT Mai Terca (US$/bu)',data:[4.78,4.70,4.58,4.45],backgroundColor:['rgba(129,199,132,0.5)','rgba(129,199,132,0.3)','rgba(255,215,64,0.3)','rgba(239,83,80,0.3)'],
+borderColor:['#81c784','#81c784','#ffd740','#ef5350'],borderWidth:2,borderRadius:6},
+{label:'CEPEA Impacto (R$/sc)',data:[73.50,72.00,70.50,68.50],backgroundColor:['rgba(129,199,132,0.2)','rgba(129,199,132,0.15)','rgba(255,215,64,0.15)','rgba(239,83,80,0.15)'],
+borderColor:['#81c784','#81c784','#ffd740','#ef5350'],borderWidth:1.5,borderRadius:6,borderDash:[3,3]}
+]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},
+scales:{y:{min:4.30,max:4.90,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){if(v<=4.9)return'$'+v.toFixed(2);return'R$'+v.toFixed(0);},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:6}}}}}
+});
+
+// 6 — RADAR
+new Chart(document.getElementById('ch6').getContext('2d'),{
+type:'radar',data:{labels:['Custo Fertil./Ormuz','Etanol/Petroleo','Export. EUA','Oferta Spot BR','Area EUA (USDA)','Frete/Logistica'],
+datasets:[{label:'Favorece Alta',data:[90,80,85,70,75,65],backgroundColor:'rgba(253,216,53,0.08)',borderColor:'#FDD835',borderWidth:2.5,pointBackgroundColor:'#FDD835',pointRadius:5},
+{label:'Favorece Queda',data:[15,25,15,40,35,40],backgroundColor:'rgba(239,83,80,0.06)',borderColor:'#ef5350',borderWidth:1.5,pointBackgroundColor:'#ef5350',pointRadius:3,borderDash:[4,2]}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},
+scales:{r:{min:0,max:100,ticks:{display:false,stepSize:20},grid:{color:'rgba(255,255,255,0.06)'},pointLabels:{font:{family:'Inter',weight:'600',size:7},color:'#7a9868'}}}}
+});
+
+// 7 — ANO
+new Chart(document.getElementById('ch7').getContext('2d'),{
+type:'line',data:{labels:['Jan','Fev','Mar*'],
+datasets:[{label:'CBOT Mai (media US$/bu)',data:[4.28,4.33,4.56],borderColor:'#FDD835',backgroundColor:'rgba(253,216,53,0.08)',borderWidth:3,fill:true,tension:0.3,pointRadius:6,
+pointBackgroundColor:['#ef5350','#ffd740','#81c784']}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,
+annotation:{annotations:{
+q:{type:'label',xValue:2,yValue:4.46,content:['+6,6% no mes'],font:{size:10,weight:'bold'},color:'#81c784'}
+}}},scales:{y:{min:4.15,max:4.70,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'$'+v.toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:df}}}}
+});
+
+// 8 — HISTORICO USDA IMPACTO
+new Chart(document.getElementById('ch8').getContext('2d'),{
+type:'bar',data:{labels:['2021','2022','2023','2024','2025','2026?'],
+datasets:[{label:'Var. % no dia do USDA Plantings',data:[-2.5,+1.8,-3.1,+2.4,+1.2,null],
+backgroundColor:function(c){var v=c.parsed.y;if(v===null)return'rgba(253,216,53,0.2)';return v>0?'rgba(129,199,132,0.4)':'rgba(239,83,80,0.4)';},
+borderColor:function(c){var v=c.parsed.y;if(v===null)return'#FDD835';return v>0?'#81c784':'#ef5350';},borderWidth:2,borderRadius:4}]},
+options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:{...tt,callbacks:{label:function(c){return c.parsed.y?c.parsed.y.toFixed(1)+'%':'AMANHA!';}}},
+annotation:{annotations:{
+q:{type:'label',xValue:5,yValue:0.8,content:['AMANHA','31/3'],font:{size:10,weight:'bold'},color:'#FDD835'}
+}}},scales:{y:{min:-4,max:4,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return v+'%';},font:df}},x:{grid:{display:false},ticks:{font:df}}}}
+});
+</script>
+</body>
+</html>
