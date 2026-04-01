@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radar Agro Cacau — 31/03/2026 | Rural IN</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:#0a0604;color:#d4a574;min-height:100vh}
+.pg{max-width:960px;margin:0 auto;padding:10px}
+.tb{background:linear-gradient(90deg,#140e08,#1e1610,#140e08);padding:12px 20px;border-radius:14px 14px 0 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #4E342E;flex-wrap:wrap;gap:8px}.tb .lo{display:flex;align-items:center;gap:12px}.tb .li{width:54px;height:54px;background:linear-gradient(135deg,#795548,#3E2723);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.7em;box-shadow:0 4px 25px rgba(121,85,72,.25)}.tb .lt h2{font-size:1.05em;font-weight:900;color:#fff;letter-spacing:1.5px}.tb .lt small{font-size:.62em;color:#A1887F;font-weight:600;display:block}.tb .ed{text-align:right}.tb .ed .dt{font-size:.86em;font-weight:800;color:#A1887F}.tb .ed .inf{font-size:.6em;color:#795548;font-weight:600}
+.hdr{background:linear-gradient(135deg,#0c0806,#100c0a 50%,#0a0604);padding:34px 22px 28px;text-align:center;border-bottom:3px solid #795548;position:relative;overflow:hidden}.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(121,85,72,.06) 0%,transparent 70%)}.hdr .tag{display:inline-block;background:linear-gradient(135deg,#795548,#3E2723);color:#fff;font-size:.56em;font-weight:800;letter-spacing:3px;padding:4px 14px;border-radius:20px;text-transform:uppercase;margin-bottom:10px;z-index:1;position:relative}.hdr h1{font-family:'Playfair Display',serif;font-size:1.15em;font-weight:900;color:#fff;z-index:1;position:relative;line-height:1.3;max-width:840px;margin:0 auto}.hdr .sub{font-size:.72em;color:#795548;margin-top:10px;font-weight:500;z-index:1;position:relative;line-height:1.6}.hdr .mkt{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:14px;z-index:1;position:relative}.hdr .mkt .mi{background:rgba(121,85,72,.05);border:1px solid rgba(121,85,72,.15);border-radius:10px;padding:6px 11px;text-align:center;min-width:100px}.hdr .mkt .mi .ml{font-size:.48em;color:#6D4C41;font-weight:700;text-transform:uppercase;letter-spacing:1px}.hdr .mkt .mi .mv{font-size:.95em;font-weight:900;margin-top:2px}.hdr .mkt .mi .mc{font-size:.52em;font-weight:700;margin-top:1px}
+.up{color:#81c784}.dn{color:#ef5350}.nt{color:#ffd740}.wh{color:#fff}
+.mn{background:#0a0604;padding:18px;border:1px solid #1e1610;border-top:none}
+.stl{font-size:.72em;text-transform:uppercase;letter-spacing:2px;font-weight:800;color:#A1887F;margin:20px 0 11px;display:flex;align-items:center;gap:10px;padding-bottom:8px;border-bottom:1px solid #1e1610}
+.tx{font-size:.78em;line-height:1.92;color:#8D6E63;margin-bottom:12px;text-align:justify}.tx strong{color:#d4a574}.tx .hl{color:#A1887F;font-weight:700}.tx .ng{color:#ef5350;font-weight:700}.tx .ps{color:#81c784;font-weight:700}
+.chc{background:#0e0a06;border:1px solid #221a12;border-radius:12px;padding:12px;margin-bottom:11px}.chc h4{font-size:.62em;color:#795548;text-transform:uppercase;letter-spacing:1px;margin-bottom:7px;font-weight:700;text-align:center}.chc canvas{max-height:250px}
+.chg{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:11px}
+.thermo{background:#0e0a06;border-radius:12px;padding:12px;border:1px solid #221a12;margin-bottom:9px}.thermo h4{text-align:center;font-size:.62em;color:#795548;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:11px}.th-bar{height:15px;background:linear-gradient(90deg,#b71c1c 0%,#ef5350 18%,#ff9800 33%,#ffd740 50%,#8bc34a 68%,#4CAF50 82%,#1b5e20 100%);border-radius:10px;position:relative;margin:24px 8px 7px}.th-mk{position:absolute;top:-20px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center}.th-mk .arr{width:3px;height:36px;border-radius:2px;background:#fff;box-shadow:0 0 6px rgba(255,255,255,.3)}.th-mk .lbl{font-size:.54em;font-weight:800;padding:3px 6px;border-radius:5px;white-space:nowrap;margin-top:3px}.th-labels{display:flex;justify-content:space-between;padding:0 8px;font-size:.52em;color:#2a2018;font-weight:700}
+.dg{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:7px;margin-bottom:12px}.dc{background:#0e0a06;border-radius:10px;padding:10px;border:1px solid #221a12;text-align:center}.dc .dl{font-size:.48em;color:#A1887F;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:3px}.dc .dv{font-size:1.05em;font-weight:900;color:#fff}.dc .ds{font-size:.58em;color:#6D4C41;margin-top:3px;line-height:1.4}
+.alt{background:linear-gradient(135deg,#0e0a06,#12100c);border-left:4px solid #795548;border-radius:0 10px 10px 0;padding:12px;margin-bottom:9px}.alt h5{font-size:.66em;color:#A1887F;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}.alt p{font-size:.74em;color:#8D6E63;line-height:1.8}.alt p strong{color:#d4a574}
+.bld{background:linear-gradient(135deg,#100c08,#161210);border:2px solid #795548;border-radius:14px;padding:16px;margin:14px 0;text-align:center;box-shadow:0 0 25px rgba(121,85,72,.04)}.bld h3{font-family:'Playfair Display',serif;font-size:1em;color:#fff;margin-bottom:7px;line-height:1.4}.bld p{font-size:.76em;color:#8D6E63;line-height:1.8}
+.tbl{width:100%;border-collapse:collapse;margin-bottom:11px;font-size:.66em}.tbl th{background:#100c08;color:#A1887F;padding:5px 3px;text-align:center;font-weight:700;text-transform:uppercase;letter-spacing:.5px;font-size:.74em;border-bottom:2px solid #4E342E}.tbl td{padding:5px 3px;text-align:center;border-bottom:1px solid #1e1610;color:#8D6E63}
+.proj{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px}.proj-c{background:#0e0a06;border-radius:10px;padding:11px;border:1px solid #221a12;text-align:center}.proj-c .pl{font-size:.50em;color:#A1887F;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:4px}.proj-c .pv{font-size:1.1em;font-weight:900;color:#fff;margin-bottom:3px}.proj-c .pd{font-size:.62em;color:#6D4C41;line-height:1.5}
+.geo{display:grid;grid-template-columns:1fr;gap:6px;margin-bottom:11px}.geo-i{background:rgba(121,85,72,.03);border:1px solid rgba(121,85,72,.08);border-radius:10px;padding:9px 12px;display:flex;gap:9px;align-items:flex-start}.geo-i .gi{font-size:1.1em;flex-shrink:0}.geo-i .gt{font-size:.66em;font-weight:800;color:#d4a574}.geo-i .gd{font-size:.64em;color:#6D4C41;line-height:1.6;margin-top:2px}
+.sep{text-align:center;margin:16px 0;color:#1e1610;font-size:1em;letter-spacing:10px}
+.cred{background:linear-gradient(135deg,#0e0a06,#12100c);border:2px solid #221a12;border-radius:16px;padding:16px;margin-top:14px}.cred-in{display:flex;gap:12px;align-items:center}.cred-av{width:56px;height:56px;background:linear-gradient(135deg,#795548,#3E2723);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4em;flex-shrink:0}.cred h3{font-size:.86em;font-weight:900;color:#fff}.cred .ti{font-size:.64em;color:#A1887F;font-weight:700;margin-top:2px}.cred .dsc{font-size:.60em;color:#6D4C41;margin-top:4px;line-height:1.5;font-style:italic}.cred .ct{margin-top:7px;display:flex;flex-wrap:wrap;gap:4px}.cred .ct a,.cred .ct span{font-size:.58em;color:#8D6E63;text-decoration:none;display:flex;align-items:center;gap:3px;font-weight:600;padding:3px 6px;background:rgba(121,85,72,.05);border-radius:6px;border:1px solid rgba(121,85,72,.1)}
+.disc{margin-top:9px;padding:9px;background:rgba(255,255,255,.02);border-radius:8px;font-size:.52em;color:#1e1610;line-height:1.6;text-align:center}.ftr{text-align:center;padding:8px;font-size:.54em;color:#0a0604;border-radius:0 0 14px 14px}
+@media(max-width:768px){.tb{flex-direction:column;text-align:center}.hdr h1{font-size:1em}.chg{grid-template-columns:1fr}.cred-in{flex-direction:column;text-align:center}.cred .ct{justify-content:center}.dg{grid-template-columns:1fr 1fr}.proj{grid-template-columns:1fr}}
+@media(max-width:420px){.dg{grid-template-columns:1fr}.hdr h1{font-size:.88em}.hdr .mkt{flex-direction:column;align-items:center}}
+</style>
+</head>
+<body>
+<div class="pg">
+<div class="tb"><div class="lo"><div class="li">🍫</div><div class="lt"><h2>RURAL IN</h2><small>Inteligencia para o Agronegocio</small></div></div><div class="ed"><div class="dt">Terca-feira, 31 de Marco de 2026</div><div class="inf">Radar Agro Cacau · Overview Marco · Cenarios Abril</div></div></div>
+
+<div class="hdr">
+<div class="tag">Radar Agro Cacau · 31/Mar/2026 · Crash Historico + Repique Short Covering</div>
+<h1>Cacau Sobe +3,65% Hoje com Short Covering, Mas Segue -60% no Ano. Safra Africa Recorde, Demanda Destruida, Estoques Max 8 Meses. O Chocolate Nunca Mais Sera o Mesmo</h1>
+<div class="sub">ICE NY Mai 31/3: US$ 3.300/t (+145 pts, +3,65%). ICE London: GBP 2.480/t. Pico historico: US$ 12.906 (dez/24). Queda acumulada: -60,7% em 12 meses. Marco: +8,25% (repique tecnico vs fev). Costa do Marfim mid-crop: 350-400 mil t (recuperacao). Gana: preco ao produtor cortado -30%. C. Marfim: mid-crop cortado -57%. Estoques ICE: 2.357.294 sacas (max 8 meses). Moagem C. Marfim fev: 53 mil t (+1,1% a/a). Barry Callebaut: demanda chocolate -3,4% vol. Lindt: preve queda vendas 2026. Grinding Q1 EU/EUA sai 16/abr. Brasil NE: 75 mil ha novos (mas projetos cancelados). Superavit global confirmado.</div>
+<div class="mkt">
+<div class="mi"><div class="ml">ICE NY Mai</div><div class="mv ps">US$ 3.300</div><div class="mc up">+3,65% hoje</div></div>
+<div class="mi"><div class="ml">ICE London</div><div class="mv wh">GBP 2.480</div><div class="mc dn">-0,28%</div></div>
+<div class="mi"><div class="ml">Pico Dez/24</div><div class="mv ng">US$ 12.906</div><div class="mc dn">-60,7% no ano!</div></div>
+<div class="mi"><div class="ml">Estoques ICE</div><div class="mv ng">2,36 MI sacas</div><div class="mc dn">Max 8 meses</div></div>
+<div class="mi"><div class="ml">Barry Callebaut</div><div class="mv ng">DEMANDA -3,4%</div><div class="mc dn">Destruicao</div></div>
+<div class="mi"><div class="ml">Superavit Global</div><div class="mv ng">CONFIRMADO</div><div class="mc dn">ICCO revisou ↑</div></div>
+</div>
+</div>
+
+<div class="mn">
+
+<h3 class="stl">📋 O Que Aconteceu Hoje — 31/03</h3>
+
+<p class="tx">O cacau <span class="ps">subiu +3,65% hoje</span> em NY (US$ 3.300/t, +145 pts), encerrando marco com <span class="ps">alta de +8,25% no mes</span>. Mas nao se engane: esse movimento e <span class="hl">short covering puro</span> — fundos que estavam vendidos encerrando posicoes no ultimo dia do mes/trimestre. O <strong>fundamento continua esmagadoramente baixista</strong>: safra Africa recorde, estoques max 8 meses, demanda destruida (-3,4% Barry Callebaut), Lindt projeta queda vendas. A queda acumulada de <span class="ng">-60,7% em 12 meses</span> (de US$ 12.906 para US$ 3.300) e historica.</p>
+
+<p class="tx"><strong>O que sustentou o repique?</strong> Alem do short covering trimestral: <span class="ps">Ormuz fechado</span> (frete +40%, impacta logistica cacau Africa → Oriente/Asia), e chuvas em MG que <span class="hl">nao foram tao intensas</span> na C. Marfim na ultima semana (45% da media em algumas regioes). Mas analistas do CocoaIntel e CropGPT classificam: <span class="ng">"repique sem conviccao — puramente tecnico e posicionamento, nao reacao a fundamento novo"</span>.</p>
+
+<div class="alt">
+<h5>📉 A Grande Historia: De US$ 12.906 a US$ 3.100 — O Crash do Seculo</h5>
+<p>Em <strong>dezembro de 2024</strong>, cacau atingiu <span class="ng">US$ 12.906/t</span> — all-time high impulsionado por seca devastadora na Africa, doenca CSSVD, estoques zerados. Em <strong>2025</strong>, a Africa se recuperou: chuvas voltaram, Equador expandiu, demanda caiu (chocolate caro demais). Em <strong>marco 2026</strong>: US$ 3.100 — <span class="ng">queda de -76% do pico</span>. O ciclo inverteu: de escassez extrema para superavit. <span class="hl">O cacau nunca mais sera tao caro</span> no curto prazo.</p>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">📈 Overview Marco — Repique Tecnico Dentro de Bear Market</h3>
+
+<table class="tbl">
+<thead><tr><th>Data</th><th>ICE Mai ($/t)</th><th>Var.</th><th>Fato Chave</th></tr></thead>
+<tbody>
+<tr><td>05/3</td><td>3.055</td><td>-0,16%</td><td>Proximo de min mai/23</td></tr>
+<tr><td style="color:#81c784;font-weight:700">10/3</td><td style="color:#81c784">3.445</td><td style="color:#81c784;font-weight:700">+4,80%</td><td style="color:#81c784">Ormuz! Frete cacau sobe</td></tr>
+<tr><td>12/3</td><td>3.315</td><td style="color:#ef5350">-3,32%</td><td>C. Marfim: 400 mil t contratos</td></tr>
+<tr><td>18/3</td><td>3.260</td><td>—</td><td>Chuva boa Africa = baixa</td></tr>
+<tr><td style="color:#81c784">19/3</td><td style="color:#81c784">3.331</td><td style="color:#81c784">+71 pts</td><td>Short covering</td></tr>
+<tr><td style="color:#ef5350">20/3</td><td style="color:#ef5350">3.255</td><td style="color:#ef5350">-76 pts</td><td style="color:#ef5350">Demanda fraca pesa</td></tr>
+<tr><td>23/3</td><td>3.180</td><td style="color:#ef5350">-2,30%</td><td>Moagem C. Marfim: +1,1%</td></tr>
+<tr><td style="color:#ef5350;font-weight:700">25/3</td><td style="color:#ef5350">3.133</td><td style="color:#ef5350;font-weight:700">-3,15%</td><td style="color:#ef5350">Min 2,5 semanas. Dolar forte</td></tr>
+<tr><td>27/3</td><td>3.165</td><td>+0,03%</td><td>Short covering parcial</td></tr>
+<tr><td>30/3</td><td>3.155</td><td>-0,32%</td><td>Fundamento pesa. Estoques max</td></tr>
+<tr><td style="color:#81c784;font-weight:700">31/3</td><td style="color:#81c784;font-weight:800">3.300</td><td style="color:#81c784;font-weight:700">+3,65%!</td><td style="color:#81c784">SHORT COVERING trimestral</td></tr>
+</tbody>
+</table>
+
+<div class="chg">
+<div class="chc"><h4>ICE Cacau Mai — Marco 2026 (US$/t)</h4><canvas id="ch1"></canvas></div>
+<div class="chc"><h4>Cacau — Crash de 12 Meses (US$/t)</h4><canvas id="ch2"></canvas></div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🔍 Os 7 Fundamentos do Cacau</h3>
+
+<div class="dg">
+<div class="dc" style="border-color:#ef5350"><div class="dl">1. Safra Africa Recorde</div><div class="dv ng">MID-CROP FORTE</div><div class="ds">C. Marfim: 350-400 mil t.<br>Chuvas acima da media.<br>Pod development excelente.</div></div>
+<div class="dc" style="border-color:#ef5350"><div class="dl">2. Estoques ICE Max</div><div class="dv ng">2,36 MI SACAS</div><div class="ds">Maximo 8 meses.<br>Oferta fisica abundante.<br>Pressao nos precos.</div></div>
+<div class="dc" style="border-color:#ef5350"><div class="dl">3. Demanda Destruida</div><div class="dv ng">CHOCOLATE -3,4%</div><div class="ds">Barry Callebaut: queda vol.<br>Lindt: preve baixa 2026.<br>Chocolate caro = menos venda.</div></div>
+<div class="dc" style="border-color:#ef5350"><div class="dl">4. Precos Cortados Africa</div><div class="dv ng">GANA -30% | CM -57%</div><div class="ds">Farmgate desabou.<br>Governos limpam estoques.<br>Sinal de superavit.</div></div>
+<div class="dc" style="border-color:#81c784"><div class="dl">5. Ormuz / Logistica</div><div class="dv ps">FRETE +40%</div><div class="ds">Custo transporte sobe.<br>Suporte ao piso.<br>Se reabrir: cai mais.</div></div>
+<div class="dc" style="border-color:#ffd740"><div class="dl">6. Grinding Q1 (16/abr)</div><div class="dv nt">DADO CHAVE!</div><div class="ds">EU e EUA divulgam 16/abr.<br>Se grinding cair: bearish.<br>Se subir: suporte tecnico.</div></div>
+<div class="dc" style="border-color:#ffd740"><div class="dl">7. Brasil NE Expande</div><div class="dv nt">+75 MIL HA</div><div class="ds">Czarnikow: 5% demanda global.<br>Mas projetos cancelados<br>por preco baixo atual.</div></div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🌡️ Termometros — Fechamento Marco</h3>
+
+<div class="chg">
+<div class="thermo"><h4>Tendencia Cacau — Medio Prazo</h4><div class="th-bar"><div class="th-mk" style="left:22%"><div class="arr"></div><div class="lbl" style="background:#ef5350;color:#fff">BAIXISTA (superavit)</div></div></div><div class="th-labels"><span>Baixista</span><span>Neutro</span><span>Altista</span></div></div>
+<div class="thermo"><h4>Oferta Global (Africa + Equador)</h4><div class="th-bar"><div class="th-mk" style="left:82%"><div class="arr"></div><div class="lbl" style="background:#1b5e20;color:#fff">ABUNDANTE</div></div></div><div class="th-labels"><span>Deficit</span><span>Equilibrio</span><span>Superavit</span></div></div>
+</div>
+<div class="chg">
+<div class="thermo"><h4>Demanda Chocolate</h4><div class="th-bar"><div class="th-mk" style="left:20%"><div class="arr"></div><div class="lbl" style="background:#ef5350;color:#fff">FRACA (-3,4% vol)</div></div></div><div class="th-labels"><span>Destruida</span><span>Normal</span><span>Aquecida</span></div></div>
+<div class="thermo"><h4>Posicao Fundos (Short Covering)</h4><div class="th-bar"><div class="th-mk" style="left:35%"><div class="arr"></div><div class="lbl" style="background:#ff9800;color:#000">VENDIDOS (cobrindo hoje)</div></div></div><div class="th-labels"><span>Net Short</span><span>Neutro</span><span>Net Long</span></div></div>
+</div>
+<div class="chg">
+<div class="thermo"><h4>Volatilidade</h4><div class="th-bar"><div class="th-mk" style="left:70%"><div class="arr"></div><div class="lbl" style="background:#ff9800;color:#000">ALTA (+/-4% dia)</div></div></div><div class="th-labels"><span>Baixa</span><span>Normal</span><span>Extrema</span></div></div>
+<div class="thermo"><h4>Risco Ormuz (Suporte Piso)</h4><div class="th-bar"><div class="th-mk" style="left:68%"><div class="arr"></div><div class="lbl" style="background:#4CAF50;color:#fff">FORTE (frete alto)</div></div></div><div class="th-labels"><span>Fraco</span><span>Moderado</span><span>Forte</span></div></div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🎯 Proximos 2 Dias + Cenarios Abril</h3>
+
+<div class="bld">
+<h3>VIES: BAIXISTA ESTRUTURAL — REPIQUES SAO OPORTUNIDADES DE HEDGE</h3>
+<p>Superavit confirmado. Estoques max. Demanda destruida. Africa entrega mid-crop forte. <span style="color:#ef5350;font-weight:700">US$ 3.000 e o imã gravitacional</span>. Hoje foi short covering trimestral — nao muda fundamento. <strong>Grinding Q1 (16/abr) e o proximo gatilho.</strong> Se moagem cair: cacau pode buscar US$ 2.600-2.800.</p>
+</div>
+
+<div class="proj">
+<div class="proj-c" style="border-color:#ffd740"><div class="pl">Qua-Qui (01-02/4)</div><div class="pv" style="color:#ffd740">3.150 - 3.350</div><div class="pd">Digestao short covering.<br>Devolvem parte da alta?<br>Volatilidade continua.</div></div>
+<div class="proj-c" style="border-color:#ef5350"><div class="pl">Abril (Pre-Grinding 16/4)</div><div class="pv" style="color:#ef5350">2.900 - 3.300</div><div class="pd">Espera dado grinding.<br>Se grinding cai: crash.<br>Mid-crop entra forte.</div></div>
+<div class="proj-c" style="border-color:#ef5350"><div class="pl">Mai-Jul (Mid-Crop Pleno)</div><div class="pv" style="color:#ef5350">2.500 - 3.100</div><div class="pd">Oferta maxima.<br>Demanda fraca.<br>US$ 2.648 (Trading Econ).</div></div>
+<div class="proj-c" style="border-color:#ffd740"><div class="pl">Brasil Cacau (BA/PA)</div><div class="pv" style="color:#ffd740">R$ 18-22 mil/t?</div><div class="pd">Dolar sustenta parcial.<br>Preco NY baixo pressiona.<br>Novos projetos cancelados.</div></div>
+</div>
+
+<div class="chc"><h4>Cenarios ICE Cacau — Abril a Julho (US$/t)</h4><canvas id="ch3"></canvas></div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🌐 Radar Macro e Geopolitico</h3>
+
+<div class="geo">
+<div class="geo-i"><div class="gi">🇨🇮</div><div><div class="gt">C. Marfim: Mid-Crop Forte + Preco Cortado -57%</div><div class="gd">Governo cortou preco ao produtor em 57% para mid-crop. Chuvas acima da media. 350-400 mil t esperadas. 400 mil t em contratos assinados apos retomada. Moagem fev: 53 mil t (+1,1%). Tudo aponta para oferta abundante.</div></div></div>
+<div class="geo-i"><div class="gi">🇬🇭</div><div><div class="gt">Gana: Preco ao Produtor -30%</div><div class="gd">Governo cortou -30% para safra 25/26. Estimula liquidacao de estoques acumulados nos portos. Producao se recupera das perdas de 2023-24. Sinal inequivoco: superavit.</div></div></div>
+<div class="geo-i"><div class="gi">⛽</div><div><div class="gt">Ormuz: Frete Caro = Piso para Cacau</div><div class="gd">Frete maritimo +40%, seguro +60%. Africa → Asia/Europa custa mais. Limita quedas. Mas se Ormuz reabrir (cessar-fogo EUA-Ira): esse piso desaparece e cacau pode testar US$ 2.500.</div></div></div>
+<div class="geo-i"><div class="gi">🍫</div><div><div class="gt">Grinding Q1 — 16 de Abril — O Dado do Mes</div><div class="gd">Dados de moagem Europa e America do Norte saem 16/abr. Se moagem cair (chocolate caro, menos venda): <strong>bearish forte</strong>. Se estabilizar: suporte tecnico. Barry Callebaut (-3,4% vol) e Lindt ja sinalizaram fraqueza. Mercado espera dado para definir direcao.</div></div></div>
+<div class="geo-i"><div class="gi">🇧🇷</div><div><div class="gt">Brasil NE: 75 mil ha Novos Planejados (Czarnikow)</div><div class="gd">Bahia, Para, expansao planejada. Mas com preco a US$ 3.100 (vs US$ 12.000 ha 1 ano): <strong>muitos projetos cancelados</strong>. Produtor de Ilheus (BA): "precos atuais nao cobrem custos de implantacao". Expansao pode desacelerar — o que seria bullish no longo prazo.</div></div></div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">💡 Estrategia Rural IN — Cacauicultor</h3>
+
+<div class="alt"><h5>🍫 Produtor com Cacau Pronto?</h5><p>Preco NY US$ 3.300/t (hoje +3,65%). <span class="ng">Nao confunda repique tecnico com reversao.</span> Fundamento e baixista. <span class="hl">Estrategia: venda nos repiques como o de hoje.</span> Se NY subir acima de US$ 3.400: venda mais. <strong>US$ 3.000-3.200 e o range provavel nas proximas semanas.</strong></p></div>
+<div class="alt"><h5>🌱 Expansao de Area? Cuidado!</h5><p>US$ 3.100/t <span class="ng">nao cobre custos de implantacao de novas areas</span> (Czarnikow). Se planejava expandir: <span class="hl">recalcule a viabilidade a precos de US$ 2.500-3.000</span>. So expanda se tiver contrato firme de venda a precos que cubram custo. O ciclo virou — nao plante na euforia de 2024.</p></div>
+<div class="alt"><h5>📅 Data-Chave: 16/Abril — Grinding Q1</h5><p>Dados de moagem EU e EUA definem direcao. <span class="hl">Ate 16/abr: posicione-se conservador.</span> Se grinding cair: preco vai para US$ 2.600-2.800. Se grinding surpreender positivo: suporte em US$ 3.000-3.200. <strong>Esse e o dado mais importante do mes.</strong></p></div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">📊 Graficos Complementares</h3>
+
+<div class="chg">
+<div class="chc"><h4>Radar Fundamentalista — Cacau 31/03</h4><canvas id="ch4"></canvas></div>
+<div class="chc"><h4>Estoques ICE Cacau — Tendencia (mil sacas)</h4><canvas id="ch5"></canvas></div>
+</div>
+
+<div class="cred"><div class="cred-in"><div class="cred-av">👨‍💼</div><div><h3>Dr. Sidney Souza</h3><div class="ti">Economista Agricola · Estrategista Economico do Produtor</div><div class="dsc">Especialista em economia da fazenda e gestao de risco no agro<br>Transformamos dados da fazenda em decisoes economicas<br>Ajudamos produtores a entender se o mercado sustenta seu negocio</div><div class="ct"><a href="mailto:sidneyagro@gmail.com">📧 sidneyagro@gmail.com</a><a href="https://wa.me/5564992266886">📱 (64) 9 9226-6886</a><span>📸 @ruralin.ai</span></div></div></div><div class="disc">Informativo analitico e educacional. Nao constitui recomendacao de compra ou venda. Dados: ICE Futures US/Europe, ICCO, Trading Economics, Barchart, Investing.com, CropGPT, CocoaIntel, Czarnikow, StoneX, Barry Callebaut, Lindt, Gepex/C. Marfim, CNN Brasil, Globo Rural, Noticias Agricolas, FT Markets, Reuters, Mercado do Cacau, BusinessAM Live. Analise: Dr. Sidney Souza — Rural IN.</div></div>
+</div>
+<div class="ftr">RURAL IN 2026 · Inteligencia para o Agronegocio · Rio Verde/GO</div>
+</div>
+
+<script>
+Chart.defaults.color='#2a2018';Chart.defaults.font.family='Inter';Chart.defaults.font.size=11;
+var df={family:'Inter',weight:'600'};
+var tt={backgroundColor:'#0e0a06',titleColor:'#A1887F',bodyColor:'#d4a574',borderColor:'#4E342E',borderWidth:1,padding:12,cornerRadius:8};
+
+new Chart(document.getElementById('ch1').getContext('2d'),{type:'line',data:{labels:['05','10','12','18','20','23','25','27','30','31'],datasets:[{label:'ICE Mai ($/t)',data:[3055,3445,3315,3260,3255,3180,3133,3165,3155,3300],borderColor:'#A1887F',backgroundColor:'rgba(161,136,127,0.06)',borderWidth:2.5,fill:true,tension:0.3,pointRadius:4,pointBackgroundColor:function(c){var i=c.dataIndex;return i===1?'#81c784':i===9?'#ffd740':i===6?'#ef5350':'#A1887F';}}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,annotation:{annotations:{or:{type:'label',xValue:1,yValue:3500,content:['Ormuz!','+4,8%'],font:{size:7,weight:'bold'},color:'#81c784'},mn:{type:'label',xValue:6,yValue:3080,content:['Min 2,5 sem','$3.133'],font:{size:7,weight:'bold'},color:'#ef5350'},sc:{type:'label',xValue:9,yValue:3360,content:['Short Cover','+3,65%'],font:{size:7,weight:'bold'},color:'#ffd740'}}}},scales:{y:{min:3000,max:3550,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'$'+v;},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}});
+
+new Chart(document.getElementById('ch2').getContext('2d'),{type:'line',data:{labels:['Dez/24','Fev/25','Mai/25','Ago/25','Nov/25','Fev/26','Mar/26'],datasets:[{label:'ICE Cacau ($/t)',data:[12906,9500,7000,5200,4100,3020,3300],borderColor:'#ef5350',backgroundColor:'rgba(239,83,80,0.06)',borderWidth:2.5,fill:true,tension:0.3,pointRadius:4,pointBackgroundColor:function(c){return c.dataIndex===0?'#ef5350':'#A1887F';}}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,annotation:{annotations:{pk:{type:'label',xValue:0,yValue:13500,content:['ALL-TIME HIGH','$12.906!'],font:{size:8,weight:'bold'},color:'#ef5350'},cr:{type:'label',xValue:6,yValue:2500,content:['-74%','Superavit'],font:{size:8,weight:'bold'},color:'#ef5350'}}}},scales:{y:{min:2000,max:14000,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'$'+v/1000+'k';},font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+
+new Chart(document.getElementById('ch3').getContext('2d'),{type:'line',data:{labels:['31/3','1a Abr','Pre-Grind','16/4 Grind','Mai','Jun','Jul'],datasets:[{label:'Otimista (grinding ok + Ormuz)',data:[3300,3280,3250,3350,3300,3200,3100],borderColor:'#81c784',borderWidth:2,tension:0.3,pointRadius:4,fill:false,pointBackgroundColor:'#81c784'},{label:'Base',data:[3300,3200,3150,3050,3000,2900,2850],borderColor:'#ffd740',borderWidth:2.5,tension:0.3,pointRadius:4,fill:false,pointBackgroundColor:'#ffd740'},{label:'Pessimista (grinding cai + Ormuz abre)',data:[3300,3150,3050,2800,2650,2500,2400],borderColor:'#ef5350',borderWidth:2,tension:0.3,pointRadius:4,fill:false,borderDash:[5,3],pointBackgroundColor:'#ef5350'}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt,annotation:{annotations:{g:{type:'label',xValue:3,yValue:3450,content:['GRINDING Q1','16/ABR'],font:{size:8,weight:'bold'},color:'#ffd740'}}}},scales:{y:{min:2300,max:3500,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'$'+v;},font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+
+new Chart(document.getElementById('ch4').getContext('2d'),{type:'radar',data:{labels:['Safra Africa','Estoques ICE','Demanda Destruida','Preco Cortado','Equador Expande','Ormuz/Frete'],datasets:[{label:'Baixista',data:[90,85,88,82,70,15],backgroundColor:'rgba(239,83,80,0.1)',borderColor:'#ef5350',borderWidth:2.5,pointBackgroundColor:'#ef5350',pointRadius:5},{label:'Altista',data:[10,15,12,18,30,75],backgroundColor:'rgba(129,199,132,0.06)',borderColor:'#81c784',borderWidth:1.5,pointBackgroundColor:'#81c784',pointRadius:3,borderDash:[4,2]}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},scales:{r:{min:0,max:100,ticks:{display:false,stepSize:20},grid:{color:'rgba(255,255,255,0.06)'},pointLabels:{font:{family:'Inter',weight:'600',size:7},color:'#795548'}}}}});
+
+new Chart(document.getElementById('ch5').getContext('2d'),{type:'bar',data:{labels:['Out/25','Nov/25','Dez/25','Jan/26','Fev/26','Mar/26'],datasets:[{label:'Estoques ICE (mil sacas)',data:[1650,1780,1900,2050,2200,2357],backgroundColor:function(c){return c.dataIndex>=4?'rgba(239,83,80,0.4)':'rgba(161,136,127,0.25)';},borderColor:function(c){return c.dataIndex>=4?'#ef5350':'#A1887F';},borderWidth:2,borderRadius:5}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,annotation:{annotations:{m:{type:'label',xValue:5,yValue:2480,content:['MAX 8 MESES!'],font:{size:8,weight:'bold'},color:'#ef5350'}}}},scales:{y:{min:1500,max:2600,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return v/1000+'k';},font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+</script>
+</body>
+</html>

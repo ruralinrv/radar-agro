@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radar Agro Algodão — 31/03/2026 | Rural IN</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:#060408;color:#c0b0d0;min-height:100vh}.pg{max-width:960px;margin:0 auto;padding:10px}.tb{background:linear-gradient(90deg,#0c0810,#100c14,#0c0810);padding:12px 20px;border-radius:14px 14px 0 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #201830;flex-wrap:wrap;gap:8px}.tb .lo{display:flex;align-items:center;gap:12px}.tb .li{width:54px;height:54px;background:linear-gradient(135deg,#AB47BC,#6A1B9A);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.7em;box-shadow:0 4px 25px rgba(171,71,188,.2)}.tb .lt h2{font-size:1.05em;font-weight:900;color:#fff;letter-spacing:1.5px}.tb .lt small{font-size:.62em;color:#AB47BC;font-weight:600;display:block}.tb .ed{text-align:right}.tb .ed .dt{font-size:.86em;font-weight:800;color:#AB47BC}.tb .ed .inf{font-size:.6em;color:#7B1FA2;font-weight:600}
+.hdr{background:linear-gradient(135deg,#080610,#0a080e 50%,#060408);padding:34px 22px 28px;text-align:center;border-bottom:3px solid #AB47BC;position:relative;overflow:hidden}.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(171,71,188,.04) 0%,transparent 70%)}.hdr .tag{display:inline-block;background:linear-gradient(135deg,#AB47BC,#6A1B9A);color:#fff;font-size:.56em;font-weight:800;letter-spacing:3px;padding:4px 14px;border-radius:20px;text-transform:uppercase;margin-bottom:10px;z-index:1;position:relative}.hdr h1{font-family:'Playfair Display',serif;font-size:1.18em;font-weight:900;color:#fff;z-index:1;position:relative;line-height:1.3;max-width:840px;margin:0 auto}.hdr .sub{font-size:.73em;color:#6a4878;margin-top:10px;font-weight:500;z-index:1;position:relative;line-height:1.6}.hdr .mkt{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:14px;z-index:1;position:relative}.hdr .mkt .mi{background:rgba(171,71,188,.04);border:1px solid rgba(171,71,188,.12);border-radius:10px;padding:6px 11px;text-align:center;min-width:100px}.hdr .mkt .mi .ml{font-size:.48em;color:#7B1FA2;font-weight:700;text-transform:uppercase;letter-spacing:1px}.hdr .mkt .mi .mv{font-size:.95em;font-weight:900;margin-top:2px}.hdr .mkt .mi .mc{font-size:.52em;font-weight:700;margin-top:1px}
+.up{color:#81c784}.dn{color:#ef5350}.nt{color:#ffd740}.wh{color:#fff}.mn{background:#060408;padding:18px;border:1px solid #120e18;border-top:none}.stl{font-size:.72em;text-transform:uppercase;letter-spacing:2px;font-weight:800;color:#AB47BC;margin:20px 0 11px;display:flex;align-items:center;gap:10px;padding-bottom:8px;border-bottom:1px solid #120e18}.tx{font-size:.78em;line-height:1.92;color:#7a5888;margin-bottom:12px;text-align:justify}.tx strong{color:#c0b0d0}.tx .hl{color:#AB47BC;font-weight:700}.tx .ng{color:#ef5350;font-weight:700}.tx .ps{color:#81c784;font-weight:700}
+.chc{background:#0a0610;border:1px solid #1a1228;border-radius:12px;padding:12px;margin-bottom:11px}.chc h4{font-size:.62em;color:#6a4878;text-transform:uppercase;letter-spacing:1px;margin-bottom:7px;font-weight:700;text-align:center}.chc canvas{max-height:250px}.chg{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:11px}
+.thermo{background:#0a0610;border-radius:12px;padding:12px;border:1px solid #1a1228;margin-bottom:9px}.thermo h4{text-align:center;font-size:.62em;color:#6a4878;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:11px}.th-bar{height:15px;background:linear-gradient(90deg,#b71c1c 0%,#ef5350 18%,#ff9800 33%,#ffd740 50%,#8bc34a 68%,#4CAF50 82%,#1b5e20 100%);border-radius:10px;position:relative;margin:24px 8px 7px}.th-mk{position:absolute;top:-20px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center}.th-mk .arr{width:3px;height:36px;border-radius:2px;background:#fff;box-shadow:0 0 6px rgba(255,255,255,.3)}.th-mk .lbl{font-size:.54em;font-weight:800;padding:3px 6px;border-radius:5px;white-space:nowrap;margin-top:3px}.th-labels{display:flex;justify-content:space-between;padding:0 8px;font-size:.52em;color:#1a1228;font-weight:700}
+.dg{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:7px;margin-bottom:12px}.dc{background:#0a0610;border-radius:10px;padding:10px;border:1px solid #1a1228;text-align:center}.dc .dl{font-size:.48em;color:#AB47BC;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:3px}.dc .dv{font-size:1.05em;font-weight:900;color:#fff}.dc .ds{font-size:.58em;color:#5a3868;margin-top:3px;line-height:1.4}
+.alt{background:linear-gradient(135deg,#0a0610,#0e0a14);border-left:4px solid #AB47BC;border-radius:0 10px 10px 0;padding:12px;margin-bottom:9px}.alt h5{font-size:.66em;color:#AB47BC;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}.alt p{font-size:.74em;color:#7a5888;line-height:1.8}.alt p strong{color:#c0b0d0}
+.bld{background:linear-gradient(135deg,#0e0a14,#141018);border:2px solid #AB47BC;border-radius:14px;padding:16px;margin:14px 0;text-align:center;box-shadow:0 0 25px rgba(171,71,188,.03)}.bld h3{font-family:'Playfair Display',serif;font-size:1em;color:#fff;margin-bottom:7px;line-height:1.4}.bld p{font-size:.76em;color:#7a5888;line-height:1.8}
+.tbl{width:100%;border-collapse:collapse;margin-bottom:11px;font-size:.66em}.tbl th{background:#0e0a14;color:#AB47BC;padding:5px 3px;text-align:center;font-weight:700;text-transform:uppercase;letter-spacing:.5px;font-size:.74em;border-bottom:2px solid #201830}.tbl td{padding:5px 3px;text-align:center;border-bottom:1px solid #120e18;color:#7a5888}
+.proj{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px}.proj-c{background:#0a0610;border-radius:10px;padding:11px;border:1px solid #1a1228;text-align:center}.proj-c .pl{font-size:.50em;color:#AB47BC;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:4px}.proj-c .pv{font-size:1.1em;font-weight:900;color:#fff;margin-bottom:3px}.proj-c .pd{font-size:.62em;color:#5a3868;line-height:1.5}
+.geo{display:grid;grid-template-columns:1fr;gap:6px;margin-bottom:11px}.geo-i{background:rgba(171,71,188,.02);border:1px solid rgba(171,71,188,.06);border-radius:10px;padding:9px 12px;display:flex;gap:9px;align-items:flex-start}.geo-i .gi{font-size:1.1em;flex-shrink:0}.geo-i .gt{font-size:.66em;font-weight:800;color:#c0b0d0}.geo-i .gd{font-size:.64em;color:#5a3868;line-height:1.6;margin-top:2px}
+.sep{text-align:center;margin:16px 0;color:#120e18;font-size:1em;letter-spacing:10px}
+.cred{background:linear-gradient(135deg,#0a0610,#0e0c12);border:2px solid #1a1228;border-radius:16px;padding:16px;margin-top:14px}.cred-in{display:flex;gap:12px;align-items:center}.cred-av{width:56px;height:56px;background:linear-gradient(135deg,#AB47BC,#6A1B9A);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4em;flex-shrink:0}.cred h3{font-size:.86em;font-weight:900;color:#fff}.cred .ti{font-size:.64em;color:#AB47BC;font-weight:700;margin-top:2px}.cred .dsc{font-size:.60em;color:#5a3868;margin-top:4px;line-height:1.5;font-style:italic}.cred .ct{margin-top:7px;display:flex;flex-wrap:wrap;gap:4px}.cred .ct a,.cred .ct span{font-size:.58em;color:#7a5888;text-decoration:none;display:flex;align-items:center;gap:3px;font-weight:600;padding:3px 6px;background:rgba(171,71,188,.04);border-radius:6px;border:1px solid rgba(171,71,188,.08)}
+.disc{margin-top:9px;padding:9px;background:rgba(255,255,255,.02);border-radius:8px;font-size:.52em;color:#120e18;line-height:1.6;text-align:center}.ftr{text-align:center;padding:8px;font-size:.54em;color:#060408;border-radius:0 0 14px 14px}
+@media(max-width:768px){.tb{flex-direction:column;text-align:center}.hdr h1{font-size:1em}.chg{grid-template-columns:1fr}.cred-in{flex-direction:column;text-align:center}.cred .ct{justify-content:center}.dg{grid-template-columns:1fr 1fr}.proj{grid-template-columns:1fr}}
+@media(max-width:420px){.dg{grid-template-columns:1fr}.hdr h1{font-size:.88em}.hdr .mkt{flex-direction:column;align-items:center}}
+</style>
+</head>
+<body>
+<div class="pg">
+<div class="tb"><div class="lo"><div class="li">🏳️</div><div class="lt"><h2>RURAL IN</h2><small>Inteligencia para o Agronegocio</small></div></div><div class="ed"><div class="dt">Terca-feira, 31 de Marco de 2026</div><div class="inf">Radar Agro Algodao · USDA Plantings · Overview Marco</div></div></div>
+
+<div class="hdr">
+<div class="tag">Radar Agro Algodao · 31/Mar/2026 · USDA + Overview Marco + Cenarios Abril</div>
+<h1>Algodao Dispara +10,7% no CEPEA em Marco — Maior Alta Mensal em 2 Anos! ICE Sobe +8,5%. USDA: Area EUA Cai -3,2%. Petroleo Puxa Poliester Caro e Pluma Vence. Paridade de Exportacao Explode</h1>
+<div class="sub">CEPEA 30/3: 389,98 cR$/lb (+10,70% mes!). ICE Mai: 70,00 cts/lb (-0,19 pts hoje, +8,5% mes). ICE Jul: 72,13 cts/lb. Cotlook A: 80,20 cts. Pluma MT: R$ 116-119/@. Pluma BA: R$ 119/@. USDA Plantings: algodao EUA ~9,4 mi acres (forum fev) — area em queda -3,2% vs NCC. Producao EUA 13,9 mi fardos (estavel). Producao BR +800 mil fardos (USDA elevou). Estoques globais +1,3 mi fardos. Petroleo $100+ → poliester caro → algodao ganha competitividade. Vendas export EUA: 202 mil fardos/sem (+3%). India pode aumentar area +20% (El Nino). Fretes caros (Ormuz) pesam logistica.</div>
+<div class="mkt">
+<div class="mi"><div class="ml">CEPEA 30/3</div><div class="mv ps">389,98 cR$/lb</div><div class="mc up">+10,7% mes!</div></div>
+<div class="mi"><div class="ml">ICE Mai/26</div><div class="mv wh">70,00 cts/lb</div><div class="mc dn">-0,19 pts hoje</div></div>
+<div class="mi"><div class="ml">ICE Jul/26</div><div class="mv ps">72,13 cts/lb</div><div class="mc up">+8,5% mes</div></div>
+<div class="mi"><div class="ml">Cotlook A</div><div class="mv ps">80,20 cts</div><div class="mc up">+0,10 pts</div></div>
+<div class="mi"><div class="ml">Pluma MT Rond.</div><div class="mv ps">R$ 118/@</div><div class="mc up">+2,5% semana</div></div>
+<div class="mi"><div class="ml">Area EUA 26/27</div><div class="mv nt">~9,4 mi ac</div><div class="mc dn">-3,2% NCC</div></div>
+</div>
+</div>
+
+<div class="mn">
+
+<h3 class="stl">📋 Fechamento Hoje — 31/03 + USDA</h3>
+
+<p class="tx">A ICE <span class="hl">fechou praticamente estavel</span> hoje (Mai 70,00 cts | -0,19 pts) apos <span class="ps">rally de +8,5% no mes</span>. O USDA Plantings nao inclui algodao diretamente no relatorio de hoje (o dado principal e milho/soja), mas o <span class="hl">impacto indireto e relevante</span>: com milho e soja disputando area, algodao perdeu space nos EUA — NCC ja estimava area de <span class="ng">9,0 mi acres (-3,2%)</span>. USDA Forum estimou 9,4 mi acres. De qualquer forma: <span class="ps">menos algodao nos EUA = menos oferta global = suporte ao preco</span>.</p>
+
+<p class="tx">No Brasil, o CEPEA <span class="ps">DISPAROU +10,7% em marco</span> — de 352,28 para 389,98 cR$/lb. E a <strong>maior alta mensal em pelo menos 2 anos</strong>. Drivers: <span class="hl">paridade de exportacao subiu forte</span> (Cotlook A + dolar + premio), <span class="ps">tradings pagando mais caro pela pluma</span>, vendedores firmes, e <span class="ps">petroleo $100+ tornou o poliester mais caro</span> — algodao ganha competitividade como fibra natural.</p>
+
+<div class="alt">
+<h5>⛽ O Elo Invisivel: Petroleo → Poliester → Algodao</h5>
+<p>Quando petroleo sobe ($100+ Brent), o <strong>poliester encarece</strong> (derivado do petroleo). Industria textil migra para <span class="ps">algodao como alternativa competitiva</span>. Demanda por pluma sobe. E isso que aconteceu em marco: Brent acima de $100 por semanas → poliester +15% no ano → algodao ICE de 64 para 70 cts. <span class="hl">Enquanto Ormuz estiver fechado, algodao tem vento a favor.</span></p>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">📈 Overview Marco — Melhor Mes do Ano</h3>
+
+<table class="tbl">
+<thead><tr><th>Data</th><th>CEPEA (cR$/lb)</th><th>Var.</th><th>ICE Jul (cts/lb)</th><th>Cotlook A</th><th>Driver</th></tr></thead>
+<tbody>
+<tr><td>10/3</td><td>353,10</td><td style="color:#ef5350">-0,67%</td><td>66,99</td><td>78,50</td><td>WASDE neutro</td></tr>
+<tr><td>12/3</td><td style="color:#81c784">361,32</td><td style="color:#81c784;font-weight:700">+2,41%</td><td>67,50</td><td>78,80</td><td style="color:#81c784">Petroleo dispara / Ormuz</td></tr>
+<tr><td>17/3</td><td>366,09</td><td>+0,30%</td><td>68,20</td><td>79,10</td><td>Poliester sobe / export EUA</td></tr>
+<tr><td>20/3</td><td>374,45</td><td style="color:#81c784">+0,72%</td><td>69,50</td><td>79,60</td><td style="color:#81c784">Paridade export forte</td></tr>
+<tr><td>25/3</td><td>371,58</td><td>-0,01%</td><td>68,18</td><td>79,80</td><td>Cobertura shorts ICE</td></tr>
+<tr><td style="color:#81c784">27/3</td><td style="color:#81c784;font-weight:700">380,77</td><td style="color:#81c784;font-weight:700">+2,41%</td><td>70,33</td><td>80,00</td><td style="color:#81c784">Rally paridade + tradings</td></tr>
+<tr><td style="color:#AB47BC;font-weight:700">30/3</td><td style="color:#81c784;font-weight:800">389,98</td><td style="color:#81c784;font-weight:700">+2,42%</td><td>70,06</td><td>80,20</td><td style="color:#81c784">Maximo do mes e do ano!</td></tr>
+<tr><td style="color:#AB47BC">31/3</td><td>—</td><td>—</td><td style="color:#ef5350">70,00 (-0,19)</td><td>80,20</td><td>Estavel pos-USDA</td></tr>
+</tbody>
+</table>
+
+<div class="chg">
+<div class="chc"><h4>CEPEA Algodao — Marco Inteiro (cR$/lb)</h4><canvas id="ch1"></canvas></div>
+<div class="chc"><h4>ICE NY Algodao Jul/26 — Marco (cts/lb)</h4><canvas id="ch2"></canvas></div>
+</div>
+
+<div class="alt">
+<h5>📊 Overview Marco em 4 Frases</h5>
+<p><strong>1.</strong> CEPEA <span class="ps">+10,7% no mes</span> — de 352 para 390 cR$/lb. Melhor marco em anos. <strong>2.</strong> ICE <span class="ps">+8,5%</span> — de 64,5 para 70+ cts/lb. Maximo desde nov/24. <strong>3.</strong> Drivers: petroleo/poliester, paridade export, area EUA caindo, Cotlook A 80+. <strong>4.</strong> USDA elevou producao BR em +800 mil fardos — mas demanda absorve. StoneX elevou perspectiva de exportacao BR.</p>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🔍 Os 7 Fundamentos do Algodao</h3>
+
+<div class="dg">
+<div class="dc" style="border-color:#81c784"><div class="dl">1. Petroleo → Poliester</div><div class="dv ps">BRENT $100+</div><div class="ds">Poliester +15% ano.<br>Algodao ganha share.<br>Textil migra pra pluma.</div></div>
+<div class="dc" style="border-color:#81c784"><div class="dl">2. Area EUA -3,2%</div><div class="dv ps">~9 MI ACRES</div><div class="ds">Custos altos. Margens neg.<br>Produtor prefere soja.<br>Menos oferta futura.</div></div>
+<div class="dc" style="border-color:#81c784"><div class="dl">3. Paridade Export BR</div><div class="dv ps">DISPAROU</div><div class="ds">Cotlook A 80,20.<br>Tradings pagam mais.<br>Vendedor firme.</div></div>
+<div class="dc" style="border-color:#81c784"><div class="dl">4. Vendas EUA Firmes</div><div class="dv ps">202K fardos/sem</div><div class="ds">Acima semana anterior.<br>Demanda internacional ok.<br>Sustenta ICE.</div></div>
+<div class="dc" style="border-color:#ef5350"><div class="dl">5. Estoques Globais</div><div class="dv ng">+1,3 MI FARDOS</div><div class="ds">India e BR elevaram.<br>Fator limitante alta.<br>Mas consumo > producao.</div></div>
+<div class="dc" style="border-color:#ffd740"><div class="dl">6. India +20% Area?</div><div class="dv nt">EL NINO</div><div class="ds">Preco domestico bom.<br>Monsoon deficit = risco.<br>Se plantar mais: oferta.</div></div>
+<div class="dc" style="border-color:#ffd740"><div class="dl">7. Frete/Ormuz</div><div class="dv nt">CARO</div><div class="ds">Logistica encarece.<br>Frete maritimo +40%.<br>Pressiona entrega.</div></div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🌡️ Termometros</h3>
+
+<div class="chg">
+<div class="thermo"><h4>CEPEA — Tendencia Curto Prazo</h4><div class="th-bar"><div class="th-mk" style="left:78%"><div class="arr"></div><div class="lbl" style="background:#4CAF50;color:#fff">FORTE ALTISTA</div></div></div><div class="th-labels"><span>Baixista</span><span>Neutro</span><span>Altista</span></div></div>
+<div class="thermo"><h4>ICE NY — Tendencia</h4><div class="th-bar"><div class="th-mk" style="left:65%"><div class="arr"></div><div class="lbl" style="background:#8bc34a;color:#000">ALTISTA MODERADO</div></div></div><div class="th-labels"><span>Baixista</span><span>Neutro</span><span>Altista</span></div></div>
+</div>
+<div class="chg">
+<div class="thermo"><h4>Petroleo → Poliester (Suporte)</h4><div class="th-bar"><div class="th-mk" style="left:85%"><div class="arr"></div><div class="lbl" style="background:#1b5e20;color:#fff">MAXIMO (Ormuz)</div></div></div><div class="th-labels"><span>Fraco</span><span>Moderado</span><span>Forte</span></div></div>
+<div class="thermo"><h4>Oferta Global</h4><div class="th-bar"><div class="th-mk" style="left:55%"><div class="arr"></div><div class="lbl" style="background:#ffd740;color:#000">ADEQUADA (BR eleva)</div></div></div><div class="th-labels"><span>Escassa</span><span>Normal</span><span>Abundante</span></div></div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🎯 Proximos Dias + Cenarios Abril</h3>
+
+<div class="bld">
+<h3>VIES: ALTISTA — PETROLEO + PARIDADE + AREA EUA CAINDO</h3>
+<p>CEPEA fez +10,7% em marco. Pode haver <strong>realizacao de lucros</strong> pontual no inicio de abril. Mas fundamentos seguem fortes: petroleo $100+, poliester caro, area EUA caindo, paridade de export sustenta. <span style="color:#81c784;font-weight:700">Viés altista enquanto Brent estiver acima de $95.</span></p>
+</div>
+
+<div class="proj">
+<div class="proj-c" style="border-color:#81c784"><div class="pl">Qua-Qui (01-02/4)</div><div class="pv" style="color:#ffd740">ICE 69 - 71 cts</div><div class="pd">Digestao USDA.<br>Realizacao pontual possivel.<br>CEPEA firme 385-392.</div></div>
+<div class="proj-c" style="border-color:#81c784"><div class="pl">Abril ICE</div><div class="pv" style="color:#81c784">68 - 74 cts/lb</div><div class="pd">Weather plantio EUA.<br>Petroleo define piso.<br>Se Ormuz reabrir: cai.</div></div>
+<div class="proj-c" style="border-color:#81c784"><div class="pl">Abril CEPEA</div><div class="pv" style="color:#81c784">380 - 400 cR$/lb</div><div class="pd">Paridade sustenta.<br>Colheita BR mai-jul.<br>Dolar + Cotlook A chave.</div></div>
+<div class="proj-c" style="border-color:#ffd740"><div class="pl">Mai-Jul (Colheita BR)</div><div class="pv" style="color:#ffd740">370 - 410 cR$/lb</div><div class="pd">Safra BR recorde entra.<br>Pressao sazonal.<br>Se demanda absorve: segura.</div></div>
+</div>
+
+<div class="chc"><h4>Cenarios ICE Algodao Jul — Abril a Junho (cts/lb)</h4><canvas id="ch3"></canvas></div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🌐 Radar Macro e Geopolitico</h3>
+
+<div class="geo">
+<div class="geo-i"><div class="gi">⛽</div><div><div class="gt">Petroleo $100+ → Poliester Caro → Algodao Vence</div><div class="gd">Enquanto Brent estiver acima de $95, poliester fica caro. Industria textil prefere algodao. E o MAIOR driver do rally de marco. Se Ormuz reabrir e petroleo cair: poliester barateia e algodao perde competitividade. Monitorar negociacoes EUA-Ira.</div></div></div>
+<div class="geo-i"><div class="gi">🇺🇸</div><div><div class="gt">Area EUA Caindo: -3,2% (NCC) / 9,4 mi ac (USDA Forum)</div><div class="gd">Produtor americano com margem negativa. Custos altos + precos baixos vs soja/milho. Area encolhe pelo 2o ano consecutivo. Producao EUA ~12,7-13,9 mi fardos. Menos oferta futura = suporte. Dado final de plantio sai no USDA de junho.</div></div></div>
+<div class="geo-i"><div class="gi">🇧🇷</div><div><div class="gt">Brasil: USDA Elevou Producao +800 mil Fardos</div><div class="gd">Safra BR 25/26 maior. StoneX elevou export BR tambem. Colheita mai-jul. Pluma MT R$ 116-119/@, BA R$ 119/@. Vendedor firme — paridade export compensa. Risco: se safra for MUITO grande, pressao sazonal em jun-jul.</div></div></div>
+<div class="geo-i"><div class="gi">🇮🇳</div><div><div class="gt">India: Area Pode Subir +20% (El Nino)</div><div class="gd">Preco domestico acima do MSP. Se El Nino confirmar: monsoon deficitaria mas area sobe (produtor responde a preco). Mais area = mais oferta 26/27. Risco baixista medio prazo. Mas producao depende de chuva — incerteza alta.</div></div></div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">💡 Estrategia Rural IN</h3>
+
+<div class="alt"><h5>🏳️ Produtor com Pluma / Colhendo em Mai-Jul</h5><p>CEPEA 390 cR$/lb e <span class="ps">maximo do ano</span>. Paridade de export forte. <span class="hl">Estrategia: trave 40-50% da safra AGORA na paridade de exportacao</span> — Cotlook A 80,20 + dolar R$ 5,24 = preco excelente. Segure 30% para colheita (se demanda global seguir, precos se mantem). Segure 20% especulativo para ver petroleo e Ormuz.</p></div>
+<div class="alt"><h5>⚠️ Risco de Realizacao</h5><p>Apos +10,7% em um mes, <span class="ng">realizacao de lucros e natural</span>. ICE pode corrigir para 67-68 cts se petroleo cair ou cessar-fogo Ira acontecer. CEPEA pode recuar para 375-380. <span class="hl">Por isso: trave parte agora e proteja margem</span>. Nao espere o topo — 390 ja e topo historico recente.</p></div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">📊 Graficos Finais</h3>
+
+<div class="chg">
+<div class="chc"><h4>Radar Fundamentalista — Algodao 31/03</h4><canvas id="ch4"></canvas></div>
+<div class="chc"><h4>CEPEA vs ICE — Correlacao Marco</h4><canvas id="ch5"></canvas></div>
+</div>
+
+<div class="cred"><div class="cred-in"><div class="cred-av">👨‍💼</div><div><h3>Dr. Sidney Souza</h3><div class="ti">Economista Agricola · Estrategista Economico do Produtor</div><div class="dsc">Especialista em economia da fazenda e gestao de risco no agro<br>Transformamos dados da fazenda em decisoes economicas<br>Ajudamos produtores a entender se o mercado sustenta seu negocio</div><div class="ct"><a href="mailto:sidneyagro@gmail.com">📧 sidneyagro@gmail.com</a><a href="https://wa.me/5564992266886">📱 (64) 9 9226-6886</a><span>📸 @ruralin.ai</span></div></div></div><div class="disc">Informativo analitico e educacional. Nao constitui recomendacao de compra ou venda. Dados: CEPEA/Esalq-USP, ICE Futures, USDA/NASS/ERS, Cotlook, StoneX, Safras&Mercado, Abrapa, NCC, IMEA, AIBA, Noticias Agricolas, Trading Economics, Investing.com, Agro.MT, Cotton Farming, CottonGins, Ainvest, Hindu Business Line, Southeast AgNet. Analise: Dr. Sidney Souza — Rural IN.</div></div>
+</div>
+<div class="ftr">RURAL IN 2026 · Inteligencia para o Agronegocio · Rio Verde/GO</div>
+</div>
+
+<script>
+Chart.defaults.color='#1a1228';Chart.defaults.font.family='Inter';Chart.defaults.font.size=11;var df={family:'Inter',weight:'600'};var tt={backgroundColor:'#0a0610',titleColor:'#AB47BC',bodyColor:'#c0b0d0',borderColor:'#201830',borderWidth:1,padding:12,cornerRadius:8};
+
+new Chart(document.getElementById('ch1').getContext('2d'),{type:'line',data:{labels:['10','12','14','17','19','21','24','26','28','30'],datasets:[{label:'CEPEA (cR$/lb)',data:[353.10,361.32,364.34,366.09,371.79,374.45,371.61,371.80,380.77,389.98],borderColor:'#AB47BC',backgroundColor:'rgba(171,71,188,0.06)',borderWidth:2.5,fill:true,tension:0.3,pointRadius:3,pointBackgroundColor:function(c){return c.dataIndex>=7?'#81c784':'#AB47BC';}}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,annotation:{annotations:{t:{type:'label',xValue:9,yValue:395,content:['MAXIMO','390 cR$/lb','+10,7% MES!'],font:{size:7,weight:'bold'},color:'#81c784'}}}},scales:{y:{min:348,max:398,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return v;},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}});
+
+new Chart(document.getElementById('ch2').getContext('2d'),{type:'line',data:{labels:['02','06','10','13','17','20','25','27','30','31'],datasets:[{label:'ICE Jul (cts/lb)',data:[64.50,65.20,66.99,67.50,68.20,69.50,68.18,70.33,70.06,72.13],borderColor:'#CE93D8',backgroundColor:'rgba(206,147,216,0.06)',borderWidth:2.5,fill:true,tension:0.3,pointRadius:3,pointBackgroundColor:'#CE93D8'}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,annotation:{annotations:{s70:{type:'line',yMin:70,yMax:70,borderColor:'rgba(171,71,188,0.4)',borderWidth:1.5,borderDash:[4,3],label:{display:true,content:'70 cts',position:'center',backgroundColor:'rgba(171,71,188,0.4)',color:'#fff',font:{size:7,weight:'bold'},padding:2}}}}},scales:{y:{min:63,max:74,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return v+'cts';},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}});
+
+new Chart(document.getElementById('ch3').getContext('2d'),{type:'line',data:{labels:['31/3','1a Abr','2a Abr','1a Mai','2a Mai','Jun'],datasets:[{label:'Otimista (petroleo+demanda)',data:[72.13,73,74.5,76,77,78],borderColor:'#81c784',borderWidth:2,tension:0.3,pointRadius:4,fill:false,pointBackgroundColor:'#81c784'},{label:'Base',data:[72.13,71.5,72,71,70.5,70],borderColor:'#ffd740',borderWidth:2.5,tension:0.3,pointRadius:4,fill:false,pointBackgroundColor:'#ffd740'},{label:'Pessimista (cessar-fogo Ira)',data:[72.13,70,68,66.5,65,64],borderColor:'#ef5350',borderWidth:2,tension:0.3,pointRadius:4,fill:false,borderDash:[5,3],pointBackgroundColor:'#ef5350'}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},scales:{y:{min:62,max:80,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return v+'cts';},font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+
+new Chart(document.getElementById('ch4').getContext('2d'),{type:'radar',data:{labels:['Petroleo/Poliester','Area EUA','Paridade Export','Demanda Global','Oferta BR','Estoques Globais'],datasets:[{label:'Altista',data:[90,78,85,70,30,35],backgroundColor:'rgba(171,71,188,0.08)',borderColor:'#AB47BC',borderWidth:2.5,pointBackgroundColor:'#AB47BC',pointRadius:5},{label:'Baixista',data:[10,22,15,30,70,65],backgroundColor:'rgba(239,83,80,0.06)',borderColor:'#ef5350',borderWidth:1.5,pointBackgroundColor:'#ef5350',pointRadius:3,borderDash:[4,2]}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},scales:{r:{min:0,max:100,ticks:{display:false,stepSize:20},grid:{color:'rgba(255,255,255,0.06)'},pointLabels:{font:{family:'Inter',weight:'600',size:7},color:'#6a4878'}}}}});
+
+new Chart(document.getElementById('ch5').getContext('2d'),{type:'line',data:{labels:['10','14','18','22','26','30'],datasets:[{label:'CEPEA (cR$/lb)',data:[353,364,371,374,372,390],borderColor:'#AB47BC',borderWidth:2.5,tension:0.3,pointRadius:3,fill:false,yAxisID:'y',pointBackgroundColor:'#AB47BC'},{label:'ICE Jul (cts/lb)',data:[67.0,67.5,68.2,69.5,70.3,70.1],borderColor:'#CE93D8',borderWidth:2,tension:0.3,pointRadius:3,fill:false,yAxisID:'y1',pointBackgroundColor:'#CE93D8'}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},scales:{y:{min:350,max:395,position:'left',grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return v;},font:df}},y1:{min:66,max:72,position:'right',grid:{display:false},ticks:{callback:function(v){return v+'cts';},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}});
+</script>
+</body>
+</html>

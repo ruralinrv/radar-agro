@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radar Agro Boi — 31/03/2026 | Rural IN</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:#080604;color:#c8b8a0;min-height:100vh}.pg{max-width:960px;margin:0 auto;padding:10px}.tb{background:linear-gradient(90deg,#100c08,#181210,#100c08);padding:12px 20px;border-radius:14px 14px 0 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #302010;flex-wrap:wrap;gap:8px}.tb .lo{display:flex;align-items:center;gap:12px}.tb .li{width:54px;height:54px;background:linear-gradient(135deg,#8D6E63,#4E342E);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.7em;box-shadow:0 4px 25px rgba(141,110,99,.2)}.tb .lt h2{font-size:1.05em;font-weight:900;color:#fff;letter-spacing:1.5px}.tb .lt small{font-size:.62em;color:#8D6E63;font-weight:600;display:block}.tb .ed{text-align:right}.tb .ed .dt{font-size:.86em;font-weight:800;color:#8D6E63}.tb .ed .inf{font-size:.6em;color:#5D4037;font-weight:600}
+.hdr{background:linear-gradient(135deg,#0a0806,#0c0a08 50%,#080604);padding:34px 22px 28px;text-align:center;border-bottom:3px solid #8D6E63;position:relative;overflow:hidden}.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(141,110,99,.04) 0%,transparent 70%)}.hdr .tag{display:inline-block;background:linear-gradient(135deg,#8D6E63,#4E342E);color:#fff;font-size:.56em;font-weight:800;letter-spacing:3px;padding:4px 14px;border-radius:20px;text-transform:uppercase;margin-bottom:10px;z-index:1;position:relative}.hdr h1{font-family:'Playfair Display',serif;font-size:1.2em;font-weight:900;color:#fff;z-index:1;position:relative;line-height:1.3;max-width:840px;margin:0 auto}.hdr .sub{font-size:.74em;color:#6D4C41;margin-top:10px;font-weight:500;z-index:1;position:relative;line-height:1.6}.hdr .mkt{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:14px;z-index:1;position:relative}.hdr .mkt .mi{background:rgba(141,110,99,.04);border:1px solid rgba(141,110,99,.12);border-radius:10px;padding:6px 11px;text-align:center;min-width:100px}.hdr .mkt .mi .ml{font-size:.48em;color:#5D4037;font-weight:700;text-transform:uppercase;letter-spacing:1px}.hdr .mkt .mi .mv{font-size:.95em;font-weight:900;margin-top:2px}.hdr .mkt .mi .mc{font-size:.52em;font-weight:700;margin-top:1px}
+.up{color:#81c784}.dn{color:#ef5350}.nt{color:#ffd740}.wh{color:#fff}.mn{background:#080604;padding:18px;border:1px solid #1a1208;border-top:none}.stl{font-size:.72em;text-transform:uppercase;letter-spacing:2px;font-weight:800;color:#8D6E63;margin:20px 0 11px;display:flex;align-items:center;gap:10px;padding-bottom:8px;border-bottom:1px solid #1a1208}.tx{font-size:.78em;line-height:1.92;color:#8a7058;margin-bottom:12px;text-align:justify}.tx strong{color:#c8b8a0}.tx .hl{color:#8D6E63;font-weight:700}.tx .ng{color:#ef5350;font-weight:700}.tx .ps{color:#81c784;font-weight:700}
+.chc{background:#0c0a06;border:1px solid #1e1810;border-radius:12px;padding:12px;margin-bottom:11px}.chc h4{font-size:.62em;color:#6D4C41;text-transform:uppercase;letter-spacing:1px;margin-bottom:7px;font-weight:700;text-align:center}.chc canvas{max-height:250px}.chg{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:11px}
+.thermo{background:#0c0a06;border-radius:12px;padding:12px;border:1px solid #1e1810;margin-bottom:9px}.thermo h4{text-align:center;font-size:.62em;color:#6D4C41;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:11px}.th-bar{height:15px;background:linear-gradient(90deg,#b71c1c 0%,#ef5350 18%,#ff9800 33%,#ffd740 50%,#8bc34a 68%,#4CAF50 82%,#1b5e20 100%);border-radius:10px;position:relative;margin:24px 8px 7px}.th-mk{position:absolute;top:-20px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center}.th-mk .arr{width:3px;height:36px;border-radius:2px;background:#fff;box-shadow:0 0 6px rgba(255,255,255,.3)}.th-mk .lbl{font-size:.54em;font-weight:800;padding:3px 6px;border-radius:5px;white-space:nowrap;margin-top:3px}.th-labels{display:flex;justify-content:space-between;padding:0 8px;font-size:.52em;color:#2a2018;font-weight:700}
+.dg{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:7px;margin-bottom:12px}.dc{background:#0c0a06;border-radius:10px;padding:10px;border:1px solid #1e1810;text-align:center}.dc .dl{font-size:.48em;color:#8D6E63;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:3px}.dc .dv{font-size:1.05em;font-weight:900;color:#fff}.dc .ds{font-size:.58em;color:#5D4037;margin-top:3px;line-height:1.4}
+.alt{background:linear-gradient(135deg,#0a0806,#0e0c08);border-left:4px solid #8D6E63;border-radius:0 10px 10px 0;padding:12px;margin-bottom:9px}.alt h5{font-size:.66em;color:#8D6E63;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}.alt p{font-size:.74em;color:#8a7058;line-height:1.8}.alt p strong{color:#c8b8a0}
+.bld{background:linear-gradient(135deg,#0e0c08,#141210);border:2px solid #8D6E63;border-radius:14px;padding:16px;margin:14px 0;text-align:center;box-shadow:0 0 25px rgba(141,110,99,.03)}.bld h3{font-family:'Playfair Display',serif;font-size:1em;color:#fff;margin-bottom:7px;line-height:1.4}.bld p{font-size:.76em;color:#8a7058;line-height:1.8}
+.tbl{width:100%;border-collapse:collapse;margin-bottom:11px;font-size:.66em}.tbl th{background:#0e0c08;color:#8D6E63;padding:5px 3px;text-align:center;font-weight:700;text-transform:uppercase;letter-spacing:.5px;font-size:.74em;border-bottom:2px solid #302010}.tbl td{padding:5px 3px;text-align:center;border-bottom:1px solid #1a1208;color:#8a7058}
+.proj{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px}.proj-c{background:#0c0a06;border-radius:10px;padding:11px;border:1px solid #1e1810;text-align:center}.proj-c .pl{font-size:.50em;color:#8D6E63;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:4px}.proj-c .pv{font-size:1.1em;font-weight:900;color:#fff;margin-bottom:3px}.proj-c .pd{font-size:.62em;color:#5D4037;line-height:1.5}
+.geo{display:grid;grid-template-columns:1fr;gap:6px;margin-bottom:11px}.geo-i{background:rgba(141,110,99,.02);border:1px solid rgba(141,110,99,.06);border-radius:10px;padding:9px 12px;display:flex;gap:9px;align-items:flex-start}.geo-i .gi{font-size:1.1em;flex-shrink:0}.geo-i .gt{font-size:.66em;font-weight:800;color:#c8b8a0}.geo-i .gd{font-size:.64em;color:#5D4037;line-height:1.6;margin-top:2px}
+.sep{text-align:center;margin:16px 0;color:#1a1208;font-size:1em;letter-spacing:10px}
+.cred{background:linear-gradient(135deg,#0c0a06,#100e0a);border:2px solid #1e1810;border-radius:16px;padding:16px;margin-top:14px}.cred-in{display:flex;gap:12px;align-items:center}.cred-av{width:56px;height:56px;background:linear-gradient(135deg,#8D6E63,#4E342E);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4em;flex-shrink:0}.cred h3{font-size:.86em;font-weight:900;color:#fff}.cred .ti{font-size:.64em;color:#8D6E63;font-weight:700;margin-top:2px}.cred .dsc{font-size:.60em;color:#5D4037;margin-top:4px;line-height:1.5;font-style:italic}.cred .ct{margin-top:7px;display:flex;flex-wrap:wrap;gap:4px}.cred .ct a,.cred .ct span{font-size:.58em;color:#8a7058;text-decoration:none;display:flex;align-items:center;gap:3px;font-weight:600;padding:3px 6px;background:rgba(141,110,99,.04);border-radius:6px;border:1px solid rgba(141,110,99,.08)}
+.disc{margin-top:9px;padding:9px;background:rgba(255,255,255,.02);border-radius:8px;font-size:.52em;color:#1a1208;line-height:1.6;text-align:center}.ftr{text-align:center;padding:8px;font-size:.54em;color:#080604;border-radius:0 0 14px 14px}
+@media(max-width:768px){.tb{flex-direction:column;text-align:center}.hdr h1{font-size:1em}.chg{grid-template-columns:1fr}.cred-in{flex-direction:column;text-align:center}.cred .ct{justify-content:center}.dg{grid-template-columns:1fr 1fr}.proj{grid-template-columns:1fr}}
+@media(max-width:420px){.dg{grid-template-columns:1fr}.hdr h1{font-size:.88em}.hdr .mkt{flex-direction:column;align-items:center}}
+</style>
+</head>
+<body>
+<div class="pg">
+<div class="tb"><div class="lo"><div class="li">🐂</div><div class="lt"><h2>RURAL IN</h2><small>Inteligencia para o Agronegocio</small></div></div><div class="ed"><div class="dt">Terca-feira, 31 de Marco de 2026</div><div class="inf">Radar Agro Boi · Ultimo Dia do Mes · Overview Marco + Cenarios Abril</div></div></div>
+
+<div class="hdr">
+<div class="tag">Radar Agro Boi Gordo · 31/Mar/2026 · Overview Marco + USDA + Cenarios</div>
+<h1>Arroba Fecha Marco a R$ 355,75 (+0,74% mes): B3 Corrige Levemente Mas Fundamento Segue Firme. Exportacoes Recordes, Cota China 33% Usada e Pascoa no Radar</h1>
+<div class="sub">CEPEA 30/3: R$ 355,75/@ (+0,74% mes). B3 Abr: R$ 364,80 (-0,37% hoje). B3 Mai: R$ 361,90. Boi China SP: R$ 357/@. Boi padrao SP: R$ 355/@ (prazo). Escalas: 6 dias. Export. 1o bim: 557 mil t (+22%) | US$ 2,86 bi (+39%). China: 33,6% da cota usada em 2 meses. Abates -9% (fev a/a). Ciclo de retencao confirmado. USDA: area milho +0,82 mi ac acima esperado + fertilizante caro = custo confinamento sobe = MENOS boi confinado = altista para arroba. Marco: rally de R$ 346,45 a R$ 355,75 (+2,7%).</div>
+<div class="mkt">
+<div class="mi"><div class="ml">CEPEA 30/3</div><div class="mv ps">R$ 355,75/@</div><div class="mc up">+0,74% mes</div></div>
+<div class="mi"><div class="ml">B3 Abr/26</div><div class="mv wh">R$ 364,80</div><div class="mc dn">-0,37% hoje</div></div>
+<div class="mi"><div class="ml">B3 Mai/26</div><div class="mv wh">R$ 361,90</div><div class="mc dn">-0,10%</div></div>
+<div class="mi"><div class="ml">Boi China SP</div><div class="mv ps">R$ 357/@</div><div class="mc up">Firme</div></div>
+<div class="mi"><div class="ml">Escalas Abate</div><div class="mv nt">6 DIAS</div><div class="mc dn">Sem folga</div></div>
+<div class="mi"><div class="ml">Export. 1o Bim</div><div class="mv ps">557 mil t (+22%)</div><div class="mc up">US$ 2,86 bi</div></div>
+</div>
+</div>
+
+<div class="mn">
+
+<h3 class="stl">📋 Fechamento de Hoje — 31/03 + USDA Impacto Indireto</h3>
+
+<p class="tx">A B3 fechou em <span class="ng">leve queda</span>: Abr R$ 364,80 (-0,37%), Mai R$ 361,90 (-0,10%). O CEPEA de ontem (30/3) ficou em <span class="ps">R$ 355,75/@</span>. A correcao na B3 e tecnica — <span class="hl">o premio da B3 sobre o fisico segue elevado</span> (R$ 9+ no abr) e analistas ja alertavam para componente especulativo. No fisico, o mercado <span class="ps">segue firme</span>: boi padrao SP R$ 355/@ prazo, boi China R$ 357/@, escalas em 6 dias.</p>
+
+<p class="tx"><strong>Impacto do USDA no boi:</strong> o USDA trouxe <span class="ng">area de milho maior que esperado (95,3 mi ac)</span> e <span class="ps">estoques de milho abaixo (9,02 bi bu)</span>. Para o boi, isso significa: <span class="hl">milho sustentado + fertilizante caro (Russia barrou nitrogenado)</span> = <strong>custo de confinamento sobe</strong> = menos boi confinado no 2o semestre = <span class="ps">menos oferta futura = altista para arroba</span>. Alem disso, o USDA confirmou que <span class="ps">EUA precisam importar 2,5 mi t de carne em 2026</span> — oportunidade direta para o Brasil.</p>
+
+<div class="alt">
+<h5>🔗 Conexao USDA → Boi: A Linha de Raciocinio</h5>
+<p><strong>Milho caro</strong> (CBOT $4,58 + fertilizante +40%) → <strong>racao cara</strong> (milho e principal insumo do confinamento) → <strong>custo de confinamento dispara</strong> (Centro-Oeste estava no menor nivel historico, mas Sudeste sobe) → <strong>menos boi entra no confinamento</strong> → <strong>oferta de boi gordo no 2o semestre cai</strong> → <span class="ps">arroba se sustenta ou sobe</span>. E a equacao mais importante do ano para a pecuaria.</p>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">📈 Overview Marco — O Mes Completo</h3>
+
+<table class="tbl">
+<thead><tr><th>Periodo</th><th>CEPEA (R$/@)</th><th>Var.</th><th>B3 Abr</th><th>Boi China SP</th><th>Fato Chave</th></tr></thead>
+<tbody>
+<tr><td>01-14/3</td><td>346-347</td><td style="color:#ef5350">-1,8% acum</td><td>~355</td><td>350</td><td>Cautela, poucos negocios</td></tr>
+<tr><td>16/3</td><td style="color:#ef5350">346,45</td><td>-0,04%</td><td>356</td><td>350</td><td style="color:#ef5350">Fundo do mes</td></tr>
+<tr><td>17-20/3</td><td>347-351</td><td style="color:#81c784">+1,2%</td><td>358</td><td>352</td><td style="color:#81c784">Inicio rally — Ormuz + export</td></tr>
+<tr><td>23-24/3</td><td>350-351</td><td>+0,2%</td><td>362</td><td>352</td><td>Frigorificos pressionados</td></tr>
+<tr><td style="color:#81c784">25/3</td><td style="color:#81c784;font-weight:700">354,65</td><td style="color:#81c784;font-weight:700">+0,92%</td><td style="color:#81c784">366</td><td>356</td><td style="color:#81c784">Maior alta do mes!</td></tr>
+<tr><td>26-27/3</td><td>355,45-355,55</td><td>+0,25%</td><td>367</td><td>357</td><td>Carne firme atacado</td></tr>
+<tr><td style="color:#8D6E63;font-weight:700">30/3</td><td style="color:#81c784;font-weight:800">355,75</td><td style="color:#81c784">+0,08%</td><td>366</td><td>357</td><td>10 pracas alta Scot</td></tr>
+<tr><td style="color:#8D6E63;font-weight:700">31/3</td><td>—</td><td>—</td><td style="color:#ef5350">364,80</td><td>357</td><td>B3 corrige, fisico firme</td></tr>
+</tbody>
+</table>
+
+<div class="chg">
+<div class="chc"><h4>CEPEA Boi Gordo — Marco Inteiro (R$/@)</h4><canvas id="ch1"></canvas></div>
+<div class="chc"><h4>B3 Curva Futura — 31/03 (R$/@)</h4><canvas id="ch2"></canvas></div>
+</div>
+
+<div class="alt">
+<h5>📊 Overview Marco em 5 Pontos</h5>
+<p><strong>1.</strong> <span class="ps">Rally de +2,7%</span>: R$ 346,45 (16/3) → R$ 355,75 (30/3). <strong>2.</strong> Abates <span class="ps">cairam -9%</span> fev a/a (Rabobank) — virada do ciclo. <strong>3.</strong> Exportacoes <span class="ps">recorde</span>: 557 mil t (+22%) no bim — China 42,6%, EUA crescendo. <strong>4.</strong> Cota China: <span class="ng">33,6% usada em 2 meses</span> — esgota jun-jul. <strong>5.</strong> B3 abriu <span class="ng">gap especulativo</span> vs fisico (R$ 10+) — analistas alertaram, corrigiu hoje (-0,37%).</p>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🔍 Os 7 Fundamentos da Arroba</h3>
+
+<div class="dg">
+<div class="dc" style="border-color:#81c784"><div class="dl">1. Oferta Enxuta</div><div class="dv ps">ESCALAS 6D</div><div class="ds">Pecuarista segura gado.<br>Pasto bom = nao vende.<br>Frigorifico disputa.</div></div>
+<div class="dc" style="border-color:#81c784"><div class="dl">2. Abates -9%</div><div class="dv ps">CICLO VIROU</div><div class="ds">Machos -10%. Femeas -8%.<br>Retencao de matrizes.<br>Estrutural — nao pontual.</div></div>
+<div class="dc" style="border-color:#81c784"><div class="dl">3. Export. Recordes</div><div class="dv ps">557K t (+22%)</div><div class="ds">US$ 2,86 bi no bim.<br>EUA, EU, Chile, Russia<br>crescem forte.</div></div>
+<div class="dc" style="border-color:#ffd740"><div class="dl">4. Cota China 33,6%</div><div class="dv nt">ESGOTA JUN-JUL</div><div class="ds">1,1 mi t/ano. 372 mil usadas.<br>Corrida por embarques.<br>Risco 2o sem.</div></div>
+<div class="dc" style="border-color:#81c784"><div class="dl">5. Milho Caro → Confin.</div><div class="dv ps">USDA HOJE</div><div class="ds">Milho $4,58 + N +40%.<br>Confinamento caro.<br>Menos boi futuro.</div></div>
+<div class="dc" style="border-color:#ffd740"><div class="dl">6. Carne Interna Lenta</div><div class="dv nt">QUARESMA</div><div class="ds">Varejo fraco.<br>Frango -6%, suino -1,5%.<br>Pascoa pode melhorar.</div></div>
+<div class="dc" style="border-color:#ef5350"><div class="dl">7. B3 Especulativa</div><div class="dv ng">CORRIGIU HOJE</div><div class="ds">Gap R$ 10+ vs fisico.<br>Fundos realizaram.<br>Fisico sustenta.</div></div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🌡️ Termometros — Fechamento Marco</h3>
+
+<div class="chg">
+<div class="thermo"><h4>Oferta de Boiada</h4><div class="th-bar"><div class="th-mk" style="left:25%"><div class="arr"></div><div class="lbl" style="background:#ef5350;color:#fff">ENXUTA (6d escala)</div></div></div><div class="th-labels"><span>Escassa</span><span>Normal</span><span>Abundante</span></div></div>
+<div class="thermo"><h4>Exportacoes</h4><div class="th-bar"><div class="th-mk" style="left:88%"><div class="arr"></div><div class="lbl" style="background:#1b5e20;color:#fff">RECORDE</div></div></div><div class="th-labels"><span>Fracas</span><span>Normais</span><span>Recordes</span></div></div>
+</div>
+<div class="chg">
+<div class="thermo"><h4>Custo Confinamento (pos-USDA)</h4><div class="th-bar"><div class="th-mk" style="left:75%"><div class="arr"></div><div class="lbl" style="background:#ef5350;color:#fff">ALTO (milho+N caro)</div></div></div><div class="th-labels"><span>Baixo</span><span>Normal</span><span>Alto</span></div></div>
+<div class="thermo"><h4>Ciclo Pecuario</h4><div class="th-bar"><div class="th-mk" style="left:75%"><div class="arr"></div><div class="lbl" style="background:#4CAF50;color:#fff">RETENCAO (altista)</div></div></div><div class="th-labels"><span>Liquidacao</span><span>Transicao</span><span>Retencao</span></div></div>
+</div>
+<div class="chg">
+<div class="thermo"><h4>Risco Cota China</h4><div class="th-bar"><div class="th-mk" style="left:35%"><div class="arr"></div><div class="lbl" style="background:#ff9800;color:#000">MODERADO-ALTO</div></div></div><div class="th-labels"><span>Critico</span><span>Moderado</span><span>Baixo</span></div></div>
+<div class="thermo"><h4>B3 vs Fisico (Gap)</h4><div class="th-bar"><div class="th-mk" style="left:65%"><div class="arr"></div><div class="lbl" style="background:#ff9800;color:#000">ELEVADO (corrigindo)</div></div></div><div class="th-labels"><span>Normal</span><span>Elevado</span><span>Excessivo</span></div></div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🎯 Proximos 2 Dias + Cenarios Abril + Proximas Semanas</h3>
+
+<div class="bld">
+<h3>VIES ABRIL: FIRME COM TENDENCIA ALTISTA — PASCOA + ENTRESSAFRA + CONFINAMENTO CARO</h3>
+<p><strong>Pascoa 05/abr:</strong> salarios + virada cartao + feriado = melhora consumo interno. <strong>Entressafra:</strong> pasto seca, menos boi pronto. <strong>Confinamento caro:</strong> milho + fertilizante = menos boi no 2S. <strong>Exportacoes:</strong> seguem fortes. <strong>B3:</strong> pode corrigir mais (gap especulativo), mas fisico sustenta. Faixa esperada: <span style="color:#81c784;font-weight:700">R$ 355-370/@</span>.</p>
+</div>
+
+<div class="proj">
+<div class="proj-c" style="border-color:#81c784"><div class="pl">Qua-Qui (01-02/4)</div><div class="pv" style="color:#81c784">R$ 355 - 358/@</div><div class="pd">Fisico firme.<br>B3 pode ajustar mais.<br>Inicio mes = poucos negocios.</div></div>
+<div class="proj-c" style="border-color:#81c784"><div class="pl">Pre-Pascoa (03-04/4)</div><div class="pv" style="color:#81c784">R$ 356 - 362/@</div><div class="pd">Varejo recompoe.<br>Demanda melhora.<br>Pascoa puxa carne.</div></div>
+<div class="proj-c" style="border-color:#81c784"><div class="pl">Abril Inteiro</div><div class="pv" style="color:#81c784">R$ 355 - 370/@</div><div class="pd">Entressafra pasto.<br>Export. fortes.<br>B3 normaliza gap.</div></div>
+<div class="proj-c" style="border-color:#ffd740"><div class="pl">Maio-Julho</div><div class="pv" style="color:#ffd740">R$ 345 - 370/@</div><div class="pd">Cota China esgota?<br>Confinamento comeca.<br>Se cota acaba: pressao.</div></div>
+</div>
+
+<div class="chc"><h4>Cenarios CEPEA — Abril a Julho (R$/@)</h4><canvas id="ch3"></canvas></div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🌐 Radar Macro e Geopolitico</h3>
+
+<div class="geo">
+<div class="geo-i"><div class="gi">🇨🇳</div><div><div class="gt">Cota China: 33,6% Usada — Esgota Jun-Jul</div><div class="gd">372 mil t em 2 meses de 1,1 mi t/ano. Se ritmo manter: esgota jun-jul. Governo BR nao vai regular. Abrafrigo: EUA+EU compensam. Risco: 3T sem China + confinamento = pressao. Mas diversificacao reduz impacto.</div></div></div>
+<div class="geo-i"><div class="gi">🌽</div><div><div class="gt">USDA Hoje: Milho Caro = Confinamento Caro = Menos Boi</div><div class="gd">Milho $4,58. Nitrogenio +40% (Russia). Custo confinamento Sudeste subindo. Centro-Oeste ainda ok (producao propria). Menos confinamento no 2S = menos oferta = arroba sustentada. Faca a conta antes de confinar.</div></div></div>
+<div class="geo-i"><div class="gi">🇺🇸</div><div><div class="gt">EUA Deficit 2,5 mi t — USDA Confirmou Hoje</div><div class="gd">Rebanho americano no menor nivel em decadas. Importam 2,5 mi t/ano. Brasil e fornecedor natural. Se China apertar: EUA absorvem. Preco em dolar alto = receita excelente para frigorifico BR.</div></div></div>
+<div class="geo-i"><div class="gi">🐣</div><div><div class="gt">Pascoa 05/Abr — Impulso ao Varejo</div><div class="gd">Salarios + virada cartao + feriado. Historicamente melhora demanda de carne no varejo. Carcaca casada tende a subir. Efeito curto mas positivo para arroba na 1a semana de abril.</div></div></div>
+<div class="geo-i"><div class="gi">⛽</div><div><div class="gt">Ormuz: Diesel Caro = Frete Caro</div><div class="gd">Brent $100+. Diesel sobe. Frete de gado e carne mais caro. Limita quedas no atacado. Encarece confinamento. Duplo efeito altista para arroba.</div></div></div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">💡 Estrategia Rural IN</h3>
+
+<div class="alt"><h5>🐂 Tem Boi Gordo Pronto?</h5><p>R$ 355/@ no fisico. R$ 357-360 boi China. <span class="ps">Voce tem poder de mesa</span> — escalas 6 dias. Estrategia: <span class="hl">venda 60% agora (preco historicamente excelente). Segure 40% para 1a semana de abril (Pascoa pode puxar +R$ 2-5/@)</span>.</p></div>
+<div class="alt"><h5>📈 B3: Gap Corrigindo — Oportunidade?</h5><p>B3 abr caiu para R$ 364,80 (ontem R$ 366). <span class="hl">Se voce fez hedge vendido acima de R$ 365: mantenha — preco excelente</span>. Se esta comprado: cuidado, gap pode fechar mais. Se quer travar preco futuro para mai-jun: R$ 362/361 na B3 e bom nivel.</p></div>
+<div class="alt"><h5>🐄 Bezerro + Confinamento</h5><p>Bezerro R$ 3.295 (+0,29%). <span class="ps">Ciclo de retencao favorece cria</span>. Confinamento: <span class="ng">faca a conta!</span> Milho $4,58 + N +40% + frete caro. Se relacao boi/milho >5:1 na sua regiao: confine. Senao: venda magro.</p></div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">📊 Graficos Finais</h3>
+
+<div class="chg">
+<div class="chc"><h4>Radar Fundamentalista — Boi 31/03</h4><canvas id="ch4"></canvas></div>
+<div class="chc"><h4>Exportacoes Carne BR 1o Bim (mil t)</h4><canvas id="ch5"></canvas></div>
+</div>
+
+<div class="cred"><div class="cred-in"><div class="cred-av">👨‍💼</div><div><h3>Dr. Sidney Souza</h3><div class="ti">Economista Agricola · Estrategista Economico do Produtor</div><div class="dsc">Especialista em economia da fazenda e gestao de risco no agro<br>Transformamos dados da fazenda em decisoes economicas<br>Ajudamos produtores a entender se o mercado sustenta seu negocio</div><div class="ct"><a href="mailto:sidneyagro@gmail.com">📧 sidneyagro@gmail.com</a><a href="https://wa.me/5564992266886">📱 (64) 9 9226-6886</a><span>📸 @ruralin.ai</span></div></div></div><div class="disc">Informativo analitico e educacional. Nao constitui recomendacao de compra ou venda. Dados: CEPEA/Esalq-USP, B3, Scot Consultoria, USDA, Abrafrigo, Abiec, Rabobank, Safras&Mercado, Agrifatto, CNN Brasil, Globo Rural, Noticias Agricolas, Feed&Food, Canal Rural, CompreRural, Portal do Agronegocio, FarmNews, Trading Economics. Analise e construcao: Dr. Sidney Souza — Rural IN.</div></div>
+</div>
+<div class="ftr">RURAL IN 2026 · Inteligencia para o Agronegocio · Rio Verde/GO</div>
+</div>
+
+<script>
+Chart.defaults.color='#2a2018';Chart.defaults.font.family='Inter';Chart.defaults.font.size=11;var df={family:'Inter',weight:'600'};var tt={backgroundColor:'#0c0a06',titleColor:'#8D6E63',bodyColor:'#c8b8a0',borderColor:'#302010',borderWidth:1,padding:12,cornerRadius:8};
+
+new Chart(document.getElementById('ch1').getContext('2d'),{type:'line',data:{labels:['10','12','14','16','18','20','23','25','27','30'],datasets:[{label:'CEPEA (R$/@)',data:[346.80,347.50,346.60,346.45,348.85,350.65,350.70,354.65,355.45,355.75],borderColor:'#8D6E63',backgroundColor:'rgba(141,110,99,0.06)',borderWidth:2.5,fill:true,tension:0.3,pointRadius:3,pointBackgroundColor:function(c){return c.dataIndex>=6?'#81c784':c.dataIndex<=3?'#ef5350':'#ffd740';}}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,annotation:{annotations:{f:{type:'label',xValue:3,yValue:344.5,content:['FUNDO','R$346,45'],font:{size:7,weight:'bold'},color:'#ef5350'},t:{type:'label',xValue:9,yValue:357.5,content:['TOPO','R$355,75'],font:{size:7,weight:'bold'},color:'#81c784'},s:{type:'line',yMin:350,yMax:350,borderColor:'rgba(129,199,132,0.3)',borderWidth:1,borderDash:[4,3]}}}},scales:{y:{min:344,max:358,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'R$'+v;},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}});
+
+new Chart(document.getElementById('ch2').getContext('2d'),{type:'bar',data:{labels:['Abr','Mai','Jun','Jul','Ago','Set','Out'],datasets:[{label:'B3 (R$/@)',data:[364.80,361.90,351.95,351.00,349.00,350.80,355.50],backgroundColor:function(c){var v=c.parsed.y;return v>360?'rgba(129,199,132,0.3)':v>355?'rgba(255,215,64,0.25)':'rgba(239,83,80,0.25)';},borderColor:function(c){var v=c.parsed.y;return v>360?'#81c784':v>355?'#ffd740':'#ef5350';},borderWidth:2,borderRadius:5}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,annotation:{annotations:{cota:{type:'label',xValue:3,yValue:345,content:['Cota China','esgota?'],font:{size:7,weight:'bold'},color:'#ef5350'}}}},scales:{y:{min:340,max:370,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'R$'+v;},font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+
+new Chart(document.getElementById('ch3').getContext('2d'),{type:'line',data:{labels:['Mar','1a Abr','2a Abr','Mai','Jun','Jul'],datasets:[{label:'Otimista',data:[355.75,362,368,372,368,365],borderColor:'#81c784',borderWidth:2,tension:0.3,pointRadius:4,fill:false,pointBackgroundColor:'#81c784'},{label:'Base',data:[355.75,358,362,360,355,352],borderColor:'#ffd740',borderWidth:2.5,tension:0.3,pointRadius:4,fill:false,pointBackgroundColor:'#ffd740'},{label:'Pessimista',data:[355.75,356,358,352,342,338],borderColor:'#ef5350',borderWidth:2,tension:0.3,pointRadius:4,fill:false,borderDash:[5,3],pointBackgroundColor:'#ef5350'}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt,annotation:{annotations:{p:{type:'label',xValue:1,yValue:374,content:['Pascoa'],font:{size:7,weight:'bold'},color:'#81c784'},c:{type:'label',xValue:4.5,yValue:335,content:['Cota China?'],font:{size:8,weight:'bold'},color:'#ef5350'}}}},scales:{y:{min:330,max:380,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'R$'+v;},font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+
+new Chart(document.getElementById('ch4').getContext('2d'),{type:'radar',data:{labels:['Oferta Enxuta','Abates -9%','Exportacoes','Ciclo Retencao','Custo Confin.','Poder Pecuarista'],datasets:[{label:'Altista',data:[88,82,90,80,75,85],backgroundColor:'rgba(141,110,99,0.08)',borderColor:'#8D6E63',borderWidth:2.5,pointBackgroundColor:'#8D6E63',pointRadius:5},{label:'Baixista',data:[15,18,12,15,25,12],backgroundColor:'rgba(239,83,80,0.06)',borderColor:'#ef5350',borderWidth:1.5,pointBackgroundColor:'#ef5350',pointRadius:3,borderDash:[4,2]}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},scales:{r:{min:0,max:100,ticks:{display:false,stepSize:20},grid:{color:'rgba(255,255,255,0.06)'},pointLabels:{font:{family:'Inter',weight:'600',size:7},color:'#6D4C41'}}}}});
+
+new Chart(document.getElementById('ch5').getContext('2d'),{type:'bar',data:{labels:['Jan-Fev 2025','Jan-Fev 2026'],datasets:[{label:'Volume (mil t)',data:[456,557],backgroundColor:['rgba(141,110,99,0.3)','rgba(129,199,132,0.5)'],borderColor:['#8D6E63','#81c784'],borderWidth:2,borderRadius:6},{label:'Receita (US$ bi)',data:[2.065,2.865],backgroundColor:['rgba(255,215,64,0.15)','rgba(255,215,64,0.35)'],borderColor:['#ffd740','#ffd740'],borderWidth:1.5,borderRadius:6,borderDash:[3,3]}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt,annotation:{annotations:{q:{type:'label',xValue:1,yValue:580,content:['+22% vol','+39% $$'],font:{size:9,weight:'bold'},color:'#81c784'}}}},scales:{y:{min:0,max:620,grid:{color:'rgba(255,255,255,0.03)'},ticks:{font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+</script>
+</body>
+</html>

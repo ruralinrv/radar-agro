@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radar Agro Leite — Março 2026 | Rural IN</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:#060a10;color:#90caf9;min-height:100vh}
+.pg{max-width:960px;margin:0 auto;padding:10px}
+.tb{background:linear-gradient(90deg,#0a1018,#101828,#0a1018);padding:12px 20px;border-radius:14px 14px 0 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #1565C0;flex-wrap:wrap;gap:8px}.tb .lo{display:flex;align-items:center;gap:12px}.tb .li{width:54px;height:54px;background:linear-gradient(135deg,#42A5F5,#1565C0);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.7em;box-shadow:0 4px 25px rgba(66,165,245,.2)}.tb .lt h2{font-size:1.05em;font-weight:900;color:#fff;letter-spacing:1.5px}.tb .lt small{font-size:.62em;color:#64B5F6;font-weight:600;display:block}.tb .ed{text-align:right}.tb .ed .dt{font-size:.86em;font-weight:800;color:#64B5F6}.tb .ed .inf{font-size:.6em;color:#42A5F5;font-weight:600}
+.hdr{background:linear-gradient(135deg,#080c14,#0c1020 50%,#060a10);padding:34px 22px 28px;text-align:center;border-bottom:3px solid #1976D2;position:relative;overflow:hidden}.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(66,165,245,.04) 0%,transparent 70%)}.hdr .tag{display:inline-block;background:linear-gradient(135deg,#42A5F5,#1565C0);color:#fff;font-size:.56em;font-weight:800;letter-spacing:3px;padding:4px 14px;border-radius:20px;text-transform:uppercase;margin-bottom:10px;z-index:1;position:relative}.hdr h1{font-family:'Playfair Display',serif;font-size:1.1em;font-weight:900;color:#fff;z-index:1;position:relative;line-height:1.3;max-width:840px;margin:0 auto}.hdr .sub{font-size:.70em;color:#1565C0;margin-top:10px;font-weight:500;z-index:1;position:relative;line-height:1.6}.hdr .mkt{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:14px;z-index:1;position:relative}.hdr .mkt .mi{background:rgba(66,165,245,.04);border:1px solid rgba(66,165,245,.12);border-radius:10px;padding:6px 11px;text-align:center;min-width:100px}.hdr .mkt .mi .ml{font-size:.48em;color:#1976D2;font-weight:700;text-transform:uppercase;letter-spacing:1px}.hdr .mkt .mi .mv{font-size:.95em;font-weight:900;margin-top:2px}.hdr .mkt .mi .mc{font-size:.52em;font-weight:700;margin-top:1px}
+.up{color:#81c784}.dn{color:#ef5350}.nt{color:#ffd740}.wh{color:#fff}
+.mn{background:#060a10;padding:18px;border:1px solid #101828;border-top:none}
+.stl{font-size:.72em;text-transform:uppercase;letter-spacing:2px;font-weight:800;color:#64B5F6;margin:20px 0 11px;display:flex;align-items:center;gap:10px;padding-bottom:8px;border-bottom:1px solid #101828}
+.tx{font-size:.78em;line-height:1.92;color:#42A5F5;margin-bottom:12px;text-align:justify}.tx strong{color:#90caf9}.tx .hl{color:#64B5F6;font-weight:700}.tx .ng{color:#ef5350;font-weight:700}.tx .ps{color:#81c784;font-weight:700}
+.chc{background:#0a0e16;border:1px solid #14202e;border-radius:12px;padding:12px;margin-bottom:11px}.chc h4{font-size:.62em;color:#1976D2;text-transform:uppercase;letter-spacing:1px;margin-bottom:7px;font-weight:700;text-align:center}.chc canvas{max-height:260px}
+.chg{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:11px}
+.thermo{background:#0a0e16;border-radius:12px;padding:12px;border:1px solid #14202e;margin-bottom:9px}.thermo h4{text-align:center;font-size:.62em;color:#1976D2;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:11px}.th-bar{height:15px;background:linear-gradient(90deg,#b71c1c 0%,#ef5350 18%,#ff9800 33%,#ffd740 50%,#8bc34a 68%,#4CAF50 82%,#1b5e20 100%);border-radius:10px;position:relative;margin:24px 8px 7px}.th-mk{position:absolute;top:-20px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center}.th-mk .arr{width:3px;height:36px;border-radius:2px;background:#fff;box-shadow:0 0 6px rgba(255,255,255,.3)}.th-mk .lbl{font-size:.54em;font-weight:800;padding:3px 6px;border-radius:5px;white-space:nowrap;margin-top:3px}.th-labels{display:flex;justify-content:space-between;padding:0 8px;font-size:.52em;color:#0a1828;font-weight:700}
+.dg{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:7px;margin-bottom:12px}.dc{background:#0a0e16;border-radius:10px;padding:10px;border:1px solid #14202e;text-align:center}.dc .dl{font-size:.48em;color:#64B5F6;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:3px}.dc .dv{font-size:1.05em;font-weight:900;color:#fff}.dc .ds{font-size:.58em;color:#1565C0;margin-top:3px;line-height:1.4}
+.alt{background:linear-gradient(135deg,#0a0e16,#0e1420);border-left:4px solid #1976D2;border-radius:0 10px 10px 0;padding:12px;margin-bottom:9px}.alt h5{font-size:.66em;color:#64B5F6;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}.alt p{font-size:.74em;color:#42A5F5;line-height:1.8}.alt p strong{color:#90caf9}
+.bld{background:linear-gradient(135deg,#0c1018,#121c2a);border:2px solid #1976D2;border-radius:14px;padding:16px;margin:14px 0;text-align:center;box-shadow:0 0 25px rgba(25,118,210,.04)}.bld h3{font-family:'Playfair Display',serif;font-size:1em;color:#fff;margin-bottom:7px;line-height:1.4}.bld p{font-size:.76em;color:#42A5F5;line-height:1.8}
+.tbl{width:100%;border-collapse:collapse;margin-bottom:11px;font-size:.66em}.tbl th{background:#0c1018;color:#64B5F6;padding:5px 3px;text-align:center;font-weight:700;text-transform:uppercase;letter-spacing:.5px;font-size:.74em;border-bottom:2px solid #1565C0}.tbl td{padding:5px 3px;text-align:center;border-bottom:1px solid #101828;color:#42A5F5}
+.proj{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px}.proj-c{background:#0a0e16;border-radius:10px;padding:11px;border:1px solid #14202e;text-align:center}.proj-c .pl{font-size:.50em;color:#64B5F6;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:4px}.proj-c .pv{font-size:1.1em;font-weight:900;color:#fff;margin-bottom:3px}.proj-c .pd{font-size:.62em;color:#1565C0;line-height:1.5}
+.geo{display:grid;grid-template-columns:1fr;gap:6px;margin-bottom:11px}.geo-i{background:rgba(66,165,245,.03);border:1px solid rgba(66,165,245,.08);border-radius:10px;padding:9px 12px;display:flex;gap:9px;align-items:flex-start}.geo-i .gi{font-size:1.1em;flex-shrink:0}.geo-i .gt{font-size:.66em;font-weight:800;color:#90caf9}.geo-i .gd{font-size:.64em;color:#1565C0;line-height:1.6;margin-top:2px}
+.hl-box{background:linear-gradient(135deg,#0c1220,#101828);border:2px solid #ffd740;border-radius:14px;padding:16px;margin:14px 0}.hl-box h3{font-family:'Playfair Display',serif;font-size:.95em;color:#ffd740;margin-bottom:8px;text-align:center}
+.sep{text-align:center;margin:16px 0;color:#101828;font-size:1em;letter-spacing:10px}
+.cred{background:linear-gradient(135deg,#0a0e16,#0e1420);border:2px solid #14202e;border-radius:16px;padding:16px;margin-top:14px}.cred-in{display:flex;gap:12px;align-items:center}.cred-av{width:56px;height:56px;background:linear-gradient(135deg,#42A5F5,#1565C0);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4em;flex-shrink:0}.cred h3{font-size:.86em;font-weight:900;color:#fff}.cred .ti{font-size:.64em;color:#64B5F6;font-weight:700;margin-top:2px}.cred .dsc{font-size:.60em;color:#1565C0;margin-top:4px;line-height:1.5;font-style:italic}.cred .ct{margin-top:7px;display:flex;flex-wrap:wrap;gap:4px}.cred .ct a,.cred .ct span{font-size:.58em;color:#42A5F5;text-decoration:none;display:flex;align-items:center;gap:3px;font-weight:600;padding:3px 6px;background:rgba(66,165,245,.05);border-radius:6px;border:1px solid rgba(66,165,245,.1)}
+.disc{margin-top:9px;padding:9px;background:rgba(255,255,255,.02);border-radius:8px;font-size:.52em;color:#101828;line-height:1.6;text-align:center}.ftr{text-align:center;padding:8px;font-size:.54em;color:#060a10;border-radius:0 0 14px 14px}
+@media(max-width:768px){.tb{flex-direction:column;text-align:center}.hdr h1{font-size:.95em}.chg{grid-template-columns:1fr}.cred-in{flex-direction:column;text-align:center}.cred .ct{justify-content:center}.dg{grid-template-columns:1fr 1fr}.proj{grid-template-columns:1fr}}
+@media(max-width:420px){.dg{grid-template-columns:1fr}.hdr h1{font-size:.85em}.hdr .mkt{flex-direction:column;align-items:center}}
+</style>
+</head>
+<body>
+<div class="pg">
+<div class="tb"><div class="lo"><div class="li">🥛</div><div class="lt"><h2>RURAL IN</h2><small>Inteligencia para o Agronegocio</small></div></div><div class="ed"><div class="dt">Marco 2026 — Fechamento Mensal</div><div class="inf">Radar Agro Leite · Entressafra + Custos + GO & MG em Destaque</div></div></div>
+
+<div class="hdr">
+<div class="tag">Radar Agro Leite · Marco/2026 · Entressafra Reage · Destaque Goias & Minas</div>
+<h1>Leite Respira Apos 9 Meses de Queda: Produtor Recebe R$ 2,15/L em Fev (+6,2%). Spot Dispara R$ 3,17/L. Derivados Sobem. Mas Custos Avancam, Import Pressiona e Margem Ainda e Negativa em Muitas Fazendas</h1>
+<div class="sub">CEPEA Fev/26: Brasil R$ 2,1464/L (+6,2% vs jan). MG R$ 2,2030/L (+6,8%). GO R$ 2,1037/L (+9,6%!). Spot 2a quinz mar: R$ 3,172/L (GO = maior alta!). MG spot fev: +33,6%! UHT atacado: R$ 3,49→R$ 3,86/L (+4,5% fev, +10,6% mar). Mucarela: R$ 28,72/kg (+0,58% fev). Leite po integral GDT: US$ 3.863/t (+5,5%). COE +1,32% jan. Milho: 33,56 L/sc (pressao). Import fev: 176 mi L EqL (+1,7%). Deficit balanca: US$ 340 mi. Conseleite: valoriza marco. Pronaf leite: juros de 8%→3%. CNN: preco abaixo do custo em varias regioes.</div>
+<div class="mkt">
+<div class="mi"><div class="ml">CEPEA Brasil Fev</div><div class="mv ps">R$ 2,1464/L</div><div class="mc up">+6,2% vs jan</div></div>
+<div class="mi"><div class="ml">🔷 MG Fev</div><div class="mv ps">R$ 2,2030/L</div><div class="mc up">+6,8%</div></div>
+<div class="mi"><div class="ml">🔶 GO Fev</div><div class="mv ps">R$ 2,1037/L</div><div class="mc up">+9,6%!</div></div>
+<div class="mi"><div class="ml">Spot BR 2a Mar</div><div class="mv ps">R$ 3,172/L</div><div class="mc up">GO lidera alta!</div></div>
+<div class="mi"><div class="ml">UHT 1a Mar</div><div class="mv nt">R$ 3,86/L</div><div class="mc up">+10,6% vs fev</div></div>
+<div class="mi"><div class="ml">Import Fev</div><div class="mv ng">176 MI L EqL</div><div class="mc dn">Deficit US$ 340mi</div></div>
+</div>
+</div>
+
+<div class="mn">
+
+<h3 class="stl">📋 O Que Aconteceu em Marco</h3>
+
+<p class="tx">O leite brasileiro viveu em marco o <span class="ps">2o mes consecutivo de recuperacao</span> apos 9 meses de queda brutal. O CEPEA fev/26 (pago em marco) atingiu <span class="ps">R$ 2,1464/L (+6,2% vs jan)</span>. Os destaques? <span class="hl">Goias: +9,6% (R$ 2,10)</span> e <span class="hl">Minas Gerais: +6,8% (R$ 2,20)</span> — as duas maiores bacias leiteiras do pais liderando a reacao. O leite spot EXPLODIU: <span class="ps">R$ 3,17/L na 2a quinzena de marco</span>, com GO registrando a maior alta entre os estados.</p>
+
+<p class="tx"><strong>Mas a recuperacao e fragil.</strong> O preco ainda esta <span class="ng">-26,9% abaixo de jan/25 em termos reais</span>. Os custos <span class="ng">nao param de subir</span>: COE +1,32%, milho pressiona (33,56 L/sc), racao e adubo encarecem. CNN Brasil reportou: <span class="ng">"preco do leite e negociado abaixo do custo de producao em varias regioes"</span>. Importacoes seguem altas (176 mi L EqL/mes) e o deficit comercial e de <span class="ng">US$ 340 mi</span>. O produtor respira, mas <span class="hl">nao respira fundo</span>.</p>
+
+<div class="alt">
+<h5>📈 A Mecanica da Recuperacao: Entressafra + Derivados</h5>
+<p><strong>1)</strong> <span class="ps">Entressafra reduz oferta de leite cru</span> → industria disputa materia-prima → preco sobe. <strong>2)</strong> Derivados reagiram: UHT +4,5% fev, +10,6% 1a quinz mar (R$ 3,86/L!). Mucarela +0,58%. <strong>3)</strong> <span class="ps">Leite spot disparou</span>: MG +33,6% fev, GO lider mar. <strong>4)</strong> GDT internacional em alta: leite em po +5,5%. <strong>5)</strong> Conseleite projeta valorizacao no pagamento de marco. <span class="hl">Tendencia: alta continua em abril/maio (pico entressafra).</span></p>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🔷🔶 Destaque: Goias & Minas Gerais</h3>
+
+<div class="hl-box">
+<h3>🔶 GOIAS — A Surpresa do Mes: +9,6% (Maior Alta do Brasil!)</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
+<div class="dc" style="border-color:#ffd740"><div class="dl">CEPEA Jan/26</div><div class="dv wh">R$ 1,9193/L</div><div class="ds">Mais baixo do Brasil</div></div>
+<div class="dc" style="border-color:#81c784"><div class="dl">CEPEA Fev/26</div><div class="dv ps">R$ 2,1037/L</div><div class="ds">+9,6%! Maior alta BR</div></div>
+<div class="dc" style="border-color:#81c784"><div class="dl">Spot 2a Mar</div><div class="dv ps">MAIOR ALTA!</div><div class="ds">GO lidera entre estados</div></div>
+<div class="dc" style="border-color:#ef5350"><div class="dl">vs Nov/25</div><div class="dv ng">R$ 2,21→2,10</div><div class="ds">Ainda -4,8% do pico</div></div>
+</div>
+<p class="tx" style="margin-top:10px"><strong>Analise GO:</strong> Goias tinha o <span class="ng">menor preco ao produtor do Brasil em jan/26</span> (R$ 1,92). A entressafra goiana — marcada por seca de inverno e reducao de pastagens — comecou a apertar a oferta em fev/mar. Resultado: <span class="ps">maior recuperacao percentual do pais</span>. O spot goiano DISPAROU na 2a quinzena de marco. Laticínios de Goiania, Rio Verde e Jatai disputam leite. <span class="hl">Abril/maio: pressao altista continua — seca intensifica entressafra.</span></p>
+</div>
+
+<div class="hl-box">
+<h3>🔷 MINAS GERAIS — Maior Bacia, Maior Volume, Termometro Nacional</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
+<div class="dc" style="border-color:#ffd740"><div class="dl">CEPEA Jan/26</div><div class="dv wh">R$ 2,0633/L</div><div class="ds">Inicio de reacao</div></div>
+<div class="dc" style="border-color:#81c784"><div class="dl">CEPEA Fev/26</div><div class="dv ps">R$ 2,2030/L</div><div class="ds">+6,8% — Maior preco BR</div></div>
+<div class="dc" style="border-color:#81c784"><div class="dl">Spot MG Fev</div><div class="dv ps">+33,6% vs Jan!</div><div class="ds">Disparou na entressafra</div></div>
+<div class="dc" style="border-color:#ffd740"><div class="dl">MG vs 12 meses</div><div class="dv ng">-26% real</div><div class="ds">Ainda longe de 2025</div></div>
+</div>
+<p class="tx" style="margin-top:10px"><strong>Analise MG:</strong> Minas e a maior bacia leiteira do Brasil e funciona como <span class="hl">termometro nacional</span>. O spot mineiro valorizou <span class="ps">+33,6% em fevereiro vs janeiro</span> — a maior alta spot do periodo. Triangulo Mineiro, Sul de Minas e Zona da Mata lideram producao. CILeite/Embrapa destacou: <span class="hl">"forte valorizacao reflete menor disponibilidade de leite cru"</span>. MG com R$ 2,20 = <span class="ps">maior preco entre os grandes estados</span>. Tendencia: alta continua enquanto entressafra perdurar.</p>
+</div>
+
+<div class="chg">
+<div class="chc"><h4>CEPEA ao Produtor — GO vs MG vs Brasil (R$/L)</h4><canvas id="ch1"></canvas></div>
+<div class="chc"><h4>Preco por Estado — Fev/26 (R$/L)</h4><canvas id="ch2"></canvas></div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">📈 Overview Marco — Dados Consolidados</h3>
+
+<table class="tbl">
+<thead><tr><th>Indicador</th><th>Jan/26</th><th>Fev/26</th><th>Var. Mensal</th><th>vs Jan/25</th></tr></thead>
+<tbody>
+<tr><td style="color:#64B5F6;font-weight:700">CEPEA Brasil</td><td>R$ 2,0216</td><td style="color:#81c784;font-weight:700">R$ 2,1464</td><td style="color:#81c784;font-weight:700">+6,2%</td><td style="color:#ef5350">-26,9%</td></tr>
+<tr><td style="color:#ffd740;font-weight:700">🔷 MG</td><td>R$ 2,0633</td><td style="color:#81c784;font-weight:700">R$ 2,2030</td><td style="color:#81c784;font-weight:700">+6,8%</td><td style="color:#ef5350">~-25%</td></tr>
+<tr><td style="color:#ffd740;font-weight:700">🔶 GO</td><td>R$ 1,9193</td><td style="color:#81c784;font-weight:700">R$ 2,1037</td><td style="color:#81c784;font-weight:700">+9,6%!</td><td style="color:#ef5350">~-28%</td></tr>
+<tr><td>SP</td><td>R$ 2,1056</td><td>R$ 2,1963</td><td style="color:#81c784">+4,3%</td><td style="color:#ef5350">~-24%</td></tr>
+<tr><td>PR</td><td>R$ 2,0355</td><td>R$ 2,1660</td><td style="color:#81c784">+6,4%</td><td style="color:#ef5350">~-26%</td></tr>
+<tr><td>UHT Atacado</td><td>~R$ 3,34</td><td>R$ 3,49</td><td style="color:#81c784">+4,5%</td><td style="color:#81c784">+16,5%</td></tr>
+<tr><td>UHT 1a Mar</td><td>—</td><td style="color:#81c784;font-weight:700">R$ 3,86</td><td style="color:#81c784;font-weight:700">+10,6%</td><td>—</td></tr>
+<tr><td>Mucarela</td><td>~R$ 28,55</td><td>R$ 28,72/kg</td><td style="color:#81c784">+0,58%</td><td style="color:#81c784">+13,4%</td></tr>
+<tr><td>Spot BR 2a Mar</td><td>—</td><td style="color:#81c784;font-weight:700">R$ 3,172/L</td><td style="color:#81c784;font-weight:700">ALTA GERAL</td><td>—</td></tr>
+<tr><td>Leite Po GDT</td><td>~US$ 3.660</td><td style="color:#81c784">US$ 3.863</td><td style="color:#81c784">+5,5%</td><td>—</td></tr>
+<tr><td style="color:#ef5350">Import</td><td>173 mi L</td><td style="color:#ef5350">176 mi L EqL</td><td style="color:#ef5350">+1,7%</td><td style="color:#81c784">-16% a/a</td></tr>
+<tr><td style="color:#ef5350">Deficit Balanca</td><td>—</td><td style="color:#ef5350">US$ 340 mi acum.</td><td style="color:#ef5350">Persistente</td><td>—</td></tr>
+<tr><td style="color:#ef5350">COE (custo)</td><td>+1,32%</td><td>+alta</td><td style="color:#ef5350">Racao+adubo</td><td>—</td></tr>
+<tr><td style="color:#ef5350">Relacao Milho</td><td>33,56 L/sc</td><td>—</td><td style="color:#ef5350">+15,2% vs med 12m</td><td>—</td></tr>
+</tbody>
+</table>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🔍 Os 8 Fundamentos do Leite</h3>
+
+<div class="dg">
+<div class="dc" style="border-color:#81c784"><div class="dl">1. Entressafra</div><div class="dv ps">OFERTA CAI</div><div class="ds">Leite cru reduz.<br>Industria disputa.<br>Preco sobe.</div></div>
+<div class="dc" style="border-color:#81c784"><div class="dl">2. Derivados ↑</div><div class="dv ps">UHT +10,6%</div><div class="ds">Mucarela +13,4% a/a.<br>Atacado repassa.<br>Puxa produtor.</div></div>
+<div class="dc" style="border-color:#81c784"><div class="dl">3. Spot Explode</div><div class="dv ps">R$ 3,17/L</div><div class="ds">GO lidera mar.<br>MG +33,6% fev.<br>Materia-prima cara.</div></div>
+<div class="dc" style="border-color:#81c784"><div class="dl">4. GDT Internacional</div><div class="dv ps">LP +5,5%</div><div class="ds">Leite em po sobe.<br>Ambiente externo +.<br>Suporte a export.</div></div>
+<div class="dc" style="border-color:#ef5350"><div class="dl">5. Custos Sobem</div><div class="dv ng">COE +1,3%</div><div class="ds">Racao + milho + adubo.<br>Margem apertada.<br>Preco < custo (CNN).</div></div>
+<div class="dc" style="border-color:#ef5350"><div class="dl">6. Milho Pressiona</div><div class="dv ng">33,56 L/SC</div><div class="ds">+15% vs media 12m.<br>Poder de compra cai.<br>Insumo #1 do leite.</div></div>
+<div class="dc" style="border-color:#ef5350"><div class="dl">7. Importacao Alta</div><div class="dv ng">176 MI L/MES</div><div class="ds">Deficit: US$ 340 mi.<br>Leite po domina.<br>Pressiona mercado interno.</div></div>
+<div class="dc" style="border-color:#81c784"><div class="dl">8. Pronaf 3% Novo</div><div class="dv ps">JUROS CAEM</div><div class="ds">De 8% para 3% a.a.<br>Cooperativas leite.<br>Melhoria genetica.</div></div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🌡️ Termometros — Marco/2026</h3>
+
+<div class="chg">
+<div class="thermo"><h4>Preco ao Produtor — Tendencia</h4><div class="th-bar"><div class="th-mk" style="left:60%"><div class="arr"></div><div class="lbl" style="background:#8bc34a;color:#000">ALTISTA (entressafra)</div></div></div><div class="th-labels"><span>Baixista</span><span>Neutro</span><span>Altista</span></div></div>
+<div class="thermo"><h4>Custos de Producao</h4><div class="th-bar"><div class="th-mk" style="left:72%"><div class="arr"></div><div class="lbl" style="background:#ef5350;color:#fff">ALTO (racao+milho)</div></div></div><div class="th-labels"><span>Baixo</span><span>Medio</span><span>Alto</span></div></div>
+</div>
+<div class="chg">
+<div class="thermo"><h4>Margem do Produtor</h4><div class="th-bar"><div class="th-mk" style="left:28%"><div class="arr"></div><div class="lbl" style="background:#ef5350;color:#fff">APERTADA / NEGATIVA</div></div></div><div class="th-labels"><span>Negativa</span><span>Equilibrio</span><span>Positiva</span></div></div>
+<div class="thermo"><h4>Mercado Spot</h4><div class="th-bar"><div class="th-mk" style="left:75%"><div class="arr"></div><div class="lbl" style="background:#4CAF50;color:#fff">FORTE (R$3,17/L)</div></div></div><div class="th-labels"><span>Fraco</span><span>Normal</span><span>Forte</span></div></div>
+</div>
+<div class="chg">
+<div class="thermo"><h4>Importacao (Pressao)</h4><div class="th-bar"><div class="th-mk" style="left:65%"><div class="arr"></div><div class="lbl" style="background:#ff9800;color:#000">ALTA (176mi L/mes)</div></div></div><div class="th-labels"><span>Baixa</span><span>Normal</span><span>Alta</span></div></div>
+<div class="thermo"><h4>Goias + MG (Entressafra)</h4><div class="th-bar"><div class="th-mk" style="left:70%"><div class="arr"></div><div class="lbl" style="background:#4CAF50;color:#fff">PRECO SUBINDO</div></div></div><div class="th-labels"><span>Queda</span><span>Estavel</span><span>Alta</span></div></div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🎯 Cenarios Abril-Junho</h3>
+
+<div class="bld">
+<h3>VIES: ALTISTA PARA PRECO, MAS MARGEM SEGUE APERTADA</h3>
+<p>Entressafra abril-junho e o periodo de <span style="color:#81c784;font-weight:700">maior pressao de alta no preco ao produtor</span>. Historicamente, precos sobem 8-15% no periodo. Mas custos tambem sobem (diesel, racao, fertilizante — Ormuz puxa tudo). <span style="color:#ef5350;font-weight:700">Margem pode nao melhorar tanto quanto preco.</span> Gestao de custos e a chave.</p>
+</div>
+
+<div class="proj">
+<div class="proj-c" style="border-color:#81c784"><div class="pl">Preco Produtor Abril</div><div class="pv" style="color:#81c784">R$ 2,20 - 2,35/L</div><div class="pd">Entressafra aperta.<br>Conseleite projeta alta.<br>GO e MG lideram.</div></div>
+<div class="proj-c" style="border-color:#81c784"><div class="pl">Preco Produtor Mai-Jun</div><div class="pv" style="color:#81c784">R$ 2,30 - 2,50/L</div><div class="pd">Pico entressafra.<br>Seca intensa GO/MG.<br>Se import cair: mais alta.</div></div>
+<div class="proj-c" style="border-color:#ffd740"><div class="pl">UHT Varejo Abril</div><div class="pv" style="color:#ffd740">R$ 4,00 - 4,30/L</div><div class="pd">Repasse atacado→varejo.<br>Consumidor sensivel.<br>Demanda pode frear.</div></div>
+<div class="proj-c" style="border-color:#ef5350"><div class="pl">Risco: Custo Dispara</div><div class="pv" style="color:#ef5350">COE +3-5%?</div><div class="pd">Petroleo $119 → diesel.<br>Milho + soja encarecem.<br>Margem nao melhora.</div></div>
+</div>
+
+<div class="chc"><h4>Cenarios Preco ao Produtor — Abril a Agosto (R$/L)</h4><canvas id="ch3"></canvas></div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🌐 Radar Macro e Fatores de Atencao</h3>
+
+<div class="geo">
+<div class="geo-i"><div class="gi">🌾</div><div><div class="gt">Milho: O Vilao do Custo do Leite</div><div class="gd">Relacao de troca: <strong>33,56 litros de leite para 1 saca de milho</strong> — 15,2% acima da media 12 meses. Milho e o insumo #1 da racao. Se milho subir mais (safrinha menor, Ormuz): margem do leiteiro piora mesmo com preco do leite subindo.</div></div></div>
+<div class="geo-i"><div class="gi">🚢</div><div><div class="gt">Importacoes: 176 Mi L/Mes — O Teto Invisivel</div><div class="gd">Leite em po importado (Argentina, Uruguai, UE) = <strong>176 mi L EqL/mes</strong>. Deficit acumulado: US$ 340 mi. Enquanto importacao for alta: teto no preco domestico. Ponto positivo: caiu -16% a/a. Se dolar subir mais: import fica cara = alivia.</div></div></div>
+<div class="geo-i"><div class="gi">⛽</div><div><div class="gt">Ormuz / Petroleo: Impacto Indireto Pesado</div><div class="gd">Petroleo US$ 119 → diesel sobe → frete sobe → insumos sobem → <strong>custo de producao do leite dispara</strong>. Fertilizante: Ormuz afeta rotas. Racao: milho/soja com frete mais caro. O produtor de leite sofre dos dois lados: custo sobe E preco nao sobe na mesma velocidade.</div></div></div>
+<div class="geo-i"><div class="gi">🏛️</div><div><div class="gt">Pronaf Leite: Juros de 8% → 3% (CMN)</div><div class="gd">CMN aprovou reducao de juros para cooperativas de bovinocultura de leite. <strong>De 8% para 3% ao ano</strong> no Pronaf Mais Alimentos. Foco: semen, ovulos, embrioes para melhoramento genetico. Boa noticia para <strong>produtores de GO e MG em cooperativas</strong> — acesso a credito mais barato para investir na producao.</div></div></div>
+<div class="geo-i"><div class="gi">🇦🇷</div><div><div class="gt">Argentina: Principal Fornecedor de Leite em Po</div><div class="gd">Peso argentino desvalorizado = leite em po argentino barato para o Brasil. Enquanto Argentina exportar forte: pressao sobre preco domestico brasileiro. Se Argentina tiver seca ou crise: alivia importacao = preco BR sobe mais.</div></div></div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">💡 Estrategia Rural IN — Produtor de Leite (GO & MG)</h3>
+
+<div class="alt"><h5>🔶 Produtor em Goias</h5><p>Voce esta na <span class="ps">curva de maior recuperacao do Brasil (+9,6%)</span>. Spot goiano lidera alta em marco. <span class="hl">Estrategia: negocie preco AGORA com laticinios</span> — entressafra goiana (abr-jun) vai apertar oferta. Se voce manter producao estavel enquanto vizinhos reduzem: <span class="ps">poder de negociacao aumenta</span>. Trave contrato acima de R$ 2,20/L para abr/mai se possivel. <strong>Atencao: custo de racao sobe — otimize pastagem e silagem.</strong></p></div>
+<div class="alt"><h5>🔷 Produtor em Minas Gerais</h5><p>MG e o maior produtor e <span class="ps">paga o maior preco entre grandes estados (R$ 2,20)</span>. Spot MG +33,6% em fev = industria desesperada por leite. <span class="hl">Se voce tem leite para entregar: este e o momento de negociar bonus</span> de volume, qualidade (CCS, CBT). Sul de Minas e Triangulo: laticínios competindo. <strong>Atingir R$ 2,30-2,40 em abr/mai e realista.</strong></p></div>
+<div class="alt"><h5>💰 Gestao de Custo: A Chave de 2026</h5><p>Preco sobe, mas custo sobe junto. <span class="ng">33,56 litros para 1 saca de milho = margem apertada.</span> <span class="hl">Acoes: 1)</span> Negocie racao em volume (cooperativa). <span class="hl">2)</span> Pronaf 3%: acesse credito barato para genetica. <span class="hl">3)</span> Maximize pasto (reducao de concentrado). <span class="hl">4)</span> Controle CCS/CBT: bonus de qualidade pode adicionar R$ 0,05-0,15/L. <strong>Quem vende leite sem controlar custo: nao sabe se esta ganhando ou perdendo.</strong></p></div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">📊 Graficos Complementares</h3>
+
+<div class="chg">
+<div class="chc"><h4>Radar Fundamentalista — Leite Marco/26</h4><canvas id="ch4"></canvas></div>
+<div class="chc"><h4>Trajetoria CEPEA Brasil — 12 Meses (R$/L)</h4><canvas id="ch5"></canvas></div>
+</div>
+
+<div class="chc"><h4>Cadeia do Leite — Do Produtor ao Consumidor (R$/L Marco)</h4><canvas id="ch6"></canvas></div>
+
+<div class="cred"><div class="cred-in"><div class="cred-av">👨‍💼</div><div><h3>Dr. Sidney Souza</h3><div class="ti">Economista Agricola · Estrategista Economico do Produtor</div><div class="dsc">Especialista em economia da fazenda e gestao de risco no agro<br>Transformamos dados da fazenda em decisoes economicas<br>Ajudamos produtores a entender se o mercado sustenta seu negocio</div><div class="ct"><a href="mailto:sidneyagro@gmail.com">📧 sidneyagro@gmail.com</a><a href="https://wa.me/5564992266886">📱 (64) 9 9226-6886</a><span>📸 @ruralin.ai</span></div></div></div><div class="disc">Informativo analitico e educacional. Nao constitui recomendacao de compra ou venda. Dados: CEPEA/Esalq-USP, CILeite/Embrapa Gado de Leite, MilkPoint, Conseleite, CitrusBR, UFJF, Scot Consultoria, OCB, Secex, GDT, Abraleite, CNN Brasil, Noticias Agricolas, Globo Rural, Broto Noticias, AgroRevenda, O Presente Rural, SBA1, Acrissul, Leia Agora, Revista Mais Leite, CMN, ICRA. Analise: Dr. Sidney Souza — Rural IN.</div></div>
+</div>
+<div class="ftr">RURAL IN 2026 · Inteligencia para o Agronegocio · Rio Verde/GO</div>
+</div>
+
+<script>
+Chart.defaults.color='#0a1828';Chart.defaults.font.family='Inter';Chart.defaults.font.size=11;
+var df={family:'Inter',weight:'600'};
+var tt={backgroundColor:'#0a0e16',titleColor:'#64B5F6',bodyColor:'#90caf9',borderColor:'#1565C0',borderWidth:1,padding:12,cornerRadius:8};
+
+new Chart(document.getElementById('ch1').getContext('2d'),{type:'line',data:{labels:['Out/25','Nov/25','Dez/25','Jan/26','Fev/26'],datasets:[{label:'MG',data:[2.3884,2.5276,2.0270,2.0633,2.2030],borderColor:'#42A5F5',borderWidth:2.5,tension:0.3,pointRadius:5,fill:false,pointBackgroundColor:'#42A5F5'},{label:'GO',data:[2.2103,2.3426,1.8761,1.9193,2.1037],borderColor:'#ffd740',borderWidth:2.5,tension:0.3,pointRadius:5,fill:false,pointBackgroundColor:'#ffd740'},{label:'Brasil',data:[2.2996,2.4410,1.9966,2.0216,2.1464],borderColor:'#90caf9',borderWidth:1.5,tension:0.3,pointRadius:3,fill:false,borderDash:[4,2],pointBackgroundColor:'#90caf9'}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt,annotation:{annotations:{v:{type:'label',xValue:2,yValue:1.82,content:['FUNDO!','9 meses queda'],font:{size:7,weight:'bold'},color:'#ef5350'},r:{type:'label',xValue:4,yValue:2.28,content:['REACAO!','MG R$2,20'],font:{size:7,weight:'bold'},color:'#81c784'}}}},scales:{y:{min:1.75,max:2.6,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'R$'+v.toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+
+new Chart(document.getElementById('ch2').getContext('2d'),{type:'bar',data:{labels:['SP','MG','PR','GO','RS','SC','BA','ES'],datasets:[{label:'Fev/26 (R$/L)',data:[2.1963,2.2030,2.1660,2.1037,2.0962,2.0727,2.0967,1.9865],backgroundColor:function(c){var l=c.dataIndex;return l===1?'rgba(66,165,245,0.5)':l===3?'rgba(255,215,64,0.5)':'rgba(144,202,249,0.2)';},borderColor:function(c){var l=c.dataIndex;return l===1?'#42A5F5':l===3?'#ffd740':'#90caf9';},borderWidth:2,borderRadius:5}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,annotation:{annotations:{mg:{type:'label',xValue:1,yValue:2.28,content:['MG LIDERA!'],font:{size:7,weight:'bold'},color:'#42A5F5'},go:{type:'label',xValue:3,yValue:2.17,content:['GO +9,6%!'],font:{size:7,weight:'bold'},color:'#ffd740'}}}},scales:{y:{min:1.9,max:2.3,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'R$'+v.toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+
+new Chart(document.getElementById('ch3').getContext('2d'),{type:'line',data:{labels:['Jan','Fev','Mar*','Abr','Mai','Jun','Jul','Ago'],datasets:[{label:'Otimista (entressafra forte + import cai)',data:[2.02,2.15,2.22,2.35,2.50,2.55,2.45,2.35],borderColor:'#81c784',borderWidth:2,tension:0.3,pointRadius:4,fill:false,pointBackgroundColor:'#81c784'},{label:'Base (entressafra normal)',data:[2.02,2.15,2.20,2.28,2.40,2.42,2.35,2.25],borderColor:'#ffd740',borderWidth:2.5,tension:0.3,pointRadius:4,fill:false,pointBackgroundColor:'#ffd740'},{label:'Pessimista (import forte + custo dispara)',data:[2.02,2.15,2.18,2.20,2.25,2.22,2.15,2.10],borderColor:'#ef5350',borderWidth:2,tension:0.3,pointRadius:4,fill:false,borderDash:[5,3],pointBackgroundColor:'#ef5350'}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt,annotation:{annotations:{e:{type:'label',xValue:4,yValue:2.58,content:['PICO','ENTRESSAFRA'],font:{size:8,weight:'bold'},color:'#81c784'}}}},scales:{y:{min:2.0,max:2.65,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'R$'+v.toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+
+new Chart(document.getElementById('ch4').getContext('2d'),{type:'radar',data:{labels:['Entressafra (Alta)','Derivados (Alta)','Spot Forte','GDT Int. +','Custos Altos','Milho Caro','Import Pressao','Pronaf 3%'],datasets:[{label:'Altista',data:[80,75,85,65,15,12,20,60],backgroundColor:'rgba(129,199,132,0.08)',borderColor:'#81c784',borderWidth:2.5,pointBackgroundColor:'#81c784',pointRadius:5},{label:'Baixista',data:[20,25,15,35,85,88,80,40],backgroundColor:'rgba(239,83,80,0.06)',borderColor:'#ef5350',borderWidth:1.5,pointBackgroundColor:'#ef5350',pointRadius:3,borderDash:[4,2]}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},scales:{r:{min:0,max:100,ticks:{display:false,stepSize:20},grid:{color:'rgba(255,255,255,0.06)'},pointLabels:{font:{family:'Inter',weight:'600',size:6.5},color:'#1976D2'}}}}});
+
+new Chart(document.getElementById('ch5').getContext('2d'),{type:'line',data:{labels:['Abr/25','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez','Jan/26','Fev/26'],datasets:[{label:'CEPEA Brasil (R$/L)',data:[2.65,2.56,2.52,2.48,2.44,2.41,2.30,2.44,2.00,2.02,2.15],borderColor:'#42A5F5',backgroundColor:'rgba(66,165,245,0.06)',borderWidth:2.5,fill:true,tension:0.3,pointRadius:4,pointBackgroundColor:function(c){return c.dataIndex>=9?'#81c784':c.parsed.y<2.05?'#ef5350':'#42A5F5';}}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,annotation:{annotations:{q:{type:'label',xValue:8,yValue:1.92,content:['FUNDO','R$2,00'],font:{size:7,weight:'bold'},color:'#ef5350'},r:{type:'label',xValue:10,yValue:2.22,content:['REACAO!','+6,2%'],font:{size:7,weight:'bold'},color:'#81c784'},nq:{type:'line',xMin:0,xMax:8,yMin:2.65,yMax:2.00,borderColor:'rgba(239,83,80,0.2)',borderWidth:1.5,borderDash:[4,3]}}}},scales:{y:{min:1.9,max:2.75,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'R$'+v.toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:6}}}}}});
+
+new Chart(document.getElementById('ch6').getContext('2d'),{type:'bar',data:{labels:['Produtor\nFev/26','Spot\n2a Mar','UHT Atacado\n1a Mar','UHT Varejo\n(estimativa)'],datasets:[{label:'Preco (R$/L)',data:[2.15,3.17,3.86,4.50],backgroundColor:['rgba(66,165,245,0.4)','rgba(255,215,64,0.4)','rgba(255,152,0,0.4)','rgba(239,83,80,0.4)'],borderColor:['#42A5F5','#ffd740','#ff9800','#ef5350'],borderWidth:2,borderRadius:5}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,annotation:{annotations:{m:{type:'label',xValue:0,yValue:1.8,content:['O produtor','recebe MENOS'],font:{size:6,weight:'bold'},color:'#42A5F5'},v:{type:'label',xValue:3,yValue:4.85,content:['Consumidor','paga MAIS'],font:{size:6,weight:'bold'},color:'#ef5350'}}}},scales:{y:{min:1.5,max:5.2,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'R$'+v.toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}});
+</script>
+</body>
+</html>

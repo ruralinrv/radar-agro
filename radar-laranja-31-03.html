@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radar Agro Laranja — 31/03/2026 | Rural IN</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:#0a0800;color:#d4b870;min-height:100vh}
+.pg{max-width:960px;margin:0 auto;padding:10px}
+.tb{background:linear-gradient(90deg,#141000,#1e1a08,#141000);padding:12px 20px;border-radius:14px 14px 0 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #F57F17;flex-wrap:wrap;gap:8px}.tb .lo{display:flex;align-items:center;gap:12px}.tb .li{width:54px;height:54px;background:linear-gradient(135deg,#FF8F00,#E65100);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.7em;box-shadow:0 4px 25px rgba(255,143,0,.2)}.tb .lt h2{font-size:1.05em;font-weight:900;color:#fff;letter-spacing:1.5px}.tb .lt small{font-size:.62em;color:#FFB300;font-weight:600;display:block}.tb .ed{text-align:right}.tb .ed .dt{font-size:.86em;font-weight:800;color:#FFB300}.tb .ed .inf{font-size:.6em;color:#FF8F00;font-weight:600}
+.hdr{background:linear-gradient(135deg,#0c0a02,#100e06 50%,#0a0800);padding:34px 22px 28px;text-align:center;border-bottom:3px solid #FF8F00;position:relative;overflow:hidden}.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(255,143,0,.05) 0%,transparent 70%)}.hdr .tag{display:inline-block;background:linear-gradient(135deg,#FF8F00,#E65100);color:#fff;font-size:.56em;font-weight:800;letter-spacing:3px;padding:4px 14px;border-radius:20px;text-transform:uppercase;margin-bottom:10px;z-index:1;position:relative}.hdr h1{font-family:'Playfair Display',serif;font-size:1.12em;font-weight:900;color:#fff;z-index:1;position:relative;line-height:1.3;max-width:840px;margin:0 auto}.hdr .sub{font-size:.71em;color:#BF360C;margin-top:10px;font-weight:500;z-index:1;position:relative;line-height:1.6}.hdr .mkt{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:14px;z-index:1;position:relative}.hdr .mkt .mi{background:rgba(255,143,0,.04);border:1px solid rgba(255,143,0,.12);border-radius:10px;padding:6px 11px;text-align:center;min-width:100px}.hdr .mkt .mi .ml{font-size:.48em;color:#E65100;font-weight:700;text-transform:uppercase;letter-spacing:1px}.hdr .mkt .mi .mv{font-size:.95em;font-weight:900;margin-top:2px}.hdr .mkt .mi .mc{font-size:.52em;font-weight:700;margin-top:1px}
+.up{color:#81c784}.dn{color:#ef5350}.nt{color:#ffd740}.wh{color:#fff}
+.mn{background:#0a0800;padding:18px;border:1px solid #1e1a08;border-top:none}
+.stl{font-size:.72em;text-transform:uppercase;letter-spacing:2px;font-weight:800;color:#FFB300;margin:20px 0 11px;display:flex;align-items:center;gap:10px;padding-bottom:8px;border-bottom:1px solid #1e1a08}
+.tx{font-size:.78em;line-height:1.92;color:#BF8C00;margin-bottom:12px;text-align:justify}.tx strong{color:#d4b870}.tx .hl{color:#FFB300;font-weight:700}.tx .ng{color:#ef5350;font-weight:700}.tx .ps{color:#81c784;font-weight:700}
+.chc{background:#0e0c04;border:1px solid #221e0a;border-radius:12px;padding:12px;margin-bottom:11px}.chc h4{font-size:.62em;color:#E65100;text-transform:uppercase;letter-spacing:1px;margin-bottom:7px;font-weight:700;text-align:center}.chc canvas{max-height:250px}
+.chg{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:11px}
+.thermo{background:#0e0c04;border-radius:12px;padding:12px;border:1px solid #221e0a;margin-bottom:9px}.thermo h4{text-align:center;font-size:.62em;color:#E65100;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:11px}.th-bar{height:15px;background:linear-gradient(90deg,#b71c1c 0%,#ef5350 18%,#ff9800 33%,#ffd740 50%,#8bc34a 68%,#4CAF50 82%,#1b5e20 100%);border-radius:10px;position:relative;margin:24px 8px 7px}.th-mk{position:absolute;top:-20px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center}.th-mk .arr{width:3px;height:36px;border-radius:2px;background:#fff;box-shadow:0 0 6px rgba(255,255,255,.3)}.th-mk .lbl{font-size:.54em;font-weight:800;padding:3px 6px;border-radius:5px;white-space:nowrap;margin-top:3px}.th-labels{display:flex;justify-content:space-between;padding:0 8px;font-size:.52em;color:#2a2408;font-weight:700}
+.dg{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:7px;margin-bottom:12px}.dc{background:#0e0c04;border-radius:10px;padding:10px;border:1px solid #221e0a;text-align:center}.dc .dl{font-size:.48em;color:#FFB300;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:3px}.dc .dv{font-size:1.05em;font-weight:900;color:#fff}.dc .ds{font-size:.58em;color:#8B6914;margin-top:3px;line-height:1.4}
+.alt{background:linear-gradient(135deg,#0e0c04,#121006);border-left:4px solid #FF8F00;border-radius:0 10px 10px 0;padding:12px;margin-bottom:9px}.alt h5{font-size:.66em;color:#FFB300;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}.alt p{font-size:.74em;color:#BF8C00;line-height:1.8}.alt p strong{color:#d4b870}
+.bld{background:linear-gradient(135deg,#100e04,#161408);border:2px solid #FF8F00;border-radius:14px;padding:16px;margin:14px 0;text-align:center;box-shadow:0 0 25px rgba(255,143,0,.04)}.bld h3{font-family:'Playfair Display',serif;font-size:1em;color:#fff;margin-bottom:7px;line-height:1.4}.bld p{font-size:.76em;color:#BF8C00;line-height:1.8}
+.tbl{width:100%;border-collapse:collapse;margin-bottom:11px;font-size:.66em}.tbl th{background:#100e04;color:#FFB300;padding:5px 3px;text-align:center;font-weight:700;text-transform:uppercase;letter-spacing:.5px;font-size:.74em;border-bottom:2px solid #E65100}.tbl td{padding:5px 3px;text-align:center;border-bottom:1px solid #1e1a08;color:#BF8C00}
+.proj{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px}.proj-c{background:#0e0c04;border-radius:10px;padding:11px;border:1px solid #221e0a;text-align:center}.proj-c .pl{font-size:.50em;color:#FFB300;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:4px}.proj-c .pv{font-size:1.1em;font-weight:900;color:#fff;margin-bottom:3px}.proj-c .pd{font-size:.62em;color:#8B6914;line-height:1.5}
+.geo{display:grid;grid-template-columns:1fr;gap:6px;margin-bottom:11px}.geo-i{background:rgba(255,143,0,.03);border:1px solid rgba(255,143,0,.08);border-radius:10px;padding:9px 12px;display:flex;gap:9px;align-items:flex-start}.geo-i .gi{font-size:1.1em;flex-shrink:0}.geo-i .gt{font-size:.66em;font-weight:800;color:#d4b870}.geo-i .gd{font-size:.64em;color:#8B6914;line-height:1.6;margin-top:2px}
+.sep{text-align:center;margin:16px 0;color:#1e1a08;font-size:1em;letter-spacing:10px}
+.cred{background:linear-gradient(135deg,#0e0c04,#121006);border:2px solid #221e0a;border-radius:16px;padding:16px;margin-top:14px}.cred-in{display:flex;gap:12px;align-items:center}.cred-av{width:56px;height:56px;background:linear-gradient(135deg,#FF8F00,#E65100);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4em;flex-shrink:0}.cred h3{font-size:.86em;font-weight:900;color:#fff}.cred .ti{font-size:.64em;color:#FFB300;font-weight:700;margin-top:2px}.cred .dsc{font-size:.60em;color:#8B6914;margin-top:4px;line-height:1.5;font-style:italic}.cred .ct{margin-top:7px;display:flex;flex-wrap:wrap;gap:4px}.cred .ct a,.cred .ct span{font-size:.58em;color:#BF8C00;text-decoration:none;display:flex;align-items:center;gap:3px;font-weight:600;padding:3px 6px;background:rgba(255,143,0,.05);border-radius:6px;border:1px solid rgba(255,143,0,.1)}
+.disc{margin-top:9px;padding:9px;background:rgba(255,255,255,.02);border-radius:8px;font-size:.52em;color:#1e1a08;line-height:1.6;text-align:center}.ftr{text-align:center;padding:8px;font-size:.54em;color:#0a0800;border-radius:0 0 14px 14px}
+@media(max-width:768px){.tb{flex-direction:column;text-align:center}.hdr h1{font-size:1em}.chg{grid-template-columns:1fr}.cred-in{flex-direction:column;text-align:center}.cred .ct{justify-content:center}.dg{grid-template-columns:1fr 1fr}.proj{grid-template-columns:1fr}}
+@media(max-width:420px){.dg{grid-template-columns:1fr}.hdr h1{font-size:.88em}.hdr .mkt{flex-direction:column;align-items:center}}
+</style>
+</head>
+<body>
+<div class="pg">
+<div class="tb"><div class="lo"><div class="li">🍊</div><div class="lt"><h2>RURAL IN</h2><small>Inteligencia para o Agronegocio</small></div></div><div class="ed"><div class="dt">Terca-feira, 31 de Marco de 2026</div><div class="inf">Radar Agro Laranja · FCOJ + CEPEA · Overview Marco</div></div></div>
+
+<div class="hdr">
+<div class="tag">Radar Agro Laranja · 31/Mar/2026 · FCOJ Dispara + CEPEA Cai · Dois Mundos</div>
+<h1>Mercado Partido: FCOJ Dispara +5,6% em NY (Florida Morre), Mas CEPEA Cai -7,5% no Mes (Safra BR +27%, Estoques +75%). O Citricultor Brasileiro Vive Dois Mercados ao Mesmo Tempo</h1>
+<div class="sub">ICE FCOJ Mai 31/3: 190,10 cts/lb (+5,56% | +10,3% mes). CEPEA Laranja Industria 31/3: R$ 29,29/cx (-7,51% mes!). Pico historico FCOJ: US$ 9.449 (jun/25). Queda acumulada NY: -26% vs 1 ano. Safra BR 25/26: 292,6 mi cxs (+26,7% a/a). Safra BR 26/27: estimada 260-320 mi cxs. Florida: producao -90% (greening devastou). Estoques BR: 616 mil t (+75,4% vs 2024 — max desde 2021). Export EU: +55% jan, mas acumulado -4,6%. Demanda EU: lenta (preco varejo alto). Fundecitrus estimativa 26/27: maio. Greening: avanca. Range 52 sem NY: 132-344 cts.</div>
+<div class="mkt">
+<div class="mi"><div class="ml">FCOJ Mai/26 NY</div><div class="mv ps">190,10 cts</div><div class="mc up">+5,56% HOJE!</div></div>
+<div class="mi"><div class="ml">CEPEA Ind. 31/3</div><div class="mv ng">R$ 29,29/cx</div><div class="mc dn">-7,51% mes</div></div>
+<div class="mi"><div class="ml">Safra BR 25/26</div><div class="mv ps">292,6 MI CXS</div><div class="mc up">+26,7% a/a</div></div>
+<div class="mi"><div class="ml">Estoques BR</div><div class="mv ng">616 MIL t</div><div class="mc up">+75,4% vs 24</div></div>
+<div class="mi"><div class="ml">Florida</div><div class="mv ng">DESTRUIDA</div><div class="mc dn">-90% producao</div></div>
+<div class="mi"><div class="ml">Range 52 sem NY</div><div class="mv nt">132 - 344 cts</div><div class="mc nt">Volatilidade EXTREMA</div></div>
+</div>
+</div>
+
+<div class="mn">
+
+<h3 class="stl">📋 O Que Aconteceu Hoje — 31/03</h3>
+
+<p class="tx">O FCOJ <span class="ps">DISPAROU +5,56% hoje</span> na ICE (190,10 cts/lb), saindo de 180,10 para 190,10 — a <span class="ps">maior alta diaria em semanas</span>. Abriu a 177,50, fez minima de 178,45 e explodiu para a maxima/fechamento de 190,10. O <span class="hl">gatilho principal</span>: a Florida — que ja perdeu <span class="ng">90% de sua producao por greening (HLB)</span> — continua a sofrer. Qualquer noticia de freeze, doenca ou logistica (Ormuz) dispara o mercado. Alem disso, a <span class="hl">volatilidade extrema</span> (range 52 sem: 132-344!) atrai especuladores.</p>
+
+<p class="tx">Enquanto isso, o <span class="ng">CEPEA caiu -7,51% no mes</span> (de R$ 31,67 para R$ 29,29/cx). No Brasil, a historia e oposta: <span class="hl">safra 25/26 de 292,6 mi cxs (+26,7%)</span>, estoques de suco saltaram <span class="ng">+75,4%</span> (616 mil t), e a demanda europeia segue lenta. O <span class="ng">preco ao citricultor cai</span> porque tem muita laranja e pouca demanda por suco. <strong>Sao dois mundos: NY (Florida morre = sobe) vs Brasil (safra grande = cai).</strong></p>
+
+<div class="alt">
+<h5>🔀 A Dicotomia: Por Que NY Sobe e CEPEA Cai?</h5>
+<p><strong>NY (FCOJ):</strong> Contrato de suco CONCENTRADO, referenciado na Florida. Florida produz <span class="ng">quase nada</span> (-90%). Qualquer ameaca = panico. Especuladores dominam. Volume baixo (515 contratos/dia!). <strong>CEPEA (BR):</strong> Preco da <span class="hl">laranja FISICA paga ao produtor no cinturao SP/MG</span>. Safra grande (+27%), estoques altos, industria exige mais qualidade (ratio), demanda EU lenta. <span class="ng">Resultado: NY voa, produtor brasileiro recebe menos.</span> A paridade nao e direta — sao mercados diferentes.</p>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">📈 Overview Marco — NY Recupera, CEPEA Afunda</h3>
+
+<table class="tbl">
+<thead><tr><th>Data</th><th>FCOJ Mai NY (cts)</th><th>Var.</th><th>CEPEA Ind. (R$/cx)</th><th>Var. Mes</th><th>Fato</th></tr></thead>
+<tbody>
+<tr><td>02/3</td><td>166,55</td><td>—</td><td>31,67*</td><td>—</td><td>Abertura mes</td></tr>
+<tr><td>05/3</td><td>183,40</td><td style="color:#81c784">+10%</td><td>—</td><td>—</td><td>Freeze fear Florida</td></tr>
+<tr><td style="color:#81c784">12/3</td><td style="color:#81c784">197,80</td><td style="color:#81c784">+7,8%</td><td>33,33</td><td style="color:#81c784">+5,2%</td><td style="color:#81c784">Max 52 sem teste!</td></tr>
+<tr><td>16/3</td><td>199,80</td><td>+1%</td><td>31,00</td><td style="color:#ef5350">-2,1%</td><td>NY max, CEPEA cai</td></tr>
+<tr><td style="color:#ef5350">19/3</td><td style="color:#ef5350">167,05</td><td style="color:#ef5350">-16,4%!</td><td>30,71</td><td style="color:#ef5350">-3%</td><td style="color:#ef5350">CRASH NY! Realiz.+estoques</td></tr>
+<tr><td style="color:#ef5350">23/3</td><td style="color:#ef5350">161,95</td><td style="color:#ef5350">-3%</td><td>30,23</td><td>-4,5%</td><td>Min do mes NY</td></tr>
+<tr><td style="color:#81c784">25/3</td><td style="color:#81c784">182,55</td><td style="color:#81c784">+12,7%!</td><td>30,25</td><td>-4,5%</td><td style="color:#81c784">Rally tecnico NY</td></tr>
+<tr><td>27/3</td><td>176,55</td><td>-3,3%</td><td>30,25</td><td>-4,5%</td><td>Volatilidade extrema</td></tr>
+<tr><td>30/3</td><td>180,10</td><td>+2%</td><td>29,38</td><td style="color:#ef5350">-7,2%</td><td>CEPEA desaba</td></tr>
+<tr><td style="color:#81c784;font-weight:700">31/3</td><td style="color:#81c784;font-weight:800">190,10</td><td style="color:#81c784;font-weight:700">+5,56%!</td><td style="color:#ef5350;font-weight:700">29,29</td><td style="color:#ef5350;font-weight:700">-7,51%</td><td style="color:#ffd740;font-weight:700">NY DISPARA, CEPEA CAI</td></tr>
+</tbody>
+</table>
+
+<div class="chg">
+<div class="chc"><h4>FCOJ Mai/26 — Marco Inteiro (cts/lb)</h4><canvas id="ch1"></canvas></div>
+<div class="chc"><h4>CEPEA Laranja Industria — Marco (R$/cx)</h4><canvas id="ch2"></canvas></div>
+</div>
+
+<div class="bld">
+<h3>Marco: FCOJ +10,3% (Montanha-Russa) vs CEPEA -7,5% (Queda Firme)</h3>
+<p>NY oscilou de 166 a 200 e voltou a 190. Range de <span style="color:#ffd740;font-weight:700">38 centavos em um mes</span>! Volatilidade INSANA. CEPEA caiu de forma consistente: safra grande + estoques + demanda fraca = <span style="color:#ef5350;font-weight:700">pressao no produtor brasileiro</span>.</p>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🔍 Os 8 Fundamentos da Laranja</h3>
+
+<div class="dg">
+<div class="dc" style="border-color:#ef5350"><div class="dl">1. Florida -90%</div><div class="dv ng">GREENING (HLB)</div><div class="ds">Producao colapsou.<br>2a menor safra 37 anos.<br>Sustenta NY alto.</div></div>
+<div class="dc" style="border-color:#81c784"><div class="dl">2. Safra BR +26,7%</div><div class="dv ps">292,6 MI CXS</div><div class="ds">Fundecitrus 25/26.<br>Maior que 24/25.<br>Pressiona CEPEA.</div></div>
+<div class="dc" style="border-color:#ef5350"><div class="dl">3. Estoques +75,4%</div><div class="dv ng">616 MIL t</div><div class="ds">Max desde 2021.<br>Demanda nao absorve.<br>Pressao bearish BR.</div></div>
+<div class="dc" style="border-color:#ef5350"><div class="dl">4. Demanda EU Lenta</div><div class="dv ng">PRECO VAREJO ALTO</div><div class="ds">Consumidor nao compra.<br>Export acumul. -4,6%.<br>Jan: +55% (pontual).</div></div>
+<div class="dc" style="border-color:#81c784"><div class="dl">5. Ormuz/Frete</div><div class="dv ps">LOGISTICA CARA</div><div class="ds">Frete +40%.<br>Custo export sobe.<br>Suporte NY.</div></div>
+<div class="dc" style="border-color:#ffd740"><div class="dl">6. Greening Avanca</div><div class="dv nt">RISCO ESTRUTURAL</div><div class="ds">HLB avanca no BR tambem.<br>Queda frutos 23%.<br>Longo prazo: menor area.</div></div>
+<div class="dc" style="border-color:#ffd740"><div class="dl">7. Fundecitrus 26/27</div><div class="dv nt">MAIO = DADO CHAVE</div><div class="ds">1a estimativa safra nova.<br>260-320 mi cxs (USDA).<br>Define direcao CEPEA.</div></div>
+<div class="dc" style="border-color:#ffd740"><div class="dl">8. Volatilidade NY</div><div class="dv nt">RANGE 132-344!</div><div class="ds">Volume baixo (515/dia).<br>Especuladores dominam.<br>Movimentos de +/-10% dia.</div></div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🌡️ Termometros — 31/03</h3>
+
+<div class="chg">
+<div class="thermo"><h4>FCOJ NY — Tendencia Curto Prazo</h4><div class="th-bar"><div class="th-mk" style="left:62%"><div class="arr"></div><div class="lbl" style="background:#8bc34a;color:#000">ALTISTA (Florida+Ormuz)</div></div></div><div class="th-labels"><span>Baixista</span><span>Neutro</span><span>Altista</span></div></div>
+<div class="thermo"><h4>CEPEA BR — Tendencia Curto Prazo</h4><div class="th-bar"><div class="th-mk" style="left:25%"><div class="arr"></div><div class="lbl" style="background:#ef5350;color:#fff">BAIXISTA (safra+estoques)</div></div></div><div class="th-labels"><span>Baixista</span><span>Neutro</span><span>Altista</span></div></div>
+</div>
+<div class="chg">
+<div class="thermo"><h4>Oferta Global (BR Domina)</h4><div class="th-bar"><div class="th-mk" style="left:72%"><div class="arr"></div><div class="lbl" style="background:#4CAF50;color:#fff">ABUNDANTE (BR +27%)</div></div></div><div class="th-labels"><span>Deficit</span><span>Equilibrio</span><span>Superavit</span></div></div>
+<div class="thermo"><h4>Demanda Suco (EU Principal)</h4><div class="th-bar"><div class="th-mk" style="left:28%"><div class="arr"></div><div class="lbl" style="background:#ef5350;color:#fff">FRACA (varejo caro)</div></div></div><div class="th-labels"><span>Destruida</span><span>Normal</span><span>Aquecida</span></div></div>
+</div>
+<div class="chg">
+<div class="thermo"><h4>Volatilidade FCOJ NY</h4><div class="th-bar"><div class="th-mk" style="left:90%"><div class="arr"></div><div class="lbl" style="background:#b71c1c;color:#fff">EXTREMA (+10%/dia)</div></div></div><div class="th-labels"><span>Baixa</span><span>Normal</span><span>Extrema</span></div></div>
+<div class="thermo"><h4>Greening / HLB (Risco Estrutural)</h4><div class="th-bar"><div class="th-mk" style="left:80%"><div class="arr"></div><div class="lbl" style="background:#ef5350;color:#fff">ALTO (FL+BR avanca)</div></div></div><div class="th-labels"><span>Baixo</span><span>Moderado</span><span>Critico</span></div></div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🎯 Proximos 2 Dias + Cenarios Abril</h3>
+
+<div class="bld">
+<h3>NY: VOLATIL ALTISTA (Florida) | CEPEA: BAIXISTA (Safra + Estoques)</h3>
+<p>Dois mercados, duas direcoes. <span style="color:#81c784;font-weight:700">NY segue volatil</span> — Florida destruida + Ormuz = suporte. Mas volume baixo gera movimentos erraticos. <span style="color:#ef5350;font-weight:700">CEPEA segue caindo</span> — safra grande, estoques em alta, demanda fraca. <strong>Dado-chave: Fundecitrus maio (estimativa 26/27).</strong></p>
+</div>
+
+<div class="proj">
+<div class="proj-c" style="border-color:#81c784"><div class="pl">FCOJ NY Qua-Qui</div><div class="pv" style="color:#ffd740">180 - 200 cts</div><div class="pd">Volatilidade continua.<br>Pode devolver parte.<br>Florida = suporte.</div></div>
+<div class="proj-c" style="border-color:#ef5350"><div class="pl">CEPEA Abril</div><div class="pv" style="color:#ef5350">R$ 27 - 30/cx</div><div class="pd">Entressafra comeca.<br>Estoques altos pesam.<br>Demanda EU decide.</div></div>
+<div class="proj-c" style="border-color:#ffd740"><div class="pl">FCOJ Abril (NY)</div><div class="pv" style="color:#ffd740">160 - 210 cts</div><div class="pd">Range largo!<br>Florida + freeze risk.<br>Spec dominam volume.</div></div>
+<div class="proj-c" style="border-color:#ef5350"><div class="pl">CEPEA Mai-Jul (Safra 26/27)</div><div class="pv" style="color:#ef5350">R$ 24 - 29/cx</div><div class="pd">Nova safra entra.<br>Se 300+ mi cxs: pressao.<br>Greening = unico suporte.</div></div>
+</div>
+
+<div class="chc"><h4>Cenarios FCOJ NY — Abril a Julho (cts/lb)</h4><canvas id="ch3"></canvas></div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🌐 Radar Macro e Geopolitico</h3>
+
+<div class="geo">
+<div class="geo-i"><div class="gi">🇺🇸</div><div><div class="gt">Florida: A Morte Citricola por Greening</div><div class="gd">Producao caiu <strong>-90% em 20 anos</strong>. Citrus greening (HLB) devastou. A Florida nao e mais relevante como produtora — mas o contrato FCOJ na ICE ainda e referenciado la. Isso cria distorcao: NY reflete panico por Florida, nao realidade brasileira. Qualquer freeze ou tempestade = +10% NY.</div></div></div>
+<div class="geo-i"><div class="gi">🇧🇷</div><div><div class="gt">Safra BR 25/26: 292,6 mi cxs (+26,7%)</div><div class="gd">Fundecitrus. Cinturao SP + Triangulo MG. Recuperacao apos 24/25 (2a menor 37 anos). Mas greening avanca: queda frutos 23%. Area estagnada ha anos. <strong>Safra 26/27: estimada 260-320 mi cxs (USDA otimista 320).</strong> Fundecitrus divulga em MAIO — dado mais importante do semestre para o citricultor.</div></div></div>
+<div class="geo-i"><div class="gi">📦</div><div><div class="gt">Estoques +75,4% → Preco ao Produtor Cai</div><div class="gd">CitrusBR: 616 mil t FCOJ (max desde 2021). Motivo: safra grande + demanda fraca. Ibiapaba Netto: <em>"reducao do consumo tem maior influencia, principalmente na Europa"</em>. Enquanto estoque nao cair, preco ao produtor segue pressionado.</div></div></div>
+<div class="geo-i"><div class="gi">⛽</div><div><div class="gt">Ormuz: Frete Caro Sustenta NY, Mas Pressiona Exportador BR</div><div class="gd">Frete maritimo +40%. Para NY: custo de importacao alto = suporte ao preco. Para BR: custo de exportar sobe = margem do exportador cai. Efeito duplo e paradoxal para o citricultor brasileiro.</div></div></div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">💡 Estrategia Rural IN — Citricultor</h3>
+
+<div class="alt"><h5>🍊 O Dilema do Citricultor Brasileiro</h5><p>NY sobe (+5,6% hoje!) mas <span class="ng">voce recebe menos</span> (CEPEA -7,5% mes). Por que? Porque o mercado fisico brasileiro tem <span class="ng">excesso de oferta + estoques altos + demanda fraca</span>. A alta de NY beneficia quem tem <strong>contrato de exportacao de suco</strong> — nao quem vende laranja fisica para industria.</p></div>
+<div class="alt"><h5>📋 Se Tem Contrato com Industria</h5><p>Preco ao produtor tende a <span class="ng">cair mais em abril/maio</span> (entressafra + estoques). <span class="hl">Se tiver oportunidade de contrato acima de R$ 30/cx para safra 26/27: TRAVE.</span> Greening e o unico fator que impede colapso maior — a doenca limita a oferta futura. Mas no curto prazo: <span class="ng">excesso de suco pesa.</span></p></div>
+<div class="alt"><h5>📅 Data-Chave: Fundecitrus Maio</h5><p>1a estimativa oficial da safra 26/27. <span class="hl">Se vier acima de 300 mi cxs: CEPEA cai mais.</span> Se vier abaixo de 260 mi (greening/clima): suporte. USDA estima 320 mi (otimista). Rabobank: 260-300 mi. <strong>Esse dado define seu preco para o ano inteiro.</strong></p></div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">📊 Graficos Complementares</h3>
+
+<div class="chg">
+<div class="chc"><h4>Radar Fundamentalista — Laranja 31/03</h4><canvas id="ch4"></canvas></div>
+<div class="chc"><h4>Estoques Suco BR — Historico (mil t FCOJ)</h4><canvas id="ch5"></canvas></div>
+</div>
+
+<div class="cred"><div class="cred-in"><div class="cred-av">👨‍💼</div><div><h3>Dr. Sidney Souza</h3><div class="ti">Economista Agricola · Estrategista Economico do Produtor</div><div class="dsc">Especialista em economia da fazenda e gestao de risco no agro<br>Transformamos dados da fazenda em decisoes economicas<br>Ajudamos produtores a entender se o mercado sustenta seu negocio</div><div class="ct"><a href="mailto:sidneyagro@gmail.com">📧 sidneyagro@gmail.com</a><a href="https://wa.me/5564992266886">📱 (64) 9 9226-6886</a><span>📸 @ruralin.ai</span></div></div></div><div class="disc">Informativo analitico e educacional. Nao constitui recomendacao de compra ou venda. Dados: ICE Futures US, CEPEA/Esalq-USP, Fundecitrus, CitrusBR, USDA, Rabobank, Faesp, Trading Economics, Investing.com, Barchart, AInvest, Yahoo Finance, FT Markets, Globo Rural, CNN Brasil, Noticias Agricolas, G1, DatamarNews, FreshPlaza, Leia Agora, Agrolink, HF Brasil, Reuters. Analise: Dr. Sidney Souza — Rural IN.</div></div>
+</div>
+<div class="ftr">RURAL IN 2026 · Inteligencia para o Agronegocio · Rio Verde/GO</div>
+</div>
+
+<script>
+Chart.defaults.color='#2a2408';Chart.defaults.font.family='Inter';Chart.defaults.font.size=11;
+var df={family:'Inter',weight:'600'};
+var tt={backgroundColor:'#0e0c04',titleColor:'#FFB300',bodyColor:'#d4b870',borderColor:'#E65100',borderWidth:1,padding:12,cornerRadius:8};
+
+new Chart(document.getElementById('ch1').getContext('2d'),{type:'line',data:{labels:['02','05','10','12','16','19','20','23','25','27','30','31'],datasets:[{label:'FCOJ Mai (cts/lb)',data:[166.55,183.40,184.30,197.80,199.80,167.05,161.50,161.95,182.55,176.55,180.10,190.10],borderColor:'#FF8F00',backgroundColor:'rgba(255,143,0,0.06)',borderWidth:2.5,fill:true,tension:0.3,pointRadius:4,pointBackgroundColor:function(c){var v=c.parsed.y;return v>195?'#81c784':v<165?'#ef5350':'#FF8F00';}}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,annotation:{annotations:{mx:{type:'label',xValue:4,yValue:208,content:['MAX ~200','Teste 52 sem'],font:{size:7,weight:'bold'},color:'#81c784'},cr:{type:'label',xValue:7,yValue:154,content:['MIN 162','Crash -19%!'],font:{size:7,weight:'bold'},color:'#ef5350'},td:{type:'label',xValue:11,yValue:197,content:['+5,56%!'],font:{size:7,weight:'bold'},color:'#81c784'}}}},scales:{y:{min:150,max:215,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return v+'cts';},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}});
+
+new Chart(document.getElementById('ch2').getContext('2d'),{type:'line',data:{labels:['11','13','16','18','20','23','25','27','30','31'],datasets:[{label:'CEPEA Ind (R$/cx)',data:[32.22,32.86,31.00,30.91,30.77,30.23,30.25,30.25,29.38,29.29],borderColor:'#ef5350',backgroundColor:'rgba(239,83,80,0.06)',borderWidth:2.5,fill:true,tension:0.3,pointRadius:4,pointBackgroundColor:function(c){return c.dataIndex>=8?'#b71c1c':'#ef5350';}}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,annotation:{annotations:{q:{type:'label',xValue:9,yValue:28.5,content:['R$ 29,29','-7,51% mes'],font:{size:7,weight:'bold'},color:'#ef5350'}}}},scales:{y:{min:28.5,max:33.5,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'R$'+v;},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:7}}}}}});
+
+new Chart(document.getElementById('ch3').getContext('2d'),{type:'line',data:{labels:['31/3','1a Abr','2a Abr','1a Mai','Fund.Mai','Jun','Jul'],datasets:[{label:'Otimista (freeze+Ormuz)',data:[190,200,210,215,220,210,205],borderColor:'#81c784',borderWidth:2,tension:0.3,pointRadius:4,fill:false,pointBackgroundColor:'#81c784'},{label:'Base',data:[190,185,180,175,170,165,160],borderColor:'#ffd740',borderWidth:2.5,tension:0.3,pointRadius:4,fill:false,pointBackgroundColor:'#ffd740'},{label:'Pessimista (safra BR ok+Ormuz abre)',data:[190,175,165,155,145,140,135],borderColor:'#ef5350',borderWidth:2,tension:0.3,pointRadius:4,fill:false,borderDash:[5,3],pointBackgroundColor:'#ef5350'}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt,annotation:{annotations:{f:{type:'label',xValue:4,yValue:230,content:['FUNDECITRUS','MAIO!'],font:{size:8,weight:'bold'},color:'#ffd740'}}}},scales:{y:{min:125,max:235,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return v+'cts';},font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+
+new Chart(document.getElementById('ch4').getContext('2d'),{type:'radar',data:{labels:['Florida Destruida','Safra BR Grande','Estoques Altos','Demanda EU Fraca','Greening/HLB','Ormuz/Frete'],datasets:[{label:'Altista NY',data:[95,10,8,12,80,75],backgroundColor:'rgba(129,199,132,0.08)',borderColor:'#81c784',borderWidth:2.5,pointBackgroundColor:'#81c784',pointRadius:5},{label:'Baixista CEPEA',data:[5,90,88,85,20,25],backgroundColor:'rgba(239,83,80,0.08)',borderColor:'#ef5350',borderWidth:2,pointBackgroundColor:'#ef5350',pointRadius:4,borderDash:[4,2]}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},scales:{r:{min:0,max:100,ticks:{display:false,stepSize:20},grid:{color:'rgba(255,255,255,0.06)'},pointLabels:{font:{family:'Inter',weight:'600',size:7},color:'#E65100'}}}}});
+
+new Chart(document.getElementById('ch5').getContext('2d'),{type:'bar',data:{labels:['2019','2020','2021','2022','2023','2024','2025'],datasets:[{label:'Estoques FCOJ (mil t)',data:[450,480,509,420,380,351,616],backgroundColor:function(c){return c.dataIndex===6?'rgba(239,83,80,0.5)':c.dataIndex===5?'rgba(239,83,80,0.3)':'rgba(255,143,0,0.2)';},borderColor:function(c){return c.dataIndex>=5?'#ef5350':'#FF8F00';},borderWidth:2,borderRadius:5}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,annotation:{annotations:{mn:{type:'label',xValue:5,yValue:320,content:['MIN HISTORICA!'],font:{size:7,weight:'bold'},color:'#ef5350'},mx:{type:'label',xValue:6,yValue:650,content:['616 mil t','+75,4%!'],font:{size:8,weight:'bold'},color:'#ef5350'}}}},scales:{y:{min:300,max:680,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return v+'k';},font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+</script>
+</body>
+</html>
