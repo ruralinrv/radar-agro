@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radar Agro — USDA Prospective Plantings & Grain Stocks | 31/03/2026</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        :root {
+            --bg-primary: #0a0f1a;
+            --bg-secondary: #111827;
+            --bg-card: #1a2236;
+            --bg-card-hover: #1f2a42;
+            --border-color: #2a3550;
+            --text-primary: #f0f4fc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --green: #22c55e;
+            --green-bg: rgba(34,197,94,.1);
+            --red: #ef4444;
+            --red-bg: rgba(239,68,68,.1);
+            --yellow: #f59e0b;
+            --yellow-bg: rgba(245,158,11,.1);
+            --blue: #3b82f6;
+            --blue-bg: rgba(59,130,246,.1);
+            --cyan: #06b6d4;
+            --purple: #a855f7;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+            background:var(--bg-primary);
+            color:var(--text-primary);
+            line-height:1.6;
+        }
+
+        .container { max-width:1400px; margin:0 auto; padding:20px; }
+
+        /* ========== HEADER ========== */
+        .header {
+            background:linear-gradient(135deg,#0f172a,#1e293b,#0f172a);
+            border:1px solid var(--border-color);
+            border-radius:16px;
+            padding:32px 40px;
+            margin-bottom:24px;
+            position:relative;
+            overflow:hidden;
+        }
+        .header::before {
+            content:'';position:absolute;top:0;left:0;right:0;height:3px;
+            background:linear-gradient(90deg,#22c55e,#3b82f6,#a855f7,#f59e0b);
+        }
+        .header-top { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px; }
+        .header-brand { display:flex; align-items:center; gap:14px; }
+        .header-logo {
+            width:52px;height:52px;background:linear-gradient(135deg,#22c55e,#16a34a);
+            border-radius:14px;display:flex;align-items:center;justify-content:center;
+            font-size:26px;box-shadow:0 4px 15px rgba(34,197,94,.3);
+        }
+        .header-title {
+            font-size:28px;font-weight:800;letter-spacing:-.5px;
+            background:linear-gradient(135deg,#f0f4fc,#94a3b8);
+            -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+        }
+        .header-subtitle { font-size:13px;color:var(--text-muted);font-weight:500;letter-spacing:1.5px;text-transform:uppercase; }
+        .header-date { text-align:right; }
+        .header-date .date { font-size:16px;font-weight:600;color:var(--cyan); }
+        .header-date .time { font-size:12px;color:var(--text-muted); }
+        .report-title { margin-top:20px;padding-top:20px;border-top:1px solid var(--border-color); }
+        .report-title h2 { font-size:18px;font-weight:600;color:var(--text-secondary); }
+        .report-title h2 span { color:var(--yellow); }
+        .badges { display:flex;gap:8px;margin-top:12px;flex-wrap:wrap; }
+        .badge {
+            display:inline-flex;align-items:center;gap:5px;padding:5px 12px;
+            border-radius:20px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;
+        }
+        .badge-green { background:var(--green-bg);color:var(--green);border:1px solid rgba(34,197,94,.2); }
+        .badge-yellow { background:var(--yellow-bg);color:var(--yellow);border:1px solid rgba(245,158,11,.2); }
+        .badge-blue { background:var(--blue-bg);color:var(--blue);border:1px solid rgba(59,130,246,.2); }
+
+        /* ========== ALERT ========== */
+        .alert {
+            background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(59,130,246,.08));
+            border:1px solid rgba(34,197,94,.2);border-radius:12px;
+            padding:16px 24px;margin-bottom:24px;display:flex;align-items:center;gap:12px;
+        }
+        .alert .icon { font-size:22px; }
+        .alert .text { font-size:14px;color:var(--text-secondary); }
+        .alert .text strong { color:var(--green); }
+
+        /* ========== GRIDS ========== */
+        .grid-2 { display:grid;grid-template-columns:repeat(2,1fr);gap:20px; }
+        .grid-3 { display:grid;grid-template-columns:repeat(3,1fr);gap:20px; }
+        .grid-4 { display:grid;grid-template-columns:repeat(4,1fr);gap:16px; }
+        .full-width { grid-column: 1 / -1; }
+
+        /* ========== STAT BOX ========== */
+        .stat-box {
+            background:var(--bg-card);border:1px solid var(--border-color);
+            border-radius:12px;padding:20px;text-align:center;transition:all .3s;
+        }
+        .stat-box:hover { background:var(--bg-card-hover);transform:translateY(-2px); }
+        .stat-label { font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px; }
+        .stat-value { font-size:28px;font-weight:800; }
+        .stat-sub { font-size:12px;color:var(--text-muted);margin-top:4px; }
+
+        /* ========== SECTION TITLE ========== */
+        .section-title { display:flex;align-items:center;gap:10px;margin:32px 0 16px; }
+        .section-title h2 { font-size:18px;font-weight:700;white-space:nowrap; }
+        .section-title .line { flex:1;height:1px;background:var(--border-color); }
+
+        /* ========== COMMODITY CARD ========== */
+        .commodity-card {
+            background:var(--bg-card);border:1px solid var(--border-color);
+            border-radius:16px;overflow:hidden;transition:all .3s;
+        }
+        .commodity-card:hover { transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.3); }
+        .commodity-header { padding:20px 24px;display:flex;justify-content:space-between;align-items:center; }
+        .commodity-name { display:flex;align-items:center;gap:12px; }
+        .commodity-emoji { font-size:32px; }
+        .commodity-label h3 { font-size:20px;font-weight:700; }
+        .commodity-label span { font-size:12px;color:var(--text-muted); }
+        .commodity-price { text-align:right; }
+        .commodity-price .price { font-size:24px;font-weight:800; }
+        .commodity-price .change { font-size:13px;font-weight:600;display:flex;align-items:center;gap:4px;justify-content:flex-end; }
+        .commodity-body { padding:0 24px 20px; }
+        .commodity-body table { width:100%;border-collapse:collapse; }
+        .commodity-body th {
+            text-align:left;font-size:11px;font-weight:600;color:var(--text-muted);
+            text-transform:uppercase;letter-spacing:.8px;padding:8px 0;border-bottom:1px solid var(--border-color);
+        }
+        .commodity-body td { padding:10px 0;font-size:13px;border-bottom:1px solid rgba(42,53,80,.5);color:var(--text-secondary); }
+        .commodity-body tr:last-child td { border-bottom:none; }
+        .highlight { font-weight:700;color:var(--text-primary)!important; }
+        .commodity-verdict {
+            padding:16px 24px;border-top:1px solid var(--border-color);
+            display:flex;align-items:flex-start;gap:10px;
+        }
+        .verdict-label { font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;white-space:nowrap;padding-top:1px; }
+        .verdict-text { font-size:13px;color:var(--text-secondary); }
+
+        /* ========== CARD GENÉRICO ========== */
+        .card {
+            background:var(--bg-card);border:1px solid var(--border-color);
+            border-radius:14px;padding:24px;transition:all .3s;
+        }
+        .card:hover { background:var(--bg-card-hover);transform:translateY(-2px); }
+
+        /* ========== BAR CHART ========== */
+        .bar-row { display:flex;align-items:center;gap:12px;margin-bottom:10px; }
+        .bar-label { width:90px;font-size:12px;color:var(--text-secondary);font-weight:500;text-align:right;flex-shrink:0; }
+        .bar-track { flex:1;height:24px;background:rgba(42,53,80,.5);border-radius:6px;overflow:hidden; }
+        .bar-fill {
+            height:100%;border-radius:6px;display:flex;align-items:center;
+            justify-content:flex-end;padding-right:8px;font-size:11px;font-weight:700;color:#fff;
+        }
+        .bar-section-label { font-size:13px;font-weight:700;margin-bottom:10px; }
+
+        /* ========== RADAR ITEMS ========== */
+        .radar-item {
+            background:var(--bg-card);border:1px solid var(--border-color);
+            border-radius:14px;padding:24px;transition:all .3s;border-left:4px solid transparent;
+        }
+        .radar-item:hover { background:var(--bg-card-hover);transform:translateY(-2px); }
+        .radar-item.high { border-left-color:var(--red); }
+        .radar-item.medium { border-left-color:var(--yellow); }
+        .radar-item.low { border-left-color:var(--blue); }
+        .radar-header { display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;gap:8px; }
+        .radar-title { font-size:15px;font-weight:700; }
+        .radar-desc { font-size:13px;color:var(--text-secondary);line-height:1.7; }
+        .priority-tag {
+            padding:3px 10px;border-radius:6px;font-size:10px;font-weight:700;
+            text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;flex-shrink:0;
+        }
+        .tag-high { background:var(--red-bg);color:var(--red); }
+        .tag-medium { background:var(--yellow-bg);color:var(--yellow); }
+        .tag-low { background:var(--blue-bg);color:var(--blue); }
+
+        /* ========== STRATEGY ========== */
+        .strategy-box {
+            background:linear-gradient(135deg,var(--bg-card),var(--bg-secondary));
+            border:1px solid var(--border-color);border-radius:14px;padding:24px;
+        }
+        .strat-header { display:flex;align-items:center;gap:10px;margin-bottom:14px; }
+        .strat-header h4 { font-size:16px;font-weight:700; }
+        .strategy-box ul { list-style:none;padding:0; }
+        .strategy-box ul li {
+            position:relative;padding:8px 0 8px 24px;font-size:13px;
+            color:var(--text-secondary);line-height:1.7;
+        }
+        .strategy-box ul li::before { content:'▸';position:absolute;left:4px;color:var(--green);font-weight:700; }
+
+        /* ========== TIMELINE ========== */
+        .timeline { position:relative;padding-left:32px; }
+        .timeline::before {
+            content:'';position:absolute;left:11px;top:0;bottom:0;width:2px;background:var(--border-color);
+        }
+        .tl-item {
+            position:relative;margin-bottom:20px;padding:16px 20px;
+            background:var(--bg-card);border:1px solid var(--border-color);border-radius:10px;
+        }
+        .tl-item::before {
+            content:'';position:absolute;left:-27px;top:20px;width:12px;height:12px;
+            border-radius:50%;background:var(--cyan);border:3px solid var(--bg-primary);
+        }
+        .tl-date { font-size:12px;font-weight:700;color:var(--cyan);margin-bottom:4px; }
+        .tl-title { font-size:14px;font-weight:600;margin-bottom:4px; }
+        .tl-desc { font-size:12px;color:var(--text-muted); }
+
+        /* ========== GLOW ========== */
+        .glow-green { box-shadow:0 0 20px rgba(34,197,94,.15); }
+        .glow-red { box-shadow:0 0 20px rgba(239,68,68,.15); }
+        .glow-yellow { box-shadow:0 0 20px rgba(245,158,11,.15); }
+
+        /* ========== FOOTER ========== */
+        .footer { margin-top:40px;padding:24px;text-align:center;border-top:1px solid var(--border-color); }
+        .footer p { font-size:11px;color:var(--text-muted);line-height:1.8; }
+        .disclaimer {
+            margin-top:12px;padding:12px;background:rgba(239,68,68,.05);
+            border:1px solid rgba(239,68,68,.1);border-radius:8px;font-size:10px;color:var(--text-muted);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media(max-width:1024px){
+            .grid-3,.grid-4{grid-template-columns:repeat(2,1fr);}
+        }
+        @media(max-width:768px){
+            .container{padding:12px;}
+            .header{padding:20px;}
+            .header-title{font-size:22px;}
+            .grid-2,.grid-3,.grid-4{grid-template-columns:1fr;}
+            .header-top{flex-direction:column;}
+            .header-date{text-align:left;}
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- ==================== HEADER ==================== -->
+    <header class="header">
+        <div class="header-top">
+            <div class="header-brand">
+                <div class="header-logo">📡</div>
+                <div>
+                    <div class="header-title">RADAR AGRO</div>
+                    <div class="header-subtitle">Inteligência de Mercado</div>
+                </div>
+            </div>
+            <div class="header-date">
+                <div class="date">31 de Março de 2026</div>
+                <div class="time">Terça-feira — Fechamento CBOT 16:30 BRT</div>
+            </div>
+        </div>
+        <div class="report-title">
+            <h2>USDA <span>Prospective Plantings</span> & <span>Grain Stocks</span> — Safra 2026/27 EUA</h2>
+            <div class="badges">
+                <span class="badge badge-green">🫘 Soja: Altista</span>
+                <span class="badge badge-green">🌽 Milho: Leve Alta</span>
+                <span class="badge badge-blue">🌾 Trigo: Altista</span>
+                <span class="badge badge-yellow">⚠️ Estoques Elevados</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== ALERTA ==================== -->
+    <div class="alert">
+        <span class="icon">⚡</span>
+        <span class="text">
+            <strong>Reação do mercado: ALTISTA para grãos.</strong>
+            O USDA confirmou redução de área de milho e aumento de soja nos EUA para 2026/27. Soja fechou com <strong>altas de dois dígitos</strong>; milho reverteu quedas e fechou positivo. Trigo sustentado pela menor área em 107 anos.
+        </span>
+    </div>
+
+    <!-- ==================== STAT BOXES ==================== -->
+    <div class="grid-4">
+        <div class="stat-box glow-green">
+            <div class="stat-label">Soja — Área EUA</div>
+            <div class="stat-value" style="color:var(--green)">84,7 mi</div>
+            <div class="stat-sub">acres (+4,3% vs 2025)</div>
+        </div>
+        <div class="stat-box glow-red">
+            <div class="stat-label">Milho — Área EUA</div>
+            <div class="stat-value" style="color:var(--red)">95,3 mi</div>
+            <div class="stat-sub">acres (−3,5% vs 2025)</div>
+        </div>
+        <div class="stat-box glow-yellow">
+            <div class="stat-label">Trigo — Área EUA</div>
+            <div class="stat-value" style="color:var(--yellow)">43,8 mi</div>
+            <div class="stat-sub">acres — menor desde 1919</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Petróleo WTI</div>
+            <div class="stat-value" style="color:var(--cyan)">$64,51</div>
+            <div class="stat-sub">barril — guerra no Irã</div>
+        </div>
+    </div>
+
+    <!-- ==================== FECHAMENTO CBOT ==================== -->
+    <div class="section-title">
+        <h2>📊 Fechamento CBOT — 31/03/2026</h2>
+        <div class="line"></div>
+    </div>
+
+    <div class="grid-3">
+        <!-- SOJA -->
+        <div class="commodity-card glow-green" style="border-top:3px solid var(--green)">
+            <div class="commodity-header">
+                <div class="commodity-name">
+                    <span class="commodity-emoji">🫘</span>
+                    <div class="commodity-label">
+                        <h3>SOJA</h3>
+                        <span>CBOT — Mai/26</span>
+                    </div>
+                </div>
+                <div class="commodity-price">
+                    <div class="price" style="color:var(--green)">$11,72</div>
+                    <div class="change" style="color:var(--green)">▲ +12,50¢ (+1,08%)</div>
+                </div>
+            </div>
+            <div class="commodity-body">
+                <table>
+                    <thead><tr><th>Item</th><th>Esperado</th><th>USDA</th><th>Sinal</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td>Área 26/27</td><td>85,5 mi ac</td>
+                            <td class="highlight">84,7 mi ac</td>
+                            <td style="color:var(--green);font-weight:700">📈 Altista</td>
+                        </tr>
+                        <tr>
+                            <td>Estoques 1º/Mar</td><td>2,05 bi bu</td>
+                            <td class="highlight">2,10 bi bu</td>
+                            <td style="color:var(--red);font-weight:700">📉 Baixista</td>
+                        </tr>
+                        <tr>
+                            <td>Disappearance</td><td>—</td>
+                            <td class="highlight">+4% a/a</td>
+                            <td style="color:var(--green);font-weight:700">📈 Altista</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="commodity-verdict" style="background:var(--green-bg)">
+                <span class="verdict-label" style="color:var(--green)">Veredicto:</span>
+                <span class="verdict-text">Área abaixo do esperado prevaleceu sobre estoques maiores. Derivados (óleo de soja) e biocombustíveis deram suporte adicional. Altas de dois dígitos.</span>
+            </div>
+        </div>
+
+        <!-- MILHO -->
+        <div class="commodity-card" style="border-top:3px solid var(--yellow)">
+            <div class="commodity-header">
+                <div class="commodity-name">
+                    <span class="commodity-emoji">🌽</span>
+                    <div class="commodity-label">
+                        <h3>MILHO</h3>
+                        <span>CBOT — Mai/26</span>
+                    </div>
+                </div>
+                <div class="commodity-price">
+                    <div class="price" style="color:var(--green)">$4,57</div>
+                    <div class="change" style="color:var(--green)">▲ +2,00¢ (+0,44%)</div>
+                </div>
+            </div>
+            <div class="commodity-body">
+                <table>
+                    <thead><tr><th>Item</th><th>Esperado</th><th>USDA</th><th>Sinal</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td>Área 26/27</td><td>94,4 mi ac</td>
+                            <td class="highlight">95,3 mi ac</td>
+                            <td style="color:var(--red);font-weight:700">📉 Baixista</td>
+                        </tr>
+                        <tr>
+                            <td>Estoques 1º/Mar</td><td>8,15 bi bu</td>
+                            <td class="highlight">8,15 bi bu</td>
+                            <td style="color:var(--yellow);font-weight:700">➡️ Neutro</td>
+                        </tr>
+                        <tr>
+                            <td>Disappearance</td><td>—</td>
+                            <td class="highlight">+9% a/a</td>
+                            <td style="color:var(--green);font-weight:700">📈 Altista</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="commodity-verdict" style="background:var(--yellow-bg)">
+                <span class="verdict-label" style="color:var(--yellow)">Veredicto:</span>
+                <span class="verdict-text">Área acima do esperado pesou inicialmente, mas demanda robusta (+9% disappearance) inverteu a pressão. Milho reverteu queda e fechou no positivo.</span>
+            </div>
+        </div>
+
+        <!-- TRIGO -->
+        <div class="commodity-card" style="border-top:3px solid var(--blue)">
+            <div class="commodity-header">
+                <div class="commodity-name">
+                    <span class="commodity-emoji">🌾</span>
+                    <div class="commodity-label">
+                        <h3>TRIGO</h3>
+                        <span>CBOT — Mai/26</span>
+                    </div>
+                </div>
+                <div class="commodity-price">
+                    <div class="price" style="color:var(--green)">$6,12</div>
+                    <div class="change" style="color:var(--green)">▲ +7,00¢ (+1,16%)</div>
+                </div>
+            </div>
+            <div class="commodity-body">
+                <table>
+                    <thead><tr><th>Item</th><th>Esperado</th><th>USDA</th><th>Sinal</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td>Área 26/27</td><td>44,5 mi ac</td>
+                            <td class="highlight">43,8 mi ac</td>
+                            <td style="color:var(--green);font-weight:700">📈 Altista</td>
+                        </tr>
+                        <tr>
+                            <td>Estoques 1º/Mar</td><td>1,24 bi bu</td>
+                            <td class="highlight">1,30 bi bu</td>
+                            <td style="color:var(--red);font-weight:700">📉 Baixista</td>
+                        </tr>
+                        <tr>
+                            <td>Destaque</td>
+                            <td colspan="2" class="highlight">Menor área desde 1919 (107 anos)</td>
+                            <td style="color:var(--green);font-weight:700">📈 Histórico</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="commodity-verdict" style="background:var(--blue-bg)">
+                <span class="verdict-label" style="color:var(--blue)">Veredicto:</span>
+                <span class="verdict-text">Menor área em 107 anos + seca nas planícies dos EUA = suporte estrutural forte. Estoques acima do esperado foram ignorados pelo mercado.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== COMPARATIVO VISUAL ==================== -->
+    <div class="section-title">
+        <h2>📐 Área Plantada — USDA vs. Expectativa vs. 2025</h2>
+        <div class="line"></div>
+    </div>
+
+    <div class="card">
+        <!-- SOJA -->
+        <div style="margin-bottom:24px">
+            <div class="bar-section-label" style="color:var(--green)">🫘 SOJA (milhões de acres)</div>
+            <div class="bar-row">
+                <span class="bar-label">USDA Real</span>
+                <div class="bar-track"><div class="bar-fill" style="width:88%;background:linear-gradient(135deg,#22c55e,#16a34a)">84,7</div></div>
+            </div>
+            <div class="bar-row">
+                <span class="bar-label">Esperado</span>
+                <div class="bar-track"><div class="bar-fill" style="width:89%;background:rgba(34,197,94,.3);color:var(--green)">85,5</div></div>
+            </div>
+            <div class="bar-row">
+                <span class="bar-label">Outlook (Fev)</span>
+                <div class="bar-track"><div class="bar-fill" style="width:88.5%;background:rgba(34,197,94,.15);color:var(--text-muted)">85,0</div></div>
+            </div>
+            <div class="bar-row">
+                <span class="bar-label">2025</span>
+                <div class="bar-track"><div class="bar-fill" style="width:80%;background:rgba(100,116,139,.3);color:var(--text-muted)">81,2</div></div>
+            </div>
+        </div>
+        <!-- MILHO -->
+        <div style="margin-bottom:24px">
+            <div class="bar-section-label" style="color:var(--red)">🌽 MILHO (milhões de acres)</div>
+            <div class="bar-row">
+                <span class="bar-label">USDA Real</span>
+                <div class="bar-track"><div class="bar-fill" style="width:88%;background:linear-gradient(135deg,#ef4444,#dc2626)">95,3</div></div>
+            </div>
+            <div class="bar-row">
+                <span class="bar-label">Esperado</span>
+                <div class="bar-track"><div class="bar-fill" style="width:86%;background:rgba(239,68,68,.3);color:var(--red)">94,4</div></div>
+            </div>
+            <div class="bar-row">
+                <span class="bar-label">Outlook (Fev)</span>
+                <div class="bar-track"><div class="bar-fill" style="width:85.5%;background:rgba(239,68,68,.15);color:var(--text-muted)">94,0</div></div>
+            </div>
+            <div class="bar-row">
+                <span class="bar-label">2025</span>
+                <div class="bar-track"><div class="bar-fill" style="width:96%;background:rgba(100,116,139,.3);color:var(--text-muted)">98,8</div></div>
+            </div>
+        </div>
+        <!-- TRIGO -->
+        <div>
+            <div class="bar-section-label" style="color:var(--blue)">🌾 TRIGO (milhões de acres)</div>
+            <div class="bar-row">
+                <span class="bar-label">USDA Real</span>
+                <div class="bar-track"><div class="bar-fill" style="width:75%;background:linear-gradient(135deg,#3b82f6,#2563eb)">43,8</div></div>
+            </div>
+            <div class="bar-row">
+                <span class="bar-label">Esperado</span>
+                <div class="bar-track"><div class="bar-fill" style="width:77%;background:rgba(59,130,246,.3);color:var(--blue)">44,5</div></div>
+            </div>
+            <div class="bar-row">
+                <span class="bar-label">2025</span>
+                <div class="bar-track"><div class="bar-fill" style="width:79%;background:rgba(100,116,139,.3);color:var(--text-muted)">45,3</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== ESTOQUES TRIMESTRAIS ==================== -->
+    <div class="section-title">
+        <h2>🏗️ Estoques Trimestrais (Grain Stocks — 1º/Mar/2026)</h2>
+        <div class="line"></div>
+    </div>
+
+    <div class="grid-3">
+        <div class="card" style="text-align:center;border-top:3px solid var(--green)">
+            <div style="font-size:32px;margin-bottom:8px">🫘</div>
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px">Soja</div>
+            <div style="font-size:28px;font-weight:800;color:var(--text-primary);margin:8px 0">2,10 bi bu</div>
+            <div style="font-size:13px;color:var(--red);font-weight:600">▲ +10% vs. ano anterior</div>
+            <div style="font-size:11px;color:var(--text-muted);margin-top:4px">Acima do esperado (2,05 bi)</div>
+        </div>
+        <div class="card" style="text-align:center;border-top:3px solid var(--yellow)">
+            <div style="font-size:32px;margin-bottom:8px">🌽</div>
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px">Milho</div>
+            <div style="font-size:28px;font-weight:800;color:var(--text-primary);margin:8px 0">8,15 bi bu</div>
+            <div style="font-size:13px;color:var(--yellow);font-weight:600">▲ +11% vs. ano anterior</div>
+            <div style="font-size:11px;color:var(--text-muted);margin-top:4px">Em linha com expectativa</div>
+        </div>
+        <div class="card" style="text-align:center;border-top:3px solid var(--blue)">
+            <div style="font-size:32px;margin-bottom:8px">🌾</div>
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px">Trigo</div>
+            <div style="font-size:28px;font-weight:800;color:var(--text-primary);margin:8px 0">1,30 bi bu</div>
+            <div style="font-size:13px;color:var(--yellow);font-weight:600">▲ +5% vs. ano anterior</div>
+            <div style="font-size:11px;color:var(--text-muted);margin-top:4px">Acima do esperado (1,24 bi)</div>
+        </div>
+    </div>
+
+    <!-- ==================== FATORES GEOPOLÍTICOS ==================== -->
+    <div class="section-title">
+        <h2>🌍 Fatores Geopolíticos em Jogo</h2>
+        <div class="line"></div>
+    </div>
+
+    <div class="grid-3">
+        <div class="card" style="border-left:3px solid var(--red)">
+            <div style="font-size:28px;margin-bottom:10px">⚔️</div>
+            <h4 style="font-size:14px;margin-bottom:8px">Guerra EUA-Israel vs. Irã</h4>
+            <p style="font-size:12px;color:var(--text-secondary);line-height:1.7">Conflito desde fev/26 elevou custos de fertilizantes e combustíveis. Petróleo WTI acima de $64/bbl. Impacto direto: milho perde área para soja (menor custo de nitrogênio).</p>
+        </div>
+        <div class="card" style="border-left:3px solid var(--yellow)">
+            <div style="font-size:28px;margin-bottom:10px">🇺🇸🇨🇳</div>
+            <h4 style="font-size:14px;margin-bottom:8px">Reunião Trump-Xi — 14-15/Mai</h4>
+            <p style="font-size:12px;color:var(--text-secondary);line-height:1.7">Potencial catalisador para soja. Se resultar em compras chinesas adicionais, altista para Chicago e prêmios brasileiros. Se não avançar, pressão vendedora pode retornar.</p>
+        </div>
+        <div class="card" style="border-left:3px solid var(--green)">
+            <div style="font-size:28px;margin-bottom:10px">⛽</div>
+            <h4 style="font-size:14px;margin-bottom:8px">Biocombustíveis EUA</h4>
+            <p style="font-size:12px;color:var(--text-secondary);line-height:1.7">Casa Branca revisou mandatos de biodiesel. Aumento na demanda por óleo de soja é o principal motor de alta do complexo em 2026. Indonésia avança para B50. Fator estrutural.</p>
+        </div>
+    </div>
+
+    <!-- ==================== RADAR PRODUTOR BR ==================== -->
+    <div class="section-title">
+        <h2>🇧🇷 Radar do Produtor Brasileiro</h2>
+        <div class="line"></div>
+    </div>
+
+    <div class="grid-2">
+        <div class="radar-item high">
+            <div class="radar-header">
+                <div class="radar-title">🌽 Safrinha — Protagonista Global</div>
+                <span class="priority-tag tag-high">Alta Prioridade</span>
+            </div>
+            <p class="radar-desc">Com os EUA plantando <strong>3,5 mi acres a menos de milho</strong>, a safrinha brasileira ganha peso como fator de equilíbrio global. O clima nos próximos 60 dias em GO/MT/MS é determinante. Qualquer ameaça à produtividade pode gerar <strong>rally significativo</strong> nos preços.</p>
+        </div>
+        <div class="radar-item high">
+            <div class="radar-header">
+                <div class="radar-title">🫘 Soja — Safra Recorde vs. Preço</div>
+                <span class="priority-tag tag-high">Alta Prioridade</span>
+            </div>
+            <p class="radar-desc">Brasil colhe safra recorde (~185 mi ton, 75% já colhido). Apesar da área menor nos EUA, a <strong>oferta global abundante limita alta</strong>. Faixa provável: US$ 11,00–12,50/bu. Não espere milagres — <strong>escalone vendas em picos</strong>.</p>
+        </div>
+        <div class="radar-item medium">
+            <div class="radar-header">
+                <div class="radar-title">💱 Câmbio — Dólar vs. Real</div>
+                <span class="priority-tag tag-medium">Média Prioridade</span>
+            </div>
+            <p class="radar-desc">O dólar recuou hoje, pressionando milho na B3. Mas a incerteza geopolítica tende a <strong>manter o dólar elevado</strong>. Combinar Chicago + câmbio favorável é a chave para fixações rentáveis. Monitorar US$/BRL diariamente.</p>
+        </div>
+        <div class="radar-item medium">
+            <div class="radar-header">
+                <div class="radar-title">📊 Estoques — O "Freio de Mão"</div>
+                <span class="priority-tag tag-medium">Média Prioridade</span>
+            </div>
+            <p class="radar-desc">Estoques de soja (+10%) e milho (+11%) confortáveis <strong>limitam rallies</strong>. A demanda precisa se manter forte (disappearance milho +9%) para absorver oferta. China e biocombustíveis são os catalisadores.</p>
+        </div>
+        <div class="radar-item low">
+            <div class="radar-header">
+                <div class="radar-title">🌾 Trigo — Menor Área em 107 Anos</div>
+                <span class="priority-tag tag-low">Monitorar</span>
+            </div>
+            <p class="radar-desc">Produtores de trigo no cerrado: preços acima de <strong>R$ 80/sc podem surgir</strong> se área baixa nos EUA + seca se confirmarem. Suporte estrutural presente. Fixar parcialmente em oportunidades.</p>
+        </div>
+        <div class="radar-item low">
+            <div class="radar-header">
+                <div class="radar-title">🧪 Custos de Insumos</div>
+                <span class="priority-tag tag-low">Monitorar</span>
+            </div>
+            <p class="radar-desc">Guerra no Irã mantém fertilizantes e combustíveis caros globalmente. Monitorar preços de <strong>ureia, MAP e KCl</strong>. Compra antecipada de insumos para safra 26/27 pode ser estratégica se houver janela de preço.</p>
+        </div>
+    </div>
+
+    <!-- ==================== ESTRATÉGIAS ==================== -->
+    <div class="section-title">
+        <h2>🧭 Orientações Estratégicas</h2>
+        <div class="line"></div>
+    </div>
+
+    <div class="grid-2">
+        <div class="strategy-box" style="border-top:3px solid var(--green)">
+            <div class="strat-header">
+                <span style="font-size:22px">🫘</span>
+                <h4>Soja — "Escalonar em Picos"</h4>
+            </div>
+            <ul>
+                <li>Fixar <strong>15–20% da safra 26/27</strong> se Chicago testar US$ 11,90–12,00/bu com dólar acima de R$ 5,80</li>
+                <li>Monitorar reunião <strong>Trump-Xi (14-15/mai)</strong> como potencial catalisador de demanda chinesa</li>
+                <li>Acompanhar <strong>óleo de soja</strong> — é o driver principal; se biocombustíveis avançarem, sustenta preços</li>
+                <li>Aguardar <strong>Acreage Report (30/jun)</strong> que pode confirmar ou alterar os 84,7 mi acres</li>
+                <li>Usar <strong>puts</strong> para proteger piso de preço sem abrir mão de altas potenciais</li>
+            </ul>
+        </div>
+        <div class="strategy-box" style="border-top:3px solid var(--yellow)">
+            <div class="strat-header">
+                <span style="font-size:22px">🌽</span>
+                <h4>Milho — "Proteger a Safrinha"</h4>
+            </div>
+            <ul>
+                <li>Fixar <strong>20–30% da safrinha</strong> se B3 oferecer R$ 60+/sc para set/26</li>
+                <li>Monitorar <strong>clima do Cerrado</strong> — chuvas abr/mai determinam produtividade da safrinha em GO/MT</li>
+                <li><strong>Crop Progress</strong> semanal inicia em 06/abr — problemas no plantio dos EUA são altistas</li>
+                <li>Com menos milho nos EUA, Brasil vira fornecedor-chave no 2º semestre — oportunidade de exportação</li>
+                <li>Hedge na <strong>B3 + contratos a termo</strong> para travar margens da safrinha</li>
+            </ul>
+        </div>
+        <div class="strategy-box" style="border-top:3px solid var(--blue)">
+            <div class="strat-header">
+                <span style="font-size:22px">🌾</span>
+                <h4>Trigo — "Observar e Agir"</h4>
+            </div>
+            <ul>
+                <li>Menor área nos EUA desde 1919 + seca = <strong>suporte estrutural forte</strong></li>
+                <li>Fixar parcialmente se preços atingirem <strong>R$ 80+/sc</strong> no cerrado</li>
+                <li>Monitorar condições do trigo de inverno dos EUA nos próximos relatórios de Crop Conditions</li>
+            </ul>
+        </div>
+        <div class="strategy-box" style="border-top:3px solid var(--purple)">
+            <div class="strat-header">
+                <span style="font-size:22px">🛡️</span>
+                <h4>Gestão de Risco — "Disciplina Sempre"</h4>
+            </div>
+            <ul>
+                <li>Não concentrar todas as vendas em um único momento — <strong>escalonar é regra</strong></li>
+                <li>Manter <strong>30–40% da produção aberta</strong> para capturar possíveis rallies de clima</li>
+                <li>Monitorar <strong>câmbio diariamente</strong> — combinação Chicago + dólar define receita final</li>
+                <li>Considerar <strong>opções (puts)</strong> para proteção de piso sem limitar upside</li>
+                <li>Revisar estratégia após cada relatório USDA (WASDE 09/abr e 12/mai)</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ==================== CALENDÁRIO ==================== -->
+    <div class="section-title">
+        <h2>📅 Calendário Crítico — Próximos Eventos</h2>
+        <div class="line"></div>
+    </div>
+
+    <div class="timeline">
+        <div class="tl-item">
+            <div class="tl-date">06 de Abril de 2026</div>
+            <div class="tl-title">Início do Crop Progress Semanal (USDA)</div>
+            <div class="tl-desc">Evolução do plantio de milho e soja nos EUA. Primeiro indicador de como a safra 26/27 está começando.</div>
+        </div>
+        <div class="tl-item">
+            <div class="tl-date">09 de Abril de 2026</div>
+            <div class="tl-title">WASDE — Relatório de Oferta e Demanda (Abril)</div>
+            <div class="tl-desc">Primeiros ajustes oficiais pós-Prospective Plantings. Foco em balanço de oferta/demanda global.</div>
+        </div>
+        <div class="tl-item">
+            <div class="tl-date">12 de Maio de 2026</div>
+            <div class="tl-title">WASDE — Relatório de Oferta e Demanda (Maio)</div>
+            <div class="tl-desc">Primeiras projeções completas para a safra 2026/27 dos EUA. Muito esperado pelo mercado.</div>
+        </div>
+        <div class="tl-item">
+            <div class="tl-date">14–15 de Maio de 2026</div>
+            <div class="tl-title">Reunião Trump-Xi Jinping em Pequim</div>
+            <div class="tl-desc">Comércio EUA-China, tarifas e demanda agrícola. Potencial game-changer para soja.</div>
+        </div>
+        <div class="tl-item">
+            <div class="tl-date">30 de Junho de 2026</div>
+            <div class="tl-title">Acreage Report (USDA)</div>
+            <div class="tl-desc">Revisão oficial da área efetivamente plantada. Historicamente diverge do Prospective Plantings. Data-chave.</div>
+        </div>
+        <div class="tl-item">
+            <div class="tl-date">Abril–Maio de 2026</div>
+            <div class="tl-title">⚠️ Janela Climática Crítica</div>
+            <div class="tl-desc">Clima da safrinha brasileira (GO/MT/MS) + início do plantio nos EUA. O fator mais importante para definir a direção dos preços no 2º trimestre.</div>
+        </div>
+    </div>
+
+    <!-- ==================== CONCLUSÃO ==================== -->
+    <div class="section-title">
+        <h2>📝 Conclusão</h2>
+        <div class="line"></div>
+    </div>
+
+    <div class="card" style="border-left:4px solid var(--cyan);background:linear-gradient(135deg,var(--bg-card),rgba(6,182,212,.05))">
+        <p style="font-size:15px;font-weight:600;color:var(--text-primary);margin-bottom:12px;line-height:1.8">
+            "Menos soja que o esperado nos EUA é bom para preços. Mais milho que o esperado é ruim. Mas os estoques cheios são o contrapeso que impede movimentos bruscos."
+        </p>
+        <p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;line-height:1.8">
+            O mercado absorveu os relatórios de forma relativamente ordenada — sem pânico e sem euforia. A soja foi a grande beneficiada do dia, com o milho surpreendendo ao reverter a pressão negativa.
+        </p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px">
+            <div style="background:var(--green-bg);border:1px solid rgba(34,197,94,.2);border-radius:10px;padding:14px;text-align:center">
+                <div style="font-size:20px;margin-bottom:6px">🫘</div>
+                <div style="font-size:12px;font-weight:700;color:var(--green)">SOJA</div>
+                <div style="font-size:11px;color:var(--text-secondary);margin-top:4px">Escalonar vendas em picos. Faixa US$ 11–12,50/bu.</div>
+            </div>
+            <div style="background:var(--yellow-bg);border:1px solid rgba(245,158,11,.2);border-radius:10px;padding:14px;text-align:center">
+                <div style="font-size:20px;margin-bottom:6px">🌽</div>
+                <div style="font-size:12px;font-weight:700;color:var(--yellow)">MILHO</div>
+                <div style="font-size:11px;color:var(--text-secondary);margin-top:4px">Safrinha é trunfo. Fixar parcialmente. Monitorar clima.</div>
+            </div>
+            <div style="background:var(--blue-bg);border:1px solid rgba(59,130,246,.2);border-radius:10px;padding:14px;text-align:center">
+                <div style="font-size:20px;margin-bottom:6px">🌾</div>
+                <div style="font-size:12px;font-weight:700;color:var(--blue)">TRIGO</div>
+                <div style="font-size:11px;color:var(--text-secondary);margin-top:4px">Suporte estrutural. Fixar se R$ 80+/sc surgir.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <p>
+            <strong>RADAR AGRO</strong> — Inteligência de Mercado<br>
+            Relatório gerado em 31 de Março de 2026 às 21:46 BRT<br>
+            Fonte de dados: USDA/NASS, CBOT, AgRural, Agrinvest, Notícias Agrícolas, Reuters
+        </p>
+        <div class="disclaimer">
+            ⚠️ <strong>Aviso Legal:</strong> Este material tem caráter exclusivamente informativo e educacional, não constituindo recomendação de compra ou venda de ativos financeiros ou commodities. As decisões de comercialização devem ser tomadas com base na análise individual de cada produtor, considerando sua realidade de custos, logística e perfil de risco. Dados sujeitos a revisão pelo USDA. Consulte sempre um profissional habilitado.
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>
