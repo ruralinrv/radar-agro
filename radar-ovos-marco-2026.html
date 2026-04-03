@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radar Agro Ovos — Março 2026 | Rural IN</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:#0a0804;color:#e8c87a;min-height:100vh}
+.pg{max-width:960px;margin:0 auto;padding:10px}
+.tb{background:linear-gradient(90deg,#120e06,#1c160c,#120e06);padding:12px 20px;border-radius:14px 14px 0 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #F9A825;flex-wrap:wrap;gap:8px}.tb .lo{display:flex;align-items:center;gap:12px}.tb .li{width:54px;height:54px;background:linear-gradient(135deg,#FFD54F,#F57F17);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.7em;box-shadow:0 4px 25px rgba(249,168,37,.15)}.tb .lt h2{font-size:1.05em;font-weight:900;color:#fff;letter-spacing:1.5px}.tb .lt small{font-size:.62em;color:#FFD54F;font-weight:600;display:block}.tb .ed{text-align:right}.tb .ed .dt{font-size:.86em;font-weight:800;color:#FFD54F}.tb .ed .inf{font-size:.6em;color:#FBC02D;font-weight:600}
+.hdr{background:linear-gradient(135deg,#0c0a04,#100e06 50%,#0a0804);padding:34px 22px 28px;text-align:center;border-bottom:3px solid #F9A825;position:relative;overflow:hidden}.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(249,168,37,.04) 0%,transparent 70%)}.hdr .tag{display:inline-block;background:linear-gradient(135deg,#FFD54F,#F57F17);color:#3E2723;font-size:.56em;font-weight:800;letter-spacing:3px;padding:4px 14px;border-radius:20px;text-transform:uppercase;margin-bottom:10px;z-index:1;position:relative}.hdr h1{font-family:'Playfair Display',serif;font-size:1.08em;font-weight:900;color:#fff;z-index:1;position:relative;line-height:1.3;max-width:840px;margin:0 auto}.hdr .sub{font-size:.68em;color:#F57F17;margin-top:10px;font-weight:500;z-index:1;position:relative;line-height:1.6}.hdr .mkt{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:14px;z-index:1;position:relative}.hdr .mkt .mi{background:rgba(249,168,37,.04);border:1px solid rgba(249,168,37,.12);border-radius:10px;padding:6px 11px;text-align:center;min-width:100px}.hdr .mkt .mi .ml{font-size:.48em;color:#F9A825;font-weight:700;text-transform:uppercase;letter-spacing:1px}.hdr .mkt .mi .mv{font-size:.92em;font-weight:900;margin-top:2px}.hdr .mkt .mi .mc{font-size:.52em;font-weight:700;margin-top:1px}
+.up{color:#81c784}.dn{color:#ef5350}.nt{color:#ffd740}.wh{color:#fff}
+.mn{background:#0a0804;padding:18px;border:1px solid #1c160c;border-top:none}
+.stl{font-size:.72em;text-transform:uppercase;letter-spacing:2px;font-weight:800;color:#FFD54F;margin:20px 0 11px;display:flex;align-items:center;gap:10px;padding-bottom:8px;border-bottom:1px solid #1c160c}
+.tx{font-size:.78em;line-height:1.92;color:#F9A825;margin-bottom:12px;text-align:justify}.tx strong{color:#e8c87a}.tx .hl{color:#FFD54F;font-weight:700}.tx .ng{color:#ef5350;font-weight:700}.tx .ps{color:#81c784;font-weight:700}
+.chc{background:#0e0c04;border:1px solid #201a0c;border-radius:12px;padding:12px;margin-bottom:11px}.chc h4{font-size:.62em;color:#F9A825;text-transform:uppercase;letter-spacing:1px;margin-bottom:7px;font-weight:700;text-align:center}.chc canvas{max-height:260px}
+.chg{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:11px}
+.thermo{background:#0e0c04;border-radius:12px;padding:12px;border:1px solid #201a0c;margin-bottom:9px}.thermo h4{text-align:center;font-size:.62em;color:#F9A825;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:11px}.th-bar{height:15px;background:linear-gradient(90deg,#b71c1c 0%,#ef5350 18%,#ff9800 33%,#ffd740 50%,#8bc34a 68%,#4CAF50 82%,#1b5e20 100%);border-radius:10px;position:relative;margin:24px 8px 7px}.th-mk{position:absolute;top:-20px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center}.th-mk .arr{width:3px;height:36px;border-radius:2px;background:#fff;box-shadow:0 0 6px rgba(255,255,255,.3)}.th-mk .lbl{font-size:.54em;font-weight:800;padding:3px 6px;border-radius:5px;white-space:nowrap;margin-top:3px}.th-labels{display:flex;justify-content:space-between;padding:0 8px;font-size:.52em;color:#1c160c;font-weight:700}
+.dg{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:7px;margin-bottom:12px}.dc{background:#0e0c04;border-radius:10px;padding:10px;border:1px solid #201a0c;text-align:center}.dc .dl{font-size:.48em;color:#FFD54F;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:3px}.dc .dv{font-size:1.02em;font-weight:900;color:#fff}.dc .ds{font-size:.58em;color:#F57F17;margin-top:3px;line-height:1.4}
+.alt{background:linear-gradient(135deg,#0e0c04,#121008);border-left:4px solid #F9A825;border-radius:0 10px 10px 0;padding:12px;margin-bottom:9px}.alt h5{font-size:.66em;color:#FFD54F;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}.alt p{font-size:.74em;color:#F9A825;line-height:1.8}.alt p strong{color:#e8c87a}
+.bld{background:linear-gradient(135deg,#100e06,#181408);border:2px solid #F9A825;border-radius:14px;padding:16px;margin:14px 0;text-align:center;box-shadow:0 0 25px rgba(249,168,37,.03)}.bld h3{font-family:'Playfair Display',serif;font-size:1em;color:#fff;margin-bottom:7px;line-height:1.4}.bld p{font-size:.76em;color:#F9A825;line-height:1.8}
+.tbl{width:100%;border-collapse:collapse;margin-bottom:11px;font-size:.64em}.tbl th{background:#100e06;color:#FFD54F;padding:5px 3px;text-align:center;font-weight:700;text-transform:uppercase;letter-spacing:.5px;font-size:.74em;border-bottom:2px solid #F57F17}.tbl td{padding:5px 3px;text-align:center;border-bottom:1px solid #1c160c;color:#F9A825}
+.proj{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px}.proj-c{background:#0e0c04;border-radius:10px;padding:11px;border:1px solid #201a0c;text-align:center}.proj-c .pl{font-size:.50em;color:#FFD54F;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:4px}.proj-c .pv{font-size:1.1em;font-weight:900;color:#fff;margin-bottom:3px}.proj-c .pd{font-size:.62em;color:#F57F17;line-height:1.5}
+.geo{display:grid;grid-template-columns:1fr;gap:6px;margin-bottom:11px}.geo-i{background:rgba(249,168,37,.03);border:1px solid rgba(249,168,37,.08);border-radius:10px;padding:9px 12px;display:flex;gap:9px;align-items:flex-start}.geo-i .gi{font-size:1.1em;flex-shrink:0}.geo-i .gt{font-size:.66em;font-weight:800;color:#e8c87a}.geo-i .gd{font-size:.64em;color:#F57F17;line-height:1.6;margin-top:2px}
+.sep{text-align:center;margin:16px 0;color:#1c160c;font-size:1em;letter-spacing:10px}
+.cred{background:linear-gradient(135deg,#0e0c04,#121008);border:2px solid #201a0c;border-radius:16px;padding:16px;margin-top:14px}.cred-in{display:flex;gap:12px;align-items:center}.cred-av{width:56px;height:56px;background:linear-gradient(135deg,#FFD54F,#F57F17);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4em;flex-shrink:0}.cred h3{font-size:.86em;font-weight:900;color:#fff}.cred .ti{font-size:.64em;color:#FFD54F;font-weight:700;margin-top:2px}.cred .dsc{font-size:.60em;color:#F57F17;margin-top:4px;line-height:1.5;font-style:italic}.cred .ct{margin-top:7px;display:flex;flex-wrap:wrap;gap:4px}.cred .ct a,.cred .ct span{font-size:.58em;color:#F9A825;text-decoration:none;display:flex;align-items:center;gap:3px;font-weight:600;padding:3px 6px;background:rgba(249,168,37,.05);border-radius:6px;border:1px solid rgba(249,168,37,.1)}
+.disc{margin-top:9px;padding:9px;background:rgba(255,255,255,.02);border-radius:8px;font-size:.52em;color:#1c160c;line-height:1.6;text-align:center}.ftr{text-align:center;padding:8px;font-size:.54em;color:#0a0804;border-radius:0 0 14px 14px}
+@media(max-width:768px){.tb{flex-direction:column;text-align:center}.hdr h1{font-size:.93em}.chg{grid-template-columns:1fr}.cred-in{flex-direction:column;text-align:center}.cred .ct{justify-content:center}.dg{grid-template-columns:1fr 1fr}.proj{grid-template-columns:1fr}}
+@media(max-width:420px){.dg{grid-template-columns:1fr}.hdr h1{font-size:.84em}.hdr .mkt{flex-direction:column;align-items:center}}
+</style>
+</head>
+<body>
+<div class="pg">
+<div class="tb"><div class="lo"><div class="li">🥚</div><div class="lt"><h2>RURAL IN</h2><small>Inteligencia para o Agronegocio</small></div></div><div class="ed"><div class="dt">Marco 2026 — Fechamento Mensal</div><div class="inf">Radar Agro Ovos · Quaresma + Export Recorde 13 Anos · Vermelho vs Branco</div></div></div>
+
+<div class="hdr">
+<div class="tag">Radar Agro Ovos · Marco/2026 · Quaresma Move o Mercado · Export Recorde</div>
+<h1>O Mes do Ovo: De Min de 6 Anos (Jan R$ 89/cx) Para R$ 175/cx (Mar). Quaresma Puxa Alta. Vermelho vs Branco: Diferenca Explode +40%. Export Bate Recorde de 13 Anos. Mas 2a Quinzena Recua — Semana Santa e a Proxima Aposta</h1>
+<div class="sub">CEPEA 31/3: Branco Jetiba R$ 175,29/cx | SP R$ 171,76 | BH R$ 174,34 | Bastos R$ 163,71. Vermelho Jetiba R$ 198,34 | SP R$ 191,17 | BH R$ 198,74 | Bastos R$ 187,34. Jan: MIN 6 ANOS (R$ 89/cx Jetiba). Jan→Fev: +97%! Diferenca vermelho/branco >40% marco (Jetiba). Export fev: 2,94 mil t = RECORDE desde 2013 (+16% a/a). Receita: R$ 32,1 mi. 1a quinz mar: ALTA (Quaresma). 2a quinz: RECUO (demanda perde forca). Media mensal: acumula alta vs fev. Granjas: so cargas programadas. Poder compra avicultor: reagiu em fev. Semana Santa (abril): expectativa de nova alta.</div>
+<div class="mkt">
+<div class="mi"><div class="ml">Branco Jetiba 31/3</div><div class="mv wh">R$ 175,29/cx</div><div class="mc up">Alta vs jan</div></div>
+<div class="mi"><div class="ml">Vermelho Jetiba 31/3</div><div class="mv" style="color:#ef5350">R$ 198,34/cx</div><div class="mc dn">Quase R$ 200!</div></div>
+<div class="mi"><div class="ml">Diferenca VM/BR</div><div class="mv ng">>40%!</div><div class="mc dn">Historica marco</div></div>
+<div class="mi"><div class="ml">Export Fev</div><div class="mv ps">2,94 MIL t</div><div class="mc up">RECORDE 13 anos!</div></div>
+<div class="mi"><div class="ml">Jan Min 6 Anos</div><div class="mv ng">R$ 89/cx</div><div class="mc dn">Fundo! 5 meses queda</div></div>
+<div class="mi"><div class="ml">Jan→Fev</div><div class="mv ps">+97%!</div><div class="mc up">Quase dobrou</div></div>
+</div>
+</div>
+
+<div class="mn">
+
+<h3 class="stl">📋 A Montanha-Russa do Ovo em 2026</h3>
+
+<p class="tx">O mercado de ovos viveu em 2026 uma das <span class="hl">montanhas-russas mais intensas dos ultimos anos</span>. Em janeiro, a caixa de 30 duzias de ovo branco em Santa Maria de Jetiba (ES) — principal polo produtor do Brasil — despencou para <span class="ng">R$ 82,99/cx: MENOR patamar para o mes em 6 ANOS</span>. Foram 5 meses consecutivos de queda, oferta excessiva e demanda fraca de ferias. Entao veio fevereiro: volta as aulas + inicio da Quaresma + oferta ajustada = <span class="ps">alta de +97%! De R$ 82,99 para R$ 163,52/cx</span>.</p>
+
+<p class="tx">Marco manteve o <span class="ps">vies de alta na 1a quinzena</span>, impulsionado pela Quaresma (demanda por proteina alternativa as carnes). O destaque: <span class="hl">a diferenca entre ovos vermelhos e brancos EXPLODIU para mais de 40%</span> em Jetiba — a oferta de vermelhos e ainda mais restrita. Porem, na <span class="ng">2a quinzena o mercado esfriou</span>: demanda perdeu forca, liquidez caiu e precos recuaram em todas as pracas. Apesar disso, a <span class="ps">media mensal de marco ficou acima de fevereiro</span>. No fechamento de 31/3: branco Jetiba R$ 175,29/cx, vermelho R$ 198,34/cx.</p>
+
+<div class="alt">
+<h5>⛪ O Ciclo Quaresma-Pascoa: O Motor do Ovo</h5>
+<p><strong>Quaresma (18/fev–5/abr):</strong> Consumidor reduz carne por motivacao religiosa → <span class="ps">ovo substitui</span> → demanda sobe → preco sobe. <strong>1a quinz mar:</strong> pico de demanda. <strong>2a quinz mar:</strong> fadiga — demanda esfria. <strong>Semana Santa (1a semana abril):</strong> <span class="hl">novo pico esperado</span> — producao de chocolates + receitas tipicas + substituto de carne. <strong>Pos-Pascoa:</strong> tendencia de queda. <span class="ng">Se producao subir e demanda nao absorver: pressao.</span></p>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">📈 Panorama Marco — Numeros Completos</h3>
+
+<table class="tbl">
+<thead><tr><th>Praca / Indicador</th><th>Jan/26</th><th>Fev/26</th><th>31/Mar/26</th><th>Var. Jan→Mar</th></tr></thead>
+<tbody>
+<tr><td style="color:#FFD54F;font-weight:700">Branco Jetiba (ES) FOB</td><td style="color:#ef5350">R$ 82,99</td><td>R$ 163,52</td><td style="color:#81c784;font-weight:700">R$ 175,29</td><td style="color:#81c784;font-weight:700">+111%!</td></tr>
+<tr><td style="color:#ef5350;font-weight:700">Vermelho Jetiba FOB</td><td style="color:#ef5350">~R$ 95</td><td>~R$ 175</td><td style="color:#ef5350;font-weight:700">R$ 198,34</td><td style="color:#81c784">+109%</td></tr>
+<tr><td>Branco SP CIF</td><td>~R$ 95</td><td>~R$ 155</td><td>R$ 171,76</td><td style="color:#81c784">+81%</td></tr>
+<tr><td>Vermelho SP CIF</td><td>~R$ 105</td><td>~R$ 170</td><td>R$ 191,17</td><td style="color:#81c784">+82%</td></tr>
+<tr><td>Branco Bastos (SP) FOB</td><td>R$ 105,57</td><td>~R$ 155</td><td>R$ 163,71</td><td style="color:#81c784">+55%</td></tr>
+<tr><td>Vermelho Bastos FOB</td><td>R$ 118,76</td><td>~R$ 168</td><td>R$ 187,34</td><td style="color:#81c784">+58%</td></tr>
+<tr><td>Branco BH CIF</td><td>~R$ 100</td><td>~R$ 160</td><td>R$ 174,34</td><td style="color:#81c784">+74%</td></tr>
+<tr><td>Vermelho BH CIF</td><td>~R$ 115</td><td>~R$ 180</td><td style="color:#ef5350;font-weight:700">R$ 198,74</td><td style="color:#81c784">+73%</td></tr>
+<tr><td style="color:#81c784">Export Fev</td><td>—</td><td style="color:#81c784;font-weight:700">2,94 mil t</td><td>—</td><td style="color:#81c784">RECORDE 13 ANOS!</td></tr>
+<tr><td>Dif. Verm/Branco Jetiba</td><td>~15%</td><td>~20%</td><td style="color:#ef5350;font-weight:700">>40%!</td><td style="color:#ef5350">HISTORICA</td></tr>
+</tbody>
+</table>
+
+<div class="chg">
+<div class="chc"><h4>Trajetoria Ovo Branco Jetiba (ES) FOB — Jan a Mar (R$/cx 30dz)</h4><canvas id="ch1"></canvas></div>
+<div class="chc"><h4>Vermelho vs Branco — Jetiba 31/3 (R$/cx)</h4><canvas id="ch2"></canvas></div>
+</div>
+
+<div class="bld">
+<h3>Marco em Numeros: Quaresma = Alta de +97% (Jan→Fev). Media Mensal Acima de Fevereiro. Vermelho Quase R$ 200/cx.</h3>
+<p>O ciclo de 2026: <span style="color:#ef5350;font-weight:700">Jan = fundo historico 6 anos</span> → <span style="color:#81c784;font-weight:700">Fev = quase dobra (+97%)</span> → <span style="color:#ffd740;font-weight:700">Mar = mantém alta mas 2a quinz recua</span> → <span style="color:#81c784;font-weight:700">Abr = Semana Santa: novo pico?</span></p>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🔍 Os 8 Fundamentos do Ovo</h3>
+
+<div class="dg">
+<div class="dc" style="border-color:#81c784"><div class="dl">1. Quaresma</div><div class="dv ps">DEMANDA SOBE</div><div class="ds">Proteina altern. carne.<br>1a quinz forte.<br>2a quinz esfriou.</div></div>
+<div class="dc" style="border-color:#81c784"><div class="dl">2. Oferta Enxuta</div><div class="dv ps">GRANJAS LOTADAS</div><div class="ds">So cargas programadas.<br>Producao controlada.<br>Vermelho: mais escasso.</div></div>
+<div class="dc" style="border-color:#81c784"><div class="dl">3. Export RECORDE</div><div class="dv ps">2,94 MIL t FEV</div><div class="ds">Maior desde 2013!<br>+16% a/a.<br>R$ 32,1 mi receita.</div></div>
+<div class="dc" style="border-color:#ef5350"><div class="dl">4. Dif. Verm/Branco</div><div class="dv ng">>40%!</div><div class="ds">Historica em Jetiba.<br>Vermelho mais escasso.<br>Branco mais acessivel.</div></div>
+<div class="dc" style="border-color:#81c784"><div class="dl">5. Poder Compra ↑</div><div class="dv ps">REAGIU FEV</div><div class="ds">Avicultor voltou a<br>ganhar vs milho/farelo.<br>Apos meses de queda.</div></div>
+<div class="dc" style="border-color:#ffd740"><div class="dl">6. Semana Santa</div><div class="dv nt">PROXIMO PICO</div><div class="ds">Demanda deve subir.<br>Chocolate + receitas.<br>Janela curta: 1 semana.</div></div>
+<div class="dc" style="border-color:#ef5350"><div class="dl">7. Custo Racao</div><div class="dv ng">MILHO+FARELO</div><div class="ds">Estavel mas alto.<br>Petroleo puxa diesel/frete.<br>Margem depende do preco.</div></div>
+<div class="dc" style="border-color:#ffd740"><div class="dl">8. Pos-Pascoa Risco</div><div class="dv nt">QUEDA PROVAVEL</div><div class="ds">Se producao cresce e<br>demanda nao absorve:<br>preco cai de novo.</div></div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🗺️ Mapa de Precos — 31/Mar/2026 por Praca</h3>
+
+<div class="chc"><h4>Precos por Praca — 31/Mar (R$/cx 30 duzias)</h4><canvas id="ch3"></canvas></div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🌡️ Termometros — Marco/2026</h3>
+
+<div class="chg">
+<div class="thermo"><h4>Demanda — Quaresma/Pascoa</h4><div class="th-bar"><div class="th-mk" style="left:58%"><div class="arr"></div><div class="lbl" style="background:#8bc34a;color:#000">MODERADA (2a quinz recuou)</div></div></div><div class="th-labels"><span>Fraca</span><span>Normal</span><span>Forte</span></div></div>
+<div class="thermo"><h4>Oferta de Ovos</h4><div class="th-bar"><div class="th-mk" style="left:38%"><div class="arr"></div><div class="lbl" style="background:#ff9800;color:#000">CONTROLADA (enxuta)</div></div></div><div class="th-labels"><span>Escassa</span><span>Equilibrada</span><span>Excessiva</span></div></div>
+</div>
+<div class="chg">
+<div class="thermo"><h4>Preco ao Produtor</h4><div class="th-bar"><div class="th-mk" style="left:62%"><div class="arr"></div><div class="lbl" style="background:#8bc34a;color:#000">BOM (R$170+ branco)</div></div></div><div class="th-labels"><span>Baixo</span><span>Regular</span><span>Alto</span></div></div>
+<div class="thermo"><h4>Poder Compra Avicultor</h4><div class="th-bar"><div class="th-mk" style="left:55%"><div class="arr"></div><div class="lbl" style="background:#ffd740;color:#000">REAGINDO (vs milho)</div></div></div><div class="th-labels"><span>Negativo</span><span>Equilibrio</span><span>Positivo</span></div></div>
+</div>
+<div class="chg">
+<div class="thermo"><h4>Exportacao</h4><div class="th-bar"><div class="th-mk" style="left:78%"><div class="arr"></div><div class="lbl" style="background:#4CAF50;color:#fff">RECORDE (13 anos!)</div></div></div><div class="th-labels"><span>Fraca</span><span>Normal</span><span>Recorde</span></div></div>
+<div class="thermo"><h4>Diferenca Vermelho/Branco</h4><div class="th-bar"><div class="th-mk" style="left:82%"><div class="arr"></div><div class="lbl" style="background:#ef5350;color:#fff">EXTREME >40%!</div></div></div><div class="th-labels"><span>Normal 5-10%</span><span>Alto 20%</span><span>Extreme >30%</span></div></div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🎯 Cenarios Abril-Junho</h3>
+
+<div class="bld">
+<h3>VIES: ALTA PONTUAL NA SEMANA SANTA → ACOMODACAO POS-PASCOA → RISCO DE QUEDA</h3>
+<p>Semana Santa (1-5 abril): <span style="color:#81c784;font-weight:700">novo pico de demanda</span>. Precos podem subir 5-10%. Depois: <span style="color:#ffd740;font-weight:700">demanda esfria naturalmente</span>. Se producao aumentar apos alojamento de novas aves e demanda nao acompanhar: <span style="color:#ef5350;font-weight:700">preco pode cair -15/20% em maio/junho</span>. Monitorar oferta!</p>
+</div>
+
+<div class="proj">
+<div class="proj-c" style="border-color:#81c784"><div class="pl">Semana Santa (1a Abr)</div><div class="pv" style="color:#81c784">R$ 175-190 BR</div><div class="pd">Novo pico de demanda.<br>Chocolate + receitas.<br>Vermelho >R$ 200?</div></div>
+<div class="proj-c" style="border-color:#ffd740"><div class="pl">Pos-Pascoa (2a-3a Abr)</div><div class="pv" style="color:#ffd740">R$ 155-170 BR</div><div class="pd">Demanda esfria.<br>Precos acomodam.<br>Ajuste natural.</div></div>
+<div class="proj-c" style="border-color:#ef5350"><div class="pl">Maio-Junho</div><div class="pv" style="color:#ef5350">R$ 130-160 BR</div><div class="pd">Se producao subir:<br>oferta > demanda.<br>Risco de queda -15%.</div></div>
+<div class="proj-c" style="border-color:#81c784"><div class="pl">Otimista (export forte)</div><div class="pv" style="color:#81c784">R$ 160-180 BR</div><div class="pd">Se export mantiver<br>recorde: alivia domestico.<br>Chave: demanda externa.</div></div>
+</div>
+
+<div class="chc"><h4>Cenarios Ovo Branco Jetiba — Abril a Agosto (R$/cx 30dz)</h4><canvas id="ch4"></canvas></div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">🌐 Radar Macro e Fatores de Atencao</h3>
+
+<div class="geo">
+<div class="geo-i"><div class="gi">⛪</div><div><div class="gt">Semana Santa (1-5 Abril): O Proximo Pico</div><div class="gd">Historicamente a Semana Santa e o <strong>2o maior pico de demanda por ovos</strong> do ano (atras do Natal). Industrias de chocolate, confeitarias e consumidor final compram mais. Expectativa: <span style="color:#81c784;font-weight:700">alta de 5-10% na 1a semana de abril</span>. Apos: esfria rapido.</div></div></div>
+<div class="geo-i"><div class="gi">🚢</div><div><div class="gt">Export Recorde 13 Anos: 2,94 Mil t Fev</div><div class="gd">Maior volume para fevereiro desde 2013. +16% a/a. Receita R$ 32,1 mi. Export de ovos e <strong>pequena vs frango</strong>, mas cresce consistentemente. Se mantiver ritmo: ajuda a aliviar oferta domestica e sustentar precos. <span style="color:#81c784;font-weight:700">Fator positivo para o avicultor.</span></div></div></div>
+<div class="geo-i"><div class="gi">🥚</div><div><div class="gt">Vermelho vs Branco: Diferenca >40% — O Que Significa?</div><div class="gd">A oferta de <strong>ovos vermelhos esta mais restrita</strong> que brancos. Galinhas de postura vermelha (Rhode Island, Isa Brown) tem menor alojamento recente. Resultado: vermelho quase R$ 200/cx vs branco R$ 175 = <span style="color:#ef5350;font-weight:700">gap historico de >40%</span>. Se alojamento crescer: gap diminui. Se nao: vermelho pode passar R$ 200.</div></div></div>
+<div class="geo-i"><div class="gi">🌾</div><div><div class="gt">Custo de Racao: Milho + Farelo de Soja</div><div class="gd">Racao e <strong>~70% do custo de producao do ovo</strong>. Milho estavel, farelo de soja em leve alta. Poder de compra do avicultor reagiu em fev com alta do ovo, mas <strong>se preco do ovo cair pos-Pascoa e milho subir: margem aperta de novo</strong>. Petroleo alto (Ormuz) puxa diesel e frete, aumentando custo logistico.</div></div></div>
+<div class="geo-i"><div class="gi">🦠</div><div><div class="gt">Gripe Aviaria: Foco no Taim (RS) — Sem Impacto Comercial</div><div class="gd">RS confirmou foco de gripe aviaria no Taim, mas <strong>sem impacto comercial</strong> (aves silvestres, nao planteis). Global Eggs ("rei do ovo"): recebera aporte de ate US$ 1 bi. <strong>Qualquer foco em granja comercial de postura = risco imediato de alta nos precos por reducao de oferta.</strong></div></div></div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">💡 Estrategia Rural IN — Avicultor de Postura</h3>
+
+<div class="alt"><h5>🥚 Vendas na Semana Santa: Nao Perca a Janela</h5><p>Semana Santa (1-5 abril) e <span class="ps">a proxima janela de alta</span>. Ovos vermelhos: demanda premium. <span class="hl">Se tem estoque: negocie AGORA com atacado e varejo</span>. Precos devem subir 5-10%. <strong>Nao espere ate depois de quinta-feira santa — a demanda cai rapido apos a Pascoa.</strong></p></div>
+<div class="alt"><h5>📊 Vermelho Premium: Aproveite o Gap de >40%</h5><p>Se voce produz <span class="hl">ovo vermelho</span>: este e um dos melhores momentos do ano. Oferta restrita + Quaresma + Pascoa = <span class="ps">preco proximo a R$ 200/cx</span>. Negocie bonus com redes. Se possivel, <strong>aumente producao de vermelho — aloje mais poedeiras vermelhas para capturar o premium</strong>.</p></div>
+<div class="alt"><h5>⚠️ Pos-Pascoa: Prepare-se Para Queda</h5><p>Apos Semana Santa: demanda cai naturalmente. <span class="ng">Se producao crescer (mais aves alojadas na Quaresma) e demanda nao absorver: preco pode cair -15/20% em maio.</span> <span class="hl">Estrategia: trave vendas antecipadas. Contratos com atacado para abril/maio. Nao dependa so do spot.</span> <strong>Gestao de caixa: reserve margem de marco para cobrir eventual queda.</strong></p></div>
+
+<div class="sep">· · ·</div>
+
+<h3 class="stl">📊 Graficos Complementares</h3>
+
+<div class="chg">
+<div class="chc"><h4>Radar Fundamentalista — Ovos Marco/26</h4><canvas id="ch5"></canvas></div>
+<div class="chc"><h4>Ciclo Anual do Ovo — Sazonalidade Tipica (indice demanda)</h4><canvas id="ch6"></canvas></div>
+</div>
+
+<div class="cred"><div class="cred-in"><div class="cred-av">👨‍💼</div><div><h3>Dr. Sidney Souza</h3><div class="ti">Economista Agricola · Estrategista Economico do Produtor</div><div class="dsc">Especialista em economia da fazenda e gestao de risco no agro<br>Transformamos dados da fazenda em decisoes economicas<br>Ajudamos produtores a entender se o mercado sustenta seu negocio</div><div class="ct"><a href="mailto:sidneyagro@gmail.com">📧 sidneyagro@gmail.com</a><a href="https://wa.me/5564992266886">📱 (64) 9 9226-6886</a><span>📸 @ruralin.ai</span></div></div></div><div class="disc">Informativo analitico e educacional. Nao constitui recomendacao de compra ou venda. Dados: CEPEA/Esalq-USP, ABPA, Secex, Agrimidia, CNN Brasil, Globo Rural, G1 Piracicaba, Feed&Food, Broto Noticias, SNA, Tempo e Dinheiro, O Presente Rural, Vetmarket, Planalto Postura, Interligados Agro, Jox. Analise: Dr. Sidney Souza — Rural IN.</div></div>
+</div>
+<div class="ftr">RURAL IN 2026 · Inteligencia para o Agronegocio · Rio Verde/GO</div>
+</div>
+
+<script>
+Chart.defaults.color='#1c160c';Chart.defaults.font.family='Inter';Chart.defaults.font.size=11;
+var df={family:'Inter',weight:'600'};
+var tt={backgroundColor:'#0e0c04',titleColor:'#FFD54F',bodyColor:'#e8c87a',borderColor:'#F57F17',borderWidth:1,padding:12,cornerRadius:8};
+
+new Chart(document.getElementById('ch1').getContext('2d'),{type:'line',data:{labels:['Jan ini','Jan fim','Fev ini','Fev meio','Fev fim','Mar ini','11/3','18/3','20/3','25/3','27/3','31/3'],datasets:[{label:'Branco Jetiba (R$/cx)',data:[89,83,120,150,164,170,170,168,165,163,168,175],borderColor:'#FFD54F',backgroundColor:'rgba(255,213,79,0.06)',borderWidth:2.5,fill:true,tension:0.3,pointRadius:4,pointBackgroundColor:function(c){return c.dataIndex<=1?'#ef5350':c.dataIndex>=10?'#81c784':'#FFD54F';}},{label:'Vermelho Jetiba (R$/cx)',data:[95,90,135,165,175,185,188,192,190,188,192,198],borderColor:'#ef5350',borderWidth:2,fill:false,tension:0.3,pointRadius:3,borderDash:[0],pointBackgroundColor:'#ef5350'}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt,annotation:{annotations:{mn:{type:'label',xValue:1,yValue:76,content:['MIN 6 ANOS!','R$83/cx'],font:{size:7,weight:'bold'},color:'#ef5350'},q:{type:'label',xValue:5,yValue:195,content:['QUARESMA','Demanda sobe'],font:{size:6,weight:'bold'},color:'#81c784'},rc:{type:'label',xValue:8,yValue:157,content:['2a quinz recua'],font:{size:6,weight:'bold'},color:'#ffd740'}}}},scales:{y:{min:70,max:210,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'R$'+v;},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:6}}}}}});
+
+new Chart(document.getElementById('ch2').getContext('2d'),{type:'bar',data:{labels:['Jetiba\nBranco','Jetiba\nVermelho','SP\nBranco','SP\nVermelho','Bastos\nBranco','Bastos\nVermelho','BH\nBranco','BH\nVermelho'],datasets:[{label:'R$/cx 31/Mar',data:[175.29,198.34,171.76,191.17,163.71,187.34,174.34,198.74],backgroundColor:function(c){return c.dataIndex%2===0?'rgba(255,213,79,0.3)':'rgba(239,83,80,0.3)';},borderColor:function(c){return c.dataIndex%2===0?'#FFD54F':'#ef5350';},borderWidth:2,borderRadius:5}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,annotation:{annotations:{g:{type:'label',xValue:7,yValue:210,content:['>40% gap!'],font:{size:7,weight:'bold'},color:'#ef5350'}}}},scales:{y:{min:140,max:215,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'R$'+v;},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:6}}}}}});
+
+new Chart(document.getElementById('ch3').getContext('2d'),{type:'bar',data:{labels:['Jetiba (ES)','Grande SP','Grande BH','Bastos (SP)','Recife (PE)'],datasets:[{label:'Branco',data:[175.29,171.76,174.34,163.71,160.48],backgroundColor:'rgba(255,213,79,0.35)',borderColor:'#FFD54F',borderWidth:2,borderRadius:4},{label:'Vermelho',data:[198.34,191.17,198.74,187.34,177.24],backgroundColor:'rgba(239,83,80,0.3)',borderColor:'#ef5350',borderWidth:2,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},scales:{y:{min:145,max:210,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'R$'+v;},font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+
+new Chart(document.getElementById('ch4').getContext('2d'),{type:'line',data:{labels:['31/3','Sem. Santa','2a Abr','Mai','Jun','Jul','Ago'],datasets:[{label:'Otimista (export+oferta enxuta)',data:[175,190,175,170,168,165,170],borderColor:'#81c784',borderWidth:2,tension:0.3,pointRadius:4,fill:false,pointBackgroundColor:'#81c784'},{label:'Base',data:[175,185,165,155,145,140,145],borderColor:'#ffd740',borderWidth:2.5,tension:0.3,pointRadius:4,fill:false,pointBackgroundColor:'#ffd740'},{label:'Pessimista (producao sobe+demanda fraca)',data:[175,178,155,135,120,115,120],borderColor:'#ef5350',borderWidth:2,tension:0.3,pointRadius:4,fill:false,borderDash:[5,3],pointBackgroundColor:'#ef5350'}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt,annotation:{annotations:{p:{type:'label',xValue:1,yValue:198,content:['SEMANA SANTA','Pico demanda'],font:{size:8,weight:'bold'},color:'#81c784'},r:{type:'label',xValue:4,yValue:125,content:['Pos-Pascoa','Risco queda'],font:{size:7,weight:'bold'},color:'#ef5350'}}}},scales:{y:{min:105,max:205,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return'R$'+v;},font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+
+new Chart(document.getElementById('ch5').getContext('2d'),{type:'radar',data:{labels:['Quaresma/Pascoa','Oferta Enxuta','Export Recorde','Verm. Premium','Custo Racao','Risco Pos-Pascoa','Demanda 2a Quinz ↓','Poder Compra ↑'],datasets:[{label:'Altista Preco',data:[75,80,60,70,18,15,25,65],backgroundColor:'rgba(129,199,132,0.08)',borderColor:'#81c784',borderWidth:2.5,pointBackgroundColor:'#81c784',pointRadius:5},{label:'Baixista Preco',data:[25,20,40,30,82,85,75,35],backgroundColor:'rgba(239,83,80,0.06)',borderColor:'#ef5350',borderWidth:1.5,pointBackgroundColor:'#ef5350',pointRadius:3,borderDash:[4,2]}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:12}},tooltip:tt},scales:{r:{min:0,max:100,ticks:{display:false,stepSize:20},grid:{color:'rgba(255,255,255,0.06)'},pointLabels:{font:{family:'Inter',weight:'600',size:6},color:'#F9A825'}}}}});
+
+new Chart(document.getElementById('ch6').getContext('2d'),{type:'line',data:{labels:['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],datasets:[{label:'Demanda Tipica (indice 0-100)',data:[30,55,70,85,45,40,42,50,55,60,65,80],borderColor:'#FFD54F',backgroundColor:'rgba(255,213,79,0.06)',borderWidth:2.5,fill:true,tension:0.4,pointRadius:5,pointBackgroundColor:function(c){var v=c.parsed.y;return v>=80?'#81c784':v<=40?'#ef5350':'#FFD54F';}}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,annotation:{annotations:{j:{type:'label',xValue:0,yValue:22,content:['FERIAS','Min demanda'],font:{size:6,weight:'bold'},color:'#ef5350'},q:{type:'label',xValue:2,yValue:78,content:['QUARESMA'],font:{size:6,weight:'bold'},color:'#81c784'},p:{type:'label',xValue:3,yValue:93,content:['PASCOA','Pico!'],font:{size:7,weight:'bold'},color:'#81c784'},v:{type:'label',xValue:5,yValue:33,content:['VALE','pos-Pascoa'],font:{size:6,weight:'bold'},color:'#ef5350'},n:{type:'label',xValue:11,yValue:88,content:['NATAL'],font:{size:6,weight:'bold'},color:'#81c784'}}}},scales:{y:{min:15,max:100,grid:{color:'rgba(255,255,255,0.03)'},ticks:{callback:function(v){return v+'%';},font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+</script>
+</body>
+</html>
