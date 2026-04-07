@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Informativo Semanal — 06-07/Abr 2026 | Rural IN</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+:root{--bg:#06080c;--bg2:#0a0e14;--bg3:#0e1420;--bd:#141e2c;--ac:#38bdf8;--ac2:#0ea5e9;--ac3:#0284c7;--tx1:#e0f2fe;--tx2:#7dd3fc;--tx3:#0369a1;--up:#4ade80;--dn:#f87171;--nt:#fbbf24;--wh:#fff}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--tx2);min-height:100vh}
+.pg{max-width:960px;margin:0 auto;padding:8px}
+
+/* TOPBAR */
+.tb{background:linear-gradient(90deg,var(--bg2),var(--bg3),var(--bg2));padding:10px 16px;border-radius:14px 14px 0 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--ac3);flex-wrap:wrap;gap:6px}
+.tb .lo{display:flex;align-items:center;gap:10px}
+.tb .li{width:48px;height:48px;background:linear-gradient(135deg,var(--ac),var(--ac3));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.4em;box-shadow:0 2px 16px rgba(56,189,248,.12)}
+.tb .lt h2{font-size:.95em;font-weight:900;color:var(--wh);letter-spacing:1.5px}
+.tb .lt small{font-size:.58em;color:var(--ac);font-weight:600;display:block}
+.tb .ed{text-align:right}
+.tb .ed .dt{font-size:.78em;font-weight:800;color:var(--ac)}
+.tb .ed .inf{font-size:.56em;color:var(--ac3);font-weight:600}
+
+/* HEADER */
+.hdr{background:linear-gradient(135deg,#060810,#0a1018 50%,var(--bg));padding:28px 18px 24px;text-align:center;border-bottom:3px solid var(--ac2);position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(56,189,248,.03) 0%,transparent 70%)}
+.hdr .tag{display:inline-block;background:linear-gradient(135deg,var(--ac),var(--ac3));color:#fff;font-size:.52em;font-weight:800;letter-spacing:3px;padding:3px 12px;border-radius:20px;text-transform:uppercase;margin-bottom:8px;position:relative;z-index:1}
+.hdr h1{font-family:'Playfair Display',serif;font-size:1.05em;font-weight:900;color:var(--wh);position:relative;z-index:1;line-height:1.35;max-width:860px;margin:0 auto}
+.hdr .sub{font-size:.64em;color:var(--ac3);margin-top:8px;font-weight:500;position:relative;z-index:1;line-height:1.6}
+
+/* TICKER */
+.tkr{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:12px;position:relative;z-index:1}
+.tkr .ti{background:rgba(56,189,248,.03);border:1px solid rgba(56,189,248,.1);border-radius:8px;padding:5px 10px;text-align:center;min-width:90px}
+.tkr .ti .tl{font-size:.44em;color:var(--ac3);font-weight:700;text-transform:uppercase;letter-spacing:.8px}
+.tkr .ti .tv{font-size:.88em;font-weight:900;margin-top:1px}
+.tkr .ti .tc{font-size:.48em;font-weight:700;margin-top:1px}
+.up{color:var(--up)}.dn{color:var(--dn)}.nt{color:var(--nt)}.wh{color:var(--wh)}
+
+/* MAIN */
+.mn{background:var(--bg);padding:14px;border:1px solid var(--bd);border-top:none}
+.stl{font-size:.68em;text-transform:uppercase;letter-spacing:2px;font-weight:800;color:var(--ac);margin:18px 0 9px;display:flex;align-items:center;gap:8px;padding-bottom:6px;border-bottom:1px solid var(--bd)}
+.tx{font-size:.74em;line-height:1.9;color:var(--ac2);margin-bottom:10px;text-align:justify}
+.tx strong{color:var(--tx1)}.tx .hl{color:var(--ac);font-weight:700}.tx .ng{color:var(--dn);font-weight:700}.tx .ps{color:var(--up);font-weight:700}
+
+/* CARDS */
+.dg{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:6px;margin-bottom:10px}
+.dc{background:var(--bg2);border-radius:8px;padding:8px;border:1px solid var(--bd);text-align:center}
+.dc .dl{font-size:.44em;color:var(--ac);text-transform:uppercase;letter-spacing:.8px;font-weight:700;margin-bottom:2px}
+.dc .dv{font-size:.98em;font-weight:900;color:var(--wh)}
+.dc .ds{font-size:.54em;color:var(--ac3);margin-top:2px;line-height:1.3}
+
+/* CHARTS */
+.chc{background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:10px;margin-bottom:9px}
+.chc h4{font-size:.58em;color:var(--ac3);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;font-weight:700;text-align:center}
+.chc canvas{max-height:250px}
+.chg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:9px}
+
+/* ALERTS */
+.alt{background:linear-gradient(135deg,var(--bg2),var(--bg3));border-left:4px solid var(--ac2);border-radius:0 8px 8px 0;padding:10px;margin-bottom:8px}
+.alt h5{font-size:.62em;color:var(--ac);font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}
+.alt p{font-size:.70em;color:var(--ac2);line-height:1.8}.alt p strong{color:var(--tx1)}
+
+/* BOLD BOX */
+.bld{background:linear-gradient(135deg,var(--bg2),var(--bg3));border:2px solid var(--ac2);border-radius:12px;padding:14px;margin:12px 0;text-align:center}
+.bld h3{font-family:'Playfair Display',serif;font-size:.95em;color:var(--wh);margin-bottom:5px;line-height:1.4}
+.bld p{font-size:.72em;color:var(--ac2);line-height:1.8}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;margin-bottom:9px;font-size:.62em}
+.tbl th{background:var(--bg2);color:var(--ac);padding:4px 2px;text-align:center;font-weight:700;text-transform:uppercase;letter-spacing:.5px;font-size:.72em;border-bottom:2px solid var(--ac3)}
+.tbl td{padding:4px 2px;text-align:center;border-bottom:1px solid var(--bd);color:var(--tx2)}
+
+/* THERMOMETER */
+.thermo{background:var(--bg2);border-radius:10px;padding:10px;border:1px solid var(--bd);margin-bottom:8px}
+.thermo h4{text-align:center;font-size:.58em;color:var(--ac3);text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:9px}
+.th-bar{height:13px;background:linear-gradient(90deg,#b91c1c 0%,#ef4444 18%,#f59e0b 33%,#fbbf24 50%,#86efac 68%,#22c55e 82%,#166534 100%);border-radius:8px;position:relative;margin:20px 6px 6px}
+.th-mk{position:absolute;top:-18px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center}
+.th-mk .arr{width:2px;height:32px;border-radius:2px;background:#fff;box-shadow:0 0 4px rgba(255,255,255,.3)}
+.th-mk .lbl{font-size:.50em;font-weight:800;padding:2px 5px;border-radius:4px;white-space:nowrap;margin-top:2px}
+.th-labels{display:flex;justify-content:space-between;padding:0 6px;font-size:.48em;color:var(--bd);font-weight:700}
+
+/* GEO */
+.geo{display:grid;grid-template-columns:1fr;gap:5px;margin-bottom:9px}
+.geo-i{background:rgba(56,189,248,.02);border:1px solid rgba(56,189,248,.06);border-radius:8px;padding:8px 10px;display:flex;gap:8px;align-items:flex-start}
+.geo-i .gi{font-size:1em;flex-shrink:0}
+.geo-i .gt{font-size:.62em;font-weight:800;color:var(--tx1)}
+.geo-i .gd{font-size:.60em;color:var(--ac3);line-height:1.5;margin-top:1px}
+
+/* SEPARATOR */
+.sep{text-align:center;margin:14px 0;color:var(--bd);font-size:.9em;letter-spacing:8px}
+
+/* CREDENTIALS */
+.cred{background:linear-gradient(135deg,var(--bg2),var(--bg3));border:2px solid var(--bd);border-radius:14px;padding:14px;margin-top:12px}
+.cred-in{display:flex;gap:10px;align-items:center}
+.cred-av{width:50px;height:50px;background:linear-gradient(135deg,var(--ac),var(--ac3));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3em;flex-shrink:0}
+.cred h3{font-size:.82em;font-weight:900;color:var(--wh)}
+.cred .ti{font-size:.60em;color:var(--ac);font-weight:700;margin-top:2px}
+.cred .dsc{font-size:.56em;color:var(--ac3);margin-top:3px;line-height:1.5;font-style:italic}
+.cred .ct{margin-top:6px;display:flex;flex-wrap:wrap;gap:3px}
+.cred .ct a,.cred .ct span{font-size:.54em;color:var(--tx2);text-decoration:none;display:flex;align-items:center;gap:2px;font-weight:600;padding:2px 5px;background:rgba(56,189,248,.04);border-radius:5px;border:1px solid rgba(56,189,248,.08)}
+.disc{margin-top:8px;padding:7px;background:rgba(255,255,255,.01);border-radius:6px;font-size:.48em;color:var(--bd);line-height:1.5;text-align:center}
+.ftr{text-align:center;padding:6px;font-size:.50em;color:var(--bg);border-radius:0 0 14px 14px}
+
+/* RESPONSIVE */
+@media(max-width:768px){.tb{flex-direction:column;text-align:center}.hdr h1{font-size:.9em}.chg{grid-template-columns:1fr}.cred-in{flex-direction:column;text-align:center}.cred .ct{justify-content:center}.dg{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.dg{grid-template-columns:1fr}.hdr h1{font-size:.82em}.tkr{flex-direction:column;align-items:center}.tkr .ti{width:100%;max-width:220px}}
+</style>
+</head>
+<body>
+<div class="pg">
+
+<!-- TOPBAR -->
+<div class="tb">
+<div class="lo"><div class="li">📊</div><div class="lt"><h2>RURAL IN</h2><small>Inteligencia para o Agronegocio</small></div></div>
+<div class="ed"><div class="dt">06 e 07 de Abril 2026</div><div class="inf">Informativo Semanal · Soja · Milho · Boi · Cambio</div></div>
+</div>
+
+<!-- HEADER -->
+<div class="hdr">
+<div class="tag">Informativo Semanal · 06-07/Abr/2026 · Soja + Milho + Boi + Cambio</div>
+<h1>Boi Gordo Bate RECORDE Historico (R$ 361/@). Soja Perde Folego: Oferta Sul-Americana + Tarifas EUA Pressionam Chicago, Mas Oleo Sustenta. Milho Firme R$ 70/sc. Dolar Recua Para ~R$ 5,15. Petroleo WTI $91. Oriente Medio e Tarifas: Os 2 Vetores do Mercado</h1>
+<div class="sub">BOI: CEPEA 6/4 R$ 361,05/@ = RECORDE HISTORICO NOMINAL! B3 abr: R$ 371,75 (6/4) → R$ 368,50 (7/4 -0,87%). Escalas curtas. Export recorde. SOJA: CEPEA Paranagua 6/4: R$ 128,81/sc (+0,24%). Chicago mai 6/4: $11,6675 (+0,28%) → 7/4: $11,5825 (-0,73%). Tarifas EUA reforçam pressao. Premios BR sobem. Oleo soja forte (biodiesel+petroleo). MILHO: Campinas R$ 69,96/sc. Indicador sustentado. CAMBIO: ~R$ 5,15. Dolar recuou = pressiona commodities em RS. PETROLEO: WTI $90,84/bbl (mar). Ormuz: risco permanente.</div>
+
+<div class="tkr">
+<div class="ti"><div class="tl">🐂 Boi CEPEA 6/4</div><div class="tv ps">R$ 361,05/@</div><div class="tc up">RECORDE! +1,42% mes</div></div>
+<div class="ti"><div class="tl">🐂 B3 Abr 7/4</div><div class="tv dn">R$ 368,50</div><div class="tc dn">-0,87%</div></div>
+<div class="ti"><div class="tl">🌱 Soja Pgua 6/4</div><div class="tv wh">R$ 128,81/sc</div><div class="tc dn">-0,33% mes</div></div>
+<div class="ti"><div class="tl">🌱 Soja CBOT 7/4</div><div class="tv dn">$11,58/bu</div><div class="tc dn">-0,73%</div></div>
+<div class="ti"><div class="tl">🌽 Milho Camp.</div><div class="tv wh">R$ 69,96/sc</div><div class="tc up">Sustentado</div></div>
+<div class="ti"><div class="tl">💵 Dolar</div><div class="tv ps">~R$ 5,15</div><div class="tc up">Recuou</div></div>
+<div class="ti"><div class="tl">🛢️ WTI Mar</div><div class="tv nt">$90,84/bbl</div><div class="tc up">+41% vs fev!</div></div>
+</div>
+</div>
+
+<!-- MAIN -->
+<div class="mn">
+
+<!-- ======================== BOI GORDO ======================== -->
+<h3 class="stl">🐂 Boi Gordo — RECORDE Historico</h3>
+
+<div class="dg">
+<div class="dc" style="border-color:var(--up)"><div class="dl">CEPEA 6/4</div><div class="dv ps">R$ 361,05/@</div><div class="ds">RECORDE NOMINAL!<br>+1,42% no mes</div></div>
+<div class="dc" style="border-color:var(--up)"><div class="dl">B3 Abr 6/4</div><div class="dv ps">R$ 371,75</div><div class="ds">+1,27% dia<br>Maximo historico</div></div>
+<div class="dc" style="border-color:var(--dn)"><div class="dl">B3 Abr 7/4</div><div class="dv dn">R$ 368,50</div><div class="ds">-0,87%<br>Realizacao parcial</div></div>
+<div class="dc"><div class="dl">Media Marco</div><div class="dv wh">R$ 350,18</div><div class="ds">Maior desde fev/22<br>em termos reais</div></div>
+<div class="dc"><div class="dl">Scot SP 6/4</div><div class="dv wh">R$ 362/@ prazo</div><div class="ds">Boi China: R$ 365<br>Firme</div></div>
+<div class="dc"><div class="dl">GO 6/4 Scot</div><div class="dv wh">R$ 340/@</div><div class="ds">Goiania + Reg Sul<br>China: R$ 345</div></div>
+</div>
+
+<p class="tx"><strong>O boi gordo abriu abril batendo recordes.</strong> O Indicador CEPEA/Esalq atingiu <span class="ps">R$ 361,05/@ em 06/04 — maior valor nominal da serie historica</span>. Na B3, o contrato de abril tocou R$ 371,75. Os fundamentos sao claros: <span class="hl">oferta restrita de animais</span> (chuvas favoreceram pastagens → pecuaristas retiveram gado), escalas de abate curtas (26 de 33 pracas Scot estáveis ou em alta), e <span class="ps">exportacoes de carne bovina em patamares recordes</span> — o que reduz a disponibilidade no mercado interno.</p>
+
+<p class="tx">Em <span class="hl">7/4 (terca)</span>, a B3 corrigiu -0,87% (R$ 368,50 abr) — realizacao parcial apos altas consecutivas. Mas o <span class="ps">CEPEA fisico segue firme</span>. Goias: R$ 340 (Goiania/Reg Sul), Boi China R$ 345. <strong>A Quaresma normalmente reduz consumo interno de carne, mas o export absorve tudo.</strong> A curva futura (B3) mostra: <span class="ng">jun R$ 355 → jul R$ 349 → ago R$ 347</span> — mercado precifica sazonalidade de oferta no 2o semestre. <span class="hl">Mas enquanto export nao arrefecer: preco nao cai significativamente.</span></p>
+
+<div class="chg">
+<div class="chc"><h4>CEPEA Boi Gordo — Marco a Abril (R$/@)</h4><canvas id="chBoi1"></canvas></div>
+<div class="chc"><h4>Curva B3 — Contratos Futuros 7/4 (R$/@)</h4><canvas id="chBoi2"></canvas></div>
+</div>
+
+<div class="thermo"><h4>Boi Gordo — Tendencia de Preco</h4><div class="th-bar"><div class="th-mk" style="left:75%"><div class="arr"></div><div class="lbl" style="background:var(--up);color:#000">ALTISTA (oferta restrita + export)</div></div></div><div class="th-labels"><span>Baixista</span><span>Neutro</span><span>Altista</span></div></div>
+
+<div class="sep">· · ·</div>
+
+<!-- ======================== SOJA ======================== -->
+<h3 class="stl">🌱 Soja — Alta Interrompida. Tarifas + Oferta Pressionam</h3>
+
+<div class="dg">
+<div class="dc"><div class="dl">CEPEA Pgua 6/4</div><div class="dv wh">R$ 128,81/sc</div><div class="ds">+0,24% dia<br>-0,33% mes</div></div>
+<div class="dc"><div class="dl">CEPEA PR 6/4</div><div class="dv wh">R$ 123,05/sc</div><div class="ds">+0,61% dia<br>+0,20% mes</div></div>
+<div class="dc" style="border-color:var(--up)"><div class="dl">CBOT Mai 6/4</div><div class="dv ps">$11,6675/bu</div><div class="ds">+0,28%<br>Oleo + farelo</div></div>
+<div class="dc" style="border-color:var(--dn)"><div class="dl">CBOT Mai 7/4</div><div class="dv dn">$11,5825/bu</div><div class="ds">-0,73%<br>Tarifas+oferta</div></div>
+<div class="dc" style="border-color:var(--up)"><div class="dl">Oleo Soja</div><div class="dv ps">FORTE</div><div class="ds">Biodiesel+petroleo<br>Patamares de nov/25</div></div>
+<div class="dc" style="border-color:var(--dn)"><div class="dl">Farelo Soja</div><div class="dv dn">EM QUEDA</div><div class="ds">Estoques cheios<br>Demanda fraca</div></div>
+</div>
+
+<p class="tx">A soja no Brasil teve a <span class="ng">alta interrompida esta semana</span>. Segundo o CEPEA: a queda em Chicago foi repassada ao BR e <span class="ng">intensificada pela desvalorizacao do dolar</span>. Ate entao, precos estavam firmes, sustentados pelo <span class="hl">conflito no Oriente Medio e oleo de soja forte</span>. Chicago mai caiu de $11,71 (31/3) para $11,58 (7/4): <span class="ng">-1,1% na semana</span>.</p>
+
+<p class="tx"><strong>Fatores de pressao:</strong> <span class="ng">1) Oferta sul-americana abundante</span> (colheita BR avancada, safra recorde 184,7 mi t). <span class="ng">2) Estoques EUA elevados.</span> <span class="ng">3) Tarifas de Trump:</span> inviabilizam compras nos EUA → China busca BR → premios de exportacao BR sobem (limitam queda domestica). <span class="ps">Fator de suporte: oleo de soja em forte alta</span> (demanda biodiesel + petroleo $91). Farelo em queda (compradores com estoques ate abril). <strong>O complexo soja esta dividido: oleo sobe, farelo cai, grao lateraliza.</strong></p>
+
+<div class="chg">
+<div class="chc"><h4>Soja Chicago Mai — Ultimas Semanas (US$/bu)</h4><canvas id="chSoja1"></canvas></div>
+<div class="chc"><h4>CEPEA Paranagua — Marco a Abril (R$/sc)</h4><canvas id="chSoja2"></canvas></div>
+</div>
+
+<div class="thermo"><h4>Soja — Tendencia de Preco</h4><div class="th-bar"><div class="th-mk" style="left:42%"><div class="arr"></div><div class="lbl" style="background:var(--nt);color:#000">NEUTRO/LEVE BAIXA (oferta+tarifas vs oleo)</div></div></div><div class="th-labels"><span>Baixista</span><span>Neutro</span><span>Altista</span></div></div>
+
+<div class="sep">· · ·</div>
+
+<!-- ======================== MILHO ======================== -->
+<h3 class="stl">🌽 Milho — Indicador Sustentado, Chicago Lateral</h3>
+
+<div class="dg">
+<div class="dc"><div class="dl">CEPEA Campinas</div><div class="dv wh">R$ 69,96/sc</div><div class="ds">Indicador sustentado<br>Proximo de R$ 70</div></div>
+<div class="dc"><div class="dl">CBOT Mai 6/4</div><div class="dv wh">$4,5175/bu</div><div class="ds">-0,11%<br>Lateral</div></div>
+<div class="dc"><div class="dl">Safrinha</div><div class="dv nt">ATENCAO</div><div class="ds">Clima define<br>Resultado BR</div></div>
+<div class="dc"><div class="dl">Etanol/Milho</div><div class="dv ps">DEMANDA</div><div class="ds">China recebeu 1as<br>cargas DDGS BR</div></div>
+</div>
+
+<p class="tx">O milho opera <span class="hl">sustentado</span> no Brasil. O indicador CEPEA Campinas ronda os <span class="hl">R$ 70/sc</span> — patamar que pressiona custos de avicultura (frango + ovos + leite) e suinocultura. Em Chicago, milho mai a $4,5175/bu (<span class="ng">-0,11% em 6/4</span>), lateral, com impacto limitado do petroleo sobre demanda de etanol. <strong>O foco do milho agora e a safrinha:</strong> clima definira se oferta sera suficiente. Se seca atingir MT/GO/MS: milho sobe. Se clima for bom: milho estabiliza ou recua.</p>
+
+<p class="tx"><strong>Novidades:</strong> China recebeu primeiras cargas de DDGS (subproduto do etanol de milho) do Brasil — novo canal de exportacao. <span class="hl">Cigarrinha-do-milho ja causa prejuizo estimado de US$ 25,8 bi ao Brasil</span> (Globo Rural). Tarifas EUA: impacto menor no milho vs soja, mas afetam comercio global. <strong>Para o produtor de GO/MT: monitor clima da safrinha e trave vendas acima de R$ 70 se possivel.</strong></p>
+
+<div class="chc"><h4>CEPEA Milho Campinas vs Chicago (indice base 100 = inicio mar)</h4><canvas id="chMilho"></canvas></div>
+
+<div class="thermo"><h4>Milho — Tendencia</h4><div class="th-bar"><div class="th-mk" style="left:52%"><div class="arr"></div><div class="lbl" style="background:var(--nt);color:#000">NEUTRO (safrinha = chave)</div></div></div><div class="th-labels"><span>Baixista</span><span>Neutro</span><span>Altista</span></div></div>
+
+<div class="sep">· · ·</div>
+
+<!-- ======================== CAMBIO ======================== -->
+<h3 class="stl">💵 Cambio — Dolar Recua Para ~R$ 5,15</h3>
+
+<div class="dg">
+<div class="dc" style="border-color:var(--up)"><div class="dl">Dolar 6/4</div><div class="dv ps">~R$ 5,15</div><div class="ds">Recuo vs semanas<br>anteriores</div></div>
+<div class="dc"><div class="dl">Impacto Soja</div><div class="dv dn">NEGATIVO</div><div class="ds">Dolar fraco = preco<br>em R$ cai</div></div>
+<div class="dc"><div class="dl">Impacto Boi</div><div class="dv wh">MODERADO</div><div class="ds">Export em US$<br>Receita menor</div></div>
+<div class="dc"><div class="dl">Petroleo Suporte</div><div class="dv nt">WTI $91</div><div class="ds">Puxa dolar global<br>Ormuz = volatilidade</div></div>
+</div>
+
+<p class="tx">O dolar <span class="ps">recuou para ~R$ 5,15 no inicio de abril</span>, apos operar acima de R$ 5,25 em semanas anteriores. Esse movimento foi um dos fatores que <span class="ng">pressionou a soja em reais</span> — mesmo com Chicago relativamente estavel, o dolar fraco corroeu o preco domestico. Para o boi: impacto moderado — frigorificos exportadores recebem em dolares, entao dolar fraco reduz margem de exportacao, mas preco fisico segue ditado pela oferta restrita.</p>
+
+<p class="tx"><strong>Petroleo e o fator oculto do cambio.</strong> WTI em $91/bbl (marco) — <span class="ps">alta de 41% vs fevereiro</span> (de $64 para $91!). Conflito Ormuz puxa petroleo → puxa dolar global → puxa commodities. <span class="hl">Se conflito escalar: dolar pode voltar a subir = soja/milho/boi em R$ sobem tambem.</span> Se cessar-fogo: dolar cai = pressao baixista em R$.</p>
+
+<div class="chc"><h4>Dolar Implicito (CEPEA Soja US$/R$) e Petroleo WTI</h4><canvas id="chCambio"></canvas></div>
+
+<div class="sep">· · ·</div>
+
+<!-- ======================== MACRO/GEO ======================== -->
+<h3 class="stl">🌐 Radar Macro e Geopolitico</h3>
+
+<div class="geo">
+<div class="geo-i"><div class="gi">🇺🇸</div><div><div class="gt">Tarifas EUA: Pressao Sobre Soja, Oportunidade Para BR</div><div class="gd">Trump impôs tarifas + retaliações em andamento. <strong>Soja EUA fica cara → China busca BR</strong>. Prêmios de exportação BR subiram. CEPEA confirma: <em>"tarifas devem reforçar pressao sobre cotações (Chicago)"</em>. Para o produtor BR: Chicago cai, mas premio sobe → efeito parcialmente compensado. <span style="color:var(--up);font-weight:700">BR e o grande beneficiado geopolitico.</span></div></div></div>
+<div class="geo-i"><div class="gi">⛽</div><div><div class="gt">Petroleo $91 + Ormuz: Puxa TUDO</div><div class="gd">WTI saltou de $64 (fev) para $91 (mar) = <strong>+41%!</strong> Conflito Ira/Ormuz. Impacto: diesel sobe → frete sobe → insumos sobem → custo de producao sobe. Oleo de soja forte (biodiesel). Dolar volátil. <span style="color:var(--dn);font-weight:700">Se escalar: R$ 100+/bbl → crise logistica.</span></div></div></div>
+<div class="geo-i"><div class="gi">🇨🇳</div><div><div class="gt">China: Reuniao Trump-Xi em Maio</div><div class="gd">Mercado de olho na reunião Trump-Xi prevista para maio. <strong>Se acordo: Chicago pode subir (demanda EUA normaliza).</strong> Se falhar: China compra mais BR = prêmios sobem mais. Em ambos cenários, <span style="color:var(--up);font-weight:700">BR sai ganhando no curto prazo</span>.</div></div></div>
+<div class="geo-i"><div class="gi">🌧️</div><div><div class="gt">Clima: Ciclone no Sul + Safrinha em Jogo</div><div class="gd">Ciclone extratropical avança no Sul esta semana. Chuvas fortes previstas. <strong>Safrinha de milho em GO/MT/MS: definira preço do milho no 2o semestre.</strong> Se seca vier: milho dispara. Se chuvas forem boas: milho estabiliza. Produtor: monitore previsão diariamente.</div></div></div>
+</div>
+
+<div class="sep">· · ·</div>
+
+<!-- ======================== CENARIOS ======================== -->
+<h3 class="stl">🎯 Percepcoes Para os Proximos Dias</h3>
+
+<div class="alt"><h5>🐂 Boi Gordo: Firme, Mas Atencao a Realizacao</h5><p>CEPEA em recorde. B3 corrigiu -0,87% em 7/4. <span class="ps">Tendencia segue altista enquanto oferta restrita + export forte.</span> Quaresma pode reduzir consumo interno pontualmente, mas export absorve. <span class="hl">Proximo alvo B3: R$ 375-380/@.</span> Suporte: R$ 355. <strong>Se pecuarista comecar a soltar gado (pos-chuvas): alta perde folego no 2o tri.</strong> GO: monitor Boi China R$ 345-350.</p></div>
+
+<div class="alt"><h5>🌱 Soja: Pressionada, Mas Com Piso</h5><p>Chicago deve seguir pressionada: <span class="ng">safra BR recorde (184,7 mi t) + tarifas + estoques EUA</span>. Queda limitada por: <span class="ps">premios BR em alta (China compra BR) + oleo de soja forte + petroleo alto</span>. CEPEA Paranagua: <span class="hl">range R$ 125-130/sc esta semana</span>. Se dolar subir: ajuda. Se Trump escalar tarifas: Chicago cai mais, mas premio BR sobe mais.</p></div>
+
+<div class="alt"><h5>🌽 Milho: Safrinha e a Chave</h5><p>Indicador sustentado em R$ 70/sc. <span class="hl">Se clima safrinha for bom: tende a recuar para R$ 65-68.</span> Se seca: dispara para R$ 75+. <strong>Produtor: se tem milho estocado acima de R$ 70, considere vender parte.</strong> Se planta safrinha: monitore clima diariamente. Ciclone no Sul pode trazer chuvas beneficas para lavouras.</p></div>
+
+<div class="alt"><h5>💵 Cambio: Volatilidade Garantida</h5><p>Dolar ~R$ 5,15. <span class="hl">Se conflito Ormuz escalar: dolar sobe → ajuda commodities em R$.</span> Se cessar-fogo: dolar cai → pressiona precos em R$. Reuniao Trump-Xi em maio: definidora. <strong>Produtor: em cenario de dolar volatil, trave vendas parciais nos picos do cambio.</strong></p></div>
+
+<div class="sep">· · ·</div>
+
+<!-- GRAFICO COMPARATIVO -->
+<h3 class="stl">📊 Grafico Comparativo — Performance Semanal</h3>
+
+<div class="chc"><h4>Performance 31/Mar → 7/Abr (%)</h4><canvas id="chPerf"></canvas></div>
+
+<div class="bld">
+<h3>Resumo da Semana: Boi = Estrela (Recorde). Soja = Pressionada. Milho = Sustentado. Dolar = Recuou.</h3>
+<p>O mercado de <span style="color:var(--up);font-weight:700">boi gordo segue como a melhor posicao do agro brasileiro</span> — oferta restrita + export recorde = recorde historico. Soja sofre com oferta e tarifas, mas premios e oleo sustentam. Milho espera a safrinha. <span style="color:var(--nt);font-weight:700">Petroleo e Ormuz sao os wildcards que podem mudar tudo.</span></p>
+</div>
+
+<!-- CREDENCIAIS -->
+<div class="cred">
+<div class="cred-in">
+<div class="cred-av">👨‍💼</div>
+<div>
+<h3>Dr. Sidney Souza</h3>
+<div class="ti">Economista Agricola · Estrategista Economico do Produtor</div>
+<div class="dsc">Especialista em economia da fazenda e gestao de risco no agro<br>Transformamos dados da fazenda em decisoes economicas<br>Ajudamos produtores a entender se o mercado sustenta seu negocio</div>
+<div class="ct">
+<a href="mailto:sidneyagro@gmail.com">📧 sidneyagro@gmail.com</a>
+<a href="https://wa.me/5564992266886">📱 (64) 9 9226-6886</a>
+<span>📸 @ruralin.ai</span>
+</div>
+</div>
+</div>
+<div class="disc">Informativo analitico e educacional. Nao constitui recomendacao de compra ou venda. Dados: CEPEA/Esalq-USP, B3, CME Group/CBOT, Scot Consultoria, Agrolink, Farmnews, ABPA, USDA, Secex, Notícias Agricolas, Globo Rural, Visao Agro, UDOP, Canal Pecuarista, Broto Noticias, Feed&Food, Itatiaia, Canal Rural. Analise e Construcao: Dr. Sidney Souza — Rural IN.</div>
+</div>
+
+</div>
+<div class="ftr">RURAL IN 2026 · Inteligencia para o Agronegocio · Rio Verde/GO</div>
+</div>
+
+<script>
+Chart.defaults.color='#141e2c';Chart.defaults.font.family='Inter';Chart.defaults.font.size=10;
+var df={family:'Inter',weight:'600'};
+var tt={backgroundColor:'#0a0e14',titleColor:'#38bdf8',bodyColor:'#7dd3fc',borderColor:'#0284c7',borderWidth:1,padding:10,cornerRadius:6};
+
+/* BOI CEPEA */
+new Chart(document.getElementById('chBoi1').getContext('2d'),{type:'line',data:{labels:['16/3','17','18','19','20','23','24','25','26','27','30','31','1/4','2/4','6/4'],datasets:[{label:'CEPEA (R$/@)',data:[346.45,347.70,348.85,349.60,350.65,350.70,351.40,354.65,355.55,355.45,355.75,356.00,358.90,360.90,361.05],borderColor:'#4ade80',backgroundColor:'rgba(74,222,128,0.05)',borderWidth:2.5,fill:true,tension:0.3,pointRadius:3,pointBackgroundColor:function(c){return c.dataIndex>=12?'#4ade80':'#38bdf8';}}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,annotation:{annotations:{r:{type:'label',xValue:14,yValue:364,content:['RECORDE!','R$361,05'],font:{size:7,weight:'bold'},color:'#4ade80'}}}},scales:{y:{min:344,max:365,grid:{color:'rgba(255,255,255,0.02)'},ticks:{callback:function(v){return'R$'+v;},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:6},maxRotation:45}}}}});
+
+/* BOI B3 CURVA */
+new Chart(document.getElementById('chBoi2').getContext('2d'),{type:'bar',data:{labels:['Abr','Mai','Jun','Jul','Ago','Set','Out'],datasets:[{label:'B3 7/4 (R$/@)',data:[368.50,364.55,355.65,349.30,347.70,349.70,355.50],backgroundColor:function(c){return c.dataIndex===0?'rgba(74,222,128,0.4)':c.parsed.y<350?'rgba(248,113,113,0.25)':'rgba(56,189,248,0.2)';},borderColor:function(c){return c.dataIndex===0?'#4ade80':c.parsed.y<350?'#f87171':'#38bdf8';},borderWidth:2,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,annotation:{annotations:{s:{type:'label',xValue:4,yValue:343,content:['Sazonalidade:','2o sem pesa'],font:{size:6,weight:'bold'},color:'#f87171'}}}},scales:{y:{min:340,max:375,grid:{color:'rgba(255,255,255,0.02)'},ticks:{callback:function(v){return'R$'+v;},font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+
+/* SOJA CBOT */
+new Chart(document.getElementById('chSoja1').getContext('2d'),{type:'line',data:{labels:['20/3','23','24','25','26','27','30','31','1/4','2/4','6/4','7/4'],datasets:[{label:'CBOT Mai (US$/bu)',data:[11.58,11.56,11.60,11.58,11.68,11.65,11.60,11.71,11.685,11.635,11.6675,11.5825],borderColor:'#fbbf24',backgroundColor:'rgba(251,191,36,0.04)',borderWidth:2.5,fill:true,tension:0.3,pointRadius:3,pointBackgroundColor:function(c){return c.dataIndex===11?'#f87171':c.dataIndex===10?'#4ade80':'#fbbf24';}}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt,annotation:{annotations:{t:{type:'label',xValue:11,yValue:11.53,content:['Tarifas','pressionam'],font:{size:6,weight:'bold'},color:'#f87171'},p:{type:'label',xValue:7,yValue:11.76,content:['Pico $11,71'],font:{size:6,weight:'bold'},color:'#4ade80'}}}},scales:{y:{min:11.50,max:11.78,grid:{color:'rgba(255,255,255,0.02)'},ticks:{callback:function(v){return'$'+v.toFixed(2);},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:6},maxRotation:45}}}}});
+
+/* SOJA CEPEA */
+new Chart(document.getElementById('chSoja2').getContext('2d'),{type:'line',data:{labels:['16/3','17','18','19','20','23','24','25','26','27','30','31','1/4','2/4','6/4'],datasets:[{label:'Paranagua (R$/sc)',data:[129.36,127.12,127.27,129.38,130.61,129.87,130.15,129.25,130.37,130.01,129.59,129.24,127.91,128.50,128.81],borderColor:'#38bdf8',backgroundColor:'rgba(56,189,248,0.04)',borderWidth:2.5,fill:true,tension:0.3,pointRadius:3,pointBackgroundColor:'#38bdf8'}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt},scales:{y:{min:126,max:132,grid:{color:'rgba(255,255,255,0.02)'},ticks:{callback:function(v){return'R$'+v;},font:df}},x:{grid:{display:false},ticks:{font:{family:'Inter',weight:'600',size:6},maxRotation:45}}}}});
+
+/* MILHO */
+new Chart(document.getElementById('chMilho').getContext('2d'),{type:'line',data:{labels:['Sem 1 Mar','Sem 2','Sem 3','Sem 4','Sem 1 Abr'],datasets:[{label:'Milho CEPEA (indice)',data:[100,100.8,101.2,100.5,101.0],borderColor:'#fbbf24',borderWidth:2.5,tension:0.3,pointRadius:4,fill:false,pointBackgroundColor:'#fbbf24'},{label:'Milho CBOT (indice)',data:[100,99.5,100.2,99.8,99.6],borderColor:'#38bdf8',borderWidth:2,tension:0.3,pointRadius:3,fill:false,borderDash:[4,2],pointBackgroundColor:'#38bdf8'}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:10}},tooltip:tt},scales:{y:{min:98,max:103,grid:{color:'rgba(255,255,255,0.02)'},ticks:{font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+
+/* CAMBIO */
+new Chart(document.getElementById('chCambio').getContext('2d'),{type:'line',data:{labels:['Jan','Fev','Mar','6/Abr'],datasets:[{label:'Dolar (R$)',data:[5.38,5.16,5.20,5.15],borderColor:'#4ade80',borderWidth:2.5,tension:0.3,pointRadius:5,fill:false,pointBackgroundColor:'#4ade80',yAxisID:'y'},{label:'WTI (US$/bbl)',data:[60,64.5,90.8,91],borderColor:'#f87171',borderWidth:2,tension:0.3,pointRadius:5,fill:false,borderDash:[4,2],pointBackgroundColor:'#f87171',yAxisID:'y1'}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:df,boxWidth:10}},tooltip:tt,annotation:{annotations:{o:{type:'label',xValue:2,yValue:96,content:['PETROLEO','DISPARA +41%'],font:{size:7,weight:'bold'},color:'#f87171'}}}},scales:{y:{position:'left',min:5.0,max:5.5,grid:{color:'rgba(255,255,255,0.02)'},ticks:{callback:function(v){return'R$'+v.toFixed(2);},font:df}},y1:{position:'right',min:50,max:100,grid:{display:false},ticks:{callback:function(v){return'$'+v;},font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+
+/* PERFORMANCE */
+new Chart(document.getElementById('chPerf').getContext('2d'),{type:'bar',data:{labels:['Boi CEPEA','Boi B3 Abr','Soja Pgua','Soja CBOT','Milho','Dolar'],datasets:[{label:'Var. 31/3→7/4 (%)',data:[1.42,-0.37,-0.33,-1.09,0.0,-0.97],backgroundColor:function(c){return c.parsed.y>=0?'rgba(74,222,128,0.35)':'rgba(248,113,113,0.3)';},borderColor:function(c){return c.parsed.y>=0?'#4ade80':'#f87171';},borderWidth:2,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:tt},scales:{y:{grid:{color:'rgba(255,255,255,0.02)'},ticks:{callback:function(v){return v.toFixed(1)+'%';},font:df}},x:{grid:{display:false},ticks:{font:df}}}}});
+</script>
+</body>
+</html>
