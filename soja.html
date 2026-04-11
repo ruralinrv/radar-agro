@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Soja — Radar Agro Rural IN</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1"></script>
+<style>
+:root {
+  --bg: #0c1a11;--bg2: #10221a;--bg3: #162b1f;--border: #1e3a28;--border2: #2a5038;
+  --accent: #d4a017;--accent2: #f0c950;--green: #2d8a44;--green2: #34d399;
+  --text: #e8f0eb;--text2: #a3b8a9;--text3: #6b8570;--up: #22c55e;--dn: #ef4444;
+  --nt: #eab308;--blue: #3b82f6;--radius: 12px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding:32px;max-width:1100px}
+.page-header{margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+.page-header h1{font-size:2rem;font-weight:800;margin-bottom:6px}
+.page-header h1 .emoji{font-size:2.2rem;margin-right:8px}
+.page-header h1 .hl{color:var(--accent2)}
+.page-header .subtitle{font-size:1rem;color:var(--text2);font-weight:400;line-height:1.8}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:32px}
+.kpi{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;position:relative;overflow:hidden}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2)}
+.kpi.up::before{background:var(--up)}.kpi.dn::before{background:var(--dn)}.kpi.nt::before{background:var(--nt)}.kpi.bl::before{background:var(--blue)}.kpi.gold::before{background:var(--accent)}
+.kpi-label{font-size:.78rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:8px;font-weight:600}
+.kpi-value{font-size:1.65rem;font-weight:800;letter-spacing:-.5px}
+.kpi-value.up{color:var(--up)}.kpi-value.dn{color:var(--dn)}.kpi-value.nt{color:var(--nt)}
+.kpi-sub{font-size:.82rem;color:var(--text3);margin-top:4px}
+.section{margin-bottom:36px}
+.section-title{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.section-title .icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;background:linear-gradient(135deg,var(--green),#1a5c2a);flex-shrink:0}
+.section-title h2{font-size:1.35rem;font-weight:700}
+.section-title h2 span{font-weight:400;color:var(--text2);font-size:.95rem}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;margin-bottom:20px}
+.card h3{font-size:1rem;color:var(--text2);margin-bottom:16px;font-weight:600}
+.callout{border-radius:var(--radius);padding:22px 26px;margin-bottom:20px;border-left:4px solid}
+.callout.up{background:rgba(34,197,94,.06);border-color:var(--up)}
+.callout.dn{background:rgba(239,68,68,.06);border-color:var(--dn)}
+.callout.nt{background:rgba(234,179,8,.06);border-color:var(--nt)}
+.callout.bl{background:rgba(59,130,246,.06);border-color:var(--blue)}
+.callout h4{font-size:1.05rem;font-weight:700;margin-bottom:10px}
+.callout.up h4{color:var(--up)}.callout.dn h4{color:var(--dn)}.callout.nt h4{color:var(--nt)}.callout.bl h4{color:var(--blue)}
+.callout p{font-size:.95rem;color:var(--text2);line-height:1.8}
+.callout p strong{color:var(--text)}
+.chart-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;margin-bottom:20px}
+.chart-box h3{font-size:.95rem;color:var(--text2);margin-bottom:14px;font-weight:600}
+.chart-wrap{position:relative;height:320px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+@media(max-width:800px){.grid2{grid-template-columns:1fr}}
+.tbl-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--border);margin-bottom:16px}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+thead th{background:var(--bg3);padding:14px 16px;text-align:center;font-weight:600;color:var(--text2);font-size:.78rem;text-transform:uppercase;letter-spacing:.8px;border-bottom:1px solid var(--border)}
+tbody td{padding:13px 16px;border-bottom:1px solid rgba(30,58,40,.4);text-align:center;font-size:.9rem}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:rgba(45,138,68,.04)}
+.thermo{margin:20px 0}
+.thermo h4{font-size:.95rem;color:var(--text2);margin-bottom:10px}
+.th-bar{height:14px;border-radius:7px;background:linear-gradient(90deg,var(--dn),var(--nt),var(--up));position:relative}
+.th-marker{position:absolute;top:-6px;width:3px;height:26px;background:#fff;border-radius:2px;transform:translateX(-50%)}
+.th-label-row{display:flex;justify-content:space-between;font-size:.75rem;color:var(--text3);margin-top:6px}
+.opinion{background:linear-gradient(135deg,rgba(26,92,42,.12),rgba(26,92,42,.04));border:1px solid rgba(45,138,68,.2);border-radius:var(--radius);padding:28px 30px;margin:24px 0}
+.opinion h3{font-size:1.15rem;font-weight:700;color:var(--accent2);margin-bottom:14px}
+.opinion p{font-size:.95rem;color:var(--text2);line-height:1.85;margin-bottom:12px}
+.opinion p strong{color:var(--text)}
+.opinion .sig{margin-top:16px;padding-top:12px;border-top:1px solid rgba(45,138,68,.15);font-size:.82rem;color:var(--text3);font-style:italic}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border2),var(--accent),var(--border2),transparent);margin:36px 0}
+.tag{display:inline-flex;align-items:center;padding:4px 12px;border-radius:6px;font-size:.78rem;font-weight:600}
+.tag-up{background:rgba(34,197,94,.1);color:var(--up)}
+.tag-dn{background:rgba(239,68,68,.1);color:var(--dn)}
+.tag-nt{background:rgba(234,179,8,.1);color:var(--nt)}
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE HEADER ============ -->
+<div class="page-header">
+  <h1><span class="emoji">🌱</span> Soja — <span class="hl">Safra Recorde 179,7 mi t Pressiona. CEPEA PR R$ 120,94. CBOT $11,76. Comercialização Atrasada.</span></h1>
+  <p class="subtitle">
+    CEPEA PR 10/4: <strong style="color:var(--dn)">R$ 120,94/sc</strong> (−0,71% dia | −1,53% abr) &nbsp;|&nbsp;
+    Paranaguá: <strong>R$ 127,56</strong> &nbsp;|&nbsp;
+    CBOT Mai/26: <strong style="color:var(--up)">$11,7575/bu</strong> (+0,90%) &nbsp;|&nbsp;
+    Safra BR: <strong>179,7 mi t</strong> (StoneX) &nbsp;|&nbsp;
+    Comercialização: <strong style="color:var(--nt)">54%</strong> (−5 pp vs ano passado) &nbsp;|&nbsp;
+    Dólar: <strong style="color:var(--up)">R$ 5,01</strong>
+  </p>
+</div>
+
+<!-- ============ KPIs ============ -->
+<div class="kpi-grid">
+  <div class="kpi dn">
+    <div class="kpi-label">CEPEA / Paraná</div>
+    <div class="kpi-value dn">R$ 120,94/sc</div>
+    <div class="kpi-sub">10/abr · −0,71% dia · −1,53% mês</div>
+  </div>
+  <div class="kpi dn">
+    <div class="kpi-label">CEPEA / Paranaguá</div>
+    <div class="kpi-value dn">R$ 127,56/sc</div>
+    <div class="kpi-sub">10/abr · −1,08% mês · US$ 25,24</div>
+  </div>
+  <div class="kpi up">
+    <div class="kpi-label">CBOT Mai/26</div>
+    <div class="kpi-value up">$11,7575/bu</div>
+    <div class="kpi-sub">+0,90% dia · Range: $11,64-11,79</div>
+  </div>
+  <div class="kpi gold">
+    <div class="kpi-label">Safra BR 25/26</div>
+    <div class="kpi-value" style="color:var(--accent2)">179,7 mi t</div>
+    <div class="kpi-sub">StoneX · Conab: >180 mi · RECORDE</div>
+  </div>
+  <div class="kpi nt">
+    <div class="kpi-label">Comercialização</div>
+    <div class="kpi-value nt">54%</div>
+    <div class="kpi-sub">−5 pp vs ano passado · Produtor segura</div>
+  </div>
+  <div class="kpi dn">
+    <div class="kpi-label">Dólar</div>
+    <div class="kpi-value dn">R$ 5,01</div>
+    <div class="kpi-sub">−8,6% desde fev · Pressiona soja BR</div>
+  </div>
+</div>
+
+<!-- ============ GRÁFICOS ============ -->
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📈 Soja CEPEA Paranaguá — Trajetória Mar/Abr (R$/sc)</h3>
+    <div class="chart-wrap"><canvas id="chSoja1"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>📊 CBOT Soja Mai/26 — Trajetória Mar/Abr (¢/bu)</h3>
+    <div class="chart-wrap"><canvas id="chSoja2"></canvas></div>
+  </div>
+</div>
+
+<div class="chart-box">
+  <h3>📍 Soja — Preços por Praça 10/Abr (R$/sc)</h3>
+  <div class="chart-wrap"><canvas id="chSoja3"></canvas></div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ ANÁLISE FUNDAMENTAL ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon">📊</div>
+    <h2>Análise Fundamental <span>— As 5 Forças que Movem a Soja Hoje</span></h2>
+  </div>
+
+  <div class="callout dn">
+    <h4>Força 1 — Safra Recorde BR: A Maior Pressão Baixista</h4>
+    <p>StoneX: <strong>179,7 mi t</strong>. Conab: acima de 180 mi t. Luiz Pacheco (T&F Consultoria): <em>"Se a produção vai crescer aqui no Brasil e lá fora, não há como a soja subir."</em> Colheita em 88% e o mercado está inundado de soja. <strong>MAS</strong> a comercialização está em apenas <strong>54% — 5 pontos abaixo do ano passado</strong>. Produtor segura soja esperando preço melhor. Isso cria uma "bomba de oferta" que pode explodir se muitos venderem ao mesmo tempo.</p>
+  </div>
+
+  <div class="callout up">
+    <h4>Força 2 — Óleo de Soja: O Protagonista Inesperado</h4>
+    <p>Óleo de soja avançou com força em Chicago, puxado por: (1) petróleo alto → demanda por biodiesel dispara, (2) estoques de palma na Malásia muito baixos, (3) Gov. BR vai subir etanol na gasolina para 32% → mais biodiesel. <strong>Agrinvest:</strong> <em>"O óleo se tornou o driver dominante do complexo soja."</em> O óleo puxa o preço do grão para cima: <strong>cada tonelada esmagada gera 190 kg de óleo + 780 kg de farelo</strong>. Com óleo valendo tanto, usinas esmagam mais → mais farelo → farelo cai. <strong>Complexo dividido: óleo sobe, farelo desce, grão sustenta acima de $11,50/bu.</strong></p>
+  </div>
+
+  <div class="callout nt">
+    <h4>Força 3 — China x EUA (145% Tarifa) = Brasil é o Fornecedor</h4>
+    <p>Com tarifa de 145% sobre soja americana, a <strong>China simplesmente NÃO PODE comprar dos EUA</strong>. Resultado: prêmios de exportação BR subiram. Chicago opera em patamares firmes ($11,50-11,80/bu), mas preço no BR se ajusta via câmbio e prêmios. <strong>Vlademir Brandalizze:</strong> <em>"As movimentações da soja no Brasil deverão ficar muito mais atreladas às oscilações do dólar do que aos movimentos em Chicago."</em> <strong>Reunião Trump-Xi em maio:</strong> se negociarem queda nas tarifas → prêmios BR caem. Se escalar → prêmios BR sobem mais.</p>
+  </div>
+
+  <div class="callout dn">
+    <h4>Força 4 — Dólar a R$ 5,01 = Receita do Exportador Cai</h4>
+    <p>Com dólar saindo de R$ 5,48 (fev) para R$ 5,01 (10/4), <strong>a receita em reais do exportador foi comprimida fortemente</strong>. CEPEA PR saiu de R$ 124,91 (30/jan) para R$ 120,94 (10/abr). CEPEA: <em>"Alta de preço interrompida no BR — queda do dólar + maior oferta."</em> <strong>Se dólar for a R$ 4,85:</strong> soja pode cair a R$ 112-115 no PR. <strong>Se trégua romper e dólar voltar a R$ 5,30:</strong> soja volta a R$ 128+. <strong>O dólar é HOJE o fator #1 de preço da soja no BR.</strong></p>
+  </div>
+
+  <div class="callout bl">
+    <h4>Força 5 — Logística: Frete Caro, Portos Lotados</h4>
+    <p><strong>Consórcio Navegantes:</strong> <em>"Mercado brasileiro enfrenta travamento com frete elevado."</em> Diesel caro → frete interno sobe. Portos com filas após período de colheita. MT para Paranaguá: frete ~R$ 390/t (alta). Soja precisa de prêmio alto para compensar logística. <strong>Se petróleo cair (trégua Ormuz):</strong> frete alivia → soja BR fica mais competitiva. <strong>Se piorar:</strong> produtor do Centro-Oeste perde mais margem.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ CENÁRIOS ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon">🔮</div>
+    <h2>Cenários <span>— Próximas 4-8 Semanas</span></h2>
+  </div>
+
+  <div class="card">
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Cenário</th><th>Dólar</th><th>CBOT</th><th>Paranaguá</th><th>PR Interior</th><th>Driver</th><th>Prob.</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align:left;color:var(--dn)">📉 Queda forte</td>
+            <td>R$ 4,85-5,00</td>
+            <td>$11,20-11,50</td>
+            <td style="color:var(--dn)"><strong>R$ 118-122</strong></td>
+            <td style="color:var(--dn)"><strong>R$ 110-116</strong></td>
+            <td>Trégua firma + dólar cai + safra vende</td>
+            <td><span class="tag tag-dn">25%</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:left;color:var(--nt)">➡️ Lateraliza</td>
+            <td>R$ 5,00-5,15</td>
+            <td>$11,50-12,00</td>
+            <td><strong>R$ 124-130</strong></td>
+            <td><strong>R$ 118-124</strong></td>
+            <td>Status quo + produtor segura</td>
+            <td><span class="tag tag-nt">45%</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:left;color:var(--up)">📈 Recupera</td>
+            <td>R$ 5,20-5,40</td>
+            <td>$12,00-12,50</td>
+            <td style="color:var(--up)"><strong>R$ 132-140</strong></td>
+            <td style="color:var(--up)"><strong>R$ 125-133</strong></td>
+            <td>Ormuz rompe + dólar sobe + China compra</td>
+            <td><span class="tag tag-up">30%</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TERMÔMETROS ============ -->
+<div class="grid2">
+  <div class="thermo">
+    <h4>🌡️ Soja — Tendência de Preço</h4>
+    <div class="th-bar"><div class="th-marker" style="left:38%"></div></div>
+    <div class="th-label-row"><span>Baixista</span><span>Neutro</span><span>Altista</span></div>
+    <p style="font-size:.82rem;color:var(--dn);margin-top:8px;font-weight:600">⬇ LEVEMENTE BAIXISTA — Safra recorde + dólar caindo. Óleo sustenta parcialmente.</p>
+  </div>
+  <div class="thermo">
+    <h4>🌡️ Risco Cambial (Impacto no Preço BR)</h4>
+    <div class="th-bar"><div class="th-marker" style="left:70%"></div></div>
+    <div class="th-label-row"><span>Baixo</span><span>Médio</span><span>Alto</span></div>
+    <p style="font-size:.82rem;color:var(--nt);margin-top:8px;font-weight:600">⚠ ELEVADO — Dólar é o fator #1 da soja BR. Focus R$ 5,40 vs spot R$ 5,01.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ OPINIÃO DO ANALISTA ============ -->
+<div class="opinion">
+  <h3>🎯 Opinião do Analista — Estratégia Para o Sojicultor</h3>
+
+  <p><strong>A soja vive um paradoxo:</strong> safra recorde no Brasil e no mundo deveria derrubar preços. Mas a guerra comercial EUA-China (145% de tarifa) e o óleo de soja em alta sustentam Chicago acima de $11,50/bu. O resultado é um mercado lateralizado no exterior, com o dólar como fiel da balança no preço interno.</p>
+
+  <p><strong>1. Se tem soja armazenada e não vendeu: venda pelo menos 30-40% AGORA.</strong> Paranaguá a R$ 127-128 é razoável no contexto atual. CEPEA PR a R$ 121 reflete a pressão. A colheita está em 88% — quando terminar, a pressão de oferta aumenta. Comercialização a 54% = muita soja represada.</p>
+
+  <p><strong>2. Dólar é sua prioridade nº 1.</strong> Cada R$ 0,10 no dólar = ~R$ 2,50/sc. Se dólar for a R$ 4,85: soja pode ir a R$ 112-115 no PR. Se voltar a R$ 5,30: soja volta a R$ 128+. Monitore trégua Ormuz — se virar acordo → dólar cai mais.</p>
+
+  <p><strong>3. Óleo de soja em alta = oportunidade para quem esmaga.</strong> Margem de esmagamento historicamente favorável. Se você tem estrutura: esmagamento próprio ou parceria com usina pode capturar valor.</p>
+
+  <p><strong>4. Farelo em queda = oportunidade para pecuarista.</strong> Farelo caindo em Chicago com excesso de oferta. Se você confina: compre farelo agora.</p>
+
+  <p><strong>5. China x EUA:</strong> reunião Trump-Xi em maio é o evento-chave. Se reduzirem tarifa → prêmios BR caem → soja BR cai. Se mantiverem → Brasil segue como fornecedor exclusivo → prêmios se mantêm.</p>
+
+  <p><strong>Fatores de monitoramento:</strong><br>
+  🔴 Dólar (fator #1 — cada R$ 0,10 = R$ 2,50/sc)<br>
+  🔴 Comercialização BR (54% — se acelerar: preço cai)<br>
+  🟡 Trégua Ormuz (define dólar e petróleo)<br>
+  🟡 Reunião Trump-Xi (maio — define prêmios)<br>
+  🟢 Óleo soja (suporte ao grão via esmagamento)<br>
+  🟢 China comprando BR (tarifa 145% EUA → sem alternativa)</p>
+
+  <div class="sig">— Dr. Sidney Souza · Economista Agrícola · Rural IN · 10/Abr/2026</div>
+</div>
+
+<!-- ============ SCRIPTS ============ -->
+<script>
+const gridColor = 'rgba(30,58,40,0.35)';
+const fontConf = { family: "'Segoe UI', system-ui, sans-serif", size: 11, weight: '600' };
+const tooltipConf = {backgroundColor:'#10221a',borderColor:'#2a5038',borderWidth:1,titleFont:{size:12,weight:'700'},bodyFont:{size:11},padding:10,cornerRadius:8};
+
+// CHART 1: CEPEA PARANAGUÁ TRAJETÓRIA (DADOS REAIS)
+new Chart(document.getElementById('chSoja1').getContext('2d'), {
+  type:'line',
+  data:{
+    labels:['20/3','23','24','25','26','27','30','31','1/4','2/4','6/4','7/4','8/4','9/4','10/4'],
+    datasets:[{
+      label:'Paranaguá R$/sc',
+      data:[131.50,130.80,130.50,130.20,129.80,124.10,123.00,122.81,127.91,129.86,128.81,128.31,128.12,127.84,127.56],
+      borderColor:'#34d399',backgroundColor:'rgba(52,211,153,0.06)',
+      borderWidth:2.5,fill:true,tension:0.35,pointRadius:4,
+      pointBackgroundColor:function(ctx){return ctx.dataIndex>=10?'#ef4444':'#34d399';}
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tooltipConf,
+      annotation:{annotations:{
+        line128:{type:'line',yMin:128,yMax:128,borderColor:'rgba(234,179,8,0.4)',borderWidth:1.5,borderDash:[5,3],
+          label:{display:true,content:'Suporte R$128',position:'start',backgroundColor:'rgba(234,179,8,0.6)',font:{size:9}}},
+        queda:{type:'label',xValue:14,yValue:126,content:['R$127,56','Abr em queda'],font:{size:9,weight:'bold'},color:'#ef4444'}
+      }}
+    },
+    scales:{
+      y:{min:120,max:134,grid:{color:gridColor},ticks:{callback:v=>'R$'+v,font:fontConf}},
+      x:{grid:{display:false},ticks:{font:{size:9,weight:'600'},maxRotation:45}}
+    }
+  }
+});
+
+// CHART 2: CBOT SOJA MAI/26 TRAJETÓRIA (DADOS REAIS — ¢/bu)
+new Chart(document.getElementById('chSoja2').getContext('2d'), {
+  type:'line',
+  data:{
+    labels:['20/3','23','24','25','26','27','30','31','1/4','2/4','6/4','7/4','8/4','9/4','10/4'],
+    datasets:[{
+      label:'CBOT Mai/26 ¢/bu',
+      data:[1185,1178,1172,1168,1165,1160,1155,1163,1169,1163,1168,1158,1150,1165,1176],
+      borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,0.06)',
+      borderWidth:2.5,fill:true,tension:0.35,pointRadius:4,
+      pointBackgroundColor:function(ctx){return ctx.raw>=1170?'#22c55e':'#3b82f6';}
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tooltipConf,
+      annotation:{annotations:{
+        suporte:{type:'line',yMin:1150,yMax:1150,borderColor:'rgba(239,68,68,0.4)',borderWidth:1.5,borderDash:[5,3],
+          label:{display:true,content:'Suporte $11,50',position:'start',backgroundColor:'rgba(239,68,68,0.6)',font:{size:9}}},
+        fech:{type:'label',xValue:14,yValue:1190,content:['$11,7575','Óleo puxa!'],font:{size:9,weight:'bold'},color:'#22c55e'}
+      }}
+    },
+    scales:{
+      y:{min:1130,max:1200,grid:{color:gridColor},ticks:{callback:v=>'$'+(v/100).toFixed(2),font:fontConf}},
+      x:{grid:{display:false},ticks:{font:{size:9,weight:'600'},maxRotation:45}}
+    }
+  }
+});
+
+// CHART 3: PREÇOS POR PRAÇA (DADOS REAIS)
+new Chart(document.getElementById('chSoja3').getContext('2d'), {
+  type:'bar',
+  data:{
+    labels:['Paranaguá','Ponta Grossa','Uberlândia MG','Oeste BA','Rio Verde GO','Rondonópolis MT','Sorriso MT','Primavera MT'],
+    datasets:[{
+      label:'R$/sc (10/abr)',
+      data:[127.56,123.00,118.00,114.50,112.00,109.80,102.50,105.70],
+      backgroundColor:'rgba(52,211,153,0.2)',borderColor:'#34d399',borderWidth:2,borderRadius:6
+    }]
+  },
+  options:{
+    indexAxis:'y',responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tooltipConf,
+      annotation:{annotations:{
+        rv:{type:'label',xValue:114,yValue:4,content:['← Rio Verde GO'],font:{size:10,weight:'bold'},color:'#f0c950'}
+      }}
+    },
+    scales:{
+      x:{min:95,max:132,grid:{color:gridColor},ticks:{callback:v=>'R$'+v,font:fontConf}},
+      y:{grid:{display:false},ticks:{font:{size:11,weight:'600'}}}
+    }
+  }
+});
+</script>
+</body>
+</html>

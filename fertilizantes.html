@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Fertilizantes — Radar Agro Rural IN</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1"></script>
+<style>
+:root{--bg:#0c1a11;--bg2:#10221a;--bg3:#162b1f;--border:#1e3a28;--border2:#2a5038;--accent:#d4a017;--accent2:#f0c950;--green:#2d8a44;--green2:#34d399;--text:#e8f0eb;--text2:#a3b8a9;--text3:#6b8570;--up:#22c55e;--dn:#ef4444;--nt:#eab308;--blue:#3b82f6;--purple:#a855f7;--radius:12px;--fert:#10b981;--geo:#f97316}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding:32px;max-width:1100px}
+.page-header{margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border)}.page-header h1{font-size:2rem;font-weight:800;margin-bottom:6px}.page-header h1 .emoji{font-size:2.2rem;margin-right:8px}.page-header h1 .hl{color:var(--accent2)}.page-header .subtitle{font-size:1rem;color:var(--text2);font-weight:400;line-height:1.8}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:32px}.kpi{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;position:relative;overflow:hidden}.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2)}.kpi.up::before{background:var(--up)}.kpi.dn::before{background:var(--dn)}.kpi.nt::before{background:var(--nt)}.kpi.geo::before{background:var(--geo)}.kpi.fert::before{background:var(--fert)}.kpi-label{font-size:.75rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:8px;font-weight:600}.kpi-value{font-size:1.55rem;font-weight:800;letter-spacing:-.5px}.kpi-value.up{color:var(--up)}.kpi-value.dn{color:var(--dn)}.kpi-value.nt{color:var(--nt)}.kpi-value.geo{color:var(--geo)}.kpi-sub{font-size:.82rem;color:var(--text3);margin-top:4px}
+.section{margin-bottom:36px}.section-title{display:flex;align-items:center;gap:12px;margin-bottom:20px}.section-title .icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}.section-title .icon.fert{background:linear-gradient(135deg,#065f46,#10b981)}.section-title .icon.geo{background:linear-gradient(135deg,#c2410c,#f97316)}.section-title .icon.green{background:linear-gradient(135deg,#1a5c2a,#2d8a44)}.section-title h2{font-size:1.35rem;font-weight:700}.section-title h2 span{font-weight:400;color:var(--text2);font-size:.95rem}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;margin-bottom:20px}.card h3{font-size:1rem;color:var(--text2);margin-bottom:16px;font-weight:600}
+.callout{border-radius:var(--radius);padding:22px 26px;margin-bottom:20px;border-left:4px solid}.callout.up{background:rgba(34,197,94,.06);border-color:var(--up)}.callout.dn{background:rgba(239,68,68,.06);border-color:var(--dn)}.callout.nt{background:rgba(234,179,8,.06);border-color:var(--nt)}.callout.geo{background:rgba(249,115,22,.06);border-color:var(--geo)}.callout.fert{background:rgba(16,185,129,.06);border-color:var(--fert)}.callout h4{font-size:1.05rem;font-weight:700;margin-bottom:10px}.callout.up h4{color:var(--up)}.callout.dn h4{color:var(--dn)}.callout.nt h4{color:var(--nt)}.callout.geo h4{color:var(--geo)}.callout.fert h4{color:var(--fert)}.callout p{font-size:.95rem;color:var(--text2);line-height:1.8}.callout p strong{color:var(--text)}
+.chart-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;margin-bottom:20px}.chart-box h3{font-size:.95rem;color:var(--text2);margin-bottom:14px;font-weight:600}.chart-wrap{position:relative;height:320px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}@media(max-width:800px){.grid2{grid-template-columns:1fr}}
+.tbl-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--border);margin-bottom:16px}table{width:100%;border-collapse:collapse;font-size:.9rem}thead th{background:var(--bg3);padding:14px 16px;text-align:center;font-weight:600;color:var(--text2);font-size:.78rem;text-transform:uppercase;letter-spacing:.8px;border-bottom:1px solid var(--border)}tbody td{padding:13px 16px;border-bottom:1px solid rgba(30,58,40,.4);text-align:center;font-size:.9rem}tbody tr:last-child td{border-bottom:none}tbody tr:hover{background:rgba(45,138,68,.04)}
+.thermo{margin:20px 0}.thermo h4{font-size:.95rem;color:var(--text2);margin-bottom:10px}.th-bar{height:14px;border-radius:7px;background:linear-gradient(90deg,var(--up),var(--nt),var(--dn));position:relative}.th-marker{position:absolute;top:-6px;width:3px;height:26px;background:#fff;border-radius:2px;transform:translateX(-50%)}.th-label-row{display:flex;justify-content:space-between;font-size:.75rem;color:var(--text3);margin-top:6px}
+.opinion{background:linear-gradient(135deg,rgba(26,92,42,.12),rgba(26,92,42,.04));border:1px solid rgba(45,138,68,.2);border-radius:var(--radius);padding:28px 30px;margin:24px 0}.opinion h3{font-size:1.15rem;font-weight:700;color:var(--accent2);margin-bottom:14px}.opinion p{font-size:.95rem;color:var(--text2);line-height:1.85;margin-bottom:12px}.opinion p strong{color:var(--text)}.opinion .sig{margin-top:16px;padding-top:12px;border-top:1px solid rgba(45,138,68,.15);font-size:.82rem;color:var(--text3);font-style:italic}
+.alert-bar{border-radius:var(--radius);padding:18px 22px;margin-bottom:24px;display:flex;align-items:flex-start;gap:14px;border:1px solid}.alert-bar.red{background:linear-gradient(135deg,rgba(239,68,68,.1),rgba(239,68,68,.03));border-color:rgba(239,68,68,.3)}.alert-bar.orange{background:linear-gradient(135deg,rgba(249,115,22,.08),rgba(249,115,22,.02));border-color:rgba(249,115,22,.25)}.alert-bar.yellow{background:linear-gradient(135deg,rgba(234,179,8,.08),rgba(234,179,8,.02));border-color:rgba(234,179,8,.25)}.alert-bar .alert-icon{font-size:1.6rem;flex-shrink:0}.alert-bar .alert-text{font-size:.92rem;color:var(--text2);line-height:1.7}.alert-bar .alert-text strong{color:var(--text)}
+.highlight{background:linear-gradient(135deg,rgba(16,185,129,.08),rgba(16,185,129,.02));border:1px solid rgba(16,185,129,.25);border-radius:var(--radius);padding:24px 28px;margin-bottom:24px;text-align:center}.highlight .hl-emoji{font-size:2.2rem;margin-bottom:8px}.highlight .hl-title{font-size:1.1rem;font-weight:700;color:var(--fert);margin-bottom:8px}.highlight .hl-text{font-size:.95rem;color:var(--text2);line-height:1.8}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border2),var(--accent),var(--border2),transparent);margin:36px 0}
+.tag{display:inline-flex;align-items:center;padding:4px 12px;border-radius:6px;font-size:.78rem;font-weight:600}.tag-up{background:rgba(34,197,94,.1);color:var(--up)}.tag-dn{background:rgba(239,68,68,.1);color:var(--dn)}.tag-nt{background:rgba(234,179,8,.1);color:var(--nt)}.tag-geo{background:rgba(249,115,22,.1);color:var(--geo)}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<div class="page-header">
+  <h1><span class="emoji">🧪</span> Fertilizantes — <span class="hl">Ureia +50%. MAP +17%. Ormuz Retém 1 mi t. 65% da Safra 26/27 NÃO Comprou.</span></h1>
+  <p class="subtitle">
+    Ureia CFR BR: <strong style="color:var(--dn)">US$ 745/t</strong> (+50% desde guerra | +89% 12m) &nbsp;|&nbsp;
+    MAP: <strong style="color:var(--dn)">US$ 845/t</strong> (+17%) &nbsp;|&nbsp;
+    KCl: <strong style="color:var(--nt)">US$ 383/t</strong> (estável) &nbsp;|&nbsp;
+    <strong style="color:var(--geo)">Rússia suspendeu nitrato</strong> &nbsp;|&nbsp;
+    China restringiu MAP &nbsp;|&nbsp;
+    Comercialização 26/27: <strong style="color:var(--dn)">apenas 30-35%</strong>
+  </p>
+</div>
+
+<!-- ============ ALERTAS ============ -->
+<div class="alert-bar red">
+  <div class="alert-icon">🚨</div>
+  <div class="alert-text">
+    <strong style="color:var(--dn)">TEMPESTADE PERFEITA NOS FERTILIZANTES!</strong> Três choques simultâneos:<br>
+    1) <strong>Ormuz bloqueado</strong> → ~1 mi toneladas retidas, Irã paralisou 3 fábricas de ureia (18% da ureia BR vinha do Irã)<br>
+    2) <strong>Rússia suspendeu</strong> exportação de nitrato de amônio até 21/abr (25,9% dos fertilizantes BR!)<br>
+    3) <strong>China restringiu</strong> exportação de MAP até agosto/26 (maior exportadora mundial de fosfatados)<br>
+    <strong>Resultado:</strong> ureia +50%, MAP +17%, nitrato +28%. Produtor adia compra — 65% da safra 26/27 NÃO adquiriu.
+  </div>
+</div>
+
+<div class="alert-bar yellow">
+  <div class="alert-icon">⚠️</div>
+  <div class="alert-text">
+    <strong style="color:var(--nt)">Relação de troca é a PIOR desde 2022!</strong> Money Times: <em>"Ureia = 32 sacas de soja por tonelada (era 17 há 1 ano). MAP = 39 sacas (era 25)."</em>
+    Safras & Mercado: <em>"Em 2022 os grãos também estavam altos. Agora temos fertilizantes caros e commodities de lado."</em>
+    <strong>Ministério da Agricultura pediu cautela:</strong> <em>"Não comprar quando o preço está artificialmente elevado."</em>
+  </div>
+</div>
+
+<!-- ============ KPIs ============ -->
+<div class="kpi-grid">
+  <div class="kpi dn">
+    <div class="kpi-label">Ureia CFR Brasil</div>
+    <div class="kpi-value dn">US$ 745/t</div>
+    <div class="kpi-sub">+50% guerra · +89% 12m · Egito $820</div>
+  </div>
+  <div class="kpi dn">
+    <div class="kpi-label">MAP CFR Brasil</div>
+    <div class="kpi-value dn">US$ 845/t</div>
+    <div class="kpi-sub">+17% · China restringiu export</div>
+  </div>
+  <div class="kpi nt">
+    <div class="kpi-label">KCl CFR Brasil</div>
+    <div class="kpi-value nt">US$ 383/t</div>
+    <div class="kpi-sub">Mais estável · +22% 12m</div>
+  </div>
+  <div class="kpi geo">
+    <div class="kpi-label">Ormuz — Retido</div>
+    <div class="kpi-value geo">~1 mi t</div>
+    <div class="kpi-sub">800 mil retidas + 1,5 mi corte produção</div>
+  </div>
+  <div class="kpi dn">
+    <div class="kpi-label">Comercialização 26/27</div>
+    <div class="kpi-value dn">~30-35%</div>
+    <div class="kpi-sub">65% NÃO comprou · MT: apenas 6%!</div>
+  </div>
+  <div class="kpi dn">
+    <div class="kpi-label">Troca Ureia/Soja</div>
+    <div class="kpi-value dn">32 sc/t</div>
+    <div class="kpi-sub">Era 17 sc/t há 1 ano · Pior desde 2022</div>
+  </div>
+  <div class="kpi fert">
+    <div class="kpi-label">Entregas Jan/26 GO</div>
+    <div class="kpi-value" style="color:var(--fert)">468 mil t</div>
+    <div class="kpi-sub">2º estado · MT: 1,14 mi t (líder)</div>
+  </div>
+  <div class="kpi dn">
+    <div class="kpi-label">Dependência Import</div>
+    <div class="kpi-value dn">85%</div>
+    <div class="kpi-sub">Potássio: 98% import · Fosfato: 78%</div>
+  </div>
+</div>
+
+<!-- ============ GRÁFICOS ============ -->
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📈 Preços Fertilizantes CFR Brasil (US$/t) — Jan 2025 a Abr 2026</h3>
+    <div class="chart-wrap"><canvas id="chF1"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>📊 Relação de Troca — Sacas de Soja por Tonelada de Fertilizante</h3>
+    <div class="chart-wrap"><canvas id="chF2"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>🌍 De Onde Vem o Fertilizante do Brasil? (% importação 2025)</h3>
+    <div class="chart-wrap"><canvas id="chF3"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>📦 Entregas Jan/26 — Top 5 Estados (mil t)</h3>
+    <div class="chart-wrap"><canvas id="chF4"></canvas></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ ANÁLISE ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon fert">📋</div>
+    <h2>Os 5 Choques <span>— Por Que Fertilizantes Explodiram em 2026</span></h2>
+  </div>
+
+  <div class="callout geo">
+    <h4>Choque 1 — Ormuz: 1 Milhão de Toneladas Retidas</h4>
+    <p><strong>Argus Media:</strong> o bloqueio de Ormuz reduziu a oferta global de ureia em ~2 mi toneladas em março. Sendo 1,5 mi t de corte na produção (3 fábricas iranianas paralisadas por ataques) + 800 mil t retidas no estreito. <strong>Irã era 18% da ureia importada pelo BR em 2025.</strong> Essa fonte simplesmente SUMIU. <strong>Krugman (Nobel):</strong> <em>"Gás natural do Golfo Pérsico é convertido em fertilizante porque é mais fácil de transportar. Sem Ormuz, sem fertilizante."</em></p>
+  </div>
+
+  <div class="callout dn">
+    <h4>Choque 2 — Rússia Suspendeu Nitrato de Amônio</h4>
+    <p>Rússia = <strong>25,9% das importações de fertilizantes do Brasil</strong> e controla 40% do comércio global de nitrato de amônio. Em 24/mar: <strong>suspendeu exportações por 1 mês</strong> (até 21/abr) para garantir plantio interno. <strong>G1:</strong> <em>"Rússia não tem capacidade para aumentar a produção este ano em meio à crise de abastecimento global."</em> Import BR de ureia caiu 33% no bimestre. Sulfato de amônio (+19%) substitui parcialmente, mas com menor concentração de N.</p>
+  </div>
+
+  <div class="callout dn">
+    <h4>Choque 3 — China Restringiu MAP Até Agosto</h4>
+    <p>China = maior exportadora mundial de fosfatados. <strong>Associação chinesa pediu restrição de MAP de jan a ago/26</strong> para garantir abastecimento interno. <strong>Itaú BBA:</strong> MAP CFR Brasil saiu de US$ 640 → US$ 845/t (+32%). <strong>Import BR de MAP caiu 36,89% em jan.</strong> Alternativas: TSP e SSP estão subindo (SSP +51,95% volume em jan). <strong>Globo Rural:</strong> <em>"48% da oferta global de potássio está em países em conflito (Rússia, Israel, Belarus)."</em></p>
+  </div>
+
+  <div class="callout nt">
+    <h4>Choque 4 — Relação de Troca Destruída: Pior desde 2022</h4>
+    <p><strong>Money Times / Safras & Mercado:</strong> ureia = 32 sacas de soja por tonelada (era 17 há 1 ano). MAP = 39 sacas (era 25). Milho: 59 sc/t de ureia (era 33). <strong>Diferença para 2022:</strong> naquela época grãos também estavam caros. Agora: <strong>fertilizante caro + commodity de lado = esmagamento total da margem.</strong> <strong>Mosaic:</strong> comercialização safra 26/27 em 30% (vs 38% no ano passado). MT comprou apenas 6% do necessário.</p>
+  </div>
+
+  <div class="callout up">
+    <h4>Se a Trégua de Ormuz Durar: Alívio Possível</h4>
+    <p>Trégua de 7/abr pode trazer alívio: <strong>se Ormuz reabrir de verdade</strong>, as 800 mil t retidas voltam ao mercado. Petróleo já caiu de $110 → $60 = gás natural mais barato = ureia pode recuar. <strong>MAS:</strong> Bloomberg diz que Ormuz "nunca mais será o mesmo" — Irã quer pedágio permanente de até $2 mi/navio. <strong>Cenário base:</strong> preços recuam parcialmente, mas NÃO voltam aos níveis pré-guerra.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ TABELA PREÇOS ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon fert">📊</div>
+    <h2>Evolução de Preços <span>— CFR Brasil (US$/t)</span></h2>
+  </div>
+
+  <div class="card">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Produto</th><th>Jan/25</th><th>Dez/25</th><th>Jan/26</th><th>Fev/26</th><th>Mar/26</th><th>Abr/26</th><th>Var. 12m</th></tr></thead>
+        <tbody>
+          <tr style="background:rgba(239,68,68,.04)"><td style="text-align:left"><strong>Ureia</strong></td><td>~395</td><td>395</td><td>412</td><td>465</td><td>725</td><td style="color:var(--dn)"><strong>745</strong></td><td style="color:var(--dn)"><strong>+89%</strong></td></tr>
+          <tr><td style="text-align:left"><strong>MAP</strong></td><td>~640</td><td>640</td><td>640</td><td>720</td><td>845</td><td style="color:var(--dn)"><strong>845</strong></td><td style="color:var(--dn)">+32%</td></tr>
+          <tr><td style="text-align:left"><strong>KCl</strong></td><td>~315</td><td>360</td><td>360</td><td>372</td><td>383</td><td style="color:var(--nt)"><strong>383</strong></td><td style="color:var(--nt)">+22%</td></tr>
+          <tr><td style="text-align:left">Nitrato Amônio</td><td>~280</td><td>290</td><td>310</td><td>350</td><td>450</td><td style="color:var(--dn)"><strong>~480</strong></td><td style="color:var(--dn)">+71%</td></tr>
+          <tr><td style="text-align:left">Sulfato Amônio</td><td>~180</td><td>185</td><td>190</td><td>210</td><td>250</td><td style="color:var(--nt)"><strong>~260</strong></td><td style="color:var(--nt)">+44%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CENÁRIOS ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon green">🔮</div>
+    <h2>Cenários <span>— Preço Fertilizantes Mai-Set 2026</span></h2>
+  </div>
+
+  <div class="card">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Cenário</th><th>Ureia US$/t</th><th>MAP US$/t</th><th>KCl US$/t</th><th>Driver</th><th>Prob.</th></tr></thead>
+        <tbody>
+          <tr><td style="text-align:left;color:var(--dn)">📈 Piora (Ormuz fecha)</td><td style="color:var(--dn)"><strong>800-1.000</strong></td><td style="color:var(--dn)">900-1.050</td><td style="color:var(--dn)">420-480</td><td>Trégua falha + Rússia mantém ban + China fecha</td><td><span class="tag tag-dn">25%</span></td></tr>
+          <tr><td style="text-align:left;color:var(--nt)">➡️ Estável/leve queda</td><td><strong>650-750</strong></td><td>780-850</td><td>370-400</td><td>Ormuz parcial + Rússia reabre + China mantém cota</td><td><span class="tag tag-nt">45%</span></td></tr>
+          <tr><td style="text-align:left;color:var(--up)">📉 Alívio</td><td style="color:var(--up)"><strong>500-650</strong></td><td style="color:var(--up)">650-780</td><td>340-370</td><td>Paz duradoura + China libera + oferta normaliza</td><td><span class="tag tag-up">30%</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TERMÔMETROS ============ -->
+<div class="grid2">
+  <div class="thermo">
+    <h4>🌡️ Pressão sobre Custos de Produção (Fertilizantes)</h4>
+    <div class="th-bar"><div class="th-marker" style="left:75%"></div></div>
+    <div class="th-label-row"><span>Baixa</span><span>Média</span><span>Alta</span></div>
+    <p style="font-size:.82rem;color:var(--dn);margin-top:8px;font-weight:600">🔴 ALTA — Ureia +50%, MAP +17%, relação de troca pior desde 2022</p>
+  </div>
+  <div class="thermo">
+    <h4>🌡️ Risco de Desabastecimento (Brasil)</h4>
+    <div class="th-bar"><div class="th-marker" style="left:58%"></div></div>
+    <div class="th-label-row"><span>Baixo</span><span>Médio</span><span>Alto</span></div>
+    <p style="font-size:.82rem;color:var(--geo);margin-top:8px;font-weight:600">🔶 MÉDIO-ALTO — Ormuz + Rússia + China = 3 fontes comprometidas simultâneas</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ OPINIÃO ============ -->
+<div class="opinion">
+  <h3>🎯 Opinião do Analista — O Fertilizante Virou a Variável Mais Perigosa de 2026</h3>
+
+  <p><strong>A tempestade é real.</strong> Três dos maiores fornecedores globais (Irã/Ormuz, Rússia, China) reduziram oferta ao mesmo tempo. Isso não acontecia desde 2022 (Rússia-Ucrânia). A diferença: em 2022, soja estava a R$ 180/sc e milho a R$ 90/sc. Agora soja está a R$ 125 e milho a R$ 70. <strong>A conta não fecha.</strong></p>
+
+  <p><strong>O Ministério da Agricultura está certo:</strong> não compre em pânico. A trégua de Ormuz pode trazer alívio. <strong>MAS não espere a ureia voltar para US$ 400.</strong> O "novo normal" provavelmente é US$ 550-700/t.</p>
+
+  <p><strong>Para o Produtor de GO — Safra 26/27:</strong></p>
+  <p>1. <strong>Se comprou <35% do necessário:</strong> comece a escalar compras AGORA. Ureia a US$ 745 é cara, mas se Ormuz fechar de novo: vai para $900+. Compre 20-25% a mais agora e aguarde com o restante.<br>
+  2. <strong>Troque ureia por sulfato de amônio</strong> onde possível (custo/kg N é 30-40% menor). Tem menor concentração (20% N vs 46% na ureia), mas preço/nutriente pode compensar. <strong>Forbes:</strong> import de SAM já subiu 19% — sinal de substituição em curso.<br>
+  3. <strong>Negocie com base na relação de troca:</strong> se sua cooperativa oferece trava grão ×fertilizante → trave agora. 32 sc soja/t de ureia pode virar 40+ se ureia subir mais. Fixe em reais.<br>
+  4. <strong>Considere bioinsumos:</strong> não substituem NPK, mas Azospirillum e Bradyrhizobium reduzem 10-15% da demanda nitrogenada na soja. Em ano de N caro: vale cada quilo economizado.<br>
+  5. <strong>KCl é o "menos pior":</strong> US$ 383/t é 22% acima de 12 meses, mas muito mais estável que ureia/MAP. Priorize compra de K primeiro — menos risco de alta adicional.</p>
+
+  <p><strong>Monitoramento semanal:</strong><br>
+  🔴 <strong>Ormuz</strong> (trégua expira ~21/abr — se fechar: ureia dispara novamente)<br>
+  🔴 <strong>Rússia</strong> (ban de nitrato expira 21/abr — se renovar: escassez piora)<br>
+  🔴 <strong>China</strong> (restrição MAP até ago — qualquer sinal de liberação = alívio)<br>
+  🟡 <strong>Índia</strong> (leilão 1,5 mi t de ureia até 15/abr — puxa demanda global)<br>
+  🟡 <strong>Dólar</strong> (a R$ 5,01 reduz custo em reais — cada R$ 0,10 ≈ R$ 75/t na ureia)<br>
+  🟢 <strong>Gás natural</strong> (se Brent ficar <$70 = gás mais barato = ureia pode recuar)</p>
+
+  <div class="sig">— Dr. Sidney Souza · Economista Agrícola · Rural IN · 10/Abr/2026</div>
+</div>
+
+<!-- ============ SCRIPTS ============ -->
+<script>
+const gc='rgba(30,58,40,.35)',fc={family:"'Segoe UI',system-ui,sans-serif",size:11,weight:'600'},tt={backgroundColor:'#10221a',borderColor:'#2a5038',borderWidth:1,titleFont:{size:12,weight:'700'},bodyFont:{size:11},padding:10,cornerRadius:8};
+
+// CHART 1: PREÇOS FERTILIZANTES
+new Chart(document.getElementById('chF1').getContext('2d'),{
+  type:'line',
+  data:{labels:['Jan/25','Abr','Jul','Out','Dez/25','Jan/26','Fev/26','Mar/26','Abr/26'],
+    datasets:[
+      {label:'Ureia',data:[395,380,370,385,395,412,465,725,745],borderColor:'#ef4444',backgroundColor:'transparent',borderWidth:2.5,tension:.3,pointRadius:5,pointBackgroundColor:'#ef4444'},
+      {label:'MAP',data:[640,630,620,635,640,640,720,845,845],borderColor:'#f97316',backgroundColor:'transparent',borderWidth:2.5,tension:.3,pointRadius:5,pointBackgroundColor:'#f97316'},
+      {label:'KCl',data:[315,320,325,340,360,360,372,383,383],borderColor:'#eab308',backgroundColor:'transparent',borderWidth:2.5,tension:.3,pointRadius:5,pointBackgroundColor:'#eab308'}
+    ]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{
+    legend:{position:'top',labels:{usePointStyle:true,padding:12,font:{size:10}}},tooltip:tt,
+    annotation:{annotations:{
+      guerra:{type:'box',xMin:6.5,xMax:8,backgroundColor:'rgba(239,68,68,.04)',borderColor:'transparent',
+        label:{display:true,content:'GUERRA ORMUZ',font:{size:8,weight:'bold'},color:'#ef4444',position:'start'}},
+      ureia:{type:'label',xValue:8,yValue:780,content:['US$745!','+50%'],font:{size:9,weight:'bold'},color:'#ef4444'}
+    }}},
+    scales:{y:{min:250,max:900,grid:{color:gc},ticks:{callback:v=>'$'+v,font:fc}},x:{grid:{display:false},ticks:{font:{size:9,weight:'600'},maxRotation:45}}}}
+});
+
+// CHART 2: RELAÇÃO DE TROCA
+new Chart(document.getElementById('chF2').getContext('2d'),{
+  type:'bar',
+  data:{labels:['Ureia','MAP','KCl'],
+    datasets:[
+      {label:'Abr/25 (sc soja/t)',data:[17,25,11],backgroundColor:'rgba(34,197,94,.25)',borderColor:'#22c55e',borderWidth:2,borderRadius:5},
+      {label:'Abr/26 (sc soja/t)',data:[32,39,16],backgroundColor:'rgba(239,68,68,.25)',borderColor:'#ef4444',borderWidth:2,borderRadius:5}
+    ]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{
+    legend:{position:'top',labels:{usePointStyle:true,padding:12,font:{size:10}}},tooltip:tt,
+    annotation:{annotations:{
+      piora:{type:'label',xValue:0,yValue:35,content:['88% PIOR!'],font:{size:10,weight:'bold'},color:'#ef4444'}
+    }}},
+    scales:{y:{min:0,max:45,grid:{color:gc},ticks:{callback:v=>v+' sc',font:fc}},x:{grid:{display:false},ticks:{font:{size:12,weight:'700'}}}}}
+});
+
+// CHART 3: ORIGEM IMPORTAÇÃO (DOUGHNUT)
+new Chart(document.getElementById('chF3').getContext('2d'),{
+  type:'doughnut',
+  data:{labels:['Rússia','China','Canadá','Marrocos','Irã','Belarus','Outros'],
+    datasets:[{data:[25.9,14,10,8,6,5,31.1],
+      backgroundColor:['#ef4444','#f97316','#eab308','#22c55e','#3b82f6','#a855f7','#6b8570'],
+      borderColor:'#10221a',borderWidth:2}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{
+    legend:{position:'right',labels:{usePointStyle:true,padding:10,font:{size:10},color:'#a3b8a9'}},tooltip:tt}}
+});
+
+// CHART 4: ENTREGAS POR ESTADO
+new Chart(document.getElementById('chF4').getContext('2d'),{
+  type:'bar',
+  data:{labels:['MT','GO','PR','SP','MG'],
+    datasets:[{label:'Jan/26 (mil t)',data:[1140,468,400,357,320],
+      backgroundColor:['rgba(16,185,129,.3)','rgba(212,160,23,.3)','rgba(96,165,250,.2)','rgba(168,85,247,.2)','rgba(107,133,112,.2)'],
+      borderColor:['#10b981','#d4a017','#60a5fa','#a855f7','#6b8570'],borderWidth:2,borderRadius:5}]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt,
+    annotation:{annotations:{
+      go:{type:'label',xValue:520,yValue:1,content:['GO: 468 mil t','2º do Brasil!'],font:{size:9,weight:'bold'},color:'#d4a017'}
+    }}},
+    scales:{x:{min:0,max:1250,grid:{color:gc},ticks:{callback:v=>v+'mil',font:fc}},y:{grid:{display:false},ticks:{font:{size:12,weight:'700'}}}}}
+});
+</script>
+</body>
+</html>

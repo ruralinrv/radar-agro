@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Frango (Aves) — Radar Agro Rural IN</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1"></script>
+<style>
+:root{--bg:#0c1a11;--bg2:#10221a;--bg3:#162b1f;--border:#1e3a28;--border2:#2a5038;--accent:#d4a017;--accent2:#f0c950;--green:#2d8a44;--green2:#34d399;--text:#e8f0eb;--text2:#a3b8a9;--text3:#6b8570;--up:#22c55e;--dn:#ef4444;--nt:#eab308;--blue:#3b82f6;--orange:#f97316;--chicken:#fb923c;--radius:12px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding:32px;max-width:1100px}
+.page-header{margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border)}.page-header h1{font-size:2rem;font-weight:800;margin-bottom:6px}.page-header h1 .emoji{font-size:2.2rem;margin-right:8px}.page-header h1 .hl{color:var(--accent2)}.page-header .subtitle{font-size:1rem;color:var(--text2);font-weight:400;line-height:1.8}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:16px;margin-bottom:32px}.kpi{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;position:relative;overflow:hidden}.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2)}.kpi.up::before{background:var(--up)}.kpi.dn::before{background:var(--dn)}.kpi.nt::before{background:var(--nt)}.kpi.bl::before{background:var(--blue)}.kpi.ck::before{background:var(--chicken)}.kpi-label{font-size:.75rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:8px;font-weight:600}.kpi-value{font-size:1.55rem;font-weight:800;letter-spacing:-.5px}.kpi-value.up{color:var(--up)}.kpi-value.dn{color:var(--dn)}.kpi-value.nt{color:var(--nt)}.kpi-sub{font-size:.82rem;color:var(--text3);margin-top:4px}
+.section{margin-bottom:36px}.section-title{display:flex;align-items:center;gap:12px;margin-bottom:20px}.section-title .icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}.section-title .icon.ck{background:linear-gradient(135deg,#c2410c,#fb923c)}.section-title .icon.green{background:linear-gradient(135deg,#1a5c2a,#2d8a44)}.section-title h2{font-size:1.35rem;font-weight:700}.section-title h2 span{font-weight:400;color:var(--text2);font-size:.95rem}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;margin-bottom:20px}.card h3{font-size:1rem;color:var(--text2);margin-bottom:16px;font-weight:600}
+.callout{border-radius:var(--radius);padding:22px 26px;margin-bottom:20px;border-left:4px solid}.callout.up{background:rgba(34,197,94,.06);border-color:var(--up)}.callout.dn{background:rgba(239,68,68,.06);border-color:var(--dn)}.callout.nt{background:rgba(234,179,8,.06);border-color:var(--nt)}.callout.bl{background:rgba(59,130,246,.06);border-color:var(--blue)}.callout.ck{background:rgba(251,146,60,.06);border-color:var(--chicken)}.callout h4{font-size:1.05rem;font-weight:700;margin-bottom:10px}.callout.up h4{color:var(--up)}.callout.dn h4{color:var(--dn)}.callout.nt h4{color:var(--nt)}.callout.bl h4{color:var(--blue)}.callout.ck h4{color:var(--chicken)}.callout p{font-size:.95rem;color:var(--text2);line-height:1.8}.callout p strong{color:var(--text)}
+.chart-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;margin-bottom:20px}.chart-box h3{font-size:.95rem;color:var(--text2);margin-bottom:14px;font-weight:600}.chart-wrap{position:relative;height:320px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}@media(max-width:800px){.grid2{grid-template-columns:1fr}}
+.tbl-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--border);margin-bottom:16px}table{width:100%;border-collapse:collapse;font-size:.9rem}thead th{background:var(--bg3);padding:14px 16px;text-align:center;font-weight:600;color:var(--text2);font-size:.78rem;text-transform:uppercase;letter-spacing:.8px;border-bottom:1px solid var(--border)}tbody td{padding:13px 16px;border-bottom:1px solid rgba(30,58,40,.4);text-align:center;font-size:.9rem}tbody tr:last-child td{border-bottom:none}tbody tr:hover{background:rgba(45,138,68,.04)}
+.thermo{margin:20px 0}.thermo h4{font-size:.95rem;color:var(--text2);margin-bottom:10px}.th-bar{height:14px;border-radius:7px;background:linear-gradient(90deg,var(--dn),var(--nt),var(--up));position:relative}.th-marker{position:absolute;top:-6px;width:3px;height:26px;background:#fff;border-radius:2px;transform:translateX(-50%)}.th-label-row{display:flex;justify-content:space-between;font-size:.75rem;color:var(--text3);margin-top:6px}
+.opinion{background:linear-gradient(135deg,rgba(26,92,42,.12),rgba(26,92,42,.04));border:1px solid rgba(45,138,68,.2);border-radius:var(--radius);padding:28px 30px;margin:24px 0}.opinion h3{font-size:1.15rem;font-weight:700;color:var(--accent2);margin-bottom:14px}.opinion p{font-size:.95rem;color:var(--text2);line-height:1.85;margin-bottom:12px}.opinion p strong{color:var(--text)}.opinion .sig{margin-top:16px;padding-top:12px;border-top:1px solid rgba(45,138,68,.15);font-size:.82rem;color:var(--text3);font-style:italic}
+.alert-bar{border-radius:var(--radius);padding:18px 22px;margin-bottom:24px;display:flex;align-items:flex-start;gap:14px;border:1px solid}.alert-bar.green{background:linear-gradient(135deg,rgba(34,197,94,.1),rgba(34,197,94,.03));border-color:rgba(34,197,94,.3)}.alert-bar.yellow{background:linear-gradient(135deg,rgba(234,179,8,.08),rgba(234,179,8,.02));border-color:rgba(234,179,8,.25)}.alert-bar.red{background:linear-gradient(135deg,rgba(239,68,68,.08),rgba(239,68,68,.02));border-color:rgba(239,68,68,.25)}.alert-bar .alert-icon{font-size:1.6rem;flex-shrink:0}.alert-bar .alert-text{font-size:.92rem;color:var(--text2);line-height:1.7}.alert-bar .alert-text strong{color:var(--text)}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border2),var(--accent),var(--border2),transparent);margin:36px 0}
+.tag{display:inline-flex;align-items:center;padding:4px 12px;border-radius:6px;font-size:.78rem;font-weight:600}.tag-up{background:rgba(34,197,94,.1);color:var(--up)}.tag-dn{background:rgba(239,68,68,.1);color:var(--dn)}.tag-nt{background:rgba(234,179,8,.1);color:var(--nt)}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<div class="page-header">
+  <h1><span class="emoji">🐔</span> Frango (Aves) — <span class="hl">Congelado R$ 7,27/kg. 1ºTri −9,4%. Mas Export Recorde: 1,46 mi t (+5%). GO +9,5%.</span></h1>
+  <p class="subtitle">
+    Congelado SP 10/4: <strong style="color:var(--dn)">R$ 7,27/kg</strong> (1ºTri: −9,4%) &nbsp;|&nbsp;
+    Export mar/26: <strong style="color:var(--up)">504,3 mil t</strong> (+6% = rec. mar) &nbsp;|&nbsp;
+    1ºTri: <strong style="color:var(--up)">1,456 mi t</strong> (+5%) · US$ 2,764 bi (+6,9%) &nbsp;|&nbsp;
+    Produção 2025: <strong>15,32 mi t</strong> (RECORDE) &nbsp;|&nbsp;
+    GO jan: <strong style="color:var(--up)">25,6 mil t (+9,5%)</strong> = 5º estado
+  </p>
+</div>
+
+<!-- ============ ALERTAS ============ -->
+<div class="alert-bar green">
+  <div class="alert-icon">✈️</div>
+  <div class="alert-text">
+    <strong style="color:var(--up)">EXPORTAÇÕES RECORDE EM TODOS OS 3 MESES DO 1ºTRI!</strong> Jan: 459 mil t (rec. jan). Fev: 493,2 mil t (rec. fev). Mar: 504,3 mil t (rec. mar).
+    <strong>1ºTri/26: 1,456 mi t (+5%) — US$ 2,764 bi (+6,9%).</strong> Mesmo com Ormuz (Oriente Médio −18,5% em mar vs fev), rotas alternativas (Suez, Cabo) compensaram.
+    <strong>China voltou:</strong> 51,8 mil t em mar (+11,6%) — pós-gripe aviária. Japão +41,3%! UE +33,7%!
+  </div>
+</div>
+
+<div class="alert-bar yellow">
+  <div class="alert-icon">⚠️</div>
+  <div class="alert-text">
+    <strong style="color:var(--nt)">Mercado interno em QUEDA: congelado −9,4% no 1ºTri.</strong> CEPEA: <em>"Baixa demanda interna + oferta abundante."</em>
+    Frango congelado de R$ 8,04 (dez/25) → R$ 7,27 (10/abr) = <strong>−9,6%.</strong> Nível de mai/25 (crise gripe aviária).
+    <strong>Final de março reagiu</strong> com frete mais caro (diesel/Ormuz): de R$ 6,90 → R$ 7,24. Abril estabilizando em R$ 7,27.
+  </div>
+</div>
+
+<!-- ============ KPIs ============ -->
+<div class="kpi-grid">
+  <div class="kpi dn">
+    <div class="kpi-label">Congelado SP 10/4</div>
+    <div class="kpi-value dn">R$ 7,27/kg</div>
+    <div class="kpi-sub">1ºTri: −9,4% · Reagiu fim mar (frete)</div>
+  </div>
+  <div class="kpi up">
+    <div class="kpi-label">Export Mar/26</div>
+    <div class="kpi-value up">504,3 mil t</div>
+    <div class="kpi-sub">RECORDE mar · +6% · US$ 944,7 mi</div>
+  </div>
+  <div class="kpi up">
+    <div class="kpi-label">Export 1ºTri/26</div>
+    <div class="kpi-value up">1,456 mi t</div>
+    <div class="kpi-sub">+5% · US$ 2,764 bi (+6,9%)</div>
+  </div>
+  <div class="kpi ck">
+    <div class="kpi-label">Produção 2025</div>
+    <div class="kpi-value" style="color:var(--chicken)">15,32 mi t</div>
+    <div class="kpi-sub">RECORDE · 2026: até 15,6 mi t</div>
+  </div>
+  <div class="kpi up">
+    <div class="kpi-label">GO Export Jan/26</div>
+    <div class="kpi-value up">25,6 mil t</div>
+    <div class="kpi-sub">5º estado · +9,5% vs jan/25!</div>
+  </div>
+  <div class="kpi bl">
+    <div class="kpi-label">Competitividade Global</div>
+    <div class="kpi-value" style="color:var(--blue)">3º mais barato</div>
+    <div class="kpi-sub">Só China e EUA vendem por menos</div>
+  </div>
+</div>
+
+<!-- ============ GRÁFICOS ============ -->
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📉 Frango Congelado SP — R$/kg (Dez/25 a Abr/26)</h3>
+    <div class="chart-wrap"><canvas id="chF1"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>📦 Exportações Mensais — Recorde atrás de Recorde (mil t)</h3>
+    <div class="chart-wrap"><canvas id="chF2"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>🌍 Top Destinos Mar/26 (mil t)</h3>
+    <div class="chart-wrap"><canvas id="chF3"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>🏭 Top Estados Exportadores Jan/26 (mil t)</h3>
+    <div class="chart-wrap"><canvas id="chF4"></canvas></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ ANÁLISE ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon ck">📋</div>
+    <h2>Os 5 Fatores do Frango <span>— O Que Move o Preço em 2026</span></h2>
+  </div>
+
+  <div class="callout dn">
+    <h4>Fator 1 — Mercado Interno Fraco: −9,4% no 1ºTri</h4>
+    <p><strong>CEPEA:</strong> congelado SP acumulou −9,4% no trimestre. Voltou ao nível de mai/25 (crise gripe aviária). <strong>Motivos:</strong> 1) Sazonalidade — 1ºTri tem demanda mais baixa (pós-festas, calor → consumo migra para peixes e saladas). 2) Descapitalização do consumidor (IPCA 4,36%, Selic 14,75%). 3) Oferta abundante: produção recorde de 15,32 mi t em 2025 continua em 2026. <strong>Itatiaia/CEPEA:</strong> <em>"A principal pressão sobre as cotações veio da baixa demanda interna."</em></p>
+  </div>
+
+  <div class="callout ck">
+    <h4>Fator 2 — Frete/Ormuz: Interrompeu Queda e Pode Ser Piso</h4>
+    <p>Final de março: frango reagiu de R$ 6,90 → R$ 7,24 em 1 semana. <strong>CEPEA:</strong> <em>"Alta do diesel pressionou logística. Indústria repassou custos."</em> Diesel +R$ 0,38/L (Petrobras 13/mar) = cadeia inteira mais cara. <strong>Isso cria um PISO artificial:</strong> abaixo de R$ 7,00/kg, a indústria não consegue operar com margem. Se diesel cair (trégua Ormuz): piso pode ceder para R$ 6,80.</p>
+  </div>
+
+  <div class="callout up">
+    <h4>Fator 3 — Exportações em RECORDE Absoluto: O Motor da Avicultura</h4>
+    <p><strong>ABPA:</strong> os 3 meses do 1ºTri foram RECORDES para seus respectivos meses. <strong>1ºTri: 1,456 mi t (+5%), US$ 2,764 bi (+6,9%).</strong> Projeção 2026: 5,5 mi t (+3,4%). <strong>Destaque março:</strong> China voltou com força (+11,6% = 51,8 mil t). <strong>Japão</strong> decolou (+41,3% = 42,1 mil t). <strong>UE</strong> surpreendeu (+33,7% = 30,7 mil t). <strong>Ormuz:</strong> export ao Oriente Médio caiu 18,5% mar vs fev, mas rotas alternativas (Suez, Cabo da Boa Esperança) compensaram. <strong>Ricardo Santin (ABPA):</strong> <em>"Resultado que reforça a competitividade brasileira mesmo em cenário geopolítico adverso."</em></p>
+  </div>
+
+  <div class="callout up">
+    <h4>Fator 4 — GO É Potência: 5º Estado, +9,5% em Janeiro</h4>
+    <p><strong>ABPA / Secex:</strong> GO exportou 25,6 mil t em jan/26 (+9,5% vs jan/25). 5º maior exportador, atrás de PR (187,7 mil t), SC (103,1 mil t), RS (58,7 mil t) e SP (26,7 mil t). <strong>Rio Verde, Itaberaí, Anápolis:</strong> polo avícola consolidado com BRF, JBS, C.Vale. <strong>SEAPA-GO:</strong> <em>"Avicultura está presente nos 246 municípios do estado."</em> GO teve o 2º maior crescimento percentual entre os top 5 estados (atrás só de SC +9,3%).</p>
+  </div>
+
+  <div class="callout nt">
+    <h4>Fator 5 — Custo: Ração 68% + Farelo Subindo + Diesel Caro</h4>
+    <p><strong>Embrapa / SEAPA-GO:</strong> ração animal = 68,1% do custo. Farelo de soja em alta desde out/25 (R$ 1.821/t em jan/26). Milho a R$ 70-72/sc. Diesel +R$ 0,38. <strong>Poder de compra do avicultor recuou em jan/26</strong> (SEAPA-GO): preço do frango caiu, mas farelo subiu. <strong>Margem pressionada,</strong> embora melhor que a do suíno. Integração (BRF, JBS) protege parcialmente o avicultor integrado, mas remuneração por lote é menor.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ TABELA EXPORT ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon ck">📊</div>
+    <h2>Exportações 1ºTri <span>— Recorde Mês a Mês</span></h2>
+  </div>
+
+  <div class="card">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Mês</th><th>Volume (mil t)</th><th>Receita (US$ mi)</th><th>Var. Vol. vs 25</th><th>Destaque</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Jan/26</strong></td><td style="color:var(--up)"><strong>459,0</strong></td><td>874,2</td><td style="color:var(--up)">+3,6%</td><td>EAU +14%, Áfr Sul +34%, GO +9,5%</td></tr>
+          <tr><td><strong>Fev/26</strong></td><td style="color:var(--up)"><strong>493,2</strong></td><td>945,4</td><td style="color:var(--up)">+5,3%</td><td>China líder, Japão +38%, UE +46,3%</td></tr>
+          <tr style="background:rgba(34,197,94,.04)"><td><strong>Mar/26</strong></td><td style="color:var(--up)"><strong>504,3</strong></td><td style="color:var(--up)"><strong>944,7</strong></td><td style="color:var(--up)">+6,0%</td><td>China +11,6%, Japão +41,3%, UE +33,7%</td></tr>
+          <tr style="background:rgba(212,160,23,.04)"><td><strong>1ºTri</strong></td><td style="color:var(--up)"><strong>1.456</strong></td><td style="color:var(--up)"><strong>2.764</strong></td><td style="color:var(--up)"><strong>+5,0%</strong></td><td><span class="tag tag-up">RECORDE trimestral!</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CENÁRIOS ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon green">🔮</div>
+    <h2>Cenários <span>— Frango Congelado SP Abr-Set 2026</span></h2>
+  </div>
+
+  <div class="card">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Cenário</th><th>Congelado R$/kg</th><th>Export (mi t/ano)</th><th>Driver</th><th>Prob.</th></tr></thead>
+        <tbody>
+          <tr><td style="text-align:left;color:var(--up)">📈 Recuperação</td><td style="color:var(--up)"><strong>R$ 7,80-8,50</strong></td><td style="color:var(--up)">5,5-5,8</td><td>Inverno + boi caro → migração + export segue forte</td><td><span class="tag tag-up">35%</span></td></tr>
+          <tr><td style="text-align:left;color:var(--nt)">➡️ Lateral</td><td><strong>R$ 7,10-7,80</strong></td><td>5,3-5,5</td><td>Oferta alta equilibrada por export + frete caro</td><td><span class="tag tag-nt">45%</span></td></tr>
+          <tr><td style="text-align:left;color:var(--dn)">📉 Piora</td><td style="color:var(--dn)"><strong>R$ 6,50-7,10</strong></td><td>5,0-5,3</td><td>Demanda fraca + export desacelera + ração sobe</td><td><span class="tag tag-dn">20%</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TERMÔMETROS ============ -->
+<div class="grid2">
+  <div class="thermo">
+    <h4>🌡️ Frango — Tendência de Preço Interno</h4>
+    <div class="th-bar"><div class="th-marker" style="left:42%"></div></div>
+    <div class="th-label-row"><span>Baixista</span><span>Neutro</span><span>Altista</span></div>
+    <p style="font-size:.82rem;color:var(--nt);margin-top:8px;font-weight:600">⚠ NEUTRO c/ viés leve alta — Frete criou piso. Inverno ajuda. Boi caro empurra.</p>
+  </div>
+  <div class="thermo">
+    <h4>🌡️ Exportações — Perspectiva 2026</h4>
+    <div class="th-bar"><div class="th-marker" style="left:72%"></div></div>
+    <div class="th-label-row"><span>Fraco</span><span>Normal</span><span>Forte</span></div>
+    <p style="font-size:.82rem;color:var(--up);margin-top:8px;font-weight:600">🟢 FORTE — 3 meses recordes seguidos. China voltou. Japão/UE em alta.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ OPINIÃO ============ -->
+<div class="opinion">
+  <h3>🎯 Opinião do Analista — O Frango Brasileiro É uma Máquina de Exportar</h3>
+
+  <p><strong>O paradoxo do frango em 2026:</strong> mercado interno caiu 9,4% no trimestre, mas exportações são RECORDE em todos os 3 meses. A avicultura brasileira virou, estruturalmente, um negócio de exportação. <strong>Dos 15,32 mi t produzidos em 2025:</strong> ~5,3 mi t foram exportados (35%). Em 2026: pode chegar a 5,5 mi t (36%). <strong>O preço interno é o residual — o que sobra depois de exportar.</strong></p>
+
+  <p><strong>Ormuz não parou o frango.</strong> Export ao Oriente Médio caiu 18,5% em março vs fevereiro, mas <strong>rotas alternativas (Suez, Cabo da Boa Esperança)</strong> compensaram. O total de março FOI RECORDE mesmo assim. <strong>ABPA:</strong> <em>"Resultado que reforça a competitividade brasileira mesmo em cenário geopolítico adverso."</em></p>
+
+  <p><strong>Para o Avicultor/Integrado de GO:</strong></p>
+  <p>1. <strong>GO cresceu +9,5% em exportação</strong> (jan) — 2º maior crescimento entre os top 5 estados. <strong>Rio Verde, Itaberaí, Jataí, Anápolis</strong> estão consolidados como polo avícola nacional.<br>
+  2. <strong>Negocie remuneração do lote com a integradora.</strong> Se export está em recorde e congelado está a R$ 7,27: a margem da indústria está boa. Pressione por remuneração justa por lote — especialmente com farelo de soja a R$ 1.821/t.<br>
+  3. <strong>Inverno vem aí:</strong> entre maio e agosto, consumo de frango sobe (sopas, caldos, assados). Historicamente, preço sobe 5-10% no inverno. O pior já passou (1ºTri).<br>
+  4. <strong>Boi caro é aliado do frango.</strong> Carcaça bovina a R$ 24,32/kg vs frango R$ 7,27 = consumidor migra. Enquanto boi estiver acima de R$ 320/@, demanda por frango e suína cresce.<br>
+  5. <strong>Custo de ração é o X da questão:</strong> milho a R$ 70-72/sc + farelo R$ 1.821/t. Se milho cair para R$ 60-65 (pós-safrinha): margem do avicultor melhora significativamente.</p>
+
+  <p><strong>Monitoramento semanal:</strong><br>
+  🔴 <strong>Congelado SP</strong> (piso R$ 7,00; se cair abaixo: indústria perde margem)<br>
+  🔴 <strong>Milho + Farelo</strong> (ração = 68% do custo → cada −R$ 5/sc milho ≈ −R$ 0,10/kg no custo)<br>
+  🟡 <strong>Ormuz / Oriente Médio</strong> (EAU, Arábia Saudita = destinos-chave; trégua favorece)<br>
+  🟡 <strong>China</strong> (voltou pós-gripe aviária; se mantiver 50+ mil t/mês = estrutural)<br>
+  🟢 <strong>Japão / UE</strong> (crescimento de 41% e 34% = mercados de alto valor agregado)</p>
+
+  <div class="sig">— Dr. Sidney Souza · Economista Agrícola · Rural IN · 10/Abr/2026</div>
+</div>
+
+<!-- ============ SCRIPTS ============ -->
+<script>
+const gc='rgba(30,58,40,.35)',fc={family:"'Segoe UI',system-ui,sans-serif",size:11,weight:'600'},tt={backgroundColor:'#10221a',borderColor:'#2a5038',borderWidth:1,titleFont:{size:12,weight:'700'},bodyFont:{size:11},padding:10,cornerRadius:8};
+
+// CHART 1: CONGELADO SP
+new Chart(document.getElementById('chF1').getContext('2d'),{
+  type:'line',
+  data:{labels:['Dez/25','Jan/26','Fev','1/Mar','19/Mar\nMínima','27/Mar','30/Mar','31/Mar','1/Abr','6/Abr','7/Abr','8/Abr','9/Abr','10/Abr'],
+    datasets:[{label:'Congelado SP R$/kg',
+      data:[8.04,7.36,7.09,7.10,6.72,6.95,7.12,7.24,7.24,7.27,7.27,7.29,7.32,7.27],
+      borderColor:'#fb923c',backgroundColor:'rgba(251,146,60,.06)',borderWidth:2.5,fill:true,tension:.3,
+      pointRadius:4,pointBackgroundColor:function(c){return c.raw<=7.00?'#ef4444':c.raw>=7.30?'#22c55e':'#fb923c';}}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt,
+    annotation:{annotations:{
+      minima:{type:'label',xValue:4,yValue:6.55,content:['MÍNIMA!','R$6,72'],font:{size:9,weight:'bold'},color:'#ef4444'},
+      frete:{type:'label',xValue:7,yValue:7.40,content:['Frete sobe','→ Reação!'],font:{size:8,weight:'bold'},color:'#22c55e'},
+      piso:{type:'line',yMin:7.00,yMax:7.00,borderColor:'rgba(234,179,8,.4)',borderWidth:1.5,borderDash:[4,3],
+        label:{display:true,content:'Piso R$7,00?',position:'start',backgroundColor:'rgba(234,179,8,.5)',font:{size:8}}}
+    }}},
+    scales:{y:{min:6.40,max:8.20,grid:{color:gc},ticks:{callback:v=>'R$'+v.toFixed(2),font:fc}},x:{grid:{display:false},ticks:{font:{size:7,weight:'600'},maxRotation:50}}}}
+});
+
+// CHART 2: EXPORTAÇÕES MENSAIS
+new Chart(document.getElementById('chF2').getContext('2d'),{
+  type:'bar',
+  data:{labels:['Out/25','Nov','Dez/25','Jan/26\nRec!','Fev/26\nRec!','Mar/26\nRec!'],
+    datasets:[{label:'Export mil t',
+      data:[440,460,510,459,493.2,504.3],
+      backgroundColor:function(c){return c.dataIndex>=3?'rgba(34,197,94,.3)':'rgba(107,133,112,.15)';},
+      borderColor:function(c){return c.dataIndex>=3?'#22c55e':'#6b8570';},
+      borderWidth:2,borderRadius:5}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt,
+    annotation:{annotations:{
+      tri:{type:'label',xValue:4,yValue:520,content:['1ºTri: 1.456 mil t','US$ 2,764 bi!'],font:{size:10,weight:'bold'},color:'#22c55e'}
+    }}},
+    scales:{y:{min:380,max:540,grid:{color:gc},ticks:{callback:v=>v+'mil',font:fc}},x:{grid:{display:false},ticks:{font:{size:8,weight:'700'}}}}}
+});
+
+// CHART 3: DESTINOS MAR/26
+new Chart(document.getElementById('chF3').getContext('2d'),{
+  type:'bar',
+  data:{labels:['China','Japão','Ar. Saudita','Áfr. Sul','UE'],
+    datasets:[
+      {label:'Mar/25 (mil t)',data:[46.4,29.8,40.9,27.3,23.0],backgroundColor:'rgba(107,133,112,.2)',borderColor:'#6b8570',borderWidth:1.5,borderRadius:4},
+      {label:'Mar/26 (mil t)',data:[51.8,42.1,38.7,33.1,30.7],backgroundColor:'rgba(251,146,60,.3)',borderColor:'#fb923c',borderWidth:2,borderRadius:4}
+    ]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{
+    legend:{position:'top',labels:{usePointStyle:true,padding:12,font:{size:10}}},tooltip:tt,
+    annotation:{annotations:{
+      jp:{type:'label',xValue:1,yValue:46,content:['+41,3%!'],font:{size:9,weight:'bold'},color:'#22c55e'}
+    }}},
+    scales:{y:{min:0,max:58,grid:{color:gc},ticks:{callback:v=>v+'mil',font:fc}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'}}}}}
+});
+
+// CHART 4: ESTADOS JAN/26
+new Chart(document.getElementById('chF4').getContext('2d'),{
+  type:'bar',
+  data:{labels:['PR','SC','RS','SP','GO'],
+    datasets:[{label:'Export mil t (Jan/26)',
+      data:[187.7,103.1,58.7,26.7,25.6],
+      backgroundColor:function(c){return c.dataIndex===4?'rgba(212,160,23,.3)':'rgba(107,133,112,.15)';},
+      borderColor:function(c){return c.dataIndex===4?'#d4a017':'#6b8570';},
+      borderWidth:2,borderRadius:5}]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt,
+    annotation:{annotations:{
+      go:{type:'label',xValue:40,yValue:4,content:['GO: 25,6 mil t','+9,5%!'],font:{size:9,weight:'bold'},color:'#d4a017'}
+    }}},
+    scales:{x:{min:0,max:200,grid:{color:gc},ticks:{callback:v=>v+'mil',font:fc}},y:{grid:{display:false},ticks:{font:{size:12,weight:'700'}}}}}
+});
+</script>
+</body>
+</html>

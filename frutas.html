@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Frutas — Radar Agro Rural IN</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1"></script>
+<style>
+:root{--bg:#0c1a11;--bg2:#10221a;--bg3:#162b1f;--border:#1e3a28;--border2:#2a5038;--accent:#d4a017;--accent2:#f0c950;--green:#2d8a44;--green2:#34d399;--text:#e8f0eb;--text2:#a3b8a9;--text3:#6b8570;--up:#22c55e;--dn:#ef4444;--nt:#eab308;--blue:#3b82f6;--fruit:#e879f9;--fruit2:#f0abfc;--radius:12px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding:32px;max-width:1100px}
+.page-header{margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border)}.page-header h1{font-size:1.9rem;font-weight:800;margin-bottom:6px}.page-header h1 .emoji{font-size:2.2rem;margin-right:8px}.page-header h1 .hl{color:var(--fruit2)}.page-header .subtitle{font-size:.95rem;color:var(--text2);font-weight:400;line-height:1.8}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:16px;margin-bottom:32px}.kpi{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;position:relative;overflow:hidden}.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2)}.kpi.up::before{background:var(--up)}.kpi.dn::before{background:var(--dn)}.kpi.nt::before{background:var(--nt)}.kpi.bl::before{background:var(--blue)}.kpi.fr::before{background:var(--fruit)}.kpi-label{font-size:.72rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:8px;font-weight:600}.kpi-value{font-size:1.45rem;font-weight:800;letter-spacing:-.5px}.kpi-value.up{color:var(--up)}.kpi-value.dn{color:var(--dn)}.kpi-value.nt{color:var(--nt)}.kpi-sub{font-size:.8rem;color:var(--text3);margin-top:4px}
+.section{margin-bottom:36px}.section-title{display:flex;align-items:center;gap:12px;margin-bottom:20px}.section-title .icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}.section-title .icon.fr{background:linear-gradient(135deg,#9333ea,#e879f9)}.section-title .icon.green{background:linear-gradient(135deg,#1a5c2a,#2d8a44)}.section-title h2{font-size:1.3rem;font-weight:700}.section-title h2 span{font-weight:400;color:var(--text2);font-size:.95rem}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;margin-bottom:20px}
+.callout{border-radius:var(--radius);padding:22px 26px;margin-bottom:20px;border-left:4px solid}.callout.up{background:rgba(34,197,94,.06);border-color:var(--up)}.callout.dn{background:rgba(239,68,68,.06);border-color:var(--dn)}.callout.nt{background:rgba(234,179,8,.06);border-color:var(--nt)}.callout.bl{background:rgba(59,130,246,.06);border-color:var(--blue)}.callout.fr{background:rgba(232,121,249,.06);border-color:var(--fruit)}.callout h4{font-size:1.05rem;font-weight:700;margin-bottom:10px}.callout.up h4{color:var(--up)}.callout.dn h4{color:var(--dn)}.callout.nt h4{color:var(--nt)}.callout.bl h4{color:var(--blue)}.callout.fr h4{color:var(--fruit2)}.callout p{font-size:.95rem;color:var(--text2);line-height:1.8}.callout p strong{color:var(--text)}
+.chart-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;margin-bottom:20px}.chart-box h3{font-size:.95rem;color:var(--text2);margin-bottom:14px;font-weight:600}.chart-wrap{position:relative;height:320px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}@media(max-width:800px){.grid2{grid-template-columns:1fr}}
+.tbl-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--border);margin-bottom:16px}table{width:100%;border-collapse:collapse;font-size:.88rem}thead th{background:var(--bg3);padding:13px 14px;text-align:center;font-weight:600;color:var(--text2);font-size:.76rem;text-transform:uppercase;letter-spacing:.8px;border-bottom:1px solid var(--border)}tbody td{padding:12px 14px;border-bottom:1px solid rgba(30,58,40,.4);text-align:center;font-size:.88rem}tbody tr:last-child td{border-bottom:none}tbody tr:hover{background:rgba(45,138,68,.04)}
+.thermo{margin:20px 0}.thermo h4{font-size:.95rem;color:var(--text2);margin-bottom:10px}.th-bar{height:14px;border-radius:7px;background:linear-gradient(90deg,var(--dn),var(--nt),var(--up));position:relative}.th-marker{position:absolute;top:-6px;width:3px;height:26px;background:#fff;border-radius:2px;transform:translateX(-50%)}.th-label-row{display:flex;justify-content:space-between;font-size:.75rem;color:var(--text3);margin-top:6px}
+.opinion{background:linear-gradient(135deg,rgba(232,121,249,.12),rgba(232,121,249,.04));border:1px solid rgba(232,121,249,.2);border-radius:var(--radius);padding:28px 30px;margin:24px 0}.opinion h3{font-size:1.15rem;font-weight:700;color:var(--fruit2);margin-bottom:14px}.opinion p{font-size:.95rem;color:var(--text2);line-height:1.85;margin-bottom:12px}.opinion p strong{color:var(--text)}.opinion .sig{margin-top:16px;padding-top:12px;border-top:1px solid rgba(232,121,249,.15);font-size:.82rem;color:var(--text3);font-style:italic}
+.alert-bar{border-radius:var(--radius);padding:18px 22px;margin-bottom:24px;display:flex;align-items:flex-start;gap:14px;border:1px solid}.alert-bar.red{background:linear-gradient(135deg,rgba(239,68,68,.08),rgba(239,68,68,.02));border-color:rgba(239,68,68,.25)}.alert-bar.amber{background:linear-gradient(135deg,rgba(251,191,36,.08),rgba(251,191,36,.02));border-color:rgba(251,191,36,.3)}.alert-bar.green{background:linear-gradient(135deg,rgba(34,197,94,.1),rgba(34,197,94,.03));border-color:rgba(34,197,94,.3)}.alert-bar.purple{background:linear-gradient(135deg,rgba(232,121,249,.08),rgba(232,121,249,.02));border-color:rgba(232,121,249,.3)}.alert-bar .alert-icon{font-size:1.6rem;flex-shrink:0}.alert-bar .alert-text{font-size:.92rem;color:var(--text2);line-height:1.7}.alert-bar .alert-text strong{color:var(--text)}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--fruit),var(--border2),transparent);margin:36px 0}
+.tag{display:inline-flex;align-items:center;padding:4px 12px;border-radius:6px;font-size:.78rem;font-weight:600}.tag-up{background:rgba(34,197,94,.1);color:var(--up)}.tag-dn{background:rgba(239,68,68,.1);color:var(--dn)}.tag-nt{background:rgba(234,179,8,.1);color:var(--nt)}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<div class="page-header">
+  <h1><span class="emoji">🍇</span> Frutas — <span class="hl">Exportação recorde US$ 1,45 bi em 2025 (+12%). Vale do SF: 90% das mangas e uvas. Tarifas EUA = risco.</span></h1>
+  <p class="subtitle">
+    🥭 Manga Palmer SP: <strong style="color:var(--up)">R$ 4,28/kg</strong> (+3,6% s/s) · Vale: <strong>R$ 1,40/kg</strong> &nbsp;|&nbsp;
+    🍇 Uva s/semente Vale: <strong style="color:var(--up)">R$ 12,70-14,30/kg</strong> &nbsp;|&nbsp;
+    🍈 Melão amarelo Ceagesp: <strong style="color:var(--up)">R$ 60,80/cx</strong> (+5% · 5ª alta seguida) &nbsp;|&nbsp;
+    🍉 Melancia SP: <strong style="color:var(--dn)">R$ 1,56/kg</strong> (−6,4%) &nbsp;|&nbsp;
+    Export 2025: <strong style="color:var(--up)">1,28 mi t · US$ 1,45 bi · Recorde 3º ano!</strong>
+  </p>
+</div>
+
+<!-- ============ ALERTAS ============ -->
+<div class="alert-bar green">
+  <div class="alert-icon">🏆</div>
+  <div class="alert-text">
+    <strong style="color:var(--up)">3º RECORDE CONSECUTIVO EM EXPORTAÇÃO!</strong> <strong>Abrafrutas:</strong> 2025 fechou com 1,28 mi t exportadas (+19,6%) e receita de US$ 1,45 bi (+12%).
+    <strong>Vale do São Francisco:</strong> 90% das mangas e uvas exportadas pelo BR. <strong>260 mil toneladas</strong> em 2026. Produção 52 semanas/ano (irrigação + sol).
+    EUA e UE = principais compradores. <strong>Manga liderou</strong> em volume. Uva, melão e melancia completam o mix.
+    <strong>Abrafrutas:</strong> <em>"O resultado consolida a fruticultura como um dos segmentos mais dinâmicos do agronegócio."</em>
+  </div>
+</div>
+
+<div class="alert-bar amber">
+  <div class="alert-icon">🇺🇸</div>
+  <div class="alert-text">
+    <strong style="color:var(--nt)">TARIFAS EUA = RISCO CRÍTICO!</strong> Tarifa de 50% ameaçou US$ 90 mi em frutas do Vale SF.
+    <strong>Manga:</strong> tarifa zerada em nov/25 → alívio parcial. <strong>Uva:</strong> ainda com taxação → competitividade limitada.
+    <strong>CNN Brasil:</strong> embarques EUA caíram para 38% do nível anterior. Frutas redirecionadas para Europa e mercado interno → preço caiu.
+    <strong>Mercosul-UE:</strong> acordo pode zerar tarifa da uva na UE → oportunidade enorme. <strong>120 mil empregos</strong> dependem da fruticultura no Vale SF.
+  </div>
+</div>
+
+<div class="alert-bar purple">
+  <div class="alert-icon">🌤️</div>
+  <div class="alert-text">
+    <strong style="color:var(--fruit2)">CLIMA = DETERMINANTE!</strong> Chuvas no Vale SF afetaram qualidade da uva no Q1/26.
+    <strong>Uva s/semente:</strong> umidade causou rachadura de bagas e doenças (glomerella). Oferta restrita sustenta preços altos (R$ 12-14/kg).
+    <strong>Manga Palmer:</strong> leve recuperação (+3,6%) após 2 meses de queda. Chuvas reduziram colheita → oferta menor = preço sobe.
+    <strong>Melancia:</strong> safra SP intensificou → preço caiu 6,4%. <strong>Melão:</strong> 5ª alta seguida (+5%) por oferta restrita (fim campanha RN/CE).
+  </div>
+</div>
+
+<!-- ============ KPIs ============ -->
+<div class="kpi-grid">
+  <div class="kpi up">
+    <div class="kpi-label">🥭 Manga Palmer (SP atacado)</div>
+    <div class="kpi-value up">R$ 4,28/kg</div>
+    <div class="kpi-sub">02/abr · +3,6% s/s · recuperação</div>
+  </div>
+  <div class="kpi up">
+    <div class="kpi-label">🥭 Manga Palmer (Vale SF)</div>
+    <div class="kpi-value up">R$ 1,40/kg</div>
+    <div class="kpi-sub">+2,9% s/s · produtor</div>
+  </div>
+  <div class="kpi up">
+    <div class="kpi-label">🍇 Uva BRS Vitória Cat1</div>
+    <div class="kpi-value up">R$ 12,70/kg</div>
+    <div class="kpi-sub">Vale SF · oferta restrita</div>
+  </div>
+  <div class="kpi up">
+    <div class="kpi-label">🍇 Uva Branca s/semente</div>
+    <div class="kpi-value up">R$ 14,30/kg</div>
+    <div class="kpi-sub">+2,5% s/s · premium</div>
+  </div>
+  <div class="kpi up">
+    <div class="kpi-label">🍈 Melão Amarelo (Ceagesp)</div>
+    <div class="kpi-value up">R$ 60,80/cx</div>
+    <div class="kpi-sub">+5% · 5ª alta consecutiva!</div>
+  </div>
+  <div class="kpi dn">
+    <div class="kpi-label">🍉 Melancia Graúda (SP)</div>
+    <div class="kpi-value dn">R$ 1,56/kg</div>
+    <div class="kpi-sub">−6,4% · safra SP intensificou</div>
+  </div>
+  <div class="kpi up">
+    <div class="kpi-label">📦 Export 2025 (Volume)</div>
+    <div class="kpi-value up">1,28 mi t</div>
+    <div class="kpi-sub">+19,6% · recorde 3º ano!</div>
+  </div>
+  <div class="kpi up">
+    <div class="kpi-label">💰 Export 2025 (Receita)</div>
+    <div class="kpi-value up">US$ 1,45 bi</div>
+    <div class="kpi-sub">+12% · recorde histórico</div>
+  </div>
+</div>
+
+<!-- ============ GRÁFICOS ============ -->
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📦 Exportação BR de Frutas — Volume e Receita (2019-2025)</h3>
+    <div class="chart-wrap"><canvas id="chFr1"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>🍇🥭 Cotações Semanais — Principais Frutas (R$/kg, abr/26)</h3>
+    <div class="chart-wrap"><canvas id="chFr2"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>🌎 Destinos das Exportações de Frutas BR — 2025</h3>
+    <div class="chart-wrap"><canvas id="chFr3"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>🥭 Manga Palmer Vale SF — Preço ao Produtor (R$/kg)</h3>
+    <div class="chart-wrap"><canvas id="chFr4"></canvas></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ ANÁLISE POR FRUTA ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon fr">📋</div>
+    <h2>Análise por Fruta <span>— Semana 30/Mar a 10/Abr 2026</span></h2>
+  </div>
+
+  <div class="callout up">
+    <h4>🥭 Manga — Palmer se recupera após 2 meses de queda</h4>
+    <p><strong>Palmer atacado SP:</strong> R$ 4,28/kg (+3,6% s/s). <strong>Vale SF:</strong> R$ 1,40/kg (+2,9%). <strong>Livramento/BA:</strong> R$ 1,52/kg (+28,8%!). <strong>Tommy:</strong> R$ 2,17/kg (+8% Vale). Oferta restrita por chuvas no final de março sustenta preço. <strong>Cepea alerta:</strong> recuperação pode não se manter — colheitas retomam ritmo normal + início de exportação africana (concorrência). <strong>Exportação:</strong> manga liderou volume em 2025. Tarifa EUA zerada em nov/25 → alívio para embarques 2026. <strong>Tendência 2ºSem:</strong> volume controlado de tommy até fim do 1ºSem pode manter preços atrativos.</p>
+  </div>
+
+  <div class="callout up">
+    <h4>🍇 Uva — Oferta restrita sustenta preços muito altos no Vale</h4>
+    <p><strong>BRS Vitória Cat1:</strong> R$ 12,70/kg. <strong>Branca s/semente Cat1:</strong> R$ 14,30/kg (+2,5%). Preços elevados por <strong>oferta restrita:</strong> chuvas Q1/26 causaram umidade → rachadura de bagas, glomerella, perdas de produtividade. Produtores com plasticultura se beneficiaram (áreas cobertas = menos perdas). <strong>Risco:</strong> frutas de qualidade inferior podem ser direcionadas ao mercado interno → pressão nos preços a partir da 2ª quinzena de abril. <strong>Exportação:</strong> PE respondeu por 68,5% do volume exportado de uva em 2024. <strong>Tarifa UE:</strong> acordo Mercosul-UE pode zerar tarifa → grande oportunidade. EUA: tarifa ainda vigente → embarques caíram 62%.</p>
+  </div>
+
+  <div class="callout up">
+    <h4>🍈 Melão — 5ª alta seguida! Oferta restrita + qualidade melhora</h4>
+    <p><strong>Melão amarelo Ceagesp:</strong> R$ 60,80/cx 13kg (+5% s/s). 5ª semana consecutiva de alta! <strong>Causa:</strong> fim da campanha RN/CE (Chapada do Apodi) reduziu oferta. Vale SF aumenta produção gradativamente mas ainda é insuficiente. Menos chuvas no Vale → estiramento caiu → qualidade melhorou → preço sobe. <strong>Frutas RN/CE:</strong> qualidade abaixo do esperado limita preço. <strong>Tendência:</strong> 5º dia útil pode elevar demanda. Oferta segue restrita → possível nova alta. <strong>Perspectiva CEPEA:</strong> embarques devem diminuir gradativamente até 2ºSem, quando retomam com força.</p>
+  </div>
+
+  <div class="callout dn">
+    <h4>🍉 Melancia — Safra SP intensifica → preço cai em todas as praças</h4>
+    <p><strong>Melancia graúda SP:</strong> R$ 1,56/kg (−6,4% s/s). <strong>Teixeira de Freitas/BA:</strong> R$ 1,64/kg (−5,1%). <strong>Atacado SP:</strong> R$ 2,97/kg (−12,7%!). <strong>Causa:</strong> safra SP intensificou (Marília, Oscar Bressane, Itápolis, Pres. Prudente). Mais da metade já colhida. Qualidade boa em geral, mas Pres. Prudente: calor + pouca chuva → risco de virose. <strong>BA:</strong> encaminha para fim da safra 25/26 → oferta cairá. <strong>Feriado Semana Santa:</strong> demanda fraca limitou compras. <strong>Perspectiva:</strong> capitalização do 5º dia útil pode trazer leve recuperação, mas oferta abundante em SP mantém pressão.</p>
+  </div>
+
+  <div class="callout bl">
+    <h4>📦 Exportação — O Motor da Fruticultura Brasileira</h4>
+    <p><strong>2025 = 3º recorde consecutivo!</strong> 1,28 mi t (+19,6%), US$ 1,45 bi (+12%). <strong>Vale do SF:</strong> responsável por 90% das mangas e uvas exportadas. <strong>260 mil t</strong> de manga + 80 mil t de uva. Produção 52 semanas/ano! <strong>Principais destinos:</strong> UE (Holanda, Espanha, UK), EUA, Canadá. <strong>Desafios 2026:</strong> (1) Tarifas EUA sobre uva; (2) Logística (frete marítimo caro); (3) Concorrência africana na manga. <strong>Oportunidades:</strong> (1) Mercosul-UE: uva tarifa zero; (2) Variedades premium (Cotton Candy, Autumn Crisp); (3) Novos mercados (China, Japão). <strong>Perspectiva CEPEA 2026:</strong> otimista com boa demanda e recuperação de safra.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ TABELA COTAÇÕES ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon fr">📊</div>
+    <h2>Cotações Detalhadas <span>— Semana 30/Mar a 10/Abr/2026</span></h2>
+  </div>
+
+  <div class="card">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Fruta</th><th>Praça / Mercado</th><th>Preço</th><th>Var. s/s</th><th>Tendência</th></tr></thead>
+        <tbody>
+          <tr style="background:rgba(232,121,249,.03)"><td style="text-align:left"><strong>🥭 Manga Palmer</strong></td><td>Atacado Grande SP</td><td><strong>R$ 4,28/kg</strong></td><td style="color:var(--up)">+3,6%</td><td style="color:var(--up)">↗ Recuperação</td></tr>
+          <tr><td style="text-align:left">🥭 Manga Palmer</td><td>Vale SF (BA/PE)</td><td>R$ 1,40/kg</td><td style="color:var(--up)">+2,9%</td><td style="color:var(--nt)">→ Incerta</td></tr>
+          <tr><td style="text-align:left">🥭 Manga Palmer</td><td>Livramento/BA</td><td>R$ 1,52/kg</td><td style="color:var(--up)"><strong>+28,8%</strong></td><td style="color:var(--up)">↗ Forte</td></tr>
+          <tr><td style="text-align:left">🥭 Manga Tommy</td><td>Vale SF</td><td>R$ 2,17/kg</td><td style="color:var(--up)">+8,0%</td><td style="color:var(--up)">↗ Vol. controlado</td></tr>
+          <tr style="background:rgba(232,121,249,.03)"><td style="text-align:left"><strong>🍇 Uva BRS Vitória</strong></td><td>Vale SF Cat1</td><td><strong>R$ 12,70/kg</strong></td><td>—</td><td style="color:var(--nt)">→ Possível queda</td></tr>
+          <tr><td style="text-align:left">🍇 Uva Branca s/sem</td><td>Vale SF Cat1</td><td>R$ 14,30/kg</td><td style="color:var(--up)">+2,5%</td><td style="color:var(--nt)">→ Possível queda</td></tr>
+          <tr style="background:rgba(232,121,249,.03)"><td style="text-align:left"><strong>🍈 Melão Amarelo</strong></td><td>Ceagesp (cx 13kg)</td><td><strong>R$ 60,80/cx</strong></td><td style="color:var(--up)"><strong>+5,0%</strong></td><td style="color:var(--up)">↗ 5ª alta!</td></tr>
+          <tr><td style="text-align:left">🍉 Melancia Graúda</td><td>Produtor SP</td><td style="color:var(--dn)">R$ 1,56/kg</td><td style="color:var(--dn)">−6,4%</td><td style="color:var(--dn)">↘ Safra SP</td></tr>
+          <tr><td style="text-align:left">🍉 Melancia Graúda</td><td>Tx. Freitas/BA</td><td>R$ 1,64/kg</td><td style="color:var(--dn)">−5,1%</td><td style="color:var(--dn)">↘ Fim safra BA</td></tr>
+          <tr><td style="text-align:left">🍉 Melancia Graúda</td><td>Atacado SP</td><td>R$ 2,97/kg</td><td style="color:var(--dn)">−12,7%</td><td style="color:var(--dn)">↘ Oferta alta</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.8rem;color:var(--text3)">s/s = semana sobre semana. Fonte: Hortifrúti/CEPEA, HF Brasil, Notícias Agrícolas. Ref.: 30/mar a 10/abr 2026.</p>
+  </div>
+</div>
+
+<!-- ============ CENÁRIOS ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon green">🔮</div>
+    <h2>Cenários <span>— Fruticultura BR 2026</span></h2>
+  </div>
+
+  <div class="card">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Cenário</th><th>Exportação</th><th>Preço Interno</th><th>Driver</th><th>Prob.</th></tr></thead>
+        <tbody>
+          <tr><td style="text-align:left;color:var(--up)">📈 Otimista</td><td style="color:var(--up)"><strong>1,4 mi t / US$ 1,6 bi</strong></td><td style="color:var(--up)">Alta</td><td>Mercosul-UE efetivado + tarifa uva EUA cai + safra boa + novos mercados</td><td><span class="tag tag-up">25%</span></td></tr>
+          <tr><td style="text-align:left;color:var(--nt)">➡️ Base</td><td><strong>1,3 mi t / US$ 1,5 bi</strong></td><td>Estável</td><td>Manutenção de tarifas + clima ok + demanda europeia firme</td><td><span class="tag tag-nt">50%</span></td></tr>
+          <tr><td style="text-align:left;color:var(--dn)">📉 Pessimista</td><td style="color:var(--dn)"><strong>1,1 mi t / US$ 1,2 bi</strong></td><td style="color:var(--dn)">Queda</td><td>Tarifas EUA 50% mantidas + clima adverso + logística cara</td><td><span class="tag tag-dn">25%</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TERMÔMETROS ============ -->
+<div class="grid2">
+  <div class="thermo">
+    <h4>🌡️ Preço Frutas Mercado Interno</h4>
+    <div class="th-bar"><div class="th-marker" style="left:55%"></div></div>
+    <div class="th-label-row"><span>Baixista</span><span>Neutro</span><span>Altista</span></div>
+    <p style="font-size:.82rem;color:var(--nt);margin-top:8px;font-weight:600">🟡 MISTO — Uva/melão em alta (oferta restrita). Melancia em baixa (safra SP). Manga recuperando.</p>
+  </div>
+  <div class="thermo">
+    <h4>🌡️ Perspectiva Exportação</h4>
+    <div class="th-bar"><div class="th-marker" style="left:65%"></div></div>
+    <div class="th-label-row"><span>Negativa</span><span>Neutra</span><span>Positiva</span></div>
+    <p style="font-size:.82rem;color:var(--up);margin-top:8px;font-weight:600">🟢 MODERADAMENTE POSITIVA — 3º recorde. Risco = tarifas EUA. Oportunidade = Mercosul-UE + novos destinos.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ OPINIÃO ============ -->
+<div class="opinion">
+  <h3>🎯 Opinião do Analista — Fruticultura: O Agro que Gera Mais Emprego por Hectare</h3>
+
+  <p><strong>A fruticultura brasileira é uma máquina de gerar emprego, renda e exportação.</strong> 3 recordes consecutivos. US$ 1,45 bi em 2025. 120 mil empregos só no Vale do São Francisco. Produção 52 semanas/ano graças à irrigação. E ainda está longe do potencial: o Brasil é apenas o 3º exportador mundial de frutas frescas, atrás de Espanha e Chile.</p>
+
+  <p><strong>Semana mista no mercado interno:</strong> cada fruta em um movimento diferente. Uva e melão sustentados por oferta restrita. Manga em recuperação. Melancia pressionada pela safra paulista. Isso é típico de horti — mercado fragmentado, volátil, onde quem tem informação boa decide melhor.</p>
+
+  <p><strong>Os 5 pontos para monitorar:</strong></p>
+  <p>1. <strong>Tarifas EUA:</strong> manga zerada (ok), mas uva ainda com 50%. Se não cair, Vale perde US$ 90 mi/ano. Negociação em curso.<br>
+  2. <strong>Mercosul-UE:</strong> se efetivado, tarifa zero para uva na UE. Seria transformador — Europa já é o maior comprador.<br>
+  3. <strong>Uva no Vale:</strong> chuvas Q1/26 + glomerella reduziram oferta. Preço alto agora (R$ 12-14/kg), mas 2ª quinzena de abril pode trazer Cat2/Cat3 para mercado interno → pressão.<br>
+  4. <strong>Melão:</strong> entressafra RN/CE sustenta preço. 2ºSem = volta dos embarques fortes. Ficar atento à qualidade das últimas frutas da campanha.<br>
+  5. <strong>Variedades premium:</strong> Cotton Candy, Autumn Crisp, mangas Kent = futuro da exportação. Quem plantar variedades que o mercado internacional quer terá margens superiores.</p>
+
+  <p><strong>Conclusão:</strong> fruticultura é setor estruturalmente positivo. Demanda global por frutas frescas cresce. Brasil tem sol, água (irrigação) e mão de obra. O gargalo é logístico (frete, portos) e comercial (tarifas). Quem investir em qualidade, rastreabilidade e variedades modernas surfará uma onda de crescimento por muitos anos.</p>
+
+  <div class="sig">— Dr. Sidney Souza · Economista Agrícola · Rural IN · 10/Abr/2026</div>
+</div>
+
+<!-- ============ SCRIPTS ============ -->
+<script>
+const gc='rgba(30,58,40,.35)',fc={family:"'Segoe UI',system-ui,sans-serif",size:11,weight:'600'},tt={backgroundColor:'#10221a',borderColor:'#2a5038',borderWidth:1,titleFont:{size:12,weight:'700'},bodyFont:{size:11},padding:10,cornerRadius:8};
+
+// CHART 1: EXPORTAÇÃO VOLUME + RECEITA
+new Chart(document.getElementById('chFr1').getContext('2d'),{
+  type:'bar',
+  data:{labels:['2019','2020','2021','2022','2023','2024','2025\nRecorde!'],
+    datasets:[
+      {label:'Volume (mil t)',data:[870,900,960,850,980,1070,1280],
+        backgroundColor:'rgba(34,197,94,.2)',borderColor:'#22c55e',borderWidth:2,borderRadius:4,yAxisID:'y'},
+      {label:'Receita (US$ mi)',data:[870,920,1000,880,1100,1295,1451],
+        type:'line',borderColor:'#e879f9',backgroundColor:'rgba(232,121,249,.06)',borderWidth:3,fill:false,tension:.3,pointRadius:5,
+        pointBackgroundColor:function(c){return c.dataIndex===6?'#e879f9':'#a855f7';},yAxisID:'y1'}
+    ]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{
+    legend:{labels:{color:'#a3b8a9',font:{size:10}}},tooltip:tt,
+    annotation:{annotations:{
+      rec:{type:'label',xValue:6,yValue:1520,content:['US$ 1,45 bi','3º Recorde!'],font:{size:10,weight:'bold'},color:'#e879f9'}
+    }}},
+    scales:{
+      y:{min:600,max:1500,grid:{color:gc},ticks:{callback:v=>v+'k t',font:fc},position:'left'},
+      y1:{min:600,max:1600,grid:{display:false},ticks:{callback:v=>'$'+v+'mi',font:fc},position:'right'},
+      x:{grid:{display:false},ticks:{font:{size:9,weight:'700'}}}}}
+});
+
+// CHART 2: COTAÇÕES SEMANAIS
+new Chart(document.getElementById('chFr2').getContext('2d'),{
+  type:'bar',
+  data:{labels:['Manga\nPalmer SP','Manga\nVale SF','Uva BRS\nVitória','Uva Branca\ns/sem','Melão\nAmarelo*','Melancia\nSP'],
+    datasets:[{label:'R$/kg (ou */cx)',
+      data:[4.28,1.40,12.70,14.30,4.68,1.56],
+      backgroundColor:['rgba(255,165,0,.25)','rgba(255,165,0,.15)','rgba(147,51,234,.25)','rgba(147,51,234,.15)','rgba(234,179,8,.25)','rgba(239,68,68,.15)'],
+      borderColor:['#f97316','#fb923c','#9333ea','#a855f7','#eab308','#ef4444'],
+      borderWidth:2,borderRadius:4}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{
+    legend:{display:false},tooltip:tt,
+    annotation:{annotations:{
+      nota:{type:'label',xValue:4,yValue:5.5,content:['*Melão: R$60,80/cx','÷13kg = R$4,68/kg'],font:{size:8,weight:'600'},color:'#eab308'}
+    }}},
+    scales:{y:{min:0,max:16,grid:{color:gc},ticks:{callback:v=>'R$'+v,font:fc}},x:{grid:{display:false},ticks:{font:{size:8,weight:'600'}}}}}
+});
+
+// CHART 3: DESTINOS EXPORTAÇÃO
+new Chart(document.getElementById('chFr3').getContext('2d'),{
+  type:'doughnut',
+  data:{labels:['UE (Holanda, Espanha, UK)','EUA','Canadá','Mercosul','Outros'],
+    datasets:[{data:[45,20,8,12,15],
+      backgroundColor:['rgba(59,130,246,.35)','rgba(239,68,68,.35)','rgba(234,179,8,.35)','rgba(34,197,94,.35)','rgba(107,133,112,.35)'],
+      borderColor:['#3b82f6','#ef4444','#eab308','#22c55e','#6b8570'],
+      borderWidth:2}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{
+    legend:{labels:{color:'#a3b8a9',font:{size:11},padding:12}},tooltip:tt}}
+});
+
+// CHART 4: MANGA PALMER VALE SF
+new Chart(document.getElementById('chFr4').getContext('2d'),{
+  type:'line',
+  data:{labels:['Out/25','Nov/25','Dez/25','Jan/26','Fev/26','Mar/26\nInício','Mar/26\nFim','Abr/26'],
+    datasets:[{label:'Palmer R$/kg produtor',
+      data:[1.80,2.10,2.50,2.20,1.80,1.36,1.36,1.40],
+      borderColor:'#f97316',backgroundColor:'rgba(249,115,22,.08)',borderWidth:3,fill:true,tension:.3,
+      pointRadius:function(c){return c.dataIndex===7?7:4;},
+      pointBackgroundColor:function(c){return c.dataIndex===7?'#22c55e':'#f97316';}}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{
+    legend:{display:false},tooltip:tt,
+    annotation:{annotations:{
+      rec:{type:'label',xValue:7,yValue:1.6,content:['R$ 1,40','Recuperou +2,9%'],font:{size:9,weight:'bold'},color:'#22c55e'},
+      fundo:{type:'label',xValue:5,yValue:1.1,content:['R$ 1,36','Fundo 2 meses'],font:{size:8,weight:'bold'},color:'#ef4444'}
+    }}},
+    scales:{y:{min:0.8,max:2.8,grid:{color:gc},ticks:{callback:v=>'R$'+v.toFixed(2),font:fc}},x:{grid:{display:false},ticks:{font:{size:8,weight:'600'}}}}}
+});
+</script>
+</body>
+</html>

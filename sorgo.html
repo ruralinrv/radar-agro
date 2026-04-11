@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Sorgo — Radar Agro Rural IN</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1"></script>
+<style>
+:root{--bg:#0c1a11;--bg2:#10221a;--bg3:#162b1f;--border:#1e3a28;--border2:#2a5038;--accent:#d4a017;--accent2:#f0c950;--green:#2d8a44;--green2:#34d399;--text:#e8f0eb;--text2:#a3b8a9;--text3:#6b8570;--up:#22c55e;--dn:#ef4444;--nt:#eab308;--blue:#3b82f6;--amber:#f59e0b;--sorgo:#d97706;--radius:12px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding:32px;max-width:1100px}
+.page-header{margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border)}.page-header h1{font-size:2rem;font-weight:800;margin-bottom:6px}.page-header h1 .emoji{font-size:2.2rem;margin-right:8px}.page-header h1 .hl{color:var(--accent2)}.page-header .subtitle{font-size:1rem;color:var(--text2);font-weight:400;line-height:1.8}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:16px;margin-bottom:32px}.kpi{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;position:relative;overflow:hidden}.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2)}.kpi.up::before{background:var(--up)}.kpi.dn::before{background:var(--dn)}.kpi.nt::before{background:var(--nt)}.kpi.bl::before{background:var(--blue)}.kpi.sg::before{background:var(--sorgo)}.kpi-label{font-size:.75rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:8px;font-weight:600}.kpi-value{font-size:1.55rem;font-weight:800;letter-spacing:-.5px}.kpi-value.up{color:var(--up)}.kpi-value.dn{color:var(--dn)}.kpi-value.nt{color:var(--nt)}.kpi-sub{font-size:.82rem;color:var(--text3);margin-top:4px}
+.section{margin-bottom:36px}.section-title{display:flex;align-items:center;gap:12px;margin-bottom:20px}.section-title .icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}.section-title .icon.sg{background:linear-gradient(135deg,#92400e,#d97706)}.section-title .icon.green{background:linear-gradient(135deg,#1a5c2a,#2d8a44)}.section-title h2{font-size:1.35rem;font-weight:700}.section-title h2 span{font-weight:400;color:var(--text2);font-size:.95rem}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;margin-bottom:20px}.card h3{font-size:1rem;color:var(--text2);margin-bottom:16px;font-weight:600}
+.callout{border-radius:var(--radius);padding:22px 26px;margin-bottom:20px;border-left:4px solid}.callout.up{background:rgba(34,197,94,.06);border-color:var(--up)}.callout.dn{background:rgba(239,68,68,.06);border-color:var(--dn)}.callout.nt{background:rgba(234,179,8,.06);border-color:var(--nt)}.callout.bl{background:rgba(59,130,246,.06);border-color:var(--blue)}.callout.sg{background:rgba(217,119,6,.06);border-color:var(--sorgo)}.callout h4{font-size:1.05rem;font-weight:700;margin-bottom:10px}.callout.up h4{color:var(--up)}.callout.dn h4{color:var(--dn)}.callout.nt h4{color:var(--nt)}.callout.bl h4{color:var(--blue)}.callout.sg h4{color:var(--sorgo)}.callout p{font-size:.95rem;color:var(--text2);line-height:1.8}.callout p strong{color:var(--text)}
+.chart-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;margin-bottom:20px}.chart-box h3{font-size:.95rem;color:var(--text2);margin-bottom:14px;font-weight:600}.chart-wrap{position:relative;height:320px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}@media(max-width:800px){.grid2{grid-template-columns:1fr}}
+.tbl-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--border);margin-bottom:16px}table{width:100%;border-collapse:collapse;font-size:.9rem}thead th{background:var(--bg3);padding:14px 16px;text-align:center;font-weight:600;color:var(--text2);font-size:.78rem;text-transform:uppercase;letter-spacing:.8px;border-bottom:1px solid var(--border)}tbody td{padding:13px 16px;border-bottom:1px solid rgba(30,58,40,.4);text-align:center;font-size:.9rem}tbody tr:last-child td{border-bottom:none}tbody tr:hover{background:rgba(45,138,68,.04)}
+.thermo{margin:20px 0}.thermo h4{font-size:.95rem;color:var(--text2);margin-bottom:10px}.th-bar{height:14px;border-radius:7px;background:linear-gradient(90deg,var(--dn),var(--nt),var(--up));position:relative}.th-marker{position:absolute;top:-6px;width:3px;height:26px;background:#fff;border-radius:2px;transform:translateX(-50%)}.th-label-row{display:flex;justify-content:space-between;font-size:.75rem;color:var(--text3);margin-top:6px}
+.opinion{background:linear-gradient(135deg,rgba(26,92,42,.12),rgba(26,92,42,.04));border:1px solid rgba(45,138,68,.2);border-radius:var(--radius);padding:28px 30px;margin:24px 0}.opinion h3{font-size:1.15rem;font-weight:700;color:var(--accent2);margin-bottom:14px}.opinion p{font-size:.95rem;color:var(--text2);line-height:1.85;margin-bottom:12px}.opinion p strong{color:var(--text)}.opinion .sig{margin-top:16px;padding-top:12px;border-top:1px solid rgba(45,138,68,.15);font-size:.82rem;color:var(--text3);font-style:italic}
+.alert-bar{border-radius:var(--radius);padding:18px 22px;margin-bottom:24px;display:flex;align-items:flex-start;gap:14px;border:1px solid}.alert-bar.green{background:linear-gradient(135deg,rgba(34,197,94,.1),rgba(34,197,94,.03));border-color:rgba(34,197,94,.3)}.alert-bar.yellow{background:linear-gradient(135deg,rgba(234,179,8,.08),rgba(234,179,8,.02));border-color:rgba(234,179,8,.25)}.alert-bar.amber{background:linear-gradient(135deg,rgba(217,119,6,.08),rgba(217,119,6,.02));border-color:rgba(217,119,6,.25)}.alert-bar .alert-icon{font-size:1.6rem;flex-shrink:0}.alert-bar .alert-text{font-size:.92rem;color:var(--text2);line-height:1.7}.alert-bar .alert-text strong{color:var(--text)}
+.highlight{background:linear-gradient(135deg,rgba(217,119,6,.08),rgba(217,119,6,.02));border:1px solid rgba(217,119,6,.25);border-radius:var(--radius);padding:24px 28px;margin-bottom:24px;text-align:center}.highlight .hl-emoji{font-size:2.2rem;margin-bottom:8px}.highlight .hl-title{font-size:1.1rem;font-weight:700;color:var(--sorgo);margin-bottom:8px}.highlight .hl-text{font-size:.95rem;color:var(--text2);line-height:1.8}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border2),var(--sorgo),var(--border2),transparent);margin:36px 0}
+.tag{display:inline-flex;align-items:center;padding:4px 12px;border-radius:6px;font-size:.78rem;font-weight:600}.tag-up{background:rgba(34,197,94,.1);color:var(--up)}.tag-dn{background:rgba(239,68,68,.1);color:var(--dn)}.tag-nt{background:rgba(234,179,8,.1);color:var(--nt)}
+.vs-box{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;margin:20px 0}.vs-item{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px;text-align:center}.vs-item h4{font-size:.85rem;color:var(--text3);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px}.vs-item .val{font-size:1.8rem;font-weight:800}.vs-vs{font-size:1.5rem;font-weight:800;color:var(--text3)}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<div class="page-header">
+  <h1><span class="emoji">🌾</span> Sorgo — <span class="hl">A Cultura Que DOBROU em 5 Anos. GO Lidera. Área +11%. Etanol + China = Nova Demanda.</span></h1>
+  <p class="subtitle">
+    Sorgo GO: <strong style="color:var(--sorgo)">~R$ 45/sc</strong> (Chapadão do Céu, fev) &nbsp;|&nbsp;
+    Milho ref.: <strong>R$ 69/sc</strong> (sorgo ≈ 65% do milho) &nbsp;|&nbsp;
+    Área 25/26: <strong style="color:var(--up)">1,80-1,92 mi ha</strong> (+11%) &nbsp;|&nbsp;
+    Produção: <strong style="color:var(--up)">4,1-6,9 mi t</strong> (2x em 5 anos!) &nbsp;|&nbsp;
+    GO: <strong style="color:var(--accent2)">1,26 mi t = #1 BRASIL</strong> &nbsp;|&nbsp;
+    Custo: <strong style="color:var(--up)">R$ 2.205/ha (65% menor que milho!)</strong>
+  </p>
+</div>
+
+<!-- ============ DESTAQUE ============ -->
+<div class="highlight">
+  <div class="hl-emoji">🚀</div>
+  <div class="hl-title">Sorgo: De Cultura Marginal a Protagonista da Safrinha</div>
+  <div class="hl-text">
+    <strong>Itaú BBA / Radar Agro:</strong> <em>"Produção brasileira de sorgo deve alcançar 6,9 mi t na safra 2025/26, mais que o dobro de 5 anos atrás."</em><br>
+    Área cresceu +11% em 1 ano. <strong>Etanol de sorgo + China (82% das importações globais) + ração animal</strong> = base de demanda sólida.<br>
+    <strong>Goiás lidera com 1,26 mi t de produção</strong> e a maior produtividade do Brasil (2.300 kg/ha).
+  </div>
+</div>
+
+<!-- ============ ALERTAS ============ -->
+<div class="alert-bar green">
+  <div class="alert-icon">📈</div>
+  <div class="alert-text">
+    <strong style="color:var(--up)">EXPANSÃO ESTRUTURAL CONFIRMADA.</strong> Conab: área +10% (1,796 mi ha). Safras & Mercado: 1,917 mi ha. Pode chegar a 2 mi ha.
+    <strong>Drivers:</strong> atraso soja → janela milho fecha → sorgo entra. Cigarrinha do milho. Etanol de sorgo rende = milho. Custo 65% menor.
+    <strong>Conab:</strong> produção 6,6 mi t (+8,4%). Canal Pecuarista: <em>"área pode se aproximar de 2 mi ha, com produção entre 7 e 7,5 mi t."</em>
+  </div>
+</div>
+
+<div class="alert-bar amber">
+  <div class="alert-icon">⚠️</div>
+  <div class="alert-text">
+    <strong style="color:var(--sorgo)">ATENÇÃO: Aumento rápido da oferta pode pressionar preços.</strong> Notícias Agrícolas: <em>"Plantio deve crescer mais de 11% — mas há demanda para tudo isso?"</em>
+    Se produção for 6,9 mi t e demanda não acompanhar: preço pode ceder para R$ 38-42/sc.
+    <strong>Saída:</strong> etanol (novo mercado) + China (já puxa 82% das importações globais) + ração = demanda absorve.
+  </div>
+</div>
+
+<!-- ============ KPIs ============ -->
+<div class="kpi-grid">
+  <div class="kpi sg">
+    <div class="kpi-label">Sorgo GO (ref.)</div>
+    <div class="kpi-value" style="color:var(--sorgo)">~R$ 45/sc</div>
+    <div class="kpi-sub">Chapadão do Céu · ~65% do milho</div>
+  </div>
+  <div class="kpi up">
+    <div class="kpi-label">Área 25/26</div>
+    <div class="kpi-value up">1,80-1,92 mi ha</div>
+    <div class="kpi-sub">+10-11% vs 24/25 · Pode bater 2 mi</div>
+  </div>
+  <div class="kpi up">
+    <div class="kpi-label">Produção 25/26</div>
+    <div class="kpi-value up">4,1-6,9 mi t</div>
+    <div class="kpi-sub">Safras 4,1 mi · Conab 6,6 · BBA 6,9</div>
+  </div>
+  <div class="kpi sg">
+    <div class="kpi-label">GO = #1 Brasil</div>
+    <div class="kpi-value" style="color:var(--accent2)">1,26 mi t</div>
+    <div class="kpi-sub">545 mil ha · 2.300 kg/ha (melhor!)</div>
+  </div>
+  <div class="kpi up">
+    <div class="kpi-label">Custo/ha GO</div>
+    <div class="kpi-value up">R$ 2.205</div>
+    <div class="kpi-sub">Milho: R$ 3.650 = 65% mais caro!</div>
+  </div>
+  <div class="kpi bl">
+    <div class="kpi-label">China Importa</div>
+    <div class="kpi-value" style="color:var(--blue)">82% global</div>
+    <div class="kpi-sub">7,6 mi t em 25/26 · Oportunidade BR</div>
+  </div>
+</div>
+
+<!-- ============ VS BOX ============ -->
+<div class="vs-box">
+  <div class="vs-item">
+    <h4>🌾 Sorgo (Custo/ha)</h4>
+    <div class="val" style="color:var(--up)">R$ 2.205</div>
+    <p style="font-size:.85rem;color:var(--text3);margin-top:6px">Sequeiro GO · Menor risco</p>
+  </div>
+  <div class="vs-vs">VS</div>
+  <div class="vs-item">
+    <h4>🌽 Milho (Custo/ha)</h4>
+    <div class="val" style="color:var(--dn)">R$ 3.650</div>
+    <p style="font-size:.85rem;color:var(--text3);margin-top:6px">Safrinha GO · Maior risco climático</p>
+  </div>
+</div>
+<p style="text-align:center;font-size:.9rem;color:var(--text3);margin-top:-10px;margin-bottom:24px">Sorgo custa <strong style="color:var(--up)">40% menos por hectare</strong> que milho. Break-even mais baixo = proteção de margem.</p>
+
+<!-- ============ GRÁFICOS ============ -->
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📈 Evolução da Produção BR de Sorgo (mi t)</h3>
+    <div class="chart-wrap"><canvas id="chSg1"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>📊 Área Plantada — Crescimento Acelerado (mi ha)</h3>
+    <div class="chart-wrap"><canvas id="chSg2"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>🏆 Top Produtores — Safra 25/26 (mil t)</h3>
+    <div class="chart-wrap"><canvas id="chSg3"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>💰 Custo de Produção: Sorgo vs Milho (R$/ha GO)</h3>
+    <div class="chart-wrap"><canvas id="chSg4"></canvas></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ ANÁLISE ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon sg">📋</div>
+    <h2>Os 5 Fatores do Sorgo <span>— Por Que Está Explodindo em 2026</span></h2>
+  </div>
+
+  <div class="callout up">
+    <h4>Fator 1 — Janela do Milho Fechou: Sorgo É a Saída</h4>
+    <p><strong>Conab / Notícias Agrícolas:</strong> atraso no plantio da soja 25/26 comprometeu a janela ideal do milho safrinha. <strong>40% da soja ainda em estágio inicial</strong> em jan/26. Colheita de soja em 15/mar → janela milho fecha 5/mar. <strong>Resultado:</strong> produtores migraram para sorgo, que tem <strong>janela de plantio mais ampla</strong> (até 30 dias após milho). <strong>Maranhão:</strong> +58% de área. MT: +13,4%. MS: +16,4%. TO: +16%. <strong>Pedro Lima (Advanta Seeds):</strong> <em>"A janela de risco do milho se torna oportunidade para o sorgo."</em></p>
+  </div>
+
+  <div class="callout up">
+    <h4>Fator 2 — Etanol de Sorgo: O Novo Mercado que Muda Tudo</h4>
+    <p><strong>SCA Brasil / Embrapa:</strong> rendimento do sorgo para etanol é <strong>IGUAL ao do milho!</strong> Mesmo volume de etanol e DDG por tonelada. Única desvantagem: não extrai óleo. <strong>Usinas de etanol de milho no Centro-Oeste</strong> (GO, MT, MS) começaram a processar sorgo — novo comprador estrutural. <strong>Embrapa Frederico Botelho:</strong> <em>"Até então havia poucos compradores. Agora as usinas criam demanda adicional."</em> Isso resolve o problema histórico do sorgo: <strong>falta de liquidez.</strong></p>
+  </div>
+
+  <div class="callout sg">
+    <h4>Fator 3 — GO Lidera: #1 em Produção, #1 em Produtividade</h4>
+    <p><strong>Safras & Mercado:</strong> GO produzirá 1,259 mi t (maior do Brasil). Área: 544,9 mil ha. Produtividade: 2.300 kg/ha = <strong>a melhor do país.</strong> <strong>Conab / SEAPA-GO:</strong> área goiana pode atingir 438 mil ha (Conab, mais conservador). <strong>Rural News GO:</strong> <em>"Sorgo amplia participação na safra 25/26 com crescimento de 7,3%."</em> Regiões fortes: Chapadão do Céu, Jataí, Rio Verde, Cristalina, Luziânia. A combinação soja → sorgo safrinha é cada vez mais popular no Sudoeste Goiano.</p>
+  </div>
+
+  <div class="callout bl">
+    <h4>Fator 4 — China: 82% das Importações Globais</h4>
+    <p><strong>Itaú BBA Radar Agro:</strong> China importará 7,6 mi t de sorgo em 25/26 = 82% do total mundial. Atualmente compra dos EUA e Austrália. <strong>Brasil está começando a exportar</strong> — potencial enorme se qualidade e logística permitirem. <strong>Contexto:</strong> guerra comercial EUA-China → abertura para sorgo brasileiro? Se tarifas chinesas sobre sorgo americano subirem (como fizeram em 2018): <strong>Brasil é substituto natural.</strong></p>
+  </div>
+
+  <div class="callout nt">
+    <h4>Fator 5 — Risco: Excesso de Oferta Pode Pressionar Preço</h4>
+    <p><strong>Notícias Agrícolas:</strong> <em>"Plantio cresce 11% — mas há demanda para tudo isso?"</em> Se produção passar de 6,5 mi t e demanda interna (ração + etanol) absorver 5 mi t → sobram 1,5 mi t. <strong>Preço pode ceder para R$ 38-42/sc.</strong> <strong>Atenuantes:</strong> 1) Usinas de etanol = demanda nova e crescente. 2) China: se Brasil abrir comércio → absorve excesso. 3) Preço do milho alto (R$ 69/sc) mantém sorgo atrativo como substituto em ração. <strong>Se milho cair para R$ 55/sc:</strong> competitividade do sorgo diminui.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ TABELA ESTADOS ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon sg">📊</div>
+    <h2>Top Produtores 25/26 <span>— Safras & Mercado (dez/25)</span></h2>
+  </div>
+
+  <div class="card">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Estado</th><th>Produção (mil t)</th><th>Área (mil ha)</th><th>Produtividade (kg/ha)</th><th>Destaque</th></tr></thead>
+        <tbody>
+          <tr style="background:rgba(217,119,6,.04)"><td><strong style="color:var(--accent2)">Goiás</strong></td><td style="color:var(--up)"><strong>1.259</strong></td><td>544,9</td><td style="color:var(--up)"><strong>2.300</strong></td><td><span class="tag tag-up">#1 PRODUÇÃO E PRODUTIVIDADE</span></td></tr>
+          <tr><td><strong>Minas Gerais</strong></td><td><strong>1.247</strong></td><td>573,5</td><td>2.174</td><td>#1 em área plantada</td></tr>
+          <tr><td>Norte/Nordeste</td><td>785</td><td>—</td><td>2.200</td><td>MA +58% de área</td></tr>
+          <tr><td>São Paulo</td><td>450</td><td>—</td><td>—</td><td>Ração + etanol</td></tr>
+          <tr style="background:rgba(107,133,112,.03)"><td><strong>BRASIL</strong></td><td style="color:var(--up)"><strong>4.086</strong></td><td><strong>1.917</strong></td><td>2.131</td><td>+11% área vs 24/25</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.85rem;color:var(--text3)">Fonte: Safras & Mercado (dez/25). Conab estima produção mais alta (6,6 mi t) incluindo 2ª/3ª safra. Itaú BBA: até 6,9 mi t.</p>
+  </div>
+</div>
+
+<!-- ============ CENÁRIOS ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon green">🔮</div>
+    <h2>Cenários <span>— Preço do Sorgo GO 2026</span></h2>
+  </div>
+
+  <div class="card">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Cenário</th><th>Preço R$/sc GO</th><th>Produção BR</th><th>Driver</th><th>Prob.</th></tr></thead>
+        <tbody>
+          <tr><td style="text-align:left;color:var(--up)">📈 Alta</td><td style="color:var(--up)"><strong>R$ 50-60</strong></td><td>5,5-6,0 mi t</td><td>Seca reduz prod + milho sobe + etanol puxa</td><td><span class="tag tag-up">25%</span></td></tr>
+          <tr><td style="text-align:left;color:var(--nt)">➡️ Estável</td><td><strong>R$ 42-50</strong></td><td>6,0-6,9 mi t</td><td>Oferta alta equilibrada por etanol e ração</td><td><span class="tag tag-nt">50%</span></td></tr>
+          <tr><td style="text-align:left;color:var(--dn)">📉 Pressão</td><td style="color:var(--dn)"><strong>R$ 35-42</strong></td><td>>7,0 mi t</td><td>Safra cheia + milho cai + demanda fraca</td><td><span class="tag tag-dn">25%</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TERMÔMETROS ============ -->
+<div class="grid2">
+  <div class="thermo">
+    <h4>🌡️ Sorgo — Tendência de Preço 2026</h4>
+    <div class="th-bar"><div class="th-marker" style="left:48%"></div></div>
+    <div class="th-label-row"><span>Baixista</span><span>Neutro</span><span>Altista</span></div>
+    <p style="font-size:.82rem;color:var(--nt);margin-top:8px;font-weight:600">⚠ NEUTRO — Oferta recorde vs demanda nova (etanol). Milho forte sustenta paridade.</p>
+  </div>
+  <div class="thermo">
+    <h4>🌡️ Potencial de Crescimento (Médio Prazo)</h4>
+    <div class="th-bar"><div class="th-marker" style="left:78%"></div></div>
+    <div class="th-label-row"><span>Baixo</span><span>Médio</span><span>Alto</span></div>
+    <p style="font-size:.82rem;color:var(--up);margin-top:8px;font-weight:600">🟢 ALTO — Etanol + China + custo baixo + clima = megatendência agrícola.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ OPINIÃO ============ -->
+<div class="opinion">
+  <h3>🎯 Opinião do Analista — Sorgo: A Nova Fronteira da Safrinha Goiana</h3>
+
+  <p><strong>O sorgo está vivendo seu momento de disrupção.</strong> De cultura marginal ("o que se planta quando perde a janela do milho") para protagonista da safrinha com múltiplos mercados: <strong>ração (aves, suínos, bovinos confinados) + etanol (usinas de milho agora processam sorgo) + China (82% das importações globais).</strong> A produção DOBROU em 5 anos. A área cresce 11% ao ano. <strong>Isso não é moda — é mudança estrutural.</strong></p>
+
+  <p><strong>Por que Goiás lidera?</strong> Três motivos: 1) Cerrado goiano tem a combinação perfeita de solo + temperatura + regime hídrico para sorgo na safrinha. 2) Usinas de etanol de milho em GO/MT criam demanda local (sem necessidade de frete longo). 3) Polo de ração e avicultura de GO (Rio Verde, Itaberaí) consome sorgo como substituto do milho.</p>
+
+  <p><strong>Para o Produtor de GO:</strong></p>
+  <p>1. <strong>Sorgo como hedge natural:</strong> custo de R$ 2.205/ha (vs R$ 3.650 do milho). Se preço de venda for R$ 45/sc e produtividade de 38 sc/ha → receita ~R$ 1.710/ha. Margem apertada, MAS risco muito menor que milho safrinha tardio.<br>
+  2. <strong>Negocie com usinas de etanol ANTES de plantar.</strong> Contratos antecipados garantem preço e liquidez. Usinas pagam prêmio para garantir matéria-prima.<br>
+  3. <strong>Fique atento à paridade sorgo/milho:</strong> historicamente, sorgo vale 60-70% do milho. Se milho cair de R$ 69 para R$ 55/sc → sorgo cai para R$ 33-38/sc. Proteja-se com venda antecipada de 50% da produção.<br>
+  4. <strong>Tecnologia igrowth® (Bunge/UPL):</strong> novos híbridos com melhor resposta a manejo intensivo. Produtividades de 2.500-3.000 kg/ha são possíveis com boa genética + adubação.<br>
+  5. <strong>China é a grande aposta de longo prazo.</strong> Se Brasil abrir canal comercial de sorgo com China (como fez com milho): preço sobe 20-30%. Monitore habilitações da MAPA/Anvisa.</p>
+
+  <p><strong>Monitoramento semanal:</strong><br>
+  🔴 <strong>Milho CEPEA</strong> (paridade sorgo/milho define piso do sorgo)<br>
+  🔴 <strong>Clima safrinha</strong> (abr-jun é crítico para enchimento de grão)<br>
+  🟡 <strong>Usinas de etanol</strong> (demanda crescente = sustento de preço)<br>
+  🟡 <strong>Exportações para China</strong> (abertura = game changer)<br>
+  🟢 <strong>Área plantada real</strong> (se ultrapassar 2 mi ha: atenção ao excesso)</p>
+
+  <div class="sig">— Dr. Sidney Souza · Economista Agrícola · Rural IN · 10/Abr/2026</div>
+</div>
+
+<!-- ============ SCRIPTS ============ -->
+<script>
+const gc='rgba(30,58,40,.35)',fc={family:"'Segoe UI',system-ui,sans-serif",size:11,weight:'600'},tt={backgroundColor:'#10221a',borderColor:'#2a5038',borderWidth:1,titleFont:{size:12,weight:'700'},bodyFont:{size:11},padding:10,cornerRadius:8};
+
+// CHART 1: PRODUÇÃO HISTÓRICA
+new Chart(document.getElementById('chSg1').getContext('2d'),{
+  type:'bar',
+  data:{labels:['20/21','21/22','22/23','23/24','24/25','25/26\nProj.'],
+    datasets:[{label:'Produção mi t',
+      data:[2.5,2.8,3.2,3.5,3.7,6.9],
+      backgroundColor:function(c){return c.dataIndex===5?'rgba(217,119,6,.35)':'rgba(107,133,112,.15)';},
+      borderColor:function(c){return c.dataIndex===5?'#d97706':'#6b8570';},
+      borderWidth:2,borderRadius:5}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt,
+    annotation:{annotations:{
+      dobro:{type:'label',xValue:5,yValue:7.4,content:['6,9 mi t!','DOBROU em 5 anos'],font:{size:10,weight:'bold'},color:'#d97706'},
+      seta:{type:'line',xMin:0,xMax:5,yMin:2.5,yMax:6.9,borderColor:'rgba(217,119,6,.3)',borderWidth:2,borderDash:[5,3]}
+    }}},
+    scales:{y:{min:0,max:8,grid:{color:gc},ticks:{callback:v=>v+'mi',font:fc}},x:{grid:{display:false},ticks:{font:{size:10,weight:'700'}}}}}
+});
+
+// CHART 2: ÁREA PLANTADA
+new Chart(document.getElementById('chSg2').getContext('2d'),{
+  type:'line',
+  data:{labels:['20/21','21/22','22/23','23/24','24/25','25/26'],
+    datasets:[{label:'Área mi ha',
+      data:[0.85,0.95,1.15,1.45,1.63,1.92],
+      borderColor:'#d97706',backgroundColor:'rgba(217,119,6,.08)',borderWidth:2.5,fill:true,tension:.3,
+      pointRadius:6,pointBackgroundColor:'#d97706'}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt,
+    annotation:{annotations:{
+      meta:{type:'line',yMin:2.0,yMax:2.0,borderColor:'rgba(34,197,94,.4)',borderWidth:1.5,borderDash:[4,3],
+        label:{display:true,content:'Meta 2 mi ha?',position:'end',backgroundColor:'rgba(34,197,94,.5)',font:{size:8}}}
+    }}},
+    scales:{y:{min:0.6,max:2.2,grid:{color:gc},ticks:{callback:v=>v.toFixed(1)+'mi',font:fc}},x:{grid:{display:false},ticks:{font:{size:11,weight:'700'}}}}}
+});
+
+// CHART 3: TOP PRODUTORES
+new Chart(document.getElementById('chSg3').getContext('2d'),{
+  type:'bar',
+  data:{labels:['Goiás','Minas Gerais','N/NE','São Paulo','Outros'],
+    datasets:[{label:'Produção mil t',
+      data:[1259,1247,785,450,345],
+      backgroundColor:function(c){return c.dataIndex===0?'rgba(217,119,6,.35)':'rgba(107,133,112,.15)';},
+      borderColor:function(c){return c.dataIndex===0?'#d97706':'#6b8570';},
+      borderWidth:2,borderRadius:5}]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt,
+    annotation:{annotations:{
+      go:{type:'label',xValue:700,yValue:0,content:['GO: 1.259 mil t','#1 BRASIL!'],font:{size:10,weight:'bold'},color:'#d97706'}
+    }}},
+    scales:{x:{min:0,max:1400,grid:{color:gc},ticks:{callback:v=>(v/1000).toFixed(1)+'mi',font:fc}},y:{grid:{display:false},ticks:{font:{size:11,weight:'700'}}}}}
+});
+
+// CHART 4: CUSTO SORGO vs MILHO
+new Chart(document.getElementById('chSg4').getContext('2d'),{
+  type:'bar',
+  data:{labels:['Custo/ha','Break-even\n(sc/ha)','Risco Hídrico\n(1-10)','Janela Plantio\n(dias após soja)'],
+    datasets:[
+      {label:'Sorgo',data:[2205,24,3,45],backgroundColor:'rgba(217,119,6,.3)',borderColor:'#d97706',borderWidth:2,borderRadius:4},
+      {label:'Milho',data:[3650,38,7,15],backgroundColor:'rgba(107,133,112,.2)',borderColor:'#6b8570',borderWidth:1.5,borderRadius:4}
+    ]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{
+    legend:{position:'top',labels:{usePointStyle:true,padding:12,font:{size:10}}},tooltip:tt},
+    scales:{y:{min:0,max:4000,grid:{color:gc},ticks:{font:fc}},x:{grid:{display:false},ticks:{font:{size:8,weight:'700'}}}}}
+});
+</script>
+</body>
+</html>

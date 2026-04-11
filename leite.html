@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Leite — Radar Agro Rural IN</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1"></script>
+<style>
+:root{--bg:#0c1a11;--bg2:#10221a;--bg3:#162b1f;--border:#1e3a28;--border2:#2a5038;--accent:#d4a017;--accent2:#f0c950;--green:#2d8a44;--green2:#34d399;--text:#e8f0eb;--text2:#a3b8a9;--text3:#6b8570;--up:#22c55e;--dn:#ef4444;--nt:#eab308;--blue:#3b82f6;--purple:#a855f7;--radius:12px;--milk:#60a5fa}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding:32px;max-width:1100px}
+.page-header{margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border)}.page-header h1{font-size:2rem;font-weight:800;margin-bottom:6px}.page-header h1 .emoji{font-size:2.2rem;margin-right:8px}.page-header h1 .hl{color:var(--accent2)}.page-header .subtitle{font-size:1rem;color:var(--text2);font-weight:400;line-height:1.8}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:32px}.kpi{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;position:relative;overflow:hidden}.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2)}.kpi.up::before{background:var(--up)}.kpi.dn::before{background:var(--dn)}.kpi.nt::before{background:var(--nt)}.kpi.bl::before{background:var(--blue)}.kpi.gold::before{background:var(--accent)}.kpi-label{font-size:.78rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:8px;font-weight:600}.kpi-value{font-size:1.65rem;font-weight:800;letter-spacing:-.5px}.kpi-value.up{color:var(--up)}.kpi-value.dn{color:var(--dn)}.kpi-value.nt{color:var(--nt)}.kpi-value.bl{color:var(--milk)}.kpi-sub{font-size:.82rem;color:var(--text3);margin-top:4px}
+.section{margin-bottom:36px}.section-title{display:flex;align-items:center;gap:12px;margin-bottom:20px}.section-title .icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}.section-title .icon.milk{background:linear-gradient(135deg,#1d4ed8,#60a5fa)}.section-title .icon.green{background:linear-gradient(135deg,#1a5c2a,#2d8a44)}.section-title .icon.red{background:linear-gradient(135deg,#b91c1c,#ef4444)}.section-title h2{font-size:1.35rem;font-weight:700}.section-title h2 span{font-weight:400;color:var(--text2);font-size:.95rem}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;margin-bottom:20px}.card h3{font-size:1rem;color:var(--text2);margin-bottom:16px;font-weight:600}
+.callout{border-radius:var(--radius);padding:22px 26px;margin-bottom:20px;border-left:4px solid}.callout.up{background:rgba(34,197,94,.06);border-color:var(--up)}.callout.dn{background:rgba(239,68,68,.06);border-color:var(--dn)}.callout.nt{background:rgba(234,179,8,.06);border-color:var(--nt)}.callout.bl{background:rgba(96,165,250,.06);border-color:var(--milk)}.callout h4{font-size:1.05rem;font-weight:700;margin-bottom:10px}.callout.up h4{color:var(--up)}.callout.dn h4{color:var(--dn)}.callout.nt h4{color:var(--nt)}.callout.bl h4{color:var(--milk)}.callout p{font-size:.95rem;color:var(--text2);line-height:1.8}.callout p strong{color:var(--text)}
+.chart-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;margin-bottom:20px}.chart-box h3{font-size:.95rem;color:var(--text2);margin-bottom:14px;font-weight:600}.chart-wrap{position:relative;height:320px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}@media(max-width:800px){.grid2{grid-template-columns:1fr}}
+.tbl-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--border);margin-bottom:16px}table{width:100%;border-collapse:collapse;font-size:.9rem}thead th{background:var(--bg3);padding:14px 16px;text-align:center;font-weight:600;color:var(--text2);font-size:.78rem;text-transform:uppercase;letter-spacing:.8px;border-bottom:1px solid var(--border)}tbody td{padding:13px 16px;border-bottom:1px solid rgba(30,58,40,.4);text-align:center;font-size:.9rem}tbody tr:last-child td{border-bottom:none}tbody tr:hover{background:rgba(45,138,68,.04)}
+.thermo{margin:20px 0}.thermo h4{font-size:.95rem;color:var(--text2);margin-bottom:10px}.th-bar{height:14px;border-radius:7px;background:linear-gradient(90deg,var(--dn),var(--nt),var(--up));position:relative}.th-marker{position:absolute;top:-6px;width:3px;height:26px;background:#fff;border-radius:2px;transform:translateX(-50%)}.th-label-row{display:flex;justify-content:space-between;font-size:.75rem;color:var(--text3);margin-top:6px}
+.opinion{background:linear-gradient(135deg,rgba(26,92,42,.12),rgba(26,92,42,.04));border:1px solid rgba(45,138,68,.2);border-radius:var(--radius);padding:28px 30px;margin:24px 0}.opinion h3{font-size:1.15rem;font-weight:700;color:var(--accent2);margin-bottom:14px}.opinion p{font-size:.95rem;color:var(--text2);line-height:1.85;margin-bottom:12px}.opinion p strong{color:var(--text)}.opinion .sig{margin-top:16px;padding-top:12px;border-top:1px solid rgba(45,138,68,.15);font-size:.82rem;color:var(--text3);font-style:italic}
+.alert-bar{border-radius:var(--radius);padding:18px 22px;margin-bottom:24px;display:flex;align-items:flex-start;gap:14px;border:1px solid}.alert-bar.green{background:linear-gradient(135deg,rgba(34,197,94,.1),rgba(34,197,94,.03));border-color:rgba(34,197,94,.3)}.alert-bar.yellow{background:linear-gradient(135deg,rgba(234,179,8,.08),rgba(234,179,8,.02));border-color:rgba(234,179,8,.25)}.alert-bar.blue{background:linear-gradient(135deg,rgba(96,165,250,.08),rgba(96,165,250,.02));border-color:rgba(96,165,250,.25)}.alert-bar .alert-icon{font-size:1.6rem;flex-shrink:0}.alert-bar .alert-text{font-size:.92rem;color:var(--text2);line-height:1.7}.alert-bar .alert-text strong{color:var(--text)}
+.highlight{background:linear-gradient(135deg,rgba(96,165,250,.08),rgba(96,165,250,.02));border:1px solid rgba(96,165,250,.25);border-radius:var(--radius);padding:24px 28px;margin-bottom:24px;text-align:center}.highlight .hl-emoji{font-size:2.2rem;margin-bottom:8px}.highlight .hl-title{font-size:1.1rem;font-weight:700;color:var(--milk);margin-bottom:8px}.highlight .hl-text{font-size:.95rem;color:var(--text2);line-height:1.8}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border2),var(--accent),var(--border2),transparent);margin:36px 0}
+.tag{display:inline-flex;align-items:center;padding:4px 12px;border-radius:6px;font-size:.78rem;font-weight:600}.tag-up{background:rgba(34,197,94,.1);color:var(--up)}.tag-dn{background:rgba(239,68,68,.1);color:var(--dn)}.tag-nt{background:rgba(234,179,8,.1);color:var(--nt)}.tag-bl{background:rgba(96,165,250,.1);color:var(--milk)}
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE HEADER ============ -->
+<div class="page-header">
+  <h1><span class="emoji">🥛</span> Leite — <span class="hl">Preço Reage Após 9 Meses de Queda. Fev/26 a R$ 2,15/L (+5,4%). GO Abaixo da Média.</span></h1>
+  <p class="subtitle">
+    Média Brasil Fev/26: <strong style="color:var(--up)">R$ 2,1464/L</strong> (+5,43% mês) &nbsp;|&nbsp;
+    2ª alta consecutiva &nbsp;|&nbsp;
+    GO: <strong style="color:var(--nt)">R$ 2,1037</strong> (menor entre os grandes) &nbsp;|&nbsp;
+    Captação: <strong style="color:var(--dn)">−3,6%</strong> &nbsp;|&nbsp;
+    UHT atacado SP: <strong>R$ 4,13/L</strong> &nbsp;|&nbsp;
+    Muçarela: <strong>R$ 28,66/kg</strong> &nbsp;|&nbsp;
+    Mar/26 estimado: <strong style="color:var(--up)">~R$ 2,23/L (+4%)</strong>
+  </p>
+</div>
+
+<!-- ============ ALERTAS ============ -->
+<div class="alert-bar green">
+  <div class="alert-icon">📈</div>
+  <div class="alert-text">
+    <strong style="color:var(--up)">Virada de tendência!</strong> Após 9 meses consecutivos de queda (abr-dez/2025), o preço do leite reagiu em jan/26 (+0,9%) e acelerou em fev/26 (<strong>+5,43%</strong>).
+    CEPEA: <em>"A concorrência entre laticínios na compra de leite cru se intensificou com a redução da oferta."</em>
+    Março deve subir mais ~4% → <strong>R$ 2,23/L</strong>.
+  </div>
+</div>
+
+<div class="alert-bar yellow">
+  <div class="alert-icon">⚠️</div>
+  <div class="alert-text">
+    <strong style="color:var(--nt)">ATENÇÃO: Preço ainda 25,4% abaixo de fev/2025 em termos reais.</strong> A recuperação é real, mas partiu de um piso muito baixo (dez/25 = R$ 1,99).
+    Embrapa Gado de Leite: <em>"O volume excedente de leite de 2025 chegou ao fim."</em>
+    Importações mar/26: 179 mi litros equiv. (+14,4% vs mar/25) — ainda pressionam.
+  </div>
+</div>
+
+<!-- ============ KPIs ============ -->
+<div class="kpi-grid">
+  <div class="kpi up">
+    <div class="kpi-label">Média Brasil Fev/26</div>
+    <div class="kpi-value up">R$ 2,1464/L</div>
+    <div class="kpi-sub">+5,43% vs jan · 2ª alta consecutiva</div>
+  </div>
+  <div class="kpi bl">
+    <div class="kpi-label">Mar/26 (Estimativa)</div>
+    <div class="kpi-value bl">~R$ 2,23/L</div>
+    <div class="kpi-sub">+4% · CEPEA em andamento</div>
+  </div>
+  <div class="kpi nt">
+    <div class="kpi-label">Goiás Fev/26</div>
+    <div class="kpi-value nt">R$ 2,1037/L</div>
+    <div class="kpi-sub">Menor entre os grandes estados</div>
+  </div>
+  <div class="kpi dn">
+    <div class="kpi-label">Captação (ICAP-L)</div>
+    <div class="kpi-value dn">−3,6%</div>
+    <div class="kpi-sub">Fev vs Jan · GO entre as maiores quedas</div>
+  </div>
+  <div class="kpi up">
+    <div class="kpi-label">UHT Atacado SP Mar</div>
+    <div class="kpi-value up">R$ 4,13/L</div>
+    <div class="kpi-sub">+3,9% mês · Derivados reagem</div>
+  </div>
+  <div class="kpi gold">
+    <div class="kpi-label">Relação Leite/Milho</div>
+    <div class="kpi-value" style="color:var(--accent2)">~32 L/sc</div>
+    <div class="kpi-sub">Melhorando com queda do milho</div>
+  </div>
+</div>
+
+<!-- ============ GRÁFICOS ============ -->
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📈 Preço Leite ao Produtor — Média Brasil (R$/L)</h3>
+    <div class="chart-wrap"><canvas id="chLeite1"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>📊 Preço por Estado — Fev/26 (R$/L)</h3>
+    <div class="chart-wrap"><canvas id="chLeite2"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📦 Derivados Atacado SP (R$/unidade)</h3>
+    <div class="chart-wrap"><canvas id="chLeite3"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>🔄 Relação de Troca: Litros de Leite por Saca de Milho</h3>
+    <div class="chart-wrap"><canvas id="chLeite4"></canvas></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ CONTEXTO ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon milk">📊</div>
+    <h2>O Que Aconteceu com o Leite <span>— De R$ 2,75 a R$ 1,99 e Agora R$ 2,15</span></h2>
+  </div>
+
+  <div class="highlight">
+    <div class="hl-emoji">🥛📉📈</div>
+    <div class="hl-title">A Montanha-Russa do Leite: 2025 → 2026</div>
+    <div class="hl-text">
+      <strong>Pico mar/2025:</strong> R$ 2,75/L → <strong>Piso dez/2025:</strong> R$ 1,99/L (<strong style="color:var(--dn)">−27,6%</strong>)<br>
+      <strong>Motivos da queda:</strong> Produção +7,2% em 2025 (38,3 bi litros = RECORDE) + importações 2,14 bi litros equiv. + demanda fraca<br><br>
+      <strong>Agora fev/2026:</strong> R$ 2,1464/L → <strong style="color:var(--up)">+8% desde o piso</strong><br>
+      <strong>Motivos da alta:</strong> Captação caindo (−3,6% fev) + laticínios disputando leite + entressafra pastagem + produtor reduziu investimento<br><br>
+      <strong style="color:var(--accent2)">A pergunta chave: é recuperação sustentável ou repique temporário?</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ANÁLISE FUNDAMENTAL ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon milk">📋</div>
+    <h2>Análise Fundamental <span>— Os 5 Fatores do Leite em 2026</span></h2>
+  </div>
+
+  <div class="callout up">
+    <h4>Fator 1 — Captação Caindo = Preço Subindo</h4>
+    <p>ICAP-L (Índice de Captação) caiu <strong>3,6% de jan para fev/26</strong>, com destaque para quedas em PR, GO, SP e MG. <strong>Por quê?</strong> (1) Margens foram esmagadas em 2025 → produtor reduziu investimentos; (2) Pastagens entram em entressafra (seca); (3) COE (custo operacional) subiu 0,32% em fev. <strong>Resultado:</strong> laticínios disputam leite cru → preço sobe. <strong>Broto Notícias:</strong> <em>"A indústria precisou abrir a carteira para garantir a matéria-prima."</em> Em MG, preço spot saltou de R$ 2,13 para R$ 2,42/L na 2ª quinzena de fev (+13,9%).</p>
+  </div>
+
+  <div class="callout dn">
+    <h4>Fator 2 — Importações AINDA Elevadas (179 mi L em Mar)</h4>
+    <p>Mesmo com queda de 3,3% vs fev, as importações de mar/26 ficaram <strong>14,4% acima de mar/25.</strong> O leite em pó segue como principal produto importado. <strong>SNA:</strong> <em>"A valorização do real frente ao dólar tende a tornar o produto importado mais competitivo."</em> Com dólar a R$ 5,01: leite importado fica mais barato → pressão de baixa. <strong>Déficit balança 2025:</strong> ~2 bi litros equiv. Isso não se resolve rápido.</p>
+  </div>
+
+  <div class="callout nt">
+    <h4>Fator 3 — Derivados Reagindo: UHT +3,9%, Muçarela Estável</h4>
+    <p>CEPEA/OCB Atacado SP mar/26: <strong>UHT R$ 4,13/L (+3,9%)</strong>, muçarela R$ 28,66/kg (+0,25%). Derivados subiram pelo 3º mês consecutivo. <strong>Mas:</strong> ainda 9,4% abaixo do UHT de mar/25 e 8,5% abaixo na muçarela (termos reais). A indústria tenta repassar alta da matéria-prima, mas <strong>consumidor resiste</strong> — renda comprimida + Selic 15% + inflação. O repasse é parcial.</p>
+  </div>
+
+  <div class="callout bl">
+    <h4>Fator 4 — Relação de Troca Leite/Milho MELHOROU</h4>
+    <p>Com milho caindo (Mai/26 a R$ 67,94 na B3, CEPEA a R$ 69,96) e leite subindo (R$ 2,15/L), a relação de troca melhorou: ~32 litros por saca de milho vs 33,56 L/sc em jan. <strong>Ainda acima da média de 12 meses (29,12 L/sc)</strong>, mas caminhando na direção certa. <strong>Se milho continuar caindo:</strong> margem do produtor de leite melhora significativamente. Isso é bom para GO, onde pecuária leiteira convive com milho local a R$ 62/sc.</p>
+  </div>
+
+  <div class="callout up">
+    <h4>Fator 5 — Pronaf: Juros Caem de 8% → 3% Para Cooperativas</h4>
+    <p><strong>CMN aprovou em março:</strong> juros do Pronaf Mais Alimentos caíram de 8% para 3% ao ano para cooperativas que adquirirem sêmen, óvulos e embriões (genética bovina de corte e LEITE). <strong>Impacto:</strong> reduz custo de melhoramento genético para cooperativas leiteiras. No médio prazo: rebanho mais produtivo = mais leite por vaca = menor custo/litro. <strong>Para GO:</strong> cooperativas da região (Comigo, Colaveco) podem se beneficiar diretamente.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ TABELA PREÇOS POR ESTADO ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon green">📍</div>
+    <h2>Preços por Estado <span>— CEPEA Fev/26 (R$/litro)</span></h2>
+  </div>
+
+  <div class="card">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Estado</th><th>Fev/26</th><th>Jan/26</th><th>Var. Mês</th><th>Obs</th></tr></thead>
+        <tbody>
+          <tr><td style="text-align:left">Minas Gerais</td><td style="color:var(--up)"><strong>R$ 2,2030</strong></td><td>R$ 2,0633</td><td style="color:var(--up)">+6,8%</td><td><span class="tag tag-up">Maior preço</span></td></tr>
+          <tr><td style="text-align:left">São Paulo</td><td>R$ 2,1963</td><td>R$ 2,1056</td><td style="color:var(--up)">+4,3%</td><td></td></tr>
+          <tr><td style="text-align:left">Paraná</td><td>R$ 2,1660</td><td>R$ 2,0355</td><td style="color:var(--up)">+6,4%</td><td></td></tr>
+          <tr><td style="text-align:left">Rio de Janeiro</td><td>R$ 2,1370</td><td>R$ 2,0617</td><td style="color:var(--up)">+3,7%</td><td></td></tr>
+          <tr style="background:rgba(234,179,8,.04)"><td style="text-align:left"><strong>Goiás</strong></td><td style="color:var(--nt)"><strong>R$ 2,1037</strong></td><td>R$ 1,9193</td><td style="color:var(--up)">+9,6%</td><td><span class="tag tag-nt">Maior alta %!</span></td></tr>
+          <tr><td style="text-align:left">Bahia</td><td>R$ 2,0967</td><td>R$ 2,0665</td><td style="color:var(--up)">+1,5%</td><td></td></tr>
+          <tr><td style="text-align:left">Rio Grande do Sul</td><td>R$ 2,0962</td><td>R$ 2,0046</td><td style="color:var(--up)">+4,6%</td><td></td></tr>
+          <tr><td style="text-align:left">Santa Catarina</td><td>R$ 2,0727</td><td>R$ 1,9580</td><td style="color:var(--up)">+5,9%</td><td></td></tr>
+          <tr><td style="text-align:left">Espírito Santo</td><td>R$ 1,9865</td><td>R$ 1,9263</td><td style="color:var(--up)">+3,1%</td><td><span class="tag tag-dn">Menor preço</span></td></tr>
+          <tr style="background:rgba(96,165,250,.04)"><td style="text-align:left"><strong>BRASIL</strong></td><td><strong>R$ 2,1464</strong></td><td>R$ 2,0216</td><td style="color:var(--up)"><strong>+5,43%</strong></td><td><span class="tag tag-bl">Média nacional</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.88rem;color:var(--text2);margin-top:10px">
+      <strong style="color:var(--accent2)">Destaque GO:</strong> Apesar de ter o <strong>menor preço absoluto</strong> entre os grandes estados (R$ 2,1037), Goiás teve a <strong>maior alta percentual</strong> (+9,6%!). Isso reflete a base muito deprimida (jan = R$ 1,9193) e a disputa dos laticínios regionais por matéria-prima. Tendência de continuar subindo.
+    </p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ CENÁRIOS ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon milk">🔮</div>
+    <h2>Cenários <span>— Preço ao Produtor Abr-Set 2026</span></h2>
+  </div>
+
+  <div class="card">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Cenário</th><th>Média BR Abr</th><th>Média BR Jun-Set</th><th>GO</th><th>Driver</th><th>Prob.</th></tr></thead>
+        <tbody>
+          <tr><td style="text-align:left;color:var(--up)">📈 Recuperação firme</td><td style="color:var(--up)">R$ 2,30-2,40</td><td style="color:var(--up)"><strong>R$ 2,50-2,70</strong></td><td>R$ 2,30-2,50</td><td>Captação cai mais + derivados sobem + importação recua</td><td><span class="tag tag-up">35%</span></td></tr>
+          <tr><td style="text-align:left;color:var(--nt)">➡️ Alta moderada</td><td>R$ 2,20-2,30</td><td><strong>R$ 2,30-2,50</strong></td><td>R$ 2,15-2,35</td><td>Equilíbrio parcial, importação pressiona</td><td><span class="tag tag-nt">45%</span></td></tr>
+          <tr><td style="text-align:left;color:var(--dn)">📉 Estagn./recuo</td><td style="color:var(--dn)">R$ 2,10-2,20</td><td style="color:var(--dn)"><strong>R$ 2,00-2,20</strong></td><td>R$ 1,95-2,10</td><td>Importações disparam (dólar cai) + consumo fraco</td><td><span class="tag tag-dn">20%</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.88rem;color:var(--text2);margin-top:10px">
+      <strong>Sazonalidade:</strong> abr-set é entressafra de pastagem (seca) → captação cai → preço historicamente sobe. O cenário BASE é de R$ 2,30-2,50 no meio do ano. A questão é SE importações vão limitar a alta.
+    </p>
+  </div>
+</div>
+
+<!-- ============ TERMÔMETROS ============ -->
+<div class="grid2">
+  <div class="thermo">
+    <h4>🌡️ Leite — Tendência de Preço (Abr-Set)</h4>
+    <div class="th-bar"><div class="th-marker" style="left:58%"></div></div>
+    <div class="th-label-row"><span>Baixista</span><span>Neutro</span><span>Altista</span></div>
+    <p style="font-size:.82rem;color:var(--up);margin-top:8px;font-weight:600">⬆ LEVE ALTA — Entressafra + captação caindo + derivados reagindo</p>
+  </div>
+  <div class="thermo">
+    <h4>🌡️ Risco de Importação (Pressão Externa)</h4>
+    <div class="th-bar"><div class="th-marker" style="left:62%"></div></div>
+    <div class="th-label-row"><span>Baixo</span><span>Médio</span><span>Alto</span></div>
+    <p style="font-size:.82rem;color:var(--nt);margin-top:8px;font-weight:600">⚠ ELEVADO — Dólar a R$ 5,01 + Argentina/Uruguai com excedente</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ OPINIÃO ============ -->
+<div class="opinion">
+  <h3>🎯 Opinião do Analista — O Leite Saiu da UTI, Mas Ainda Está na Enfermaria</h3>
+
+  <p><strong>A metáfora é esta:</strong> o leite brasileiro saiu da UTI (R$ 1,99/L em dez/25 = piso que inviabilizou muitos produtores). Está na enfermaria (R$ 2,15 em fev, ~R$ 2,23 em mar). A recuperação é real, mas o paciente ainda está fraco — 25% abaixo do nível de 1 ano atrás em termos reais.</p>
+
+  <p><strong>Para o Produtor de Leite em GO:</strong></p>
+  <p>1. <strong>O preço VAI subir mais no 2ºTri.</strong> Entressafra de pastagem (abr-set) reduz captação → preço sobe. Historicamente, o pico ocorre em jun-ago. Não desista agora — o pior ficou para trás.<br>
+  2. <strong>Compre milho AGORA para a dieta de seca.</strong> Milho em GO a R$ 62/sc é barato. Se safrinha frustrar: vai para R$ 75+. A relação de troca leite/milho está melhorando — aproveite.<br>
+  3. <strong>Reduza custo operacional, não produção.</strong> Quem cortou vacas em 2025 agora não tem leite para vender quando o preço sobe. Foque em produtividade: litros/vaca/dia é o KPI que importa.<br>
+  4. <strong>Pronaf 3% ao ano para genética via cooperativas.</strong> Se sua cooperativa está habilitada: invista em melhoramento genético agora com juros subsidiados.</p>
+
+  <p><strong>Para a Indústria de Laticínios:</strong></p>
+  <p>1. <strong>Dispute leite cru, mas proteja margem no derivado.</strong> UHT a R$ 4,13/L e muçarela a R$ 28,66/kg = margens apertadas. Se pagar R$ 2,30+ ao produtor: precisa repassar para R$ 4,50+ no UHT.<br>
+  2. <strong>Importações podem ser aliada:</strong> leite em pó importado (dólar a R$ 5,01 = mais barato) pode complementar quando captação doméstica cair na seca.</p>
+
+  <p><strong>Monitoramento semanal:</strong><br>
+  🔴 <strong>ICAP-L (captação)</strong> — se cair mais em abr-mai: preço acelera alta<br>
+  🔴 <strong>Importações</strong> — se dólar cair abaixo de R$ 4,90: importado fica muito barato<br>
+  🟡 <strong>Derivados atacado SP</strong> — UHT e muçarela são termômetro de repasse<br>
+  🟡 <strong>Milho</strong> — relação de troca leite/milho define margem do produtor<br>
+  🟢 <strong>Entressafra pastagem</strong> — sazonalidade favorece preço abr-set (estrutural)</p>
+
+  <div class="sig">— Dr. Sidney Souza · Economista Agrícola · Rural IN · 10/Abr/2026</div>
+</div>
+
+<!-- ============ SCRIPTS ============ -->
+<script>
+const gc='rgba(30,58,40,.35)',fc={family:"'Segoe UI',system-ui,sans-serif",size:11,weight:'600'},tt={backgroundColor:'#10221a',borderColor:'#2a5038',borderWidth:1,titleFont:{size:12,weight:'700'},bodyFont:{size:11},padding:10,cornerRadius:8};
+
+// CHART 1: EVOLUÇÃO PREÇO LEITE
+new Chart(document.getElementById('chLeite1').getContext('2d'),{
+  type:'line',
+  data:{labels:['Mar/25','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez/25','Jan/26','Fev/26','Mar/26*'],
+    datasets:[{label:'Média Brasil R$/L',
+      data:[2.75,2.74,2.65,2.55,2.45,2.35,2.25,2.15,2.05,1.99,2.02,2.15,2.23],
+      borderColor:'#60a5fa',backgroundColor:'rgba(96,165,250,.06)',borderWidth:2.5,fill:true,tension:.35,
+      pointRadius:5,pointBackgroundColor:function(c){
+        const v=c.raw;return v<=2.02?'#ef4444':v>=2.15?'#22c55e':'#eab308';
+      }}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt,
+    annotation:{annotations:{
+      piso:{type:'label',xValue:9,yValue:1.93,content:['PISO R$1,99','Dez/25'],font:{size:9,weight:'bold'},color:'#ef4444'},
+      pico:{type:'label',xValue:0,yValue:2.82,content:['PICO R$2,75','Mar/25'],font:{size:9,weight:'bold'},color:'#22c55e'},
+      coe:{type:'line',yMin:2.10,yMax:2.10,borderColor:'rgba(234,179,8,.3)',borderWidth:1.5,borderDash:[5,3],
+        label:{display:true,content:'COE médio ~R$2,10',position:'end',backgroundColor:'rgba(234,179,8,.5)',font:{size:8}}}
+    }}},
+    scales:{y:{min:1.85,max:2.85,grid:{color:gc},ticks:{callback:v=>'R$'+v.toFixed(2),font:fc}},x:{grid:{display:false},ticks:{font:{size:9,weight:'600'},maxRotation:45}}}}
+});
+
+// CHART 2: POR ESTADO
+new Chart(document.getElementById('chLeite2').getContext('2d'),{
+  type:'bar',
+  data:{labels:['MG','SP','PR','RJ','GO','BA','RS','SC','ES'],
+    datasets:[
+      {label:'Fev/26',data:[2.2030,2.1963,2.1660,2.1370,2.1037,2.0967,2.0962,2.0727,1.9865],
+        backgroundColor:'rgba(96,165,250,.3)',borderColor:'#60a5fa',borderWidth:2,borderRadius:5},
+      {label:'Jan/26',data:[2.0633,2.1056,2.0355,2.0617,1.9193,2.0665,2.0046,1.9580,1.9263],
+        backgroundColor:'rgba(107,133,112,.15)',borderColor:'#6b8570',borderWidth:1.5,borderRadius:5}
+    ]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{
+    legend:{position:'top',labels:{usePointStyle:true,padding:10,font:{size:10}}},tooltip:tt,
+    annotation:{annotations:{
+      media:{type:'line',yMin:2.1464,yMax:2.1464,borderColor:'rgba(96,165,250,.5)',borderWidth:2,borderDash:[5,3],
+        label:{display:true,content:'Média BR R$2,15',position:'start',backgroundColor:'rgba(96,165,250,.7)',font:{size:9}}},
+      go:{type:'label',xValue:4,yValue:2.16,content:['GO: +9,6%!'],font:{size:9,weight:'bold'},color:'#f0c950'}
+    }}},
+    scales:{y:{min:1.85,max:2.30,grid:{color:gc},ticks:{callback:v=>'R$'+v.toFixed(2),font:fc}},x:{grid:{display:false},ticks:{font:{size:11,weight:'700'}}}}}
+});
+
+// CHART 3: DERIVADOS
+new Chart(document.getElementById('chLeite3').getContext('2d'),{
+  type:'bar',
+  data:{labels:['UHT (R$/L)','Muçarela (R$/kg)','Leite Pó (R$/kg)'],
+    datasets:[
+      {label:'Mar/26',data:[4.13,28.66,26.50],backgroundColor:'rgba(96,165,250,.3)',borderColor:'#60a5fa',borderWidth:2,borderRadius:5},
+      {label:'Fev/26',data:[3.97,28.59,25.80],backgroundColor:'rgba(107,133,112,.15)',borderColor:'#6b8570',borderWidth:1.5,borderRadius:5}
+    ]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{
+    legend:{position:'top',labels:{usePointStyle:true,padding:10,font:{size:10}}},tooltip:tt,
+    annotation:{annotations:{
+      uht:{type:'label',xValue:0,yValue:4.5,content:['+3,9%'],font:{size:11,weight:'bold'},color:'#22c55e'}
+    }}},
+    scales:{y:{grid:{color:gc},ticks:{font:fc}},x:{grid:{display:false},ticks:{font:{size:10,weight:'700'}}}}}
+});
+
+// CHART 4: RELAÇÃO DE TROCA
+new Chart(document.getElementById('chLeite4').getContext('2d'),{
+  type:'line',
+  data:{labels:['Set/25','Out','Nov','Dez/25','Jan/26','Fev/26','Mar/26*'],
+    datasets:[{label:'Litros leite / saca milho',
+      data:[30.5,31.2,32.8,34.2,33.56,32.0,31.0],
+      borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,.06)',borderWidth:2.5,fill:true,tension:.35,
+      pointRadius:5,pointBackgroundColor:function(c){return c.raw>32?'#ef4444':'#22c55e';}
+    }]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt,
+    annotation:{annotations:{
+      media:{type:'line',yMin:29.12,yMax:29.12,borderColor:'rgba(34,197,94,.4)',borderWidth:2,borderDash:[5,3],
+        label:{display:true,content:'Média 12m: 29,12 L/sc',position:'start',backgroundColor:'rgba(34,197,94,.6)',font:{size:9}}},
+      info:{type:'label',xValue:5,yValue:33.5,content:['↓ Menos = melhor','para o produtor'],font:{size:9,weight:'bold'},color:'#34d399'}
+    }}},
+    scales:{y:{min:27,max:36,grid:{color:gc},ticks:{callback:v=>v+' L/sc',font:fc},reverse:false},x:{grid:{display:false},ticks:{font:{size:10,weight:'600'}}}}}
+});
+</script>
+</body>
+</html>

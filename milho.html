@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Milho — Radar Agro Rural IN</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1"></script>
+<style>
+:root {
+  --bg:#0c1a11;--bg2:#10221a;--bg3:#162b1f;--bg4:#1a3425;--border:#1e3a28;--border2:#2a5038;
+  --accent:#d4a017;--accent2:#f0c950;--green:#2d8a44;--green2:#34d399;--green3:#22c55e;
+  --text:#e8f0eb;--text2:#a3b8a9;--text3:#6b8570;--up:#22c55e;--dn:#ef4444;--nt:#eab308;
+  --blue:#3b82f6;--purple:#a855f7;--orange:#f59e0b;--radius:12px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding:32px;max-width:1100px}
+.page-header{margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+.page-header h1{font-size:2rem;font-weight:800;margin-bottom:6px}
+.page-header h1 .emoji{font-size:2.2rem;margin-right:8px}
+.page-header h1 .hl{color:var(--accent2)}
+.page-header .subtitle{font-size:1rem;color:var(--text2);font-weight:400;line-height:1.8}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:32px}
+.kpi{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;position:relative;overflow:hidden}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2)}
+.kpi.up::before{background:var(--up)}.kpi.dn::before{background:var(--dn)}.kpi.nt::before{background:var(--nt)}.kpi.bl::before{background:var(--blue)}.kpi.gold::before{background:var(--accent)}.kpi.orange::before{background:var(--orange)}
+.kpi-label{font-size:.78rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:8px;font-weight:600}
+.kpi-value{font-size:1.65rem;font-weight:800;letter-spacing:-.5px}
+.kpi-value.up{color:var(--up)}.kpi-value.dn{color:var(--dn)}.kpi-value.nt{color:var(--nt)}.kpi-value.bl{color:var(--blue)}.kpi-value.orange{color:var(--orange)}
+.kpi-sub{font-size:.82rem;color:var(--text3);margin-top:4px}
+.section{margin-bottom:36px}
+.section-title{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.section-title .icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.section-title .icon.milho{background:linear-gradient(135deg,#d97706,#f59e0b)}
+.section-title .icon.green{background:linear-gradient(135deg,#1a5c2a,#2d8a44)}
+.section-title .icon.blue{background:linear-gradient(135deg,#1d4ed8,#3b82f6)}
+.section-title .icon.red{background:linear-gradient(135deg,#b91c1c,#ef4444)}
+.section-title h2{font-size:1.35rem;font-weight:700}
+.section-title h2 span{font-weight:400;color:var(--text2);font-size:.95rem}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;margin-bottom:20px}
+.card h3{font-size:1rem;color:var(--text2);margin-bottom:16px;font-weight:600}
+.callout{border-radius:var(--radius);padding:22px 26px;margin-bottom:20px;border-left:4px solid}
+.callout.up{background:rgba(34,197,94,.06);border-color:var(--up)}
+.callout.dn{background:rgba(239,68,68,.06);border-color:var(--dn)}
+.callout.nt{background:rgba(234,179,8,.06);border-color:var(--nt)}
+.callout.bl{background:rgba(59,130,246,.06);border-color:var(--blue)}
+.callout.orange{background:rgba(245,158,11,.06);border-color:var(--orange)}
+.callout h4{font-size:1.05rem;font-weight:700;margin-bottom:10px}
+.callout.up h4{color:var(--up)}.callout.dn h4{color:var(--dn)}.callout.nt h4{color:var(--nt)}.callout.bl h4{color:var(--blue)}.callout.orange h4{color:var(--orange)}
+.callout p{font-size:.95rem;color:var(--text2);line-height:1.8}
+.callout p strong{color:var(--text)}
+.chart-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;margin-bottom:20px}
+.chart-box h3{font-size:.95rem;color:var(--text2);margin-bottom:14px;font-weight:600}
+.chart-wrap{position:relative;height:320px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+@media(max-width:800px){.grid2{grid-template-columns:1fr}}
+.tbl-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--border);margin-bottom:16px}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+thead th{background:var(--bg3);padding:14px 16px;text-align:center;font-weight:600;color:var(--text2);font-size:.78rem;text-transform:uppercase;letter-spacing:.8px;border-bottom:1px solid var(--border)}
+tbody td{padding:13px 16px;border-bottom:1px solid rgba(30,58,40,.4);text-align:center;font-size:.9rem}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:rgba(45,138,68,.04)}
+.thermo{margin:20px 0}
+.thermo h4{font-size:.95rem;color:var(--text2);margin-bottom:10px}
+.th-bar{height:14px;border-radius:7px;background:linear-gradient(90deg,var(--dn),var(--nt),var(--up));position:relative}
+.th-marker{position:absolute;top:-6px;width:3px;height:26px;background:#fff;border-radius:2px;transform:translateX(-50%)}
+.th-label-row{display:flex;justify-content:space-between;font-size:.75rem;color:var(--text3);margin-top:6px}
+.opinion{background:linear-gradient(135deg,rgba(26,92,42,.12),rgba(26,92,42,.04));border:1px solid rgba(45,138,68,.2);border-radius:var(--radius);padding:28px 30px;margin:24px 0}
+.opinion h3{font-size:1.15rem;font-weight:700;color:var(--accent2);margin-bottom:14px}
+.opinion p{font-size:.95rem;color:var(--text2);line-height:1.85;margin-bottom:12px}
+.opinion p strong{color:var(--text)}
+.opinion .sig{margin-top:16px;padding-top:12px;border-top:1px solid rgba(45,138,68,.15);font-size:.82rem;color:var(--text3);font-style:italic}
+.alert-bar{border-radius:var(--radius);padding:18px 22px;margin-bottom:24px;display:flex;align-items:flex-start;gap:14px;border:1px solid}
+.alert-bar.red{background:linear-gradient(135deg,rgba(239,68,68,.1),rgba(239,68,68,.03));border-color:rgba(239,68,68,.3)}
+.alert-bar.yellow{background:linear-gradient(135deg,rgba(234,179,8,.08),rgba(234,179,8,.02));border-color:rgba(234,179,8,.25)}
+.alert-bar .alert-icon{font-size:1.6rem;flex-shrink:0}
+.alert-bar .alert-text{font-size:.92rem;color:var(--text2);line-height:1.7}
+.alert-bar .alert-text strong{color:var(--text)}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border2),var(--accent),var(--border2),transparent);margin:36px 0}
+.tag{display:inline-flex;align-items:center;padding:4px 12px;border-radius:6px;font-size:.78rem;font-weight:600}
+.tag-up{background:rgba(34,197,94,.1);color:var(--up)}
+.tag-dn{background:rgba(239,68,68,.1);color:var(--dn)}
+.tag-nt{background:rgba(234,179,8,.1);color:var(--nt)}
+.tag-bl{background:rgba(59,130,246,.1);color:var(--blue)}
+.tag-orange{background:rgba(245,158,11,.1);color:var(--orange)}
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE HEADER ============ -->
+<div class="page-header">
+  <h1><span class="emoji">🌽</span> Milho — <span class="hl">CEPEA R$ 69,07. B3 Mai Rompeu R$ 68. CBOT $4,41. Safrinha Sob Risco. Cigarrinha R$ 25,8 Bi.</span></h1>
+  <p class="subtitle">
+    CEPEA Campinas 10/4: <strong style="color:var(--dn)">R$ 69,07/sc</strong> (−0,75% dia | −1,85% mês) &nbsp;|&nbsp;
+    B3 Mai/26: <strong style="color:var(--dn)">R$ 67,94</strong> (rompeu R$ 68!) &nbsp;|&nbsp;
+    B3 Set/26: <strong>R$ 71,50</strong> &nbsp;|&nbsp;
+    B3 Jan/27: <strong style="color:var(--up)">R$ 76,30</strong> &nbsp;|&nbsp;
+    Chicago Mai/26: <strong style="color:var(--dn)">$4,41/bu</strong> (−0,68%) &nbsp;|&nbsp;
+    GO: <strong style="color:var(--nt)">70% fora da janela</strong> &nbsp;|&nbsp;
+    Estoques passagem: <strong style="color:var(--dn)">6% consumo</strong>
+  </p>
+</div>
+
+<!-- ============ ALERTAS ============ -->
+<div class="alert-bar red">
+  <div class="alert-icon">🚨</div>
+  <div class="alert-text">
+    <strong style="color:var(--dn)">Cigarrinha-do-milho:</strong> causou prejuízo de <strong style="color:var(--dn)">R$ 25,8 BILHÕES</strong> ao Brasil em 4 anos.
+    A praga segue ativa na safrinha 2026. GO registra pressão fitossanitária elevada com aumento de temperaturas.
+  </div>
+</div>
+
+<div class="alert-bar yellow">
+  <div class="alert-icon">⚠️</div>
+  <div class="alert-text">
+    <strong style="color:var(--nt)">Safrinha GO — Tecnoshow Comigo 2026:</strong> "70% da safrinha goiana foi plantada após a janela ideal (20/fev)."
+    Atraso eleva risco de estresse hídrico na fase reprodutiva.
+    <strong>Notícias Agrícolas 10/4:</strong> <em>"Milho tem novo dia de baixas na B3 e maio perde os R$ 68/sc; dólar pesa sobre o cereal."</em>
+  </div>
+</div>
+
+<!-- ============ KPIs ============ -->
+<div class="kpi-grid">
+  <div class="kpi dn">
+    <div class="kpi-label">CEPEA Campinas</div>
+    <div class="kpi-value dn">R$ 69,07/sc</div>
+    <div class="kpi-sub">10/abr · −0,75% dia · −1,85% mês</div>
+  </div>
+  <div class="kpi dn">
+    <div class="kpi-label">B3 Mai/26</div>
+    <div class="kpi-value dn">R$ 67,94</div>
+    <div class="kpi-sub">Rompeu R$ 68! Dólar pressiona</div>
+  </div>
+  <div class="kpi nt">
+    <div class="kpi-label">B3 Jul/26</div>
+    <div class="kpi-value nt">R$ 68,62</div>
+    <div class="kpi-sub">Referência curto prazo</div>
+  </div>
+  <div class="kpi up">
+    <div class="kpi-label">B3 Jan/27</div>
+    <div class="kpi-value up">R$ 76,30</div>
+    <div class="kpi-sub">Mercado precifica risco safrinha</div>
+  </div>
+  <div class="kpi bl">
+    <div class="kpi-label">Chicago Mai/26</div>
+    <div class="kpi-value bl">$4,41/bu</div>
+    <div class="kpi-sub">10/abr · −0,68% · Petróleo pesa</div>
+  </div>
+  <div class="kpi orange">
+    <div class="kpi-label">Estoques Passagem</div>
+    <div class="kpi-value orange">~6%</div>
+    <div class="kpi-sub">Menor em anos! Risco real</div>
+  </div>
+</div>
+
+<!-- ============ GRÁFICOS ============ -->
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📈 Milho B3 — Curva de Futuros 10/Abr (R$/sc)</h3>
+    <div class="chart-wrap"><canvas id="chMilho1"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>📊 CEPEA Campinas — Evolução Mar/Abr (R$/sc)</h3>
+    <div class="chart-wrap"><canvas id="chMilho2"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>🌾 Safrinha — Plantio por Estado (% área)</h3>
+    <div class="chart-wrap"><canvas id="chMilho3"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>📦 Export Milho — Mar/26 vs Mar/25</h3>
+    <div class="chart-wrap"><canvas id="chMilho4"></canvas></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ ANÁLISE FUNDAMENTAL ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon milho">📊</div>
+    <h2>Análise Fundamental <span>— Os 5 Fatores que Definem o Milho em 2026</span></h2>
+  </div>
+
+  <div class="callout dn">
+    <h4>Fator 1 — Dólar em Queda é o Principal Vilão (Curto Prazo)</h4>
+    <p>O dólar saiu de R$ 5,48 (fev) para <strong>R$ 5,01 (10/4)</strong> — queda de 8,6%. Isso reduz a competitividade do milho exportado e pressiona preços na B3 diretamente. <strong>Notícias Agrícolas 10/4:</strong> <em>"A desvalorização do dólar frente ao real segue como um dos principais fatores de pressão, reduzindo a competitividade das exportações brasileiras."</em> <strong>Se dólar voltar a R$ 5,20+:</strong> milho recupera R$ 71-73. <strong>Se cair para R$ 4,85:</strong> milho pode testar R$ 65-66.</p>
+  </div>
+
+  <div class="callout orange">
+    <h4>Fator 2 — Safrinha Sob Risco: GO Fora da Janela, PR com Seca, Estoques em 6%</h4>
+    <p>Este é <strong>o fator mais importante para o 2º semestre.</strong> Plantio em 95,5% mas com problemas:<br><br>
+    <strong>🔴 Goiás:</strong> Aprosoja GO na Tecnoshow — 70% plantado após 20/fev. Pressão fitossanitária elevada.<br>
+    <strong>🔴 Paraná:</strong> Conab destaca "baixa umidade no solo e altas temperaturas." DERAL alerta: condição ruim subindo.<br>
+    <strong>🟡 MS:</strong> 88% plantado, chuvas atrasaram semeadura.<br>
+    <strong>🟢 MT:</strong> 96,44%, bom desenvolvimento.<br><br>
+    <strong>Notícias Agrícolas:</strong> <em>"O alerta está sobre áreas em que a safrinha pode ser prejudicada pela falta de chuvas nas próximas semanas."</em> Se safrinha frustrar: milho pode DISPARAR no 2º semestre.</p>
+  </div>
+
+  <div class="callout dn">
+    <h4>Fator 3 — Petróleo em Queda = Menos Demanda por Etanol = Milho Cai</h4>
+    <p>Petróleo acumulou perda expressiva com a trégua Ormuz. Nos EUA, <strong>etanol é feito de milho.</strong> Com petróleo baixo: gasolina barata → etanol perde competitividade → menos demanda por milho → Chicago cai. <strong>Notícias Agrícolas:</strong> <em>"Apesar das altas que se registram nesta sexta, a commodity registrou perda mensal expressiva em função do acordo de cessar-fogo entre EUA e Irã."</em></p>
+  </div>
+
+  <div class="callout up">
+    <h4>Fator 4 — EUA: Bom Andamento do Plantio Pressiona Chicago</h4>
+    <p><strong>USDA 31/3:</strong> intenção de plantio EUA em 95,338 mi acres (−3% vs anterior). Redução de área deveria ser altista. <strong>MAS:</strong> estoques trimestrais subiram 11% (229,1 mi t em 1/mar) — bastante milho armazenado. <strong>Notícias Agrícolas:</strong> <em>"A pressão vem do bom andamento do plantio da safra norte-americana e do cenário de oferta mais confortável."</em> Chicago opera abaixo de $4,50/bu com essa combinação.</p>
+  </div>
+
+  <div class="callout bl">
+    <h4>Fator 5 — Demanda por Etanol de Milho no MT Cresce (Estrutural)</h4>
+    <p><strong>IMEA:</strong> "Demanda por milho no MT cresce em 25/26, impulsionada pelo etanol." As usinas de etanol de milho no MT são um fenômeno estrutural — a demanda interna por milho está crescendo, o que sustenta preços regionais. <strong>Gov. BR sobe etanol na gasolina para 32%:</strong> mais demanda por etanol → mais milho consumido → altista de médio prazo.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ TABELA B3 ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon green">📋</div>
+    <h2>Curva de Futuros B3 <span>— Milho (10/Abr/2026)</span></h2>
+  </div>
+
+  <div class="card">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Contrato</th><th>Preço (R$/sc)</th><th>Var. Dia</th><th>Var. Semana</th><th>Obs</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Mai/26</strong></td><td style="color:var(--dn)"><strong>R$ 67,94</strong></td><td style="color:var(--dn)">−1,0%</td><td style="color:var(--dn)">−5,3%</td><td><span class="tag tag-dn">Rompeu R$ 68!</span></td></tr>
+          <tr><td>Jul/26</td><td>R$ 68,62</td><td style="color:var(--dn)">−0,2%</td><td style="color:var(--dn)">−3,6%</td><td></td></tr>
+          <tr><td><strong>Set/26</strong></td><td>R$ 71,50</td><td style="color:var(--dn)">−0,4%</td><td style="color:var(--dn)">−1,2%</td><td><span class="tag tag-nt">Ref. 2º sem</span></td></tr>
+          <tr><td>Nov/26</td><td>~R$ 73,00</td><td>—</td><td>—</td><td></td></tr>
+          <tr><td><strong>Jan/27</strong></td><td style="color:var(--up)"><strong>R$ 76,30</strong></td><td style="color:var(--up)">+0,50%</td><td style="color:var(--up)">+0,4%</td><td><span class="tag tag-up">Risco safrinha!</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.88rem;color:var(--text2);margin-top:12px">
+      <strong>Leitura da curva:</strong> Mai/26 a R$ 67,94 → Jan/27 a R$ 76,30 = <strong style="color:var(--accent2)">diferença de R$ 8,36/sc (12,3%)!</strong>
+      O mercado diz: <strong>"curto prazo tem oferta (1ª safra + dólar baixo), mas 2º semestre tem risco (safrinha + estoques 6%)".</strong>
+    </p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ PREÇOS REGIONAIS ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon blue">📍</div>
+    <h2>Preços Regionais <span>— Disparidade Centro-Oeste vs Sul</span></h2>
+  </div>
+
+  <div class="card">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Praça</th><th>R$/sc</th><th>Obs</th></tr></thead>
+        <tbody>
+          <tr><td style="text-align:left">Campinas SP (CEPEA)</td><td><strong>R$ 69,07</strong></td><td>Referência nacional</td></tr>
+          <tr><td style="text-align:left">Cascavel PR</td><td>R$ 65,00</td><td>Safrinha em risco</td></tr>
+          <tr><td style="text-align:left">Rio Verde GO</td><td>R$ 62,00</td><td>70% fora da janela</td></tr>
+          <tr><td style="text-align:left">Sorriso MT</td><td>R$ 52,00</td><td>Menor preço (logística)</td></tr>
+          <tr><td style="text-align:left">Dourados MS</td><td>R$ 60,00</td><td>Semeadura atrasada</td></tr>
+          <tr><td style="text-align:left">Uberlândia MG</td><td>R$ 66,00</td><td>Demanda firme</td></tr>
+          <tr><td style="text-align:left">Porto Alegre RS</td><td>R$ 56,00</td><td>Colheita verão avançada</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.88rem;color:var(--text2);margin-top:10px">
+      <strong>Disparidade:</strong> Campinas R$ 69,07 vs Sorriso R$ 52,00 = <strong style="color:var(--accent2)">R$ 17,07/sc (33%!)</strong>.
+      Para o confinador de GO: milho a R$ 62 é mais barato que comprar de SP a R$ 69. <strong>Compre regional.</strong>
+    </p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ CENÁRIOS ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon green">🔮</div>
+    <h2>Cenários <span>— Curto Prazo (Abr-Mai) vs 2º Semestre (Jul-Set)</span></h2>
+  </div>
+
+  <div class="card">
+    <h3>📅 Curto Prazo (Abril-Maio)</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Cenário</th><th>Dólar</th><th>B3 Mai</th><th>Driver</th><th>Prob.</th></tr></thead>
+        <tbody>
+          <tr><td style="text-align:left;color:var(--dn)">📉 Queda adicional</td><td>R$ 4,85-5,00</td><td style="color:var(--dn)"><strong>R$ 64-67</strong></td><td>Dólar cai + colheita verão + petróleo baixo</td><td><span class="tag tag-dn">35%</span></td></tr>
+          <tr><td style="text-align:left;color:var(--nt)">➡️ Estabiliza</td><td>R$ 5,00-5,15</td><td><strong>R$ 67-71</strong></td><td>Status quo, liquidez baixa</td><td><span class="tag tag-nt">45%</span></td></tr>
+          <tr><td style="text-align:left;color:var(--up)">📈 Recupera</td><td>R$ 5,20+</td><td style="color:var(--up)"><strong>R$ 71-75</strong></td><td>Ormuz rompe + dólar sobe + petróleo dispara</td><td><span class="tag tag-up">20%</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>📅 2º Semestre (Julho-Setembro) — O Cenário que IMPORTA</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Cenário</th><th>Safrinha</th><th>B3 Set</th><th>Driver</th><th>Prob.</th></tr></thead>
+        <tbody>
+          <tr><td style="text-align:left;color:var(--dn)">📉 Oferta OK</td><td>Conab confirma 110+ mi t</td><td style="color:var(--dn)"><strong>R$ 65-70</strong></td><td>Safrinha sem sustos + export fraco</td><td><span class="tag tag-dn">30%</span></td></tr>
+          <tr><td style="text-align:left;color:var(--nt)">➡️ Perdas parciais</td><td>100-108 mi t</td><td><strong>R$ 72-78</strong></td><td>PR + GO perdem 10-15%, MT compensa parcial</td><td><span class="tag tag-nt">45%</span></td></tr>
+          <tr><td style="text-align:left;color:var(--up)">📈 Quebra severa</td><td>&lt;95 mi t</td><td style="color:var(--up)"><strong>R$ 80-90+</strong></td><td>Seca generalizada + cigarrinha + estoques 6%</td><td><span class="tag tag-up">25%</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.92rem;color:var(--text2);margin-top:12px">
+      <strong style="color:var(--accent2)">⚡ A curva B3 já precifica parcialmente o risco:</strong> Jan/27 a R$ 76,30 quando Mai/26 está a R$ 67,94.
+      Se safrinha frustrar de verdade: R$ 80-90 no 2º sem não é exagero.
+    </p>
+  </div>
+</div>
+
+<!-- ============ TERMÔMETROS ============ -->
+<div class="grid2">
+  <div class="thermo">
+    <h4>🌡️ Milho — Tendência Curto Prazo (Abr-Mai)</h4>
+    <div class="th-bar"><div class="th-marker" style="left:32%"></div></div>
+    <div class="th-label-row"><span>Baixista</span><span>Neutro</span><span>Altista</span></div>
+    <p style="font-size:.82rem;color:var(--dn);margin-top:8px;font-weight:600">⬇ BAIXISTA — Dólar + colheita + petróleo pressionam</p>
+  </div>
+  <div class="thermo">
+    <h4>🌡️ Milho — Tendência 2º Semestre (Jul-Set)</h4>
+    <div class="th-bar"><div class="th-marker" style="left:62%"></div></div>
+    <div class="th-label-row"><span>Baixista</span><span>Neutro</span><span>Altista</span></div>
+    <p style="font-size:.82rem;color:var(--nt);margin-top:8px;font-weight:600">⚠ LEVE ALTA — Safrinha sob risco + estoques 6% + etanol MT</p>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="thermo">
+    <h4>🌡️ Risco Safrinha GO</h4>
+    <div class="th-bar"><div class="th-marker" style="left:72%"></div></div>
+    <div class="th-label-row"><span>Baixo</span><span>Médio</span><span>Alto</span></div>
+    <p style="font-size:.82rem;color:var(--dn);margin-top:8px;font-weight:600">🔴 ELEVADO — 70% fora da janela + pressão fitossanitária</p>
+  </div>
+  <div class="thermo">
+    <h4>🌡️ Risco Safrinha PR</h4>
+    <div class="th-bar"><div class="th-marker" style="left:68%"></div></div>
+    <div class="th-label-row"><span>Baixo</span><span>Médio</span><span>Alto</span></div>
+    <p style="font-size:.82rem;color:var(--dn);margin-top:8px;font-weight:600">🔴 ELEVADO — Baixa umidade, altas temperaturas, DERAL alerta</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ OPINIÃO DO ANALISTA ============ -->
+<div class="opinion">
+  <h3>🎯 Opinião do Analista — O Milho Vive Dois Mundos</h3>
+
+  <p><strong>Curto prazo:</strong> milho caindo. Dólar a R$ 5,01, petróleo em queda, colheita de verão avançando. Mai/26 rompeu R$ 68 — suporte psicológico perdido. CEPEA recuou para R$ 69,07 (−1,85% no mês). Chicago a $4,41/bu pressionado. Para quem COMPRA milho (pecuarista, avicultor): <strong>momento interessante para travar parte do insumo.</strong></p>
+
+  <p><strong>2º semestre:</strong> cenário oposto. Safrinha com risco REAL em GO (70% fora da janela), PR (seca + temperaturas altas) e MS (atraso). Estoques de passagem em 6% — não tem margem de erro. Cigarrinha ativa. Se safrinha frustrar em 10-15%: milho vai para R$ 78-85 no 2º sem. <strong>A curva B3 já sinaliza isso:</strong> Jan/27 a R$ 76,30 vs Mai/26 a R$ 67,94.</p>
+
+  <p><strong>Para o Produtor de Milho (GO):</strong></p>
+  <p>1. <strong>NÃO venda safrinha agora a R$ 62/sc em GO.</strong> Se a safra confirmar perdas: preço vai para R$ 70-75 na região. Espere definição do potencial (próximas 3-4 semanas são decisivas).<br>
+  2. <strong>Se precisa vender para pagar conta:</strong> venda no máximo 30% e segure o resto.<br>
+  3. <strong>Hedge B3:</strong> se quer garantir piso, compre PUT de Set/26 (strike R$ 68-70).</p>
+
+  <p><strong>Para o Comprador de Milho (Pecuarista, Avicultor, Confinador):</strong></p>
+  <p>1. <strong>AGORA é hora de avaliar hedge de compra.</strong> Mai/26 abaixo de R$ 68 pode ser oportunidade. Trave 40-50% da necessidade do 2º sem.<br>
+  2. <strong>Compre milho regional GO a R$ 62</strong> em vez de esperar — se safrinha frustrar, R$ 62 vira R$ 78.<br>
+  3. <strong>Alternativa: sorgo.</strong> 10-15% mais barato, tolerante à seca, disponível em GO. Substitui até 30% do milho na ração.<br>
+  4. <strong>Cigarrinha:</strong> R$ 25,8 bi de prejuízo em 4 anos. Se tem milho no campo: MIP rigoroso.</p>
+
+  <p><strong>Fatores de monitoramento semanal:</strong><br>
+  🔴 <strong>Chuvas GO e PR</strong> (próximas 3 semanas definem a safrinha)<br>
+  🔴 <strong>DERAL-PR</strong> (relatório semanal de condição das lavouras)<br>
+  🔴 <strong>Dólar</strong> (fator #1 curto prazo — cada R$ 0,10 ≈ R$ 1,50/sc)<br>
+  🟡 <strong>Petróleo</strong> (trégua Ormuz → define etanol → define milho)<br>
+  🟡 <strong>Cigarrinha</strong> (monitoramento fitossanitário contínuo)<br>
+  🟢 <strong>Etanol MT</strong> (demanda crescente = piso estrutural para milho MT)</p>
+
+  <div class="sig">— Dr. Sidney Souza · Economista Agrícola · Rural IN · 10/Abr/2026</div>
+</div>
+
+<!-- ============ SCRIPTS ============ -->
+<script>
+const gc='rgba(30,58,40,.35)';
+const fc={family:"'Segoe UI',system-ui,sans-serif",size:11,weight:'600'};
+const tt={backgroundColor:'#10221a',borderColor:'#2a5038',borderWidth:1,titleFont:{size:12,weight:'700'},bodyFont:{size:11},padding:10,cornerRadius:8};
+
+// CHART 1: CURVA FUTUROS B3 (DADOS REAIS 10/ABR)
+new Chart(document.getElementById('chMilho1').getContext('2d'),{
+  type:'line',
+  data:{
+    labels:['Mai/26','Jul/26','Set/26','Nov/26','Jan/27'],
+    datasets:[{
+      label:'B3 R$/sc (10/abr)',
+      data:[67.94,68.62,71.50,73.00,76.30],
+      borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,.08)',
+      borderWidth:3,fill:true,tension:.35,
+      pointRadius:7,
+      pointBackgroundColor:['#ef4444','#eab308','#eab308','#22c55e','#22c55e']
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tt,
+      annotation:{annotations:{
+        l68:{type:'line',yMin:68,yMax:68,borderColor:'rgba(239,68,68,.5)',borderWidth:2,borderDash:[5,3],
+          label:{display:true,content:'Suporte R$68 (rompeu!)',position:'start',backgroundColor:'rgba(239,68,68,.7)',font:{size:9}}},
+        diff:{type:'label',xValue:4,yValue:78,
+          content:['R$76,30 Jan/27','Risco safrinha precificado!'],
+          font:{size:10,weight:'bold'},color:'#22c55e'}
+      }}
+    },
+    scales:{
+      y:{min:65,max:80,grid:{color:gc},ticks:{callback:v=>'R$'+v.toFixed(0),font:fc}},
+      x:{grid:{display:false},ticks:{font:{size:12,weight:'700'}}}
+    }
+  }
+});
+
+// CHART 2: EVOLUÇÃO CEPEA CAMPINAS (DADOS REAIS)
+new Chart(document.getElementById('chMilho2').getContext('2d'),{
+  type:'line',
+  data:{
+    labels:['20/3','23','24','25','26','27','30','31','1/4','2/4','6/4','7/4','8/4','9/4','10/4'],
+    datasets:[{
+      label:'CEPEA Campinas R$/sc',
+      data:[71.37,71.25,71.01,70.45,70.33,70.34,70.29,70.37,70.32,69.96,69.88,69.58,69.79,69.59,69.07],
+      borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,.06)',
+      borderWidth:2.5,fill:true,tension:.3,
+      pointRadius:4,
+      pointBackgroundColor:function(ctx){return ctx.dataIndex>=8?'#ef4444':'#f59e0b';}
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tt,
+      annotation:{annotations:{
+        pico:{type:'label',xValue:0,yValue:72.2,content:['Pico R$71,37','20/mar'],font:{size:9,weight:'bold'},color:'#f59e0b'},
+        abr:{type:'box',xMin:8,xMax:14,backgroundColor:'rgba(239,68,68,.03)',borderColor:'transparent',
+          label:{display:true,content:'ABR: −1,85%',font:{size:8,weight:'bold'},color:'#ef4444',position:'start'}},
+        atual:{type:'label',xValue:14,yValue:68.3,content:['R$69,07'],font:{size:9,weight:'bold'},color:'#ef4444'}
+      }}
+    },
+    scales:{
+      y:{min:68,max:72.5,grid:{color:gc},ticks:{callback:v=>'R$'+v.toFixed(1),font:fc}},
+      x:{grid:{display:false},ticks:{font:{size:9,weight:'600'},maxRotation:45}}
+    }
+  }
+});
+
+// CHART 3: SAFRINHA PLANTIO
+new Chart(document.getElementById('chMilho3').getContext('2d'),{
+  type:'bar',
+  data:{
+    labels:['MT','GO','TO','MA','PI','MG','PR','MS','SP'],
+    datasets:[
+      {label:'2026',data:[96.4,100,100,100,100,94,90,88,70],
+        backgroundColor:'rgba(245,158,11,.3)',borderColor:'#f59e0b',borderWidth:2,borderRadius:4},
+      {label:'2025',data:[99.2,100,100,100,100,98,97,96,85],
+        backgroundColor:'rgba(107,133,112,.15)',borderColor:'#6b8570',borderWidth:1.5,borderRadius:4}
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{position:'top',labels:{usePointStyle:true,padding:12,font:{size:10}}},tooltip:tt,
+      annotation:{annotations:{
+        pr:{type:'label',xValue:6,yValue:82,content:['PR: 90%','+ seca ⚠️'],font:{size:9,weight:'bold'},color:'#ef4444'},
+        ms:{type:'label',xValue:7,yValue:80,content:['MS: 88%','Atrasado'],font:{size:9,weight:'bold'},color:'#eab308'}
+      }}
+    },
+    scales:{
+      y:{min:60,max:105,grid:{color:gc},ticks:{callback:v=>v+'%',font:fc}},
+      x:{grid:{display:false},ticks:{font:{size:11,weight:'700'}}}
+    }
+  }
+});
+
+// CHART 4: EXPORT
+new Chart(document.getElementById('chMilho4').getContext('2d'),{
+  type:'bar',
+  data:{
+    labels:['Volume (mil t)','Receita (US$ mi)','Preço (US$/t)'],
+    datasets:[
+      {label:'Mar/26',data:[983,226.5,230.4],backgroundColor:'rgba(52,211,153,.3)',borderColor:'#34d399',borderWidth:2,borderRadius:5},
+      {label:'Mar/25',data:[871.3,209.3,240.3],backgroundColor:'rgba(107,133,112,.15)',borderColor:'#6b8570',borderWidth:1.5,borderRadius:5}
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{position:'top',labels:{usePointStyle:true,padding:12,font:{size:10}}},tooltip:tt,
+      annotation:{annotations:{
+        vol:{type:'label',xValue:0,yValue:1020,content:['+12,8%'],font:{size:10,weight:'bold'},color:'#34d399'},
+        px:{type:'label',xValue:2,yValue:250,content:['−4,1%'],font:{size:10,weight:'bold'},color:'#ef4444'}
+      }}
+    },
+    scales:{
+      y:{grid:{color:gc},ticks:{font:fc}},
+      x:{grid:{display:false},ticks:{font:{size:10,weight:'700'}}}
+    }
+  }
+});
+</script>
+</body>
+</html>

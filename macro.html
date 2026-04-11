@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Macro / Geo / Dólar — Radar Agro Rural IN</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1"></script>
+<style>
+:root{--bg:#0c1a11;--bg2:#10221a;--bg3:#162b1f;--border:#1e3a28;--border2:#2a5038;--accent:#d4a017;--accent2:#f0c950;--green:#2d8a44;--green2:#34d399;--text:#e8f0eb;--text2:#a3b8a9;--text3:#6b8570;--up:#22c55e;--dn:#ef4444;--nt:#eab308;--blue:#3b82f6;--purple:#a855f7;--radius:12px;--geo:#f97316}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding:32px;max-width:1100px}
+.page-header{margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border)}.page-header h1{font-size:2rem;font-weight:800;margin-bottom:6px}.page-header h1 .emoji{font-size:2.2rem;margin-right:8px}.page-header h1 .hl{color:var(--accent2)}.page-header .subtitle{font-size:1rem;color:var(--text2);font-weight:400;line-height:1.8}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:32px}.kpi{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;position:relative;overflow:hidden}.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2)}.kpi.up::before{background:var(--up)}.kpi.dn::before{background:var(--dn)}.kpi.nt::before{background:var(--nt)}.kpi.bl::before{background:var(--blue)}.kpi.geo::before{background:var(--geo)}.kpi.purple::before{background:var(--purple)}.kpi-label{font-size:.75rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:8px;font-weight:600}.kpi-value{font-size:1.55rem;font-weight:800;letter-spacing:-.5px}.kpi-value.up{color:var(--up)}.kpi-value.dn{color:var(--dn)}.kpi-value.nt{color:var(--nt)}.kpi-value.geo{color:var(--geo)}.kpi-sub{font-size:.82rem;color:var(--text3);margin-top:4px}
+.section{margin-bottom:36px}.section-title{display:flex;align-items:center;gap:12px;margin-bottom:20px}.section-title .icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}.section-title .icon.dolar{background:linear-gradient(135deg,#1a5c2a,#2d8a44)}.section-title .icon.geo{background:linear-gradient(135deg,#c2410c,#f97316)}.section-title .icon.macro{background:linear-gradient(135deg,#1d4ed8,#3b82f6)}.section-title .icon.agro{background:linear-gradient(135deg,#7c3aed,#a855f7)}.section-title h2{font-size:1.35rem;font-weight:700}.section-title h2 span{font-weight:400;color:var(--text2);font-size:.95rem}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;margin-bottom:20px}.card h3{font-size:1rem;color:var(--text2);margin-bottom:16px;font-weight:600}
+.callout{border-radius:var(--radius);padding:22px 26px;margin-bottom:20px;border-left:4px solid}.callout.up{background:rgba(34,197,94,.06);border-color:var(--up)}.callout.dn{background:rgba(239,68,68,.06);border-color:var(--dn)}.callout.nt{background:rgba(234,179,8,.06);border-color:var(--nt)}.callout.bl{background:rgba(59,130,246,.06);border-color:var(--blue)}.callout.geo{background:rgba(249,115,22,.06);border-color:var(--geo)}.callout.purple{background:rgba(168,85,247,.06);border-color:var(--purple)}.callout h4{font-size:1.05rem;font-weight:700;margin-bottom:10px}.callout.up h4{color:var(--up)}.callout.dn h4{color:var(--dn)}.callout.nt h4{color:var(--nt)}.callout.bl h4{color:var(--blue)}.callout.geo h4{color:var(--geo)}.callout.purple h4{color:var(--purple)}.callout p{font-size:.95rem;color:var(--text2);line-height:1.8}.callout p strong{color:var(--text)}
+.chart-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;margin-bottom:20px}.chart-box h3{font-size:.95rem;color:var(--text2);margin-bottom:14px;font-weight:600}.chart-wrap{position:relative;height:320px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}@media(max-width:800px){.grid2{grid-template-columns:1fr}}
+.tbl-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--border);margin-bottom:16px}table{width:100%;border-collapse:collapse;font-size:.9rem}thead th{background:var(--bg3);padding:14px 16px;text-align:center;font-weight:600;color:var(--text2);font-size:.78rem;text-transform:uppercase;letter-spacing:.8px;border-bottom:1px solid var(--border)}tbody td{padding:13px 16px;border-bottom:1px solid rgba(30,58,40,.4);text-align:center;font-size:.9rem}tbody tr:last-child td{border-bottom:none}tbody tr:hover{background:rgba(45,138,68,.04)}
+.thermo{margin:20px 0}.thermo h4{font-size:.95rem;color:var(--text2);margin-bottom:10px}.th-bar{height:14px;border-radius:7px;background:linear-gradient(90deg,var(--dn),var(--nt),var(--up));position:relative}.th-marker{position:absolute;top:-6px;width:3px;height:26px;background:#fff;border-radius:2px;transform:translateX(-50%)}.th-label-row{display:flex;justify-content:space-between;font-size:.75rem;color:var(--text3);margin-top:6px}
+.opinion{background:linear-gradient(135deg,rgba(26,92,42,.12),rgba(26,92,42,.04));border:1px solid rgba(45,138,68,.2);border-radius:var(--radius);padding:28px 30px;margin:24px 0}.opinion h3{font-size:1.15rem;font-weight:700;color:var(--accent2);margin-bottom:14px}.opinion p{font-size:.95rem;color:var(--text2);line-height:1.85;margin-bottom:12px}.opinion p strong{color:var(--text)}.opinion .sig{margin-top:16px;padding-top:12px;border-top:1px solid rgba(45,138,68,.15);font-size:.82rem;color:var(--text3);font-style:italic}
+.alert-bar{border-radius:var(--radius);padding:18px 22px;margin-bottom:24px;display:flex;align-items:flex-start;gap:14px;border:1px solid}.alert-bar.red{background:linear-gradient(135deg,rgba(239,68,68,.1),rgba(239,68,68,.03));border-color:rgba(239,68,68,.3)}.alert-bar.orange{background:linear-gradient(135deg,rgba(249,115,22,.08),rgba(249,115,22,.02));border-color:rgba(249,115,22,.25)}.alert-bar.blue{background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(59,130,246,.02));border-color:rgba(59,130,246,.25)}.alert-bar .alert-icon{font-size:1.6rem;flex-shrink:0}.alert-bar .alert-text{font-size:.92rem;color:var(--text2);line-height:1.7}.alert-bar .alert-text strong{color:var(--text)}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border2),var(--accent),var(--border2),transparent);margin:36px 0}
+.tag{display:inline-flex;align-items:center;padding:4px 12px;border-radius:6px;font-size:.78rem;font-weight:600}.tag-up{background:rgba(34,197,94,.1);color:var(--up)}.tag-dn{background:rgba(239,68,68,.1);color:var(--dn)}.tag-nt{background:rgba(234,179,8,.1);color:var(--nt)}.tag-geo{background:rgba(249,115,22,.1);color:var(--geo)}
+.timeline{border-left:3px solid var(--border2);margin:20px 0 20px 16px;padding-left:24px}.timeline .ev{margin-bottom:18px;position:relative}.timeline .ev::before{content:'';position:absolute;left:-31px;top:6px;width:12px;height:12px;border-radius:50%;border:2px solid var(--border2);background:var(--bg2)}.timeline .ev.hot::before{background:var(--dn);border-color:var(--dn)}.timeline .ev.warm::before{background:var(--nt);border-color:var(--nt)}.timeline .ev.cool::before{background:var(--up);border-color:var(--up)}.timeline .ev-date{font-size:.78rem;color:var(--text3);font-weight:600}.timeline .ev-text{font-size:.92rem;color:var(--text2)}.timeline .ev-text strong{color:var(--text)}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<div class="page-header">
+  <h1><span class="emoji">🌍</span> Macro / Geo / Dólar — <span class="hl">Ormuz em Trégua Frágil. Dólar a R$ 5,01. Selic 14,75%. IPCA Subindo.</span></h1>
+  <p class="subtitle">
+    Dólar 10/4: <strong style="color:var(--up)">R$ 5,01</strong> (−8,6% desde fev) &nbsp;|&nbsp;
+    Selic: <strong>14,75%</strong> → Focus fim 2026: <strong>12,50%</strong> &nbsp;|&nbsp;
+    IPCA Focus: <strong style="color:var(--dn)">4,36%</strong> (4ª alta seguida!) &nbsp;|&nbsp;
+    PIB 2026: <strong>1,85%</strong> &nbsp;|&nbsp;
+    Brent: <strong style="color:var(--dn)">~$60/bbl</strong> (pós-trégua) &nbsp;|&nbsp;
+    Ormuz: <strong style="color:var(--geo)">Trégua 2 sem — frágil</strong>
+  </p>
+</div>
+
+<!-- ============ ALERTAS ============ -->
+<div class="alert-bar orange">
+  <div class="alert-icon">⛽</div>
+  <div class="alert-text">
+    <strong style="color:var(--geo)">ORMUZ: Trégua de 2 semanas desde 7/abr, mas frágil.</strong> Irã reabriu parcialmente (8 navios/dia vs 100+ antes).
+    Israel atacou Líbano em 8/4 → Irã ameaçou fechar novamente. Petróleo caiu de $110→$60 com trégua, mas pode voltar a subir.
+    <strong>Bloomberg:</strong> <em>"O status do estreito MUDOU. O que era livre passagem agora é via controlada."</em>
+    Irã quer cobrar <strong>pedágio de até US$ 2 mi/navio</strong> (Parlamento iraniano).
+  </div>
+</div>
+
+<div class="alert-bar blue">
+  <div class="alert-icon">💵</div>
+  <div class="alert-text">
+    <strong style="color:var(--blue)">Dólar despencou para R$ 5,01</strong> — menor nível desde out/2024. Queda de 8,6% em 2 meses (de R$ 5,48 em fev).
+    <strong>Focus projeta R$ 5,40 para fim de 2026.</strong> Mercado está "short" dólar = risco de repique.
+    Impacto agro: soja cai, milho cai, boi em dólar sobe, café perde receita. <strong>Cada R$ 0,10 no dólar ≈ R$ 2-3/sc soja, R$ 1,50/sc milho, R$ 30-40/sc café.</strong>
+  </div>
+</div>
+
+<!-- ============ KPIs ============ -->
+<div class="kpi-grid">
+  <div class="kpi up">
+    <div class="kpi-label">Dólar Spot 10/4</div>
+    <div class="kpi-value up">R$ 5,01</div>
+    <div class="kpi-sub">−8,6% desde fev · Mín. 18 meses</div>
+  </div>
+  <div class="kpi dn">
+    <div class="kpi-label">Selic Atual</div>
+    <div class="kpi-value dn">14,75%</div>
+    <div class="kpi-sub">Corte 0,25 em mar · Próx: 14,50?</div>
+  </div>
+  <div class="kpi dn">
+    <div class="kpi-label">IPCA Focus 2026</div>
+    <div class="kpi-value dn">4,36%</div>
+    <div class="kpi-sub">4ª alta consecutiva! Teto: 4,50%</div>
+  </div>
+  <div class="kpi bl">
+    <div class="kpi-label">PIB Focus 2026</div>
+    <div class="kpi-value" style="color:var(--blue)">1,85%</div>
+    <div class="kpi-sub">Estável · Desaceleração vs 2025</div>
+  </div>
+  <div class="kpi geo">
+    <div class="kpi-label">Brent (Petróleo)</div>
+    <div class="kpi-value geo">~$60/bbl</div>
+    <div class="kpi-sub">Caiu de $126 (pico mar) → trégua</div>
+  </div>
+  <div class="kpi nt">
+    <div class="kpi-label">Selic Fim 2026</div>
+    <div class="kpi-value nt">12,50%</div>
+    <div class="kpi-sub">Focus · Daycoval: 12,00%</div>
+  </div>
+  <div class="kpi purple">
+    <div class="kpi-label">Dólar Focus Fim 2026</div>
+    <div class="kpi-value" style="color:var(--purple)">R$ 5,40</div>
+    <div class="kpi-sub">Spot a 5,01 = GAP de +7,8%!</div>
+  </div>
+  <div class="kpi dn">
+    <div class="kpi-label">Diesel BR (Média)</div>
+    <div class="kpi-value dn">R$ 3,65/L</div>
+    <div class="kpi-sub">+R$ 0,38 em 13/mar (Petrobras)</div>
+  </div>
+</div>
+
+<!-- ============ GRÁFICOS ============ -->
+<div class="grid2">
+  <div class="chart-box">
+    <h3>💵 Dólar/Real — Trajetória Jan-Abr 2026</h3>
+    <div class="chart-wrap"><canvas id="chM1"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>⛽ Brent Petróleo — O Pêndulo de Ormuz ($/bbl)</h3>
+    <div class="chart-wrap"><canvas id="chM2"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📊 Focus — Evolução IPCA 2026 (% a.a.)</h3>
+    <div class="chart-wrap"><canvas id="chM3"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>📈 Selic — Trajetória Projetada 2026-2027 (% a.a.)</h3>
+    <div class="chart-wrap"><canvas id="chM4"></canvas></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ TIMELINE ORMUZ ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon geo">⚔️</div>
+    <h2>Crise de Ormuz <span>— Linha do Tempo (Jan-Abr 2026)</span></h2>
+  </div>
+
+  <div class="timeline">
+    <div class="ev hot"><div class="ev-date">28/Jan</div><div class="ev-text"><strong>EUA + Israel atacam Irã.</strong> Retaliação a programa nuclear. Ormuz começa a ser bloqueado.</div></div>
+    <div class="ev hot"><div class="ev-date">28/Fev</div><div class="ev-text"><strong>Bloqueio efetivo.</strong> Tráfego cai 97% (de 129 para 4 navios/dia). Brent dispara para $95.</div></div>
+    <div class="ev hot"><div class="ev-date">Mar/26</div><div class="ev-text"><strong>Brent atinge $126/bbl</strong> (pico intraday). Diesel BR +R$ 0,38/L. Frete MT sobe forte. 40 países pedem reabertura.</div></div>
+    <div class="ev warm"><div class="ev-date">4/Abr</div><div class="ev-text"><strong>Irã quer cobrar pedágio</strong> de até US$ 2 mi/navio. Parlamento iraniano aprova projeto de lei.</div></div>
+    <div class="ev cool"><div class="ev-date">7/Abr</div><div class="ev-text"><strong>TRÉGUA!</strong> EUA e Irã: cessar-fogo de 2 semanas (mediação Paquistão). Trump adia ultimato. Brent cai para ~$60.</div></div>
+    <div class="ev warm"><div class="ev-date">8/Abr</div><div class="ev-text"><strong>Reabertura parcial.</strong> 8 navios passam (vs 100+ antes). Israel ataca Líbano → Irã ameaça fechar novamente.</div></div>
+    <div class="ev warm"><div class="ev-date">10/Abr</div><div class="ev-text"><strong>Ormuz opera com restrições.</strong> Irã controla passagem. Bloomberg: <em>"O status mudou para sempre."</em></div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ ANÁLISE: 5 EIXOS ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon macro">📋</div>
+    <h2>Os 5 Eixos Macro <span>— O Que Importa Para o Agro de GO</span></h2>
+  </div>
+
+  <div class="callout up">
+    <h4>Eixo 1 — Dólar a R$ 5,01: Oportunidade ou Armadilha?</h4>
+    <p>O dólar caiu de R$ 5,48 (fev) para R$ 5,01 (10/4) = <strong>−8,6%.</strong> Motivos: trégua Ormuz + petróleo desabou + fluxo de capital para emergentes + carry trade (Selic 14,75% atrai dólares).<br><br>
+    <strong>Focus projeta R$ 5,40 para dez/2026.</strong> Isso implica uma alta de +7,8% do nível atual. O mercado acha que o dólar está "barato demais" agora. <strong>Se a trégua de Ormuz falhar:</strong> dólar pode voltar a R$ 5,30-5,50 rapidamente (petróleo sobe → inflação sobe → Selic sobe).<br><br>
+    <strong>Impacto agro direto:</strong><br>
+    📉 Soja: −R$ 2-3/sc a cada R$ 0,10 de queda no dólar<br>
+    📉 Milho: −R$ 1,50/sc<br>
+    📉 Café: −R$ 30-40/sc<br>
+    📉 Algodão: −2-3 ¢/lb na paridade<br>
+    📈 Boi: receita em USD sobe, mas competitividade export cai<br>
+    📈 Leite: importado fica mais barato → pressiona produtor</p>
+  </div>
+
+  <div class="callout dn">
+    <h4>Eixo 2 — Selic 14,75%: Crédito Caro, Agro Sofre</h4>
+    <p>Selic em 14,75% = maior nível desde 2023. Corte de 0,25 pp em março. <strong>Próximo corte: abril → 14,50%.</strong> Focus: 12,50% no fim de 2026 (Daycoval: 12,00%).<br><br>
+    <strong>Impacto agro:</strong> custeio mais caro (CDI + spread = 18-22% a.a. para produtor). Selic alta encarece estocagem (custo de oportunidade), faz produtor vender mais rápido, pressiona preços na colheita. <strong>Dívida rural a CDI+3% = 17,75% a.a.</strong> Inviável para muitos.<br><br>
+    <strong>Pronaf:</strong> juros caíram de 8% → 3% para cooperativas (genética bovina). Mas Pronamp e demais linhas seguem com juros reais positivos.</p>
+  </div>
+
+  <div class="callout geo">
+    <h4>Eixo 3 — Ormuz: O Mundo Nunca Mais Será o Mesmo</h4>
+    <p>A crise de Ormuz mudou a geopolítica energética global. <strong>Antes:</strong> 20% do petróleo e GNL mundial passava livremente. <strong>Agora:</strong> Irã controla a passagem + quer pedágio permanente.<br><br>
+    <strong>Para o agro BR:</strong><br>
+    🔴 <strong>Diesel:</strong> +R$ 0,38/L em mar → frete MT/GO encareceu 10-15%<br>
+    🔴 <strong>Fertilizantes:</strong> potássio e fosfatados que passam por Ormuz ficam mais caros/escassos<br>
+    🔴 <strong>Inflação:</strong> IPCA Focus foi de 3,91% → 4,36% em 1 mês (petróleo → combustível → frete → alimento)<br>
+    🟢 <strong>Lado positivo:</strong> petróleo alto → etanol mais competitivo → mais demanda por milho BR (etanol de milho)<br>
+    🟢 <strong>Trégua 7/4:</strong> petróleo caiu de $110 → $60. Se durar: diesel pode cair, frete alivia, inflação desacelera.</p>
+  </div>
+
+  <div class="callout bl">
+    <h4>Eixo 4 — PIB 1,85%: Desaceleração + Eleição 2026</h4>
+    <p>PIB 2026: 1,85% (Focus) vs 2,3% em 2025. Desaceleração por: Selic alta, inflação subindo, incerteza global. <strong>Banco Daycoval:</strong> <em>"Setores sensíveis à política monetária voltam a ganhar tração, mas o médio prazo é mais incerto."</em><br><br>
+    <strong>Eleição em outubro:</strong> incerteza política = volatilidade no dólar e juros a partir de jul-ago. Historicamente o dólar sobe em ano eleitoral (2002, 2014, 2018, 2022). Se candidatos polarizadores ganharem tração: dólar pode ir a R$ 5,50+.</p>
+  </div>
+
+  <div class="callout purple">
+    <h4>Eixo 5 — Tarifas EUA-China: Brasil no Meio</h4>
+    <p>A guerra comercial EUA-China segue ativa. Tarifas americanas sobre grãos e carne afetam fluxos. <strong>Para o BR:</strong><br>
+    🟢 <strong>Soja:</strong> China continua comprando do Brasil por causa das tarifas sobre soja americana. BR mantém ~70% do mercado chinês.<br>
+    🟢 <strong>Carne:</strong> cota chinesa de 1,1 mi t. EUA com tarifa de 55% sobre carne BR = não é mercado principal.<br>
+    🟡 <strong>Milho:</strong> China pode comprar menos milho BR se desviar demanda para origens sem tarifa.<br>
+    🔴 <strong>Risco:</strong> se EUA e China fizerem acordo → China pode voltar a comprar soja/milho americano → preço BR cai.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ TABELA FOCUS ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon macro">📋</div>
+    <h2>Boletim Focus <span>— Consolidado 6/Abr/2026</span></h2>
+  </div>
+
+  <div class="card">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Indicador</th><th>2026</th><th>2027</th><th>2028</th><th>Tendência</th></tr></thead>
+        <tbody>
+          <tr><td style="text-align:left"><strong>IPCA</strong></td><td style="color:var(--dn)"><strong>4,36%</strong></td><td>3,85%</td><td>3,60%</td><td><span class="tag tag-dn">↑ 4ª alta!</span></td></tr>
+          <tr><td style="text-align:left"><strong>Selic (fim)</strong></td><td><strong>12,50%</strong></td><td>10,50%</td><td>10,00%</td><td><span class="tag tag-nt">Estável</span></td></tr>
+          <tr><td style="text-align:left"><strong>PIB</strong></td><td><strong>1,85%</strong></td><td>1,80%</td><td>2,00%</td><td><span class="tag tag-nt">Estável</span></td></tr>
+          <tr><td style="text-align:left"><strong>Dólar (fim)</strong></td><td style="color:var(--purple)"><strong>R$ 5,40</strong></td><td>R$ 5,45</td><td>R$ 5,50</td><td><span class="tag tag-dn">Spot muito abaixo!</span></td></tr>
+          <tr><td style="text-align:left">Balança Comercial</td><td>US$ 70 bi</td><td>US$ 73 bi</td><td>—</td><td><span class="tag tag-up">Superávit</span></td></tr>
+          <tr><td style="text-align:left">Dívida/PIB</td><td>69,9%</td><td>73,8%</td><td>—</td><td><span class="tag tag-dn">Crescendo</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TERMÔMETROS ============ -->
+<div class="grid2">
+  <div class="thermo">
+    <h4>🌡️ Dólar — Tendência 2026</h4>
+    <div class="th-bar"><div class="th-marker" style="left:45%"></div></div>
+    <div class="th-label-row"><span>Queda</span><span>Neutro</span><span>Alta</span></div>
+    <p style="font-size:.82rem;color:var(--nt);margin-top:8px;font-weight:600">⚠ NEUTRO c/ viés alta — Spot muito baixo vs Focus. Eleição + Ormuz = risco</p>
+  </div>
+  <div class="thermo">
+    <h4>🌡️ Risco Geopolítico (Ormuz)</h4>
+    <div class="th-bar"><div class="th-marker" style="left:60%"></div></div>
+    <div class="th-label-row"><span>Baixo</span><span>Médio</span><span>Alto</span></div>
+    <p style="font-size:.82rem;color:var(--geo);margin-top:8px;font-weight:600">🔶 MÉDIO-ALTO — Trégua frágil. Israel pode romper. Pedágio muda equação global.</p>
+  </div>
+</div>
+<div class="grid2">
+  <div class="thermo">
+    <h4>🌡️ Inflação — Risco IPCA Estourar Teto (4,50%)</h4>
+    <div class="th-bar"><div class="th-marker" style="left:72%"></div></div>
+    <div class="th-label-row"><span>Baixo</span><span>Médio</span><span>Alto</span></div>
+    <p style="font-size:.82rem;color:var(--dn);margin-top:8px;font-weight:600">🔴 ELEVADO — 4,36% e subindo. Se Ormuz fechar de novo: teto estoura.</p>
+  </div>
+  <div class="thermo">
+    <h4>🌡️ Ambiente para o Agro BR</h4>
+    <div class="th-bar"><div class="th-marker" style="left:52%"></div></div>
+    <div class="th-label-row"><span>Ruim</span><span>Neutro</span><span>Bom</span></div>
+    <p style="font-size:.82rem;color:var(--nt);margin-top:8px;font-weight:600">⚠ NEUTRO — Dólar fraco + Selic alta, mas safra boa + export forte</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ OPINIÃO ============ -->
+<div class="opinion">
+  <h3>🎯 Opinião do Analista — O Cenário Macro É o Tabuleiro de Xadrez do Agro</h3>
+
+  <p><strong>O dólar a R$ 5,01 é a variável #1 do agro hoje.</strong> Comprime soja, milho, café, algodão em reais. Mas Focus diz R$ 5,40 no fim do ano. A distância de 7,8% é enorme. Se o Focus estiver certo: quem fixou preço em dólar (FOB) ganha; quem fixou em reais (CBOT × câmbio) perde. <strong>Recomendação: trave câmbio para 40-50% da produção entre R$ 5,10-5,20</strong> — protege contra o cenário atual sem limitar ganho se dólar voltar a R$ 5,40.</p>
+
+  <p><strong>Ormuz é o cisne cinza.</strong> Não é mais "se" haverá problema — é "quando o próximo episódio." A trégua de 2 semanas é frágil. Israel já atacou Líbano em 8/4 e Irã ameaçou fechar novamente. <strong>Se fechar de novo:</strong> petróleo de $60 volta para $100+, diesel sobe, frete explode, IPCA estoura teto, Selic para de cair. <strong>Cenário pesadelo para o agro: custo sobe + receita cai (dólar fraco).</strong></p>
+
+  <p><strong>Para o produtor de GO:</strong></p>
+  <p>1. <strong>Trave câmbio parcial.</strong> NDF ou ACC com banco — R$ 5,10-5,20 para mai-set. Se dólar voltar a R$ 5,40: você não perde tudo (travou só 40-50%).<br>
+  2. <strong>Compre diesel antecipado</strong> se sua cooperativa oferece programa de pré-compra. R$ 3,65/L pode virar R$ 4,00+ se Ormuz fechar.<br>
+  3. <strong>Antecipe compra de fertilizantes</strong> (ver aba Fertilizantes) — potássio e fosfatados passam por Ormuz.<br>
+  4. <strong>Monitore a eleição.</strong> A partir de julho: volatilidade cambial aumenta historicamente.</p>
+
+  <p><strong>Monitoramento semanal:</strong><br>
+  🔴 <strong>Ormuz</strong> (trégua expira ~21/abr — dia D!)<br>
+  🔴 <strong>Dólar</strong> (suporte R$ 4,95 / resistência R$ 5,20 — romper para qualquer lado = tendência)<br>
+  🔴 <strong>Copom abril</strong> (corte 0,25 ou 0,50? Define trajetória Selic)<br>
+  🟡 <strong>IPCA março</strong> (se vier >0,55%: pressão sobre teto da meta)<br>
+  🟡 <strong>Petróleo</strong> (Brent acima de $80 = diesel sobe; abaixo de $60 = alívio)<br>
+  🟢 <strong>Balança comercial</strong> (US$ 70 bi superávit é rede de segurança para o real)</p>
+
+  <div class="sig">— Dr. Sidney Souza · Economista Agrícola · Rural IN · 10/Abr/2026</div>
+</div>
+
+<!-- ============ SCRIPTS ============ -->
+<script>
+const gc='rgba(30,58,40,.35)',fc={family:"'Segoe UI',system-ui,sans-serif",size:11,weight:'600'},tt={backgroundColor:'#10221a',borderColor:'#2a5038',borderWidth:1,titleFont:{size:12,weight:'700'},bodyFont:{size:11},padding:10,cornerRadius:8};
+
+// CHART 1: DÓLAR
+new Chart(document.getElementById('chM1').getContext('2d'),{
+  type:'line',
+  data:{labels:['Jan/26','Fev','1/Mar','15/Mar','31/Mar','1/Abr','6/Abr','7/Abr','8/Abr','10/Abr'],
+    datasets:[{label:'USD/BRL',
+      data:[5.42,5.48,5.35,5.32,5.19,5.16,5.15,5.16,5.11,5.01],
+      borderColor:'#22c55e',backgroundColor:'rgba(34,197,94,.06)',borderWidth:2.5,fill:true,tension:.35,
+      pointRadius:5,pointBackgroundColor:function(c){return c.raw<=5.05?'#22c55e':'#eab308';}}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt,
+    annotation:{annotations:{
+      focus:{type:'line',yMin:5.40,yMax:5.40,borderColor:'rgba(168,85,247,.4)',borderWidth:2,borderDash:[5,3],
+        label:{display:true,content:'Focus R$5,40',position:'start',backgroundColor:'rgba(168,85,247,.6)',font:{size:9}}},
+      spot:{type:'label',xValue:9,yValue:4.93,content:['R$5,01','Mín 18m!'],font:{size:10,weight:'bold'},color:'#22c55e'},
+      gap:{type:'label',xValue:5,yValue:5.37,content:['GAP +7,8%!'],font:{size:9,weight:'bold'},color:'#a855f7'}
+    }}},
+    scales:{y:{min:4.85,max:5.55,grid:{color:gc},ticks:{callback:v=>'R$'+v.toFixed(2),font:fc},reverse:false},x:{grid:{display:false},ticks:{font:{size:9,weight:'600'},maxRotation:45}}}}
+});
+
+// CHART 2: PETRÓLEO
+new Chart(document.getElementById('chM2').getContext('2d'),{
+  type:'line',
+  data:{labels:['Jan/26','28/Fev\nBloqueio','10/Mar','20/Mar\nPico','31/Mar','4/Abr','7/Abr\nTrégua','8/Abr','10/Abr'],
+    datasets:[{label:'Brent $/bbl',
+      data:[78,95,110,126,105,100,75,65,60],
+      borderColor:'#f97316',backgroundColor:'rgba(249,115,22,.06)',borderWidth:2.5,fill:true,tension:.3,
+      pointRadius:6,pointBackgroundColor:['#eab308','#ef4444','#ef4444','#ef4444','#eab308','#eab308','#22c55e','#22c55e','#22c55e']}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt,
+    annotation:{annotations:{
+      bloq:{type:'box',xMin:1,xMax:5,backgroundColor:'rgba(239,68,68,.04)',borderColor:'transparent',
+        label:{display:true,content:'BLOQUEIO ORMUZ',font:{size:9,weight:'bold'},color:'#ef4444',position:'start'}},
+      treg:{type:'box',xMin:6,xMax:8,backgroundColor:'rgba(34,197,94,.04)',borderColor:'transparent',
+        label:{display:true,content:'TRÉGUA',font:{size:9,weight:'bold'},color:'#22c55e',position:'start'}},
+      pico:{type:'label',xValue:3,yValue:132,content:['PICO $126!'],font:{size:10,weight:'bold'},color:'#ef4444'}
+    }}},
+    scales:{y:{min:50,max:140,grid:{color:gc},ticks:{callback:v=>'$'+v,font:fc}},x:{grid:{display:false},ticks:{font:{size:8,weight:'600'},maxRotation:45}}}}
+});
+
+// CHART 3: IPCA FOCUS EVOLUÇÃO
+new Chart(document.getElementById('chM3').getContext('2d'),{
+  type:'line',
+  data:{labels:['Jan/26','Fev','9/Mar','16/Mar','23/Mar','30/Mar','6/Abr'],
+    datasets:[{label:'IPCA Focus 2026 (%)',
+      data:[3.80,3.85,3.91,4.10,4.17,4.31,4.36],
+      borderColor:'#ef4444',backgroundColor:'rgba(239,68,68,.06)',borderWidth:2.5,fill:true,tension:.3,
+      pointRadius:5,pointBackgroundColor:'#ef4444'}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt,
+    annotation:{annotations:{
+      teto:{type:'line',yMin:4.50,yMax:4.50,borderColor:'rgba(239,68,68,.5)',borderWidth:2,borderDash:[5,3],
+        label:{display:true,content:'TETO META 4,50%',position:'start',backgroundColor:'rgba(239,68,68,.7)',font:{size:9}}},
+      meta:{type:'line',yMin:3.00,yMax:3.00,borderColor:'rgba(34,197,94,.3)',borderWidth:1.5,borderDash:[5,3],
+        label:{display:true,content:'Meta 3,00%',position:'start',backgroundColor:'rgba(34,197,94,.5)',font:{size:8}}},
+      guerra:{type:'label',xValue:4,yValue:4.45,content:['Guerra →','Petróleo →','Inflação!'],font:{size:8,weight:'bold'},color:'#f97316'}
+    }}},
+    scales:{y:{min:2.80,max:4.65,grid:{color:gc},ticks:{callback:v=>v.toFixed(1)+'%',font:fc}},x:{grid:{display:false},ticks:{font:{size:9,weight:'600'},maxRotation:45}}}}
+});
+
+// CHART 4: SELIC TRAJETÓRIA
+new Chart(document.getElementById('chM4').getContext('2d'),{
+  type:'line',
+  data:{labels:['Dez/25','Jan/26','Mar/26\n(atual)','Abr','Jun','Ago','Out','Dez/26\n(Focus)','Jun/27','Dez/27'],
+    datasets:[{label:'Selic % a.a.',
+      data:[15.00,15.00,14.75,14.50,14.00,13.50,13.00,12.50,11.50,10.50],
+      borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,.06)',borderWidth:2.5,fill:true,tension:.35,
+      pointRadius:5,pointBackgroundColor:function(c){return c.dataIndex<=2?'#ef4444':'#3b82f6';}}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt,
+    annotation:{annotations:{
+      atual:{type:'label',xValue:2,yValue:15.3,content:['ATUAL 14,75%'],font:{size:9,weight:'bold'},color:'#ef4444'},
+      fim:{type:'label',xValue:7,yValue:12.0,content:['Focus 12,50%'],font:{size:9,weight:'bold'},color:'#3b82f6'}
+    }}},
+    scales:{y:{min:10,max:15.8,grid:{color:gc},ticks:{callback:v=>v.toFixed(1)+'%',font:fc},reverse:false},x:{grid:{display:false},ticks:{font:{size:8,weight:'600'},maxRotation:45}}}}
+});
+</script>
+</body>
+</html>

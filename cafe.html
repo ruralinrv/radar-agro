@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Café — Radar Agro Rural IN</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1"></script>
+<style>
+:root{--bg:#0c1a11;--bg2:#10221a;--bg3:#162b1f;--border:#1e3a28;--border2:#2a5038;--accent:#d4a017;--accent2:#f0c950;--green:#2d8a44;--green2:#34d399;--text:#e8f0eb;--text2:#a3b8a9;--text3:#6b8570;--up:#22c55e;--dn:#ef4444;--nt:#eab308;--blue:#3b82f6;--coffee:#92400e;--coffee2:#d97706;--radius:12px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding:32px;max-width:1100px}
+.page-header{margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border)}.page-header h1{font-size:2rem;font-weight:800;margin-bottom:6px}.page-header h1 .emoji{font-size:2.2rem;margin-right:8px}.page-header h1 .hl{color:var(--accent2)}.page-header .subtitle{font-size:1rem;color:var(--text2);font-weight:400;line-height:1.8}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:32px}.kpi{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;position:relative;overflow:hidden}.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2)}.kpi.up::before{background:var(--up)}.kpi.dn::before{background:var(--dn)}.kpi.nt::before{background:var(--nt)}.kpi.gold::before{background:var(--accent)}.kpi.coffee::before{background:var(--coffee2)}.kpi-label{font-size:.78rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:8px;font-weight:600}.kpi-value{font-size:1.65rem;font-weight:800;letter-spacing:-.5px}.kpi-value.up{color:var(--up)}.kpi-value.dn{color:var(--dn)}.kpi-value.nt{color:var(--nt)}.kpi-value.coffee{color:var(--coffee2)}.kpi-sub{font-size:.82rem;color:var(--text3);margin-top:4px}
+.section{margin-bottom:36px}.section-title{display:flex;align-items:center;gap:12px;margin-bottom:20px}.section-title .icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}.section-title .icon.coffee{background:linear-gradient(135deg,var(--coffee),var(--coffee2))}.section-title .icon.green{background:linear-gradient(135deg,#1a5c2a,#2d8a44)}.section-title .icon.red{background:linear-gradient(135deg,#b91c1c,#ef4444)}.section-title h2{font-size:1.35rem;font-weight:700}.section-title h2 span{font-weight:400;color:var(--text2);font-size:.95rem}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;margin-bottom:20px}.card h3{font-size:1rem;color:var(--text2);margin-bottom:16px;font-weight:600}
+.callout{border-radius:var(--radius);padding:22px 26px;margin-bottom:20px;border-left:4px solid}.callout.up{background:rgba(34,197,94,.06);border-color:var(--up)}.callout.dn{background:rgba(239,68,68,.06);border-color:var(--dn)}.callout.nt{background:rgba(234,179,8,.06);border-color:var(--nt)}.callout.coffee{background:rgba(217,119,6,.06);border-color:var(--coffee2)}.callout h4{font-size:1.05rem;font-weight:700;margin-bottom:10px}.callout.up h4{color:var(--up)}.callout.dn h4{color:var(--dn)}.callout.nt h4{color:var(--nt)}.callout.coffee h4{color:var(--coffee2)}.callout p{font-size:.95rem;color:var(--text2);line-height:1.8}.callout p strong{color:var(--text)}
+.chart-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;margin-bottom:20px}.chart-box h3{font-size:.95rem;color:var(--text2);margin-bottom:14px;font-weight:600}.chart-wrap{position:relative;height:320px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}@media(max-width:800px){.grid2{grid-template-columns:1fr}}
+.tbl-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--border);margin-bottom:16px}table{width:100%;border-collapse:collapse;font-size:.9rem}thead th{background:var(--bg3);padding:14px 16px;text-align:center;font-weight:600;color:var(--text2);font-size:.78rem;text-transform:uppercase;letter-spacing:.8px;border-bottom:1px solid var(--border)}tbody td{padding:13px 16px;border-bottom:1px solid rgba(30,58,40,.4);text-align:center;font-size:.9rem}tbody tr:last-child td{border-bottom:none}tbody tr:hover{background:rgba(45,138,68,.04)}
+.thermo{margin:20px 0}.thermo h4{font-size:.95rem;color:var(--text2);margin-bottom:10px}.th-bar{height:14px;border-radius:7px;background:linear-gradient(90deg,var(--dn),var(--nt),var(--up));position:relative}.th-marker{position:absolute;top:-6px;width:3px;height:26px;background:#fff;border-radius:2px;transform:translateX(-50%)}.th-label-row{display:flex;justify-content:space-between;font-size:.75rem;color:var(--text3);margin-top:6px}
+.opinion{background:linear-gradient(135deg,rgba(26,92,42,.12),rgba(26,92,42,.04));border:1px solid rgba(45,138,68,.2);border-radius:var(--radius);padding:28px 30px;margin:24px 0}.opinion h3{font-size:1.15rem;font-weight:700;color:var(--accent2);margin-bottom:14px}.opinion p{font-size:.95rem;color:var(--text2);line-height:1.85;margin-bottom:12px}.opinion p strong{color:var(--text)}.opinion .sig{margin-top:16px;padding-top:12px;border-top:1px solid rgba(45,138,68,.15);font-size:.82rem;color:var(--text3);font-style:italic}
+.alert-bar{border-radius:var(--radius);padding:18px 22px;margin-bottom:24px;display:flex;align-items:flex-start;gap:14px;border:1px solid}.alert-bar.red{background:linear-gradient(135deg,rgba(239,68,68,.1),rgba(239,68,68,.03));border-color:rgba(239,68,68,.3)}.alert-bar.yellow{background:linear-gradient(135deg,rgba(234,179,8,.08),rgba(234,179,8,.02));border-color:rgba(234,179,8,.25)}.alert-bar.coffee-bg{background:linear-gradient(135deg,rgba(217,119,6,.08),rgba(217,119,6,.02));border-color:rgba(217,119,6,.25)}.alert-bar .alert-icon{font-size:1.6rem;flex-shrink:0}.alert-bar .alert-text{font-size:.92rem;color:var(--text2);line-height:1.7}.alert-bar .alert-text strong{color:var(--text)}
+.highlight{background:linear-gradient(135deg,rgba(217,119,6,.08),rgba(217,119,6,.02));border:1px solid rgba(217,119,6,.25);border-radius:var(--radius);padding:24px 28px;margin-bottom:24px;text-align:center}.highlight .hl-emoji{font-size:2.2rem;margin-bottom:8px}.highlight .hl-title{font-size:1.1rem;font-weight:700;color:var(--coffee2);margin-bottom:8px}.highlight .hl-text{font-size:.95rem;color:var(--text2);line-height:1.8}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border2),var(--accent),var(--border2),transparent);margin:36px 0}
+.tag{display:inline-flex;align-items:center;padding:4px 12px;border-radius:6px;font-size:.78rem;font-weight:600}.tag-up{background:rgba(34,197,94,.1);color:var(--up)}.tag-dn{background:rgba(239,68,68,.1);color:var(--dn)}.tag-nt{background:rgba(234,179,8,.1);color:var(--nt)}.tag-coffee{background:rgba(217,119,6,.1);color:var(--coffee2)}
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE HEADER ============ -->
+<div class="page-header">
+  <h1><span class="emoji">☕</span> Café — <span class="hl">Safra Recorde 66 mi Sacas Pressiona. Arábica a R$ 1.815 (−3,9%). Robusta Despenca −9%.</span></h1>
+  <p class="subtitle">
+    Arábica CEPEA 10/4: <strong style="color:var(--dn)">R$ 1.814,56/sc</strong> (−3,88% mês | US$ 362) &nbsp;|&nbsp;
+    Robusta CEPEA 10/4: <strong style="color:var(--dn)">R$ 879,03/sc</strong> (−8,98% mês) &nbsp;|&nbsp;
+    NY Mai/26: <strong>~290 ¢/lb</strong> &nbsp;|&nbsp;
+    Londres Mai/26: <strong>$3.381/t</strong> &nbsp;|&nbsp;
+    Safra BR 2026: <strong style="color:var(--coffee2)">66,2 mi sacas (RECORDE)</strong> &nbsp;|&nbsp;
+    Superávit global: <strong>~10 mi sacas</strong> (StoneX)
+  </p>
+</div>
+
+<!-- ============ ALERTAS ============ -->
+<div class="alert-bar coffee-bg">
+  <div class="alert-icon">☕</div>
+  <div class="alert-text">
+    <strong style="color:var(--coffee2)">Safra 2026 = RECORDE HISTÓRICO!</strong> Conab: 66,2 mi sacas (+17,1%). StoneX: 70,7 mi. Hedgepoint: 71-74,4 mi.
+    <strong>Bienalidade positiva + clima favorável + área +4,1%.</strong> Colheita de conilon já iniciou em abril.
+    Arábica intensifica em meados de maio. <strong>Forbes:</strong> <em>"Proximidade de colheita pressiona preços."</em>
+  </div>
+</div>
+
+<div class="alert-bar yellow">
+  <div class="alert-icon">⚠️</div>
+  <div class="alert-text">
+    <strong style="color:var(--nt)">Arábica e robusta em caminhos opostos em março, agora ambos caem em abril.</strong>
+    Arábica subiu +5-10% em março (oferta limitada + geopolítica) → caiu −3,88% em abril (colheita se aproxima).
+    Robusta: caiu forte −8,98% em abril — <strong>colheita já começou no ES e RO.</strong>
+    CEPEA: <em>"A liquidez no robusta está bastante lenta há semanas."</em>
+  </div>
+</div>
+
+<!-- ============ KPIs ============ -->
+<div class="kpi-grid">
+  <div class="kpi dn">
+    <div class="kpi-label">Arábica CEPEA 10/4</div>
+    <div class="kpi-value dn">R$ 1.814,56</div>
+    <div class="kpi-sub">/saca · −3,88% mês · US$ 362,26</div>
+  </div>
+  <div class="kpi dn">
+    <div class="kpi-label">Robusta CEPEA 10/4</div>
+    <div class="kpi-value dn">R$ 879,03</div>
+    <div class="kpi-sub">/saca · −8,98% mês · US$ 175,49</div>
+  </div>
+  <div class="kpi coffee">
+    <div class="kpi-label">Safra BR 2026 (Conab)</div>
+    <div class="kpi-value coffee">66,2 mi sc</div>
+    <div class="kpi-sub">+17,1% · RECORDE · Bienalidade +</div>
+  </div>
+  <div class="kpi gold">
+    <div class="kpi-label">StoneX / Hedgepoint</div>
+    <div class="kpi-value" style="color:var(--accent2)">70,7-74,4 mi</div>
+    <div class="kpi-sub">Superávit global ~10 mi sacas</div>
+  </div>
+  <div class="kpi nt">
+    <div class="kpi-label">NY Arábica Mai/26</div>
+    <div class="kpi-value nt">~290 ¢/lb</div>
+    <div class="kpi-sub">Caiu de 296 em 1/4 · Pressionado</div>
+  </div>
+  <div class="kpi dn">
+    <div class="kpi-label">Londres Robusta Mai/26</div>
+    <div class="kpi-value dn">$3.381/t</div>
+    <div class="kpi-sub">Abaixo de $3.500 · Colheita BR</div>
+  </div>
+</div>
+
+<!-- ============ GRÁFICOS ============ -->
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📈 Arábica CEPEA — Trajetória Mar/Abr (R$/sc)</h3>
+    <div class="chart-wrap"><canvas id="chCafe1"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>📉 Robusta CEPEA — Trajetória Mar/Abr (R$/sc)</h3>
+    <div class="chart-wrap"><canvas id="chCafe2"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📊 Safra BR — Projeções 2026 (mi sacas)</h3>
+    <div class="chart-wrap"><canvas id="chCafe3"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>☕ Produção por Estado — Conab 2026 (mi sacas)</h3>
+    <div class="chart-wrap"><canvas id="chCafe4"></canvas></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ CONTEXTO SAFRA ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon coffee">🌱</div>
+    <h2>A Safra Recorde <span>— De 56,5 mi em 2025 Para 66-75 mi em 2026</span></h2>
+  </div>
+
+  <div class="highlight">
+    <div class="hl-emoji">☕🏆📈</div>
+    <div class="hl-title">Por Que 2026 é Recorde? A Bienalidade Explica</div>
+    <div class="hl-text">
+      O cafeeiro arábica alterna ciclos de alta e baixa produção (<strong>bienalidade</strong>). 2025 foi ano de <strong>baixa</strong> (−4,4%). 2026 é ano de <strong>alta</strong> (+17-30%).<br><br>
+      <strong>Conab:</strong> 66,2 mi sacas (arábica 44,1 + conilon 22,1). <strong>StoneX:</strong> 70,7 mi. <strong>Hedgepoint:</strong> 71-74,4 mi.<br>
+      <strong>MG:</strong> 32,4 mi sacas (+25,9%) = quase <strong>metade da produção nacional.</strong><br>
+      <strong>ES:</strong> 19 mi sacas (conilon líder). <strong>SP:</strong> 5,5 mi sacas.<br><br>
+      <strong style="color:var(--accent2)">Superávit global de ~10 mi sacas (StoneX)</strong> após 4 anos de déficit que reduziram estoques em 22 mi sacas.<br>
+      <strong>Rabobank:</strong> produção mundial pode atingir 180 mi sacas em 2026/27.
+    </div>
+  </div>
+</div>
+
+<!-- ============ ANÁLISE FUNDAMENTAL ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon coffee">📋</div>
+    <h2>Análise Fundamental <span>— Os 5 Fatores do Café em 2026</span></h2>
+  </div>
+
+  <div class="callout dn">
+    <h4>Fator 1 — Safra Recorde = Pressão Baixista Estrutural</h4>
+    <p>A maior safra da história brasileira está chegando. <strong>Colheita de conilon já começou em abril no ES e RO.</strong> Arábica intensifica em meados de maio. <strong>Forbes/CEPEA 7/4:</strong> <em>"A proximidade da colheita já vem influenciando os preços, mesmo que as atividades só se intensifiquem a partir de meados de maio."</em> StoneX prevê <strong>superávit global de 10 mi sacas</strong> — isso após 4 anos de déficit. O mercado precifica entrada massiva de café. <strong>Mas:</strong> Revista Cafeicultura e produtores alertam que lavouras passaram por estresse hídrico e há divergência entre projeções e campo.</p>
+  </div>
+
+  <div class="callout nt">
+    <h4>Fator 2 — Arábica vs Robusta: Dois Mundos Diferentes</h4>
+    <p><strong>Arábica em março:</strong> subiu 5-10% — oferta limitada no spot + geopolítica (Ormuz → frete alto) + estoques certificados ICE caindo. Mas em abril: <strong>caiu 3,88%</strong> com proximidade da colheita.<br>
+    <strong>Robusta em março:</strong> já caiu — colheita mais cedo. Em abril: <strong>despencou −8,98%.</strong> CEPEA: <em>"Ofertas abaixo de R$ 900/sc para conilon tipo 7/8."</em> Liquidez lenta, produtor não vende (bom caixa).<br>
+    <strong>Broto Notícias:</strong> <em>"O arábica mantém trajetória sustentada pela oferta limitada. O robusta acumula perdas com a aproximação da safra."</em> <strong>Spread arábica-robusta: R$ 935/sc</strong> — historicamente alto.</p>
+  </div>
+
+  <div class="callout up">
+    <h4>Fator 3 — Estoques Globais Ainda Apertados (Suporte ao Preço)</h4>
+    <p>Mesmo com safra recorde, os estoques globais foram <strong>reduzidos em 22 mi sacas entre 2021-2024.</strong> O superávit de 10 mi sacas em 2026 NÃO recompõe totalmente. <strong>Itaú BBA:</strong> <em>"Os estoques globais seguem relativamente apertados."</em> Isso sustenta preços acima das médias históricas — arábica acima de R$ 1.500/sc e robusta acima de R$ 800/sc no médio prazo. <strong>Qualquer problema climático remanescente pode reverter a narrativa bajista.</strong></p>
+  </div>
+
+  <div class="callout dn">
+    <h4>Fator 4 — Dólar a R$ 5,01 = Receita do Cafeicultor Cai</h4>
+    <p>Arábica em dólar: US$ 362/sc em 10/4 vs US$ 378/sc em 25/3 = <strong>queda de US$ 16/sc.</strong> Em reais: saiu de R$ 1.977 para R$ 1.814 = <strong>queda de R$ 163/sc (−8,2%) em 2 semanas.</strong> O dólar fraco (R$ 5,01 vs R$ 5,48 em fev) comprime a receita em reais. <strong>Revista Cafeicultura:</strong> <em>"A valorização do real tende a reduzir o interesse de venda por parte dos produtores e dar suporte às cotações externas."</em> Mas não basta: a queda em NY + queda do dólar = duplo golpe no preço BR.</p>
+  </div>
+
+  <div class="callout coffee">
+    <h4>Fator 5 — Produtor com Caixa Forte → Não Tem Pressa de Vender</h4>
+    <p>Após 3-4 anos de preços elevados, o cafeicultor brasileiro tem <strong>boa condição de caixa e investimento.</strong> CEPEA: <em>"Produtores vendendo apenas para liquidar compromissos de curto prazo e realizar planejamentos para a colheita."</em> Isso segura a oferta no spot. <strong>Mas:</strong> quando a colheita de maio-junho chegar com volume recorde, mesmo quem tem caixa precisará escoar. <strong>A pressão de oferta física vai aumentar significativamente a partir de junho.</strong></p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ TABELA CEPEA ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon coffee">📊</div>
+    <h2>Evolução CEPEA <span>— Arábica & Robusta (Mar-Abr)</span></h2>
+  </div>
+
+  <div class="card">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Data</th><th>Arábica R$/sc</th><th>Var. Mês</th><th>Robusta R$/sc</th><th>Var. Mês</th></tr></thead>
+        <tbody>
+          <tr><td>20/Mar</td><td>R$ 1.962,67</td><td style="color:var(--up)">+9,18%</td><td>R$ 1.020,00</td><td style="color:var(--up)">+2,5%</td></tr>
+          <tr><td>25/Mar</td><td>R$ 1.977,91</td><td style="color:var(--up)">+10,03%</td><td>R$ 998,00</td><td style="color:var(--dn)">−0,3%</td></tr>
+          <tr><td>31/Mar</td><td>R$ 1.887,79</td><td style="color:var(--up)">+5,02%</td><td>R$ 965,47</td><td style="color:var(--dn)">−2,95%</td></tr>
+          <tr><td>01/Abr</td><td>R$ 1.880,08</td><td style="color:var(--dn)">−0,41%</td><td>R$ 948,72</td><td style="color:var(--dn)">−1,73%</td></tr>
+          <tr><td>06/Abr</td><td>R$ 1.885,21</td><td style="color:var(--dn)">−0,14%</td><td style="color:var(--dn)">R$ 921,86</td><td style="color:var(--dn)">−4,54%</td></tr>
+          <tr><td>07/Abr</td><td style="color:var(--dn)">R$ 1.821,69</td><td style="color:var(--dn)">−3,50%</td><td style="color:var(--dn)">R$ 901,31</td><td style="color:var(--dn)">−6,67%</td></tr>
+          <tr style="background:rgba(239,68,68,.04)"><td><strong>10/Abr</strong></td><td style="color:var(--dn)"><strong>R$ 1.814,56</strong></td><td style="color:var(--dn)"><strong>−3,88%</strong></td><td style="color:var(--dn)"><strong>R$ 879,03</strong></td><td style="color:var(--dn)"><strong>−8,98%</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.88rem;color:var(--text2);margin-top:10px">
+      <strong style="color:var(--accent2)">Spread Arábica-Robusta:</strong> R$ 935,53/sc em 10/4 — <strong>historicamente elevado.</strong>
+      O arábica resiste melhor (oferta limitada no spot). O robusta desaba com colheita no ES. A convergência tende a acontecer com a colheita de arábica em maio-junho.
+    </p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ CENÁRIOS ============ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon green">🔮</div>
+    <h2>Cenários <span>— Preço Café Abr-Set 2026</span></h2>
+  </div>
+
+  <div class="card">
+    <h3>☕ Arábica — CEPEA (R$/sc)</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Cenário</th><th>Abr-Mai</th><th>Jun-Set (colheita)</th><th>Driver</th><th>Prob.</th></tr></thead>
+        <tbody>
+          <tr><td style="text-align:left;color:var(--dn)">📉 Queda forte</td><td style="color:var(--dn)">R$ 1.650-1.800</td><td style="color:var(--dn)"><strong>R$ 1.400-1.600</strong></td><td>Safra 70+ mi + dólar cai + estoques recompõem</td><td><span class="tag tag-dn">30%</span></td></tr>
+          <tr><td style="text-align:left;color:var(--nt)">➡️ Queda moderada</td><td>R$ 1.750-1.900</td><td><strong>R$ 1.600-1.800</strong></td><td>Safra 66 mi + estoques apertados limitam queda</td><td><span class="tag tag-nt">45%</span></td></tr>
+          <tr><td style="text-align:left;color:var(--up)">📈 Sustenta</td><td style="color:var(--up)">R$ 1.850-2.000</td><td style="color:var(--up)"><strong>R$ 1.800-2.000</strong></td><td>Safra frustra (campo ≠ projeção) + geopolítica</td><td><span class="tag tag-up">25%</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>☕ Robusta/Conilon — CEPEA (R$/sc)</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Cenário</th><th>Abr-Mai</th><th>Jun-Set</th><th>Driver</th><th>Prob.</th></tr></thead>
+        <tbody>
+          <tr><td style="text-align:left;color:var(--dn)">📉 Queda forte</td><td style="color:var(--dn)">R$ 780-880</td><td style="color:var(--dn)"><strong>R$ 650-780</strong></td><td>Colheita plena ES + dólar cai + Londres abaixo $3.000</td><td><span class="tag tag-dn">35%</span></td></tr>
+          <tr><td style="text-align:left;color:var(--nt)">➡️ Moderada</td><td>R$ 850-950</td><td><strong>R$ 780-900</strong></td><td>Colheita absorvida + demanda firme</td><td><span class="tag tag-nt">40%</span></td></tr>
+          <tr><td style="text-align:left;color:var(--up)">📈 Recupera</td><td style="color:var(--up)">R$ 950-1.050</td><td style="color:var(--up)"><strong>R$ 900-1.050</strong></td><td>Vietnã frustra + estoques globais baixos</td><td><span class="tag tag-up">25%</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TERMÔMETROS ============ -->
+<div class="grid2">
+  <div class="thermo">
+    <h4>🌡️ Arábica — Tendência Abr-Set</h4>
+    <div class="th-bar"><div class="th-marker" style="left:35%"></div></div>
+    <div class="th-label-row"><span>Baixista</span><span>Neutro</span><span>Altista</span></div>
+    <p style="font-size:.82rem;color:var(--dn);margin-top:8px;font-weight:600">⬇ LEVEMENTE BAIXISTA — Safra recorde chegando, mas estoques limitam queda</p>
+  </div>
+  <div class="thermo">
+    <h4>🌡️ Robusta/Conilon — Tendência Abr-Set</h4>
+    <div class="th-bar"><div class="th-marker" style="left:28%"></div></div>
+    <div class="th-label-row"><span>Baixista</span><span>Neutro</span><span>Altista</span></div>
+    <p style="font-size:.82rem;color:var(--dn);margin-top:8px;font-weight:600">⬇ BAIXISTA — Colheita em curso + queda de −9% em abril</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ OPINIÃO ============ -->
+<div class="opinion">
+  <h3>🎯 Opinião do Analista — O Café Vive o Paradoxo da Abundância</h3>
+
+  <p><strong>O paradoxo é este:</strong> o café brasileiro está entregando a maior safra da história (66-75 mi sacas), mas os preços AINDA estão em patamares historicamente altos (arábica a R$ 1.814/sc = 3x a média de 5 anos atrás). Isso porque os estoques globais foram destruídos entre 2021-2024 (−22 mi sacas). A safra 2026 recompõe parte, mas não tudo.</p>
+
+  <p><strong>Para o Cafeicultor de Arábica:</strong></p>
+  <p>1. <strong>R$ 1.815/sc é um preço EXCEPCIONAL.</strong> Mesmo com a queda de R$ 160 em 2 semanas. A média histórica de 5 anos para arábica é R$ 800-1.000/sc. Estamos em 1.8x essa média. <strong>Não espere voltar a R$ 2.000.</strong><br>
+  2. <strong>Venda 40-50% da safra estimada agora ou pré-fixe para maio-junho.</strong> Quando a colheita de arábica atingir o pico (jun-jul), a pressão de oferta vai apertar mais os preços. Se quiser esperar: trave piso com opções em NY (PUT Mai ou Jul).<br>
+  3. <strong>Se a safra for realmente 66+ mi sacas:</strong> espere arábica entre R$ 1.500-1.700 no 2ºSem. Se frustrar para 60 mi: sustenta R$ 1.800+.</p>
+
+  <p><strong>Para o Cafeicultor de Conilon/Robusta:</strong></p>
+  <p>1. <strong>Colheita já começou — e o preço está caindo rápido.</strong> De R$ 965 em 31/3 para R$ 879 em 10/4 = −R$ 86/sc em 10 dias. Tendência é continuar caindo com entrada de café novo.<br>
+  2. <strong>Se tem café de 2025 armazenado:</strong> venda agora. R$ 879 pode virar R$ 750-780 em maio-junho com colheita plena.<br>
+  3. <strong>Bom caixa dos últimos anos é sua vantagem.</strong> Use para investir em qualidade (peneiras maiores = prêmio de R$ 50-100/sc).</p>
+
+  <p><strong>Monitoramento semanal:</strong><br>
+  🔴 <strong>Colheita BR</strong> (ritmo de avanço em mai-jun = determina pressão de oferta)<br>
+  🔴 <strong>NY Arábica</strong> (suporte em 270 ¢/lb — se romper: aceleração de queda)<br>
+  🔴 <strong>Dólar</strong> (cada R$ 0,10 = ~R$ 30-40/sc no arábica)<br>
+  🟡 <strong>Estoques certificados ICE</strong> (se continuarem caindo: suporte ao preço)<br>
+  🟡 <strong>Divergência campo x projeção</strong> (se safra frustrar para <62 mi: preços recuperam)<br>
+  🟢 <strong>Geopolítica</strong> (Ormuz = frete + petróleo → suporte indireto ao café)</p>
+
+  <div class="sig">— Dr. Sidney Souza · Economista Agrícola · Rural IN · 10/Abr/2026</div>
+</div>
+
+<!-- ============ SCRIPTS ============ -->
+<script>
+const gc='rgba(30,58,40,.35)',fc={family:"'Segoe UI',system-ui,sans-serif",size:11,weight:'600'},tt={backgroundColor:'#10221a',borderColor:'#2a5038',borderWidth:1,titleFont:{size:12,weight:'700'},bodyFont:{size:11},padding:10,cornerRadius:8};
+
+// CHART 1: ARÁBICA TRAJETÓRIA
+new Chart(document.getElementById('chCafe1').getContext('2d'),{
+  type:'line',
+  data:{labels:['20/3','23','24','25','26','27','30','31','1/4','2/4','6/4','7/4','8/4','9/4','10/4'],
+    datasets:[{label:'Arábica R$/sc',
+      data:[1962.67,1963.83,1979.36,1977.91,1968.47,1947.89,1898.90,1887.79,1880.08,1870.64,1885.21,1821.69,1829.20,1821.38,1814.56],
+      borderColor:'#d97706',backgroundColor:'rgba(217,119,6,.06)',borderWidth:2.5,fill:true,tension:.3,
+      pointRadius:4,pointBackgroundColor:function(c){return c.dataIndex>=8?'#ef4444':'#d97706';}}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt,
+    annotation:{annotations:{
+      pico:{type:'label',xValue:3,yValue:2010,content:['PICO R$1.978','25/Mar'],font:{size:9,weight:'bold'},color:'#22c55e'},
+      queda:{type:'label',xValue:14,yValue:1790,content:['R$1.815','−8,2% em 2 sem!'],font:{size:9,weight:'bold'},color:'#ef4444'},
+      l1850:{type:'line',yMin:1850,yMax:1850,borderColor:'rgba(234,179,8,.3)',borderWidth:1.5,borderDash:[5,3],
+        label:{display:true,content:'Suporte R$1.850',position:'start',backgroundColor:'rgba(234,179,8,.5)',font:{size:8}}}
+    }}},
+    scales:{y:{min:1780,max:2020,grid:{color:gc},ticks:{callback:v=>'R$'+v.toLocaleString('pt-BR'),font:fc}},x:{grid:{display:false},ticks:{font:{size:9,weight:'600'},maxRotation:45}}}}
+});
+
+// CHART 2: ROBUSTA TRAJETÓRIA
+new Chart(document.getElementById('chCafe2').getContext('2d'),{
+  type:'line',
+  data:{labels:['20/3','23','25','27','30','31','1/4','2/4','6/4','7/4','8/4','9/4','10/4'],
+    datasets:[{label:'Robusta R$/sc',
+      data:[1020,1010,998,980,970,965.47,948.72,937.13,921.86,901.31,891.15,899.64,879.03],
+      borderColor:'#ef4444',backgroundColor:'rgba(239,68,68,.06)',borderWidth:2.5,fill:true,tension:.3,
+      pointRadius:4,pointBackgroundColor:'#ef4444'}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt,
+    annotation:{annotations:{
+      queda:{type:'label',xValue:12,yValue:860,content:['R$879','−14% desde 20/3!'],font:{size:9,weight:'bold'},color:'#ef4444'},
+      l900:{type:'line',yMin:900,yMax:900,borderColor:'rgba(234,179,8,.3)',borderWidth:1.5,borderDash:[5,3],
+        label:{display:true,content:'Suporte R$900 (rompeu!)',position:'start',backgroundColor:'rgba(239,68,68,.6)',font:{size:8}}}
+    }}},
+    scales:{y:{min:840,max:1050,grid:{color:gc},ticks:{callback:v=>'R$'+v,font:fc}},x:{grid:{display:false},ticks:{font:{size:9,weight:'600'},maxRotation:45}}}}
+});
+
+// CHART 3: PROJEÇÕES SAFRA
+new Chart(document.getElementById('chCafe3').getContext('2d'),{
+  type:'bar',
+  data:{labels:['Safra 2025\n(real)','Conab\n2026','IBGE\n2026','StoneX\n2026','Hedgepoint\n2026 (máx)'],
+    datasets:[
+      {label:'Arábica',data:[35.8,44.1,43.9,47.2,49.0],backgroundColor:'rgba(217,119,6,.3)',borderColor:'#d97706',borderWidth:2,borderRadius:4},
+      {label:'Conilon/Robusta',data:[20.7,22.1,20.2,23.5,25.4],backgroundColor:'rgba(146,64,14,.25)',borderColor:'#92400e',borderWidth:2,borderRadius:4}
+    ]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{
+    legend:{position:'top',labels:{usePointStyle:true,padding:10,font:{size:10}}},tooltip:tt,
+    annotation:{annotations:{
+      rec:{type:'label',xValue:1,yValue:70,content:['RECORDE!'],font:{size:10,weight:'bold'},color:'#22c55e'}
+    }}},
+    scales:{y:{stacked:true,grid:{color:gc},ticks:{callback:v=>v+'mi',font:fc}},x:{stacked:true,grid:{display:false},ticks:{font:{size:9,weight:'700'}}}}}
+});
+
+// CHART 4: POR ESTADO
+new Chart(document.getElementById('chCafe4').getContext('2d'),{
+  type:'bar',
+  data:{labels:['MG','ES','SP','BA','RO','Outros'],
+    datasets:[{label:'Conab 2026 (mi sc)',data:[32.4,19.0,5.5,3.8,3.0,2.5],
+      backgroundColor:['rgba(217,119,6,.35)','rgba(146,64,14,.3)','rgba(245,158,11,.25)','rgba(234,179,8,.2)','rgba(107,133,112,.2)','rgba(107,133,112,.12)'],
+      borderColor:['#d97706','#92400e','#f59e0b','#eab308','#6b8570','#6b8570'],borderWidth:2,borderRadius:5}]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt,
+    annotation:{annotations:{
+      mg:{type:'label',xValue:34,yValue:0,content:['32,4 mi','~49% do BR!'],font:{size:9,weight:'bold'},color:'#d97706'}
+    }}},
+    scales:{x:{min:0,max:36,grid:{color:gc},ticks:{callback:v=>v+'mi',font:fc}},y:{grid:{display:false},ticks:{font:{size:11,weight:'700'}}}}}
+});
+</script>
+</body>
+</html>
