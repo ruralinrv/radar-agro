@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Rural IN — Soja · Radar Agro Semanal · 20-24 Abr 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060a0f;--bg2:#0c1219;--bg3:#111a24;--bg4:#162230;--border:#1a2d3d;--border2:#243d52;--accent:#22c55e;--accent2:#4ade80;--accent3:#bbf7d0;--gold:#d4a017;--gold2:#f0c950;--text:#eaf0f6;--text2:#9db3c8;--text3:#5d7a90;--up:#22c55e;--dn:#ef4444;--nt:#eab308;--blue:#3b82f6;--purple:#a855f7;--orange:#f97316;--cyan:#06b6d4;--r:14px;--shadow:0 4px 24px rgba(0,0,0,.4)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 800px 600px at 15% 25%,rgba(34,197,94,.04),transparent),radial-gradient(ellipse 600px 500px at 85% 75%,rgba(234,179,8,.03),transparent);pointer-events:none;z-index:0}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+.nav{background:rgba(12,18,25,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:10px 0;position:sticky;top:0;z-index:100}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:14px}
+.nav-logo-img{height:38px;width:auto;border-radius:8px}
+.nav-logo{font-weight:900;font-size:1.15rem;letter-spacing:-.3px}
+.nav-logo .r{color:var(--gold2)}.nav-logo .i{color:var(--accent)}
+.nav-badge{background:linear-gradient(135deg,#14532d,#166534);border:1px solid rgba(34,197,94,.3);padding:4px 14px;border-radius:20px;font-size:.68rem;font-weight:700;color:var(--accent2);letter-spacing:.5px}
+.nav-back{color:var(--text3);font-size:.82rem;text-decoration:none;transition:color .2s;display:flex;align-items:center;gap:6px}
+.nav-back:hover{color:var(--accent)}
+.hero{padding:44px 0 32px;position:relative}
+.hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:200px;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+.hero-top{display:flex;align-items:center;gap:18px;margin-bottom:18px}
+.hero-icon{font-size:3.2rem;filter:drop-shadow(0 4px 12px rgba(34,197,94,.3))}
+.hero-texts h1{font-size:2.1rem;font-weight:900;letter-spacing:-1px;line-height:1.15}
+.hero-texts h1 .hl{background:linear-gradient(135deg,var(--accent),var(--accent2),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-texts .sub{font-size:.88rem;color:var(--text2);margin-top:4px}
+.hero-bar{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:20px;font-size:.72rem;font-weight:700;border:1px solid}
+.chip.up{color:var(--up);border-color:rgba(34,197,94,.25);background:rgba(34,197,94,.08)}
+.chip.dn{color:var(--dn);border-color:rgba(239,68,68,.25);background:rgba(239,68,68,.08)}
+.chip.nt{color:var(--nt);border-color:rgba(234,179,8,.25);background:rgba(234,179,8,.08)}
+.chip.bl{color:var(--blue);border-color:rgba(59,130,246,.25);background:rgba(59,130,246,.08)}
+.alert{border-radius:var(--r);padding:16px 20px;margin-bottom:12px;display:flex;align-items:flex-start;gap:12px;border:1px solid;font-size:.84rem;line-height:1.75;color:var(--text2)}
+.alert strong{color:var(--text)}.alert .ai{font-size:1.2rem;flex-shrink:0}
+.alert.green{background:rgba(34,197,94,.05);border-color:rgba(34,197,94,.2)}
+.alert.red{background:rgba(239,68,68,.05);border-color:rgba(239,68,68,.2)}
+.alert.amber{background:rgba(234,179,8,.05);border-color:rgba(234,179,8,.2)}
+.alert.blue{background:rgba(59,130,246,.05);border-color:rgba(59,130,246,.2)}
+.alert.purple{background:rgba(168,85,247,.05);border-color:rgba(168,85,247,.2)}
+.alert.cyan{background:rgba(6,182,212,.05);border-color:rgba(6,182,212,.2)}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;margin:22px 0}
+.kpi{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;position:relative;overflow:hidden;transition:transform .2s}
+.kpi:hover{transform:translateY(-2px)}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2)}
+.kpi.up::before{background:var(--up)}.kpi.dn::before{background:var(--dn)}.kpi.nt::before{background:var(--nt)}.kpi.bl::before{background:var(--blue)}.kpi.or::before{background:var(--orange)}
+.kpi-lb{font-size:.6rem;text-transform:uppercase;letter-spacing:1px;color:var(--text3);margin-bottom:4px;font-weight:600}
+.kpi-val{font-size:1.15rem;font-weight:800;letter-spacing:-.5px}
+.kpi-val.up{color:var(--up)}.kpi-val.dn{color:var(--dn)}.kpi-val.nt{color:var(--nt)}.kpi-val.bl{color:var(--blue)}
+.kpi-sub{font-size:.66rem;color:var(--text3);margin-top:2px}
+.dv{height:1px;background:linear-gradient(90deg,transparent,var(--border2),var(--accent),var(--border2),transparent);margin:30px 0}
+.stitle{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.stitle .icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.stitle h2{font-size:1.1rem;font-weight:700}.stitle h2 span{color:var(--text2);font-weight:400;font-size:.85rem}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:20px 24px;margin-bottom:12px}
+.card h3{font-size:.88rem;color:var(--text2);margin-bottom:12px;font-weight:600}
+.co{border-radius:var(--r);padding:18px 22px;margin-bottom:12px;border-left:4px solid;font-size:.85rem;color:var(--text2);line-height:1.8}
+.co strong{color:var(--text)}
+.co h4{font-size:.95rem;font-weight:700;margin-bottom:8px}
+.co.up{background:rgba(34,197,94,.04);border-color:var(--up)}.co.up h4{color:var(--up)}
+.co.dn{background:rgba(239,68,68,.04);border-color:var(--dn)}.co.dn h4{color:var(--dn)}
+.co.nt{background:rgba(234,179,8,.04);border-color:var(--nt)}.co.nt h4{color:var(--nt)}
+.co.bl{background:rgba(59,130,246,.04);border-color:var(--blue)}.co.bl h4{color:var(--blue)}
+.co.or{background:rgba(249,115,22,.04);border-color:var(--orange)}.co.or h4{color:var(--orange)}
+.co.pu{background:rgba(168,85,247,.04);border-color:var(--purple)}.co.pu h4{color:var(--purple)}
+.tbl-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--border);margin-bottom:10px}
+table{width:100%;border-collapse:collapse;font-size:.8rem}
+thead th{background:var(--bg3);padding:9px 12px;text-align:center;font-weight:600;color:var(--text2);font-size:.68rem;text-transform:uppercase;letter-spacing:.8px;border-bottom:1px solid var(--border)}
+tbody td{padding:8px 12px;border-bottom:1px solid rgba(26,45,61,.4);text-align:center}
+tbody tr:hover{background:rgba(34,197,94,.03)}
+.chart-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:20px 22px;margin-bottom:12px}
+.chart-box h3{font-size:.85rem;color:var(--text2);margin-bottom:10px;font-weight:600}
+.chart-wrap{position:relative;height:280px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:800px){.grid2{grid-template-columns:1fr}}
+.thermo{margin:14px 0}
+.thermo h4{font-size:.82rem;color:var(--text2);margin-bottom:8px}
+.th-bar{height:12px;border-radius:6px;position:relative}
+.th-marker{position:absolute;top:-5px;width:3px;height:22px;background:#fff;border-radius:2px;transform:translateX(-50%)}
+.th-lb{display:flex;justify-content:space-between;font-size:.66rem;color:var(--text3);margin-top:4px}
+.opinion{background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(34,197,94,.02));border:1px solid rgba(34,197,94,.2);border-radius:var(--r);padding:26px 28px;margin:22px 0}
+.opinion h3{font-size:1.02rem;font-weight:700;color:var(--accent2);margin-bottom:10px}
+.opinion p{font-size:.88rem;color:var(--text2);line-height:1.85;margin-bottom:10px}
+.opinion p strong{color:var(--text)}
+.opinion .sig{margin-top:14px;padding-top:12px;border-top:1px solid rgba(34,197,94,.15);font-size:.78rem;color:var(--text3);font-style:italic}
+.footer{border-top:1px solid var(--border);padding:36px 0;text-align:center;margin-top:30px}
+.footer-brand{font-size:1.3rem;font-weight:900;margin-bottom:10px}
+.footer-brand .r{color:var(--gold2)}.footer-brand .i{color:var(--accent)}
+.footer p{font-size:.78rem;color:var(--text3);line-height:1.8}
+.footer-credits{margin-top:20px;padding-top:18px;border-top:1px solid var(--border);text-align:center}
+.footer-credits h4{font-size:.9rem;color:var(--gold2);font-weight:700;margin-bottom:6px}
+.footer-credits .name{font-size:1rem;font-weight:800;color:var(--text);margin-bottom:2px}
+.footer-credits .title{font-size:.78rem;color:var(--accent2);font-weight:600;margin-bottom:6px}
+.footer-credits .desc{font-size:.74rem;color:var(--text2);line-height:1.7;max-width:500px;margin:0 auto 10px}
+.footer-credits .contact{font-size:.72rem;color:var(--text3)}
+.footer-credits .contact a{color:var(--gold2);text-decoration:none}
+@media(max-width:600px){
+  .hero-top{flex-direction:column;text-align:center}
+  .hero-texts h1{font-size:1.5rem}
+  .nav .wrap{flex-direction:column;gap:8px}
+  .kpi-row{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1"></script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+<div class="wrap">
+  <div class="nav-left">
+    <img src="https://ruralinrv.github.io/ruralin/logo.png" alt="Rural IN" class="nav-logo-img" onerror="this.style.display='none'">
+    <div class="nav-logo"><span class="r">Rural</span> <span class="i">IN</span></div>
+    <div class="nav-badge">🫘 SOJA</div>
+  </div>
+  <a href="index.html" class="nav-back">← Voltar ao Radar</a>
+</div>
+</nav>
+
+<div class="wrap">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-top">
+    <span class="hero-icon">🫘</span>
+    <div class="hero-texts">
+      <h1><span class="hl">Soja</span> — Radar Semanal</h1>
+      <div class="sub">Semana 20–24 Abril 2026 · CBOT · CEPEA/ESALQ · CONAB · Abiove · ANEC · USDA · Reuters</div>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <span class="chip dn">📉 CBOT Jul: 1.176,75¢ (−1,1% sem.)</span>
+    <span class="chip dn">📉 CEPEA Paranaguá: R$ 126,90/sc (−1,81% mês)</span>
+    <span class="chip dn">💱 Câmbio sub R$ 5,00 pressiona BR</span>
+    <span class="chip up">🚢 Export recorde: 113,6 mi t (Abiove)</span>
+    <span class="chip up">🌾 Safra BR: 179,15 mi t CONAB — RECORDE!</span>
+    <span class="chip bl">🇺🇸🇨🇳 Tarifa 145% redireciona fluxos</span>
+  </div>
+</section>
+
+<!-- ALERTAS -->
+<div class="alert green">
+  <span class="ai">🌾</span>
+  <div><strong style="color:var(--up)">SAFRA RECORDE CONFIRMADA: 179,15 mi t!</strong> <strong>CONAB (20/abr):</strong> <em>"Área 48,47 mi ha (+2,4%), produtividade 3.696 kg/ha (+2%). Colheita 85,7%."</em> MT e PR concluídos. RS preocupa — produtividade 2.871 kg/ha. <strong>Argentina:</strong> Buenos Aires revisou para 48,6 mi t.</div>
+</div>
+
+<div class="alert red">
+  <span class="ai">📉</span>
+  <div><strong style="color:var(--dn)">CBOT QUASE TOCOU US$ 12 E DEVOLVEU TUDO!</strong> <strong>Notícias Agrícolas (22/abr):</strong> <em>"Jul/26 se aproximou muito dos US$ 12,00 e inverteu sinal. Baixas de dois dígitos (−10 a −10,75 pts). Realização no óleo liderou recuo."</em> <strong>Máxima na 4ª:</strong> 1.201,25¢ (≈US$ 12,01) e fechou a 1.179,50¢ (−0,90%).</div>
+</div>
+
+<div class="alert amber">
+  <span class="ai">💱</span>
+  <div><strong style="color:var(--nt)">DÓLAR SUB R$ 5,00 SUFOCA O PRODUTOR!</strong> <strong>BiodieselBR (24/abr):</strong> <em>"Durou apenas um dia o movimento de reação. Indicador CEPEA: R$ 126,90 (−0,42%). São cinco quedas nos últimos quatro dias."</em> <strong>Sinop/MT caiu para R$ 102/sc!</strong> Interior perdeu até R$ 3/sc na semana.</div>
+</div>
+
+<div class="alert blue">
+  <span class="ai">🚢</span>
+  <div><strong style="color:var(--blue)">ABRIL: ANEC PROJETA 16,3 mi t de exportação!</strong> <strong>Globo Rural (22/abr):</strong> <em>"Brasil deverá exportar 16,3 mi t em abril vs 13,4 mi t em abr/25 (+21,6%)."</em> Abiove mantém 113,6 mi t para 2026 (recorde). Receita cai: US$ 51,18 bi (vs US$ 58 bi). Preço médio da tonelada: US$ 370 (↓ de US$ 440).</div>
+</div>
+
+<div class="alert purple">
+  <span class="ai">⚠️</span>
+  <div><strong style="color:var(--purple)">PLANTIO EUA ANTECIPADO + CHUVAS!</strong> <strong>Agrolink/TF Agro:</strong> <em>"Plantio soja EUA 26/27 já em 6%, acima do esperado. Produtores aceleraram antes das chuvas."</em> <strong>CNN (22/abr):</strong> Alertas de bandeira vermelha no Corn Belt — clima extremamente seco das Dakotas ao Texas.</div>
+</div>
+
+<div class="alert cyan">
+  <span class="ai">🛢️</span>
+  <div><strong style="color:var(--cyan)">ÓLEO DE SOJA BATEU US$ 1.600/t E CORRIGIU!</strong> <strong>CNN/Granar (22/abr):</strong> <em>"Óleo ultrapassou US$ 1.600/t (guerra Oriente Médio + biodiesel + Brent >$100). Corrigiu para US$ 1.580."</em> <strong>Agrinvest:</strong> <em>"Realização de lucros após renovar máximas desde 2023."</em></div>
+</div>
+
+<!-- KPIs -->
+<div class="kpi-row">
+  <div class="kpi dn"><div class="kpi-lb">CBOT Jul/26 (24/abr)</div><div class="kpi-val dn">1.176,75¢</div><div class="kpi-sub">≈US$ 11,77/bu · +0,17%</div></div>
+  <div class="kpi dn"><div class="kpi-lb">CBOT Jul/26 (23/abr)</div><div class="kpi-val dn">1.174,75¢</div><div class="kpi-sub">≈US$ 11,75 · −0,40%</div></div>
+  <div class="kpi dn"><div class="kpi-lb">CBOT Jul/26 (22/abr)</div><div class="kpi-val dn">1.179,50¢</div><div class="kpi-sub">Max: 1.201,25¢! · −0,90%</div></div>
+  <div class="kpi up"><div class="kpi-lb">CBOT Jul/26 (21/abr)</div><div class="kpi-val up">1.190,25¢</div><div class="kpi-sub">≈US$ 11,90 · +0,72%</div></div>
+  <div class="kpi dn"><div class="kpi-lb">CEPEA Paranaguá (23/abr)</div><div class="kpi-val dn">R$ 126,90</div><div class="kpi-sub">−0,42% · −1,81% mês</div></div>
+  <div class="kpi up"><div class="kpi-lb">CEPEA Paranaguá (22/abr)</div><div class="kpi-val up">R$ 127,43</div><div class="kpi-sub">+1,19% (reação 1 dia)</div></div>
+  <div class="kpi dn"><div class="kpi-lb">CEPEA Paranaguá (20/abr)</div><div class="kpi-val dn">R$ 125,93</div><div class="kpi-sub">−0,41% · Mínima sem.</div></div>
+  <div class="kpi up"><div class="kpi-lb">Safra BR 25/26 (CONAB)</div><div class="kpi-val up">179,15 mi t</div><div class="kpi-sub">+4,5% · RECORDE!</div></div>
+  <div class="kpi up"><div class="kpi-lb">Export 2026 (Abiove)</div><div class="kpi-val up">113,6 mi t</div><div class="kpi-sub">RECORDE! · Abr: 16,3 mi t</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Receita export (Abiove)</div><div class="kpi-val dn">US$ 51,18 bi</div><div class="kpi-sub">↓ US$ 58,17 bi anterior</div></div>
+  <div class="kpi up"><div class="kpi-lb">Colheita BR</div><div class="kpi-val up">85,7%</div><div class="kpi-sub">MT e PR concluídos</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Sinop/MT (23/abr)</div><div class="kpi-val dn">R$ 102/sc</div><div class="kpi-sub">Mínima! −R$ 0,50</div></div>
+</div>
+
+<div class="dv"></div>
+
+<!-- GRÁFICOS -->
+<div class="stitle">
+  <div class="icon" style="background:linear-gradient(135deg,#14532d,#22c55e)">📈</div>
+  <h2>Cotações & Gráficos <span>— Dados reais CBOT (Investing.com) & CEPEA</span></h2>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📈 CBOT Soja Jul/26 — Abril 2026 (centavos/bushel)</h3>
+    <div class="chart-wrap"><canvas id="ch1"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>📊 CEPEA/ESALQ Paranaguá — Abril 2026 (R$/sc 60kg)</h3>
+    <div class="chart-wrap"><canvas id="ch2"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>🌾 Safra BR Soja — Evolução Histórica (mi t)</h3>
+    <div class="chart-wrap"><canvas id="ch3"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>🇨🇳 Importações China jan-fev — EUA vs Brasil (mi t)</h3>
+    <div class="chart-wrap"><canvas id="ch4"></canvas></div>
+  </div>
+</div>
+
+<div class="dv"></div>
+
+<!-- COTAÇÕES DETALHADAS -->
+<div class="stitle">
+  <div class="icon" style="background:linear-gradient(135deg,#14532d,#166534)">💰</div>
+  <h2>Cotações Detalhadas <span>— CBOT (Investing.com) + CEPEA + Praças</span></h2>
+</div>
+
+<div class="card">
+<h3>📋 CBOT Soja Jul/26 — Semana 20-24/Abr/26 (Investing.com)</h3>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Data</th><th>Dia</th><th>Último (¢/bu)</th><th>Abertura</th><th>Máxima</th><th>Mínima</th><th>Volume</th><th>Var%</th></tr></thead>
+<tbody>
+<tr style="background:rgba(212,160,23,.06)"><td><strong>24/abr</strong></td><td><strong>Sex</strong></td><td><strong>1.176,75</strong></td><td>1.174,75</td><td>1.179,13</td><td>1.171,38</td><td>92,72K</td><td style="color:var(--up)">+0,17%</td></tr>
+<tr><td>23/abr</td><td>Qui</td><td>1.174,75</td><td>1.180,25</td><td>1.183,75</td><td>1.172,50</td><td>128K</td><td style="color:var(--dn)">−0,40%</td></tr>
+<tr style="background:rgba(239,68,68,.04)"><td>22/abr</td><td>Qua</td><td>1.179,50</td><td>1.191,50</td><td style="color:var(--up)"><strong>1.201,25</strong></td><td>1.178,00</td><td>133,89K</td><td style="color:var(--dn)"><strong>−0,90%</strong></td></tr>
+<tr><td>21/abr</td><td>Ter</td><td>1.190,25</td><td>1.181,00</td><td>1.194,75</td><td>1.180,75</td><td>103,72K</td><td style="color:var(--up)">+0,72%</td></tr>
+<tr><td>20/abr</td><td>Seg</td><td>1.181,75</td><td>1.183,25</td><td>1.187,25</td><td>1.177,00</td><td>69,38K</td><td style="color:var(--dn)">−0,11%</td></tr>
+</tbody>
+</table>
+</div>
+<p style="font-size:.72rem;color:var(--text3)">⚠️ Na 4ª (22/abr), Jul/26 tocou <strong style="color:var(--up)">1.201,25¢ (≈US$ 12,01)</strong> na máxima intradiária e devolveu tudo, fechando em −0,90%. Realização no óleo liderou reversão. Variação semanal: <strong style="color:var(--dn)">−0,42%</strong> (de 1.181,75 na 2ª para 1.176,75 na 6ª).</p>
+</div>
+
+<div class="card">
+<h3>📋 CEPEA/ESALQ Paranaguá — Semana 20-24/Abr (R$/sc 60kg)</h3>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Data</th><th>Dia</th><th>Valor R$</th><th>Var/Dia</th><th>Var/Mês</th><th>Valor US$</th></tr></thead>
+<tbody>
+<tr style="background:rgba(212,160,23,.06)"><td><strong>23/abr</strong></td><td><strong>Qua*</strong></td><td><strong>R$ 126,90</strong></td><td style="color:var(--dn)">−0,42%</td><td style="color:var(--dn)">−1,81%</td><td>US$ 25,33</td></tr>
+<tr><td>22/abr</td><td>Ter</td><td>R$ 127,43</td><td style="color:var(--up)">+1,19%</td><td style="color:var(--dn)">−1,40%</td><td>US$ 25,63</td></tr>
+<tr><td>20/abr</td><td>Seg</td><td>R$ 125,93</td><td style="color:var(--dn)">−0,41%</td><td style="color:var(--dn)">−2,56%</td><td>US$ 25,32</td></tr>
+</tbody>
+</table>
+</div>
+<p style="font-size:.72rem;color:var(--text3)">* Último dado CEPEA disponível: 23/abr. Indicador de 24/abr (hoje) será divulgado no próximo dia útil (CEPEA publica com D+1). Variação na semana: <strong style="color:var(--up)">+R$ 0,97</strong> (de R$ 125,93 na 2ª para R$ 126,90 na 4ª), mas trajetória geral do mês segue <strong style="color:var(--dn)">negativa (−1,81%)</strong>.</p>
+</div>
+
+<div class="card">
+<h3>📋 CEPEA Paranaguá — Abril Completo (série histórica do mês)</h3>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Data</th><th>Valor R$</th><th>Var/Dia</th><th>Var/Mês</th><th>US$</th></tr></thead>
+<tbody>
+<tr style="background:rgba(212,160,23,.04)"><td><strong>23/abr</strong></td><td><strong>R$ 126,90</strong></td><td style="color:var(--dn)">−0,42%</td><td style="color:var(--dn)">−1,81%</td><td>25,33</td></tr>
+<tr><td>22/abr</td><td>R$ 127,43</td><td style="color:var(--up)">+1,19%</td><td>−1,40%</td><td>25,63</td></tr>
+<tr><td>20/abr</td><td>R$ 125,93</td><td style="color:var(--dn)">−0,41%</td><td>−2,56%</td><td>25,32</td></tr>
+<tr><td>17/abr</td><td>R$ 126,45</td><td style="color:var(--dn)">−0,17%</td><td>−2,16%</td><td>25,38</td></tr>
+<tr><td>16/abr</td><td>R$ 126,67</td><td style="color:var(--dn)">−0,14%</td><td>−1,99%</td><td>25,37</td></tr>
+<tr><td>15/abr</td><td>R$ 126,85</td><td style="color:var(--up)">+0,51%</td><td>−1,85%</td><td>25,41</td></tr>
+<tr><td>14/abr</td><td>R$ 126,21</td><td style="color:var(--dn)">−0,39%</td><td>−2,34%</td><td>25,29</td></tr>
+<tr><td>13/abr</td><td>R$ 126,70</td><td style="color:var(--up)">+0,09%</td><td>−1,97%</td><td>25,35</td></tr>
+<tr><td>10/abr</td><td>R$ 126,58</td><td style="color:var(--dn)">−0,99%</td><td>−2,06%</td><td>25,27</td></tr>
+<tr><td>09/abr</td><td>R$ 127,84</td><td style="color:var(--dn)">−0,22%</td><td>−1,08%</td><td>25,24</td></tr>
+<tr><td>08/abr</td><td>R$ 128,12</td><td style="color:var(--dn)">−0,15%</td><td>−0,87%</td><td>25,07</td></tr>
+<tr><td>07/abr</td><td>R$ 128,31</td><td style="color:var(--dn)">−0,39%</td><td>−0,72%</td><td>24,86</td></tr>
+<tr><td>06/abr</td><td>R$ 128,81</td><td style="color:var(--up)">+0,24%</td><td>−0,33%</td><td>25,02</td></tr>
+<tr><td>02/abr</td><td>R$ 128,50</td><td style="color:var(--up)">+0,46%</td><td>−0,57%</td><td>24,89</td></tr>
+<tr><td>01/abr</td><td>R$ 127,91</td><td style="color:var(--dn)">−1,03%</td><td>−1,03%</td><td>24,80</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="card">
+<h3>📋 Praças Brasileiras (AgRural/BiodieselBR, 23-24/abr)</h3>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Praça</th><th>Preço (R$/sc)</th><th>Variação</th><th>Obs.</th></tr></thead>
+<tbody>
+<tr><td style="text-align:left"><strong>Paranaguá/PR (CEPEA)</strong></td><td><strong>R$ 126,90</strong></td><td style="color:var(--dn)">−0,42%</td><td>Indicador oficial 23/abr</td></tr>
+<tr><td style="text-align:left"><strong>Paraná (CEPEA)</strong></td><td><strong>R$ 120,49</strong></td><td style="color:var(--dn)">−0,11%</td><td>−1,89% no mês</td></tr>
+<tr><td style="text-align:left">Ponta Grossa/PR</td><td>R$ 121,00</td><td>estável</td><td>—</td></tr>
+<tr><td style="text-align:left">Sinop/MT</td><td style="color:var(--dn)"><strong>R$ 102,00</strong></td><td style="color:var(--dn)">−R$ 0,50</td><td>Mínima!</td></tr>
+<tr><td style="text-align:left">LEM/BA</td><td>R$ 111,00</td><td style="color:var(--dn)">−R$ 1,50</td><td>Oeste Baiano</td></tr>
+<tr><td style="text-align:left">Rondonópolis/MT</td><td>R$ 107,00</td><td>estável</td><td>—</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="dv"></div>
+
+<!-- SAFRA BR -->
+<div class="stitle">
+  <div class="icon" style="background:linear-gradient(135deg,#166534,#fbbf24)">🌾</div>
+  <h2>Safra Brasileira 25/26 <span>— 179,15 mi t · RECORDE!</span></h2>
+</div>
+
+<div class="co up">
+  <h4>🌾 CONAB (20/abr): 179,15 mi t (+4,5%) — Recorde Absoluto!</h4>
+  <p>▸ <strong>Área:</strong> 48.472,7 mil ha (+2,4%)<br>
+  ▸ <strong>Produtividade:</strong> 3.696 kg/ha (+2%)<br>
+  ▸ <strong>Colheita:</strong> 85,7% da área<br>
+  ▸ <strong>MT:</strong> ~99% — concluído! · <strong>PR:</strong> Concluído<br>
+  ▸ <strong>GO:</strong> 89% colhido (SEAPA, até 28/mar) — chuvas limitaram avanço<br>
+  ▸ <strong>RS:</strong> ~38% — <span style="color:var(--dn)">chuvas irregulares → produtividade: 2.871 kg/ha</span><br>
+  ▸ <strong>Argentina:</strong> Buenos Aires revisou para 48,6 mi t (+100 mil t)</p>
+</div>
+
+<div class="dv"></div>
+
+<!-- EXPORTAÇÃO -->
+<div class="stitle">
+  <div class="icon" style="background:linear-gradient(135deg,#1e3a5f,#3b82f6)">🚢</div>
+  <h2>Exportações <span>— Volume recorde · Receita CAINDO</span></h2>
+</div>
+
+<div class="co bl">
+  <h4>🚢 Volume Recorde vs Receita em Queda — O Paradoxo de 2026</h4>
+  <p><strong>Abiove (17/abr):</strong> Export 2026: <strong>113,6 mi t</strong> (recorde, +5,4 mi t vs 2025). +75 mi t para China.<br>
+  <strong>ANEC (22/abr):</strong> Abril: <strong>16,3 mi t</strong> (vs 13,4 mi t abr/25 = +21,6%!).<br>
+  <strong>Secex mar/26:</strong> 14,5 mi t (+105% vs fev). Farelo: 1,92 mi t (recorde mensal!).<br>
+  <strong>Paranaguá Q1:</strong> Óleo de soja 386,3 mil t (+38%) — 70% do BR!<br><br>
+  <span style="color:var(--dn)"><strong>⚠️ Receita CAI:</strong> US$ 51,18 bi (↓ de US$ 58 bi). Preço médio ton: US$ 370 (↓ de US$ 440). Mais volume, menos dinheiro.</span></p>
+</div>
+
+<div class="dv"></div>
+
+<!-- GUERRA TARIFÁRIA -->
+<div class="stitle">
+  <div class="icon" style="background:linear-gradient(135deg,#991b1b,#eab308)">🇺🇸🇨🇳</div>
+  <h2>Guerra Tarifária EUA-China <span>— Brasil: grande beneficiado</span></h2>
+</div>
+
+<div class="co nt">
+  <h4>⚔️ Tarifas: 145% (EUA→CN) · 125% (CN→EUA) — Soja EUA inviável na China</h4>
+  <p><strong>Reuters jan-fev:</strong> Import CN de soja EUA: <strong>1,49 mi t (−83,7%!)</strong> · Import CN de soja BR: <strong>6,56 mi t (+82,7%!)</strong><br>
+  <strong>G1 (15/abr):</strong> <em>"Quase metade dos agricultores americanos relata piora financeira."</em><br>
+  <strong>Syngenta:</strong> BR exporta ~114 mi t, +75 mi t para China. Janela histórica.<br><br>
+  <strong>⚠️ Riscos:</strong> Inspeções fitossanitárias CN mais rígidas. Import CN mar/26: 4,02 mi t (abaixo de 6,4 mi t esperadas). Reunião Trump-Xi adiada. Se acordo parcial → fluxos mudam.</p>
+</div>
+
+<div class="dv"></div>
+
+<!-- CÂMBIO -->
+<div class="stitle">
+  <div class="icon" style="background:linear-gradient(135deg,#7c2d12,#f97316)">💱</div>
+  <h2>Câmbio & Mercado Interno <span>— Dólar sub R$ 5 = soja barata</span></h2>
+</div>
+
+<div class="co dn">
+  <h4>💱 Real forte + safra recorde = preço caindo no Brasil</h4>
+  <p><strong>CEPEA (20/abr):</strong> <em>"Preços recuaram pressionados pela desvalorização do dólar e perspectiva de ampla oferta."</em><br>
+  <strong>BiodieselBR (24/abr):</strong> <em>"Durou apenas um dia o movimento de reação. São cinco quedas nos últimos quatro dias."</em><br>
+  <strong>Gran Center:</strong> <em>"Interior perdeu até R$ 3/sc na semana. Tendência de mais pressão."</em><br>
+  <strong>Céleres:</strong> <em>"Câmbio é o principal ponto de risco."</em><br><br>
+  ▸ Sinop/MT: <strong>R$ 102/sc</strong> (mínima!) · LEM/BA: R$ 111 · PR: R$ 121<br>
+  ▸ RS: custos altos (diesel +16% em março — ANP) + produtividade baixa = risco financeiro</p>
+</div>
+
+<div class="dv"></div>
+
+<!-- ÓLEO & BIODIESEL -->
+<div class="stitle">
+  <div class="icon" style="background:linear-gradient(135deg,#0e7490,#06b6d4)">🛢️</div>
+  <h2>Óleo de Soja & Biodiesel <span>— Bateu US$ 1.600 e corrigiu</span></h2>
+</div>
+
+<div class="co up">
+  <h4>🛢️ Óleo tocou US$ 1.600/t — máxima desde 2023!</h4>
+  <p><strong>CNN/Granar (22/abr):</strong> <em>"Óleo ultrapassou US$ 1.600/t (guerra Oriente Médio + biodiesel + Brent >$100). Corrigiu para US$ 1.580."</em><br>
+  <strong>Agrinvest:</strong> <em>"Realização de lucros após renovar máximas desde 2023."</em><br><br>
+  ▸ Petróleo BRENT > US$ 100/bbl (tensões Irã/Ormuz)<br>
+  ▸ Biodiesel competitivo → demanda por óleo de soja<br>
+  ▸ EUA: Congresso debate E15 → mais demanda por grãos<br>
+  ▸ NOPA mar/26: esmagamento 6,15 mi t (recorde 5 anos!)</p>
+</div>
+
+<div class="dv"></div>
+
+<!-- TERMÔMETROS -->
+<div class="stitle">
+  <div class="icon" style="background:linear-gradient(135deg,#78350f,#eab308)">🌡️</div>
+  <h2>Termômetros <span>— Tendências de curto prazo</span></h2>
+</div>
+
+<div class="grid2">
+  <div class="card">
+    <div class="thermo">
+      <h4>🌡️ CBOT Soja — Tendência</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:45%"></div></div>
+      <div class="th-lb"><span>Forte queda</span><span>Neutro</span><span>Forte alta</span></div>
+      <p style="font-size:.76rem;color:var(--nt);margin-top:6px;font-weight:600">→ NEUTRO A BAIXISTA — Tentou US$ 12 e falhou. Oferta pesa. Óleo sustenta piso.</p>
+    </div>
+    <div class="thermo">
+      <h4>🌡️ Soja Brasil (R$/sc)</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:30%"></div></div>
+      <div class="th-lb"><span>Forte queda</span><span>Neutro</span><span>Forte alta</span></div>
+      <p style="font-size:.76rem;color:var(--dn);margin-top:6px;font-weight:600">⬇ PRESSIONADO — Câmbio sub R$ 5 + safra recorde + 5 quedas em 4 dias no CEPEA.</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo">
+      <h4>🌡️ Exportações BR — Volume</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:78%"></div></div>
+      <div class="th-lb"><span>Fraco</span><span>Normal</span><span>Recorde</span></div>
+      <p style="font-size:.76rem;color:var(--up);margin-top:6px;font-weight:600">⬆ RECORDE — 113,6 mi t! Abr: 16,3 mi t (+21,6% a.a.).</p>
+    </div>
+    <div class="thermo">
+      <h4>🌡️ Óleo de Soja / Biodiesel</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:65%"></div></div>
+      <div class="th-lb"><span>Fraco</span><span>Neutro</span><span>Forte</span></div>
+      <p style="font-size:.76rem;color:var(--up);margin-top:6px;font-weight:600">⬆ FORTE — Bateu US$ 1.600. Corrigiu, mas piso elevado.</p>
+    </div>
+  </div>
+</div>
+
+<div class="dv"></div>
+
+<!-- OPINIÃO -->
+<div class="opinion">
+  <h3>🎯 Opinião do Analista — Soja: Volume Histórico, Margem Sufocada</h3>
+
+  <p><strong>A semana da soja resumida em uma imagem: o Jul/26 quase tocou US$ 12,00 na 4ª-feira (máxima: 1.201,25¢) — e devolveu TUDO em poucas horas.</strong> Isso resume o mercado em 2026: tenta subir, mas a oferta global não deixa.</p>
+
+  <p><strong>O que aconteceu na semana 20-24/Abr:</strong><br>
+  ▸ <strong>2ª (20):</strong> Abertura fraca (−0,11%). Mercado digerindo safra recorde CONAB (179,15 mi t). CEPEA caiu a R$ 125,93 — mínima da semana.<br>
+  ▸ <strong>3ª (21):</strong> Alta de +0,72% puxada pelo óleo de soja (máxima desde 2023). Feriado no Brasil (Tiradentes) mas CBOT operou normalmente.<br>
+  ▸ <strong>4ª (22):</strong> O DIA-CHAVE! Jul/26 tocou 1.201¢ (~US$ 12,01) na máxima e DESABOU. Realização no óleo (de US$ 1.600 para US$ 1.580), farelo −1,5%. Fechou −0,90%. CEPEA reagiu +1,19% (R$ 127,43) por defasagem da alta anterior.<br>
+  ▸ <strong>5ª (23):</strong> Continuou caindo (−0,40%, a 1.174,75¢). CEPEA devolveu: R$ 126,90 (−0,42%).<br>
+  ▸ <strong>6ª (24, hoje):</strong> Leve estabilização CBOT (+0,17%, a 1.176,75¢). CEPEA de hoje será publicado amanhã (D+1).</p>
+
+  <p><strong>O paradoxo que não sai da mesa:</strong> Nunca produzimos tanto (179 mi t), nunca exportamos tanto (113,6 mi t), mas a receita encolhe. Preço médio da tonelada caiu de US$ 440 para US$ 370 (−16%). No Brasil, dólar sub R$ 5 agrava: Sinop/MT a R$ 102/sc é dramático para quem tem custo acima de R$ 90.</p>
+
+  <p><strong>Os 5 pontos para o produtor de Goiás:</strong><br>
+  ▸ <strong>1. Vendeu? Bom.</strong> Quem travou acima de R$ 130-135 está bem. Quem não vendeu, tendência é de mais pressão.<br>
+  ▸ <strong>2. CBOT tem teto em US$ 12.</strong> Tentou e falhou. Precisa de choque (clima EUA ruim ou Ormuz fechado) para romper.<br>
+  ▸ <strong>3. Câmbio é variável-chave.</strong> Se dólar voltar a R$ 5,10-5,20, é janela de venda. Cada R$ 0,10 = ~R$ 2-3/sc.<br>
+  ▸ <strong>4. Óleo de soja é o suporte.</strong> US$ 1.580/t sustenta esmagamento e dá piso à CBOT. Se petróleo cair, cuidado.<br>
+  ▸ <strong>5. Safra 26/27 EUA:</strong> Plantio já em 6% (adiantado). Se cheia, 2º semestre piora.</p>
+
+  <p><strong>Projeções próximas semanas:</strong><br>
+  ▸ <strong>CBOT Jul/26:</strong> 1.150-1.200¢/bu (US$ 11,50-12,00). Teto em US$ 12, suporte em US$ 11,40.<br>
+  ▸ <strong>CEPEA Paranaguá:</strong> R$ 122-130/sc. Tendência baixista enquanto dólar sub R$ 5.<br>
+  ▸ <strong>Risco altista:</strong> Estreito de Ormuz (Irã) → petróleo dispara → óleo sobe → CBOT sobe.<br>
+  ▸ <strong>Risco baixista:</strong> Acordo EUA-China parcial + safra EUA cheia + dólar <R$ 4,80.</p>
+
+  <div class="sig">— Análise Rural IN · Sexta-feira, 24/Abr/2026</div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="wrap">
+  <div class="footer-brand"><span class="r">Rural</span> <span class="i">IN</span></div>
+  <p>Radar Agro Semanal · Soja · Semana 20–24 Abril 2026<br>
+  Fontes: CEPEA/ESALQ · CONAB · CBOT/CME (Investing.com) · Abiove · ANEC · USDA/NOPA · Reuters · SEAPA-GO · Globo Rural · CNN Brasil · Notícias Agrícolas · Agrinvest · TF Agro · Secex · BiodieselBR · AgRural · Bolsa Buenos Aires</p>
+
+  <div class="footer-credits">
+    <h4>Análise e Construção</h4>
+    <div class="name">Dr. Sidney Souza</div>
+    <div class="title">Economista e Adm. Agrícola — Estrategista Econômico do Produtor</div>
+    <div class="desc">
+      Especialista em economia da fazenda e gestão de risco no agro<br>
+      Transformamos dados da fazenda em decisões econômicas<br>
+      Ajudamos produtores a entender se o mercado sustenta seu negócio
+    </div>
+    <div class="contact">
+      📧 <a href="mailto:sidneyagro@gmail.com">sidneyagro@gmail.com</a> · 📱 <a href="tel:+5564992266886">(64) 9 9226-6886</a> · 📸 <a href="https://instagram.com/ruralin.ai" target="_blank">@ruralin.ai</a>
+    </div>
+  </div>
+
+  <p style="margin-top:16px"><em>⚠️ Material informativo. Não constitui recomendação de investimento. Consulte profissionais habilitados.</em></p>
+</div>
+</footer>
+
+</div>
+
+<script>
+const gc='rgba(26,45,61,.35)';
+const tt={backgroundColor:'rgba(12,18,25,.95)',borderColor:'#243d52',borderWidth:1,titleFont:{size:11,weight:'700'},bodyFont:{size:10},padding:10,cornerRadius:8};
+
+// CHART 1: CBOT Abril completo até 24/abr (Investing.com)
+new Chart(document.getElementById('ch1').getContext('2d'),{
+  type:'line',
+  data:{
+    labels:['1/4','2/4','6/4','7/4','8/4','9/4','10/4','13/4','14/4','15/4','16/4','17/4','20/4','21/4','22/4','23/4','24/4'],
+    datasets:[{
+      label:'CBOT Jul/26 (¢/bu)',
+      data:[1170,1172,1180,1158,1162,1165,1176,1178,1173,1183,1181,1183,1182,1190,1180,1175,1177],
+      borderColor:'#22c55e',backgroundColor:'rgba(34,197,94,.06)',
+      borderWidth:2.5,fill:true,tension:.3,
+      pointRadius:function(ctx){const i=ctx.dataIndex;const l=ctx.dataset.data.length;return i===l-1?7:i===14?6:3},
+      pointBackgroundColor:function(ctx){const i=ctx.dataIndex;const l=ctx.dataset.data.length;if(i===l-1)return'#f0c950';if(i===14)return'#ef4444';return'rgba(34,197,94,.5)'},
+      pointBorderColor:function(ctx){const i=ctx.dataIndex;const l=ctx.dataset.data.length;if(i===l-1)return'#f0c950';if(i===14)return'#ef4444';return'rgba(34,197,94,.3)'},
+      pointBorderWidth:function(ctx){const i=ctx.dataIndex;const l=ctx.dataset.data.length;return(i===l-1||i===14)?2:1}
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tt,
+      annotation:{annotations:{
+        hoje:{type:'label',xValue:16,yValue:1200,content:['📍 HOJE 24/abr','1.176,75¢','≈US$ 11,77/bu'],font:{size:8,weight:'bold'},color:'#f0c950',backgroundColor:'rgba(212,160,23,.12)',padding:5,borderColor:'rgba(212,160,23,.3)',borderWidth:1},
+        quase12:{type:'label',xValue:14,yValue:1215,content:['⚠️ 22/abr: máx 1.201¢','(≈US$ 12,01!)','devolveu tudo!'],font:{size:7,weight:'bold'},color:'#ef4444',backgroundColor:'rgba(239,68,68,.1)',padding:4},
+        resist:{type:'line',yMin:1200,yMax:1200,borderColor:'rgba(239,68,68,.2)',borderWidth:1,borderDash:[4,3],
+          label:{display:true,content:'Resistência ~1.200¢ (US$ 12)',position:'start',backgroundColor:'rgba(239,68,68,.15)',font:{size:7},color:'#ef4444'}},
+        suport:{type:'line',yMin:1155,yMax:1155,borderColor:'rgba(34,197,94,.2)',borderWidth:1,borderDash:[4,3],
+          label:{display:true,content:'Suporte ~1.155¢',position:'end',backgroundColor:'rgba(34,197,94,.15)',font:{size:7},color:'#22c55e'}},
+        semana:{type:'box',xMin:12,xMax:16,backgroundColor:'rgba(212,160,23,.03)',borderColor:'rgba(212,160,23,.1)',borderWidth:1,
+          label:{display:true,content:'Semana 20-24/abr',position:'start',font:{size:7},color:'rgba(212,160,23,.5)'}}
+      }}
+    },
+    scales:{
+      y:{min:1130,max:1225,grid:{color:gc},ticks:{callback:v=>v.toLocaleString(),font:{size:9,weight:'600'}}},
+      x:{grid:{display:false},ticks:{font:{size:8,weight:'600'},maxRotation:45}}
+    }
+  }
+});
+
+// CHART 2: CEPEA Paranaguá Abril completo (dados oficiais)
+new Chart(document.getElementById('ch2').getContext('2d'),{
+  type:'line',
+  data:{
+    labels:['1/4','2/4','6/4','7/4','8/4','9/4','10/4','13/4','14/4','15/4','16/4','17/4','20/4','22/4','23/4'],
+    datasets:[{
+      label:'CEPEA Paranaguá (R$/sc)',
+      data:[127.91,128.50,128.81,128.31,128.12,127.84,126.58,126.70,126.21,126.85,126.67,126.45,125.93,127.43,126.90],
+      borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,.06)',
+      borderWidth:2.5,fill:true,tension:.3,
+      pointRadius:function(ctx){const i=ctx.dataIndex;const l=ctx.dataset.data.length;return i===l-1?7:i===12?5:3},
+      pointBackgroundColor:function(ctx){const i=ctx.dataIndex;const l=ctx.dataset.data.length;if(i===l-1)return'#f0c950';if(i===12)return'#ef4444';return'rgba(59,130,246,.5)'},
+      pointBorderColor:function(ctx){const i=ctx.dataIndex;const l=ctx.dataset.data.length;if(i===l-1)return'#f0c950';return'rgba(59,130,246,.3)'}
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tt,
+      annotation:{annotations:{
+        hoje:{type:'label',xValue:14,yValue:128.8,content:['📍 Último: 23/abr','R$ 126,90','−1,81% no mês'],font:{size:8,weight:'bold'},color:'#f0c950',backgroundColor:'rgba(212,160,23,.1)',padding:5},
+        minima:{type:'label',xValue:12,yValue:124.8,content:['📉 Mínima sem.','R$ 125,93 (20/abr)'],font:{size:7,weight:'bold'},color:'#ef4444',backgroundColor:'rgba(239,68,68,.08)',padding:4},
+        trend:{type:'line',xMin:0,xMax:14,yMin:128.6,yMax:126.6,borderColor:'rgba(239,68,68,.25)',borderWidth:2,borderDash:[5,3],
+          label:{display:true,content:'Tendência ↘',position:'center',backgroundColor:'rgba(239,68,68,.12)',font:{size:7},color:'#ef4444'}},
+        semana:{type:'box',xMin:12,xMax:14,backgroundColor:'rgba(212,160,23,.04)',borderColor:'rgba(212,160,23,.1)',borderWidth:1}
+      }}
+    },
+    scales:{
+      y:{min:124.5,max:130,grid:{color:gc},ticks:{callback:v=>'R$ '+v.toFixed(0),font:{size:9,weight:'600'}}},
+      x:{grid:{display:false},ticks:{font:{size:8,weight:'600'},maxRotation:45}}
+    }
+  }
+});
+
+// CHART 3: Safra BR
+new Chart(document.getElementById('ch3').getContext('2d'),{
+  type:'bar',
+  data:{
+    labels:['19/20','20/21','21/22','22/23','23/24','24/25','25/26'],
+    datasets:[{
+      label:'Produção (mi t)',
+      data:[124.8,135.9,125.5,154.6,147.4,171.4,179.15],
+      backgroundColor:function(ctx){return ctx.dataIndex===6?'rgba(34,197,94,.55)':'rgba(34,197,94,.18)'},
+      borderColor:function(ctx){return ctx.dataIndex===6?'#22c55e':'rgba(34,197,94,.35)'},
+      borderWidth:2,borderRadius:8
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tt,
+      annotation:{annotations:{
+        rec:{type:'label',xValue:6,yValue:192,content:['🏆 RECORDE!','179,15 mi t','CONAB 20/abr'],font:{size:9,weight:'bold'},color:'#22c55e',backgroundColor:'rgba(34,197,94,.1)',padding:5}
+      }}
+    },
+    scales:{
+      y:{min:100,max:200,grid:{color:gc},ticks:{callback:v=>v+' mi',font:{size:9,weight:'600'}}},
+      x:{grid:{display:false},ticks:{font:{size:9,weight:'700'}}}
+    }
+  }
+});
+
+// CHART 4: China imports
+new Chart(document.getElementById('ch4').getContext('2d'),{
+  type:'bar',
+  data:{
+    labels:['Jan-Fev 2025','Jan-Fev 2026'],
+    datasets:[{
+      label:'Soja dos EUA (mi t)',
+      data:[9.13,1.49],
+      backgroundColor:'rgba(239,68,68,.4)',borderColor:'#ef4444',borderWidth:2,borderRadius:8
+    },{
+      label:'Soja do Brasil (mi t)',
+      data:[3.59,6.56],
+      backgroundColor:'rgba(34,197,94,.4)',borderColor:'#22c55e',borderWidth:2,borderRadius:8
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'top',labels:{usePointStyle:true,padding:10,font:{size:9}}},tooltip:tt,
+      annotation:{annotations:{
+        queda:{type:'label',xValue:1,yValue:10.5,content:['🇺🇸 EUA: −83,7%!','🇧🇷 Brasil: +82,7%!','Tarifa 145%'],font:{size:9,weight:'bold'},color:'#eab308',backgroundColor:'rgba(234,179,8,.08)',padding:5}
+      }}
+    },
+    scales:{
+      y:{min:0,max:12,grid:{color:gc},ticks:{callback:v=>v+' mi',font:{size:9,weight:'600'}}},
+      x:{grid:{display:false},ticks:{font:{size:9,weight:'700'}}}
+    }
+  }
+});
+</script>
+
+</body>
+</html>

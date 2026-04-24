@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Rural IN — Leite · Radar Agro Semanal · 20-24 Abr 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060a0f;--bg2:#0c1219;--bg3:#111a24;--border:#1a2d3d;--border2:#243d52;--accent:#0369a1;--accent2:#0ea5e9;--accent3:#7dd3fc;--gold:#d4a017;--gold2:#f0c950;--text:#eaf0f6;--text2:#9db3c8;--text3:#5d7a90;--up:#22c55e;--dn:#ef4444;--nt:#eab308;--blue:#3b82f6;--purple:#a855f7;--orange:#f97316;--cyan:#06b6d4;--r:14px}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 800px 600px at 15% 25%,rgba(3,105,161,.04),transparent),radial-gradient(ellipse 600px 500px at 85% 75%,rgba(14,165,233,.03),transparent);pointer-events:none;z-index:0}.wrap{max-width:1140px;margin:0 auto;padding:0 24px;position:relative;z-index:1}.nav{background:rgba(12,18,25,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:10px 0;position:sticky;top:0;z-index:100}.nav .wrap{display:flex;align-items:center;justify-content:space-between}.nav-left{display:flex;align-items:center;gap:14px}.nav-logo-img{height:38px;width:auto;border-radius:8px}.nav-logo{font-weight:900;font-size:1.15rem}.nav-logo .r{color:var(--gold2)}.nav-logo .i{color:#22c55e}.nav-badge{background:linear-gradient(135deg,#0c4a6e,#0369a1);border:1px solid rgba(125,211,252,.3);padding:4px 14px;border-radius:20px;font-size:.68rem;font-weight:700;color:var(--accent3);letter-spacing:.5px}.nav-back{color:var(--text3);font-size:.82rem;text-decoration:none}.hero{padding:44px 0 32px;position:relative}.hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:200px;height:2px;background:linear-gradient(90deg,transparent,var(--accent2),transparent)}.hero-top{display:flex;align-items:center;gap:18px;margin-bottom:18px}.hero-icon{font-size:3.2rem;filter:drop-shadow(0 4px 12px rgba(3,105,161,.3))}.hero-texts h1{font-size:2.1rem;font-weight:900;letter-spacing:-1px;line-height:1.15}.hero-texts h1 .hl{background:linear-gradient(135deg,#0369a1,#0ea5e9,#7dd3fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.hero-texts .sub{font-size:.88rem;color:var(--text2);margin-top:4px}.hero-bar{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.chip{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:20px;font-size:.72rem;font-weight:700;border:1px solid}.chip.up{color:var(--up);border-color:rgba(34,197,94,.25);background:rgba(34,197,94,.08)}.chip.dn{color:var(--dn);border-color:rgba(239,68,68,.25);background:rgba(239,68,68,.08)}.chip.nt{color:var(--nt);border-color:rgba(234,179,8,.25);background:rgba(234,179,8,.08)}.chip.bl{color:var(--blue);border-color:rgba(59,130,246,.25);background:rgba(59,130,246,.08)}.alert{border-radius:var(--r);padding:16px 20px;margin-bottom:12px;display:flex;align-items:flex-start;gap:12px;border:1px solid;font-size:.84rem;line-height:1.75;color:var(--text2)}.alert strong{color:var(--text)}.alert .ai{font-size:1.2rem;flex-shrink:0}.alert.green{background:rgba(34,197,94,.05);border-color:rgba(34,197,94,.2)}.alert.red{background:rgba(239,68,68,.05);border-color:rgba(239,68,68,.2)}.alert.amber{background:rgba(234,179,8,.05);border-color:rgba(234,179,8,.2)}.alert.blue{background:rgba(59,130,246,.05);border-color:rgba(59,130,246,.2)}.alert.purple{background:rgba(168,85,247,.05);border-color:rgba(168,85,247,.2)}.alert.cyan{background:rgba(6,182,212,.05);border-color:rgba(6,182,212,.2)}.kpi-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;margin:22px 0}.kpi{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;position:relative;overflow:hidden;transition:transform .2s}.kpi:hover{transform:translateY(-2px)}.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2)}.kpi.up::before{background:var(--up)}.kpi.dn::before{background:var(--dn)}.kpi.nt::before{background:var(--nt)}.kpi.bl::before{background:var(--blue)}.kpi-lb{font-size:.6rem;text-transform:uppercase;letter-spacing:1px;color:var(--text3);margin-bottom:4px;font-weight:600}.kpi-val{font-size:1.15rem;font-weight:800;letter-spacing:-.5px}.kpi-val.up{color:var(--up)}.kpi-val.dn{color:var(--dn)}.kpi-val.nt{color:var(--nt)}.kpi-val.bl{color:var(--blue)}.kpi-sub{font-size:.66rem;color:var(--text3);margin-top:2px}.dv{height:1px;background:linear-gradient(90deg,transparent,var(--border2),var(--accent2),var(--border2),transparent);margin:30px 0}.stitle{display:flex;align-items:center;gap:12px;margin-bottom:16px}.stitle .icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}.stitle h2{font-size:1.1rem;font-weight:700}.stitle h2 span{color:var(--text2);font-weight:400;font-size:.85rem}.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:20px 24px;margin-bottom:12px}.card h3{font-size:.88rem;color:var(--text2);margin-bottom:12px;font-weight:600}.co{border-radius:var(--r);padding:18px 22px;margin-bottom:12px;border-left:4px solid;font-size:.85rem;color:var(--text2);line-height:1.8}.co strong{color:var(--text)}.co h4{font-size:.95rem;font-weight:700;margin-bottom:8px}.co.up{background:rgba(34,197,94,.04);border-color:var(--up)}.co.up h4{color:var(--up)}.co.dn{background:rgba(239,68,68,.04);border-color:var(--dn)}.co.dn h4{color:var(--dn)}.co.nt{background:rgba(234,179,8,.04);border-color:var(--nt)}.co.nt h4{color:var(--nt)}.co.bl{background:rgba(59,130,246,.04);border-color:var(--blue)}.co.bl h4{color:var(--blue)}.co.or{background:rgba(249,115,22,.04);border-color:var(--orange)}.co.or h4{color:var(--orange)}.co.pu{background:rgba(168,85,247,.04);border-color:var(--purple)}.co.pu h4{color:var(--purple)}.tbl-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--border);margin-bottom:10px}table{width:100%;border-collapse:collapse;font-size:.8rem}thead th{background:var(--bg3);padding:9px 12px;text-align:center;font-weight:600;color:var(--text2);font-size:.68rem;text-transform:uppercase;letter-spacing:.8px;border-bottom:1px solid var(--border)}tbody td{padding:8px 12px;border-bottom:1px solid rgba(26,45,61,.4);text-align:center}tbody tr:hover{background:rgba(3,105,161,.04)}.chart-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:20px 22px;margin-bottom:12px;overflow:hidden}.chart-box h3{font-size:.85rem;color:var(--text2);margin-bottom:10px;font-weight:600}.chart-wrap{position:relative;height:280px;overflow:hidden}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}@media(max-width:800px){.grid2,.grid3{grid-template-columns:1fr}}.thermo{margin:14px 0}.thermo h4{font-size:.82rem;color:var(--text2);margin-bottom:8px}.th-bar{height:12px;border-radius:6px;position:relative}.th-marker{position:absolute;top:-5px;width:3px;height:22px;background:#fff;border-radius:2px;transform:translateX(-50%)}.th-lb{display:flex;justify-content:space-between;font-size:.66rem;color:var(--text3);margin-top:4px}.opinion{background:linear-gradient(135deg,rgba(3,105,161,.08),rgba(3,105,161,.02));border:1px solid rgba(14,165,233,.2);border-radius:var(--r);padding:26px 28px;margin:22px 0}.opinion h3{font-size:1.02rem;font-weight:700;color:var(--accent3);margin-bottom:10px}.opinion p{font-size:.88rem;color:var(--text2);line-height:1.85;margin-bottom:10px}.opinion p strong{color:var(--text)}.opinion .sig{margin-top:14px;padding-top:12px;border-top:1px solid rgba(14,165,233,.15);font-size:.78rem;color:var(--text3);font-style:italic}.footer{border-top:1px solid var(--border);padding:36px 0;text-align:center;margin-top:30px}.footer-brand{font-size:1.3rem;font-weight:900;margin-bottom:10px}.footer-brand .r{color:var(--gold2)}.footer-brand .i{color:#22c55e}.footer p{font-size:.78rem;color:var(--text3);line-height:1.8}.footer-credits{margin-top:20px;padding-top:18px;border-top:1px solid var(--border)}.footer-credits h4{font-size:.9rem;color:var(--gold2);font-weight:700;margin-bottom:6px}.footer-credits .name{font-size:1rem;font-weight:800;color:var(--text);margin-bottom:2px}.footer-credits .title{font-size:.78rem;color:var(--accent3);font-weight:600;margin-bottom:6px}.footer-credits .desc{font-size:.74rem;color:var(--text2);line-height:1.7;max-width:500px;margin:0 auto 10px}.footer-credits .contact{font-size:.72rem;color:var(--text3)}.footer-credits .contact a{color:var(--gold2);text-decoration:none}@media(max-width:600px){.hero-top{flex-direction:column;text-align:center}.hero-texts h1{font-size:1.5rem}.nav .wrap{flex-direction:column;gap:8px}.kpi-row{grid-template-columns:repeat(2,1fr)}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1"></script>
+</head>
+<body>
+<nav class="nav"><div class="wrap"><div class="nav-left"><img src="https://ruralinrv.github.io/ruralin/logo.png" alt="Rural IN" class="nav-logo-img" onerror="this.style.display='none'"><div class="nav-logo"><span class="r">Rural</span> <span class="i">IN</span></div><div class="nav-badge">🥛 LEITE</div></div><a href="index.html" class="nav-back">← Voltar ao Radar</a></div></nav>
+<div class="wrap">
+
+<section class="hero">
+  <div class="hero-top">
+    <span class="hero-icon">🥛</span>
+    <div class="hero-texts">
+      <h1><span class="hl">Leite</span> — Radar Semanal</h1>
+      <div class="sub">Semana 20–24 Abril 2026 · CEPEA/ESALQ · IBGE · Embrapa · AIPC · MilkPoint · IPCA · Seapa/GO · CONAB</div>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <span class="chip up">📈 Preço reage! BR fev: R$ 2,15/L (+6,2%)</span>
+    <span class="chip up">📈 UHT atacado SP mar: R$ 4,16 (+19,3%!)</span>
+    <span class="chip dn">📉 Captação Q1: −3,6% (reversão!)</span>
+    <span class="chip dn">📉 2025: preço caiu −25,8% real!</span>
+    <span class="chip nt">🛒 IPCA UHT mar: +11,7%!</span>
+    <span class="chip bl">🇦🇷 Import Argentina pressiona</span>
+  </div>
+</section>
+
+<!-- ALERTAS -->
+<div class="alert green">
+  <span class="ai">📈</span>
+  <div><strong style="color:var(--up)">PREÇO AO PRODUTOR REAGE APÓS 9 MESES DE QUEDA!</strong> <strong>CEPEA:</strong> Jan/26: R$ 2,0216/L (+0,9% — 1ª alta em 10 meses!). Fev: R$ 2,1464/L (+6,2%!). <strong>UHT atacado SP mar:</strong> R$ 4,16/L (+19,3%!). Muçarela: R$ 30,74/kg (+7%). <em>"O produtor ganhou menos em 2025, investiu menos, e o reflexo é menor produção no campo."</em> (Ana Paula Negrão, CEPEA).</div>
+</div>
+
+<div class="alert red">
+  <span class="ai">📉</span>
+  <div><strong style="color:var(--dn)">CAPTAÇÃO CAI −3,6%! Oferta encolhe e puxa preços.</strong> <strong>CEPEA ICAP-L:</strong> Captação jan-fev/26: −3,6% vs ano anterior. <strong>MG, PR, GO, SP</strong> em queda. Efeito acumulado de 2025: margens apertadas → produtores desinvestiram → menos leite. <em>"A redução não é só sazonalidade, é efeito acumulado do ano anterior."</em> (CEPEA). Tendência de alta deve continuar no curto prazo.</div>
+</div>
+
+<div class="alert amber">
+  <span class="ai">🛒</span>
+  <div><strong style="color:var(--nt)">CONSUMIDOR SENTE: UHT +11,7% NO IPCA! Varejo até R$ 7/L!</strong> <strong>IPCA março:</strong> Leite longa vida: +11,7%! Queijo: +1,95%. Iogurte: +1,58%. Leite em pó: +0,85%. <strong>PR:</strong> UHT varejo +17%. Leite em pó +9%. Produtor recebe R$ 2,10/L, varejo vende a R$ 7,00/L. <em>"Margem fica com atravessadores. Repasse ao produtor travado."</em></div>
+</div>
+
+<div class="alert blue">
+  <span class="ai">🇦🇷</span>
+  <div><strong style="color:var(--blue)">IMPORTAÇÕES + MERCOSUL-UE = PRESSÃO ESTRUTURAL!</strong> <strong>2025:</strong> Déficit comercial: ~2 bi litros equiv. Importações caíram 4,2% mas seguem elevadas. <strong>Argentina e Uruguai:</strong> Produção +7-8% em 2025 → leite em pó barato → pressão no BR. <strong>Acordo Mercosul-UE:</strong> Aprovado jan/26 → pode ampliar fluxo. <strong>PL no Congresso:</strong> Proíbe compra pública de leite importado.</div>
+</div>
+
+<div class="alert purple">
+  <span class="ai">💰</span>
+  <div><strong style="color:var(--purple)">CUSTOS SOBEM E APERTAM MARGEM DO PRODUTOR!</strong> <strong>CEPEA:</strong> COE jan/26: +1,32%. Fev: +0,32%. <strong>Relação de troca:</strong> 33,56 L para comprar 1 sc milho (jan) — 15,2% pior que média 12 meses (29,12 L/sc). <strong>Petróleo $110-120:</strong> Encarece frete e insumos. <strong>CONAB:</strong> Compra emergencial de leite em pó (PAA) — GO: R$ 6 mi.</div>
+</div>
+
+<!-- KPIs -->
+<div class="kpi-row">
+  <div class="kpi up"><div class="kpi-lb">CEPEA Brasil fev/26</div><div class="kpi-val up">R$ 2,15/L</div><div class="kpi-sub">+6,2% vs jan! Reação!</div></div>
+  <div class="kpi up"><div class="kpi-lb">CEPEA MG fev/26</div><div class="kpi-val up">R$ 2,20/L</div><div class="kpi-sub">Maior estado. +6,8%</div></div>
+  <div class="kpi up"><div class="kpi-lb">CEPEA SP fev/26</div><div class="kpi-val up">R$ 2,20/L</div><div class="kpi-sub">+4,3%</div></div>
+  <div class="kpi up"><div class="kpi-lb">CEPEA GO fev/26</div><div class="kpi-val up">R$ 2,10/L</div><div class="kpi-sub">+9,6% vs jan!</div></div>
+  <div class="kpi up"><div class="kpi-lb">CEPEA PR fev/26</div><div class="kpi-val up">R$ 2,17/L</div><div class="kpi-sub">+6,4%</div></div>
+  <div class="kpi up"><div class="kpi-lb">UHT atacado SP mar</div><div class="kpi-val up">R$ 4,16/L</div><div class="kpi-sub">+19,3%!! Disparou!</div></div>
+  <div class="kpi up"><div class="kpi-lb">Muçarela atacado</div><div class="kpi-val up">R$ 30,74/kg</div><div class="kpi-sub">+7%</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Captação Q1/26</div><div class="kpi-val dn">−3,6%</div><div class="kpi-sub">ICAP-L. MG/PR/GO/SP</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Preço dez/25 (mínima)</div><div class="kpi-val dn">R$ 1,997/L</div><div class="kpi-sub">−25,8% real a.a.!</div></div>
+  <div class="kpi nt"><div class="kpi-lb">IPCA UHT mar/26</div><div class="kpi-val nt">+11,7%</div><div class="kpi-sub">Maior alta recente</div></div>
+  <div class="kpi dn"><div class="kpi-lb">COE jan/26</div><div class="kpi-val dn">+1,32%</div><div class="kpi-sub">Custos sobem. Margem aperta.</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Relação leite/milho</div><div class="kpi-val nt">33,6 L/sc</div><div class="kpi-sub">15,2% pior que média!</div></div>
+</div>
+
+<div class="dv"></div>
+
+<!-- GRÁFICOS -->
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#0c4a6e,#0369a1)">📈</div><h2>Cotações &amp; Gráficos <span>— CEPEA · IPCA · Atacado</span></h2></div>
+
+<div class="grid2">
+  <div class="chart-box"><h3>📈 Leite ao Produtor — CEPEA Brasil (R$/L)</h3><div class="chart-wrap"><canvas id="ch1"></canvas></div></div>
+  <div class="chart-box"><h3>📊 Preço por Estado — Fev/26 (R$/L)</h3><div class="chart-wrap"><canvas id="ch2"></canvas></div></div>
+</div>
+<div class="grid2">
+  <div class="chart-box"><h3>🛒 Derivados Atacado SP — Evolução 2026</h3><div class="chart-wrap"><canvas id="ch3"></canvas></div></div>
+  <div class="chart-box"><h3>📉 Captação 2025 vs Preço: O Paradoxo</h3><div class="chart-wrap"><canvas id="ch4"></canvas></div></div>
+</div>
+<div class="grid2">
+  <div class="chart-box"><h3>💰 Relação de Troca: Litros/Saca Milho</h3><div class="chart-wrap"><canvas id="ch5"></canvas></div></div>
+  <div class="chart-box"><h3>📈 IPCA Lácteos — Mar/26 (var %)</h3><div class="chart-wrap"><canvas id="ch6"></canvas></div></div>
+</div>
+
+<div class="dv"></div>
+
+<!-- PREÇO AO PRODUTOR -->
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#0c4a6e,#0ea5e9)">💰</div><h2>Preço ao Produtor <span>— Reação após 9 meses de queda</span></h2></div>
+
+<div class="co up">
+  <h4>📈 A Virada: De R$ 1,997 para R$ 2,15! Mas o Caminho é Longo.</h4>
+  <p><strong>Série CEPEA (Média Brasil, líquido):</strong><br>
+  ▸ Abr/25: R$ 2,74/L (pico recente) → Queda de 9 meses consecutivos<br>
+  ▸ Jun/25: R$ 2,56 → Ago: R$ 2,32 → Out: R$ 2,15 → Dez: R$ 1,997 (mínima!)<br>
+  ▸ <strong>Jan/26: R$ 2,0216/L (+0,9%) — 1ª alta em 10 meses!</strong><br>
+  ▸ <strong>Fev/26: R$ 2,1464/L (+6,2%) — Confirmação da reação!</strong><br><br>
+  <strong>CEPEA (Ana Paula Negrão):</strong> <em>"O que a gente vê é que o preço vem aumentando, tanto no atacado quanto no varejo. A oferta está menor e isso reflete no preço."</em><br><br>
+  <strong>Por estado (fev/26):</strong> MG: R$ 2,2030 (maior) · SP: R$ 2,1963 · PR: R$ 2,1660 · GO: R$ 2,1037 · RS: R$ 2,0962 · BA: R$ 2,0967 · SC: R$ 2,0727 · ES: R$ 1,9865 (menor).<br><br>
+  <strong>O que mudou:</strong> 2025 foi recorde de produção (+7,2%) → sobreoferta → preço desabou −25,8%. Em 2026, o efeito reverso: produtores desinvestiram → captação caiu −3,6% → preço reage.</p>
+</div>
+
+<div class="dv"></div>
+
+<!-- CONSUMIDOR E VAREJO -->
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#78350f,#f97316)">🛒</div><h2>Varejo &amp; Consumidor <span>— UHT +11,7% · Muçarela +7% · Prateleira cara</span></h2></div>
+
+<div class="co dn">
+  <h4>🛒 Consumidor Paga Caro: UHT +17% no PR! Margem Fica no Meio!</h4>
+  <p><strong>IPCA março/26:</strong><br>
+  ▸ Leite longa vida (UHT): <strong>+11,7%!</strong> (após −5,6% jan e +1,2% fev)<br>
+  ▸ Queijo: +1,95% · Iogurte: +1,58% · Leite em pó: +0,85%<br><br>
+  <strong>Atacado SP (CEPEA):</strong><br>
+  ▸ UHT mar: R$ 4,16/L (+19,3%!). 1ª quinz abr: R$ 3,86/L<br>
+  ▸ UHT fev: R$ 3,49/L (+4,51%). Muçarela fev: R$ 28,72/kg (+0,58%). Mar: R$ 30,74/kg (+7%)<br><br>
+  <strong>Paraná (abr/26):</strong> UHT varejo: +17%. Leite em pó: +9%. <strong>Produtor recebe R$ 2,10/L. Varejo cobra R$ 7,00/L.</strong> Margem de ~230% fica na cadeia (indústria, distribuição, varejo).<br><br>
+  <strong>Exame (15/abr):</strong> <em>"Preços do leite saltam 12% no Brasil — e não devem cair tão cedo. Conflito no Oriente Médio (petróleo, frete) reforça tendência."</em></p>
+</div>
+
+<div class="dv"></div>
+
+<!-- PRODUÇÃO E OFERTA -->
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#14532d,#0ea5e9)">🐄</div><h2>Produção &amp; Oferta <span>— 2025 recorde → 2026 retraindo</span></h2></div>
+
+<div class="co nt">
+  <h4>🐄 2025: Recorde de Captação (+8%). 2026: Reversão em Curso.</h4>
+  <p><strong>2025 (IBGE/MilkPoint):</strong> Captação formal: recorde! +8% vs 2024. Maior da série histórica.<br>
+  ▸ Q4/25: +8,2% a.a. Out: +12,5%. Nov: +7,9%. Dez: +4,5% (desacelerando).<br>
+  ▸ <strong>GO:</strong> 1S/25: 1,1 bi litros (+7,8%). 3T/25: 593 mi litros (+10,6%).<br><br>
+  <strong>2026 (Q1):</strong> Captação: <strong>−3,6%!</strong> Reversão! MG, PR, GO, SP caindo.<br>
+  ▸ Produtores desinvestiram em 2025 (margens −25,8%) → menos vacas, menos insumo, menos leite.<br>
+  ▸ Sazonalidade (seca) agrava: pastagem pior, nutrição animal mais cara.<br><br>
+  <strong>Embrapa (Samuel Oliveira):</strong> <em>"Esperamos crescimento mais moderado em 2026, refletindo busca por novo equilíbrio entre oferta e demanda."</em><br><br>
+  <strong>Importações:</strong> Déficit 2025: ~2 bi litros equiv. Argentina e Uruguai (+7-8% produção) com leite em pó competitivo. Pressão externa limita alta do preço ao produtor BR.</p>
+</div>
+
+<div class="dv"></div>
+
+<!-- TERMÔMETROS -->
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#0c4a6e,#0369a1)">🌡️</div><h2>Termômetros <span>— Tendências de curto prazo</span></h2></div>
+
+<div class="grid3">
+  <div class="card">
+    <div class="thermo"><h4>💰 Preço ao Produtor</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:62%"></div></div>
+      <div class="th-lb"><span>Queda</span><span>Estável</span><span>Alta</span></div>
+      <p style="font-size:.76rem;color:var(--up);margin-top:6px;font-weight:600">⬆ EM ALTA — Captação −3,6%, oferta menor, reação confirmada. R$ 2,20-2,40 esperado em abr-mai.</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🛒 Varejo / Consumidor</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--up),var(--nt),var(--dn))"><div class="th-marker" style="left:70%"></div></div>
+      <div class="th-lb"><span>Barato</span><span>Normal</span><span>Caro</span></div>
+      <p style="font-size:.76rem;color:var(--dn);margin-top:6px;font-weight:600">⬆ CARO — UHT +11,7%. Muçarela +7%. Tendência: mais altas até estabilizar oferta.</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🐄 Oferta / Captação</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:35%"></div></div>
+      <div class="th-lb"><span>Escassa</span><span>Normal</span><span>Abundante</span></div>
+      <p style="font-size:.76rem;color:var(--dn);margin-top:6px;font-weight:600">⬇ RETRAINDO — −3,6% Q1. Desinvestimento de 2025 pesa. Seca à frente piora.</p>
+    </div>
+  </div>
+</div>
+
+<div class="dv"></div>
+
+<!-- OPINIÃO -->
+<div class="opinion">
+  <h3>🎯 Opinião do Analista — Leite: A Ressaca de 2025 Vira Oportunidade em 2026</h3>
+
+  <p><strong>O leite vive a ressaca clássica do ciclo pecuário: 2025 foi recorde de produção (+8%), preço desabou −25,8%, produtores desinvestiram → 2026 começa com captação −3,6% e preço reagindo +6,2%. É a lei da oferta e demanda em tempo real. O produtor que sobreviveu a 2025 vai colher margens melhores em 2026 — mas os custos também sobem, e as importações da Argentina limitam o teto.</strong></p>
+
+  <p><strong>Semana 20-24/Abr — Contexto:</strong><br>
+  ▸ <strong>Preço ao produtor:</strong> BR fev: R$ 2,15/L (+6,2%). Reação confirmada. Mar-abr devem continuar subindo.<br>
+  ▸ <strong>UHT atacado SP mar:</strong> R$ 4,16/L (+19,3%!). Derivados todos em alta.<br>
+  ▸ <strong>IPCA mar:</strong> UHT +11,7%. Pressionando inflação.<br>
+  ▸ <strong>Captação:</strong> −3,6% Q1. Todas bacias em queda. Efeito do desinvestimento de 2025.<br>
+  ▸ <strong>Petróleo $110-120:</strong> Encarece frete, insumos, ração. Pressiona custos.</p>
+
+  <p><strong>Para o produtor de leite (GO/MG/PR/SP):</strong><br>
+  ▸ <strong>1. O ciclo virou a favor.</strong> Após 9 meses de queda, preço reage. Tendência é de mais altas até jun-jul (entressafra). R$ 2,30-2,50/L é factível para abr-mai. Negociar bem é crucial agora.<br><br>
+  ▸ <strong>2. Custos sobem junto.</strong> COE +1,3%. Milho caro (33,6 L/sc de relação de troca — 15% pior que média). Ração, frete e energia mais caros com petróleo alto. A margem melhora, mas não volta aos níveis de 2024.<br><br>
+  ▸ <strong>3. Argentina é o teto.</strong> Leite em pó argentino chega mais barato. Limita o quanto o preço brasileiro pode subir. Acordo Mercosul-UE pode ampliar fluxo no médio prazo. PL no Congresso tenta barrar compra pública de importado — monitorar.<br><br>
+  ▸ <strong>4. Quem investiu em eficiência sobrevive.</strong> Produtores que mantiveram produtividade por vaca (genética, nutrição, conforto) estão melhor posicionados. Quem cortou tudo em 2025 está com rebanho menor e demora para recuperar.<br><br>
+  ▸ <strong>5. Entressafra (mai-ago) é janela de oportunidade.</strong> Captação cai mais na seca → preço sobe → quem manteve volume negociou bem. Contratos antecipados com laticínios podem garantir preço.</p>
+
+  <p><strong>Projeções:</strong><br>
+  ▸ <strong>Produtor mar-abr/26:</strong> R$ 2,20-2,40/L. Tendência altista.<br>
+  ▸ <strong>Produtor entressafra (jun-ago):</strong> R$ 2,40-2,70/L. Pico sazonal.<br>
+  ▸ <strong>UHT atacado SP:</strong> R$ 4,00-4,50/L no curto prazo.<br>
+  ▸ <strong>Muçarela:</strong> R$ 30-33/kg. Alta sustentada.<br>
+  ▸ <strong>Risco baixista:</strong> Importações aumentam + demanda fraca do consumidor = teto nos preços.<br>
+  ▸ <strong>Risco altista:</strong> Seca forte + captação cai mais + petróleo sobe = R$ 2,70+.</p>
+
+  <div class="sig">— Análise Rural IN · Sexta-feira, 24/Abr/2026</div>
+</div>
+
+<footer class="footer"><div class="wrap">
+  <div class="footer-brand"><span class="r">Rural</span> <span class="i">IN</span></div>
+  <p>Radar Agro Semanal · Leite · Semana 20–24 Abril 2026<br>
+  Fontes: CEPEA/ESALQ · IBGE · Embrapa Gado de Leite · MilkPoint · IPCA/IBGE · Seapa GO · CONAB · Exame · UOL · CNN Brasil · Globo Rural · aRede · Broto · Click Petróleo</p>
+  <div class="footer-credits">
+    <h4>Análise e Construção</h4>
+    <div class="name">Dr. Sidney Souza</div>
+    <div class="title">Economista e Adm. Agrícola — Estrategista Econômico do Produtor</div>
+    <div class="desc">Especialista em economia da fazenda e gestão de risco no agro<br>Transformamos dados da fazenda em decisões econômicas<br>Ajudamos produtores a entender se o mercado sustenta seu negócio</div>
+    <div class="contact">📧 <a href="mailto:sidneyagro@gmail.com">sidneyagro@gmail.com</a> · 📱 <a href="tel:+5564992266886">(64) 9 9226-6886</a> · 📸 <a href="https://instagram.com/ruralin.ai" target="_blank">@ruralin.ai</a></div>
+  </div>
+  <p style="margin-top:16px"><em>⚠️ Material informativo. Não constitui recomendação de investimento. Consulte profissionais habilitados.</em></p>
+</div></footer>
+</div>
+
+<script>
+const gc='rgba(26,45,61,.35)';
+const tt={backgroundColor:'rgba(12,18,25,.95)',borderColor:'#243d52',borderWidth:1,titleFont:{size:11,weight:'700'},bodyFont:{size:10},padding:10,cornerRadius:8};
+
+// ═══════════════════════════════════════
+// CH1: Leite ao Produtor — CEPEA Brasil
+// ═══════════════════════════════════════
+new Chart(document.getElementById('ch1').getContext('2d'),{
+  type:'line',
+  data:{
+    labels:['Abr/25','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez/25','Jan/26','Fev/26'],
+    datasets:[{label:'Brasil (R$/L)',data:[2.74,2.65,2.56,2.45,2.32,2.22,2.15,2.07,2.00,2.02,2.15],
+      borderColor:'#0ea5e9',backgroundColor:'rgba(14,165,233,.08)',borderWidth:2.5,fill:true,tension:.35,
+      pointRadius:function(c){return(c.dataIndex===0||c.dataIndex===8||c.dataIndex===10)?6:2},
+      pointBackgroundColor:function(c){return c.dataIndex===0?'#ef4444':c.dataIndex===8?'#ef4444':c.dataIndex===10?'#22c55e':'rgba(14,165,233,.5)'}
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tt,
+      annotation:{annotations:{
+        pico:{type:'label',xValue:0,yValue:2.85,content:['Pico R$ 2,74','(abr/25)'],font:{size:8,weight:'bold'},color:'#ef4444',backgroundColor:'rgba(239,68,68,.08)',padding:3},
+        min:{type:'label',xValue:8,yValue:1.88,content:['📉 Mín R$ 2,00','−25,8% real!'],font:{size:8,weight:'bold'},color:'#ef4444',backgroundColor:'rgba(239,68,68,.1)',padding:4},
+        react:{type:'label',xValue:10,yValue:2.26,content:['📈 R$ 2,15','REAÇÃO! +6,2%'],font:{size:9,weight:'bold'},color:'#22c55e',backgroundColor:'rgba(34,197,94,.1)',padding:5},
+        q9:{type:'label',xValue:5,yValue:2.68,content:['9 meses de queda'],font:{size:7},color:'var(--text3)',backgroundColor:'rgba(239,68,68,.05)',padding:3}
+      }}
+    },
+    scales:{y:{min:1.8,max:2.95,grid:{color:gc},ticks:{callback:function(v){return'R$ '+v.toFixed(2)},font:{size:9,weight:'600'}}},x:{grid:{display:false},ticks:{font:{size:7,weight:'600'},maxRotation:45}}}
+  }
+});
+
+// ═══════════════════════════════════════
+// CH2: Preço por Estado — Fev/26
+// ═══════════════════════════════════════
+new Chart(document.getElementById('ch2').getContext('2d'),{
+  type:'bar',
+  data:{
+    labels:['MG','SP','PR','RJ','GO','BA','RS','SC','ES'],
+    datasets:[{label:'R$/L fev/26',data:[2.203,2.196,2.166,2.137,2.104,2.097,2.096,2.073,1.987],
+      backgroundColor:function(c){var v=c.raw;return v>=2.15?'rgba(14,165,233,.5)':v>=2.05?'rgba(234,179,8,.4)':'rgba(239,68,68,.4)'},
+      borderColor:function(c){var v=c.raw;return v>=2.15?'#0ea5e9':v>=2.05?'#eab308':'#ef4444'},
+      borderWidth:2,borderRadius:6}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tt,
+      annotation:{annotations:{
+        media:{type:'line',yMin:2.1464,yMax:2.1464,borderColor:'rgba(234,179,8,.4)',borderWidth:1.5,borderDash:[5,3],label:{display:true,content:'Brasil R$ 2,15',position:'end',backgroundColor:'rgba(234,179,8,.1)',font:{size:7},color:'#eab308'}}
+      }}
+    },
+    scales:{y:{min:1.9,max:2.3,grid:{color:gc},ticks:{callback:function(v){return'R$ '+v.toFixed(2)},font:{size:9,weight:'600'}}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'}}}}
+  }
+});
+
+// ═══════════════════════════════════════
+// CH3: Derivados Atacado SP
+// ═══════════════════════════════════════
+new Chart(document.getElementById('ch3').getContext('2d'),{
+  type:'bar',
+  data:{
+    labels:['UHT Jan','UHT Fev','UHT Mar','Muçar. Fev','Muçar. Mar'],
+    datasets:[{label:'Preço',data:[3.35,3.49,4.16,28.72,30.74],
+      backgroundColor:['rgba(14,165,233,.25)','rgba(14,165,233,.35)','rgba(34,197,94,.5)','rgba(217,119,6,.3)','rgba(34,197,94,.45)'],
+      borderColor:['#0ea5e9','#0ea5e9','#22c55e','#d97706','#22c55e'],
+      borderWidth:2,borderRadius:6}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tt,
+      annotation:{annotations:{
+        uht:{type:'label',xValue:2,yValue:5.5,content:['📈 UHT R$ 4,16','(+19,3%!)'],font:{size:9,weight:'bold'},color:'#22c55e',backgroundColor:'rgba(34,197,94,.1)',padding:4},
+        muc:{type:'label',xValue:4,yValue:33,content:['Muçarela R$ 30,74','(+7%)'],font:{size:8,weight:'bold'},color:'#22c55e',backgroundColor:'rgba(34,197,94,.08)',padding:3}
+      }}
+    },
+    scales:{y:{grid:{color:gc},ticks:{font:{size:9,weight:'600'}}},x:{grid:{display:false},ticks:{font:{size:7,weight:'600'}}}}
+  }
+});
+
+// ═══════════════════════════════════════
+// CH4: Captação 2025 vs Preço
+// ═══════════════════════════════════════
+new Chart(document.getElementById('ch4').getContext('2d'),{
+  type:'line',
+  data:{
+    labels:['Jan/25','Mar','Mai','Jul','Set','Nov','Jan/26'],
+    datasets:[
+      {label:'Captação (var % a.a.)',data:[6.5,7.0,8.0,10.0,8.5,7.9,(-3.6)],yAxisID:'y',
+        borderColor:'#22c55e',backgroundColor:'rgba(34,197,94,.05)',borderWidth:2,tension:.3,pointRadius:3,pointBackgroundColor:function(c){return c.raw<0?'#ef4444':'#22c55e'}},
+      {label:'Preço BR (R$/L)',data:[2.77,2.72,2.65,2.45,2.22,2.07,2.02],yAxisID:'y1',
+        borderColor:'#ef4444',backgroundColor:'rgba(239,68,68,.05)',borderWidth:2.5,tension:.3,pointRadius:3,borderDash:[5,3]}
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'top',labels:{usePointStyle:true,padding:10,font:{size:8}}},tooltip:tt,
+      annotation:{annotations:{
+        inv:{type:'label',xValue:6,yValue:(-6),content:['📉 Captação vira −3,6%!','Preço reage!'],font:{size:8,weight:'bold'},color:'#ef4444',backgroundColor:'rgba(239,68,68,.08)',padding:4}
+      }}
+    },
+    scales:{
+      y:{position:'left',min:-8,max:14,grid:{color:gc},ticks:{callback:function(v){return v+'%'},font:{size:9,weight:'600'}},title:{display:true,text:'Captação %',font:{size:8},color:'#22c55e'}},
+      y1:{position:'right',min:1.9,max:2.9,grid:{display:false},ticks:{callback:function(v){return'R$ '+v.toFixed(2)},font:{size:9,weight:'600'},color:'#ef4444'},title:{display:true,text:'Preço R$/L',font:{size:8},color:'#ef4444'}},
+      x:{grid:{display:false},ticks:{font:{size:7,weight:'600'}}}
+    }
+  }
+});
+
+// ═══════════════════════════════════════
+// CH5: Relação de Troca Leite/Milho
+// ═══════════════════════════════════════
+new Chart(document.getElementById('ch5').getContext('2d'),{
+  type:'bar',
+  data:{
+    labels:['Média 12m','Out/25','Nov/25','Dez/25','Jan/26'],
+    datasets:[{label:'Litros para 1 sc milho',data:[29.12,30.50,31.80,33.10,33.56],
+      backgroundColor:function(c){return c.dataIndex===0?'rgba(14,165,233,.3)':c.raw>32?'rgba(239,68,68,.45)':'rgba(234,179,8,.35)'},
+      borderColor:function(c){return c.dataIndex===0?'#0ea5e9':c.raw>32?'#ef4444':'#eab308'},
+      borderWidth:2,borderRadius:6}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tt,
+      annotation:{annotations:{
+        media:{type:'line',yMin:29.12,yMax:29.12,borderColor:'rgba(14,165,233,.4)',borderWidth:1.5,borderDash:[5,3],label:{display:true,content:'Média 29,12 L/sc',position:'start',backgroundColor:'rgba(14,165,233,.1)',font:{size:7},color:'#0ea5e9'}},
+        piora:{type:'label',xValue:4,yValue:36,content:['33,56 L/sc','15,2% pior!'],font:{size:9,weight:'bold'},color:'#ef4444',backgroundColor:'rgba(239,68,68,.08)',padding:4}
+      }}
+    },
+    scales:{y:{min:25,max:38,grid:{color:gc},ticks:{callback:function(v){return v+' L'},font:{size:10,weight:'700'}}},x:{grid:{display:false},ticks:{font:{size:8,weight:'700'}}}}
+  }
+});
+
+// ═══════════════════════════════════════
+// CH6: IPCA Lácteos Mar/26
+// ═══════════════════════════════════════
+new Chart(document.getElementById('ch6').getContext('2d'),{
+  type:'bar',
+  data:{
+    labels:['UHT','Queijo','Iogurte','Leite em pó'],
+    datasets:[{label:'Var % IPCA mar',data:[11.7,1.95,1.58,0.85],
+      backgroundColor:['rgba(239,68,68,.55)','rgba(234,179,8,.4)','rgba(234,179,8,.35)','rgba(14,165,233,.3)'],
+      borderColor:['#ef4444','#eab308','#eab308','#0ea5e9'],
+      borderWidth:2,borderRadius:6}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tt,
+      annotation:{annotations:{
+        uht:{type:'label',xValue:0,yValue:13.5,content:['🔥 +11,7%!','Maior alta!'],font:{size:9,weight:'bold'},color:'#ef4444',backgroundColor:'rgba(239,68,68,.1)',padding:4}
+      }}
+    },
+    scales:{y:{min:0,max:15,grid:{color:gc},ticks:{callback:function(v){return v+'%'},font:{size:10,weight:'700'}}},x:{grid:{display:false},ticks:{font:{size:10,weight:'700'}}}}
+  }
+});
+</script>
+</body>
+</html>

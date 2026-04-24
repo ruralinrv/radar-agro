@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Rural IN — Portal Radar Agro Semanal · 20-24 Abr 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060a0f;--bg2:#0c1219;--bg3:#111a24;--border:#1a2d3d;--border2:#243d52;--gold:#d4a017;--gold2:#f0c950;--gold3:#fef9c3;--text:#eaf0f6;--text2:#9db3c8;--text3:#5d7a90;--up:#22c55e;--dn:#ef4444;--nt:#eab308;--blue:#3b82f6;--purple:#a855f7;--orange:#f97316;--cyan:#06b6d4;--r:14px;--pink:#ec4899;--lime:#84cc16;--teal:#14b8a6;--amber:#f59e0b;--red:#dc2626;--indigo:#6366f1}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 900px 700px at 20% 20%,rgba(212,160,23,.03),transparent),radial-gradient(ellipse 700px 600px at 80% 80%,rgba(34,197,94,.02),transparent);pointer-events:none;z-index:0}.wrap{max-width:1200px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
+
+/* NAV */
+.nav{background:rgba(12,18,25,.94);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);padding:10px 0;position:sticky;top:0;z-index:100}.nav .wrap{display:flex;align-items:center;justify-content:space-between}.nav-left{display:flex;align-items:center;gap:14px}.nav-logo-img{height:42px;width:auto;border-radius:8px}.nav-logo{font-weight:900;font-size:1.25rem}.nav-logo .r{color:var(--gold2)}.nav-logo .i{color:#22c55e}.nav-badge{background:linear-gradient(135deg,#78350f,#92400e);border:1px solid rgba(252,211,77,.3);padding:5px 16px;border-radius:22px;font-size:.7rem;font-weight:700;color:var(--gold3);letter-spacing:.6px}.nav-date{color:var(--text3);font-size:.78rem}
+
+/* HERO */
+.hero{padding:48px 0 36px;text-align:center;position:relative}.hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:300px;height:2px;background:linear-gradient(90deg,transparent,var(--gold2),transparent)}.hero h1{font-size:2.6rem;font-weight:900;letter-spacing:-1.5px;line-height:1.15;margin-bottom:8px}.hero h1 .hl{background:linear-gradient(135deg,var(--gold),var(--gold2),#fde68a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.hero .sub{font-size:.92rem;color:var(--text2);max-width:700px;margin:0 auto 18px}.hero-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+
+/* CHIPS */
+.chip{display:inline-flex;align-items:center;gap:5px;padding:5px 13px;border-radius:22px;font-size:.72rem;font-weight:700;border:1px solid;white-space:nowrap}.chip.up{color:var(--up);border-color:rgba(34,197,94,.25);background:rgba(34,197,94,.06)}.chip.dn{color:var(--dn);border-color:rgba(239,68,68,.25);background:rgba(239,68,68,.06)}.chip.nt{color:var(--nt);border-color:rgba(234,179,8,.25);background:rgba(234,179,8,.06)}.chip.bl{color:var(--blue);border-color:rgba(59,130,246,.25);background:rgba(59,130,246,.06)}.chip.wh{color:var(--text2);border-color:var(--border2);background:rgba(255,255,255,.02)}
+
+/* MACRO BAR */
+.macro{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:22px 0;padding:14px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}.macro-item{display:flex;align-items:center;gap:5px;padding:4px 12px;border-radius:8px;background:var(--bg2);border:1px solid var(--border);font-size:.7rem}.macro-item .lb{color:var(--text3);font-weight:600}.macro-item .vl{font-weight:800}.macro-item .vl.up{color:var(--up)}.macro-item .vl.dn{color:var(--dn)}.macro-item .vl.nt{color:var(--nt)}
+
+/* SECTION */
+.dv{height:1px;background:linear-gradient(90deg,transparent,var(--border2),var(--gold2),var(--border2),transparent);margin:32px 0}.stitle{display:flex;align-items:center;gap:12px;margin-bottom:18px}.stitle .icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}.stitle h2{font-size:1.15rem;font-weight:800}.stitle h2 span{color:var(--text2);font-weight:400;font-size:.85rem}
+
+/* GRID CARDS */
+.grid-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:16px}
+.ccard{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;cursor:pointer;position:relative;overflow:hidden;transition:all .25s ease;text-decoration:none;display:block}.ccard:hover{transform:translateY(-3px);border-color:var(--border2);box-shadow:0 8px 24px rgba(0,0,0,.3)}.ccard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}.ccard.up::before{background:var(--up)}.ccard.dn::before{background:var(--dn)}.ccard.nt::before{background:var(--nt)}.ccard.bl::before{background:var(--blue)}.ccard .cc-top{display:flex;align-items:center;gap:10px;margin-bottom:8px}.ccard .cc-icon{font-size:1.6rem;flex-shrink:0}.ccard .cc-name{font-size:.82rem;font-weight:700;color:var(--text)}.ccard .cc-tag{font-size:.58rem;font-weight:700;padding:2px 8px;border-radius:10px;display:inline-block;margin-top:2px}.ccard .cc-tag.up{color:var(--up);background:rgba(34,197,94,.1)}.ccard .cc-tag.dn{color:var(--dn);background:rgba(239,68,68,.1)}.ccard .cc-tag.nt{color:var(--nt);background:rgba(234,179,8,.1)}.ccard .cc-price{font-size:1.15rem;font-weight:900;letter-spacing:-.5px;margin-bottom:2px}.ccard .cc-price.up{color:var(--up)}.ccard .cc-price.dn{color:var(--dn)}.ccard .cc-price.nt{color:var(--nt)}.ccard .cc-var{font-size:.68rem;color:var(--text3);margin-bottom:6px}.ccard .cc-flash{font-size:.7rem;color:var(--text2);line-height:1.5;border-top:1px solid var(--border);padding-top:6px}
+
+/* OVERVIEW TABLE */
+.tbl-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--border);margin-bottom:16px}table{width:100%;border-collapse:collapse;font-size:.76rem}thead th{background:var(--bg3);padding:10px 12px;text-align:center;font-weight:700;color:var(--text2);font-size:.65rem;text-transform:uppercase;letter-spacing:.8px;border-bottom:1px solid var(--border)}tbody td{padding:8px 10px;border-bottom:1px solid rgba(26,45,61,.3);text-align:center}tbody tr:hover{background:rgba(212,160,23,.03)}.td-name{text-align:left!important;font-weight:700;white-space:nowrap}.td-up{color:var(--up);font-weight:700}.td-dn{color:var(--dn);font-weight:700}.td-nt{color:var(--nt);font-weight:700}
+
+/* OPINION */
+.opinion{background:linear-gradient(135deg,rgba(212,160,23,.06),rgba(212,160,23,.01));border:1px solid rgba(240,201,80,.2);border-radius:var(--r);padding:28px 30px;margin:24px 0}.opinion h3{font-size:1.05rem;font-weight:800;color:var(--gold2);margin-bottom:12px}.opinion p{font-size:.88rem;color:var(--text2);line-height:1.85;margin-bottom:10px}.opinion p strong{color:var(--text)}.opinion .sig{margin-top:16px;padding-top:12px;border-top:1px solid rgba(240,201,80,.12);font-size:.78rem;color:var(--text3);font-style:italic}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--border);padding:40px 0;text-align:center;margin-top:36px}.footer-brand{font-size:1.4rem;font-weight:900;margin-bottom:10px}.footer-brand .r{color:var(--gold2)}.footer-brand .i{color:#22c55e}.footer p{font-size:.76rem;color:var(--text3);line-height:1.8}.footer-credits{margin-top:22px;padding-top:18px;border-top:1px solid var(--border)}.footer-credits h4{font-size:.92rem;color:var(--gold2);font-weight:700;margin-bottom:6px}.footer-credits .name{font-size:1.05rem;font-weight:800;color:var(--text);margin-bottom:2px}.footer-credits .title{font-size:.78rem;color:var(--gold2);font-weight:600;margin-bottom:6px}.footer-credits .desc{font-size:.74rem;color:var(--text2);line-height:1.7;max-width:520px;margin:0 auto 10px}.footer-credits .contact{font-size:.72rem;color:var(--text3)}.footer-credits .contact a{color:var(--gold2);text-decoration:none}
+
+@media(max-width:700px){.hero h1{font-size:1.7rem}.nav .wrap{flex-direction:column;gap:8px}.grid-cards{grid-template-columns:repeat(2,1fr)}.macro{gap:4px}.macro-item{font-size:.62rem;padding:3px 8px}}
+@media(max-width:480px){.grid-cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav"><div class="wrap"><div class="nav-left"><img src="https://ruralinrv.github.io/ruralin/logo.png" alt="Rural IN" class="nav-logo-img" onerror="this.style.display='none'"><div class="nav-logo"><span class="r">Rural</span> <span class="i">IN</span></div><div class="nav-badge">📡 RADAR AGRO SEMANAL</div></div><div class="nav-date">Semana 20–24 Abril 2026</div></div></nav>
+
+<div class="wrap">
+
+<!-- HERO -->
+<section class="hero">
+  <h1>🌾 <span class="hl">Radar Agro Semanal</span></h1>
+  <div class="sub">20 commodities · Dados consolidados · Cotações · Exportações · Tendências<br>Semana 20–24 Abril 2026 — Todas as análises em um só lugar</div>
+  <div class="hero-chips">
+    <span class="chip up">📈 Boi gordo: R$ 325/@! Recorde!</span>
+    <span class="chip up">☕ Café arábica: R$ 2.600/sc!</span>
+    <span class="chip dn">🐷 Suíno: mínima desde 2022!</span>
+    <span class="chip nt">🛢️ Brent: US$ 105/bbl (Ormuz)</span>
+    <span class="chip up">🌱 Soja BR: 180 mi t recorde!</span>
+    <span class="chip bl">💵 Dólar: R$ 4,998 (−8,9% ano)</span>
+  </div>
+</section>
+
+<!-- MACRO BAR -->
+<div class="macro">
+  <div class="macro-item"><span class="lb">💵 Dólar</span> <span class="vl dn">R$ 4,998</span></div>
+  <div class="macro-item"><span class="lb">📊 Ibovespa</span> <span class="vl dn">190.745</span></div>
+  <div class="macro-item"><span class="lb">🏦 Selic</span> <span class="vl nt">14,75%</span></div>
+  <div class="macro-item"><span class="lb">📈 IPCA Focus</span> <span class="vl dn">4,71%</span></div>
+  <div class="macro-item"><span class="lb">🛢️ Brent</span> <span class="vl dn">US$ 105,33</span></div>
+  <div class="macro-item"><span class="lb">🌍 CDS 5a</span> <span class="vl up">123 pts</span></div>
+  <div class="macro-item"><span class="lb">📈 PIB proj.</span> <span class="vl nt">2,0%</span></div>
+  <div class="macro-item"><span class="lb">⚔️ Ormuz</span> <span class="vl dn">Bloqueado</span></div>
+</div>
+
+<div class="dv"></div>
+
+<!-- GRÃOS & OLEAGINOSAS -->
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#713f12,#854d0e)">🌾</div><h2>Grãos &amp; Oleaginosas <span>— Soja · Milho · Sorgo · Arroz · Trigo · Feijão · Farelo</span></h2></div>
+<div class="grid-cards">
+
+  <a href="soja-24-04.html" class="ccard nt">
+    <div class="cc-top"><span class="cc-icon">🌱</span><div><div class="cc-name">Soja</div><div class="cc-tag nt">Lateral</div></div></div>
+    <div class="cc-price nt">R$ 126,90/sc</div>
+    <div class="cc-var">CEPEA Paranaguá · Lateral no mês · CBOT ~1.167 ¢/bu</div>
+    <div class="cc-flash">Safra BR recorde 180 mi t! Export grão mar: 14,5 mi t. Oferta ampla pressiona interno. Óleo forte (biodiesel).</div>
+  </a>
+
+  <a href="milho-24-04.html" class="ccard nt">
+    <div class="cc-top"><span class="cc-icon">🌽</span><div><div class="cc-name">Milho</div><div class="cc-tag nt">Estável R$ 69/sc</div></div></div>
+    <div class="cc-price nt">R$ 69,59/sc</div>
+    <div class="cc-var">CEPEA Campinas · Estável abr · CBOT ~4,50 $/bu</div>
+    <div class="cc-flash">Safrinha define 2S. Demanda comprador fraca. Etanol EUA puxa Chicago. Frete +20% (diesel/guerra).</div>
+  </a>
+
+  <a href="sorgo-24-04.html" class="ccard up">
+    <div class="cc-top"><span class="cc-icon">🌿</span><div><div class="cc-name">Sorgo</div><div class="cc-tag up">↑ Alta</div></div></div>
+    <div class="cc-price up">~R$ 52-55/sc</div>
+    <div class="cc-var">Triângulo Mineiro/GO · Firme · Alternativa ao milho</div>
+    <div class="cc-flash">Comprador de ração busca alternativas ao milho. Relação de troca favorável. Exportação cresce.</div>
+  </a>
+
+  <a href="arroz-24-04.html" class="ccard up">
+    <div class="cc-top"><span class="cc-icon">🍚</span><div><div class="cc-name">Arroz</div><div class="cc-tag up">↑ +12% mar</div></div></div>
+    <div class="cc-price up">Em alta</div>
+    <div class="cc-var">CEPEA RS · +12% vs fev · Liquidez baixa</div>
+    <div class="cc-flash">Preço sobe +12% em mar (RS). Produtores retraídos. Baixa liquidez. Custos vs preço em divergência.</div>
+  </a>
+
+  <a href="trigo-24-04.html" class="ccard up">
+    <div class="cc-top"><span class="cc-icon">🌾</span><div><div class="cc-name">Trigo</div><div class="cc-tag up">↑ +3% Minneapolis</div></div></div>
+    <div class="cc-price up">Alta externa</div>
+    <div class="cc-var">CBOT/Minneapolis · Tensão geopolítica · Importação BR</div>
+    <div class="cc-flash">Tensão Irã/Oriente Médio sustenta. Minneapolis +3%. BR importador. Dependência + frete caro = pressão interna.</div>
+  </a>
+
+  <a href="feijao-24-04.html" class="ccard nt">
+    <div class="cc-top"><span class="cc-icon">🫘</span><div><div class="cc-name">Feijão</div><div class="cc-tag nt">Misto</div></div></div>
+    <div class="cc-price nt">Variável</div>
+    <div class="cc-var">CONAB regional · Oferta 1ª safra · Demanda estável</div>
+    <div class="cc-flash">1ª safra colhida. Oferta regional pressiona. Carioca vs preto vs caupi com dinâmicas distintas.</div>
+  </a>
+
+  <a href="farelo-soja-24-04.html" class="ccard nt">
+    <div class="cc-top"><span class="cc-icon">🫘</span><div><div class="cc-name">Farelo de Soja</div><div class="cc-tag nt">Firme fora, fraco BR</div></div></div>
+    <div class="cc-price nt">US$ 319/t CBOT</div>
+    <div class="cc-var">+7,5% a.a. · Export BR mar: 1,92 mi t recorde!</div>
+    <div class="cc-flash">Demanda global 285,65 mi t. Crush EUA recorde (+16%). BR interno em queda: óleo puxa crush → mais farelo.</div>
+  </a>
+
+</div>
+
+<div class="dv"></div>
+
+<!-- PROTEÍNAS ANIMAIS -->
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#7f1d1d,#dc2626)">🥩</div><h2>Proteínas Animais <span>— Boi · Leite · Frango · Suínos</span></h2></div>
+<div class="grid-cards">
+
+  <a href="boi-24-04.html" class="ccard up">
+    <div class="cc-top"><span class="cc-icon">🐂</span><div><div class="cc-name">Boi Gordo</div><div class="cc-tag up">↑ Recorde!</div></div></div>
+    <div class="cc-price up">R$ 325/@+</div>
+    <div class="cc-var">CEPEA/B3 · Recorde nominal! · Export forte</div>
+    <div class="cc-flash">Arroba em recorde histórico! Oferta restrita + export forte + escalas 5-8 dias. Relação de troca melhor em 12 meses.</div>
+  </a>
+
+  <a href="leite-24-04.html" class="ccard nt">
+    <div class="cc-top"><span class="cc-icon">🥛</span><div><div class="cc-name">Leite</div><div class="cc-tag nt">Misto</div></div></div>
+    <div class="cc-price nt">Variável</div>
+    <div class="cc-var">CEPEA/CILU · Entressafra · Custos pressionam</div>
+    <div class="cc-flash">Entressafra sustenta. Ração (milho R$ 69 + farelo em queda) alivia custo parcial. Importação compete.</div>
+  </a>
+
+  <a href="frango-24-04.html" class="ccard up">
+    <div class="cc-top"><span class="cc-icon">🐔</span><div><div class="cc-name">Frango</div><div class="cc-tag up">↑ Export recorde!</div></div></div>
+    <div class="cc-price up">R$ 7,34/kg cong.</div>
+    <div class="cc-var">CEPEA SP · Resfriado +6,6% · Peito recorde!</div>
+    <div class="cc-flash">Export 22,8 mil t/dia (recorde 1997!). Peito R$ 11,66 (+18,8% recorde!). vs Boi: melhor em 4 anos.</div>
+  </a>
+
+  <a href="suino-24-04.html" class="ccard dn">
+    <div class="cc-top"><span class="cc-icon">🐷</span><div><div class="cc-name">Suínos</div><div class="cc-tag dn">↓ Mínima 2022!</div></div></div>
+    <div class="cc-price dn">R$ 5,11/kg SC</div>
+    <div class="cc-var">CEPEA · −12,8% abr · Margem negativa!</div>
+    <div class="cc-flash">Preços em mínimas históricas! Export recorde (+32%) mas preço interno desaba. Custo R$ 6,30 > Preço R$ 5,11.</div>
+  </a>
+
+</div>
+
+<div class="dv"></div>
+
+<!-- SOFTS & FIBRAS -->
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#312e81,#6366f1)">☕</div><h2>Softs, Fibras &amp; Frutas <span>— Café · Açúcar/Cana · Cacau · Algodão · Laranja</span></h2></div>
+<div class="grid-cards">
+
+  <a href="cafe-24-04.html" class="ccard up">
+    <div class="cc-top"><span class="cc-icon">☕</span><div><div class="cc-name">Café</div><div class="cc-tag up">↑ Arábica forte!</div></div></div>
+    <div class="cc-price up">~R$ 2.600/sc</div>
+    <div class="cc-var">CEPEA/ICE · Arábica +2,5% mar · Robusta −4%</div>
+    <div class="cc-flash">Arábica firme: oferta restrita + geopolítica. Robusta cede (colheita próxima). Spread R$ 892/sc entre variedades.</div>
+  </a>
+
+  <a href="cana-acucar-24-04.html" class="ccard nt">
+    <div class="cc-top"><span class="cc-icon">🍬</span><div><div class="cc-name">Açúcar / Cana</div><div class="cc-tag nt">Recuperando</div></div></div>
+    <div class="cc-price nt">~R$ 105/sc</div>
+    <div class="cc-var">CEPEA/ESALQ · +6,97% mar · −28,5% a.a.</div>
+    <div class="cc-flash">Recupera de base fragilizada. Entressafra sustenta. Usinas decidem mix açúcar vs etanol (petróleo US$ 105).</div>
+  </a>
+
+  <a href="cacau-24-04.html" class="ccard dn">
+    <div class="cc-top"><span class="cc-icon">🍫</span><div><div class="cc-name">Cacau</div><div class="cc-tag dn">↓ Ajuste</div></div></div>
+    <div class="cc-price dn">Em ajuste</div>
+    <div class="cc-var">ICE NY · −2% semana · Clima favorável África</div>
+    <div class="cc-flash">Clima bom na África Ocidental pressiona. Fundos ampliam posições compradas. Volatilidade histórica persiste.</div>
+  </a>
+
+  <a href="algodao-24-04.html" class="ccard up">
+    <div class="cc-top"><span class="cc-icon">🧶</span><div><div class="cc-name">Algodão</div><div class="cc-tag up">↑ 15 altas seguidas NY!</div></div></div>
+    <div class="cc-price up">78,13 ¢/lb Jul</div>
+    <div class="cc-var">ICE NY · +3,7% sem · Maior desde mai/2024</div>
+    <div class="cc-flash">15ª alta consecutiva em NY! Seca EUA (95% áreas). BR export forte: 136 mil t abr (parcial). Maior alta mensal desde 2022.</div>
+  </a>
+
+  <a href="laranja-24-04.html" class="ccard nt">
+    <div class="cc-top"><span class="cc-icon">🍊</span><div><div class="cc-name">Laranja / Suco</div><div class="cc-tag nt">Volatilidade</div></div></div>
+    <div class="cc-price nt">Volátil</div>
+    <div class="cc-var">FCOJ/ICE · Greening + oferta restrita SP</div>
+    <div class="cc-flash">Greening e oferta restrita em SP sustentam. Receita export recua 30% (volume estável). Safra 26/27 em formação.</div>
+  </a>
+
+</div>
+
+<div class="dv"></div>
+
+<!-- INSUMOS & ENERGIA -->
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#14532d,#15803d)">⚡</div><h2>Insumos &amp; Energia <span>— Fertilizantes · Biodiesel · Macro</span></h2></div>
+<div class="grid-cards">
+
+  <a href="fertilizantes-24-04.html" class="ccard dn">
+    <div class="cc-top"><span class="cc-icon">🧪</span><div><div class="cc-name">Fertilizantes</div><div class="cc-tag dn">↑ Pressão custos!</div></div></div>
+    <div class="cc-price dn">Em alta</div>
+    <div class="cc-var">Ureia, MAP, KCl · Guerra Irã → frete + insumo</div>
+    <div class="cc-flash">Ureia dispara em março. KCl +12% a.a. Frete marítimo caro (Ormuz). BR importa 85%+. Custos safra 26/27 sobem.</div>
+  </a>
+
+  <a href="biodiesel-24-04.html" class="ccard nt">
+    <div class="cc-top"><span class="cc-icon">⛽</span><div><div class="cc-name">Biodiesel</div><div class="cc-tag nt">Demanda +7,2%!</div></div></div>
+    <div class="cc-price nt">R$ 5.149/m³</div>
+    <div class="cc-var">ANP · 6,1% mais barato que diesel! · B15 vigente</div>
+    <div class="cc-flash">Demanda +7,2% (10,4 mi m³). Margem usinas NEGATIVA (−R$ 178/m³)! Metanol dispara (Irã). Soja 84,7% matéria-prima.</div>
+  </a>
+
+  <a href="macro-24-04.html" class="ccard bl">
+    <div class="cc-top"><span class="cc-icon">🏛️</span><div><div class="cc-name">Cenário Macro</div><div class="cc-tag bl">Tensão global</div></div></div>
+    <div class="cc-price bl">Dólar R$ 4,998</div>
+    <div class="cc-var">Selic 14,75% · Brent US$ 105 · Ibov 190.745</div>
+    <div class="cc-flash">Guerra Irã/Ormuz domina. Petróleo US$ 105. IPCA Focus 4,71%. Dólar −8,9% no ano. CDS 123 pts (melhora).</div>
+  </a>
+
+</div>
+
+<div class="dv"></div>
+
+<!-- TABELA RESUMO -->
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#78350f,var(--gold))">📋</div><h2>Painel Geral <span>— Todas as 20 commodities em uma visão</span></h2></div>
+
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>#</th><th>Commodity</th><th>Preço Referência</th><th>Tendência</th><th>Destaque da Semana</th><th>Relatório</th></tr></thead>
+<tbody>
+<tr><td>1</td><td class="td-name">🌱 Soja</td><td>R$ 126,90/sc</td><td class="td-nt">→ Lateral</td><td>Safra 180 mi t recorde. Export 14,5 mi t grão mar</td><td><a href="soja-24-04.html" style="color:var(--gold2)">Abrir →</a></td></tr>
+<tr><td>2</td><td class="td-name">🌽 Milho</td><td>R$ 69,59/sc</td><td class="td-nt">→ Estável</td><td>Safrinha define. Comprador cauteloso. CBOT 4,50</td><td><a href="milho-24-04.html" style="color:var(--gold2)">Abrir →</a></td></tr>
+<tr><td>3</td><td class="td-name">🐂 Boi Gordo</td><td>R$ 325/@+</td><td class="td-up">⬆ Recorde!</td><td>Maior valor nominal da história! Export forte</td><td><a href="boi-24-04.html" style="color:var(--gold2)">Abrir →</a></td></tr>
+<tr><td>4</td><td class="td-name">☕ Café</td><td>~R$ 2.600/sc</td><td class="td-up">⬆ Arábica firme</td><td>Arábica +2,5%. Robusta −4%. Spread R$ 892</td><td><a href="cafe-24-04.html" style="color:var(--gold2)">Abrir →</a></td></tr>
+<tr><td>5</td><td class="td-name">🐔 Frango</td><td>R$ 7,34/kg</td><td class="td-up">⬆ Export recorde</td><td>22,8 mil t/dia. Peito R$ 11,66 (+18,8% recorde!)</td><td><a href="frango-24-04.html" style="color:var(--gold2)">Abrir →</a></td></tr>
+<tr><td>6</td><td class="td-name">🐷 Suínos</td><td>R$ 5,11/kg SC</td><td class="td-dn">⬇ Mínima!</td><td>Preço < custo! −12,8% abr. Export +32% recorde</td><td><a href="suino-24-04.html" style="color:var(--gold2)">Abrir →</a></td></tr>
+<tr><td>7</td><td class="td-name">🍬 Açúcar/Cana</td><td>~R$ 105/sc</td><td class="td-nt">→ Recuperando</td><td>+6,97% mar. −28,5% a.a. Entressafra sustenta</td><td><a href="cana-acucar-24-04.html" style="color:var(--gold2)">Abrir →</a></td></tr>
+<tr><td>8</td><td class="td-name">🧶 Algodão</td><td>78,13 ¢/lb</td><td class="td-up">⬆ 15 altas NY!</td><td>Seca EUA 95%! BR export forte. Maior desde 2024</td><td><a href="algodao-24-04.html" style="color:var(--gold2)">Abrir →</a></td></tr>
+<tr><td>9</td><td class="td-name">🍚 Arroz</td><td>Em alta</td><td class="td-up">⬆ +12% mar</td><td>RS +12%. Liquidez baixa. Produtores retraídos</td><td><a href="arroz-24-04.html" style="color:var(--gold2)">Abrir →</a></td></tr>
+<tr><td>10</td><td class="td-name">🌾 Trigo</td><td>Alta externa</td><td class="td-up">⬆ Geopolítica</td><td>Minneapolis +3%. BR importador. Frete caro</td><td><a href="trigo-24-04.html" style="color:var(--gold2)">Abrir →</a></td></tr>
+<tr><td>11</td><td class="td-name">🫘 Feijão</td><td>Variável</td><td class="td-nt">→ Misto</td><td>1ª safra colhida. Tipos com dinâmicas distintas</td><td><a href="feijao-24-04.html" style="color:var(--gold2)">Abrir →</a></td></tr>
+<tr><td>12</td><td class="td-name">🫘 Farelo Soja</td><td>US$ 319/t</td><td class="td-nt">→ Neutro/Firme</td><td>Export BR 1,92 mi t recorde. Crush EUA +16,3%</td><td><a href="farelo-soja-24-04.html" style="color:var(--gold2)">Abrir →</a></td></tr>
+<tr><td>13</td><td class="td-name">🌿 Sorgo</td><td>~R$ 52-55/sc</td><td class="td-up">⬆ Alternativa</td><td>Ração busca alternativas. Relação troca favorável</td><td><a href="sorgo-24-04.html" style="color:var(--gold2)">Abrir →</a></td></tr>
+<tr><td>14</td><td class="td-name">🍊 Laranja</td><td>Volátil</td><td class="td-nt">→ Volatilidade</td><td>Greening + oferta restrita SP. Receita export −30%</td><td><a href="laranja-24-04.html" style="color:var(--gold2)">Abrir →</a></td></tr>
+<tr><td>15</td><td class="td-name">🍫 Cacau</td><td>Em ajuste</td><td class="td-dn">⬇ Ajuste</td><td>Clima bom África. −2% semana. Fundos recompõem</td><td><a href="cacau-24-04.html" style="color:var(--gold2)">Abrir →</a></td></tr>
+<tr><td>16</td><td class="td-name">🥛 Leite</td><td>Variável</td><td class="td-nt">→ Misto</td><td>Entressafra sustenta. Custo ração alivia parcial</td><td><a href="leite-24-04.html" style="color:var(--gold2)">Abrir →</a></td></tr>
+<tr><td>17</td><td class="td-name">🧪 Fertilizantes</td><td>Em alta</td><td class="td-dn">⬆ Custo sobe!</td><td>Ureia dispara. KCl +12%. Ormuz → frete caro</td><td><a href="fertilizantes-24-04.html" style="color:var(--gold2)">Abrir →</a></td></tr>
+<tr><td>18</td><td class="td-name">⛽ Biodiesel</td><td>R$ 5.149/m³</td><td class="td-nt">→ Demanda +7,2%</td><td>6,1% < diesel! Margem usinas negativa. B16 debate</td><td><a href="biodiesel-24-04.html" style="color:var(--gold2)">Abrir →</a></td></tr>
+<tr><td>19</td><td class="td-name">🏛️ Macro</td><td>R$ 4,998</td><td class="td-nt">→ Tensão</td><td>Brent US$ 105. Selic 14,75%. IPCA 4,71%. CDS 123</td><td><a href="macro-24-04.html" style="color:var(--gold2)">Abrir →</a></td></tr>
+<tr><td>20</td><td class="td-name">⚔️ Geopolítica</td><td>—</td><td class="td-dn">⬇ Ormuz!</td><td>Guerra Irã/EUA. Ormuz bloqueado. Petróleo US$ 105+</td><td><a href="macro-24-04.html" style="color:var(--gold2)">Abrir →</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="dv"></div>
+
+<!-- OPINIÃO -->
+<div class="opinion">
+  <h3>🎯 Visão Geral do Analista — Semana 20-24 Abril 2026</h3>
+
+  <p><strong>O agro brasileiro vive um momento de contrastes extremos: recordes históricos convivem com crises profundas, tudo amplificado pela Guerra do Irã e o bloqueio do Ormuz que domina o cenário global.</strong></p>
+
+  <p><strong>🏆 Os RECORDES da semana:</strong><br>
+  ▸ Boi gordo: R$ 325/@+ (recorde nominal da história!)<br>
+  ▸ Soja BR: 180 mi t (safra recorde absoluta!)<br>
+  ▸ Frango export: 22,8 mil t/dia (recorde desde 1997!). Peito R$ 11,66/kg (+18,8% recorde!)<br>
+  ▸ Suíno export mar: 153,8 mil t (+32%! recorde!). Filipinas +81%, Japão +86%<br>
+  ▸ Farelo soja export mar: 1,92 mi t (recorde mês!). Crush EUA +16,3%<br>
+  ▸ Algodão NY: 15ª alta consecutiva! Maior desde mai/2024<br>
+  ▸ Biodiesel demanda: 10,4 mi m³ (+7,2%)</p>
+
+  <p><strong>🔴 As CRISES da semana:</strong><br>
+  ▸ Suíno vivo: mínima desde 2022! Custo R$ 6,30 > Preço R$ 5,11 → PREJUÍZO!<br>
+  ▸ Biodiesel usinas: margem negativa (−R$ 178/m³)! Metanol dispara<br>
+  ▸ Brent US$ 105/bbl → diesel +16% → frete agrícola +20-30%<br>
+  ▸ IPCA Focus sobe para 4,71%. Selic 14,75%. Custo de capital alto<br>
+  ▸ Fertilizantes: ureia e KCl em alta. Custos safra 26/27 pressionados</p>
+
+  <p><strong>⚔️ O fio condutor: ORMUZ.</strong> O Estreito bloqueado afeta petróleo (US$ 105), diesel (+16%), frete agrícola, metanol (biodiesel), fertilizantes, e indiretamente toda cadeia do agro. Se acordo EUA-Irã avançar no fim de semana (negociações no Paquistão sábado 25/abr), mercados podem ter alívio significativo na segunda-feira.</p>
+
+  <p><strong>Para o produtor rural:</strong> Boi gordo e café estão em máximas → capture margem. Milho e soja laterais → espere safrinha. Suínos no vermelho → contenha custos, sobreviva. Frango voa → biosseguridade é prioridade. Fertilizantes caros → trave o que puder. E acima de tudo: acompanhe Ormuz, porque é lá que se decide o custo de tudo.</p>
+
+  <div class="sig">— Análise Rural IN · Sexta-feira, 24/Abr/2026 · 20 commodities consolidadas</div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer"><div class="wrap">
+  <div class="footer-brand"><span class="r">Rural</span> <span class="i">IN</span></div>
+  <p>Portal Radar Agro Semanal · 20 Commodities · Semana 20–24 Abril 2026<br>
+  Fontes: CEPEA/ESALQ · CONAB · IBGE · Secex · ANP · ABPA · ABCS · USDA · NOPA · StoneX · Itaú BBA · BB Agro · XP · Rabobank · Abrapa · Abiove · Aprobio · Ubrabio · BiodieselBR · ICE · CBOT/CME · B3 · Investing · Trading Economics · Commodity Board · Globo Rural · Valor Econômico · Folha · Reuters · ABIEC · CNA</p>
+  <div class="footer-credits">
+    <h4>Análise e Construção</h4>
+    <div class="name">Dr. Sidney Souza</div>
+    <div class="title">Economista e Adm. Agrícola — Estrategista Econômico do Produtor</div>
+    <div class="desc">Especialista em economia da fazenda e gestão de risco no agro<br>Transformamos dados da fazenda em decisões econômicas<br>Ajudamos produtores a entender se o mercado sustenta seu negócio</div>
+    <div class="contact">📧 <a href="mailto:sidneyagro@gmail.com">sidneyagro@gmail.com</a> · 📱 <a href="tel:+5564992266886">(64) 9 9226-6886</a> · 📸 <a href="https://instagram.com/ruralin.ai" target="_blank">@ruralin.ai</a></div>
+  </div>
+  <p style="margin-top:18px"><em>⚠️ Material informativo. Não constitui recomendação de investimento. Consulte profissionais habilitados.</em></p>
+</div></footer>
+
+</div>
+</body>
+</html>
