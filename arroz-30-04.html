@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Rural IN — Arroz · Radar Agro Semanal · 27-30 Abr 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#070a08;--bg2:#0c100d;--bg3:#121814;--bg4:#1a221c;--border:#1f2820;--border2:#2c3a30;--accent:#14532d;--accent2:#15803d;--accent3:#16a34a;--rice:#fef9c3;--rice2:#fef08a;--rice3:#fde047;--paddy:#84cc16;--paddy2:#a3e635;--cream:#f7f5e8;--text:#edf2e8;--text2:#aab5a8;--text3:#6c7870;--up:#22c55e;--upDark:#15803d;--dn:#ef4444;--dnDark:#b91c1c;--nt:#eab308;--blue:#3b82f6;--purple:#a855f7;--orange:#f97316;--cyan:#06b6d4;--teal:#14b8a6;--pink:#ec4899;--lime:#84cc16;--r:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 1000px 700px at 10% 15%,rgba(21,128,61,.08),transparent),radial-gradient(ellipse 800px 600px at 90% 85%,rgba(132,204,22,.05),transparent),radial-gradient(ellipse 600px 500px at 50% 50%,rgba(254,240,138,.03),transparent);pointer-events:none;z-index:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+
+.nav{background:rgba(12,16,13,.95);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:14px}
+.nav-logo-img{height:42px;width:auto;border-radius:8px}
+.nav-logo{font-weight:900;font-size:1.2rem}
+.nav-logo .r{color:var(--rice3)}
+.nav-logo .i{color:var(--paddy)}
+.nav-badge{background:linear-gradient(135deg,#14532d,#15803d);border:1px solid rgba(254,240,138,.4);padding:5px 14px;border-radius:20px;font-size:.7rem;font-weight:800;color:var(--rice);letter-spacing:.6px;box-shadow:0 0 20px rgba(21,128,61,.3)}
+.nav-back{color:var(--text3);font-size:.8rem;text-decoration:none;transition:color .2s}
+.nav-back:hover{color:var(--rice3)}
+
+.hero{padding:54px 0 40px;position:relative;text-align:left}
+.hero::after{content:'';position:absolute;bottom:0;left:0;width:240px;height:3px;background:linear-gradient(90deg,var(--accent2),var(--rice3),transparent)}
+.hero-top{display:flex;align-items:center;gap:22px;margin-bottom:16px}
+.hero-icon-wrap{position:relative;width:84px;height:84px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,rgba(21,128,61,.25),transparent 70%);border-radius:50%}
+.hero-icon{font-size:3.6rem;filter:drop-shadow(0 6px 18px rgba(21,128,61,.5))}
+.hero-texts h1{font-size:2.4rem;font-weight:900;letter-spacing:-1.2px;line-height:1.1}
+.hero-texts h1 .hl{background:linear-gradient(135deg,#15803d,#16a34a,#84cc16,#fde047);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-texts .sub{font-size:.9rem;color:var(--text2);margin-top:6px;font-weight:500}
+.hero-bar{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border-radius:22px;font-size:.72rem;font-weight:700;border:1px solid;backdrop-filter:blur(8px)}
+.chip.up{color:var(--up);border-color:rgba(34,197,94,.3);background:rgba(34,197,94,.08)}
+.chip.dn{color:var(--dn);border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.08)}
+.chip.nt{color:var(--nt);border-color:rgba(234,179,8,.3);background:rgba(234,179,8,.08)}
+.chip.bl{color:var(--blue);border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.08)}
+.chip.pu{color:var(--purple);border-color:rgba(168,85,247,.3);background:rgba(168,85,247,.08)}
+.chip.or{color:var(--orange);border-color:rgba(249,115,22,.3);background:rgba(249,115,22,.08)}
+.chip.rc{color:var(--rice3);border-color:rgba(254,240,138,.3);background:rgba(254,240,138,.08)}
+
+.alert{border-radius:var(--r);padding:18px 22px;margin-bottom:14px;display:flex;align-items:flex-start;gap:14px;border:1px solid;font-size:.85rem;line-height:1.75;color:var(--text2);position:relative;overflow:hidden}
+.alert::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
+.alert strong{color:var(--text)}
+.alert .ai{font-size:1.4rem;flex-shrink:0;margin-top:1px}
+.alert.green{background:linear-gradient(90deg,rgba(34,197,94,.08),rgba(34,197,94,.02));border-color:rgba(34,197,94,.25)}
+.alert.green::before{background:var(--up)}
+.alert.red{background:linear-gradient(90deg,rgba(239,68,68,.08),rgba(239,68,68,.02));border-color:rgba(239,68,68,.25)}
+.alert.red::before{background:var(--dn)}
+.alert.amber{background:linear-gradient(90deg,rgba(234,179,8,.08),rgba(234,179,8,.02));border-color:rgba(234,179,8,.25)}
+.alert.amber::before{background:var(--nt)}
+.alert.blue{background:linear-gradient(90deg,rgba(59,130,246,.08),rgba(59,130,246,.02));border-color:rgba(59,130,246,.25)}
+.alert.blue::before{background:var(--blue)}
+.alert.purple{background:linear-gradient(90deg,rgba(168,85,247,.08),rgba(168,85,247,.02));border-color:rgba(168,85,247,.25)}
+.alert.purple::before{background:var(--purple)}
+.alert.cyan{background:linear-gradient(90deg,rgba(6,182,212,.08),rgba(6,182,212,.02));border-color:rgba(6,182,212,.25)}
+.alert.cyan::before{background:var(--cyan)}
+.alert.orange{background:linear-gradient(90deg,rgba(249,115,22,.1),rgba(249,115,22,.02));border-color:rgba(249,115,22,.3)}
+.alert.orange::before{background:var(--orange)}
+
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin:24px 0}
+.kpi{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:16px 18px;position:relative;overflow:hidden;transition:all .25s ease}
+.kpi:hover{transform:translateY(-3px);border-color:var(--border2);box-shadow:0 12px 30px rgba(0,0,0,.4)}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2)}
+.kpi.up::before{background:linear-gradient(90deg,var(--up),var(--lime))}
+.kpi.dn::before{background:linear-gradient(90deg,var(--dn),var(--orange))}
+.kpi.nt::before{background:linear-gradient(90deg,var(--nt),var(--rice3))}
+.kpi.bl::before{background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.kpi.pu::before{background:linear-gradient(90deg,var(--purple),var(--pink))}
+.kpi.or::before{background:linear-gradient(90deg,var(--orange),var(--rice3))}
+.kpi.rc::before{background:linear-gradient(90deg,var(--paddy),var(--rice3))}
+.kpi-lb{font-size:.6rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:5px;font-weight:700}
+.kpi-val{font-size:1.18rem;font-weight:900;letter-spacing:-.5px;line-height:1.2}
+.kpi-val.up{color:var(--up)}
+.kpi-val.dn{color:var(--dn)}
+.kpi-val.nt{color:var(--nt)}
+.kpi-val.bl{color:var(--blue)}
+.kpi-val.pu{color:var(--purple)}
+.kpi-val.or{color:var(--orange)}
+.kpi-val.rc{color:var(--rice3)}
+.kpi-sub{font-size:.66rem;color:var(--text3);margin-top:3px;font-weight:500}
+
+.dv{height:1px;background:linear-gradient(90deg,transparent,var(--border2) 20%,var(--accent2) 50%,var(--border2) 80%,transparent);margin:36px 0}
+
+.stitle{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.stitle .icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;box-shadow:0 4px 14px rgba(0,0,0,.4)}
+.stitle h2{font-size:1.18rem;font-weight:800;letter-spacing:-.3px}
+.stitle h2 span{color:var(--text2);font-weight:400;font-size:.85rem;margin-left:4px}
+
+.co{border-radius:var(--r);padding:20px 24px;margin-bottom:14px;border-left:4px solid;font-size:.85rem;color:var(--text2);line-height:1.85;position:relative;background:linear-gradient(90deg,var(--bg2),var(--bg3))}
+.co strong{color:var(--text)}
+.co h4{font-size:.98rem;font-weight:800;margin-bottom:10px;letter-spacing:-.2px}
+.co.up{border-color:var(--up)}.co.up h4{color:var(--up)}
+.co.dn{border-color:var(--dn)}.co.dn h4{color:var(--dn)}
+.co.nt{border-color:var(--nt)}.co.nt h4{color:var(--nt)}
+.co.bl{border-color:var(--blue)}.co.bl h4{color:var(--blue)}
+.co.or{border-color:var(--orange)}.co.or h4{color:var(--orange)}
+.co.pu{border-color:var(--purple)}.co.pu h4{color:var(--purple)}
+.co.cy{border-color:var(--cyan)}.co.cy h4{color:var(--cyan)}
+.co.rc{border-color:var(--rice3)}.co.rc h4{color:var(--rice3)}
+
+.chart-box{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--r);padding:22px 24px;margin-bottom:14px;overflow:hidden;transition:border-color .2s}
+.chart-box:hover{border-color:var(--border2)}
+.chart-box h3{font-size:.9rem;color:var(--text);margin-bottom:14px;font-weight:700;display:flex;align-items:center;gap:8px}
+.chart-box h3 .ch-tag{margin-left:auto;font-size:.62rem;font-weight:700;padding:2px 10px;border-radius:10px;background:rgba(21,128,61,.18);color:var(--paddy);letter-spacing:.5px}
+.chart-wrap{position:relative;height:290px;overflow:hidden}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:800px){.grid2,.grid3{grid-template-columns:1fr}}
+
+.tbl-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--border);margin-bottom:14px;background:var(--bg2)}
+table{width:100%;border-collapse:collapse;font-size:.78rem}
+thead th{background:linear-gradient(180deg,var(--bg3),var(--bg4));padding:12px 14px;text-align:center;font-weight:800;color:var(--text2);font-size:.66rem;text-transform:uppercase;letter-spacing:.9px;border-bottom:1px solid var(--border)}
+tbody td{padding:10px 12px;border-bottom:1px solid rgba(31,40,32,.5);text-align:center}
+tbody tr:hover{background:rgba(21,128,61,.05)}
+.td-name{text-align:left!important;font-weight:700;white-space:nowrap}
+.td-up{color:var(--up);font-weight:800}
+.td-dn{color:var(--dn);font-weight:800}
+.td-nt{color:var(--nt);font-weight:800}
+
+.thermo{margin:14px 0}
+.thermo h4{font-size:.84rem;color:var(--text);margin-bottom:10px;font-weight:700}
+.th-bar{height:14px;border-radius:7px;position:relative;box-shadow:inset 0 1px 4px rgba(0,0,0,.4)}
+.th-marker{position:absolute;top:-6px;width:4px;height:26px;background:#fff;border-radius:2px;transform:translateX(-50%);box-shadow:0 0 12px rgba(255,255,255,.6)}
+.th-lb{display:flex;justify-content:space-between;font-size:.66rem;color:var(--text3);margin-top:6px;font-weight:600}
+
+.card{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--r);padding:22px 26px;margin-bottom:14px;transition:border-color .2s}
+.card:hover{border-color:var(--border2)}
+
+.opinion{background:linear-gradient(135deg,rgba(21,128,61,.15),rgba(132,204,22,.05),rgba(21,128,61,.02));border:1px solid rgba(132,204,22,.3);border-radius:var(--r);padding:30px 32px;margin:26px 0;position:relative;overflow:hidden}
+.opinion::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent2),var(--rice3),var(--accent2))}
+.opinion h3{font-size:1.08rem;font-weight:800;color:var(--rice3);margin-bottom:12px;letter-spacing:-.2px}
+.opinion p{font-size:.88rem;color:var(--text2);line-height:1.9;margin-bottom:12px}
+.opinion p strong{color:var(--text)}
+.opinion .scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.opinion .sc{padding:14px 16px;border-radius:10px;border:1px solid;background:rgba(0,0,0,.3)}
+.opinion .sc.up{border-color:rgba(34,197,94,.3)}
+.opinion .sc.nt{border-color:rgba(234,179,8,.3)}
+.opinion .sc.dn{border-color:rgba(239,68,68,.3)}
+.opinion .sc h5{font-size:.78rem;font-weight:800;margin-bottom:6px}
+.opinion .sc.up h5{color:var(--up)}
+.opinion .sc.nt h5{color:var(--nt)}
+.opinion .sc.dn h5{color:var(--dn)}
+.opinion .sc p{font-size:.74rem;line-height:1.6;margin:0}
+@media(max-width:700px){.opinion .scenarios{grid-template-columns:1fr}}
+.opinion .sig{margin-top:18px;padding-top:14px;border-top:1px solid rgba(132,204,22,.2);font-size:.78rem;color:var(--text3);font-style:italic;display:flex;align-items:center;gap:8px}
+
+.footer{border-top:1px solid var(--border);padding:42px 0;text-align:center;margin-top:36px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.5))}
+.footer-brand{font-size:1.5rem;font-weight:900;margin-bottom:12px}
+.footer-brand .r{color:var(--rice3)}
+.footer-brand .i{color:var(--paddy)}
+.footer p{font-size:.78rem;color:var(--text3);line-height:1.8}
+.footer-credits{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+.footer-credits h4{font-size:.92rem;color:var(--rice3);font-weight:700;margin-bottom:6px}
+.footer-credits .name{font-size:1.05rem;font-weight:800;color:var(--text);margin-bottom:2px}
+.footer-credits .title{font-size:.78rem;color:var(--rice3);font-weight:600;margin-bottom:8px}
+.footer-credits .desc{font-size:.74rem;color:var(--text2);line-height:1.7;max-width:540px;margin:0 auto 12px}
+.footer-credits .contact{font-size:.74rem;color:var(--text3)}
+.footer-credits .contact a{color:var(--rice3);text-decoration:none}
+.footer-credits .contact a:hover{text-decoration:underline}
+
+.bignum-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+.bignum{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:20px 18px;text-align:center;position:relative;overflow:hidden}
+.bignum::after{content:'';position:absolute;top:-50%;right:-30%;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(21,128,61,.12),transparent 70%)}
+.bignum .v{font-size:1.7rem;font-weight:900;letter-spacing:-1px;line-height:1;margin-bottom:6px;position:relative;z-index:1}
+.bignum .v.up{color:var(--up)}
+.bignum .v.dn{color:var(--dn)}
+.bignum .v.nt{color:var(--nt)}
+.bignum .v.bl{color:var(--blue)}
+.bignum .v.or{color:var(--orange)}
+.bignum .v.rc{color:var(--rice3)}
+.bignum .l{font-size:.72rem;color:var(--text2);font-weight:600;position:relative;z-index:1}
+.bignum .s{font-size:.66rem;color:var(--text3);margin-top:3px}
+@media(max-width:700px){.bignum-row{grid-template-columns:repeat(2,1fr)}}
+
+@media(max-width:600px){
+  .hero-top{flex-direction:column;text-align:center;gap:12px}
+  .hero-texts h1{font-size:1.65rem}
+  .nav .wrap{flex-direction:column;gap:10px}
+  .kpi-row{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1"></script>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap"><div class="nav-left"><img src="https://ruralinrv.github.io/ruralin/logo.png" alt="Rural IN" class="nav-logo-img" onerror="this.style.display='none'"><div class="nav-logo"><span class="r">Rural</span> <span class="i">IN</span></div><div class="nav-badge">🍚 ARROZ</div></div><a href="portal-30-04.html" class="nav-back">← Voltar ao Portal</a></div></nav>
+
+<div class="wrap">
+
+<section class="hero">
+  <div class="hero-top">
+    <div class="hero-icon-wrap"><span class="hero-icon">🍚</span></div>
+    <div class="hero-texts">
+      <h1><span class="hl">Arroz</span> · Radar Semanal</h1>
+      <div class="sub">Semana 27–30 Abril 2026 (curta · feriado 1º Mai) · CEPEA/IRGA-RS · CONAB · Pepro/PEP · Emater · Planeta Arroz · IBGE</div>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <span class="chip dn">📉 CEPEA/IRGA-RS: R$ 62,30/sc</span>
+    <span class="chip nt">⚠️ Pepro 5/mai derrubou preços!</span>
+    <span class="chip rc">🌾 Colheita RS: 93,51% · ritmo lento</span>
+    <span class="chip dn">🇧🇷 Safra 25/26: 10,9 mi t (−14,4%!)</span>
+    <span class="chip or">🚢 Exportações em queda · perda comp.</span>
+    <span class="chip pu">🏦 Selic: 14,75% → 14,50%</span>
+  </div>
+</section>
+
+<div class="bignum-row">
+  <div class="bignum"><div class="v dn">R$ 62,30</div><div class="l">CEPEA/IRGA-RS · 30/04</div><div class="s">−0,53% sem · +0,10% mês</div></div>
+  <div class="bignum"><div class="v rc">93,51%</div><div class="l">Colheita RS · 30/04</div><div class="s">834.057 ha colhidos</div></div>
+  <div class="bignum"><div class="v dn">10,914 mi t</div><div class="l">Safra BR 25/26 (CONAB)</div><div class="s">−14,4% a/a · grave!</div></div>
+  <div class="bignum"><div class="v nt">350,7 mil t</div><div class="l">Pepro 5/mai (volume)</div><div class="s">R$ 10,70/sc Front. Oeste</div></div>
+</div>
+
+<div class="alert red">
+  <span class="ai">📉</span>
+  <div><strong style="color:var(--dn)">SEMANA NEGATIVA: PEPRO DERRUBA PREÇOS APÓS 3 SEMANAS DE ALTA!</strong><br>
+  <strong>CEPEA/IRGA-RS 30/04:</strong> R$ 62,30/sc 50kg (−0,03% dia · +0,10% mês). Trajetória da semana: 27/04 R$ 62,63 → <strong>28/04 R$ 62,23 (−0,64%!)</strong> → 29/04 R$ 62,32 → 30/04 R$ 62,30. <strong>Pico do mês:</strong> R$ 63,20 (16/04). <strong>Queda atribuída ao anúncio do edital Pepro</strong> (28/04) que indicou prêmios a serem leiloados em 5/mai · agentes paralisaram negócios aguardando definições. <strong>Cepea:</strong> "<em>O mercado de arroz em casca no RS vem perdendo sustentação, pressionado pelo avanço da colheita, menor liquidez e enfraquecimento da demanda.</em>"</div>
+</div>
+
+<div class="alert nt">
+  <span class="ai">🏛️</span>
+  <div><strong style="color:var(--nt)">PEPRO/PEP — LEILÃO 5 DE MAIO! Governo intervém com R$ 10,70/sc na Fronteira Oeste</strong><br>
+  <strong>CONAB Aviso 15/2026:</strong> Leilão marcado para <strong>5 de maio</strong> · volume total <strong>350,785 milhões kg</strong>.<br>
+  <strong>Prêmios anunciados (Pepro = Prêmio Equalizador Pago ao Produtor Rural):</strong><br>
+  ▸ <strong>Fronteira Oeste/RS:</strong> R$ 0,2140/kg = <strong>R$ 10,70/saca</strong> de 50kg<br>
+  ▸ <strong>Campanha/RS:</strong> R$ 0,1854/kg = R$ 9,27/saca<br>
+  ▸ <strong>Santa Catarina:</strong> R$ 0,2074/kg = R$ 10,37/saca<br>
+  ▸ <strong>Zona Sul/RS, AL, SE:</strong> Sem prêmio<br><br>
+  <strong>Como funciona:</strong> Produtor vende seu arroz no mercado · governo paga complemento (prêmio) · objetivo é garantir <strong>preço mínimo</strong> para produtor sem segurar fisicamente o estoque. <strong>Histórico:</strong> Pepros costumam <strong>dar piso</strong> ao mercado, mas anúncio inicial gera baixa pontual (agentes adiam compras esperando o leilão).</div>
+</div>
+
+<div class="alert blue">
+  <span class="ai">🌾</span>
+  <div><strong style="color:var(--blue)">COLHEITA RS EM 93,51%! Ritmo LENTO marca toda safra 2025/26</strong><br>
+  <strong>IRGA 30/04:</strong> 834.057 ha colhidos de 891.908 ha plantados = <strong>93,51%</strong> da área. <strong>Ainda restam ~58 mil ha por colher</strong>.<br><br>
+  <strong>Por região (% colhida):</strong><br>
+  ▸ <strong>Planície Costeira Externa:</strong> 97,47% (líder)<br>
+  ▸ <strong>Zona Sul:</strong> 95,86%<br>
+  ▸ <strong>Planície Costeira Interna:</strong> 95,01%<br>
+  ▸ <strong>Campanha:</strong> 94,00%<br>
+  ▸ <strong>Fronteira Oeste:</strong> 93,26%<br>
+  ▸ <strong>Região Central:</strong> 85,17% (mais atrasada)<br><br>
+  <strong>Vagner Martini (IRGA):</strong> "<em>A evolução da colheita continua mantendo ritmo mais lento, conforme já observado em levantamentos anteriores.</em>" <strong>Causas do atraso:</strong> chuvas frequentes na primavera (atrasaram semeadura) + baixas temperaturas no fim de 2025 e início de 2026 (alongaram ciclo) + chuvas em microrregiões durante a colheita.</div>
+</div>
+
+<div class="alert dn">
+  <span class="ai">🇧🇷</span>
+  <div><strong style="color:var(--dn)">CONAB: SAFRA BR 2025/26 EM QUEDA HISTÓRICA DE 14,4%!</strong><br>
+  <strong>5º Levantamento CONAB (12/02):</strong><br>
+  ▸ <strong>Produção total 25/26:</strong> 10,914 mi t (vs 12,757 mi em 24/25)<br>
+  ▸ <strong>Variação:</strong> <strong>−14,4%!</strong><br>
+  ▸ <strong>Área plantada:</strong> 1,559 mi ha (vs 1,764 mi · −11,6%)<br>
+  ▸ <strong>Produtividade:</strong> 6.997 kg/ha (−3,3%)<br><br>
+  <strong>Por estado:</strong><br>
+  ▸ <strong>Rio Grande do Sul:</strong> 7,543 mi t (−13,6%) · 69% da produção nacional<br>
+  ▸ <strong>Santa Catarina:</strong> 1,225 mi t (estável) · 11%<br>
+  ▸ <strong>Mato Grosso:</strong> 334,6 mil t (queda forte)<br><br>
+  <strong>IRGA estima safra RS em produtividade entre 8.500-9.000 kg/ha.</strong> Razões da retração: dificuldades de crédito + custos elevados + preços baixos no início desestimulam plantio + clima desfavorável. <strong>Resultado:</strong> Brasil deve importar mais arroz do Mercosul (Argentina, Uruguai, Paraguai) para suprir demanda doméstica.</div>
+</div>
+
+<div class="alert orange">
+  <span class="ai">🚢</span>
+  <div><strong style="color:var(--orange)">EXPORTAÇÕES PERDEM COMPETITIVIDADE! Arroz BR mais caro que mundial</strong><br>
+  <strong>Cepea:</strong> "<em>Outro fator de pressão é a perda de competitividade do arroz brasileiro no mercado externo. A retração das exportações, aliada a preços internacionais mais baixos, reforça o viés de queda nas cotações internas.</em>"<br><br>
+  <strong>Cenário internacional:</strong><br>
+  ▸ <strong>Tailândia/Vietnã/Índia:</strong> Safras boas · preços globais em queda<br>
+  ▸ <strong>Argentina/Uruguai:</strong> Próximos · Mercosul = sem tarifa<br>
+  ▸ <strong>Brasil:</strong> Custos altos + dólar fraco = preço FOB pouco competitivo<br>
+  ▸ <strong>FOB BR vs Tailândia:</strong> Arroz brasileiro está US$ 50-80/t acima<br><br>
+  <strong>Impacto prático:</strong> Exportações brasileiras de arroz beneficiado caíram nos primeiros meses de 2026 vs mesmo período de 2025. Brasil é <strong>importador líquido sazonal</strong> · não há excedente exportador grande mesmo em anos normais.</div>
+</div>
+
+<div class="alert amber">
+  <span class="ai">⚠️</span>
+  <div><strong style="color:var(--nt)">VAREJO E ATACADO RESISTEM A REPASSE! Margens industriais pressionadas</strong><br>
+  <strong>Cenário cadeia:</strong> indústrias arrozeiras (beneficiadoras) presas no meio<br>
+  ▸ <strong>Atacado/varejo:</strong> Resistência em absorver novos repasses · gôndola estagnada<br>
+  ▸ <strong>Beneficiadoras:</strong> Margens muito apertadas · algumas <strong>se afastam das compras</strong><br>
+  ▸ <strong>Produtor:</strong> Custos elevados + preços abaixo do necessário para rentabilidade<br>
+  ▸ <strong>Consumidor:</strong> Preço relativamente estável no varejo<br><br>
+  <strong>Cepea:</strong> "<em>Mesmo com avanços em março, os valores atuais permanecem abaixo do patamar necessário para assegurar a rentabilidade do produtor.</em>" <strong>Comparativo histórico:</strong> Em fev/26 o arroz estava 43% abaixo do patamar de fev/25 em termos nominais. Mesmo com recuperação parcial, mercado segue <strong>deprimido</strong> em comparação ao boom de 2024.</div>
+</div>
+
+<div class="alert purple">
+  <span class="ai">🏦</span>
+  <div><strong style="color:var(--purple)">EVENTO MACRO: COPOM CORTOU SELIC PARA 14,50%! Câmbio também ajuda</strong><br>
+  Banco Central reduziu Selic em <strong>0,25 p.p.</strong> (29/04). <strong>Dólar:</strong> R$ 4,9523 (mín. 2 anos!). <strong>Para o arroz:</strong> <strong>Selic menor</strong> = custo de capital de giro mais barato (essencial para beneficiadora carregar estoque) · <strong>Dólar fraco</strong> = arroz importado do Mercosul mais barato (pressão sobre interno). <strong>Mas</strong>: dólar fraco também reduz custo de fertilizantes e defensivos para próxima safra (26/27).<br><br>
+  <strong>Próximas safras (26/27):</strong> Área deve ser mantida ou cair levemente no RS · IRGA pesquisa intenções de plantio. Decisão do Pepro pode ser <strong>fator decisivo</strong> para evitar nova retração de área.</div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#14532d,#15803d)">📊</div><h2>Indicadores-Chave <span>— CEPEA · CONAB · IRGA · Pepro · Macro</span></h2></div>
+
+<div class="kpi-row">
+  <div class="kpi dn"><div class="kpi-lb">CEPEA/IRGA-RS 30/04</div><div class="kpi-val dn">R$ 62,30</div><div class="kpi-sub">−0,03% dia · saca 50 kg</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Var. semana</div><div class="kpi-val dn">−0,53%</div><div class="kpi-sub">Pepro derrubou</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Var. mês abr</div><div class="kpi-val nt">+0,10%</div><div class="kpi-sub">Praticamente estável</div></div>
+  <div class="kpi rc"><div class="kpi-lb">Pico do mês (16/04)</div><div class="kpi-val rc">R$ 63,20</div><div class="kpi-sub">Recuou 1,4% até 30/04</div></div>
+  <div class="kpi rc"><div class="kpi-lb">Em US$</div><div class="kpi-val rc">US$ 12,57/sc</div><div class="kpi-sub">+0,96% no dia · 30/04</div></div>
+  <div class="kpi up"><div class="kpi-lb">Colheita RS</div><div class="kpi-val up">93,51%</div><div class="kpi-sub">834.057 ha colhidos</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Falta colher RS</div><div class="kpi-val nt">~58 mil ha</div><div class="kpi-sub">~6,5% da área</div></div>
+  <div class="kpi rc"><div class="kpi-lb">Área RS 25/26</div><div class="kpi-val rc">891.908 ha</div><div class="kpi-sub">−8,06% vs 24/25</div></div>
+  <div class="kpi dn"><div class="kpi-lb">CONAB Safra 25/26</div><div class="kpi-val dn">10,914 mi t</div><div class="kpi-sub">−14,4% a/a!</div></div>
+  <div class="kpi dn"><div class="kpi-lb">RS Safra 25/26</div><div class="kpi-val dn">7,543 mi t</div><div class="kpi-sub">−13,6% · 69% nacional</div></div>
+  <div class="kpi rc"><div class="kpi-lb">SC Safra 25/26</div><div class="kpi-val rc">1,225 mi t</div><div class="kpi-sub">Estável · 11% nacional</div></div>
+  <div class="kpi or"><div class="kpi-lb">Pepro 5/mai (vol.)</div><div class="kpi-val or">350,7 mil t</div><div class="kpi-sub">Leilão CONAB</div></div>
+  <div class="kpi or"><div class="kpi-lb">Pepro Front. Oeste</div><div class="kpi-val or">R$ 10,70/sc</div><div class="kpi-sub">Maior prêmio · RS</div></div>
+  <div class="kpi or"><div class="kpi-lb">Pepro Campanha</div><div class="kpi-val or">R$ 9,27/sc</div><div class="kpi-sub">RS · 2º maior</div></div>
+  <div class="kpi pu"><div class="kpi-lb">Selic 29/04</div><div class="kpi-val pu">14,50% a.a.</div><div class="kpi-sub">↓ 0,25 p.p. · CORTE</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Dólar 30/04</div><div class="kpi-val dn">R$ 4,9523</div><div class="kpi-sub">−1,00% · mín. 2 anos</div></div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#14532d,#15803d)">📍</div><h2>Cotações da Semana <span>— CEPEA/IRGA-RS · 27 a 30 Abril 2026 · R$/sc 50 kg</span></h2></div>
+
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Indicador</th><th>22/04</th><th>23/04</th><th>24/04</th><th>27/04</th><th>28/04</th><th>29/04</th><th>30/04</th><th>Var. Sem</th></tr></thead>
+<tbody>
+<tr><td class="td-name">🌾 CEPEA/IRGA-RS (R$/sc)</td><td>R$ 62,89</td><td>R$ 62,75</td><td>R$ 62,62</td><td>R$ 62,63</td><td class="td-dn">R$ 62,23</td><td>R$ 62,32</td><td class="td-dn">R$ 62,30</td><td class="td-dn">−0,53%</td></tr>
+<tr><td class="td-name">📊 Variação Diária (%)</td><td>−0,27%</td><td>−0,22%</td><td>−0,21%</td><td>+0,02%</td><td class="td-dn">−0,64%</td><td>+0,14%</td><td>−0,03%</td><td>—</td></tr>
+<tr><td class="td-name">📊 Em US$ (sc)</td><td>US$ 12,65</td><td>US$ 12,53</td><td>US$ 12,53</td><td>US$ 12,58</td><td>US$ 12,50</td><td>US$ 12,45</td><td class="td-up">US$ 12,57</td><td class="td-dn">−0,63%</td></tr>
+<tr><td class="td-name">🌾 Colheita RS (%)</td><td>87,45%</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td class="td-up">93,51%</td><td class="td-up">+6,06 pp</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Região RS</th><th>% Colhida (30/04)</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td class="td-name">📍 Planície Costeira Externa</td><td class="td-up">97,47%</td><td>🥇 Líder · quase concluída</td></tr>
+<tr><td class="td-name">📍 Zona Sul</td><td class="td-up">95,86%</td><td>Reta final</td></tr>
+<tr><td class="td-name">📍 Planície Costeira Interna</td><td class="td-up">95,01%</td><td>Reta final</td></tr>
+<tr><td class="td-name">📍 Campanha</td><td>94,00%</td><td>Avançando · chuvas atrasaram</td></tr>
+<tr><td class="td-name">📍 Fronteira Oeste</td><td>93,26%</td><td>Avançando · maior área (257 mil ha)</td></tr>
+<tr><td class="td-name">📍 Região Central</td><td class="td-dn">85,17%</td><td>⚠️ Mais atrasada · microclima</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#14532d,#15803d)">📈</div><h2>Análise Gráfica <span>— 6 perspectivas · CEPEA · Colheita · Safras · Estados · Pepro · Histórico</span></h2></div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📊 CEPEA/IRGA-RS — Trajetória Diária <span class="ch-tag">Abr/26 · R$/sc 50kg</span></h3>
+    <div class="chart-wrap"><canvas id="ch1"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>🌾 Colheita RS — Evolução por Semana <span class="ch-tag">Mar-Abr/26 · % área</span></h3>
+    <div class="chart-wrap"><canvas id="ch2"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📍 Colheita por Região RS <span class="ch-tag">30/04 · 6 regiões</span></h3>
+    <div class="chart-wrap"><canvas id="ch3"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>🇧🇷 Safras BR Histórico <span class="ch-tag">CONAB · mi t</span></h3>
+    <div class="chart-wrap"><canvas id="ch4"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>🥧 Produção BR por Estado 25/26 <span class="ch-tag">CONAB · mi t</span></h3>
+    <div class="chart-wrap"><canvas id="ch5"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>🏛️ Pepro 5/Mai — Prêmios por Região <span class="ch-tag">R$/sc 50kg</span></h3>
+    <div class="chart-wrap"><canvas id="ch6"></canvas></div>
+  </div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#14532d,#15803d)">🔍</div><h2>Análise Aprofundada <span>— A grande dualidade do arroz em 2026</span></h2></div>
+
+<div class="co rc">
+  <h4>🌾 A Tese Central: Arroz Está em "Queda de Braço" Estrutural!</h4>
+  <p><strong>O mercado de arroz vive um equilíbrio extremamente delicado:</strong><br>
+  ▸ <strong>CEPEA/IRGA-RS 30/04:</strong> R$ 62,30/sc 50kg (estável no mês: +0,10%)<br>
+  ▸ <strong>Pico do mês:</strong> R$ 63,20 (16/04) · recuou 1,4% até hoje<br>
+  ▸ <strong>Pepro derrubou</strong> pontualmente: 28/04 caiu −0,64% num só dia<br>
+  ▸ <strong>43% abaixo</strong> do patamar de fev/25 em termos nominais!<br><br>
+  <strong>As 4 forças em ação:</strong><br>
+  ▸ <strong>Altista:</strong> Safra 25/26 caiu 14,4% (oferta menor)<br>
+  ▸ <strong>Altista:</strong> Demanda interna firme (consumo estrutural)<br>
+  ▸ <strong>Baixista:</strong> Colheita RS 93,51% · oferta nova entrando<br>
+  ▸ <strong>Baixista:</strong> Demanda atacado/varejo retraída · margens pressionadas<br>
+  ▸ <strong>Baixista:</strong> Exportações em queda · arroz BR pouco competitivo<br><br>
+  <strong>Cepea:</strong> "<em>Verifica certa 'queda de braço' entre as partes e baixa liquidez.</em>" Resultado: <strong>preços lateralizados</strong> num patamar que ainda não dá rentabilidade ao produtor mas já é considerado caro pelo varejo. Esse impasse pode durar mais 30-60 dias.</p>
+</div>
+
+<div class="co dn">
+  <h4>📉 CONAB: Safra 25/26 em Queda de 14,4% — Pior Cenário em Anos!</h4>
+  <p><strong>O panorama nacional é preocupante:</strong><br>
+  ▸ <strong>Produção 25/26:</strong> 10,914 mi t (vs 12,757 mi em 24/25)<br>
+  ▸ <strong>Variação:</strong> −14,4% (uma das maiores quedas históricas!)<br>
+  ▸ <strong>Área:</strong> 1,559 mi ha (−11,6%)<br>
+  ▸ <strong>Produtividade:</strong> 6.997 kg/ha (−3,3%)<br><br>
+  <strong>Por estado (25/26):</strong><br>
+  ▸ <strong>Rio Grande do Sul:</strong> 7,543 mi t (−13,6%) · 69% da produção BR<br>
+  ▸ <strong>Santa Catarina:</strong> 1,225 mi t (estável) · 11%<br>
+  ▸ <strong>Mato Grosso:</strong> 334,6 mil t (queda forte)<br>
+  ▸ <strong>Outros (TO, MA, PA, etc.):</strong> ~1,8 mi t<br><br>
+  <strong>IRGA RS — produtividade projetada:</strong> 8.500-9.000 kg/ha (acima da CONAB)<br><br>
+  <strong>Razões da retração:</strong><br>
+  ▸ <strong>Dificuldades de crédito</strong> para custeio<br>
+  ▸ <strong>Custos altos:</strong> insumos, fertilizantes, mão-de-obra<br>
+  ▸ <strong>Preços baixos no plantio</strong> (set-nov/2025) desestimularam<br>
+  ▸ <strong>Concorrência da soja</strong> em terras de várzea<br>
+  ▸ <strong>Clima:</strong> Chuvas na primavera atrasaram semeadura<br><br>
+  <strong>Implicação:</strong> Brasil precisará de <strong>mais importações do Mercosul</strong> (Argentina, Uruguai, Paraguai) para suprir demanda doméstica.</p>
+</div>
+
+<div class="co bl">
+  <h4>🌾 Colheita RS em 93,51%: Reta Final em Ritmo Lento</h4>
+  <p><strong>IRGA 30/04 — Estado da colheita gaúcha:</strong><br>
+  ▸ <strong>Total colhido:</strong> 834.057 ha de 891.908 ha (93,51%)<br>
+  ▸ <strong>Restam ~58 mil ha</strong> para fechar a safra<br>
+  ▸ <strong>Ritmo lento</strong> persiste desde o início (em 26/03 estava em 39,86% · 11 pontos atrás de 2024/25)<br><br>
+  <strong>Causas do ritmo lento:</strong><br>
+  ▸ <strong>Chuvas frequentes</strong> na primavera (atrasaram semeadura inicial)<br>
+  ▸ <strong>Baixas temperaturas</strong> no fim de 2025 e início de 2026 (alongaram ciclo das plantas)<br>
+  ▸ <strong>Chuvas durante a colheita</strong> em microrregiões (limitaram entrada de máquinas)<br>
+  ▸ <strong>Elevada umidade do solo</strong> · solo "encharcado"<br><br>
+  <strong>Diferenças regionais:</strong><br>
+  ▸ <strong>Planície Costeira Externa (97,47%):</strong> Praticamente concluída<br>
+  ▸ <strong>Região Central (85,17%):</strong> Mais atrasada · microclima específico<br>
+  ▸ <strong>Fronteira Oeste:</strong> Maior área absoluta (257 mil ha) · 93,26% colhida<br><br>
+  <strong>Produtividade:</strong> Boa em geral · Maçambará >8.000 kg/ha · São Borja com retração de ~10% por microclima adverso · Pelotas e Santa Maria consistentes.<br><br>
+  <strong>Próximas 2 semanas:</strong> Conclusão prevista para meados de maio (atraso de ~3 semanas vs ano anterior).</p>
+</div>
+
+<div class="co nt">
+  <h4>🏛️ Pepro/PEP: O Cavalo de Pau do Governo no Mercado!</h4>
+  <p><strong>Aviso CONAB 15/2026 — Leilão 5 de maio:</strong><br>
+  ▸ <strong>Volume total:</strong> 350,785 milhões de kg<br>
+  ▸ <strong>Modalidade:</strong> Pepro (Prêmio Equalizador Pago ao Produtor Rural)<br><br>
+  <strong>Prêmios por região (R$/sc 50kg):</strong><br>
+  ▸ <strong>Fronteira Oeste/RS:</strong> R$ 10,70 (R$ 0,2140/kg)<br>
+  ▸ <strong>Santa Catarina:</strong> R$ 10,37 (R$ 0,2074/kg)<br>
+  ▸ <strong>Campanha/RS:</strong> R$ 9,27 (R$ 0,1854/kg)<br>
+  ▸ <strong>Zona Sul/RS, AL, SE:</strong> Sem prêmio<br><br>
+  <strong>Como funciona o Pepro:</strong><br>
+  ▸ Produtor vende seu arroz no mercado físico<br>
+  ▸ Apresenta nota fiscal · CONAB paga complemento (prêmio) por kg<br>
+  ▸ Garante que produtor receba ao menos o <strong>preço mínimo</strong><br>
+  ▸ Governo NÃO compra fisicamente · não estoca<br><br>
+  <strong>Impacto imediato no mercado:</strong><br>
+  ▸ <strong>28/04:</strong> CEPEA caiu −0,64% após anúncio (agentes paralisaram)<br>
+  ▸ <strong>Compradores aguardam</strong> definições do leilão para fechar negócios<br>
+  ▸ <strong>Vendedores</strong> na expectativa do prêmio adicional<br>
+  ▸ <strong>Após leilão:</strong> Mercado costuma reagir em 5-10 dias úteis<br><br>
+  <strong>Análise estratégica:</strong><br>
+  Pepro com R$ 10,70/sc na Fronteira Oeste sinaliza preço-alvo de <strong>R$ 73-75/sc</strong> para essa região (R$ 62-65 mercado + R$ 10,70 prêmio). É um "<strong>seguro do governo</strong>" para o produtor.</p>
+</div>
+
+<div class="co or">
+  <h4>📊 IPCA Arroz: Demanda Forte Sustenta Preço no Varejo</h4>
+  <p><strong>Análise do varejo (IPCA março/26):</strong><br>
+  ▸ Arroz tem peso significativo no IPCA (item essencial da cesta básica)<br>
+  ▸ Demanda interna é <strong>extremamente firme</strong> · consumo per capita ~25 kg/ano<br>
+  ▸ Brasil consome <strong>~10,5 mi t/ano</strong> · produção atual ~10,9 mi t<br>
+  ▸ <strong>Excedente apertado</strong> · qualquer choque vira pressão imediata<br><br>
+  <strong>Tendência do consumidor:</strong><br>
+  ▸ <strong>Repasse difícil:</strong> Varejo resiste a aumentos · arroz é commodity política<br>
+  ▸ <strong>Mas:</strong> Preço do varejo já subiu 8-10% nos últimos 12 meses (IPCA)<br>
+  ▸ <strong>Indústrias:</strong> Margens apertadas · algumas <strong>se afastam das compras</strong><br><br>
+  <strong>Cepea:</strong> "<em>A redução de negociações no segmento de beneficiados, somada à postura mais cautelosa das indústrias e produtores, tem pressionado as cotações.</em>" Cadeia inteira está em <strong>impasse</strong>: produtor pede mais, indústria não pode pagar, varejo não absorve, consumidor reclama.<br><br>
+  <strong>Solução governamental:</strong> Leilões PEPro/PEP funcionam como <strong>injeção de liquidez</strong> sem necessariamente pressionar mercado para alta · estabilizam o sistema.</p>
+</div>
+
+<div class="co cy">
+  <h4>🚢 Comércio Exterior: Arroz BR Perde Competitividade</h4>
+  <p><strong>Cenário internacional:</strong><br>
+  ▸ <strong>Tailândia (1º exportador mundial):</strong> Safra boa · preços baixos<br>
+  ▸ <strong>Vietnã (2º):</strong> Estabilidade · oferta abundante<br>
+  ▸ <strong>Índia (3º):</strong> Voltou a exportar após 2024<br>
+  ▸ <strong>Mercado spot mundial:</strong> Tendência de queda em 2026<br><br>
+  <strong>Posição do Brasil:</strong><br>
+  ▸ <strong>Exportações em queda</strong> (Cepea destaca · perda de competitividade)<br>
+  ▸ <strong>FOB BR:</strong> US$ 50-80/t acima dos asiáticos<br>
+  ▸ <strong>Custos altos</strong> + <strong>dólar fraco</strong> = preço pouco competitivo<br>
+  ▸ <strong>Importações do Mercosul</strong> (Argentina, Uruguai, Paraguai) ativas<br>
+  ▸ <strong>Consumidor brasileiro:</strong> Preferência clara pelo arroz "agulhinha" tipo 1 brasileiro/uruguaio<br><br>
+  <strong>Tendência 2026:</strong> Brasil deve permanecer como <strong>importador líquido sazonal</strong> · não há "pulmão" exportador · qualquer nova quebra de safra força mais importações.<br><br>
+  <strong>Ironia:</strong> Brasil é o 9º maior produtor mundial de arroz · mas é também grande consumidor · não tem volume excedente expressivo para mercado externo (diferente de soja/milho/algodão).</p>
+</div>
+
+<div class="co pu">
+  <h4>🏦 Macro: Selic, Câmbio e o Capital de Giro do Setor</h4>
+  <p><strong>Decisão Copom (29/04):</strong> Selic cortada para 14,50% (−0,25 p.p.)<br>
+  <strong>Dólar:</strong> R$ 4,9523 (mín. 2 anos!)<br><br>
+  <strong>Para a cadeia do arroz:</strong><br>
+  ▸ <strong>Selic menor</strong> = beneficiadoras com custo de carregamento de estoque mais barato<br>
+  ▸ <strong>Cooperativas</strong> conseguem segurar produto por mais tempo<br>
+  ▸ <strong>Capital de giro</strong> para próxima safra (26/27) mais acessível<br>
+  ▸ <strong>Crédito Plano Safra</strong> deve ter taxas menores<br><br>
+  <strong>Dólar fraco:</strong><br>
+  ▸ ✗ Importações do Mercosul mais baratas (pressão sobre preço interno)<br>
+  ▸ ✓ Custo de fertilizantes/defensivos importados reduz<br>
+  ▸ ✗ Exportação fica menos competitiva<br><br>
+  <strong>Cenário próxima safra (2026/27):</strong><br>
+  ▸ IRGA pesquisa <strong>intenção de plantio</strong> · resultados em jun/jul<br>
+  ▸ Pepro/PEP atual pode <strong>ajudar a manter área</strong><br>
+  ▸ Sem intervenção, área pode cair mais 5-10%<br>
+  ▸ Selic menor + crédito disponível = <strong>fator estabilizador</strong></p>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#14532d,#15803d)">🌡️</div><h2>Termômetros do Mercado <span>— Pressões e Vetores</span></h2></div>
+
+<div class="grid3">
+  <div class="card">
+    <div class="thermo"><h4>📈 Preço CEPEA/IRGA</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:42%"></div></div>
+      <div class="th-lb"><span>Fraco</span><span>Médio</span><span>Forte</span></div>
+      <p style="font-size:.78rem;color:var(--nt);margin-top:8px;font-weight:700">→ MÉDIO</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">R$ 62,30 lateralizado · Pepro estabiliza</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🌾 Colheita RS</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--up),var(--nt),var(--dn))"><div class="th-marker" style="left:75%"></div></div>
+      <div class="th-lb"><span>Início</span><span>Avanço</span><span>Final</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ RETA FINAL</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">93,51% · falta apenas 6,5%</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🇧🇷 Safra 25/26</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--up),var(--nt),var(--dn))"><div class="th-marker" style="left:80%"></div></div>
+      <div class="th-lb"><span>Forte</span><span>Médio</span><span>Fraca</span></div>
+      <p style="font-size:.78rem;color:var(--dn);margin-top:8px;font-weight:700">⬇ MUITO FRACA</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">−14,4% · uma das piores em anos</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🛒 Demanda Interna</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:60%"></div></div>
+      <div class="th-lb"><span>Fraca</span><span>Média</span><span>Forte</span></div>
+      <p style="font-size:.78rem;color:var(--nt);margin-top:8px;font-weight:700">→ FIRME</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">Cesta básica · ~10,5 mi t/ano</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🏛️ Apoio Governo</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:80%"></div></div>
+      <div class="th-lb"><span>Ausente</span><span>Pontual</span><span>Forte</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ ATIVO!</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">Pepro 5/mai · 350,7 mil t!</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🚢 Competitividade Externa</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:25%"></div></div>
+      <div class="th-lb"><span>Baixa</span><span>Média</span><span>Alta</span></div>
+      <p style="font-size:.78rem;color:var(--dn);margin-top:8px;font-weight:700">⬇ BAIXA</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">FOB BR US$ 50-80/t acima · perdendo</p>
+    </div>
+  </div>
+</div>
+
+<div class="dv"></div>
+
+<div class="opinion">
+  <h3>🎯 Opinião do Analista — Arroz Está em Impasse Estrutural · Pepro É a Tábua de Salvação!</h3>
+
+  <p><strong>O arroz brasileiro vive um momento delicado: CEPEA/IRGA-RS lateralizado em R$ 62,30/sc (+0,10% no mês após picos de R$ 63,20), CONAB confirma queda histórica de −14,4% na safra 25/26 (apenas 10,9 mi t!), colheita RS em 93,51% mas em ritmo lento (atraso de 3 semanas), governo intervém com Pepro de R$ 10,70/sc na Fronteira Oeste em 5/mai, e exportações perdendo competitividade. Cadeia inteira (produtor → indústria → atacado → varejo) em queda de braço por margens. O Pepro pode ser o catalisador positivo das próximas semanas. Para produtor com arroz armazenado: aguardar leilão é estratégia válida; para quem precisa caixa: vender já com preço estabilizado.</strong></p>
+
+  <p><strong>Semana 27-30/abr (curta · feriado 1º Mai) — Em síntese:</strong><br>
+  ▸ <strong>CEPEA/IRGA-RS:</strong> R$ 62,30/sc 50kg (−0,53% sem · +0,10% mês)<br>
+  ▸ <strong>Pico do mês:</strong> R$ 63,20 (16/04)<br>
+  ▸ <strong>Pepro 5/mai:</strong> 350,785 mil t · R$ 10,70/sc Fronteira Oeste<br>
+  ▸ <strong>Colheita RS:</strong> 93,51% · ritmo lento<br>
+  ▸ <strong>CONAB Safra 25/26:</strong> 10,914 mi t (−14,4%)<br>
+  ▸ <strong>RS Safra:</strong> 7,543 mi t (−13,6%) · 69% nacional<br>
+  ▸ <strong>Selic:</strong> Cortada para 14,50% · <strong>Dólar:</strong> R$ 4,9523</p>
+
+  <p><strong>Recomendações estratégicas:</strong></p>
+
+  <p><strong>1. SE TEM ARROZ EM CASCA ESTOCADO: AGUARDE O PEPRO! (5 de maio)</strong> Para produtores da <strong>Fronteira Oeste/RS</strong>, o leilão pode somar R$ 10,70/sc ao preço de mercado. Para Campanha/RS: R$ 9,27/sc. Para SC: R$ 10,37/sc. <strong>Total bruto:</strong> R$ 73-75/sc (R$ 62 mercado + R$ 10-11 prêmio). Vale aguardar 5-10 dias. Cuidado: para Zona Sul/RS, AL e SE NÃO há prêmio · venda sem esperar.</p>
+
+  <p><strong>2. CRONOGRAMA DE COMERCIALIZAÇÃO:</strong> Vender 30% no mercado físico nas próximas 2 semanas (precisa fluxo de caixa) + 50% via Pepro/PEP em maio + 20% segurar até julho/agosto (estoques de passagem ficam apertados, pode haver alta secundária). Estratégia minimiza risco e captura prêmios.</p>
+
+  <p><strong>3. PARA QUEM ESTÁ FECHANDO COLHEITA (RS Central, Fronteira Oeste):</strong> Cuidado com qualidade dos últimos lotes! Chuvas + umidade alta = redução em <strong>grãos inteiros</strong> (rendimento industrial). Lote tipo 1 (58% inteiros) tem prêmio ~R$ 4-6/sc sobre tipo 2. <strong>Investimento em secagem rápida + classificação compensa.</strong></p>
+
+  <p><strong>4. PRÓXIMA SAFRA (26/27): MOMENTO DE DECISÃO!</strong> IRGA pesquisa intenções de plantio em jun/jul. <strong>Selic cortada para 14,50%</strong> + Pepro ativo + Plano Safra 26/27 sendo desenhado = ambiente favorável para <strong>manter ou aumentar levemente</strong> a área. Atenção: se governo não confirmar instrumentos, área pode cair mais 5-10% (já caiu 8% em 25/26).</p>
+
+  <p><strong>5. CUSTOS ESTÃO MENORES! APROVEITE PARA INVESTIR.</strong> Dólar a R$ 4,9523 (mín. 2 anos!) reduz custo de fertilizantes (NPK), defensivos importados e maquinário. Selic menor = financiamento mais barato. <strong>Janela boa para reposição de máquinas, ajuste de irrigação, sistemas de drenagem</strong> — investimentos que aumentam produtividade na próxima safra.</p>
+
+  <p><strong>6. ATENÇÃO À COMPETITIVIDADE EXTERNA!</strong> FOB Brasil US$ 50-80/t acima de Tailândia/Vietnã/Argentina. <strong>Sem competitividade exportadora</strong>, mercado fica 100% dependente da demanda interna + intervenção governamental. Se o consumo doméstico desacelerar (recessão, mudança alimentar), pressão sobre preços é imediata.</p>
+
+  <p><strong>7. ARROZ É CULTURA DE SUBSISTÊNCIA E GARANTIA ALIMENTAR.</strong> Mesmo em momentos difíceis, demanda interna garante piso. Brasil consome ~10,5 mi t/ano · cultura 100% essencial. Diferente de café/algodão (commodities mundiais), arroz tem <strong>política pública robusta</strong> via CONAB. Quem produz arroz tem <strong>segurança estrutural</strong> · só precisa atravessar momentos de aperto via Pepro/PEP.</p>
+
+  <div class="scenarios">
+    <div class="sc up">
+      <h5>🟢 Cenário Altista</h5>
+      <p>Pepro arrematado total + frustração colheita Central + nova safra menor 26/27 → <strong>CEPEA R$ 67-72/sc até jul/26</strong>. Probabilidade: ~30%</p>
+    </div>
+    <div class="sc nt">
+      <h5>🟡 Cenário Neutro</h5>
+      <p>Pepro estabiliza · Mercosul ativo · Selic continua caindo → <strong>CEPEA R$ 60-66/sc lateralizado</strong>. Probabilidade: ~50%</p>
+    </div>
+    <div class="sc dn">
+      <h5>🔴 Cenário Baixista</h5>
+      <p>Pepro insuficiente + importação Mercosul forte + dólar abaixo R$ 4,80 + safra 26/27 normal → <strong>CEPEA R$ 55-60/sc</strong>. Probabilidade: ~20%</p>
+    </div>
+  </div>
+
+  <div class="sig">📅 Análise Rural IN · Quinta-feira, 30/Abr/2026 · Semana curta (feriado 1º Mai) · Leilão Pepro 5/mai é EVENTO DA SEMANA QUE VEM!</div>
+</div>
+
+<footer class="footer"><div class="wrap">
+  <div class="footer-brand"><span class="r">Rural</span> <span class="i">IN</span></div>
+  <p>Radar Agro Semanal · Arroz · Semana 27–30 Abril 2026<br>
+  Fontes: CEPEA/ESALQ-USP · Indicador CEPEA/IRGA-RS · CONAB · IRGA (Instituto Rio Grandense do Arroz) · Emater/RS-Ascar · Pepro/PEP · IBGE (IPCA) · Banco Central · COPOM · Globo Rural · Notícias Agrícolas · Planeta Arroz · AgroDados · Agro.MT · Agora RS</p>
+  <div class="footer-credits">
+    <h4>Análise e Construção</h4>
+    <div class="name">Dr. Sidney Souza</div>
+    <div class="title">Economista e Adm. Agrícola — Estrategista Econômico do Produtor</div>
+    <div class="desc">Especialista em economia da fazenda e gestão de risco no agro<br>Transformamos dados da fazenda em decisões econômicas<br>Ajudamos produtores a entender se o mercado sustenta seu negócio</div>
+    <div class="contact">📧 <a href="mailto:sidneyagro@gmail.com">sidneyagro@gmail.com</a> · 📱 <a href="tel:+5564992266886">(64) 9 9226-6886</a> · 📸 <a href="https://instagram.com/ruralin.ai" target="_blank">@ruralin.ai</a></div>
+  </div>
+  <p style="margin-top:18px"><em>⚠️ Material informativo. Não constitui recomendação de investimento. Consulte profissionais habilitados.</em></p>
+</div></footer>
+
+</div>
+
+<script>
+const gc='rgba(31,40,32,.5)';
+const tt={backgroundColor:'rgba(12,16,13,.97)',borderColor:'#2c3a30',borderWidth:1,titleFont:{size:11,weight:'700'},bodyFont:{size:10},padding:10,cornerRadius:8};
+
+// CH1: CEPEA/IRGA-RS trajetória
+new Chart(document.getElementById('ch1').getContext('2d'),{
+  type:'line',
+  data:{
+    labels:['09/04','10/04','13/04','14/04','15/04','16/04','17/04','20/04','22/04','23/04','24/04','27/04','28/04','29/04','30/04'],
+    datasets:[{label:'CEPEA/IRGA-RS (R$/sc 50kg)',data:[62.65,62.88,62.79,62.77,63.18,63.20,63.13,63.06,62.89,62.75,62.62,62.63,62.23,62.32,62.30],
+      borderColor:'#84cc16',backgroundColor:'rgba(132,204,22,.12)',borderWidth:3,fill:true,tension:.3,pointRadius:3.5,pointBackgroundColor:'#84cc16',pointBorderColor:'#fde047',pointBorderWidth:1.5}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tt,
+      annotation:{annotations:{
+        peak:{type:'label',xValue:5,yValue:63.55,content:['🏆 Pico R$ 63,20','16/04'],font:{size:9,weight:'bold'},color:'#22c55e',backgroundColor:'rgba(34,197,94,.13)',padding:4},
+        pep:{type:'label',xValue:12,yValue:61.85,content:['📉 Pepro!','28/04 −0,64%'],font:{size:9,weight:'bold'},color:'#ef4444',backgroundColor:'rgba(239,68,68,.13)',padding:4}
+      }}
+    },
+    scales:{y:{min:61.5,max:63.7,grid:{color:gc},ticks:{callback:function(v){return'R$ '+v.toFixed(2)},font:{size:9,weight:'600'},color:'#aab5a8'}},x:{grid:{display:false},ticks:{font:{size:8,weight:'700'},color:'#aab5a8',maxRotation:0}}}
+  }
+});
+
+// CH2: Colheita RS evolução
+new Chart(document.getElementById('ch2').getContext('2d'),{
+  type:'line',
+  data:{
+    labels:['26/03','02/04','09/04','16/04','22/04','30/04'],
+    datasets:[
+      {label:'Safra 25/26',data:[39.86,55,68.88,80,87.45,93.51],
+        borderColor:'#84cc16',backgroundColor:'rgba(132,204,22,.15)',borderWidth:3,fill:false,tension:.3,pointRadius:5,pointBackgroundColor:'#84cc16'},
+      {label:'Safra 24/25 (mesmo período)',data:[51,62,71,82,90,96],
+        borderColor:'#fde047',backgroundColor:'rgba(253,224,71,.1)',borderWidth:2,borderDash:[6,4],fill:false,tension:.3,pointRadius:4,pointBackgroundColor:'#fde047'}
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{display:true,position:'top',labels:{color:'#aab5a8',font:{size:9,weight:'600'},boxWidth:14,padding:8}},
+      tooltip:tt,
+      annotation:{annotations:{
+        atr:{type:'label',xValue:1,yValue:50,content:['⏰ Atraso de','3 semanas!'],font:{size:9,weight:'bold'},color:'#f97316',backgroundColor:'rgba(249,115,22,.13)',padding:4}
+      }}
+    },
+    scales:{y:{min:35,max:100,grid:{color:gc},ticks:{callback:function(v){return v+'%'},font:{size:9,weight:'600'},color:'#aab5a8'}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#aab5a8'}}}
+  }
+});
+
+// CH3: Colheita por região RS
+new Chart(document.getElementById('ch3').getContext('2d'),{
+  type:'bar',
+  data:{
+    labels:['Pl.Cost.Externa','Zona Sul','Pl.Cost.Interna','Campanha','Front.Oeste','R.Central'],
+    datasets:[{label:'% Colhida',data:[97.47,95.86,95.01,94.00,93.26,85.17],
+      backgroundColor:function(c){
+        if(c.parsed.y>=95)return 'rgba(34,197,94,.65)';
+        if(c.parsed.y>=90)return 'rgba(132,204,22,.55)';
+        return 'rgba(249,115,22,.55)';
+      },
+      borderColor:function(c){
+        if(c.parsed.y>=95)return '#22c55e';
+        if(c.parsed.y>=90)return '#84cc16';
+        return '#f97316';
+      },
+      borderWidth:2,borderRadius:7}]
+  },
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tt,
+      annotation:{annotations:{
+        led:{type:'label',xValue:99.5,yValue:0,content:['🥇 Líder!'],font:{size:9,weight:'bold'},color:'#22c55e',backgroundColor:'rgba(34,197,94,.13)',padding:3}
+      }}
+    },
+    scales:{x:{min:80,max:100,grid:{color:gc},ticks:{callback:function(v){return v+'%'},font:{size:9,weight:'600'},color:'#aab5a8'}},y:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#aab5a8'}}}
+  }
+});
+
+// CH4: Histórico safras BR
+new Chart(document.getElementById('ch4').getContext('2d'),{
+  type:'bar',
+  data:{
+    labels:['21/22','22/23','23/24','24/25','25/26 (proj.)'],
+    datasets:[{label:'mi t',data:[10.78,10.06,12.06,12.76,10.91],
+      backgroundColor:function(c){
+        if(c.dataIndex===4)return 'rgba(239,68,68,.6)';
+        if(c.dataIndex===3)return 'rgba(34,197,94,.55)';
+        return 'rgba(132,204,22,.4)';
+      },
+      borderColor:function(c){
+        if(c.dataIndex===4)return '#ef4444';
+        if(c.dataIndex===3)return '#22c55e';
+        return '#84cc16';
+      },
+      borderWidth:2,borderRadius:7}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tt,
+      annotation:{annotations:{
+        rec:{type:'label',xValue:4,yValue:11.7,content:['📉 −14,4%','grave!'],font:{size:9,weight:'bold'},color:'#ef4444',backgroundColor:'rgba(239,68,68,.13)',padding:4}
+      }}
+    },
+    scales:{y:{min:9.5,max:13.5,grid:{color:gc},ticks:{callback:function(v){return v.toFixed(1)+' mi t'},font:{size:9,weight:'600'},color:'#aab5a8'}},x:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#aab5a8'}}}
+  }
+});
+
+// CH5: Produção por estado (donut)
+new Chart(document.getElementById('ch5').getContext('2d'),{
+  type:'doughnut',
+  data:{
+    labels:['RS (7,543)','SC (1,225)','MT (0,335)','TO/MA/PA/outros (1,811)'],
+    datasets:[{data:[7.543,1.225,0.335,1.811],
+      backgroundColor:['rgba(34,197,94,.7)','rgba(132,204,22,.65)','rgba(253,224,71,.6)','rgba(122,134,154,.5)'],
+      borderColor:['#22c55e','#84cc16','#fde047','#7a869a'],
+      borderWidth:2,hoverOffset:8}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{position:'bottom',labels:{color:'#aab5a8',font:{size:9,weight:'600'},boxWidth:12,padding:6}},
+      tooltip:{...tt,callbacks:{label:function(c){return c.label+' mi t'}}}
+    },
+    cutout:'58%'
+  }
+});
+
+// CH6: Pepro por região
+new Chart(document.getElementById('ch6').getContext('2d'),{
+  type:'bar',
+  data:{
+    labels:['Front.Oeste/RS','SC','Campanha/RS','Zona Sul/RS','AL','SE'],
+    datasets:[{label:'Prêmio (R$/sc 50kg)',data:[10.70,10.37,9.27,0,0,0],
+      backgroundColor:function(c){
+        if(c.parsed.y>=10)return 'rgba(34,197,94,.7)';
+        if(c.parsed.y>=8)return 'rgba(132,204,22,.6)';
+        return 'rgba(122,134,154,.4)';
+      },
+      borderColor:function(c){
+        if(c.parsed.y>=10)return '#22c55e';
+        if(c.parsed.y>=8)return '#84cc16';
+        return '#7a869a';
+      },
+      borderWidth:2,borderRadius:7}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{...tt,callbacks:{label:function(c){
+      if(c.parsed.y===0)return 'Sem prêmio';
+      return 'R$ '+c.parsed.y.toFixed(2)+'/sc';
+    }}},
+      annotation:{annotations:{
+        max:{type:'label',xValue:0,yValue:11.5,content:['🥇 Líder!','R$ 10,70'],font:{size:9,weight:'bold'},color:'#22c55e',backgroundColor:'rgba(34,197,94,.13)',padding:4}
+      }}
+    },
+    scales:{y:{min:0,max:12.5,grid:{color:gc},ticks:{callback:function(v){return'R$ '+v},font:{size:9,weight:'600'},color:'#aab5a8'}},x:{grid:{display:false},ticks:{font:{size:8,weight:'700'},color:'#aab5a8',maxRotation:30,minRotation:30}}}
+  }
+});
+</script>
+</body>
+</html>

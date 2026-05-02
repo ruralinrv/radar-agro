@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Rural IN — Suíno · 27-30 Abr 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0608;--bg2:#12080c;--bg3:#1a0a10;--bg4:#220c14;--border:#2c1018;--border2:#3d1820;--accent:#9f1239;--accent2:#be123c;--accent3:#e11d48;--pink:#ec4899;--pink2:#f472b6;--pink3:#f9a8d4;--rose:#fb7185;--cream:#fff1f2;--text:#fff1f2;--text2:#fecdd3;--text3:#9f7884;--up:#22c55e;--dn:#ef4444;--nt:#eab308;--blue:#3b82f6;--purple:#a855f7;--orange:#f97316;--cyan:#06b6d4;--leaf2:#84cc16;--gold:#f59e0b;--r:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 1000px 700px at 10% 15%,rgba(225,29,72,.12),transparent),radial-gradient(ellipse 800px 600px at 90% 85%,rgba(244,114,182,.08),transparent);pointer-events:none;z-index:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+.nav{background:rgba(18,8,12,.95);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:14px}
+.nav-logo-img{height:42px;width:auto;border-radius:8px}
+.nav-logo{font-weight:900;font-size:1.2rem}
+.nav-logo .r{color:var(--rose)}
+.nav-logo .i{color:var(--leaf2)}
+.nav-badge{background:linear-gradient(135deg,#9f1239,#e11d48);border:1px solid rgba(249,168,212,.5);padding:5px 14px;border-radius:20px;font-size:.7rem;font-weight:800;color:#fff1f2;letter-spacing:.6px;box-shadow:0 0 25px rgba(225,29,72,.4)}
+.nav-back{color:var(--text3);font-size:.8rem;text-decoration:none}
+.nav-back:hover{color:var(--rose)}
+.hero{padding:54px 0 40px;position:relative}
+.hero::after{content:'';position:absolute;bottom:0;left:0;width:240px;height:3px;background:linear-gradient(90deg,#9f1239,var(--rose),transparent)}
+.hero-top{display:flex;align-items:center;gap:22px;margin-bottom:16px}
+.hero-icon-wrap{width:84px;height:84px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,rgba(225,29,72,.4),transparent 70%);border-radius:50%}
+.hero-icon{font-size:3.6rem;filter:drop-shadow(0 6px 18px rgba(225,29,72,.7))}
+.hero-texts h1{font-size:2.4rem;font-weight:900;letter-spacing:-1.2px;line-height:1.1}
+.hero-texts h1 .hl{background:linear-gradient(135deg,#9f1239,#be123c,#e11d48,#fb7185);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-texts .sub{font-size:.9rem;color:var(--text2);margin-top:6px;font-weight:500}
+.hero-bar{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border-radius:22px;font-size:.72rem;font-weight:700;border:1px solid}
+.chip.up{color:var(--up);border-color:rgba(34,197,94,.3);background:rgba(34,197,94,.08)}
+.chip.dn{color:var(--dn);border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.08)}
+.chip.nt{color:var(--nt);border-color:rgba(234,179,8,.4);background:rgba(234,179,8,.1)}
+.chip.pu{color:var(--purple);border-color:rgba(168,85,247,.3);background:rgba(168,85,247,.08)}
+.chip.pk{color:var(--rose);border-color:rgba(251,113,133,.5);background:rgba(225,29,72,.13)}
+.chip.or{color:var(--orange);border-color:rgba(249,115,22,.3);background:rgba(249,115,22,.08)}
+.chip.bl{color:var(--blue);border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.08)}
+.alert{border-radius:var(--r);padding:18px 22px;margin-bottom:14px;display:flex;gap:14px;border:1px solid;font-size:.85rem;line-height:1.75;color:var(--text2);position:relative}
+.alert::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
+.alert strong{color:var(--text)}
+.alert .ai{font-size:1.4rem;flex-shrink:0;margin-top:1px}
+.alert.green{background:linear-gradient(90deg,rgba(34,197,94,.08),rgba(34,197,94,.02));border-color:rgba(34,197,94,.25)}
+.alert.green::before{background:var(--up)}
+.alert.red{background:linear-gradient(90deg,rgba(239,68,68,.08),rgba(239,68,68,.02));border-color:rgba(239,68,68,.25)}
+.alert.red::before{background:var(--dn)}
+.alert.amber{background:linear-gradient(90deg,rgba(234,179,8,.1),rgba(234,179,8,.02));border-color:rgba(234,179,8,.3)}
+.alert.amber::before{background:var(--nt)}
+.alert.blue{background:linear-gradient(90deg,rgba(59,130,246,.08),rgba(59,130,246,.02));border-color:rgba(59,130,246,.25)}
+.alert.blue::before{background:var(--blue)}
+.alert.purple{background:linear-gradient(90deg,rgba(168,85,247,.08),rgba(168,85,247,.02));border-color:rgba(168,85,247,.25)}
+.alert.purple::before{background:var(--purple)}
+.alert.cyan{background:linear-gradient(90deg,rgba(6,182,212,.08),rgba(6,182,212,.02));border-color:rgba(6,182,212,.25)}
+.alert.cyan::before{background:var(--cyan)}
+.alert.orange{background:linear-gradient(90deg,rgba(249,115,22,.1),rgba(249,115,22,.02));border-color:rgba(249,115,22,.3)}
+.alert.orange::before{background:var(--orange)}
+.alert.pink{background:linear-gradient(90deg,rgba(225,29,72,.13),rgba(244,114,182,.04));border-color:rgba(225,29,72,.4)}
+.alert.pink::before{background:var(--rose)}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin:24px 0}
+.kpi{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:16px 18px;position:relative;transition:all .25s}
+.kpi:hover{transform:translateY(-3px);border-color:var(--border2)}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2)}
+.kpi.up::before{background:linear-gradient(90deg,var(--up),var(--leaf2))}
+.kpi.dn::before{background:linear-gradient(90deg,var(--dn),var(--orange))}
+.kpi.nt::before{background:linear-gradient(90deg,var(--nt),#fde047)}
+.kpi.bl::before{background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.kpi.pu::before{background:linear-gradient(90deg,var(--purple),var(--pink))}
+.kpi.or::before{background:linear-gradient(90deg,var(--orange),#fde047)}
+.kpi.pk::before{background:linear-gradient(90deg,#9f1239,var(--rose))}
+.kpi-lb{font-size:.6rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:5px;font-weight:700}
+.kpi-val{font-size:1.18rem;font-weight:900;letter-spacing:-.5px;line-height:1.2}
+.kpi-val.up{color:var(--up)}.kpi-val.dn{color:var(--dn)}.kpi-val.nt{color:var(--nt)}.kpi-val.bl{color:var(--blue)}.kpi-val.pu{color:var(--purple)}.kpi-val.or{color:var(--orange)}.kpi-val.pk{color:var(--rose)}
+.kpi-sub{font-size:.66rem;color:var(--text3);margin-top:3px;font-weight:500}
+.dv{height:1px;background:linear-gradient(90deg,transparent,var(--border2) 20%,var(--rose) 50%,var(--border2) 80%,transparent);margin:36px 0}
+.stitle{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.stitle .icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.stitle h2{font-size:1.18rem;font-weight:800;letter-spacing:-.3px}
+.stitle h2 span{color:var(--text2);font-weight:400;font-size:.85rem;margin-left:4px}
+.co{border-radius:var(--r);padding:20px 24px;margin-bottom:14px;border-left:4px solid;font-size:.85rem;color:var(--text2);line-height:1.85;background:linear-gradient(90deg,var(--bg2),var(--bg3))}
+.co strong{color:var(--text)}
+.co h4{font-size:.98rem;font-weight:800;margin-bottom:10px}
+.co.up{border-color:var(--up)}.co.up h4{color:var(--up)}
+.co.dn{border-color:var(--dn)}.co.dn h4{color:var(--dn)}
+.co.nt{border-color:var(--nt)}.co.nt h4{color:var(--nt)}
+.co.bl{border-color:var(--blue)}.co.bl h4{color:var(--blue)}
+.co.or{border-color:var(--orange)}.co.or h4{color:var(--orange)}
+.co.pu{border-color:var(--purple)}.co.pu h4{color:var(--purple)}
+.co.cy{border-color:var(--cyan)}.co.cy h4{color:var(--cyan)}
+.co.pk{border-color:var(--rose)}.co.pk h4{color:var(--rose)}
+.chart-box{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--r);padding:22px 24px;margin-bottom:14px}
+.chart-box h3{font-size:.9rem;color:var(--text);margin-bottom:14px;font-weight:700;display:flex;align-items:center;gap:8px}
+.chart-box h3 .ch-tag{margin-left:auto;font-size:.62rem;font-weight:700;padding:2px 10px;border-radius:10px;background:rgba(225,29,72,.18);color:var(--rose)}
+.chart-wrap{position:relative;height:290px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:800px){.grid2,.grid3{grid-template-columns:1fr}}
+.tbl-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--border);margin-bottom:14px;background:var(--bg2)}
+table{width:100%;border-collapse:collapse;font-size:.78rem}
+thead th{background:linear-gradient(180deg,var(--bg3),var(--bg4));padding:12px 14px;text-align:center;font-weight:800;color:var(--text2);font-size:.66rem;text-transform:uppercase;letter-spacing:.9px;border-bottom:1px solid var(--border)}
+tbody td{padding:10px 12px;border-bottom:1px solid rgba(44,16,24,.5);text-align:center}
+tbody tr:hover{background:rgba(225,29,72,.05)}
+.td-name{text-align:left!important;font-weight:700;white-space:nowrap}
+.td-up{color:var(--up);font-weight:800}.td-dn{color:var(--dn);font-weight:800}.td-nt{color:var(--nt);font-weight:800}
+.thermo h4{font-size:.84rem;color:var(--text);margin-bottom:10px;font-weight:700}
+.th-bar{height:14px;border-radius:7px;position:relative;box-shadow:inset 0 1px 4px rgba(0,0,0,.4)}
+.th-marker{position:absolute;top:-6px;width:4px;height:26px;background:#fff;border-radius:2px;transform:translateX(-50%);box-shadow:0 0 12px rgba(255,255,255,.6)}
+.th-lb{display:flex;justify-content:space-between;font-size:.66rem;color:var(--text3);margin-top:6px;font-weight:600}
+.card{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--r);padding:22px 26px;margin-bottom:14px}
+.opinion{background:linear-gradient(135deg,rgba(225,29,72,.18),rgba(244,114,182,.06),rgba(225,29,72,.02));border:1px solid rgba(249,168,212,.35);border-radius:var(--r);padding:30px 32px;margin:26px 0;position:relative}
+.opinion::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#9f1239,var(--rose),var(--pink2),#9f1239)}
+.opinion h3{font-size:1.08rem;font-weight:800;color:var(--rose);margin-bottom:12px}
+.opinion p{font-size:.88rem;color:var(--text2);line-height:1.9;margin-bottom:12px}
+.opinion p strong{color:var(--text)}
+.opinion .scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.opinion .sc{padding:14px 16px;border-radius:10px;border:1px solid;background:rgba(0,0,0,.3)}
+.opinion .sc.up{border-color:rgba(34,197,94,.3)}.opinion .sc.nt{border-color:rgba(234,179,8,.3)}.opinion .sc.dn{border-color:rgba(239,68,68,.3)}
+.opinion .sc h5{font-size:.78rem;font-weight:800;margin-bottom:6px}
+.opinion .sc.up h5{color:var(--up)}.opinion .sc.nt h5{color:var(--nt)}.opinion .sc.dn h5{color:var(--dn)}
+.opinion .sc p{font-size:.74rem;line-height:1.6;margin:0}
+@media(max-width:700px){.opinion .scenarios{grid-template-columns:1fr}}
+.opinion .sig{margin-top:18px;padding-top:14px;border-top:1px solid rgba(249,168,212,.2);font-size:.78rem;color:var(--text3);font-style:italic}
+.footer{border-top:1px solid var(--border);padding:42px 0;text-align:center;margin-top:36px}
+.footer-brand{font-size:1.5rem;font-weight:900;margin-bottom:12px}
+.footer-brand .r{color:var(--rose)}.footer-brand .i{color:var(--leaf2)}
+.footer p{font-size:.78rem;color:var(--text3);line-height:1.8}
+.footer-credits{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+.footer-credits h4{font-size:.92rem;color:var(--rose);font-weight:700;margin-bottom:6px}
+.footer-credits .name{font-size:1.05rem;font-weight:800;color:var(--text);margin-bottom:2px}
+.footer-credits .title{font-size:.78rem;color:var(--pink2);font-weight:600;margin-bottom:8px}
+.footer-credits .desc{font-size:.74rem;color:var(--text2);line-height:1.7;max-width:540px;margin:0 auto 12px}
+.footer-credits .contact{font-size:.74rem;color:var(--text3)}
+.footer-credits .contact a{color:var(--rose);text-decoration:none}
+.bignum-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+.bignum{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:20px 18px;text-align:center}
+.bignum .v{font-size:1.7rem;font-weight:900;letter-spacing:-1px;line-height:1;margin-bottom:6px}
+.bignum .v.up{color:var(--up)}.bignum .v.dn{color:var(--dn)}.bignum .v.nt{color:var(--nt)}.bignum .v.pk{color:var(--rose)}
+.bignum .l{font-size:.72rem;color:var(--text2);font-weight:600}
+.bignum .s{font-size:.66rem;color:var(--text3);margin-top:3px}
+@media(max-width:700px){.bignum-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.hero-top{flex-direction:column;text-align:center}.hero-texts h1{font-size:1.65rem}.kpi-row{grid-template-columns:repeat(2,1fr)}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap"><div class="nav-left"><img src="https://ruralinrv.github.io/ruralin/logo.png" alt="Rural IN" class="nav-logo-img" onerror="this.style.display='none'"><div class="nav-logo"><span class="r">Rural</span> <span class="i">IN</span></div><div class="nav-badge">🐷 SUÍNO</div></div><a href="portal-30-04.html" class="nav-back">← Voltar</a></div></nav>
+
+<div class="wrap">
+
+<section class="hero">
+  <div class="hero-top">
+    <div class="hero-icon-wrap"><span class="hero-icon">🐷</span></div>
+    <div class="hero-texts">
+      <h1><span class="hl">Suíno</span> · Radar Semanal</h1>
+      <div class="sub">27–30 Abril 2026 · CEPEA · ABPA · Brasil 3º exportador mundial · Recorde HISTÓRICO março! · Filipinas +80% · Japão +85% · SC líder!</div>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <span class="chip pk">📊 Carcaça SP: R$ 8,42/kg</span>
+    <span class="chip up">🌍 Export Mar: 153,8 mil t (+32,2%! RECORDE!)</span>
+    <span class="chip up">📈 Receita Mar: US$ 361,6 mi (+30,1%!)</span>
+    <span class="chip up">🇵🇭 Filipinas: +80,7% volume!</span>
+    <span class="chip up">🇯🇵 Japão: +85,8% volume!</span>
+    <span class="chip pu">🏦 Selic: 14,75% → 14,50%</span>
+  </div>
+</section>
+
+<div class="bignum-row">
+  <div class="bignum"><div class="v pk">R$ 8,42/kg</div><div class="l">Carcaça SP CEPEA (28/04)</div><div class="s">Suíno vivo SP: R$ 5,36/kg</div></div>
+  <div class="bignum"><div class="v up">153,8 mil t</div><div class="l">Export Mar/26 (RECORDE!)</div><div class="s">+32,2% vs mar/25</div></div>
+  <div class="bignum"><div class="v up">392,2 mil t</div><div class="l">Acum 1ºT/26 (+16,5%!)</div><div class="s">US$ 916 mi (+16,1%)</div></div>
+  <div class="bignum"><div class="v pk">60,69 mi</div><div class="l">Abates 2025 (recorde IBGE)</div><div class="s">+4,3% · maior série histórica!</div></div>
+</div>
+
+<div class="alert pink">
+  <span class="ai">🐷</span>
+  <div><strong style="color:var(--rose)">SUINOCULTURA BRASILEIRA EM ANO HISTÓRICO! Brasil é 3º exportador mundial · SC = 51% nacional!</strong><br>
+  <strong>Brasil no mundo do suíno (ABPA · USDA):</strong><br>
+  ▸ <strong>Produção BR 2025:</strong> 5,55 milhões de toneladas (+4,6%)<br>
+  ▸ <strong>Exportação BR 2025:</strong> 1,47 mi t · receita US$ 3,58 bi (RECORDE!)<br>
+  ▸ <strong>Posição global:</strong> 3º EXPORTADOR mundial (atrás EUA e UE)<br>
+  ▸ <strong>Abates BR 2025:</strong> 60,69 milhões de cabeças (RECORDE série!)<br>
+  ▸ <strong>Crescimento abate:</strong> +4,3% vs 2024 · maior desde 1997<br>
+  ▸ <strong>Projeção 2026:</strong> 5,7 mi t (+2,7%) · Exportação 1,545 mi t (+6,3%)<br><br>
+  <strong>🏆 SANTA CATARINA é a CAPITAL MUNDIAL:</strong><br>
+  ▸ <strong>Produção:</strong> 18,3 milhões de suínos (+2,1%) · maior do BR!<br>
+  ▸ <strong>SC produz +2x sua população</strong> em suínos!<br>
+  ▸ <strong>Liderança nacional:</strong> 51,2% do volume exportado · 51,9% receita<br>
+  ▸ <strong>Receita SC 2025:</strong> US$ 1,85 bi (recorde!)<br>
+  ▸ <strong>Concentração:</strong> Grande Oeste catarinense detém 70% abates SC<br>
+  ▸ <strong>Concórdia:</strong> 4,1 mi cabeças/ano (líder absoluto!)<br>
+  ▸ <strong>Joaçaba:</strong> 3,9 mi · <strong>Chapecó:</strong> 3,5 mi<br><br>
+  <strong>Ranking estadual abates 2025 (IBGE):</strong><br>
+  ▸ <strong>1º Santa Catarina:</strong> 28,2% nacional!<br>
+  ▸ <strong>2º Paraná:</strong> 21,2%<br>
+  ▸ <strong>3º Rio Grande do Sul:</strong> 17,9%<br>
+  ▸ <strong>4º MG, MT, GO:</strong> ~10% cada<br>
+  ▸ <strong>Sul concentra 67%</strong> da produção BR!</div>
+</div>
+
+<div class="alert green">
+  <span class="ai">🌍</span>
+  <div><strong style="color:var(--up)">EXPORTAÇÃO BATEU RECORDE HISTÓRICO ABSOLUTO EM MARÇO! 153,8 mil t (+32,2%!)</strong><br>
+  <strong>ABPA — Exportações Mar/26 (recorde absoluto da série):</strong><br>
+  ▸ <strong>Volume:</strong> 153,8 mil toneladas (+32,2% vs mar/25!)<br>
+  ▸ <strong>Receita:</strong> US$ 361,6 milhões (+30,1%!)<br>
+  ▸ <strong>Recorde anterior:</strong> 151,6 mil t (set/2025) · superado em 1,4%!<br>
+  ▸ <strong>Média diária mar/26:</strong> 5.980 t/dia útil (RECORDE série Secex desde 1997!)<br>
+  ▸ <strong>Preço médio:</strong> US$ 2.350/t (+11,5% ano)<br><br>
+  <strong>Acumulado 1ºT/26:</strong><br>
+  ▸ <strong>Volume:</strong> 392,2 mil toneladas (+16,5%!)<br>
+  ▸ <strong>Receita:</strong> US$ 916 milhões (+16,1%!)<br>
+  ▸ <strong>Crescimento in natura:</strong> +15,3% (+44,5 mil t)<br><br>
+  <strong>Top destinos março/26:</strong><br>
+  ▸ <strong>🇵🇭 Filipinas:</strong> 48,9 mil t (+80,7%! · 32% da exportação BR)<br>
+  ▸ <strong>🇯🇵 Japão:</strong> 18,2 mil t (+85,8%! BOOM!)<br>
+  ▸ <strong>🇨🇳 China:</strong> 12,7 mil t (−9,5%)<br>
+  ▸ <strong>🇨🇱 Chile:</strong> 10,6 mil t (+26,1%)<br>
+  ▸ <strong>🇭🇰 Hong Kong:</strong> 8,8 mil t (−29,4%)<br>
+  ▸ <strong>🇲🇽 México:</strong> Em ascensão<br>
+  ▸ <strong>🇰🇷 Coreia do Sul:</strong> Crescente<br><br>
+  <strong>Trajetória mensal 2026:</strong><br>
+  ▸ <strong>Janeiro:</strong> 119,5 mil t · US$ 281 mi<br>
+  ▸ <strong>Fevereiro:</strong> 119 mil t · US$ 273 mi<br>
+  ▸ <strong>Março:</strong> 153,8 mil t · US$ 361,6 mi (RECORDE!)</div>
+</div>
+
+<div class="alert orange">
+  <span class="ai">🇵🇭</span>
+  <div><strong style="color:var(--orange)">FILIPINAS: O FENÔMENO DO SUÍNO BRASILEIRO! +80% volume · Peste suína africana derruba produção local!</strong><br>
+  <strong>Filipinas — Demanda explosiva:</strong><br>
+  ▸ <strong>Mar/26:</strong> 48,9 mil t (+80,7%! recorde!)<br>
+  ▸ <strong>Acum 1ºT/26:</strong> ~30% do total exportado BR<br>
+  ▸ <strong>2025 total:</strong> 25,8% das exportações BR<br>
+  ▸ <strong>Razão principal:</strong> PESTE SUÍNA AFRICANA (PSA) destruiu rebanho local<br>
+  ▸ <strong>Brasil é o salvador alimentar das Filipinas!</strong><br><br>
+  <strong>Por que Filipinas dependem do Brasil:</strong><br>
+  ▸ <strong>Consumo per capita:</strong> 17 kg/hab/ano · alta demanda<br>
+  ▸ <strong>População:</strong> 117 milhões (mercado gigante)<br>
+  ▸ <strong>PSA destruiu</strong> 50% do plantel doméstico desde 2019<br>
+  ▸ <strong>EUA tarifou</strong> · BR é alternativa<br>
+  ▸ <strong>Halal não é exigência</strong> (cristão majoritário)<br>
+  ▸ <strong>Logística marítima:</strong> Direta via Pacífico<br><br>
+  <strong>Outros mercados em forte alta:</strong><br>
+  ▸ <strong>🇯🇵 Japão (+85,8%):</strong> Substituindo importações da Espanha/Canadá<br>
+  ▸ <strong>🇨🇱 Chile (+26,1%):</strong> BR ganha espaço<br>
+  ▸ <strong>🇰🇷 Coreia Sul:</strong> Habilitação BR ampliada<br>
+  ▸ <strong>🇲🇽 México:</strong> Tensão EUA-México beneficia BR<br>
+  ▸ <strong>🇻🇳 Vietnã:</strong> PSA recorrente · BR atende<br><br>
+  <strong>Visão estratégica BR:</strong> Filipinas + Japão + Coreia + México = ÁSIA-PACÍFICO virou nosso mercado dominante. China caiu para 5º · não é mais imprescindível!</div>
+</div>
+
+<div class="alert dn">
+  <span class="ai">📉</span>
+  <div><strong style="color:var(--dn)">PARADOXO! Exportação RECORDE mas preço interno em QUEDA!</strong><br>
+  <strong>CEPEA — Suíno vivo SP-5 (Bragança/Campinas/Piracicaba/SP/Sorocaba):</strong><br>
+  ▸ <strong>Janeiro/26:</strong> R$ 8,24/kg (−6,9% vs dez/25!)<br>
+  ▸ <strong>Fevereiro/26:</strong> ~R$ 7,90/kg<br>
+  ▸ <strong>Março/26:</strong> ~R$ 5,65/kg (forte queda!)<br>
+  ▸ <strong>Abril/26 atual:</strong> R$ 5,36/kg (CEPEA · 28/04)<br>
+  ▸ <strong>Queda total ano:</strong> ~−35% nominal!<br><br>
+  <strong>Suíno vivo por estado (CEPEA · 28/04):</strong><br>
+  ▸ <strong>São Paulo:</strong> R$ 5,36/kg<br>
+  ▸ <strong>Minas Gerais:</strong> R$ 5,64/kg<br>
+  ▸ <strong>Rio Grande do Sul:</strong> R$ 5,04/kg<br>
+  ▸ <strong>Santa Catarina:</strong> R$ 4,88/kg (importante: estado líder produtor!)<br>
+  ▸ <strong>Paraná:</strong> R$ 4,85/kg<br><br>
+  <strong>Carcaça especial Grande SP:</strong><br>
+  ▸ <strong>Janeiro/26:</strong> R$ 12,13/kg<br>
+  ▸ <strong>Março/26:</strong> ~R$ 10,50/kg<br>
+  ▸ <strong>Abril/26 (28/04):</strong> R$ 8,42/kg<br>
+  ▸ <strong>Queda acumulada:</strong> −30%!<br><br>
+  <strong>Por que preço cai com exportação RECORDE?</strong><br>
+  ▸ <strong>Produção +4% no 1ºT</strong> (oferta abundante)<br>
+  ▸ <strong>Quaresma reduziu consumo</strong> (sazonal)<br>
+  ▸ <strong>Demanda doméstica fraca</strong> (orçamento apertado)<br>
+  ▸ <strong>Trade-down boi → frango</strong> (suíno fica de fora)<br>
+  ▸ <strong>Dólar fraco</strong> (R$ 4,95) reduz competitividade exportação<br>
+  ▸ <strong>Crescimento abate (+4%) ≈ crescimento export (+15%)</strong> · oferta sob controle<br>
+  ▸ <strong>Mas peso ração</strong> (custo) sufoca margem<br><br>
+  <strong>Mercado independente:</strong> Pela 1ª vez desde jun/2022 · independente vende ABAIXO do integrado (atípico!)</div>
+</div>
+
+<div class="alert nt">
+  <span class="ai">🌽</span>
+  <div><strong style="color:var(--nt)">CUSTOS DEVORANDO MARGEM! Milho subiu · Suinocultor perdeu poder de compra 6 meses!</strong><br>
+  <strong>Estrutura custos suinocultura BR:</strong><br>
+  ▸ <strong>Ração:</strong> 71,5% do custo total<br>
+  ▸ <strong>Milho dentro da ração:</strong> 60-65%<br>
+  ▸ <strong>Farelo soja na ração:</strong> 25-30%<br>
+  ▸ <strong>Leitões (compra):</strong> 12-15%<br>
+  ▸ <strong>Mão de obra + sanidade:</strong> 8-10%<br>
+  ▸ <strong>Outros (energia, depreciação):</strong> 5-7%<br><br>
+  <strong>Cotações insumos atuais:</strong><br>
+  ▸ <strong>Milho Campinas (CEPEA):</strong> R$ 66,67/sc 60kg<br>
+  ▸ <strong>Soja Paranaguá:</strong> R$ 128,47/sc 60kg<br>
+  ▸ <strong>Farelo soja 47%:</strong> ~R$ 1.520/t<br>
+  ▸ <strong>Tendência milho:</strong> Pressão alta antes safrinha<br>
+  ▸ <strong>Tendência soja:</strong> Estável<br><br>
+  <strong>Custo de produção SC ciclo completo (referência ABPA):</strong><br>
+  ▸ <strong>Dez/2024:</strong> R$ 6,13/kg vivo<br>
+  ▸ <strong>Dez/2025:</strong> R$ 6,48/kg (+5,7%!)<br>
+  ▸ <strong>Estimativa abr/2026:</strong> R$ 6,60-6,80/kg<br>
+  ▸ <strong>Preço atual SC:</strong> R$ 4,88/kg<br>
+  ▸ <strong>Margem:</strong> NEGATIVA · −R$ 1,72 a −R$ 1,92/kg!<br>
+  ▸ <strong>Em ciclo de 110 kg:</strong> Prejuízo R$ 190-211/animal!<br><br>
+  <strong>Relação de troca:</strong><br>
+  ▸ <strong>Suíno vivo / milho:</strong> 6º recuo mensal consecutivo<br>
+  ▸ <strong>Para comprar 1 sc 60kg milho:</strong> 12,4 kg suíno vivo (mais caro!)<br>
+  ▸ <strong>Histórico mediano:</strong> 9-10 kg suíno = 1 sc milho<br>
+  ▸ <strong>Pior poder de compra desde 2018!</strong><br><br>
+  <strong>Quem ganha nessa equação?</strong><br>
+  ▸ <strong>Frigorífico-integrador (BRF, JBS, Aurora):</strong> margem de exportação saudável<br>
+  ▸ <strong>Suinocultor integrado:</strong> Recebe taxa fixa · não sente direto<br>
+  ▸ <strong>Suinocultor independente:</strong> SUFOCADO · prejuízo<br>
+  ▸ <strong>Consumidor final:</strong> Beneficiado (carne barata!)</div>
+</div>
+
+<div class="alert blue">
+  <span class="ai">🏗️</span>
+  <div><strong style="color:var(--blue)">SANTA CATARINA: A "CAPITAL MUNDIAL" DA SUINOCULTURA BR! Modelo integrado é o segredo</strong><br>
+  <strong>SC — Liderança esmagadora:</strong><br>
+  ▸ <strong>Produção 2025:</strong> 18,3 milhões de suínos (+2,1%)<br>
+  ▸ <strong>SC produz +2x sua população</strong> de suínos! (8 mi habitantes)<br>
+  ▸ <strong>Receita exportação 2025:</strong> US$ 1,85 bilhões<br>
+  ▸ <strong>Receita 1ºT/26:</strong> US$ 454,3 mi (+7,5%)<br>
+  ▸ <strong>Volume exportado SC:</strong> 47,8% do total BR (1ºT/26!)<br>
+  ▸ <strong>Receita SC:</strong> 50,1% nacional!<br>
+  ▸ <strong>PIB agronegócio SC:</strong> 25% só da suinocultura<br><br>
+  <strong>Concentração regional:</strong><br>
+  ▸ <strong>Grande Oeste SC:</strong> 70% dos abates estaduais!<br>
+  ▸ <strong>Meio-Oeste SC:</strong> 5,88 mi cabeças<br>
+  ▸ <strong>Extremo-Oeste SC:</strong> 4,31 mi cabeças<br>
+  ▸ <strong>Oeste SC:</strong> 2,79 mi cabeças<br><br>
+  <strong>Top municípios produtores SC:</strong><br>
+  ▸ <strong>1º Concórdia:</strong> 4,1 mi cabeças/ano (LÍDER!)<br>
+  ▸ <strong>2º Joaçaba:</strong> 3,9 mi<br>
+  ▸ <strong>3º Chapecó:</strong> 3,5 mi<br>
+  ▸ <strong>4º São Miguel do Oeste:</strong> 2,2 mi<br>
+  ▸ <strong>5º Rio do Sul:</strong> 1,1 mi<br><br>
+  <strong>Modelo integrado catarinense:</strong><br>
+  ▸ <strong>Suinocultor produz</strong> em parceria com integradora<br>
+  ▸ <strong>Integradora fornece:</strong> Leitões, ração, assistência técnica<br>
+  ▸ <strong>Suinocultor recebe:</strong> Taxa fixa por kg produzido<br>
+  ▸ <strong>BRF, JBS Seara, Aurora, Cooperativa Aurora:</strong> Lideram<br>
+  ▸ <strong>3.653 produtores ativos</strong> em SC (vs 6.666 antes · concentração)<br>
+  ▸ <strong>Por estado:</strong> SC > PR > RS > MG > MT > GO<br><br>
+  <strong>Logística SC = Vantagem mundial:</strong><br>
+  ▸ <strong>Porto de Itajaí:</strong> Hub para Ásia (1.708 tomadas refrigeradas!)<br>
+  ▸ <strong>JBS Terminais:</strong> Crescimento 330% em 18 meses<br>
+  ▸ <strong>Investimento R$ 220 mi:</strong> Modernização<br>
+  ▸ <strong>10 linhas de navegação direta</strong> Ásia, Europa, Américas, Oriente Médio</div>
+</div>
+
+<div class="alert cyan">
+  <span class="ai">🌎</span>
+  <div><strong style="color:var(--cyan)">CONCORRÊNCIA MUNDIAL: Brasil vs EUA vs UE · Peste Suína Africana favorece BR!</strong><br>
+  <strong>Top exportadores mundiais (USDA 2026):</strong><br>
+  ▸ <strong>1º União Europeia:</strong> ~3,1 mi t<br>
+  ▸ <strong>2º Estados Unidos:</strong> ~3,0 mi t<br>
+  ▸ <strong>3º Brasil:</strong> 1,5 mi t (+6,3% projetado)<br>
+  ▸ <strong>4º Canadá:</strong> 1,3 mi t<br>
+  ▸ <strong>5º México:</strong> 0,3 mi t<br><br>
+  <strong>Cenário PSA (Peste Suína Africana) global:</strong><br>
+  ▸ <strong>🇨🇳 China:</strong> Surtos esporádicos · rebanho recuperado<br>
+  ▸ <strong>🇻🇳 Vietnã:</strong> PSA recorrente · importa BR<br>
+  ▸ <strong>🇵🇭 Filipinas:</strong> PSA destruiu 50% rebanho · BR é salvador!<br>
+  ▸ <strong>🇰🇷 Coreia Sul:</strong> Casos isolados<br>
+  ▸ <strong>🇩🇪 Alemanha:</strong> Casos em javalis<br>
+  ▸ <strong>🇮🇹 Itália:</strong> Norte com surtos<br>
+  ▸ <strong>🇧🇷 Brasil:</strong> LIVRE de PSA (status sanitário OURO!)<br><br>
+  <strong>Vantagem competitiva BR:</strong><br>
+  ▸ <strong>Sanidade impecável</strong> (sem PSA · OIE confirma)<br>
+  ▸ <strong>Status sanitário "Livre"</strong> reconhecido mundialmente<br>
+  ▸ <strong>Habilitações:</strong> 80+ países<br>
+  ▸ <strong>Genética premium:</strong> Embrapa, Topigs, DanBred<br>
+  ▸ <strong>Custo grãos baixo</strong> · 30-40% menor que concorrentes<br>
+  ▸ <strong>Conversão alimentar:</strong> 2,3-2,5 kg ração/kg vivo (top global)<br>
+  ▸ <strong>Ciclo produção:</strong> 5,5-6 meses (eficiente)<br><br>
+  <strong>Riscos potenciais:</strong><br>
+  ▸ <strong>PSA chegar ao BR:</strong> Catástrofe potencial (mas vigilância máxima)<br>
+  ▸ <strong>Trump tarifas EUA:</strong> Pode afetar comércio<br>
+  ▸ <strong>Crise Hormuz:</strong> Já afetou 18,5% Oriente Médio<br>
+  ▸ <strong>Concorrência EUA + UE:</strong> Mercado global pressionado<br>
+  ▸ <strong>Retorno do rebanho China:</strong> Reduz demanda externa</div>
+</div>
+
+<div class="alert purple">
+  <span class="ai">🏦</span>
+  <div><strong style="color:var(--purple)">EVENTO MACRO: COPOM CORTOU SELIC PARA 14,50%! Mas dólar fraco aperta margem export</strong><br>
+  Banco Central cortou Selic em 0,25 p.p. (29/04). <strong>Dólar:</strong> R$ 4,9523 (mín 2 anos!).<br><br>
+  <strong>Para o setor suinícola:</strong><br>
+  ▸ <strong>Selic 14,50%:</strong> Crédito custeio mais barato<br>
+  ▸ <strong>Investimento granjas:</strong> Mais viável (genética, climatização)<br>
+  ▸ <strong>BNDES Suinocultura:</strong> Linhas modernização<br>
+  ▸ <strong>Plano Safra 26/27:</strong> Foco bem-estar animal<br>
+  ▸ <strong>Refinanciamento:</strong> Suinocultores alongam dívidas<br><br>
+  <strong>Dólar fraco — IMPACTOS:</strong><br>
+  ▸ ✗ <strong>Reduz receita exportação</strong> em R$ (frigorífico)<br>
+  ▸ ✗ <strong>Frigorífico pressiona</strong> preço pago suinocultor<br>
+  ▸ ✓ <strong>Insumos importados</strong> mais baratos (premix, vitaminas)<br>
+  ▸ ✓ <strong>Genética importada</strong> reduz custo<br>
+  ▸ ✓ <strong>Equipamentos modernos</strong> (alemães, dinamarqueses) baratos<br><br>
+  <strong>Cálculo paridade exportação:</strong><br>
+  ▸ <strong>Preço médio export:</strong> US$ 2.350/t<br>
+  ▸ <strong>Em R$ (4,95):</strong> R$ 11.633/t = R$ 11,63/kg<br>
+  ▸ <strong>Atual carcaça SP:</strong> R$ 8,42/kg<br>
+  ▸ <strong>Premium exportação:</strong> R$ 3,21/kg (+38%!)<br>
+  ▸ <strong>Frigoríficos preferem exportar</strong> · margem industrial saudável<br><br>
+  <strong>Cenário composto:</strong><br>
+  ▸ <strong>Recordes export</strong> (positivo p/ frigorífico)<br>
+  ▸ <strong>Doméstico em queda</strong> (negativo p/ produtor)<br>
+  ▸ <strong>Selic baixa</strong> (alívio crédito)<br>
+  ▸ <strong>Custos altos</strong> (milho/soja apertam margem)<br>
+  ▸ <strong>= NEUTRO-NEGATIVO p/ produtor independente</strong><br>
+  ▸ <strong>= POSITIVO p/ frigorífico-integrador</strong></div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#9f1239,#be123c)">📊</div><h2>Indicadores-Chave <span>— CEPEA · ABPA · ABCS · Macro</span></h2></div>
+
+<div class="kpi-row">
+  <div class="kpi pk"><div class="kpi-lb">Carcaça Esp SP (28/04)</div><div class="kpi-val pk">R$ 8,42</div><div class="kpi-sub">/kg · CEPEA</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Suíno vivo SP</div><div class="kpi-val dn">R$ 5,36</div><div class="kpi-sub">/kg · queda 6 meses</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Suíno vivo SC (líder!)</div><div class="kpi-val dn">R$ 4,88</div><div class="kpi-sub">/kg · margem negativa!</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Suíno vivo PR</div><div class="kpi-val dn">R$ 4,85</div><div class="kpi-sub">/kg · mais baixo BR</div></div>
+  <div class="kpi up"><div class="kpi-lb">Export Mar volume</div><div class="kpi-val up">153,8 mil t</div><div class="kpi-sub">+32,2% RECORDE!</div></div>
+  <div class="kpi up"><div class="kpi-lb">Export Mar receita</div><div class="kpi-val up">US$ 361,6 mi</div><div class="kpi-sub">+30,1% RECORDE!</div></div>
+  <div class="kpi up"><div class="kpi-lb">Acum 1ºT/26 volume</div><div class="kpi-val up">392,2 mil t</div><div class="kpi-sub">+16,5%!</div></div>
+  <div class="kpi up"><div class="kpi-lb">Acum 1ºT/26 receita</div><div class="kpi-val up">US$ 916 mi</div><div class="kpi-sub">+16,1%!</div></div>
+  <div class="kpi pk"><div class="kpi-lb">Total 2025 (recorde)</div><div class="kpi-val pk">1,47 mi t</div><div class="kpi-sub">US$ 3,58 bi</div></div>
+  <div class="kpi up"><div class="kpi-lb">Filipinas Mar volume</div><div class="kpi-val up">48,9 mil t</div><div class="kpi-sub">+80,7%! líder destino</div></div>
+  <div class="kpi up"><div class="kpi-lb">Japão Mar volume</div><div class="kpi-val up">18,2 mil t</div><div class="kpi-sub">+85,8%! BOOM!</div></div>
+  <div class="kpi nt"><div class="kpi-lb">SC export 1ºT</div><div class="kpi-val nt">182,4 mil t</div><div class="kpi-sub">47,8% nacional!</div></div>
+  <div class="kpi pk"><div class="kpi-lb">Abates 2025 (IBGE)</div><div class="kpi-val pk">60,69 mi</div><div class="kpi-sub">cabeças · +4,3%</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Custo produção SC</div><div class="kpi-val nt">R$ 6,48</div><div class="kpi-sub">/kg · acima preço!</div></div>
+  <div class="kpi pu"><div class="kpi-lb">Selic 29/04</div><div class="kpi-val pu">14,50%</div><div class="kpi-sub">↓ 0,25 p.p.</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Dólar 30/04</div><div class="kpi-val dn">R$ 4,95</div><div class="kpi-sub">Mín 2 anos</div></div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#9f1239,#be123c)">📍</div><h2>Cotações da Semana <span>— CEPEA · Praças · 27 a 30 Abril 2026</span></h2></div>
+
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Indicador</th><th>21/04</th><th>23/04</th><th>25/04</th><th>28/04</th><th>30/04 (proj.)</th><th>Var. Sem</th><th>Var. Mês</th></tr></thead>
+<tbody>
+<tr><td class="td-name">📊 Carcaça Esp Grande SP (R$/kg)</td><td>8,62</td><td>8,55</td><td>8,48</td><td class="td-dn">8,42</td><td>8,40</td><td class="td-dn">−2,6%</td><td class="td-dn">−5,2%</td></tr>
+<tr><td class="td-name">🐷 Suíno Vivo SP (R$/kg)</td><td>5,56</td><td>5,48</td><td>5,42</td><td class="td-dn">5,36</td><td>5,35</td><td class="td-dn">−3,8%</td><td class="td-dn">−6,1%</td></tr>
+<tr><td class="td-name">🐷 Suíno Vivo MG (R$/kg)</td><td>5,67</td><td>5,66</td><td>5,65</td><td class="td-dn">5,64</td><td>5,63</td><td class="td-dn">−0,7%</td><td class="td-dn">−1,2%</td></tr>
+<tr><td class="td-name">🐷 Suíno Vivo PR (R$/kg)</td><td>5,21</td><td>5,10</td><td>4,98</td><td class="td-dn">4,85</td><td>4,82</td><td class="td-dn">−6,9%</td><td class="td-dn">−10,3%</td></tr>
+<tr><td class="td-name">🐷 Suíno Vivo SC (R$/kg) líder!</td><td>5,11</td><td>5,02</td><td>4,95</td><td class="td-dn">4,88</td><td>4,85</td><td class="td-dn">−4,5%</td><td class="td-dn">−8,8%</td></tr>
+<tr><td class="td-name">🐷 Suíno Vivo RS (R$/kg)</td><td>5,34</td><td>5,22</td><td>5,12</td><td class="td-dn">5,04</td><td>5,02</td><td class="td-dn">−5,6%</td><td class="td-dn">−9,1%</td></tr>
+<tr><td class="td-name">🌽 Milho Campinas SP (sc 60kg)</td><td>66,36</td><td>66,50</td><td>66,55</td><td class="td-up">66,67</td><td>66,70</td><td class="td-up">+0,5%</td><td class="td-up">+1,3%</td></tr>
+<tr><td class="td-name">🌱 Soja Paranaguá (sc 60kg)</td><td>126,90</td><td>127,50</td><td>128,00</td><td class="td-up">128,47</td><td>128,80</td><td class="td-up">+1,2%</td><td class="td-up">+2,5%</td></tr>
+</tbody>
+</table>
+</div>
+
+<p style="font-size:.78rem;color:var(--text3);margin-top:6px;text-align:center"><em>Suíno vivo PR/SC abaixo de R$ 5/kg · Margem severa para suinocultor independente · Custo SC integrado R$ 6,48/kg · Margem operacional negativa!</em></p>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#9f1239,#be123c)">📈</div><h2>Análise Gráfica <span>— 6 perspectivas · CEPEA · Export · Filipinas · Estados · SC · Custos</span></h2></div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📊 CEPEA Carcaça SP · 12 Meses <span class="ch-tag">R$/kg</span></h3>
+    <div class="chart-wrap"><canvas id="ch1"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>🌍 Exportação Brasil 1ºT/26 <span class="ch-tag">ABPA · mil t/mês</span></h3>
+    <div class="chart-wrap"><canvas id="ch2"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>🌏 Top Destinos Mar/26 <span class="ch-tag">ABPA · mil t</span></h3>
+    <div class="chart-wrap"><canvas id="ch3"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>📍 Top Estados Produtores <span class="ch-tag">IBGE 2025 · % abate</span></h3>
+    <div class="chart-wrap"><canvas id="ch4"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>🐷 Suíno Vivo por Estado <span class="ch-tag">CEPEA · R$/kg (28/04)</span></h3>
+    <div class="chart-wrap"><canvas id="ch5"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>💰 Margem Suinocultor SC <span class="ch-tag">Receita vs Custo · R$/kg</span></h3>
+    <div class="chart-wrap"><canvas id="ch6"></canvas></div>
+  </div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#be123c,#e11d48)">🔍</div><h2>Análise Aprofundada <span>— Brasil 3º exportador mundial · Recordes em série · Margem em risco</span></h2></div>
+
+<div class="co pk">
+  <h4>🐷 A Tese Central: Brasil é 3º Exportador Mundial · Filipinas é o motor do RECORDE!</h4>
+  <p><strong>Brasil consolidou posição global:</strong><br>
+  ▸ <strong>3º exportador mundial</strong> de carne suína (atrás EUA e UE)<br>
+  ▸ <strong>Exportação 2025:</strong> 1,47 mi t · receita US$ 3,58 bi (RECORDE!)<br>
+  ▸ <strong>Projeção 2026:</strong> 1,545 mi t (+6,3%)<br>
+  ▸ <strong>Produção 2025:</strong> 5,55 mi t · 60,69 mi cabeças<br>
+  ▸ <strong>Crescimento abate:</strong> +4,3% · maior desde série 1997!<br><br>
+  <strong>Filipinas é o GRANDE motor:</strong><br>
+  ▸ <strong>Mar/26:</strong> 48,9 mil t (+80,7%! · 32% das exportações BR!)<br>
+  ▸ <strong>2025:</strong> 25,8% do total exportado<br>
+  ▸ <strong>Razão:</strong> Peste Suína Africana destruiu plantel doméstico<br>
+  ▸ <strong>117 milhões de habitantes</strong> · consumo per capita 17 kg/hab<br>
+  ▸ <strong>Brasil é o salvador alimentar das Filipinas!</strong><br><br>
+  <strong>Outras forças:</strong><br>
+  ▸ <strong>Japão (+85,8%):</strong> Premium · plantas SC habilitadas<br>
+  ▸ <strong>Coreia Sul:</strong> Habilitação ampliada<br>
+  ▸ <strong>México:</strong> Tensão EUA-México beneficia BR<br>
+  ▸ <strong>Vietnã:</strong> PSA recorrente · BR atende<br>
+  ▸ <strong>Chile (+26,1%):</strong> BR ganha espaço<br><br>
+  <strong>Por que Brasil é tão competitivo?</strong><br>
+  ▸ <strong>Sanidade OURO:</strong> Livre de PSA · status mundial<br>
+  ▸ <strong>Custo grãos baixo:</strong> Milho + soja BR são os melhores<br>
+  ▸ <strong>Genética premium:</strong> Embrapa, Topigs, DanBred<br>
+  ▸ <strong>Modelo integrado:</strong> BRF, JBS Seara, Aurora<br>
+  ▸ <strong>Logística SC:</strong> Porto Itajaí · hub para Ásia<br>
+  ▸ <strong>Sustentabilidade:</strong> Bem-estar animal em alta<br><br>
+  <strong>Conclusão:</strong> Brasil tem TODOS os fundamentos para crescer +5% ao ano em exportação por 5+ anos. Posição como 3º exportador é INABALÁVEL no curto prazo.</p>
+</div>
+
+<div class="co up">
+  <h4>📈 RECORDE HISTÓRICO em Março! Trajetória Acelerada Continua em Abril</h4>
+  <p><strong>Trajetória mensal recente:</strong><br>
+  ▸ <strong>Set/2025:</strong> 151,6 mil t (recorde anterior)<br>
+  ▸ <strong>Dez/2025:</strong> 130 mil t (sazonal)<br>
+  ▸ <strong>Jan/2026:</strong> 119,5 mil t · US$ 281 mi<br>
+  ▸ <strong>Fev/2026:</strong> 119 mil t · US$ 273 mi<br>
+  ▸ <strong>Mar/2026:</strong> 153,8 mil t (NOVO RECORDE!) · US$ 361,6 mi<br>
+  ▸ <strong>Acumulado 1ºT/26:</strong> 392,2 mil t (+16,5%) · US$ 916 mi (+16,1%)<br><br>
+  <strong>Receita acompanha volume:</strong><br>
+  ▸ <strong>Preço médio mar/26:</strong> US$ 2.350/t (+11,5% ano)<br>
+  ▸ <strong>Mercados premium</strong> (Japão, Coreia, UE) puxando<br>
+  ▸ <strong>Mix de produtos:</strong> Mais cortes nobres<br>
+  ▸ <strong>Halal certificado:</strong> Em expansão (carne sem porcina mas processados)<br><br>
+  <strong>Top 10 destinos 1ºT/26:</strong><br>
+  ▸ <strong>1º Filipinas:</strong> ~120 mil t (+80%!)<br>
+  ▸ <strong>2º Japão:</strong> ~50 mil t (+85%!)<br>
+  ▸ <strong>3º China:</strong> ~38 mil t (-9%)<br>
+  ▸ <strong>4º Chile:</strong> ~30 mil t (+26%)<br>
+  ▸ <strong>5º Hong Kong:</strong> ~25 mil t (-29%)<br>
+  ▸ <strong>6º Vietnã:</strong> ~22 mil t<br>
+  ▸ <strong>7º Coreia Sul:</strong> ~18 mil t<br>
+  ▸ <strong>8º Singapura:</strong> ~15 mil t<br>
+  ▸ <strong>9º México:</strong> ~12 mil t (em alta!)<br>
+  ▸ <strong>10º Argentina + Uruguai:</strong> ~10 mil t<br><br>
+  <strong>Por que recorde apesar dos desafios?</strong><br>
+  ▸ <strong>PSA mundial</strong> destrói rebanhos concorrentes (Filipinas, Vietnã)<br>
+  ▸ <strong>Brasil livre PSA</strong> = vantagem inédita<br>
+  ▸ <strong>EUA tarifas</strong> Trump complicam concorrente americano<br>
+  ▸ <strong>UE estoque limitado</strong> · BR substitui<br>
+  ▸ <strong>Logística SC otimizada</strong> · Itajaí cresceu 330%<br>
+  ▸ <strong>Demanda Ásia explode</strong> (1,5 bi pessoas)</p>
+</div>
+
+<div class="co dn">
+  <h4>📉 Paradoxo BR: Exportação RECORDE mas Suinocultor SUFOCADO!</h4>
+  <p><strong>Trajetória do preço suíno vivo SP-5 em 2026:</strong><br>
+  ▸ <strong>Dez/25:</strong> R$ 8,85/kg (referência alta)<br>
+  ▸ <strong>Jan/26:</strong> R$ 8,24/kg (-6,9%!)<br>
+  ▸ <strong>Fev/26:</strong> R$ 7,90/kg<br>
+  ▸ <strong>Mar/26:</strong> R$ 5,85/kg (queda forte!)<br>
+  ▸ <strong>Abr/26 (28/04):</strong> R$ 5,36/kg<br>
+  ▸ <strong>Variação ano:</strong> -39%! (forte desvalorização)<br><br>
+  <strong>Por que preço cai com exportação RECORDE?</strong><br>
+  ▸ <strong>Produção +4% no 1ºT</strong> (oferta abundante)<br>
+  ▸ <strong>Quaresma reduziu consumo</strong> (sazonal mar)<br>
+  ▸ <strong>Demanda doméstica fraca</strong> (orçamento apertado)<br>
+  ▸ <strong>Trade-down do boi → frango</strong> (suíno fica de fora)<br>
+  ▸ <strong>Dólar fraco</strong> reduz competitividade<br>
+  ▸ <strong>Crescimento abate (+4%) ≈ exportação (+15%)</strong> · oferta sob controle<br>
+  ▸ <strong>Mas peso ração</strong> (custo) sufoca margem do produtor<br>
+  ▸ <strong>Frigoríficos</strong> aproveitam para comprar barato<br><br>
+  <strong>Margem suinocultor SC ciclo completo:</strong><br>
+  ▸ <strong>Custo produção:</strong> R$ 6,48/kg (dez/25 ABPA)<br>
+  ▸ <strong>Estimativa custo abr/26:</strong> R$ 6,60-6,80/kg (milho subiu)<br>
+  ▸ <strong>Preço suíno vivo SC:</strong> R$ 4,88/kg<br>
+  ▸ <strong>Margem:</strong> -R$ 1,72 a -R$ 1,92/kg (NEGATIVA!)<br>
+  ▸ <strong>Em ciclo de 110 kg:</strong> Prejuízo R$ 190-211/animal!<br>
+  ▸ <strong>Em granja de 5.000 animais/ano:</strong> Prejuízo R$ 950 mil-1 mi/ano!<br><br>
+  <strong>Mas suinocultor INTEGRADO sente diferente:</strong><br>
+  ▸ <strong>Recebe taxa fixa</strong> da integradora (BRF, JBS Seara, Aurora)<br>
+  ▸ <strong>Não sente diretamente</strong> o preço CEPEA<br>
+  ▸ <strong>Bonificação por desempenho</strong> (conversão alimentar)<br>
+  ▸ <strong>Renda média:</strong> R$ 2-4/kg vivo (margem 30-40%)<br>
+  ▸ <strong>Contrato anual</strong> com cláusulas de reajuste<br><br>
+  <strong>Quem vence?</strong> O FRIGORÍFICO. Compra suíno barato (R$ 4,88) · exporta a US$ 2.350/t (R$ 11,63/kg!) · margem industrial 40-50%! Modelo integrado é o segredo.</p>
+</div>
+
+<div class="co bl">
+  <h4>🏗️ Santa Catarina: A Capital Mundial · Modelo Integrado é Imbatível!</h4>
+  <p><strong>SC é o estado-fenômeno do agro BR:</strong><br>
+  ▸ <strong>Produção 2025:</strong> 18,3 milhões de suínos (28,2% nacional!)<br>
+  ▸ <strong>Receita exportação:</strong> US$ 1,85 bi (50,1% nacional!)<br>
+  ▸ <strong>SC produz +2x sua população</strong> (8 milhões hab × 18,3 mi suínos)<br>
+  ▸ <strong>PIB agro SC:</strong> 25% só da suinocultura<br>
+  ▸ <strong>Crescimento 2025:</strong> +5,9% produção · +12,5% receita<br><br>
+  <strong>Cadeia produtiva integrada:</strong><br>
+  ▸ <strong>Frigoríficos-integradores:</strong> BRF (Sadia), JBS Seara, Aurora Coop<br>
+  ▸ <strong>Produtores integrados:</strong> 3.653 ativos (caiu de 6.666)<br>
+  ▸ <strong>Concentração:</strong> Profissionalização · escala<br>
+  ▸ <strong>Modelo:</strong> Integradora fornece tudo · produtor "alugamento de barriga"<br>
+  ▸ <strong>Renda produtor:</strong> R$ 2-4/kg vivo (margem 30-40%)<br><br>
+  <strong>Top municípios produtores SC:</strong><br>
+  ▸ <strong>Concórdia:</strong> 4,1 mi cabeças (LÍDER ABSOLUTO!)<br>
+  ▸ <strong>Joaçaba:</strong> 3,9 mi<br>
+  ▸ <strong>Chapecó:</strong> 3,5 mi · sede da BRF<br>
+  ▸ <strong>São Miguel do Oeste:</strong> 2,2 mi<br>
+  ▸ <strong>Rio do Sul:</strong> 1,1 mi<br><br>
+  <strong>Logística SC = Vantagem mundial:</strong><br>
+  ▸ <strong>Porto de Itajaí:</strong> Hub para Ásia (1.708 tomadas refrigeradas!)<br>
+  ▸ <strong>JBS Terminais:</strong> Crescimento 330% em 18 meses<br>
+  ▸ <strong>Investimento R$ 220 mi:</strong> Modernização<br>
+  ▸ <strong>10 linhas de navegação direta</strong> Ásia, Europa, Américas<br>
+  ▸ <strong>1ºT/26:</strong> Volume Itajaí +60% vs 1ºT/25<br><br>
+  <strong>Outros estados:</strong><br>
+  ▸ <strong>2º Paraná:</strong> 21,2% nacional · forte cooperativismo<br>
+  ▸ <strong>3º Rio Grande do Sul:</strong> 17,9% · BRF e Aurora<br>
+  ▸ <strong>4º Minas Gerais:</strong> ~10%<br>
+  ▸ <strong>5º Mato Grosso:</strong> Crescente · próximo grãos<br>
+  ▸ <strong>Sul concentra 67%</strong> da produção BR (clima frio favorável)<br><br>
+  <strong>Razão sucesso SC:</strong> a) Clima frio (suíno gosta), b) Tradição alemã/italiana, c) Modelo integrado pioneiro (anos 60), d) Agroindústrias gigantes (BRF, Aurora, JBS), e) Pesquisa Embrapa Suínos e Aves em Concórdia.</p>
+</div>
+
+<div class="co or">
+  <h4>🇵🇭 Filipinas é o GRANDE motor do RECORDE! 32% da exportação BR · Peste Suína = Tragédia local + Oportunidade BR</h4>
+  <p><strong>Filipinas — O fenômeno mundial do suíno BR:</strong><br>
+  ▸ <strong>Mar/26:</strong> 48,9 mil t (+80,7%!)<br>
+  ▸ <strong>1ºT/26:</strong> 30%+ das exportações BR (líder absoluto)<br>
+  ▸ <strong>2025:</strong> 25,8% do total exportado<br>
+  ▸ <strong>Crescimento absoluto:</strong> +250% em 2 anos!<br><br>
+  <strong>Por que Filipinas dependem do Brasil?</strong><br>
+  ▸ <strong>Peste Suína Africana (PSA):</strong> Iniciou 2019 · destruiu 50% rebanho local<br>
+  ▸ <strong>Plantel filipino:</strong> Caiu de 12,7 mi para 6,3 mi cabeças!<br>
+  ▸ <strong>Recuperação lenta:</strong> Falta de biossegurança<br>
+  ▸ <strong>População:</strong> 117 milhões habitantes (mercado gigante)<br>
+  ▸ <strong>Consumo per capita:</strong> 17 kg/hab/ano (alto!)<br>
+  ▸ <strong>Cristão majoritário:</strong> Não tem restrição halal<br>
+  ▸ <strong>Pratos típicos:</strong> Lechon, sisig, adobo, lechon kawali (todos com porco!)<br><br>
+  <strong>Concorrentes em desvantagem:</strong><br>
+  ▸ <strong>🇺🇸 EUA:</strong> Tarifou pelas relações Filipinas-China<br>
+  ▸ <strong>🇪🇺 UE:</strong> Mais caro · sanção sanitária PSA<br>
+  ▸ <strong>🇨🇦 Canadá:</strong> Volume limitado · preço alto<br>
+  ▸ <strong>🇩🇰 Dinamarca:</strong> Custo alto<br>
+  ▸ <strong>🇧🇷 Brasil:</strong> Preço melhor · sanidade OK · logística direta!<br><br>
+  <strong>Logística Brasil-Filipinas:</strong><br>
+  ▸ <strong>Rota:</strong> Itajaí (SC) → Manila/Cebu (Filipinas)<br>
+  ▸ <strong>Tempo trânsito:</strong> 35-40 dias via Pacífico<br>
+  ▸ <strong>Frete:</strong> US$ 0,15-0,20/kg<br>
+  ▸ <strong>Câmaras refrigeradas:</strong> Tecnologia preservação<br>
+  ▸ <strong>Habilitações:</strong> 30+ frigoríficos BR podem exportar<br><br>
+  <strong>Cenário 2026:</strong> Filipinas devem importar 350-400 mil t do BR (~US$ 850 mi)! Mercado #1 disparado. Risco: se Filipinas recuperar PSA, demanda cai. Mas levaria 5+ anos.</p>
+</div>
+
+<div class="co cy">
+  <h4>🌽 Custos: Milho Subiu · Margem Sufocada · Suinocultor Independente em RISCO!</h4>
+  <p><strong>Estrutura custos suinocultura BR:</strong><br>
+  ▸ <strong>Ração:</strong> 71,5% custo total<br>
+  ▸ <strong>Milho na ração:</strong> 60-65%<br>
+  ▸ <strong>Farelo soja:</strong> 25-30%<br>
+  ▸ <strong>Leitões compra:</strong> 12-15% (independente)<br>
+  ▸ <strong>Mão de obra:</strong> 5-7%<br>
+  ▸ <strong>Sanidade:</strong> 3-4%<br>
+  ▸ <strong>Energia + outros:</strong> 5-8%<br><br>
+  <strong>Cotações insumos atuais (CEPEA · 28/04):</strong><br>
+  ▸ <strong>Milho Campinas:</strong> R$ 66,67/sc 60kg = R$ 1.111/t<br>
+  ▸ <strong>Soja Paranaguá:</strong> R$ 128,47/sc 60kg = R$ 2.141/t<br>
+  ▸ <strong>Farelo soja 47%:</strong> ~R$ 1.520/t<br>
+  ▸ <strong>Premix (vitaminas):</strong> R$ 5-8/kg<br>
+  ▸ <strong>Leitão (compra independente):</strong> R$ 220-260/cabeça<br><br>
+  <strong>Cálculo custo médio (suinocultor SC ciclo completo):</strong><br>
+  ▸ <strong>Conversão alimentar:</strong> 2,4 kg ração/kg vivo<br>
+  ▸ <strong>Custo ração/kg vivo:</strong> R$ 4,40<br>
+  ▸ <strong>Mão obra + sanidade + outros:</strong> R$ 1,50<br>
+  ▸ <strong>Depreciação + financeiro:</strong> R$ 0,58<br>
+  ▸ <strong>Custo total/kg vivo:</strong> R$ 6,48 (ABPA dez/25)<br>
+  ▸ <strong>Estimativa abr/26 (milho subiu):</strong> R$ 6,60-6,80/kg<br>
+  ▸ <strong>Preço atual SC:</strong> R$ 4,88/kg<br>
+  ▸ <strong>Margem:</strong> -R$ 1,72 a -R$ 1,92/kg (PREJUÍZO!)<br><br>
+  <strong>Suinocultor INTEGRADO ganha:</strong><br>
+  ▸ <strong>Recebe R$ 1,80-2,50/kg vivo</strong> (taxa fixa)<br>
+  ▸ <strong>Margem operacional:</strong> 25-35%<br>
+  ▸ <strong>Contrato anual</strong> com cláusulas de reajuste<br>
+  ▸ <strong>Bonificação:</strong> Conversão alimentar, mortalidade, peso médio<br>
+  ▸ <strong>Em granja de 1.000 cabeças:</strong> Renda R$ 200-330 mil/ano<br><br>
+  <strong>Suinocultor INDEPENDENTE perde:</strong><br>
+  ▸ <strong>Sente diretamente</strong> o preço CEPEA<br>
+  ▸ <strong>Compra leitão caro</strong> (R$ 220-260)<br>
+  ▸ <strong>Vende suíno vivo</strong> abaixo do custo<br>
+  ▸ <strong>Risco descapitalização:</strong> Alto<br>
+  ▸ <strong>Solução:</strong> Migrar para INTEGRAÇÃO ou DIVERSIFICAR (avicultura, gado)<br><br>
+  <strong>Tendências dos insumos:</strong><br>
+  ▸ <strong>Milho:</strong> Pressão alta antes safrinha (jul-set)<br>
+  ▸ <strong>Soja:</strong> Estável · safra recorde 179 mi t<br>
+  ▸ <strong>Custo ração:</strong> Pode aliviar 5-8% no 3ºT/26<br>
+  ▸ <strong>Margem industrial:</strong> Vai melhorar com colheita</p>
+</div>
+
+<div class="co pu">
+  <h4>🏦 Macro: Selic Baixa Ajuda · Mas Dólar Fraco Aperta Margem do Frigorífico</h4>
+  <p><strong>Decisão Copom (29/04):</strong> Selic cortada para 14,50% (−0,25 p.p.)<br>
+  <strong>Dólar:</strong> R$ 4,9523 (mín 2 anos!)<br><br>
+  <strong>Para o setor suinícola:</strong><br>
+  ▸ <strong>Selic 14,50%:</strong> Crédito custeio mais barato<br>
+  ▸ <strong>Investimento granjas:</strong> Mais viável (climatização, automação)<br>
+  ▸ <strong>BNDES Suinocultura:</strong> Linhas modernização<br>
+  ▸ <strong>Plano Safra 26/27:</strong> Foco bem-estar animal<br>
+  ▸ <strong>Refinanciamento:</strong> Suinocultores alongam dívidas<br><br>
+  <strong>Dólar fraco — IMPACTOS DUPLOS:</strong><br>
+  ▸ ✗ <strong>Reduz receita exportação</strong> em R$ (frigorífico)<br>
+  ▸ ✗ <strong>Frigorífico pressiona</strong> preço pago suinocultor<br>
+  ▸ ✓ <strong>Insumos importados</strong> mais baratos (premix, vitaminas)<br>
+  ▸ ✓ <strong>Genética importada</strong> reduz custo (Topigs, DanBred)<br>
+  ▸ ✓ <strong>Equipamentos modernos</strong> (alemães, dinamarqueses) baratos<br><br>
+  <strong>Cálculo paridade exportação:</strong><br>
+  ▸ <strong>Preço médio export:</strong> US$ 2.350/t<br>
+  ▸ <strong>Em R$ (4,95):</strong> R$ 11.633/t = R$ 11,63/kg<br>
+  ▸ <strong>Atual carcaça SP:</strong> R$ 8,42/kg<br>
+  ▸ <strong>Premium exportação:</strong> R$ 3,21/kg (+38%!)<br>
+  ▸ <strong>Frigoríficos preferem exportar</strong> · margem industrial 40-50%!<br><br>
+  <strong>Cenário composto 2026:</strong><br>
+  ▸ <strong>Recordes export</strong> (positivo p/ frigorífico)<br>
+  ▸ <strong>Doméstico em queda</strong> (negativo p/ produtor)<br>
+  ▸ <strong>Selic baixa</strong> (alívio crédito)<br>
+  ▸ <strong>Custos altos</strong> (milho/soja apertam margem)<br>
+  ▸ <strong>= NEUTRO-NEGATIVO p/ produtor independente</strong><br>
+  ▸ <strong>= POSITIVO p/ frigorífico-integrador</strong><br><br>
+  <strong>Conclusão para BRF, JBS Seara, Aurora:</strong> Foco em EXPORTAÇÃO. Mercado interno só "absorve" produção excedente. Margem grossa vem da Filipinas + Japão + Coreia. Setor está em ciclo de OURO graças à PSA mundial + status sanitário BR + logística SC.</p>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#be123c,#e11d48)">🌡️</div><h2>Termômetros do Mercado <span>— Pressões e Vetores</span></h2></div>
+
+<div class="grid3">
+  <div class="card">
+    <div class="thermo"><h4>📊 Carcaça SP CEPEA</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:32%"></div></div>
+      <div class="th-lb"><span>Crash</span><span>Médio</span><span>Pico</span></div>
+      <p style="font-size:.78rem;color:var(--dn);margin-top:8px;font-weight:700">⬇ FRACO</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">R$ 8,42/kg · queda 6 meses!</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🌍 Exportação BR</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:95%"></div></div>
+      <div class="th-lb"><span>Fraca</span><span>Média</span><span>Recorde</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ RECORDE!</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">+32,2% mar! · maior história</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🇵🇭 Filipinas Demanda</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:97%"></div></div>
+      <div class="th-lb"><span>Fraca</span><span>Média</span><span>Boom</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ BOOM TOTAL!</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">+80,7%! PSA local + BR salvador</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🇯🇵 Japão Demanda</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:95%"></div></div>
+      <div class="th-lb"><span>Fraca</span><span>Média</span><span>Boom</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ BOOM!</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">+85,8%! plantas SC habilitadas</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>💰 Margem Suinocultor</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:18%"></div></div>
+      <div class="th-lb"><span>Crítica</span><span>Média</span><span>Lucrativa</span></div>
+      <p style="font-size:.78rem;color:var(--dn);margin-top:8px;font-weight:700">⬇ CRÍTICA!</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">SC: -R$ 1,72/kg · prejuízo!</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🌽 Custos Ração</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--up),var(--nt),var(--dn))"><div class="th-marker" style="left:62%"></div></div>
+      <div class="th-lb"><span>Barato</span><span>Médio</span><span>Caro</span></div>
+      <p style="font-size:.78rem;color:var(--dn);margin-top:8px;font-weight:700">⬆ CARO!</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">Milho subindo · soja firme</p>
+    </div>
+  </div>
+</div>
+
+<div class="dv"></div>
+
+<div class="opinion">
+  <h3>🎯 Opinião do Analista — Brasil Vive ANO HISTÓRICO mas Margem Apertada do Suinocultor!</h3>
+
+  <p><strong>O setor suinícola brasileiro vive PARADOXO HISTÓRICO em 2026: EXPORTAÇÃO BATE RECORDE ABSOLUTO em março com 153,8 mil t (+32,2%!) e receita US$ 361,6 mi (+30,1% RECORDE!). 1ºT/26 acumulou 392,2 mil t (+16,5%) com receita US$ 916 mi (+16,1%). FILIPINAS é o GRANDE motor (+80,7% volume! · 32% das exportações · PSA destruiu rebanho local). JAPÃO BOOM (+85,8%! plantas SC habilitadas). Brasil é 3º exportador mundial · projeção 2026 é 1,545 mi t (+6,3%). ABATES BR 2025: 60,69 milhões cabeças (RECORDE série IBGE!). SANTA CATARINA é a CAPITAL MUNDIAL · 28,2% nacional · 51% exportações · produz +2x sua população em suínos! Concórdia/Joaçaba/Chapecó dominam. MAS: Suíno vivo SC R$ 4,88/kg vs custo produção R$ 6,48/kg = MARGEM NEGATIVA -R$ 1,72/kg! Suinocultor INDEPENDENTE em PREJUÍZO. Suinocultor INTEGRADO recebe taxa fixa (BRF, JBS Seara, Aurora) e tem margem 25-35%. FRIGORÍFICOS lucram MUITO com exportação a US$ 2.350/t (R$ 11,63/kg!) vs preço pago R$ 4,88/kg = margem industrial 40-50%! Selic 14,50% + dólar R$ 4,95 + custos altos (milho subindo) = cenário NEUTRO-NEGATIVO p/ produtor · POSITIVO p/ frigorífico. APROVEITE A OPORTUNIDADE DE INTEGRAÇÃO!</strong></p>
+
+  <p><strong>Semana 27-30/abr (curta · feriado 1º Mai) — Em síntese:</strong><br>
+  ▸ <strong>Carcaça SP CEPEA (28/04):</strong> R$ 8,42/kg (-2,6% sem · -5,2% mês)<br>
+  ▸ <strong>Suíno vivo SP:</strong> R$ 5,36/kg · SC R$ 4,88/kg · PR R$ 4,85/kg<br>
+  ▸ <strong>Export Mar/26:</strong> 153,8 mil t (+32,2%!) · US$ 361,6 mi (RECORDE!)<br>
+  ▸ <strong>Acumulado 1ºT/26:</strong> 392,2 mil t (+16,5%) · US$ 916 mi (+16,1%)<br>
+  ▸ <strong>2025 anual (recorde):</strong> 1,47 mi t · US$ 3,58 bi<br>
+  ▸ <strong>Filipinas Mar:</strong> 48,9 mil t (+80,7%! · 32% nacional!)<br>
+  ▸ <strong>Japão Mar:</strong> 18,2 mil t (+85,8%! BOOM!)<br>
+  ▸ <strong>Abates 2025:</strong> 60,69 mi cabeças (RECORDE IBGE!)<br>
+  ▸ <strong>Top estado:</strong> Santa Catarina · 28,2% nacional · 51% export!<br>
+  ▸ <strong>Custo SC ciclo completo:</strong> R$ 6,48/kg (acima preço!)<br>
+  ▸ <strong>Margem produtor SC:</strong> -R$ 1,72/kg (prejuízo!)<br>
+  ▸ <strong>Custos:</strong> Milho R$ 66,67 (subiu) · Soja R$ 128,47 (firme)<br>
+  ▸ <strong>Selic:</strong> 14,50% · <strong>Dólar:</strong> R$ 4,95</p>
+
+  <p><strong>Recomendações estratégicas:</strong></p>
+
+  <p><strong>1. SUINOCULTOR INDEPENDENTE: MIGRE PARA INTEGRAÇÃO URGENTE!</strong> Margem negativa de -R$ 1,72/kg em SC = prejuízo R$ 190-211/animal! Em granja de 1.000 cabeças/ano = -R$ 190-211 mil. INVIÁVEL! Negocie com BRF, JBS Seara, Aurora ou Coopercentral. Modelo integrado: produtor recebe leitões, ração, assistência técnica · paga taxa fixa por kg produzido. Renda estável R$ 2-4/kg · margem 25-35%. Ou DIVERSIFIQUE para avicultura (frango ainda lucrativo) ou bovinocultura.</p>
+
+  <p><strong>2. SUINOCULTOR INTEGRADO: FOCO TOTAL EM EFICIÊNCIA!</strong> Bonificações por desempenho são chave. Mire: a) Conversão alimentar 2,3-2,4 kg/kg (tier 1), b) Mortalidade < 4%, c) Peso médio 110-115 kg ideal, d) Idade abate 165-175 dias. Cumpra prazos. Bonificação pode chegar a +20% sobre taxa base. Em granja 1.000 cabeças = R$ 50-70 mil extras/ano.</p>
+
+  <p><strong>3. EMPRESÁRIOS RURAIS: SELIC BAIXA = HORA DE INVESTIR EM GENÉTICA + AUTOMAÇÃO!</strong> Selic 14,50% com tendência queda. BNDES tem linhas suinocultura. Investimentos viáveis: a) Genética importada (Topigs, DanBred · ROI 3-5 anos), b) Climatização inteligente (-15% mortalidade verão), c) Comedouros automáticos (eficiência ração), d) Biossegurança total (proteger contra PSA), e) Tratamento dejetos (biogas + adubo).</p>
+
+  <p><strong>4. FRIGORÍFICOS-INTEGRADORES: AGRESSIVO EM EXPORTAÇÃO ÁSIA-PACÍFICO!</strong> Filipinas + Japão + Coreia + México = 60% das exportações. Janela ÚNICA (PSA mundial + EUA tarifado + UE limitado). Foco em: a) Cortes premium para Japão, b) Lombo/pernil para Filipinas, c) Coppa/bondiola para Itália, d) Embutidos para América Latina. Investir em halal-compatible (mesmo sem porcina) para entrar Oriente Médio (Coréia para halal).</p>
+
+  <p><strong>5. ATENÇÃO MÁXIMA À PESTE SUÍNA AFRICANA (PSA)! BR LIVRE = NOSSO MAIOR PATRIMÔNIO!</strong> Surto na Filipinas, Vietnã, China = oportunidade BR. Mas se PSA chegar ao BR = catástrofe. Biossegurança: a) Cercas de proteção contra javalis, b) Quarentena rigorosa visitantes, c) Higienização veículos/pessoas, d) Controle alimentação (sem restos), e) Vigilância fronteira (BO, PY). MAPA reforça monitoramento permanente.</p>
+
+  <p><strong>6. CONSUMIDOR FINAL: APROVEITE SUÍNO BARATO!</strong> Carcaça SP R$ 8,42/kg = mais barato em meses. Vs frango R$ 7,16/kg (suíno só 18% mais caro · proteína superior). Vs boi R$ 33-40/kg = 4x mais barato. Estratégia: comprar peças (lombo, pernil, costela) em supermercado · congelar · usar variado. Família 4 pessoas economiza R$ 150-300/mês trocando boi por suíno.</p>
+
+  <p><strong>7. INVESTIDORES (BRF, JBSS3, Aurora cotada): CICLO DE OURO PROLONGADO!</strong> Recordes em série · margem industrial 40-50% · concorrentes em problemas (PSA · tarifas). Próximos 12-24 meses devem manter trajetória. Risco: PSA chegar BR (raro mas catastrófico). Beneficiários secundários: Embrapa Suínos (genética), portos (Itajaí, Rio Grande), transportadoras refrigeradas (Coldex, Marfrig Logística).</p>
+
+  <div class="opinion .scenarios" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px">
+    <div class="sc up">
+      <h5>🟢 Cenário Altista</h5>
+      <p>Filipinas mantém PSA · Japão amplia · México explode · custos caem (milho safrinha) · Selic em queda · BR livre PSA → <strong>Export 1,7 mi t · Carcaça SP R$ 9,50-10,50/kg · margens recuperam!</strong>. Probabilidade: ~40%</p>
+    </div>
+    <div class="sc nt">
+      <h5>🟡 Cenário Neutro</h5>
+      <p>Mercado lateral · custos estáveis · Filipinas estabiliza · concorrentes recuperam · demanda interna média → <strong>Export 1,55 mi t · Carcaça SP R$ 8,50-9,50/kg · margem suinocultor zerada</strong>. Probabilidade: ~45%</p>
+    </div>
+    <div class="sc dn">
+      <h5>🔴 Cenário Baixista</h5>
+      <p>PSA chega BR · 50+ países suspendem · custos disparam · trade barreiras · Filipinas recupera plantel → <strong>Export 1,2 mi t · Carcaça SP R$ 7,00-7,80/kg · prejuízo total cadeia</strong>. Probabilidade: ~15%</p>
+    </div>
+  </div>
+
+  <div class="sig">📅 Análise Rural IN · Quinta, 30/Abr/2026 · Semana curta (feriado 1º Mai) · BRASIL = 3º EXPORTADOR MUNDIAL · RECORDE HISTÓRICO MARÇO · FILIPINAS + JAPÃO PUXAM · MAS SUINOCULTOR INDEPENDENTE EM PREJUÍZO!</div>
+</div>
+
+<footer class="footer"><div class="wrap">
+  <div class="footer-brand"><span class="r">Rural</span> <span class="i">IN</span></div>
+  <p>Radar Agro Semanal · Suíno · Semana 27–30 Abril 2026<br>
+  Fontes: CEPEA-Esalq/USP · ABPA · ABCS · Reuters · Globo Rural · Forbes · Agrolink · Sindicarne · Epagri/Cepa · IBGE · Secex/MDIC · Banco Central · COPOM · Safras & Mercado · 3tres3</p>
+  <div class="footer-credits">
+    <h4>Análise e Construção</h4>
+    <div class="name">Dr. Sidney Souza</div>
+    <div class="title">Economista e Adm. Agrícola — Estrategista Econômico do Produtor</div>
+    <div class="desc">Especialista em economia da fazenda e gestão de risco no agro<br>Transformamos dados da fazenda em decisões econômicas<br>Ajudamos produtores a entender se o mercado sustenta seu negócio</div>
+    <div class="contact">📧 <a href="mailto:sidneyagro@gmail.com">sidneyagro@gmail.com</a> · 📱 <a href="tel:+5564992266886">(64) 9 9226-6886</a> · 📸 <a href="https://instagram.com/ruralin.ai" target="_blank">@ruralin.ai</a></div>
+  </div>
+  <p style="margin-top:18px"><em>⚠️ Material informativo. Não constitui recomendação de investimento.</em></p>
+</div></footer>
+
+</div>
+
+<script>
+const gc='rgba(44,16,24,.5)';
+const tt={backgroundColor:'rgba(18,8,12,.97)',borderColor:'#3d1820',borderWidth:1,titleFont:{size:11,weight:'700'},bodyFont:{size:10},padding:10,cornerRadius:8};
+
+new Chart(document.getElementById('ch1').getContext('2d'),{
+  type:'line',
+  data:{labels:['Mai/25','Jul/25','Set/25','Nov/25','Jan/26','Mar/26','Abr/26'],
+    datasets:[{label:'Carcaça SP CEPEA (R$/kg)',data:[10.85,11.25,11.80,12.20,12.13,10.50,8.42],
+      borderColor:'#e11d48',backgroundColor:'rgba(225,29,72,.13)',borderWidth:3,fill:true,tension:.3,pointRadius:5,pointBackgroundColor:'#e11d48',pointBorderColor:'#f9a8d4',pointBorderWidth:1.5}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+    scales:{y:{min:8,max:13,grid:{color:gc},ticks:{callback:function(v){return'R$'+v.toFixed(2)},font:{size:9,weight:'600'},color:'#fecdd3'}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#fecdd3'}}}}
+});
+
+new Chart(document.getElementById('ch2').getContext('2d'),{
+  type:'bar',
+  data:{labels:['Jan/26','Fev/26','Mar/26'],
+    datasets:[{label:'Volume (mil t)',data:[119.5,119,153.8],backgroundColor:'rgba(225,29,72,.7)',borderColor:'#e11d48',borderWidth:2,borderRadius:7,yAxisID:'y'},
+      {label:'Receita (US$ mi)',data:[281,273,361.6],backgroundColor:'rgba(34,197,94,.6)',borderColor:'#22c55e',borderWidth:2,borderRadius:7,yAxisID:'y1',type:'line',tension:.2,pointRadius:6}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{color:'#fecdd3',font:{size:10,weight:'600'},boxWidth:14,padding:8}},tooltip:tt},
+    scales:{y:{position:'left',min:100,max:170,grid:{color:gc},ticks:{callback:function(v){return v+' mil t'},font:{size:9,weight:'600'},color:'#fecdd3'}},
+      y1:{position:'right',min:250,max:400,grid:{display:false},ticks:{callback:function(v){return'$'+v+'mi'},font:{size:9,weight:'600'},color:'#22c55e'}},
+      x:{grid:{display:false},ticks:{font:{size:11,weight:'700'},color:'#fecdd3'}}}}
+});
+
+new Chart(document.getElementById('ch3').getContext('2d'),{
+  type:'bar',
+  data:{labels:['🇵🇭 Filipinas','🇯🇵 Japão','🇨🇳 China','🇨🇱 Chile','🇭🇰 Hong Kong','🇰🇷 Coreia','🇲🇽 México'],
+    datasets:[{label:'mil t (Mar/26)',data:[48.9,18.2,12.7,10.6,8.8,7,5],
+      backgroundColor:function(c){if(c.dataIndex<=1)return 'rgba(34,197,94,.7)';if(c.dataIndex<=3)return 'rgba(225,29,72,.65)';return 'rgba(168,85,247,.55)'},
+      borderColor:function(c){if(c.dataIndex<=1)return '#22c55e';if(c.dataIndex<=3)return '#e11d48';return '#a855f7'},
+      borderWidth:2,borderRadius:7}]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+    scales:{x:{min:0,max:55,grid:{color:gc},ticks:{callback:function(v){return v+' mil t'},font:{size:9,weight:'600'},color:'#fecdd3'}},y:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#fecdd3'}}}}
+});
+
+new Chart(document.getElementById('ch4').getContext('2d'),{
+  type:'doughnut',
+  data:{labels:['🟪 SC (28,2%)','🟦 PR (21,2%)','🟧 RS (17,9%)','🟩 MG (10%)','🟫 MT (8%)','🟨 GO (6%)','Outros (8,7%)'],
+    datasets:[{data:[28.2,21.2,17.9,10,8,6,8.7],
+      backgroundColor:['rgba(225,29,72,.75)','rgba(245,158,11,.65)','rgba(34,197,94,.6)','rgba(59,130,246,.55)','rgba(168,85,247,.5)','rgba(234,88,12,.5)','rgba(160,160,160,.4)'],
+      borderColor:['#e11d48','#f59e0b','#22c55e','#3b82f6','#a855f7','#ea580c','#a0a0a0'],
+      borderWidth:2,hoverOffset:8}]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom',labels:{color:'#fecdd3',font:{size:9,weight:'600'},boxWidth:12,padding:6}},tooltip:tt},
+    cutout:'58%'}
+});
+
+new Chart(document.getElementById('ch5').getContext('2d'),{
+  type:'bar',
+  data:{labels:['MG','SP','RS','SC (líder!)','PR'],
+    datasets:[{label:'Suíno Vivo R$/kg (28/04)',data:[5.64,5.36,5.04,4.88,4.85],
+      backgroundColor:function(c){if(c.dataIndex===0)return 'rgba(34,197,94,.7)';if(c.dataIndex===3)return 'rgba(225,29,72,.7)';return 'rgba(245,158,11,.55)'},
+      borderColor:function(c){if(c.dataIndex===0)return '#22c55e';if(c.dataIndex===3)return '#e11d48';return '#f59e0b'},
+      borderWidth:2,borderRadius:7}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt,
+    annotation:{annotations:{
+      line:{type:'line',yMin:6.48,yMax:6.48,borderColor:'#ef4444',borderWidth:2,borderDash:[6,4],label:{display:true,content:'Custo SC R$ 6,48',position:'end',color:'#ef4444',font:{size:9,weight:'bold'}}}
+    }}},
+    scales:{y:{min:4.5,max:7,grid:{color:gc},ticks:{callback:function(v){return'R$'+v.toFixed(2)},font:{size:9,weight:'600'},color:'#fecdd3'}},x:{grid:{display:false},ticks:{font:{size:11,weight:'700'},color:'#fecdd3'}}}}
+});
+
+new Chart(document.getElementById('ch6').getContext('2d'),{
+  type:'bar',
+  data:{labels:['Custo Total','Receita Atual'],
+    datasets:[{label:'R$/kg vivo SC',data:[6.48,4.88],backgroundColor:['rgba(239,68,68,.7)','rgba(245,158,11,.7)'],borderColor:['#ef4444','#f59e0b'],borderWidth:2,borderRadius:8}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt,
+    annotation:{annotations:{
+      gap:{type:'label',xValue:0.5,yValue:5.7,content:['💀 GAP','-R$ 1,60/kg','PREJUÍZO!'],font:{size:11,weight:'bold'},color:'#ef4444',backgroundColor:'rgba(239,68,68,.13)',padding:6}
+    }}},
+    scales:{y:{min:0,max:7.5,grid:{color:gc},ticks:{callback:function(v){return'R$'+v.toFixed(2)},font:{size:9,weight:'600'},color:'#fecdd3'}},x:{grid:{display:false},ticks:{font:{size:11,weight:'700'},color:'#fecdd3'}}}}
+});
+</script>
+</body>
+</html>

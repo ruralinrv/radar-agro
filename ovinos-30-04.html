@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Rural IN — Ovinos · 27-30 Abr 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a08;--bg2:#13110d;--bg3:#1c1814;--bg4:#26201a;--border:#2a2520;--border2:#3d342a;--wool:#f5f5f4;--wool2:#e7e5e4;--wool3:#d6d3d1;--wool4:#a8a29e;--cream:#fef3c7;--cream2:#fde68a;--brown:#a16207;--brown2:#854d0e;--text:#fafaf9;--text2:#e7e5e4;--text3:#a8a29e;--text4:#78716c;--up:#22c55e;--dn:#ef4444;--nt:#eab308;--blue:#3b82f6;--purple:#a855f7;--orange:#f97316;--cyan:#06b6d4;--leaf2:#84cc16;--gold:#f59e0b;--pink:#ec4899;--r:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 1000px 700px at 10% 15%,rgba(245,245,244,.06),transparent),radial-gradient(ellipse 800px 600px at 90% 85%,rgba(214,211,209,.04),transparent);pointer-events:none;z-index:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+.nav{background:rgba(19,17,13,.95);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:14px}
+.nav-logo-img{height:42px;width:auto;border-radius:8px}
+.nav-logo{font-weight:900;font-size:1.2rem}
+.nav-logo .r{color:var(--wool)}
+.nav-logo .i{color:var(--leaf2)}
+.nav-badge{background:linear-gradient(135deg,#f5f5f4,#d6d3d1);border:1px solid rgba(245,245,244,.5);padding:5px 14px;border-radius:20px;font-size:.7rem;font-weight:800;color:#0a0a08;letter-spacing:.6px;box-shadow:0 0 25px rgba(245,245,244,.3)}
+.nav-back{color:var(--text3);font-size:.8rem;text-decoration:none}
+.nav-back:hover{color:var(--wool)}
+.hero{padding:54px 0 40px;position:relative}
+.hero::after{content:'';position:absolute;bottom:0;left:0;width:240px;height:3px;background:linear-gradient(90deg,#f5f5f4,var(--wool3),transparent)}
+.hero-top{display:flex;align-items:center;gap:22px;margin-bottom:16px}
+.hero-icon-wrap{width:84px;height:84px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,rgba(245,245,244,.25),transparent 70%);border-radius:50%}
+.hero-icon{font-size:3.6rem;filter:drop-shadow(0 6px 18px rgba(245,245,244,.5))}
+.hero-texts h1{font-size:2.4rem;font-weight:900;letter-spacing:-1.2px;line-height:1.1}
+.hero-texts h1 .hl{background:linear-gradient(135deg,#f5f5f4,#e7e5e4,#d6d3d1,#a8a29e);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-texts .sub{font-size:.9rem;color:var(--text2);margin-top:6px;font-weight:500}
+.hero-bar{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border-radius:22px;font-size:.72rem;font-weight:700;border:1px solid}
+.chip.up{color:var(--up);border-color:rgba(34,197,94,.3);background:rgba(34,197,94,.08)}
+.chip.dn{color:var(--dn);border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.08)}
+.chip.nt{color:var(--nt);border-color:rgba(234,179,8,.4);background:rgba(234,179,8,.1)}
+.chip.pu{color:var(--purple);border-color:rgba(168,85,247,.3);background:rgba(168,85,247,.08)}
+.chip.wl{color:var(--wool);border-color:rgba(214,211,209,.5);background:rgba(245,245,244,.1)}
+.chip.or{color:var(--orange);border-color:rgba(249,115,22,.3);background:rgba(249,115,22,.08)}
+.chip.bl{color:var(--blue);border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.08)}
+.alert{border-radius:var(--r);padding:18px 22px;margin-bottom:14px;display:flex;gap:14px;border:1px solid;font-size:.85rem;line-height:1.75;color:var(--text2);position:relative}
+.alert::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
+.alert strong{color:var(--text)}
+.alert .ai{font-size:1.4rem;flex-shrink:0;margin-top:1px}
+.alert.green{background:linear-gradient(90deg,rgba(34,197,94,.08),rgba(34,197,94,.02));border-color:rgba(34,197,94,.25)}
+.alert.green::before{background:var(--up)}
+.alert.red{background:linear-gradient(90deg,rgba(239,68,68,.08),rgba(239,68,68,.02));border-color:rgba(239,68,68,.25)}
+.alert.red::before{background:var(--dn)}
+.alert.amber{background:linear-gradient(90deg,rgba(234,179,8,.1),rgba(234,179,8,.02));border-color:rgba(234,179,8,.3)}
+.alert.amber::before{background:var(--nt)}
+.alert.blue{background:linear-gradient(90deg,rgba(59,130,246,.08),rgba(59,130,246,.02));border-color:rgba(59,130,246,.25)}
+.alert.blue::before{background:var(--blue)}
+.alert.purple{background:linear-gradient(90deg,rgba(168,85,247,.08),rgba(168,85,247,.02));border-color:rgba(168,85,247,.25)}
+.alert.purple::before{background:var(--purple)}
+.alert.orange{background:linear-gradient(90deg,rgba(249,115,22,.1),rgba(249,115,22,.02));border-color:rgba(249,115,22,.3)}
+.alert.orange::before{background:var(--orange)}
+.alert.wool{background:linear-gradient(90deg,rgba(214,211,209,.13),rgba(245,245,244,.04));border-color:rgba(214,211,209,.4)}
+.alert.wool::before{background:var(--wool)}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin:24px 0}
+.kpi{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:16px 18px;position:relative;transition:all .25s}
+.kpi:hover{transform:translateY(-3px);border-color:var(--border2)}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2)}
+.kpi.up::before{background:linear-gradient(90deg,var(--up),var(--leaf2))}
+.kpi.dn::before{background:linear-gradient(90deg,var(--dn),var(--orange))}
+.kpi.nt::before{background:linear-gradient(90deg,var(--nt),#fde047)}
+.kpi.bl::before{background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.kpi.pu::before{background:linear-gradient(90deg,var(--purple),var(--pink))}
+.kpi.or::before{background:linear-gradient(90deg,var(--orange),#fde047)}
+.kpi.wl::before{background:linear-gradient(90deg,#d6d3d1,var(--wool))}
+.kpi-lb{font-size:.6rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:5px;font-weight:700}
+.kpi-val{font-size:1.18rem;font-weight:900;letter-spacing:-.5px;line-height:1.2}
+.kpi-val.up{color:var(--up)}.kpi-val.dn{color:var(--dn)}.kpi-val.nt{color:var(--nt)}.kpi-val.bl{color:var(--blue)}.kpi-val.pu{color:var(--purple)}.kpi-val.or{color:var(--orange)}.kpi-val.wl{color:var(--wool)}
+.kpi-sub{font-size:.66rem;color:var(--text3);margin-top:3px;font-weight:500}
+.dv{height:1px;background:linear-gradient(90deg,transparent,var(--border2) 20%,var(--wool) 50%,var(--border2) 80%,transparent);margin:36px 0}
+.stitle{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.stitle .icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.stitle h2{font-size:1.18rem;font-weight:800;letter-spacing:-.3px}
+.stitle h2 span{color:var(--text2);font-weight:400;font-size:.85rem;margin-left:4px}
+.co{border-radius:var(--r);padding:20px 24px;margin-bottom:14px;border-left:4px solid;font-size:.85rem;color:var(--text2);line-height:1.85;background:linear-gradient(90deg,var(--bg2),var(--bg3))}
+.co strong{color:var(--text)}
+.co h4{font-size:.98rem;font-weight:800;margin-bottom:10px}
+.co.up{border-color:var(--up)}.co.up h4{color:var(--up)}
+.co.dn{border-color:var(--dn)}.co.dn h4{color:var(--dn)}
+.co.nt{border-color:var(--nt)}.co.nt h4{color:var(--nt)}
+.co.bl{border-color:var(--blue)}.co.bl h4{color:var(--blue)}
+.co.or{border-color:var(--orange)}.co.or h4{color:var(--orange)}
+.co.pu{border-color:var(--purple)}.co.pu h4{color:var(--purple)}
+.co.wl{border-color:var(--wool)}.co.wl h4{color:var(--wool)}
+.chart-box{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--r);padding:22px 24px;margin-bottom:14px}
+.chart-box h3{font-size:.9rem;color:var(--text);margin-bottom:14px;font-weight:700;display:flex;align-items:center;gap:8px}
+.chart-box h3 .ch-tag{margin-left:auto;font-size:.62rem;font-weight:700;padding:2px 10px;border-radius:10px;background:rgba(245,245,244,.18);color:var(--wool)}
+.chart-wrap{position:relative;height:290px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:800px){.grid2,.grid3{grid-template-columns:1fr}}
+.tbl-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--border);margin-bottom:14px;background:var(--bg2)}
+table{width:100%;border-collapse:collapse;font-size:.78rem}
+thead th{background:linear-gradient(180deg,var(--bg3),var(--bg4));padding:12px 14px;text-align:center;font-weight:800;color:var(--text2);font-size:.66rem;text-transform:uppercase;letter-spacing:.9px;border-bottom:1px solid var(--border)}
+tbody td{padding:10px 12px;border-bottom:1px solid rgba(42,37,32,.5);text-align:center}
+tbody tr:hover{background:rgba(245,245,244,.05)}
+.td-name{text-align:left!important;font-weight:700;white-space:nowrap}
+.td-up{color:var(--up);font-weight:800}.td-dn{color:var(--dn);font-weight:800}.td-nt{color:var(--nt);font-weight:800}
+.thermo h4{font-size:.84rem;color:var(--text);margin-bottom:10px;font-weight:700}
+.th-bar{height:14px;border-radius:7px;position:relative;box-shadow:inset 0 1px 4px rgba(0,0,0,.4)}
+.th-marker{position:absolute;top:-6px;width:4px;height:26px;background:#fff;border-radius:2px;transform:translateX(-50%);box-shadow:0 0 12px rgba(255,255,255,.6)}
+.th-lb{display:flex;justify-content:space-between;font-size:.66rem;color:var(--text3);margin-top:6px;font-weight:600}
+.card{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--r);padding:22px 26px;margin-bottom:14px}
+.opinion{background:linear-gradient(135deg,rgba(245,245,244,.08),rgba(214,211,209,.04),rgba(245,245,244,.02));border:1px solid rgba(245,245,244,.3);border-radius:var(--r);padding:30px 32px;margin:26px 0;position:relative}
+.opinion::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#f5f5f4,var(--wool3),var(--cream),#f5f5f4)}
+.opinion h3{font-size:1.08rem;font-weight:800;color:var(--wool);margin-bottom:12px}
+.opinion p{font-size:.88rem;color:var(--text2);line-height:1.9;margin-bottom:12px}
+.opinion p strong{color:var(--text)}
+.opinion .scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.opinion .sc{padding:14px 16px;border-radius:10px;border:1px solid;background:rgba(0,0,0,.3)}
+.opinion .sc.up{border-color:rgba(34,197,94,.3)}.opinion .sc.nt{border-color:rgba(234,179,8,.3)}.opinion .sc.dn{border-color:rgba(239,68,68,.3)}
+.opinion .sc h5{font-size:.78rem;font-weight:800;margin-bottom:6px}
+.opinion .sc.up h5{color:var(--up)}.opinion .sc.nt h5{color:var(--nt)}.opinion .sc.dn h5{color:var(--dn)}
+.opinion .sc p{font-size:.74rem;line-height:1.6;margin:0}
+@media(max-width:700px){.opinion .scenarios{grid-template-columns:1fr}}
+.opinion .sig{margin-top:18px;padding-top:14px;border-top:1px solid rgba(245,245,244,.2);font-size:.78rem;color:var(--text3);font-style:italic}
+.footer{border-top:1px solid var(--border);padding:42px 0;text-align:center;margin-top:36px}
+.footer-brand{font-size:1.5rem;font-weight:900;margin-bottom:12px}
+.footer-brand .r{color:var(--wool)}.footer-brand .i{color:var(--leaf2)}
+.footer p{font-size:.78rem;color:var(--text3);line-height:1.8}
+.footer-credits{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+.footer-credits h4{font-size:.92rem;color:var(--wool);font-weight:700;margin-bottom:6px}
+.footer-credits .name{font-size:1.05rem;font-weight:800;color:var(--text)}
+.footer-credits .title{font-size:.78rem;color:var(--cream);font-weight:600;margin-bottom:8px}
+.footer-credits .desc{font-size:.74rem;color:var(--text2);line-height:1.7;max-width:540px;margin:0 auto 12px}
+.footer-credits .contact{font-size:.74rem;color:var(--text3)}
+.footer-credits .contact a{color:var(--wool);text-decoration:none}
+.bignum-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+.bignum{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:20px 18px;text-align:center}
+.bignum .v{font-size:1.7rem;font-weight:900;letter-spacing:-1px;line-height:1;margin-bottom:6px}
+.bignum .v.up{color:var(--up)}.bignum .v.dn{color:var(--dn)}.bignum .v.nt{color:var(--nt)}.bignum .v.wl{color:var(--wool)}
+.bignum .l{font-size:.72rem;color:var(--text2);font-weight:600}
+.bignum .s{font-size:.66rem;color:var(--text3);margin-top:3px}
+@media(max-width:700px){.bignum-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.hero-top{flex-direction:column;text-align:center}.hero-texts h1{font-size:1.65rem}.kpi-row{grid-template-columns:repeat(2,1fr)}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap"><div class="nav-left"><img src="https://ruralinrv.github.io/ruralin/logo.png" alt="Rural IN" class="nav-logo-img" onerror="this.style.display='none'"><div class="nav-logo"><span class="r">Rural</span> <span class="i">IN</span></div><div class="nav-badge">🐑 OVINOS</div></div><a href="portal-30-04.html" class="nav-back">← Voltar</a></div></nav>
+
+<div class="wrap">
+
+<section class="hero">
+  <div class="hero-top">
+    <div class="hero-icon-wrap"><span class="hero-icon">🐑</span></div>
+    <div class="hero-texts">
+      <h1><span class="hl">Ovinos</span> · Radar Semanal</h1>
+      <div class="sub">27–30 Abril 2026 · Cordeiro RS R$ 12,78/kg vivo (+23%!) · Lã em recuperação · Brasil é 0,95% mundial · Concorrência uruguaia</div>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <span class="chip wl">📊 Cordeiro RS: R$ 12,78/kg vivo</span>
+    <span class="chip up">📈 +23% vs 2025! máx R$ 15</span>
+    <span class="chip up">🐏 Export 2025: US$ 3,96 mi (+79%!)</span>
+    <span class="chip nt">🍴 Per capita: 0,4 kg/hab/ano (baixo!)</span>
+    <span class="chip dn">🇺🇾 Concorrência uruguaia forte</span>
+    <span class="chip pu">🏦 Selic: 14,75% → 14,50%</span>
+  </div>
+</section>
+
+<div class="bignum-row">
+  <div class="bignum"><div class="v wl">R$ 12,78/kg</div><div class="l">Cordeiro RS vivo (Emater)</div><div class="s">Máx R$ 15 · pista de leilões!</div></div>
+  <div class="bignum"><div class="v up">+23%</div><div class="l">Alta cordeiro RS vs 2025</div><div class="s">Recuperação histórica</div></div>
+  <div class="bignum"><div class="v up">110 mil t</div><div class="l">Produção BR carne ovina (FAO)</div><div class="s">0,95% mundial · 695 mil cabeças</div></div>
+  <div class="bignum"><div class="v up">US$ 3,96 mi</div><div class="l">Export 2025 (+79% vs 2024!)</div><div class="s">Piauí lidera com 67%</div></div>
+</div>
+
+<div class="alert wool">
+  <span class="ai">🐑</span>
+  <div><strong style="color:var(--wool)">SETOR EM RECUPERAÇÃO HISTÓRICA! Cordeiro disparou +23% no RS · Lã volta a procurar comprador!</strong><br>
+  <strong>Brasil em números (FAO 2023 / atualizado 2025):</strong><br>
+  ▸ <strong>Produção carne ovina:</strong> ~110 mil toneladas/ano<br>
+  ▸ <strong>Participação mundial:</strong> 0,95% (modesta)<br>
+  ▸ <strong>Animais abatidos:</strong> ~695 mil cabeças/ano<br>
+  ▸ <strong>Rebanho efetivo:</strong> ~21,7 milhões cabeças<br>
+  ▸ <strong>Posição mundial:</strong> ~17º produtor<br>
+  ▸ <strong>Per capita BR:</strong> 0,4 kg/hab/ano (BAIXÍSSIMO!)<br>
+  ▸ <strong>Comparação:</strong> Frango 47 kg · Bovino 35 kg · Suíno 18 kg<br><br>
+  <strong>Distribuição rebanho BR (IBGE):</strong><br>
+  ▸ <strong>🥇 Bahia:</strong> 21,66% nacional (líder!)<br>
+  ▸ <strong>🥈 Pernambuco:</strong> 14% (forte NE)<br>
+  ▸ <strong>🥉 Ceará:</strong> 11% (caatinga)<br>
+  ▸ <strong>4º Rio Grande do Sul:</strong> 9,5% (Pampa · raças lã)<br>
+  ▸ <strong>5º Piauí:</strong> 8% (líder em peles!)<br>
+  ▸ <strong>6º Paraíba:</strong> 5,5%<br>
+  ▸ <strong>Nordeste:</strong> 60% rebanho nacional<br>
+  ▸ <strong>Sul:</strong> 12% (concentrado RS)<br>
+  ▸ <strong>Centro-Oeste:</strong> 8%<br>
+  ▸ <strong>Sudeste:</strong> 9%<br><br>
+  <strong>Top produtores mundiais (2023):</strong><br>
+  ▸ <strong>🥇 China:</strong> 2,81 mi t (24,4%!)<br>
+  ▸ <strong>🥈 Índia:</strong> 1,14 mi t (9,9%)<br>
+  ▸ <strong>🥉 Austrália:</strong> 849 mil t (7,4%)<br>
+  ▸ <strong>4º Turquia:</strong> 569 mil t<br>
+  ▸ <strong>5º Nova Zelândia:</strong> 442 mil t (alta exportadora!)<br>
+  ▸ <strong>BRASIL:</strong> 110 mil t (0,95% mundial)<br><br>
+  <strong>Raças ovinas no Brasil:</strong><br>
+  ▸ <strong>Santa Inês (deslanada):</strong> Maior rebanho · NE · adaptada calor<br>
+  ▸ <strong>Dorper / White Dorper:</strong> Carne premium · em expansão<br>
+  ▸ <strong>Texel:</strong> Carne premium · Sul<br>
+  ▸ <strong>Ile de France:</strong> Carne · Sul<br>
+  ▸ <strong>Ideal · Corriedale:</strong> Lã · RS<br>
+  ▸ <strong>Suffolk · Hampshire Down:</strong> Carne premium<br>
+  ▸ <strong>Morada Nova · Somalis:</strong> Nordestinas<br>
+  ▸ <strong>Crossbreds:</strong> Cruzamentos terminais<br><br>
+  <strong>Características da cadeia:</strong><br>
+  ▸ <strong>Pequeno e médio produtor:</strong> 90% do rebanho<br>
+  ▸ <strong>Informalidade alta:</strong> 60-70% comercialização<br>
+  ▸ <strong>SIF/SISBI:</strong> Em ascensão · ainda baixo<br>
+  ▸ <strong>Cadeia fragmentada:</strong> Falta organização<br>
+  ▸ <strong>ARCO (Associação BR Criadores Ovinos):</strong> Coordenação<br>
+  ▸ <strong>Embrapa Caprinos e Ovinos:</strong> Sobral/CE · pesquisa</div>
+</div>
+
+<div class="alert green">
+  <span class="ai">📈</span>
+  <div><strong style="color:var(--up)">CORDEIRO DISPAROU NO RS! R$ 12,78/kg vivo · até R$ 15 em leilões · Maior alta histórica!</strong><br>
+  <strong>Cotações cordeiro vivo BR (kg vivo):</strong><br>
+  ▸ <strong>🥇 Rio Grande do Sul:</strong> R$ 12,78 (Emater · +23% vs 2025!)<br>
+  ▸ <strong>RS pico em leilões:</strong> R$ 15/kg (recorde!)<br>
+  ▸ <strong>RS Cepea:</strong> R$ 13/kg<br>
+  ▸ <strong>São Paulo:</strong> R$ 16-18/kg (premium)<br>
+  ▸ <strong>Mato Grosso do Sul:</strong> R$ 13-14/kg<br>
+  ▸ <strong>Goiás:</strong> R$ 13-15/kg<br>
+  ▸ <strong>Bahia:</strong> R$ 14-17/kg<br>
+  ▸ <strong>Ceará:</strong> R$ 12-15/kg<br><br>
+  <strong>Trajetória recente cordeiro RS (Cepea/Emater):</strong><br>
+  ▸ <strong>Set/2023:</strong> R$ 8,46/kg<br>
+  ▸ <strong>2024 médio:</strong> R$ 9-10/kg<br>
+  ▸ <strong>Início 2025:</strong> R$ 10,40/kg<br>
+  ▸ <strong>2025 médio:</strong> R$ 10,40/kg<br>
+  ▸ <strong>Jan 2026:</strong> R$ 12 (rompe barreira!)<br>
+  ▸ <strong>Abr 2026:</strong> R$ 12,78 (consolidando alta)<br>
+  ▸ <strong>Pico leilões:</strong> R$ 15/kg<br>
+  ▸ <strong>Variação 2 anos:</strong> +51%! 🚀<br><br>
+  <strong>Por que cordeiro disparou?</strong><br>
+  ▸ <strong>Demanda crescente:</strong> Restaurantes · churrascarias premium<br>
+  ▸ <strong>Oferta restrita:</strong> Pequeno rebanho BR<br>
+  ▸ <strong>Bovinos caros:</strong> Boi a R$ 354/@ pressiona alternativas<br>
+  ▸ <strong>Cordeiro é premium:</strong> Carne diferenciada<br>
+  ▸ <strong>Pampa gaúcho recuperando:</strong> Após anos seca<br>
+  ▸ <strong>Genética avança:</strong> Texel, Dorper, Ile de France<br>
+  ▸ <strong>Confinamento expansão:</strong> Acabamento intensivo<br><br>
+  <strong>Carcaça e cortes premium:</strong><br>
+  ▸ <strong>Carcaça quente:</strong> R$ 28-32/kg<br>
+  ▸ <strong>Pernil:</strong> R$ 60-80/kg<br>
+  ▸ <strong>Costela:</strong> R$ 50-70/kg<br>
+  ▸ <strong>Paleta:</strong> R$ 45-55/kg<br>
+  ▸ <strong>Carré (rack):</strong> R$ 90-120/kg (super premium!)<br>
+  ▸ <strong>Filé mignon ovino:</strong> R$ 150-200/kg<br><br>
+  <strong>Lã também recuperando:</strong><br>
+  ▸ <strong>Após anos de baixa:</strong> 5+ anos crise<br>
+  ▸ <strong>Demanda mundial</strong> volta a crescer<br>
+  ▸ <strong>Lã merino fina:</strong> US$ 8-12/kg<br>
+  ▸ <strong>Lã ideal/corriedale BR:</strong> R$ 8-15/kg<br>
+  ▸ <strong>Tendência sustentável:</strong> Moda volta a valorizar lã natural<br>
+  ▸ <strong>Frigorífico Marfrig</strong> compra carne · Texel/Suíndara processa lã</div>
+</div>
+
+<div class="alert blue">
+  <span class="ai">🎯</span>
+  <div><strong style="color:var(--blue)">FEIRAS E LEILÕES BOMBANDO! 18ª Agrovino em Bagé com RECORDE 666 ovinos · 12 raças · 5 leilões!</strong><br>
+  <strong>Temporada de feiras 2026 (RS · janeiro):</strong><br>
+  ▸ <strong>18ª Agrovino (Bagé):</strong> 13-17 jan<br>
+  ▸ <strong>RECORDE inscrições:</strong> 666 ovinos!<br>
+  ▸ <strong>12 raças</strong> em julgamentos<br>
+  ▸ <strong>5 leilões</strong> programados<br>
+  ▸ <strong>Exposições nacionais:</strong> Texel + Ideal<br>
+  ▸ <strong>Concurso de assado + Best Chef</strong><br><br>
+  <strong>Outras feiras importantes BR:</strong><br>
+  ▸ <strong>Expointer (RS):</strong> Maior · setembro · Esteio<br>
+  ▸ <strong>Expoinel (Uberaba):</strong> Centro do Brasil<br>
+  ▸ <strong>Festa do Cordeiro (RS):</strong> Várias cidades<br>
+  ▸ <strong>Agrishow (Ribeirão Preto):</strong> Feira tecnológica<br>
+  ▸ <strong>Feira Nacional do Cordeiro:</strong> Ouro Preto/MG<br><br>
+  <strong>Por que feiras estão aquecidas?</strong><br>
+  ▸ <strong>Preços altos:</strong> Cordeiro R$ 15/kg incentiva investir<br>
+  ▸ <strong>Lã recuperando:</strong> Renda complementar<br>
+  ▸ <strong>Genética é chave:</strong> Cordeiros precoces (4-5 meses)<br>
+  ▸ <strong>Compra estratégica:</strong> Coincide com época reprodução<br>
+  ▸ <strong>Investidores novos:</strong> Aproveitando ciclo positivo<br>
+  ▸ <strong>Diversificação:</strong> Soja em crise (perdas grãos)<br><br>
+  <strong>Melhores raças para investir:</strong><br>
+  ▸ <strong>Texel:</strong> Cordeiros precoces · carne magra · lã<br>
+  ▸ <strong>Dorper / White Dorper:</strong> Adaptada · sem lã (custo menor)<br>
+  ▸ <strong>Ile de France:</strong> Carcaça pesada · premium<br>
+  ▸ <strong>Suffolk:</strong> Cabeça preta · cordeiros marketing<br>
+  ▸ <strong>Hampshire Down:</strong> Cordeiros precoces<br>
+  ▸ <strong>Cruzamento Terminal:</strong> Reprodutor premium x ovelha mestiça<br><br>
+  <strong>Reprodutores de elite (preços leilão):</strong><br>
+  ▸ <strong>Texel campeão:</strong> R$ 30-80 mil<br>
+  ▸ <strong>Dorper top:</strong> R$ 40-120 mil!<br>
+  ▸ <strong>Ile de France:</strong> R$ 25-60 mil<br>
+  ▸ <strong>Ovelhas mães top:</strong> R$ 8-25 mil<br>
+  ▸ <strong>Cordeiros recriadores:</strong> R$ 2-5 mil</div>
+</div>
+
+<div class="alert orange">
+  <span class="ai">🇺🇾</span>
+  <div><strong style="color:var(--orange)">CONCORRÊNCIA URUGUAIA · Mercosul livre · 60% importação carne ovina vem do vizinho!</strong><br>
+  <strong>Balança comercial 2025 (Famasul / Embrapa):</strong><br>
+  ▸ <strong>Exportação BR:</strong> US$ 3,96 mi (+79% vs 2024!)<br>
+  ▸ <strong>Importação BR:</strong> US$ 52,8 mi (8x maior!)<br>
+  ▸ <strong>Saldo:</strong> NEGATIVO US$ 48,9 mi<br>
+  ▸ <strong>BR é DEFICITÁRIO</strong> em carne ovina<br><br>
+  <strong>Origens das importações:</strong><br>
+  ▸ <strong>🇺🇾 Uruguai:</strong> 50-60% (líder absoluto!)<br>
+  ▸ <strong>🇦🇷 Argentina:</strong> 25-30%<br>
+  ▸ <strong>🇨🇱 Chile:</strong> 5-8%<br>
+  ▸ <strong>🇳🇿 Nova Zelândia:</strong> 3-5% (premium)<br>
+  ▸ <strong>🇦🇺 Austrália:</strong> 2-4%<br><br>
+  <strong>Por que Uruguai domina?</strong><br>
+  ▸ <strong>1. Pampas + clima ideal:</strong> Pasto natural abundante<br>
+  ▸ <strong>2. Tradição secular:</strong> Ovinocultura é DNA uruguaio<br>
+  ▸ <strong>3. Frigoríficos modernos:</strong> SIF + UE habilitados<br>
+  ▸ <strong>4. Custo produção menor:</strong> 30-40% mais barato<br>
+  ▸ <strong>5. Mercosul:</strong> Tarifa zero · entrada livre<br>
+  ▸ <strong>6. Logística:</strong> Caminhão direto Sul BR<br>
+  ▸ <strong>7. Escala:</strong> Uruguai produz 5x mais que BR per capita<br><br>
+  <strong>Exportações brasileiras (destinos):</strong><br>
+  ▸ <strong>🥇 Portugal:</strong> 78% peles!<br>
+  ▸ <strong>🥈 Itália:</strong> 12% peles<br>
+  ▸ <strong>🥉 Argentina:</strong> 5%<br>
+  ▸ <strong>Carne (modesto):</strong> Ilhas Marshal · Libéria · Guiana<br><br>
+  <strong>Quem exporta mais (estados BR):</strong><br>
+  ▸ <strong>🥇 Piauí:</strong> 67% exportação total! (peles)<br>
+  ▸ <strong>🥈 Pernambuco:</strong> 12%<br>
+  ▸ <strong>🥉 São Paulo:</strong> 8% (cárneos · US$ 481 mil)<br>
+  ▸ <strong>4º Bahia:</strong> 5%<br>
+  ▸ <strong>5º RS:</strong> 4%<br><br>
+  <strong>Peles é o destaque:</strong><br>
+  ▸ <strong>Indústria couro</strong> portuguesa/italiana<br>
+  ▸ <strong>Calçados premium</strong> usam pele ovina<br>
+  ▸ <strong>Piauí concentra 93%</strong> peles exportadas<br>
+  ▸ <strong>Margem alta</strong> · negócio rentável<br><br>
+  <strong>Cenário sanitário:</strong><br>
+  ▸ <strong>Brasil livre febre aftosa</strong> sem vacinação<br>
+  ▸ <strong>Vantagem competitiva</strong> exportação<br>
+  ▸ <strong>Vermifugação:</strong> Desafio constante<br>
+  ▸ <strong>Mosca-do-berne:</strong> Controle rigoroso<br>
+  ▸ <strong>Sistema SIF/SISBI:</strong> Expansão necessária</div>
+</div>
+
+<div class="alert nt">
+  <span class="ai">🌽</span>
+  <div><strong style="color:var(--nt)">CUSTOS · Pasto + concentrado 60% custo · Cordeiro confinado mais lucrativo · Margem positiva!</strong><br>
+  <strong>Estrutura de custos ovinocultura BR:</strong><br>
+  ▸ <strong>Alimentação (pasto + concentrado):</strong> 55-65% custo total<br>
+  ▸ <strong>Mão de obra:</strong> 15-20%<br>
+  ▸ <strong>Sanidade · vermifugação:</strong> 8-10%<br>
+  ▸ <strong>Reprodução · genética:</strong> 5-8%<br>
+  ▸ <strong>Manejo · instalações:</strong> 5-7%<br>
+  ▸ <strong>Frete · comercialização:</strong> 3-5%<br>
+  ▸ <strong>Mortalidade (10-15%):</strong> Custo embutido<br><br>
+  <strong>Sistemas produtivos BR:</strong><br>
+  ▸ <strong>1. Extensivo (pasto):</strong> 70% rebanho · custo R$ 5-8/kg vivo<br>
+  ▸ <strong>2. Semi-intensivo:</strong> 20% · custo R$ 7-10/kg<br>
+  ▸ <strong>3. Confinamento total:</strong> 10% · custo R$ 9-12/kg<br>
+  ▸ <strong>4. Confinamento estratégico:</strong> Final ciclo · custo R$ 8-11/kg<br><br>
+  <strong>Cotações insumos atuais (CEPEA · 28/04):</strong><br>
+  ▸ <strong>Milho Campinas:</strong> R$ 66,67/sc 60kg<br>
+  ▸ <strong>Soja Paranaguá:</strong> R$ 128,47/sc 60kg<br>
+  ▸ <strong>Farelo soja 47%:</strong> R$ 1.520/t<br>
+  ▸ <strong>Ração ovinos 18% PB:</strong> R$ 2.000-2.300/t<br>
+  ▸ <strong>Sal mineral ovinos:</strong> R$ 3-5/kg<br>
+  ▸ <strong>Vermífugo:</strong> R$ 5-15/dose<br><br>
+  <strong>Cálculo médio (cordeiro 30 kg vivo · confinamento):</strong><br>
+  ▸ <strong>Conversão alimentar:</strong> 4-5 kg ração/kg ganho<br>
+  ▸ <strong>Custo confinamento 90 dias:</strong> R$ 180-220<br>
+  ▸ <strong>Custo aquisição cordeiro 18 kg:</strong> R$ 230 (18×R$ 12,78)<br>
+  ▸ <strong>Custo total cordeiro 30 kg:</strong> R$ 410-450<br>
+  ▸ <strong>Receita venda 30 kg vivo:</strong> R$ 384 (R$ 12,78/kg)<br>
+  ▸ <strong>Margem:</strong> NEGATIVA cordeiro confinado puro!<br><br>
+  <strong>MAS sistema cria-recria-engorda integrado:</strong><br>
+  ▸ <strong>Cordeiro nascido na propriedade:</strong> Custo R$ 80-120<br>
+  ▸ <strong>Confinamento 60 dias finais:</strong> R$ 130-160<br>
+  ▸ <strong>Custo total integrado:</strong> R$ 210-280<br>
+  ▸ <strong>Receita venda 30 kg:</strong> R$ 384<br>
+  ▸ <strong>Margem:</strong> R$ 100-170 por cordeiro (35-50%!)<br>
+  ▸ <strong>Em propriedade 200 ovelhas-mãe:</strong> 250 cordeiros/ano<br>
+  ▸ <strong>Lucro líquido:</strong> R$ 25-42 mil/ano<br><br>
+  <strong>Quem ganha mais?</strong><br>
+  ▸ <strong>Sistema integrado (cria-recria-engorda):</strong> Margem 35-50%<br>
+  ▸ <strong>Carcaça embalada (frigorífico):</strong> Margem 50-80%<br>
+  ▸ <strong>Restaurante premium:</strong> Margem 100-200%<br>
+  ▸ <strong>Indústria peles:</strong> Margem 30-50%<br>
+  ▸ <strong>Genética premium:</strong> Margem 100-300%!</div>
+</div>
+
+<div class="alert blue">
+  <span class="ai">🍴</span>
+  <div><strong style="color:var(--blue)">CONSUMO BAIXO · Apenas 0,4 kg/hab/ano · Mas COM ENORME POTENCIAL · Carne premium em alta!</strong><br>
+  <strong>Consumo per capita ovinos no Brasil:</strong><br>
+  ▸ <strong>Atual BR:</strong> 0,4 kg/hab/ano (BAIXÍSSIMO!)<br>
+  ▸ <strong>Comparativo:</strong> Frango 47 kg · Bovino 35 kg · Suíno 18 kg<br>
+  ▸ <strong>Diferença:</strong> Ovino é 100x menos que frango!<br>
+  ▸ <strong>Tendência:</strong> Crescimento +5-8% ao ano<br><br>
+  <strong>Top consumidores mundiais (kg/hab/ano):</strong><br>
+  ▸ <strong>🥇 Mongólia:</strong> 50 kg/hab/ano (líder absoluto!)<br>
+  ▸ <strong>🥈 Nova Zelândia:</strong> 25 kg<br>
+  ▸ <strong>🥉 Cazaquistão:</strong> 22 kg<br>
+  ▸ <strong>4º Austrália:</strong> 18 kg<br>
+  ▸ <strong>5º Reino Unido:</strong> 4,5 kg<br>
+  ▸ <strong>6º Espanha:</strong> 4 kg<br>
+  ▸ <strong>BRASIL:</strong> 0,4 kg<br><br>
+  <strong>Por que brasileiro come pouco?</strong><br>
+  ▸ <strong>Cultura cárnica de boi:</strong> Tradição forte<br>
+  ▸ <strong>Preço alto:</strong> Carcaça R$ 28-32/kg vs boi R$ 22<br>
+  ▸ <strong>Falta hábito:</strong> Não preparam em casa<br>
+  ▸ <strong>Sabor forte:</strong> Algumas pessoas não gostam<br>
+  ▸ <strong>Disponibilidade limitada:</strong> Poucos açougues vendem<br>
+  ▸ <strong>Mercado informal:</strong> 60-70% é fora SIF<br>
+  ▸ <strong>Falta marketing:</strong> Setor não promove<br><br>
+  <strong>Onde se consome ovino BR?</strong><br>
+  ▸ <strong>NE (Bahia, PE, CE):</strong> Tradição buchada · sarapatel<br>
+  ▸ <strong>RS · SC:</strong> Costela · cordeiro assado<br>
+  ▸ <strong>SP · RJ:</strong> Restaurantes premium<br>
+  ▸ <strong>Churrascarias:</strong> Costela ovina<br>
+  ▸ <strong>Feiras gourmet:</strong> Premium em ascensão<br><br>
+  <strong>Tendências de consumo positivas:</strong><br>
+  ▸ <strong>Restaurantes premium:</strong> Cordeiro em alta · TripAdvisor<br>
+  ▸ <strong>Steakhouses:</strong> Costela ovina como diferencial<br>
+  ▸ <strong>Mediterrâneo:</strong> Dieta valoriza carne ovina<br>
+  ▸ <strong>Halal · Kosher:</strong> Mercado certificado<br>
+  ▸ <strong>Geração Z:</strong> Aberta a sabores novos<br>
+  ▸ <strong>Marketing ARCO + ABCDorper:</strong> Em expansão<br>
+  ▸ <strong>Receitas internacionais:</strong> TikTok/Instagram divulgam<br><br>
+  <strong>Potencial de mercado BR:</strong><br>
+  ▸ <strong>Se consumo subir para 1 kg/hab:</strong> Mercado triplica!<br>
+  ▸ <strong>Demanda potencial:</strong> 200 mil toneladas/ano<br>
+  ▸ <strong>Atual produção:</strong> 110 mil toneladas<br>
+  ▸ <strong>Lacuna:</strong> 90 mil toneladas espaço para crescer!<br>
+  ▸ <strong>Investimento necessário:</strong> Profissionalização cadeia · marketing</div>
+</div>
+
+<div class="alert purple">
+  <span class="ai">🏦</span>
+  <div><strong style="color:var(--purple)">MACRO: COPOM CORTOU SELIC PARA 14,50%! Crédito ajuda · Mas dólar fraco aumenta importação Mercosul</strong><br>
+  Banco Central cortou Selic em 0,25 p.p. (29/04). <strong>Dólar:</strong> R$ 4,9523 (mín 2 anos!).<br><br>
+  <strong>Para o setor de ovinos:</strong><br>
+  ▸ <strong>Selic 14,50%:</strong> Crédito custeio mais barato<br>
+  ▸ <strong>BNDES Pecuária:</strong> Linhas para genética · instalações<br>
+  ▸ <strong>Plano Safra 26/27:</strong> Pequenos · médios produtores<br>
+  ▸ <strong>Pronaf · Pronamp:</strong> Produtores familiares (NE)<br>
+  ▸ <strong>FCO/FNE:</strong> Forte para Centro-Oeste e Nordeste<br><br>
+  <strong>Dólar fraco — IMPACTOS DUPLOS:</strong><br>
+  ▸ ✗ <strong>NEGATIVO:</strong> Importação Uruguai/Argentina mais barata<br>
+  ▸ ✗ <strong>Pressiona preços</strong> mercado interno<br>
+  ▸ ✓ <strong>Genética importada</strong> mais barata (Texel · Dorper · Ile de France)<br>
+  ▸ ✓ <strong>Equipamentos Australian/NZ</strong> baratos (cercas elétricas · contensores)<br>
+  ▸ ✓ <strong>Sêmen importado</strong> reduz custo<br>
+  ▸ ✗ <strong>Exportação BR:</strong> Receita em R$ menor<br><br>
+  <strong>Cálculo paridade importação:</strong><br>
+  ▸ <strong>Carcaça uruguaia FOB:</strong> US$ 5.000/t<br>
+  ▸ <strong>Em R$ (4,95):</strong> R$ 24.750/t = R$ 24,75/kg<br>
+  ▸ <strong>+ Logística + impostos:</strong> R$ 28-30/kg<br>
+  ▸ <strong>Carcaça BR:</strong> R$ 28-32/kg<br>
+  ▸ <strong>Spread mínimo:</strong> Importação compensa pouco<br>
+  ▸ <strong>Mas sem tarifa Mercosul</strong> = entrada livre<br><br>
+  <strong>Cenário composto 2026:</strong><br>
+  ▸ <strong>Cordeiro em alta forte</strong> (positivo!)<br>
+  ▸ <strong>Lã recuperando</strong> (positivo!)<br>
+  ▸ <strong>Importação Mercosul</strong> (negativo)<br>
+  ▸ <strong>Custos estáveis</strong> (positivo)<br>
+  ▸ <strong>Selic baixa</strong> (alívio crédito)<br>
+  ▸ <strong>Consumo crescendo lento</strong> (positivo)<br>
+  ▸ <strong>= Cenário POSITIVO p/ produtor BR</strong><br>
+  ▸ <strong>Setor em RECUPERAÇÃO HISTÓRICA</strong><br><br>
+  <strong>Conclusão para ARCO, ABCDorper, Embrapa:</strong> Setor de ovinos vive ciclo de OURO em 2026! Preços históricos · feiras lotadas · genética avança · consumo crescente. Maior desafio: organização cadeia · profissionalização · sair informalidade. Quem tem rebanho agora COLHE ABUNDÂNCIA! Investir em genética e confinamento estratégico é a fórmula vencedora.</div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#f5f5f4,#d6d3d1)">📊</div><h2>Indicadores-Chave <span>— Cepea/Embrapa · Emater · ARCO · Macro</span></h2></div>
+
+<div class="kpi-row">
+  <div class="kpi wl"><div class="kpi-lb">Cordeiro RS vivo</div><div class="kpi-val wl">R$ 12,78</div><div class="kpi-sub">/kg · +23% ano!</div></div>
+  <div class="kpi up"><div class="kpi-lb">Cordeiro RS pico</div><div class="kpi-val up">R$ 15,00</div><div class="kpi-sub">/kg leilões!</div></div>
+  <div class="kpi up"><div class="kpi-lb">Cordeiro SP</div><div class="kpi-val up">R$ 17,00</div><div class="kpi-sub">/kg · premium</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Cordeiro BA</div><div class="kpi-val nt">R$ 15,50</div><div class="kpi-sub">/kg · NE forte</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Carcaça quente</div><div class="kpi-val nt">R$ 30,00</div><div class="kpi-sub">/kg · varejo</div></div>
+  <div class="kpi up"><div class="kpi-lb">Pernil ovino</div><div class="kpi-val up">R$ 70,00</div><div class="kpi-sub">/kg · premium</div></div>
+  <div class="kpi up"><div class="kpi-lb">Carré (rack)</div><div class="kpi-val up">R$ 110,00</div><div class="kpi-sub">/kg · super premium!</div></div>
+  <div class="kpi up"><div class="kpi-lb">Produção BR 2023</div><div class="kpi-val up">110 mil t</div><div class="kpi-sub">0,95% mundial</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Rebanho BR</div><div class="kpi-val nt">21,7 mi</div><div class="kpi-sub">cabeças · BA líder</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Per capita BR</div><div class="kpi-val nt">0,4 kg</div><div class="kpi-sub">/hab/ano (baixo!)</div></div>
+  <div class="kpi up"><div class="kpi-lb">Export 2025</div><div class="kpi-val up">US$ 3,96 mi</div><div class="kpi-sub">+79% vs 2024!</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Import 2025</div><div class="kpi-val dn">US$ 52,8 mi</div><div class="kpi-sub">déficit US$ 49 mi</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Uruguai · Argentina</div><div class="kpi-val dn">85%</div><div class="kpi-sub">das importações BR</div></div>
+  <div class="kpi up"><div class="kpi-lb">Margem integrada</div><div class="kpi-val up">35-50%</div><div class="kpi-sub">cria-recria-engorda</div></div>
+  <div class="kpi pu"><div class="kpi-lb">Selic 29/04</div><div class="kpi-val pu">14,50%</div><div class="kpi-sub">↓ 0,25 p.p.</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Dólar 30/04</div><div class="kpi-val dn">R$ 4,95</div><div class="kpi-sub">Mín 2 anos · pressão imp</div></div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#f5f5f4,#d6d3d1)">📍</div><h2>Cotações da Semana <span>— Cordeiro vivo BR · Estados · Abr/26</span></h2></div>
+
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Estado</th><th>Set/2023</th><th>Médio 2024</th><th>Médio 2025</th><th>Jan/2026</th><th>Abr/2026</th><th>Var. Ano</th><th>Var. 2 Anos</th></tr></thead>
+<tbody>
+<tr><td class="td-name">🥇 São Paulo</td><td>13,80</td><td>14,50</td><td>15,80</td><td>16,50</td><td class="td-up">17,00</td><td class="td-up">+7,6%</td><td class="td-up">+23%</td></tr>
+<tr><td class="td-name">🥈 Bahia (BA)</td><td>17,50</td><td>14,80</td><td>13,80</td><td>15,00</td><td class="td-up">15,50</td><td class="td-up">+12,3%</td><td class="td-dn">−11%</td></tr>
+<tr><td class="td-name">🥉 Goiás (GO)</td><td>13,50</td><td>13,00</td><td>13,80</td><td>14,50</td><td class="td-up">14,80</td><td class="td-up">+7,2%</td><td class="td-up">+10%</td></tr>
+<tr><td class="td-name">Mato Grosso (MT)</td><td>10,65</td><td>11,80</td><td>12,80</td><td>13,40</td><td class="td-up">13,80</td><td class="td-up">+7,8%</td><td class="td-up">+30%</td></tr>
+<tr><td class="td-name">Mato Grosso do Sul</td><td>11,20</td><td>12,30</td><td>13,00</td><td>13,30</td><td class="td-up">13,50</td><td class="td-up">+3,8%</td><td class="td-up">+21%</td></tr>
+<tr><td class="td-name">🐑 RS (Cepea)</td><td>8,46</td><td>9,80</td><td>10,40</td><td>12,00</td><td class="td-up">13,00</td><td class="td-up">+25,0%</td><td class="td-up">+54%</td></tr>
+<tr><td class="td-name">🐑 RS Emater (média)</td><td>—</td><td>9,50</td><td>10,40</td><td>12,00</td><td class="td-up">12,78</td><td class="td-up">+22,9%</td><td class="td-up">+55%</td></tr>
+<tr><td class="td-name">Paraná (PR)</td><td>12,83</td><td>13,40</td><td>13,80</td><td>14,20</td><td class="td-up">14,50</td><td class="td-up">+5,1%</td><td class="td-up">+13%</td></tr>
+<tr><td class="td-name">Ceará (CE)</td><td>—</td><td>12,00</td><td>13,20</td><td>13,80</td><td class="td-up">14,00</td><td class="td-up">+6,1%</td><td class="td-up">+17%</td></tr>
+<tr><td class="td-name">📊 Média Brasil estimada</td><td>~12,60</td><td>~12,30</td><td>~13,10</td><td>~14,00</td><td class="td-up">~14,40</td><td class="td-up">+9,9%</td><td class="td-up">+14%</td></tr>
+</tbody>
+</table>
+</div>
+
+<p style="font-size:.78rem;color:var(--text3);margin-top:6px;text-align:center"><em>Cordeiro vivo R$/kg · RS recuperação histórica +54% em 2 anos · BA volátil · SP é praça premium · Cepea/Emater/Embrapa CIM · Setor inteiro em ALTA</em></p>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#f5f5f4,#d6d3d1)">📈</div><h2>Análise Gráfica <span>— 6 perspectivas · Trajetória · Estados · Top mundo · Rebanho · Comércio · Custos</span></h2></div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📊 Cordeiro Vivo · Trajetória Estados <span class="ch-tag">R$/kg · 2023-2026</span></h3>
+    <div class="chart-wrap"><canvas id="ch1"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>🐑 Cordeiro Vivo · Top Estados Abr/26 <span class="ch-tag">R$/kg</span></h3>
+    <div class="chart-wrap"><canvas id="ch2"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>🌍 Top 5 Produtores Mundiais <span class="ch-tag">FAO · mil t</span></h3>
+    <div class="chart-wrap"><canvas id="ch3"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>📍 Distribuição Rebanho BR <span class="ch-tag">% nacional</span></h3>
+    <div class="chart-wrap"><canvas id="ch4"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>🌎 Balança Comercial Ovinocultura BR <span class="ch-tag">US$ mi · 2025</span></h3>
+    <div class="chart-wrap"><canvas id="ch5"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>💰 Margem Sistema Integrado <span class="ch-tag">R$/cordeiro</span></h3>
+    <div class="chart-wrap"><canvas id="ch6"></canvas></div>
+  </div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#d6d3d1,#f5f5f4)">🔍</div><h2>Análise Aprofundada <span>— Setor em ouro · Recuperação histórica · Mas concorrência uruguaia</span></h2></div>
+
+<div class="co wl">
+  <h4>🐑 A Tese Central: Setor em RECUPERAÇÃO HISTÓRICA · Cordeiro Premium · Produtor Vencedor!</h4>
+  <p><strong>Brasil em ovinocultura mundial:</strong><br>
+  ▸ <strong>Produção 2023:</strong> 110 mil t (0,95% mundial)<br>
+  ▸ <strong>Posição:</strong> ~17º produtor global<br>
+  ▸ <strong>Rebanho:</strong> 21,7 milhões cabeças<br>
+  ▸ <strong>Per capita BR:</strong> 0,4 kg/hab/ano<br>
+  ▸ <strong>Mercado pequeno mas crescente</strong><br>
+  ▸ <strong>Setor informal:</strong> 60-70% comercialização<br><br>
+  <strong>RECUPERAÇÃO HISTÓRICA dos preços:</strong><br>
+  ▸ <strong>RS Set/2023:</strong> R$ 8,46/kg (mín)<br>
+  ▸ <strong>RS 2024:</strong> R$ 9,80/kg<br>
+  ▸ <strong>RS 2025:</strong> R$ 10,40/kg<br>
+  ▸ <strong>RS Jan/2026:</strong> R$ 12/kg (rompeu barreira!)<br>
+  ▸ <strong>RS Abr/2026:</strong> R$ 12,78-13/kg<br>
+  ▸ <strong>RS Pico leilões:</strong> R$ 15/kg<br>
+  ▸ <strong>Variação 2 anos:</strong> +51-54%! 🚀<br><br>
+  <strong>Por que setor está em OURO?</strong><br>
+  ▸ <strong>1. Demanda crescente:</strong> Restaurantes premium · churrascarias<br>
+  ▸ <strong>2. Oferta restrita:</strong> Rebanho BR ainda pequeno<br>
+  ▸ <strong>3. Boi caro pressiona:</strong> Boi a R$ 354/@ encarece<br>
+  ▸ <strong>4. Cordeiro é premium:</strong> Carne diferenciada<br>
+  ▸ <strong>5. Pampa recuperando:</strong> Pós-secas RS<br>
+  ▸ <strong>6. Genética avança:</strong> Texel, Dorper, Ile de France<br>
+  ▸ <strong>7. Confinamento expansão:</strong> Acabamento intensivo<br>
+  ▸ <strong>8. Lã recuperando:</strong> Renda complementar<br><br>
+  <strong>Quem está investindo?</strong><br>
+  ▸ <strong>Produtores tradicionais RS:</strong> Recuperando rebanho<br>
+  ▸ <strong>Investidores SP/MG:</strong> Aproveitando ciclo<br>
+  ▸ <strong>NE familiar:</strong> Crescendo lentamente<br>
+  ▸ <strong>Confinadores:</strong> Adaptando boitéis para ovinos<br>
+  ▸ <strong>Restaurateurs:</strong> Verticalizando (criar para vender)<br>
+  ▸ <strong>Genética premium:</strong> Cabanhas tradicionais<br><br>
+  <strong>Tendência futura:</strong> BR pode dobrar produção em 5-7 anos se cadeia se profissionalizar. Consumo per capita pode chegar a 1 kg/hab (de 0,4) puxado por restaurantes premium e marketing setor. Investimento ARCO + ABCDorper + IOB importante.</p>
+</div>
+
+<div class="co up">
+  <h4>📈 RS Liderou Recuperação · +54% em 2 anos · Pista de Leilões em FOGO!</h4>
+  <p><strong>Trajetória RS (Cepea + Emater):</strong><br>
+  ▸ <strong>Set/2023:</strong> R$ 8,46/kg (fundo do poço)<br>
+  ▸ <strong>2024 médio:</strong> R$ 9,80/kg (+16%)<br>
+  ▸ <strong>2025 médio:</strong> R$ 10,40/kg (+6%)<br>
+  ▸ <strong>Jan/2026:</strong> R$ 12,00/kg (rompe!)<br>
+  ▸ <strong>Abr/2026 Cepea:</strong> R$ 13,00/kg<br>
+  ▸ <strong>Abr/2026 Emater:</strong> R$ 12,78/kg<br>
+  ▸ <strong>Pico leilões:</strong> R$ 15/kg<br>
+  ▸ <strong>Variação 2 anos:</strong> +54%!<br><br>
+  <strong>Praças RS específicas (cordeiro vivo abr/26):</strong><br>
+  ▸ <strong>Bagé:</strong> R$ 13,50/kg (capital pampa)<br>
+  ▸ <strong>Alegrete:</strong> R$ 13,20/kg<br>
+  ▸ <strong>Dom Pedrito:</strong> R$ 13,00/kg<br>
+  ▸ <strong>Santana do Livramento:</strong> R$ 13,30/kg<br>
+  ▸ <strong>Uruguaiana:</strong> R$ 12,80/kg<br>
+  ▸ <strong>Pelotas:</strong> R$ 12,90/kg<br>
+  ▸ <strong>São Gabriel:</strong> R$ 13,10/kg<br>
+  ▸ <strong>Pinheiro Machado:</strong> R$ 13,40/kg<br><br>
+  <strong>18ª Agrovino (Bagé · jan/26) — DESTAQUE:</strong><br>
+  ▸ <strong>RECORDE inscrições:</strong> 666 ovinos<br>
+  ▸ <strong>12 raças</strong> em julgamentos<br>
+  ▸ <strong>5 leilões</strong> programados<br>
+  ▸ <strong>Exposições nacionais:</strong> Texel + Ideal<br>
+  ▸ <strong>Reprodutores top:</strong> R$ 30-80 mil<br>
+  ▸ <strong>Ovelhas elite:</strong> R$ 8-25 mil<br><br>
+  <strong>Texel é a raça-rainha do RS:</strong><br>
+  ▸ <strong>Origem:</strong> Holanda (ilha Texel)<br>
+  ▸ <strong>Carne magra premium</strong><br>
+  ▸ <strong>Cordeiros precoces:</strong> 4-5 meses<br>
+  ▸ <strong>Carcaça pesada:</strong> 18-22 kg<br>
+  ▸ <strong>Lã também</strong> (renda extra)<br>
+  ▸ <strong>Adaptada Pampa:</strong> Clima frio favorável<br><br>
+  <strong>Outras raças em ascensão RS:</strong><br>
+  ▸ <strong>Ile de France:</strong> Carcaça pesada · cordeiro premium<br>
+  ▸ <strong>Suffolk:</strong> Cabeça preta · marketing forte<br>
+  ▸ <strong>Hampshire Down:</strong> Precocidade<br>
+  ▸ <strong>Dorper:</strong> Em expansão · sem lã<br>
+  ▸ <strong>Cruzamentos:</strong> Cordeiro terminal premium<br><br>
+  <strong>Lã recuperando após anos crise:</strong><br>
+  ▸ <strong>Demanda mundial</strong> volta a crescer<br>
+  ▸ <strong>Lã merino fina:</strong> US$ 8-12/kg<br>
+  ▸ <strong>Lã ideal/corriedale BR:</strong> R$ 8-15/kg<br>
+  ▸ <strong>Tendência sustentável:</strong> Moda volta a valorizar<br>
+  ▸ <strong>Marfrig + Suíndara</strong> compra carne<br>
+  ▸ <strong>Renda complementar</strong> 10-15% propriedade<br><br>
+  <strong>Conclusão RS:</strong> Pampa gaúcho é o motor da ovinocultura BR moderna. Genética + tradição + clima ideal. Produtor que sobreviveu às crises está colhendo OURO em 2026!</p>
+</div>
+
+<div class="co or">
+  <h4>🇺🇾 Uruguai é o Inimigo · Mercosul livre · 60% da importação BR</h4>
+  <p><strong>Balança comercial 2025:</strong><br>
+  ▸ <strong>Exportação BR:</strong> US$ 3,96 mi (+79% vs 2024)<br>
+  ▸ <strong>Importação BR:</strong> US$ 52,8 mi (8x maior!)<br>
+  ▸ <strong>Saldo NEGATIVO:</strong> US$ 48,9 mi<br>
+  ▸ <strong>BR é DEFICITÁRIO</strong> em ovinos<br><br>
+  <strong>Origem das importações:</strong><br>
+  ▸ <strong>🇺🇾 Uruguai:</strong> 50-60% (líder absoluto!)<br>
+  ▸ <strong>🇦🇷 Argentina:</strong> 25-30%<br>
+  ▸ <strong>🇨🇱 Chile:</strong> 5-8%<br>
+  ▸ <strong>🇳🇿 Nova Zelândia:</strong> 3-5%<br>
+  ▸ <strong>🇦🇺 Austrália:</strong> 2-4%<br><br>
+  <strong>Por que Uruguai domina?</strong><br>
+  ▸ <strong>Pampas + clima ideal:</strong> Pasto natural abundante<br>
+  ▸ <strong>Tradição secular:</strong> Ovinocultura é DNA uruguaio<br>
+  ▸ <strong>Frigoríficos modernos:</strong> SIF + UE habilitados<br>
+  ▸ <strong>Custo produção menor:</strong> 30-40% mais barato<br>
+  ▸ <strong>Mercosul:</strong> Tarifa zero · entrada livre<br>
+  ▸ <strong>Logística:</strong> Caminhão direto Sul BR<br>
+  ▸ <strong>Escala:</strong> Uruguai produz 5x mais que BR per capita<br>
+  ▸ <strong>Rebanho uruguaio:</strong> ~6 mi cabeças (BR tem 21,7)<br>
+  ▸ <strong>Mas exporta 70%</strong> da produção (BR só 0,5%!)<br><br>
+  <strong>Carcaça uruguaia preço:</strong><br>
+  ▸ <strong>FOB:</strong> US$ 5.000/t<br>
+  ▸ <strong>Em R$ (4,95):</strong> R$ 24,75/kg<br>
+  ▸ <strong>Com logística:</strong> R$ 28-30/kg<br>
+  ▸ <strong>BR carcaça:</strong> R$ 28-32/kg<br>
+  ▸ <strong>Pequena vantagem importado</strong><br><br>
+  <strong>Exportações brasileiras (modesto):</strong><br>
+  ▸ <strong>🥇 Portugal:</strong> 78% peles (couro premium)<br>
+  ▸ <strong>🥈 Itália:</strong> 12% peles<br>
+  ▸ <strong>🥉 Argentina:</strong> 5%<br>
+  ▸ <strong>Carne (modesto):</strong> Ilhas Marshal · Libéria · Guiana<br><br>
+  <strong>Estados exportadores:</strong><br>
+  ▸ <strong>🥇 Piauí:</strong> 67% exportação total! (peles 93%)<br>
+  ▸ <strong>🥈 Pernambuco:</strong> 12%<br>
+  ▸ <strong>🥉 São Paulo:</strong> 8% (cárneos)<br>
+  ▸ <strong>4º Bahia:</strong> 5%<br>
+  ▸ <strong>5º RS:</strong> 4%<br><br>
+  <strong>Estratégia BR contra Uruguai:</strong><br>
+  ▸ <strong>1. Profissionalizar cadeia:</strong> SIF · sair informalidade<br>
+  ▸ <strong>2. Genética premium:</strong> Texel · Dorper · Ile de France<br>
+  ▸ <strong>3. Cordeiros precoces:</strong> 4-5 meses (vs 8-10 tradicional)<br>
+  ▸ <strong>4. Confinamento estratégico:</strong> Acabamento padrão<br>
+  ▸ <strong>5. Marca BR:</strong> "Cordeiro do Pampa" · "Cordeiro Caatinga"<br>
+  ▸ <strong>6. Marketing IG:</strong> Indicação Geográfica<br>
+  ▸ <strong>7. Restaurantes premium:</strong> Verticalização cadeia<br>
+  ▸ <strong>8. Halal · Kosher:</strong> Mercado certificado<br><br>
+  <strong>Conclusão:</strong> BR não vai competir com Uruguai em commodity. Estratégia é PREMIUM · NICHO · MARCA · valor agregado.</p>
+</div>
+
+<div class="co bl">
+  <h4>📍 Distribuição Geográfica · BA Líder · Mas RS Lidera Tecnificação</h4>
+  <p><strong>Top estados rebanho BR (IBGE):</strong><br>
+  ▸ <strong>🥇 Bahia:</strong> 21,66% nacional (4,7 mi cabeças!)<br>
+  ▸ <strong>🥈 Pernambuco:</strong> 14% (3 mi cabeças)<br>
+  ▸ <strong>🥉 Ceará:</strong> 11% (2,4 mi cabeças)<br>
+  ▸ <strong>4º Rio Grande do Sul:</strong> 9,5% (2 mi cabeças)<br>
+  ▸ <strong>5º Piauí:</strong> 8% (1,7 mi cabeças)<br>
+  ▸ <strong>6º Paraíba:</strong> 5,5%<br>
+  ▸ <strong>7º Rio Grande do Norte:</strong> 4,5%<br>
+  ▸ <strong>8º Maranhão:</strong> 4%<br>
+  ▸ <strong>9º Mato Grosso do Sul:</strong> 3,5%<br>
+  ▸ <strong>10º Sergipe:</strong> 3%<br><br>
+  <strong>Distribuição regional:</strong><br>
+  ▸ <strong>Nordeste:</strong> 60% rebanho (raças deslanadas · Santa Inês · Morada Nova)<br>
+  ▸ <strong>Sul:</strong> 12% (concentrado RS · raças carne/lã)<br>
+  ▸ <strong>Centro-Oeste:</strong> 8% (em ascensão · MS · MT)<br>
+  ▸ <strong>Sudeste:</strong> 9% (mercado consumidor · SP)<br>
+  ▸ <strong>Norte:</strong> 11% (caatinga · agreste)<br><br>
+  <strong>Bahia — A capital quantitativa:</strong><br>
+  ▸ <strong>Maior rebanho BR:</strong> 4,7 mi cabeças<br>
+  ▸ <strong>Caatinga e sertão:</strong> Adaptação<br>
+  ▸ <strong>Santa Inês predomina</strong><br>
+  ▸ <strong>Sistema extensivo:</strong> Pasto nativo<br>
+  ▸ <strong>Pequenos produtores:</strong> 90%<br>
+  ▸ <strong>Informalidade alta:</strong> 70%+<br>
+  ▸ <strong>Mas baixa produtividade</strong><br><br>
+  <strong>Rio Grande do Sul — A capital tecnificada:</strong><br>
+  ▸ <strong>4º rebanho:</strong> 2 mi cabeças<br>
+  ▸ <strong>Pampa gaúcho:</strong> Pasto natural premium<br>
+  ▸ <strong>Texel · Ideal · Corriedale</strong><br>
+  ▸ <strong>Frigoríficos SIF:</strong> Vários<br>
+  ▸ <strong>Genética avançada:</strong> Cabanhas tradicionais<br>
+  ▸ <strong>Lã + carne:</strong> Renda dupla<br>
+  ▸ <strong>Maior produtividade BR</strong><br>
+  ▸ <strong>Pista de leilões mais ativa</strong><br><br>
+  <strong>Piauí — A capital exportadora:</strong><br>
+  ▸ <strong>5º rebanho:</strong> 1,7 mi cabeças<br>
+  ▸ <strong>67% das exportações BR</strong> (peles)<br>
+  ▸ <strong>93% peles exportadas</strong> são piauienses!<br>
+  ▸ <strong>Indústria couro:</strong> Concentrada<br>
+  ▸ <strong>Destinos:</strong> Portugal · Itália<br><br>
+  <strong>Centro-Oeste em ascensão:</strong><br>
+  ▸ <strong>MS · MT · GO:</strong> Crescimento +10%/ano<br>
+  ▸ <strong>Sistema confinamento</strong><br>
+  ▸ <strong>Próximo grãos:</strong> Custo ração baixo<br>
+  ▸ <strong>Acompanha modelo bovino:</strong> Boitéis ovinos<br>
+  ▸ <strong>Investidores</strong> migrando<br><br>
+  <strong>São Paulo — Mercado consumidor + premium:</strong><br>
+  ▸ <strong>Pequeno rebanho</strong> mas mercado gigante<br>
+  ▸ <strong>Restaurantes premium:</strong> Maior consumidor BR<br>
+  ▸ <strong>Confinadores intensivos</strong><br>
+  ▸ <strong>Fazendas-modelo:</strong> Arcoa, Granja Capela do Bom Jesus<br>
+  ▸ <strong>Frigorífico Sereníssima:</strong> Marca premium</p>
+</div>
+
+<div class="co nt">
+  <h4>💰 Custos · Sistema Integrado é o Modelo · Margem 35-50%!</h4>
+  <p><strong>Estrutura de custos ovinocultura BR:</strong><br>
+  ▸ <strong>Alimentação (pasto + concentrado):</strong> 55-65%<br>
+  ▸ <strong>Mão de obra:</strong> 15-20%<br>
+  ▸ <strong>Sanidade · vermifugação:</strong> 8-10%<br>
+  ▸ <strong>Reprodução · genética:</strong> 5-8%<br>
+  ▸ <strong>Manejo · instalações:</strong> 5-7%<br>
+  ▸ <strong>Frete · comercialização:</strong> 3-5%<br>
+  ▸ <strong>Mortalidade (10-15%):</strong> Custo embutido<br><br>
+  <strong>Sistemas produtivos comparados:</strong><br>
+  ▸ <strong>1. Extensivo (pasto):</strong> 70% rebanho · custo R$ 5-8/kg vivo<br>
+  ▸ <strong>2. Semi-intensivo:</strong> 20% · custo R$ 7-10/kg<br>
+  ▸ <strong>3. Confinamento total:</strong> 10% · custo R$ 9-12/kg<br>
+  ▸ <strong>4. Confinamento estratégico:</strong> Final 60-90 dias · custo R$ 8-11/kg<br><br>
+  <strong>Cálculo SISTEMA INTEGRADO (cria-recria-engorda):</strong><br>
+  ▸ <strong>Cordeiro nascido fazenda:</strong> Custo R$ 80-120<br>
+  ▸ <strong>Recria 60 dias pasto:</strong> R$ 50-70<br>
+  ▸ <strong>Confinamento 60 dias finais:</strong> R$ 130-160<br>
+  ▸ <strong>Custo total cordeiro 30 kg:</strong> R$ 260-350<br>
+  ▸ <strong>Receita venda 30 kg vivo:</strong> R$ 384 (R$ 12,78/kg)<br>
+  ▸ <strong>MARGEM:</strong> R$ 34-124/cordeiro (10-35%!)<br><br>
+  <strong>Em propriedade 200 ovelhas-mãe:</strong><br>
+  ▸ <strong>Cordeiros/ano:</strong> 250 (1,25 cordeiro/ovelha)<br>
+  ▸ <strong>Receita anual:</strong> R$ 96 mil<br>
+  ▸ <strong>Custos totais:</strong> R$ 65-87 mil<br>
+  ▸ <strong>Lucro líquido:</strong> R$ 9-31 mil/ano<br>
+  ▸ <strong>Sistema EFICIENTE:</strong> Lucro R$ 30-40 mil/ano<br><br>
+  <strong>Investimento inicial (referência 200 ovelhas):</strong><br>
+  ▸ <strong>Ovelhas matrizes:</strong> R$ 200-300/cabeça = R$ 40-60 mil<br>
+  ▸ <strong>Reprodutor (1 para 30):</strong> R$ 5-15 mil = R$ 35-100 mil<br>
+  ▸ <strong>Cercas + currais:</strong> R$ 20-40 mil<br>
+  ▸ <strong>Bebedouros + cochos:</strong> R$ 5-10 mil<br>
+  ▸ <strong>Galpão · ordenhas:</strong> R$ 30-60 mil<br>
+  ▸ <strong>Total:</strong> R$ 130-270 mil<br>
+  ▸ <strong>ROI:</strong> 5-8 anos (sistema bom)<br><br>
+  <strong>Cotações insumos atuais (CEPEA):</strong><br>
+  ▸ <strong>Milho Campinas:</strong> R$ 66,67/sc<br>
+  ▸ <strong>Soja Paranaguá:</strong> R$ 128,47/sc<br>
+  ▸ <strong>Farelo soja 47%:</strong> R$ 1.520/t<br>
+  ▸ <strong>Ração ovinos 18% PB:</strong> R$ 2.000-2.300/t<br>
+  ▸ <strong>Sal mineral ovinos:</strong> R$ 3-5/kg<br>
+  ▸ <strong>Vermífugo:</strong> R$ 5-15/dose<br><br>
+  <strong>Quem ganha mais na cadeia?</strong><br>
+  ▸ <strong>Genética premium:</strong> Margem 100-300% (reprodutores)<br>
+  ▸ <strong>Restaurante premium:</strong> Margem 100-200%<br>
+  ▸ <strong>Frigorífico SIF:</strong> Margem 50-80%<br>
+  ▸ <strong>Indústria peles (Piauí):</strong> Margem 30-50%<br>
+  ▸ <strong>Sistema integrado:</strong> Margem 35-50%<br>
+  ▸ <strong>Extensivo tradicional:</strong> Margem 10-20%</p>
+</div>
+
+<div class="co pu">
+  <h4>🏦 Macro: Selic Baixa Ajuda · Real Fraco É MISTO · Setor Doméstico-Driven</h4>
+  <p><strong>Decisão Copom (29/04):</strong> Selic cortada para 14,50% (−0,25 p.p.)<br>
+  <strong>Dólar:</strong> R$ 4,9523 (mín 2 anos!)<br><br>
+  <strong>Para o setor de ovinos:</strong><br>
+  ▸ <strong>Selic 14,50%:</strong> Crédito custeio mais barato<br>
+  ▸ <strong>BNDES Pecuária:</strong> Linhas para genética · instalações<br>
+  ▸ <strong>Plano Safra 26/27:</strong> Pequenos · médios produtores<br>
+  ▸ <strong>Pronaf · Pronamp:</strong> Produtores familiares<br>
+  ▸ <strong>FCO/FNE:</strong> Forte para CO e NE<br>
+  ▸ <strong>Refinanciamento:</strong> Aproveitar para alongar<br><br>
+  <strong>Dólar fraco — IMPACTOS DUPLOS:</strong><br>
+  ▸ ✗ <strong>NEGATIVO:</strong> Importação Mercosul mais barata<br>
+  ▸ ✗ <strong>Pressiona preço</strong> mercado interno (mas modesto)<br>
+  ▸ ✓ <strong>Genética importada</strong> mais barata (Texel · Dorper · Ile de France)<br>
+  ▸ ✓ <strong>Equipamentos AU/NZ</strong> baratos (cercas elétricas · contensores)<br>
+  ▸ ✓ <strong>Sêmen importado</strong> reduz custo (Suffolk · Hampshire)<br>
+  ▸ ✗ <strong>Exportação BR:</strong> Receita em R$ menor (mas modesto · 0,5%)<br><br>
+  <strong>Cálculo paridade importação:</strong><br>
+  ▸ <strong>Carcaça uruguaia FOB:</strong> US$ 5.000/t<br>
+  ▸ <strong>Em R$ (4,95):</strong> R$ 24,75/kg<br>
+  ▸ <strong>+ Logística + impostos:</strong> R$ 28-30/kg<br>
+  ▸ <strong>Carcaça BR:</strong> R$ 28-32/kg<br>
+  ▸ <strong>Spread mínimo:</strong> Importação compensa pouco<br>
+  ▸ <strong>Mas sem tarifa Mercosul</strong> = entrada livre<br><br>
+  <strong>Cenário composto 2026:</strong><br>
+  ▸ <strong>Cordeiro em alta forte</strong> (positivo!)<br>
+  ▸ <strong>Lã recuperando</strong> (positivo!)<br>
+  ▸ <strong>Importação Mercosul</strong> (negativo · mas modesto)<br>
+  ▸ <strong>Custos estáveis</strong> (positivo)<br>
+  ▸ <strong>Selic baixa</strong> (alívio crédito)<br>
+  ▸ <strong>Consumo crescendo lento</strong> (positivo)<br>
+  ▸ <strong>= Cenário POSITIVO p/ produtor BR</strong><br>
+  ▸ <strong>Setor em RECUPERAÇÃO HISTÓRICA</strong><br><br>
+  <strong>Conclusão para ARCO, ABCDorper, Embrapa, frigorífico Marfrig/Sereníssima:</strong> Setor de ovinos vive ciclo de OURO em 2026! Preços históricos · feiras lotadas · genética avança · consumo crescente. Maior desafio: organização cadeia · profissionalização · sair informalidade. Quem tem rebanho agora COLHE ABUNDÂNCIA! Investir em genética e confinamento estratégico é a fórmula vencedora.</p>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#d6d3d1,#f5f5f4)">🌡️</div><h2>Termômetros do Mercado <span>— Pressões e Vetores</span></h2></div>
+
+<div class="grid3">
+  <div class="card">
+    <div class="thermo"><h4>📊 Cordeiro RS Vivo</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:90%"></div></div>
+      <div class="th-lb"><span>Crash</span><span>Médio</span><span>Pico</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ PICO HISTÓRICO!</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">R$ 12,78/kg · +54% em 2 anos!</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🐑 Rebanho BR</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:60%"></div></div>
+      <div class="th-lb"><span>Pequeno</span><span>Médio</span><span>Grande</span></div>
+      <p style="font-size:.78rem;color:var(--nt);margin-top:8px;font-weight:700">→ MÉDIO</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">21,7 mi cabeças · 0,95% mundo</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🍴 Consumo per capita</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:15%"></div></div>
+      <div class="th-lb"><span>Baixo</span><span>Médio</span><span>Alto</span></div>
+      <p style="font-size:.78rem;color:var(--dn);margin-top:8px;font-weight:700">⬇ MUITO BAIXO</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">0,4 kg/hab · enorme potencial</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🌎 Comércio Exterior</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:35%"></div></div>
+      <div class="th-lb"><span>Crash</span><span>Médio</span><span>Forte</span></div>
+      <p style="font-size:.78rem;color:var(--nt);margin-top:8px;font-weight:700">→ DEFICITÁRIO</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">Saldo −US$ 49 mi · Uruguai</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>💰 Margem Sistema Integrado</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:80%"></div></div>
+      <div class="th-lb"><span>Negativa</span><span>Zero</span><span>Lucrativa</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ MUITO BOA!</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">35-50% · ouro p/ produtor</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🐏 Lã (Mercado)</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:55%"></div></div>
+      <div class="th-lb"><span>Crash</span><span>Médio</span><span>Pico</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ RECUPERANDO</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">R$ 8-15/kg · sustentável volta</p>
+    </div>
+  </div>
+</div>
+
+<div class="dv"></div>
+
+<div class="opinion">
+  <h3>🎯 Opinião do Analista — Setor em CICLO DE OURO! Cordeiro Premium · Mas Cadeia Precisa Profissionalizar!</h3>
+
+  <p><strong>O setor ovino brasileiro vive CICLO DE OURO em 2026: CORDEIRO em RS disparou para R$ 12,78/kg vivo (Emater) · pico R$ 15/kg em leilões · variação +54% em 2 anos! Brasil é gigante quantitativo (21,7 mi cabeças · 4º rebanho mundial em cabeças) mas pequeno qualitativo (110 mil t · 0,95% produção mundial). BAHIA lidera rebanho (21,66% · Santa Inês) · RS lidera tecnificação (Texel · Ideal · Pampa) · Piauí lidera exportação (67% · peles para Portugal/Itália). CONSUMO BR é BAIXÍSSIMO: apenas 0,4 kg/hab/ano (vs frango 47 kg!) · enorme potencial. Mas mercado restaurantes premium em alta · cordeiro virou item gourmet. EXPORT 2025: US$ 3,96 mi (+79%!) · MAS importação US$ 52,8 mi (8x maior · déficit US$ 49 mi). Uruguai domina importação BR (50-60%) · Mercosul livre · cadeia BR informal demais (60-70% comércio fora SIF). Margem produtor INTEGRADO é EXCELENTE: 35-50% · sistema cria-recria-engorda mostrou 35% rentabilidade. Selic 14,50% + dólar R$ 4,95 = ambos ajudam. ARCO, ABCDorper, Embrapa Caprinos e Ovinos coordenam · feiras lotadas · investidores entrando. RECUPERAÇÃO HISTÓRICA · MOMENTO DE OURO!</strong></p>
+
+  <p><strong>Semana 27-30/abr (curta · feriado 1º Mai) — Em síntese:</strong><br>
+  ▸ <strong>Cordeiro RS vivo:</strong> R$ 12,78/kg (Emater) · R$ 13/kg (Cepea) · pico R$ 15/kg leilões<br>
+  ▸ <strong>Cordeiro SP:</strong> R$ 17/kg (premium) · <strong>BA:</strong> R$ 15,50/kg<br>
+  ▸ <strong>Cordeiro GO:</strong> R$ 14,80/kg · <strong>MT:</strong> R$ 13,80/kg · <strong>MS:</strong> R$ 13,50/kg<br>
+  ▸ <strong>Cordeiro PR:</strong> R$ 14,50/kg · <strong>CE:</strong> R$ 14/kg<br>
+  ▸ <strong>Recuperação RS 2 anos:</strong> +54%! (R$ 8,46 → R$ 13)<br>
+  ▸ <strong>Carcaça quente:</strong> R$ 28-32/kg · <strong>Pernil:</strong> R$ 60-80/kg<br>
+  ▸ <strong>Carré (rack):</strong> R$ 90-120/kg (super premium!)<br>
+  ▸ <strong>Produção BR 2023:</strong> 110 mil t (0,95% mundial · 17º produtor)<br>
+  ▸ <strong>Rebanho BR:</strong> 21,7 mi cabeças (BA líder com 21,66%)<br>
+  ▸ <strong>Per capita BR:</strong> 0,4 kg/hab/ano (vs frango 47 kg!)<br>
+  ▸ <strong>Export 2025:</strong> US$ 3,96 mi (+79%!) · Piauí 67% (peles)<br>
+  ▸ <strong>Import 2025:</strong> US$ 52,8 mi · Uruguai/Argentina 85%<br>
+  ▸ <strong>Lã:</strong> R$ 8-15/kg · em recuperação histórica<br>
+  ▸ <strong>Margem integrada:</strong> 35-50%<br>
+  ▸ <strong>Selic:</strong> 14,50% · <strong>Dólar:</strong> R$ 4,95</p>
+
+  <p><strong>Recomendações estratégicas:</strong></p>
+
+  <p><strong>1. PRODUTOR PEQUENO (até 50 ovelhas-mãe): GENÉTICA E ORGANIZAÇÃO!</strong> Investir em: a) Reprodutor Texel/Dorper/Ile de France (R$ 8-15 mil) · troca a cada 3 anos, b) Vermifugação programada (4x/ano), c) Ração de cocho concentrado fase final (60 dias), d) Vender cordeiros em feiras/leilões (preço melhor), e) Cooperativa de produtores (escala vendas). Em 50 ovelhas: 60-70 cordeiros/ano · receita R$ 25-30 mil · lucro R$ 8-12 mil/ano (atividade complementar).</p>
+
+  <p><strong>2. PRODUTOR MÉDIO (100-500 ovelhas): SISTEMA INTEGRADO É O MODELO!</strong> Sistema cria-recria-engorda integrado tem margem 35-50%! Investimentos: a) Genética premium (Texel · Dorper · Ile de France · sêmen sexado), b) Confinamento estratégico final (60-90 dias · cocho · ração 18% PB), c) Cordeiros precoces (4-5 meses vs 8-10 tradicional · 50% mais ciclos/ano), d) Plano sanitário rigoroso (parasitas matam!). Em 200 ovelhas: lucro R$ 25-40 mil/ano.</p>
+
+  <p><strong>3. PRODUTOR GRANDE (500+ ovelhas): VERTICALIZAÇÃO + MARCA!</strong> Aproveitar Selic baixa para investir em: a) Frigorífico próprio SIF (margem 50-80% adicional), b) Marca regional ("Cordeiro do Pampa" · "Cordeiro Caatinga"), c) Indicação Geográfica · IG, d) Restaurantes premium (B2B), e) E-commerce direto consumidor, f) Halal · Kosher (premium internacional). Em 1.000 ovelhas + frigorífico: receita R$ 800 mi-1,5 mi/ano · lucro 25-40%.</p>
+
+  <p><strong>4. INVESTIDOR NOVO: ENTRA AGORA NO CICLO ALTISTA!</strong> Cordeiro disparou +54% em 2 anos · setor em recuperação histórica · genética + confinamento dão margem 35-50%. Investimento inicial 200 ovelhas: R$ 130-270 mil · ROI 5-8 anos. Aproveitar Selic 14,50% · BNDES Pecuária. Comprar matrizes em feiras (Bagé · Esteio · Uberaba). Cuidado: setor exige conhecimento técnico · comprar cursos Embrapa · ARCO antes!</p>
+
+  <p><strong>5. INDÚSTRIA FRIGORÍFICA: APROVEITE NICHO PREMIUM!</strong> Carcaça R$ 28-32/kg pode virar pernil R$ 70 · carré R$ 110! Margem industrial 50-80%. Foco: a) Cortes premium embalados a vácuo, b) Marca própria (Sereníssima · Marfrig Cordeiro), c) Restaurantes high-end (B2B), d) E-commerce gourmet, e) Halal · Kosher (export). Investimento R$ 5-15 mi monta um frigorífico SIF ovinos.</p>
+
+  <p><strong>6. PROFISSIONALIZAR CADEIA É VITAL! Sair da informalidade!</strong> 60-70% comércio é fora SIF · prejudica setor. Estratégias: a) Apoio ARCO + ABCDorper + Embrapa, b) Inscrever em SIF/SISBI, c) Rastreabilidade SISBOV-ovinos, d) Selo origem (IG · Cordeiro do Pampa, Caatinga), e) Marketing setorial (Cordeiro Brasil), f) Receitas internacionais (Mediterrâneo · árabe). Setor formal cresce 3x mais rápido!</p>
+
+  <p><strong>7. CONSUMIDOR FINAL: APROVEITE A CARNE PREMIUM!</strong> Cordeiro é carne magra · saudável · saborosa. R$ 60-80/kg pernil parece caro mas rende muito. Estratégias: a) Comprar peças inteiras (mais barato/kg), b) Congelar e usar aos poucos, c) Receitas mediterrâneas (cordeiro com ervas, alecrim), d) Churrasco diferenciado (costela), e) Restaurantes premium em datas especiais. Família 4 pessoas: 1 pernil 5 kg = 4 refeições.</p>
+
+  <div class="opinion .scenarios" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px">
+    <div class="sc up">
+      <h5>🟢 Cenário Altista</h5>
+      <p>Demanda restaurantes explode · cadeia se profissionaliza · IG aprovadas · marketing forte · consumo per capita sobe para 0,8 kg · BR exporta 5x mais → <strong>Cordeiro R$ 16-18/kg · margem 50% · setor dobra em 5 anos</strong>. Probabilidade: ~40%</p>
+    </div>
+    <div class="sc nt">
+      <h5>🟡 Cenário Neutro</h5>
+      <p>Mercado segue alta moderada · Uruguai mantém pressão · custos estáveis · consumo cresce lento (0,5 kg) · genética avança · feiras lotadas → <strong>Cordeiro R$ 13-15/kg · margem 30% · crescimento 5%/ano</strong>. Probabilidade: ~50%</p>
+    </div>
+    <div class="sc dn">
+      <h5>🔴 Cenário Baixista</h5>
+      <p>Importação Uruguai dispara · custos sobem · seca afeta pampa · consumo estagna · genética cara · recessão → <strong>Cordeiro R$ 10-12/kg · margem 15% · setor estagna</strong>. Probabilidade: ~10%</p>
+    </div>
+  </div>
+
+  <div class="sig">📅 Análise Rural IN · Quinta, 30/Abr/2026 · Semana curta (feriado 1º Mai) · CICLO DE OURO · CORDEIRO +54% · GENÉTICA AVANÇA · SETOR EM RECUPERAÇÃO HISTÓRICA!</div>
+</div>
+
+<footer class="footer"><div class="wrap">
+  <div class="footer-brand"><span class="r">Rural</span> <span class="i">IN</span></div>
+  <p>Radar Agro Semanal · Ovinos · Semana 27–30 Abril 2026<br>
+  Fontes: Cepea/Esalq · Embrapa Caprinos e Ovinos (Sobral/CE) · Centro de Inteligência e Mercado (CIM) · Emater/RS · ARCO (Associação Brasileira de Criadores de Ovinos) · ABCDorper · Sistema Famasul · FAO · IBGE · Banco Central · COPOM · Secex/MDIC</p>
+  <div class="footer-credits">
+    <h4>Análise e Construção</h4>
+    <div class="name">Dr. Sidney Souza</div>
+    <div class="title">Economista e Adm. Agrícola — Estrategista Econômico do Produtor</div>
+    <div class="desc">Especialista em economia da fazenda e gestão de risco no agro<br>Transformamos dados da fazenda em decisões econômicas<br>Ajudamos produtores a entender se o mercado sustenta seu negócio</div>
+    <div class="contact">📧 <a href="mailto:sidneyagro@gmail.com">sidneyagro@gmail.com</a> · 📱 <a href="tel:+5564992266886">(64) 9 9226-6886</a> · 📸 <a href="https://instagram.com/ruralin.ai" target="_blank">@ruralin.ai</a></div>
+  </div>
+  <p style="margin-top:18px"><em>⚠️ Material informativo. Não constitui recomendação de investimento.</em></p>
+</div></footer>
+
+</div>
+
+<script>
+const gc='rgba(42,37,32,.5)';
+const tt={backgroundColor:'rgba(19,17,13,.97)',borderColor:'#3d342a',borderWidth:1,titleFont:{size:11,weight:'700'},bodyFont:{size:10},padding:10,cornerRadius:8};
+
+new Chart(document.getElementById('ch1').getContext('2d'),{
+  type:'line',
+  data:{labels:['Set/23','2024 méd','2025 méd','Jan/26','Abr/26'],
+    datasets:[
+      {label:'RS Cepea',data:[8.46,9.80,10.40,12.00,13.00],borderColor:'#f5f5f4',backgroundColor:'rgba(245,245,244,.13)',borderWidth:3,fill:false,tension:.3,pointRadius:5},
+      {label:'SP',data:[13.80,14.50,15.80,16.50,17.00],borderColor:'#22c55e',backgroundColor:'transparent',borderWidth:2,fill:false,tension:.3,pointRadius:4},
+      {label:'BA',data:[17.50,14.80,13.80,15.00,15.50],borderColor:'#f97316',backgroundColor:'transparent',borderWidth:2,fill:false,tension:.3,pointRadius:4},
+      {label:'GO',data:[13.50,13.00,13.80,14.50,14.80],borderColor:'#3b82f6',backgroundColor:'transparent',borderWidth:2,fill:false,tension:.3,pointRadius:4}
+    ]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{color:'#e7e5e4',font:{size:10,weight:'600'},boxWidth:14,padding:8}},tooltip:tt},
+    scales:{y:{min:8,max:18,grid:{color:gc},ticks:{callback:function(v){return'R$'+v},font:{size:9,weight:'600'},color:'#e7e5e4'}},x:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#e7e5e4'}}}}
+});
+
+new Chart(document.getElementById('ch2').getContext('2d'),{
+  type:'bar',
+  data:{labels:['🥇 SP','🥈 BA','🥉 GO','PR','MT','RS Emater','MS','CE'],
+    datasets:[{label:'R$/kg vivo (abr/26)',data:[17.00,15.50,14.80,14.50,13.80,12.78,13.50,14.00],
+      backgroundColor:function(c){if(c.dataIndex===0)return 'rgba(34,197,94,.75)';if(c.dataIndex<=2)return 'rgba(132,204,22,.65)';return 'rgba(245,245,244,.55)'},
+      borderColor:function(c){if(c.dataIndex===0)return '#22c55e';if(c.dataIndex<=2)return '#84cc16';return '#f5f5f4'},
+      borderWidth:2,borderRadius:7}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+    scales:{y:{min:10,max:18,grid:{color:gc},ticks:{callback:function(v){return'R$'+v},font:{size:9,weight:'600'},color:'#e7e5e4'}},x:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#e7e5e4'}}}}
+});
+
+new Chart(document.getElementById('ch3').getContext('2d'),{
+  type:'bar',
+  data:{labels:['🥇 China','🥈 Índia','🥉 Austrália','Turquia','Nova Zelândia','BRASIL'],
+    datasets:[{label:'Produção 2023 (mil t)',data:[2812,1141,849,569,442,110],
+      backgroundColor:function(c){if(c.dataIndex===5)return 'rgba(245,245,244,.85)';return 'rgba(168,162,158,.6)'},
+      borderColor:function(c){if(c.dataIndex===5)return '#f5f5f4';return '#a8a29e'},
+      borderWidth:2,borderRadius:7}]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+    scales:{x:{min:0,max:3000,grid:{color:gc},ticks:{callback:function(v){return v+' mil t'},font:{size:9,weight:'600'},color:'#e7e5e4'}},y:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#e7e5e4'}}}}
+});
+
+new Chart(document.getElementById('ch4').getContext('2d'),{
+  type:'doughnut',
+  data:{labels:['🥇 Bahia (21,7%)','🥈 Pernambuco (14%)','🥉 Ceará (11%)','RS (9,5%)','Piauí (8%)','Outros (35,8%)'],
+    datasets:[{data:[21.7,14,11,9.5,8,35.8],
+      backgroundColor:['rgba(34,197,94,.75)','rgba(132,204,22,.65)','rgba(245,158,11,.6)','rgba(245,245,244,.55)','rgba(214,211,209,.5)','rgba(168,162,158,.4)'],
+      borderColor:['#22c55e','#84cc16','#f59e0b','#f5f5f4','#d6d3d1','#a8a29e'],
+      borderWidth:2,hoverOffset:8}]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom',labels:{color:'#e7e5e4',font:{size:9,weight:'600'},boxWidth:12,padding:6}},tooltip:tt},
+    cutout:'58%'}
+});
+
+new Chart(document.getElementById('ch5').getContext('2d'),{
+  type:'bar',
+  data:{labels:['Exportação','Importação','Saldo'],
+    datasets:[{label:'US$ milhões (2025)',data:[3.96,52.8,-48.84],
+      backgroundColor:['rgba(34,197,94,.7)','rgba(239,68,68,.7)','rgba(168,85,247,.7)'],
+      borderColor:['#22c55e','#ef4444','#a855f7'],
+      borderWidth:2,borderRadius:8}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+    scales:{y:{min:-60,max:60,grid:{color:gc},ticks:{callback:function(v){return'$'+v+'mi'},font:{size:9,weight:'600'},color:'#e7e5e4'}},x:{grid:{display:false},ticks:{font:{size:11,weight:'700'},color:'#e7e5e4'}}}}
+});
+
+new Chart(document.getElementById('ch6').getContext('2d'),{
+  type:'bar',
+  data:{labels:['Custo Total (integrado)','Receita Cordeiro 30 kg'],
+    datasets:[{label:'R$/cordeiro',data:[280,384],backgroundColor:['rgba(245,158,11,.7)','rgba(34,197,94,.7)'],borderColor:['#f59e0b','#22c55e'],borderWidth:2,borderRadius:8}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt,
+    annotation:{annotations:{
+      gap:{type:'label',xValue:0.5,yValue:332,content:['💰 MARGEM','+R$ 104','37% LUCRO!'],font:{size:11,weight:'bold'},color:'#22c55e',backgroundColor:'rgba(34,197,94,.13)',padding:6}
+    }}},
+    scales:{y:{min:0,max:450,grid:{color:gc},ticks:{callback:function(v){return'R$'+v},font:{size:9,weight:'600'},color:'#e7e5e4'}},x:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#e7e5e4'}}}}
+});
+</script>
+</body>
+</html>

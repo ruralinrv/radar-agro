@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Rural IN — Peixes · 27-30 Abr 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#040810;--bg2:#06101c;--bg3:#0a1628;--bg4:#0f1f3a;--border:#10243e;--border2:#1a3358;--ocean:#0ea5e9;--ocean2:#06b6d4;--ocean3:#22d3ee;--aqua:#67e8f9;--blue:#3b82f6;--blue2:#60a5fa;--cyan:#06b6d4;--text:#ecfeff;--text2:#a5f3fc;--text3:#67889c;--up:#22c55e;--dn:#ef4444;--nt:#eab308;--purple:#a855f7;--orange:#f97316;--pink:#ec4899;--leaf2:#84cc16;--gold:#f59e0b;--r:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 1000px 700px at 10% 15%,rgba(14,165,233,.13),transparent),radial-gradient(ellipse 800px 600px at 90% 85%,rgba(6,182,212,.09),transparent);pointer-events:none;z-index:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+.nav{background:rgba(6,16,28,.95);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:14px}
+.nav-logo-img{height:42px;width:auto;border-radius:8px}
+.nav-logo{font-weight:900;font-size:1.2rem}
+.nav-logo .r{color:var(--ocean3)}
+.nav-logo .i{color:var(--leaf2)}
+.nav-badge{background:linear-gradient(135deg,#0ea5e9,#06b6d4);border:1px solid rgba(103,232,249,.5);padding:5px 14px;border-radius:20px;font-size:.7rem;font-weight:800;color:#04101c;letter-spacing:.6px;box-shadow:0 0 25px rgba(14,165,233,.5)}
+.nav-back{color:var(--text3);font-size:.8rem;text-decoration:none}
+.nav-back:hover{color:var(--ocean3)}
+.hero{padding:54px 0 40px;position:relative}
+.hero::after{content:'';position:absolute;bottom:0;left:0;width:240px;height:3px;background:linear-gradient(90deg,#0ea5e9,var(--ocean3),transparent)}
+.hero-top{display:flex;align-items:center;gap:22px;margin-bottom:16px}
+.hero-icon-wrap{width:84px;height:84px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,rgba(14,165,233,.4),transparent 70%);border-radius:50%}
+.hero-icon{font-size:3.6rem;filter:drop-shadow(0 6px 18px rgba(14,165,233,.7))}
+.hero-texts h1{font-size:2.4rem;font-weight:900;letter-spacing:-1.2px;line-height:1.1}
+.hero-texts h1 .hl{background:linear-gradient(135deg,#0ea5e9,#06b6d4,#22d3ee,#67e8f9);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-texts .sub{font-size:.9rem;color:var(--text2);margin-top:6px;font-weight:500}
+.hero-bar{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border-radius:22px;font-size:.72rem;font-weight:700;border:1px solid}
+.chip.up{color:var(--up);border-color:rgba(34,197,94,.3);background:rgba(34,197,94,.08)}
+.chip.dn{color:var(--dn);border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.08)}
+.chip.nt{color:var(--nt);border-color:rgba(234,179,8,.4);background:rgba(234,179,8,.1)}
+.chip.pu{color:var(--purple);border-color:rgba(168,85,247,.3);background:rgba(168,85,247,.08)}
+.chip.aq{color:var(--ocean3);border-color:rgba(103,232,249,.5);background:rgba(14,165,233,.13)}
+.chip.or{color:var(--orange);border-color:rgba(249,115,22,.3);background:rgba(249,115,22,.08)}
+.chip.bl{color:var(--blue);border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.08)}
+.alert{border-radius:var(--r);padding:18px 22px;margin-bottom:14px;display:flex;gap:14px;border:1px solid;font-size:.85rem;line-height:1.75;color:var(--text2);position:relative}
+.alert::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
+.alert strong{color:var(--text)}
+.alert .ai{font-size:1.4rem;flex-shrink:0;margin-top:1px}
+.alert.green{background:linear-gradient(90deg,rgba(34,197,94,.08),rgba(34,197,94,.02));border-color:rgba(34,197,94,.25)}
+.alert.green::before{background:var(--up)}
+.alert.red{background:linear-gradient(90deg,rgba(239,68,68,.08),rgba(239,68,68,.02));border-color:rgba(239,68,68,.25)}
+.alert.red::before{background:var(--dn)}
+.alert.amber{background:linear-gradient(90deg,rgba(234,179,8,.1),rgba(234,179,8,.02));border-color:rgba(234,179,8,.3)}
+.alert.amber::before{background:var(--nt)}
+.alert.blue{background:linear-gradient(90deg,rgba(59,130,246,.08),rgba(59,130,246,.02));border-color:rgba(59,130,246,.25)}
+.alert.blue::before{background:var(--blue)}
+.alert.purple{background:linear-gradient(90deg,rgba(168,85,247,.08),rgba(168,85,247,.02));border-color:rgba(168,85,247,.25)}
+.alert.purple::before{background:var(--purple)}
+.alert.cyan{background:linear-gradient(90deg,rgba(6,182,212,.08),rgba(6,182,212,.02));border-color:rgba(6,182,212,.25)}
+.alert.cyan::before{background:var(--cyan)}
+.alert.orange{background:linear-gradient(90deg,rgba(249,115,22,.1),rgba(249,115,22,.02));border-color:rgba(249,115,22,.3)}
+.alert.orange::before{background:var(--orange)}
+.alert.aqua{background:linear-gradient(90deg,rgba(14,165,233,.13),rgba(103,232,249,.04));border-color:rgba(14,165,233,.4)}
+.alert.aqua::before{background:var(--ocean3)}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin:24px 0}
+.kpi{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:16px 18px;position:relative;transition:all .25s}
+.kpi:hover{transform:translateY(-3px);border-color:var(--border2)}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2)}
+.kpi.up::before{background:linear-gradient(90deg,var(--up),var(--leaf2))}
+.kpi.dn::before{background:linear-gradient(90deg,var(--dn),var(--orange))}
+.kpi.nt::before{background:linear-gradient(90deg,var(--nt),#fde047)}
+.kpi.bl::before{background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.kpi.pu::before{background:linear-gradient(90deg,var(--purple),var(--pink))}
+.kpi.or::before{background:linear-gradient(90deg,var(--orange),#fde047)}
+.kpi.aq::before{background:linear-gradient(90deg,#0ea5e9,var(--ocean3))}
+.kpi-lb{font-size:.6rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:5px;font-weight:700}
+.kpi-val{font-size:1.18rem;font-weight:900;letter-spacing:-.5px;line-height:1.2}
+.kpi-val.up{color:var(--up)}.kpi-val.dn{color:var(--dn)}.kpi-val.nt{color:var(--nt)}.kpi-val.bl{color:var(--blue)}.kpi-val.pu{color:var(--purple)}.kpi-val.or{color:var(--orange)}.kpi-val.aq{color:var(--ocean3)}
+.kpi-sub{font-size:.66rem;color:var(--text3);margin-top:3px;font-weight:500}
+.dv{height:1px;background:linear-gradient(90deg,transparent,var(--border2) 20%,var(--ocean3) 50%,var(--border2) 80%,transparent);margin:36px 0}
+.stitle{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.stitle .icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.stitle h2{font-size:1.18rem;font-weight:800;letter-spacing:-.3px}
+.stitle h2 span{color:var(--text2);font-weight:400;font-size:.85rem;margin-left:4px}
+.co{border-radius:var(--r);padding:20px 24px;margin-bottom:14px;border-left:4px solid;font-size:.85rem;color:var(--text2);line-height:1.85;background:linear-gradient(90deg,var(--bg2),var(--bg3))}
+.co strong{color:var(--text)}
+.co h4{font-size:.98rem;font-weight:800;margin-bottom:10px}
+.co.up{border-color:var(--up)}.co.up h4{color:var(--up)}
+.co.dn{border-color:var(--dn)}.co.dn h4{color:var(--dn)}
+.co.nt{border-color:var(--nt)}.co.nt h4{color:var(--nt)}
+.co.bl{border-color:var(--blue)}.co.bl h4{color:var(--blue)}
+.co.or{border-color:var(--orange)}.co.or h4{color:var(--orange)}
+.co.pu{border-color:var(--purple)}.co.pu h4{color:var(--purple)}
+.co.cy{border-color:var(--cyan)}.co.cy h4{color:var(--cyan)}
+.co.aq{border-color:var(--ocean3)}.co.aq h4{color:var(--ocean3)}
+.chart-box{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--r);padding:22px 24px;margin-bottom:14px}
+.chart-box h3{font-size:.9rem;color:var(--text);margin-bottom:14px;font-weight:700;display:flex;align-items:center;gap:8px}
+.chart-box h3 .ch-tag{margin-left:auto;font-size:.62rem;font-weight:700;padding:2px 10px;border-radius:10px;background:rgba(14,165,233,.18);color:var(--ocean3)}
+.chart-wrap{position:relative;height:290px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:800px){.grid2,.grid3{grid-template-columns:1fr}}
+.tbl-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--border);margin-bottom:14px;background:var(--bg2)}
+table{width:100%;border-collapse:collapse;font-size:.78rem}
+thead th{background:linear-gradient(180deg,var(--bg3),var(--bg4));padding:12px 14px;text-align:center;font-weight:800;color:var(--text2);font-size:.66rem;text-transform:uppercase;letter-spacing:.9px;border-bottom:1px solid var(--border)}
+tbody td{padding:10px 12px;border-bottom:1px solid rgba(16,36,62,.5);text-align:center}
+tbody tr:hover{background:rgba(14,165,233,.05)}
+.td-name{text-align:left!important;font-weight:700;white-space:nowrap}
+.td-up{color:var(--up);font-weight:800}.td-dn{color:var(--dn);font-weight:800}.td-nt{color:var(--nt);font-weight:800}
+.thermo h4{font-size:.84rem;color:var(--text);margin-bottom:10px;font-weight:700}
+.th-bar{height:14px;border-radius:7px;position:relative;box-shadow:inset 0 1px 4px rgba(0,0,0,.4)}
+.th-marker{position:absolute;top:-6px;width:4px;height:26px;background:#fff;border-radius:2px;transform:translateX(-50%);box-shadow:0 0 12px rgba(255,255,255,.6)}
+.th-lb{display:flex;justify-content:space-between;font-size:.66rem;color:var(--text3);margin-top:6px;font-weight:600}
+.card{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--r);padding:22px 26px;margin-bottom:14px}
+.opinion{background:linear-gradient(135deg,rgba(14,165,233,.18),rgba(103,232,249,.06),rgba(14,165,233,.02));border:1px solid rgba(103,232,249,.35);border-radius:var(--r);padding:30px 32px;margin:26px 0;position:relative}
+.opinion::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0ea5e9,var(--ocean3),var(--aqua),#0ea5e9)}
+.opinion h3{font-size:1.08rem;font-weight:800;color:var(--ocean3);margin-bottom:12px}
+.opinion p{font-size:.88rem;color:var(--text2);line-height:1.9;margin-bottom:12px}
+.opinion p strong{color:var(--text)}
+.opinion .scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.opinion .sc{padding:14px 16px;border-radius:10px;border:1px solid;background:rgba(0,0,0,.3)}
+.opinion .sc.up{border-color:rgba(34,197,94,.3)}.opinion .sc.nt{border-color:rgba(234,179,8,.3)}.opinion .sc.dn{border-color:rgba(239,68,68,.3)}
+.opinion .sc h5{font-size:.78rem;font-weight:800;margin-bottom:6px}
+.opinion .sc.up h5{color:var(--up)}.opinion .sc.nt h5{color:var(--nt)}.opinion .sc.dn h5{color:var(--dn)}
+.opinion .sc p{font-size:.74rem;line-height:1.6;margin:0}
+@media(max-width:700px){.opinion .scenarios{grid-template-columns:1fr}}
+.opinion .sig{margin-top:18px;padding-top:14px;border-top:1px solid rgba(103,232,249,.2);font-size:.78rem;color:var(--text3);font-style:italic}
+.footer{border-top:1px solid var(--border);padding:42px 0;text-align:center;margin-top:36px}
+.footer-brand{font-size:1.5rem;font-weight:900;margin-bottom:12px}
+.footer-brand .r{color:var(--ocean3)}.footer-brand .i{color:var(--leaf2)}
+.footer p{font-size:.78rem;color:var(--text3);line-height:1.8}
+.footer-credits{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+.footer-credits h4{font-size:.92rem;color:var(--ocean3);font-weight:700;margin-bottom:6px}
+.footer-credits .name{font-size:1.05rem;font-weight:800;color:var(--text)}
+.footer-credits .title{font-size:.78rem;color:var(--aqua);font-weight:600;margin-bottom:8px}
+.footer-credits .desc{font-size:.74rem;color:var(--text2);line-height:1.7;max-width:540px;margin:0 auto 12px}
+.footer-credits .contact{font-size:.74rem;color:var(--text3)}
+.footer-credits .contact a{color:var(--ocean3);text-decoration:none}
+.bignum-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+.bignum{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:20px 18px;text-align:center}
+.bignum .v{font-size:1.7rem;font-weight:900;letter-spacing:-1px;line-height:1;margin-bottom:6px}
+.bignum .v.up{color:var(--up)}.bignum .v.dn{color:var(--dn)}.bignum .v.aq{color:var(--ocean3)}
+.bignum .l{font-size:.72rem;color:var(--text2);font-weight:600}
+.bignum .s{font-size:.66rem;color:var(--text3);margin-top:3px}
+@media(max-width:700px){.bignum-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.hero-top{flex-direction:column;text-align:center}.hero-texts h1{font-size:1.65rem}.kpi-row{grid-template-columns:repeat(2,1fr)}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap"><div class="nav-left"><img src="https://ruralinrv.github.io/ruralin/logo.png" alt="Rural IN" class="nav-logo-img" onerror="this.style.display='none'"><div class="nav-logo"><span class="r">Rural</span> <span class="i">IN</span></div><div class="nav-badge">🐟 PEIXES</div></div><a href="portal-30-04.html" class="nav-back">← Voltar</a></div></nav>
+
+<div class="wrap">
+
+<section class="hero">
+  <div class="hero-top">
+    <div class="hero-icon-wrap"><span class="hero-icon">🐟</span></div>
+    <div class="hero-texts">
+      <h1><span class="hl">Peixes</span> · Radar Semanal</h1>
+      <div class="sub">27–30 Abril 2026 · CEPEA · Peixe BR · Embrapa · Brasil rompeu 1 mi t! · Tilápia BR é 4ª maior do mundo · Paraná líder!</div>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <span class="chip aq">📊 Tilápia BR média: R$ 9,90/kg</span>
+    <span class="chip up">🐠 Produção 2025: 1,01 mi t (+4,4%!)</span>
+    <span class="chip up">🟦 Tilápia: 707 mil t (+6,8%! · 70% do total)</span>
+    <span class="chip dn">📉 Export 1ºT: −39%! tarifaço Trump</span>
+    <span class="chip nt">🥇 Paraná: 273 mil t (líder!)</span>
+    <span class="chip pu">🏦 Selic: 14,75% → 14,50%</span>
+  </div>
+</section>
+
+<div class="bignum-row">
+  <div class="bignum"><div class="v aq">R$ 9,90/kg</div><div class="l">Tilápia média BR (CEPEA · Peixe BR)</div><div class="s">N.Paraná R$ 10,47 · O.PR R$ 8,97</div></div>
+  <div class="bignum"><div class="v up">1,011 mi t</div><div class="l">Produção total 2025 (RECORDE!)</div><div class="s">+4,41% · Brasil entra no clube do milhão</div></div>
+  <div class="bignum"><div class="v up">707,5 mil t</div><div class="l">Tilápia 2025 (+6,83%!)</div><div class="s">70% do total · 4º maior mundo</div></div>
+  <div class="bignum"><div class="v dn">−39%</div><div class="l">Export 1ºT/26 (US$ 11,2 mi)</div><div class="s">Tarifaço Trump derrubou EUA</div></div>
+</div>
+
+<div class="alert aqua">
+  <span class="ai">🐟</span>
+  <div><strong style="color:var(--ocean3)">BRASIL ENTROU NO CLUBE DO MILHÃO! Apenas 7 países do mundo superam essa marca em peixe cultivado!</strong><br>
+  <strong>Peixe BR — Produção 2025 (RECORDE!):</strong><br>
+  ▸ <strong>Total nacional:</strong> 1,011 milhão de toneladas (+4,41% vs 2024!)<br>
+  ▸ <strong>Crescimento desde 2015:</strong> +58,6% (de 638 mil para 1,011 mi t!)<br>
+  ▸ <strong>Receita anual:</strong> R$ 9 bilhões<br>
+  ▸ <strong>Empregos gerados:</strong> 3 milhões!<br>
+  ▸ <strong>Posição mundial:</strong> Maior produtor das AMÉRICAS!<br><br>
+  <strong>Composição da produção 2025:</strong><br>
+  ▸ <strong>🟦 Tilápia:</strong> 707.495 t (70% · líder absoluta!)<br>
+  ▸ <strong>🟫 Peixes nativos:</strong> 257.070 t (25% · tambaqui, pintado, pacu)<br>
+  ▸ <strong>⬜ Outras espécies:</strong> 46.975 t (5%)<br><br>
+  <strong>Tilápia BR — Crescimento histórico:</strong><br>
+  ▸ <strong>2015:</strong> 285.000 t<br>
+  ▸ <strong>2025:</strong> 707.495 t<br>
+  ▸ <strong>Crescimento acumulado:</strong> +148,2%! 🚀<br>
+  ▸ <strong>Brasil é 4º maior produtor mundial</strong> de tilápia (atrás China, Indonésia, Egito)<br><br>
+  <strong>Top 5 estados produtores 2025:</strong><br>
+  ▸ <strong>🥇 Paraná:</strong> 273.100 t (líder!) (+9,1%)<br>
+  ▸ <strong>🥈 São Paulo:</strong> 93.700 t (+0,54%)<br>
+  ▸ <strong>🥉 Minas Gerais:</strong> 77.500 t<br>
+  ▸ <strong>4º Santa Catarina:</strong> 63.400 t<br>
+  ▸ <strong>5º Maranhão:</strong> 59.600 t (SURPRESA do ano!)<br><br>
+  <strong>Por que Brasil é tão competitivo?</strong><br>
+  ▸ <strong>Clima tropical:</strong> Tilápia adora calor (cresce o ano todo)<br>
+  ▸ <strong>Reservatórios hidrelétricos:</strong> Tanques-rede em larga escala (Itaipu, Furnas)<br>
+  ▸ <strong>Custo grãos baixo:</strong> Ração 60-70% custo total · Brasil é #1 milho/soja<br>
+  ▸ <strong>Genética avançada:</strong> Embrapa, GIFT, Aquabel, Aquatec<br>
+  ▸ <strong>Modelo cooperado:</strong> C.Vale, Cocamar, Coopavel<br>
+  ▸ <strong>Frigoríficos integrados:</strong> 21+ unidades só em SP</div>
+</div>
+
+<div class="alert green">
+  <span class="ai">📈</span>
+  <div><strong style="color:var(--up)">PREÇO TILÁPIA EM ALTA NO 1ºT/26! Poder de compra do produtor em RECORDE histórico!</strong><br>
+  <strong>CEPEA — Indicador Tilápia 27-30/04/2026:</strong><br>
+  ▸ <strong>Norte do Paraná:</strong> R$ 10,47/kg (mais alto BR!)<br>
+  ▸ <strong>Triângulo Mineiro:</strong> R$ 10,23/kg<br>
+  ▸ <strong>Grandes Lagos (SP):</strong> R$ 10,06/kg<br>
+  ▸ <strong>Morada Nova (MG):</strong> R$ 9,78/kg<br>
+  ▸ <strong>Oeste do Paraná:</strong> R$ 8,97/kg (mais baixo)<br>
+  ▸ <strong>Média nacional:</strong> R$ 9,90/kg<br><br>
+  <strong>Trajetória 2025-2026:</strong><br>
+  ▸ <strong>1ºS/2025:</strong> R$ 7,92/kg (queda −20,6% real!)<br>
+  ▸ <strong>2ºS/2025:</strong> R$ 8,41/kg (recuperação)<br>
+  ▸ <strong>Dez/2025:</strong> R$ 8,80/kg<br>
+  ▸ <strong>Jan/2026:</strong> R$ 9,40/kg (forte alta!)<br>
+  ▸ <strong>Mar/2026:</strong> R$ 9,80/kg<br>
+  ▸ <strong>Abr/2026:</strong> R$ 9,90/kg (consolidando alta!)<br><br>
+  <strong>Por que preço subiu tanto em 2026?</strong><br>
+  ▸ <strong>Oferta restrita:</strong> Povoamento contido início 2025<br>
+  ▸ <strong>Frio prolongado 2025:</strong> Escassez de alevinos<br>
+  ▸ <strong>Demanda interna firme:</strong> Trade-down do boi caro<br>
+  ▸ <strong>Quaresma 2026:</strong> Tradicional aumento consumo peixe<br>
+  ▸ <strong>Custo ração caiu:</strong> Milho/soja em queda<br><br>
+  <strong>Poder de compra do produtor (CEPEA):</strong><br>
+  ▸ <strong>RECORDE da série histórica</strong> (jan/2026)<br>
+  ▸ <strong>Início série:</strong> jul/2021<br>
+  ▸ <strong>Causa:</strong> Preço peixe firme + ração mais barata<br>
+  ▸ <strong>Margem produtor:</strong> Melhor desde 2021<br>
+  ▸ <strong>Atratividade:</strong> Forte estímulo expansão atividade!</div>
+</div>
+
+<div class="alert red">
+  <span class="ai">📉</span>
+  <div><strong style="color:var(--dn)">EXPORTAÇÃO DESPENCOU 39%! TARIFAÇO TRUMP foi catastrófico para tilápia em 2026!</strong><br>
+  <strong>Embrapa — Exportação 1ºT/26:</strong><br>
+  ▸ <strong>Faturamento total:</strong> US$ 11,2 milhões (−39%!)<br>
+  ▸ <strong>Janeiro/26:</strong> 916 t (−45,5% vs jan/25!)<br>
+  ▸ <strong>Volume 1ºT/25 (referência):</strong> 3.900 t · US$ 18,5 mi<br>
+  ▸ <strong>Volume 1ºT/26:</strong> ~2.500 t (queda forte)<br><br>
+  <strong>Causa principal: Tarifaço Trump!</strong><br>
+  ▸ <strong>EUA tarifou pescados</strong> brasileiros (até 15%!)<br>
+  ▸ <strong>EUA respondia por 87%</strong> da receita exportação<br>
+  ▸ <strong>2025:</strong> US$ 52 mi de US$ 60 mi total!<br>
+  ▸ <strong>Suprema Corte EUA derrubou</strong> tarifaço em mar/26<br>
+  ▸ <strong>Nova tarifa:</strong> 10% (vs 15% anterior)<br>
+  ▸ <strong>Recuperação esperada:</strong> 2ºT/26 em diante<br><br>
+  <strong>Estratégia setor 2026:</strong><br>
+  ▸ <strong>Feira Boston (mar/26):</strong> Refazer contratos EUA<br>
+  ▸ <strong>Diversificação:</strong> México (5º importador!), Canadá, Peru<br>
+  ▸ <strong>Halal certificado:</strong> Em expansão<br>
+  ▸ <strong>UE:</strong> Acordo Mercosul facilita acesso<br>
+  ▸ <strong>Ásia:</strong> Vietnã, China, Japão (ainda pequeno)<br><br>
+  <strong>Top destinos exportação BR (2025):</strong><br>
+  ▸ <strong>🇺🇸 EUA:</strong> 87% (US$ 52 mi)<br>
+  ▸ <strong>🇨🇦 Canadá:</strong> 4%<br>
+  ▸ <strong>🇵🇪 Peru:</strong> 4%<br>
+  ▸ <strong>🇨🇳 China:</strong> 2%<br>
+  ▸ <strong>🇻🇳 Vietnã:</strong> 1%<br>
+  ▸ <strong>🇲🇽 México:</strong> 5º (em ascensão!)<br><br>
+  <strong>Crescimento filé congelado:</strong> Filé de tilápia congelada cresceu +421% em 2025! Estratégia de premium pricing.</div>
+</div>
+
+<div class="alert orange">
+  <span class="ai">⚠️</span>
+  <div><strong style="color:var(--orange)">ALERTA! Importação de tilápia do VIETNÃ ULTRAPASSOU exportação pela 1ª vez! Brasil virou IMPORTADOR LÍQUIDO!</strong><br>
+  <strong>Cenário inédito 2026:</strong><br>
+  ▸ <strong>Fevereiro/26:</strong> Brasil importou 1,3 mil t do Vietnã<br>
+  ▸ <strong>Equivale a:</strong> 6,5% da produção mensal BR!<br>
+  ▸ <strong>Pela 1ª vez:</strong> Importação > Exportação<br>
+  ▸ <strong>Sinal de alerta MÁXIMO</strong> para o setor!<br><br>
+  <strong>Por que Vietnã está ganhando mercado BR?</strong><br>
+  ▸ <strong>Preço mais baixo:</strong> Filé vietnamita 20-30% mais barato<br>
+  ▸ <strong>Volume escala:</strong> Vietnã produz 1,5 mi t/ano<br>
+  ▸ <strong>Subsídios governamentais:</strong> EUA suspeita "dumping"<br>
+  ▸ <strong>Pesticidas:</strong> Uso permitido (BR proibiu)<br>
+  ▸ <strong>Ração mais barata:</strong> Custos operacionais menores<br>
+  ▸ <strong>Logística direta:</strong> Containers cheios para Brasil<br><br>
+  <strong>Risco sanitário:</strong><br>
+  ▸ <strong>CNA pediu suspensão</strong> do pescado vietnamita<br>
+  ▸ <strong>Risco antibióticos:</strong> Resíduos detectados<br>
+  ▸ <strong>Risco doenças aquáticas:</strong> Tilápia Lake Virus (TiLV)<br>
+  ▸ <strong>Pesticidas proibidos:</strong> Encontrados em testes<br><br>
+  <strong>Defesa do setor BR:</strong><br>
+  ▸ <strong>Peixe BR e CNA:</strong> Pressionando MAPA por barreiras sanitárias<br>
+  ▸ <strong>Selo origem:</strong> "Tilápia 100% Brasileira"<br>
+  ▸ <strong>Industrialização coprodutos:</strong> Couro, óleo, farinha<br>
+  ▸ <strong>Marketing:</strong> Qualidade BR vs preço VN<br>
+  ▸ <strong>Foco varejo premium:</strong> Restaurantes · supermercados nobres<br><br>
+  <strong>Discussão ambiental:</strong> Movimento para incluir tilápia em "exóticas invasoras" pode complicar setor. Setor luta contra rotulagem negativa.</div>
+</div>
+
+<div class="alert blue">
+  <span class="ai">🥇</span>
+  <div><strong style="color:var(--blue)">PARANÁ É IMBATÍVEL! 273 mil t · 27% nacional · C.Vale · Tanques-rede em Itaipu</strong><br>
+  <strong>Paraná — Capital Mundial da Tilápia BR:</strong><br>
+  ▸ <strong>Produção 2025:</strong> 273.100 t (+9,1%!)<br>
+  ▸ <strong>Crescimento 10 anos:</strong> +170%!<br>
+  ▸ <strong>VBP tilápia PR:</strong> R$ 1,83 bi (2024)<br>
+  ▸ <strong>27% da produção nacional</strong><br>
+  ▸ <strong>98% da produção paranaense é tilápia</strong><br>
+  ▸ <strong>80% concentrado no Oeste paranaense</strong> (Toledo, Cascavel, Foz)<br><br>
+  <strong>Por que PR domina?</strong><br>
+  ▸ <strong>Cooperativismo forte:</strong> C.Vale, Lar, Copacol, Coopavel<br>
+  ▸ <strong>Modelo integrado:</strong> Coop fornece alevinos, ração, assistência<br>
+  ▸ <strong>Reservatório Itaipu:</strong> Tanques-rede em escala<br>
+  ▸ <strong>Indústrias gigantes:</strong> Plantas modernas Toledo, Palotina<br>
+  ▸ <strong>Pesquisa IDR-Paraná:</strong> Genética, manejo<br>
+  ▸ <strong>Logística:</strong> Próximo Porto de Paranaguá<br><br>
+  <strong>Investimentos recentes:</strong><br>
+  ▸ <strong>Moacir Niehues (Palotina):</strong> R$ 7 mi para nova tecnologia<br>
+  ▸ <strong>Tanques geomembrana:</strong> 30 peixes/m² (vs 7 convencional)<br>
+  ▸ <strong>Aumento alojamento:</strong> +72% em mesma área<br>
+  ▸ <strong>Redução água:</strong> −90% via geomembrana<br>
+  ▸ <strong>ROI:</strong> 10 anos · piscicultor satisfeito!<br><br>
+  <strong>Top municípios PR (estimativa):</strong><br>
+  ▸ <strong>Toledo:</strong> Líder absoluto<br>
+  ▸ <strong>Cascavel:</strong> Cluster industrial<br>
+  ▸ <strong>Palotina:</strong> Cooperativismo C.Vale<br>
+  ▸ <strong>Foz do Iguaçu:</strong> Tanques-rede Itaipu<br>
+  ▸ <strong>Marechal Cândido Rondon:</strong> Forte tradição</div>
+</div>
+
+<div class="alert cyan">
+  <span class="ai">📍</span>
+  <div><strong style="color:var(--cyan)">SÃO PAULO 2º LUGAR · MG, SC, MA também surpreendem · Tambaqui é a "joia escondida"</strong><br>
+  <strong>São Paulo (2º maior produtor):</strong><br>
+  ▸ <strong>Produção 2025:</strong> 93.700 t (+0,54%) · IEA-APTA<br>
+  ▸ <strong>Faturamento:</strong> R$ 494 milhões<br>
+  ▸ <strong>21 frigoríficos especializados</strong> · 86% do abate<br>
+  ▸ <strong>Tanques-rede em reservatórios:</strong> 75% volume<br>
+  ▸ <strong>Reservatórios principais:</strong> Ilha Solteira, Três Irmãos, Promissão<br>
+  ▸ <strong>Aproveitamento subprodutos:</strong> Couro, farinha de peixe<br><br>
+  <strong>Minas Gerais (3º · 77.500 t):</strong><br>
+  ▸ <strong>Triângulo Mineiro:</strong> Polo crescente · R$ 10,23/kg<br>
+  ▸ <strong>Morada Nova de Minas:</strong> Tradicional<br>
+  ▸ <strong>Pesca esportiva:</strong> Forte mercado paralelo<br><br>
+  <strong>Santa Catarina (4º · 63.400 t):</strong><br>
+  ▸ <strong>Tilápia + truta + outros</strong><br>
+  ▸ <strong>Diversificação espécies</strong><br><br>
+  <strong>Maranhão (5º · 59.600 t · SURPRESA!):</strong><br>
+  ▸ <strong>Crescimento explosivo</strong> em 2025<br>
+  ▸ <strong>Subiu várias posições</strong> no ranking<br>
+  ▸ <strong>Reservatório Tucuruí:</strong> Potencial gigante<br>
+  ▸ <strong>Investimentos federais:</strong> Aquicultura prioritária<br><br>
+  <strong>🐟 TAMBAQUI — A "joia escondida":</strong><br>
+  ▸ <strong>Produção:</strong> ~150 mil t (parte dos 257 mil t de nativos)<br>
+  ▸ <strong>Líder:</strong> Rondônia, Pará, Amazonas<br>
+  ▸ <strong>Custo produção:</strong> R$ 4,50-8,90/kg<br>
+  ▸ <strong>Preço mercado:</strong> R$ 5,50-10,00/kg<br>
+  ▸ <strong>Margem:</strong> R$ 1.890-3.970/t (atrativa!)<br>
+  ▸ <strong>Vantagem:</strong> Espécie nativa · sustentabilidade Amazônia<br>
+  ▸ <strong>Potencial industrial:</strong> Subproduto pele, óleo<br><br>
+  <strong>Outras espécies em ascensão:</strong> Pirarucu (Amazônia), Pintado, Pacu, Curimatá, Truta arco-íris (Sul).</div>
+</div>
+
+<div class="alert nt">
+  <span class="ai">💰</span>
+  <div><strong style="color:var(--nt)">CUSTO DE PRODUÇÃO · Ração é 60-70% · Tilápia integrada é o melhor negócio!</strong><br>
+  <strong>Estrutura de custos piscicultura BR:</strong><br>
+  ▸ <strong>Ração:</strong> 60-70% (energético + proteico)<br>
+  ▸ <strong>Alevinos:</strong> 8-12%<br>
+  ▸ <strong>Mão de obra:</strong> 8-10%<br>
+  ▸ <strong>Energia (oxigenação, bombas):</strong> 5-8%<br>
+  ▸ <strong>Sanidade (probióticos, vacinas):</strong> 3-5%<br>
+  ▸ <strong>Manutenção/depreciação:</strong> 4-6%<br>
+  ▸ <strong>Outros:</strong> 3-5%<br><br>
+  <strong>Cálculo médio (tilápia tanque-rede):</strong><br>
+  ▸ <strong>Conversão alimentar:</strong> 1,4-1,6 kg ração/kg peixe<br>
+  ▸ <strong>Custo ração/kg peixe:</strong> R$ 5,50-6,50<br>
+  ▸ <strong>Outros custos:</strong> R$ 1,80-2,20<br>
+  ▸ <strong>Custo total/kg vivo:</strong> R$ 7,30-8,70<br>
+  ▸ <strong>Preço atual médio:</strong> R$ 9,90/kg<br>
+  ▸ <strong>Margem BRUTA:</strong> R$ 1,20-2,60/kg (12-26%!)<br>
+  ▸ <strong>Margem LÍQUIDA:</strong> R$ 0,60-1,80/kg (8-18%)<br><br>
+  <strong>Cotações insumos atuais (CEPEA · 28/04):</strong><br>
+  ▸ <strong>Milho Campinas:</strong> R$ 66,67/sc<br>
+  ▸ <strong>Soja Paranaguá:</strong> R$ 128,47/sc<br>
+  ▸ <strong>Farelo soja 47%:</strong> ~R$ 1.520/t<br>
+  ▸ <strong>Ração 32% PB:</strong> ~R$ 3.200-3.500/t<br>
+  ▸ <strong>Tendência:</strong> Estável a queda (safrinha milho)<br><br>
+  <strong>Comparativo modelo de produção:</strong><br>
+  ▸ <strong>Tanque-rede:</strong> R$ 7-8,50/kg (mais barato)<br>
+  ▸ <strong>Tanque escavado:</strong> R$ 8,50-10/kg<br>
+  ▸ <strong>RAS (recirculação):</strong> R$ 9-12/kg (mais caro mas premium)<br>
+  ▸ <strong>Geomembrana:</strong> R$ 7,50-9/kg (intermediário)<br><br>
+  <strong>Investimento inicial (referência):</strong><br>
+  ▸ <strong>Tanque-rede 1.000 m³:</strong> R$ 80-120 mil (capacidade 60-80 t/ciclo)<br>
+  ▸ <strong>Tanque escavado 1 ha:</strong> R$ 150-250 mil (capacidade 30-50 t/ciclo)<br>
+  ▸ <strong>RAS comercial:</strong> R$ 1-3 milhões<br>
+  ▸ <strong>ROI tanque-rede:</strong> 3-5 anos<br>
+  ▸ <strong>ROI escavado:</strong> 5-7 anos</div>
+</div>
+
+<div class="alert purple">
+  <span class="ai">🏦</span>
+  <div><strong style="color:var(--purple)">EVENTO MACRO: COPOM CORTOU SELIC PARA 14,50%! Crédito mais barato para piscicultores!</strong><br>
+  Banco Central cortou Selic em 0,25 p.p. (29/04). <strong>Dólar:</strong> R$ 4,9523 (mín 2 anos!).<br><br>
+  <strong>Para o setor piscícola:</strong><br>
+  ▸ <strong>Selic 14,50%:</strong> Crédito custeio mais acessível<br>
+  ▸ <strong>Plano Safra Aquicultura 26/27:</strong> Linhas específicas<br>
+  ▸ <strong>BNDES:</strong> Tanques-rede, geomembrana, RAS<br>
+  ▸ <strong>FCO Pesca:</strong> Linha forte para Centro-Oeste<br>
+  ▸ <strong>FNE:</strong> Nordeste (Maranhão em ascensão)<br><br>
+  <strong>Dólar fraco — IMPACTOS:</strong><br>
+  ▸ ✗ <strong>Reduz receita exportação</strong> (mas exportação caiu 39%, pouco efeito)<br>
+  ▸ ✓ <strong>Insumos importados</strong> mais baratos (premix, vitaminas, equipamentos)<br>
+  ▸ ✓ <strong>Genética importada</strong> (linhagens GIFT, Spring) reduz custo<br>
+  ▸ ✓ <strong>Equipamentos modernos</strong> (Israel, Noruega, Japão) baratos<br>
+  ▸ ✓ <strong>Ração importada</strong> componentes proteicos<br><br>
+  <strong>Novo Ministro da Pesca (Édipo Araújo):</strong><br>
+  ▸ <strong>Nomeado:</strong> Abril 2026<br>
+  ▸ <strong>Agenda:</strong> Regulatória prioritária<br>
+  ▸ <strong>Foco:</strong> Tilápia importada Vietnã · licenciamento<br>
+  ▸ <strong>Peixe BR otimista:</strong> Diálogo construtivo<br>
+  ▸ <strong>PL desburocratização:</strong> Em tramitação<br><br>
+  <strong>Cenário composto:</strong><br>
+  ▸ <strong>Doméstico FORTE</strong> (preços recordes!)<br>
+  ▸ <strong>Exportação FRACA</strong> (tarifaço Trump)<br>
+  ▸ <strong>Custos sob controle</strong> (milho/soja)<br>
+  ▸ <strong>Selic baixa</strong> (alívio crédito)<br>
+  ▸ <strong>Concorrência Vietnã</strong> (alerta máximo!)<br>
+  ▸ <strong>= Cenário POSITIVO p/ produtor BR</strong><br>
+  ▸ <strong>= NEGATIVO p/ exportador (curto prazo)</strong></div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#0ea5e9,#06b6d4)">📊</div><h2>Indicadores-Chave <span>— CEPEA · Peixe BR · Embrapa · Macro</span></h2></div>
+
+<div class="kpi-row">
+  <div class="kpi aq"><div class="kpi-lb">Tilápia média BR (CEPEA)</div><div class="kpi-val aq">R$ 9,90</div><div class="kpi-sub">/kg · 27-30/04</div></div>
+  <div class="kpi up"><div class="kpi-lb">Norte Paraná (mais alto)</div><div class="kpi-val up">R$ 10,47</div><div class="kpi-sub">/kg · líder de preço!</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Oeste Paraná (mais baixo)</div><div class="kpi-val nt">R$ 8,97</div><div class="kpi-sub">/kg · oferta concentrada</div></div>
+  <div class="kpi up"><div class="kpi-lb">Triângulo Mineiro</div><div class="kpi-val up">R$ 10,23</div><div class="kpi-sub">/kg · forte demanda</div></div>
+  <div class="kpi up"><div class="kpi-lb">Produção total 2025</div><div class="kpi-val up">1,011 mi t</div><div class="kpi-sub">+4,41% RECORDE!</div></div>
+  <div class="kpi up"><div class="kpi-lb">Tilápia 2025</div><div class="kpi-val up">707 mil t</div><div class="kpi-sub">+6,83% (70% total)</div></div>
+  <div class="kpi aq"><div class="kpi-lb">Crescimento 10 anos</div><div class="kpi-val aq">+148%</div><div class="kpi-sub">Tilápia desde 2015!</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Receita anual setor</div><div class="kpi-val nt">R$ 9 bi</div><div class="kpi-sub">3 mi empregos</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Export 1ºT/26 receita</div><div class="kpi-val dn">US$ 11,2 mi</div><div class="kpi-sub">−39% tarifaço Trump!</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Export jan/26 volume</div><div class="kpi-val dn">916 t</div><div class="kpi-sub">−45,5% vs jan/25</div></div>
+  <div class="kpi up"><div class="kpi-lb">Paraná produção</div><div class="kpi-val up">273 mil t</div><div class="kpi-sub">27% nacional · líder!</div></div>
+  <div class="kpi up"><div class="kpi-lb">SP produção</div><div class="kpi-val up">93,7 mil t</div><div class="kpi-sub">2º · R$ 494 mi</div></div>
+  <div class="kpi or"><div class="kpi-lb">Imp. Vietnã (fev/26)</div><div class="kpi-val or">1,3 mil t</div><div class="kpi-sub">6,5% prod mensal BR!</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Posição mundial tilápia</div><div class="kpi-val nt">4º</div><div class="kpi-sub">atrás China, Indonésia, Egito</div></div>
+  <div class="kpi pu"><div class="kpi-lb">Selic 29/04</div><div class="kpi-val pu">14,50%</div><div class="kpi-sub">↓ 0,25 p.p.</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Dólar 30/04</div><div class="kpi-val dn">R$ 4,95</div><div class="kpi-sub">Mín 2 anos</div></div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#0ea5e9,#06b6d4)">📍</div><h2>Cotações da Semana <span>— CEPEA · Peixe BR · Praças · 27 a 30 Abril 2026</span></h2></div>
+
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Praça</th><th>14/04</th><th>21/04</th><th>25/04</th><th>28/04</th><th>30/04</th><th>Var. Sem</th><th>Var. Mês</th></tr></thead>
+<tbody>
+<tr><td class="td-name">🐟 Norte do Paraná</td><td>10,42</td><td>10,45</td><td>10,46</td><td>10,47</td><td class="td-up">10,47</td><td class="td-up">+0,1%</td><td class="td-up">+0,5%</td></tr>
+<tr><td class="td-name">🐟 Triângulo Mineiro</td><td>10,28</td><td>10,25</td><td>10,24</td><td>10,23</td><td>10,22</td><td class="td-dn">−0,3%</td><td class="td-dn">−0,6%</td></tr>
+<tr><td class="td-name">🐟 Grandes Lagos (SP)</td><td>9,89</td><td>10,00</td><td>10,04</td><td>10,06</td><td class="td-up">10,06</td><td class="td-up">+0,6%</td><td class="td-up">+1,7%</td></tr>
+<tr><td class="td-name">🐟 Morada Nova (MG)</td><td>9,77</td><td>9,80</td><td>9,79</td><td>9,78</td><td>9,77</td><td>0%</td><td>0%</td></tr>
+<tr><td class="td-name">🐟 Oeste do Paraná</td><td>8,93</td><td>8,95</td><td>8,96</td><td>8,97</td><td class="td-up">8,97</td><td class="td-up">+0,2%</td><td class="td-up">+0,4%</td></tr>
+<tr><td class="td-name">📊 Média BR Tilápia</td><td>9,86</td><td>9,89</td><td>9,90</td><td class="td-up">9,90</td><td>9,90</td><td class="td-up">+0,1%</td><td class="td-up">+0,4%</td></tr>
+<tr><td class="td-name">🌽 Milho Campinas (sc 60kg)</td><td>66,50</td><td>66,40</td><td>66,55</td><td>66,67</td><td>66,70</td><td class="td-up">+0,5%</td><td class="td-up">+0,3%</td></tr>
+<tr><td class="td-name">🌱 Soja Paranaguá (sc 60kg)</td><td>127,50</td><td>127,00</td><td>128,00</td><td>128,47</td><td>128,80</td><td class="td-up">+1,4%</td><td class="td-up">+1,0%</td></tr>
+</tbody>
+</table>
+</div>
+
+<p style="font-size:.78rem;color:var(--text3);margin-top:6px;text-align:center"><em>Indicador de Preços da Tilápia da Peixe BR/CEPEA é a referência oficial do mercado · Atualização semanal · Norte Paraná consistentemente o mais alto · Oeste Paraná o mais baixo (concentração oferta)</em></p>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#0ea5e9,#06b6d4)">📈</div><h2>Análise Gráfica <span>— 6 perspectivas · CEPEA · Produção · Estados · Export · Custos · Mundial</span></h2></div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📊 Tilápia BR · Trajetória 12 Meses <span class="ch-tag">CEPEA · R$/kg</span></h3>
+    <div class="chart-wrap"><canvas id="ch1"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>🐟 Produção BR · 10 Anos <span class="ch-tag">Peixe BR · mil t</span></h3>
+    <div class="chart-wrap"><canvas id="ch2"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📍 Top 5 Estados Produtores <span class="ch-tag">2025 · mil t</span></h3>
+    <div class="chart-wrap"><canvas id="ch3"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>🌍 Top Importadores Tilápia BR <span class="ch-tag">% receita 2025</span></h3>
+    <div class="chart-wrap"><canvas id="ch4"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📉 Exportação Tilápia BR · Histórico <span class="ch-tag">Trimestral · US$ mi</span></h3>
+    <div class="chart-wrap"><canvas id="ch5"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>💰 Custo vs Receita Tilápia <span class="ch-tag">Tanque-rede · R$/kg</span></h3>
+    <div class="chart-wrap"><canvas id="ch6"></canvas></div>
+  </div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#06b6d4,#22d3ee)">🔍</div><h2>Análise Aprofundada <span>— Brasil entrou no clube do milhão · Mas exportação afundou</span></h2></div>
+
+<div class="co aq">
+  <h4>🐟 A Tese Central: Brasil é IMPARÁVEL na Piscicultura · 1 mi t Marco Histórico!</h4>
+  <p><strong>Brasil entrou no CLUBE DO MILHÃO em 2025:</strong><br>
+  ▸ <strong>Produção total:</strong> 1,011 milhão de toneladas<br>
+  ▸ <strong>Apenas 7 países do mundo</strong> superam essa marca!<br>
+  ▸ <strong>Maior produtor das AMÉRICAS</strong><br>
+  ▸ <strong>4º maior produtor mundial de tilápia</strong> (atrás China, Indonésia, Egito)<br>
+  ▸ <strong>Crescimento desde 2015:</strong> +58,6%! 🚀<br>
+  ▸ <strong>Receita:</strong> R$ 9 bilhões/ano · 3 mi empregos<br><br>
+  <strong>Tilápia é a estrela absoluta:</strong><br>
+  ▸ <strong>Produção 2025:</strong> 707.495 t (70% nacional!)<br>
+  ▸ <strong>Crescimento 10 anos:</strong> +148,2%!<br>
+  ▸ <strong>Vantagens competitivas:</strong><br>
+  &nbsp;&nbsp;a) Cresce em água doce + tropical (BR é perfeito)<br>
+  &nbsp;&nbsp;b) Conversão alimentar 1,4-1,6 (entre as mais eficientes)<br>
+  &nbsp;&nbsp;c) Maturação rápida (6-7 meses)<br>
+  &nbsp;&nbsp;d) Resistente a doenças<br>
+  &nbsp;&nbsp;e) Genética avançada (GIFT, Spring, Aquabel)<br><br>
+  <strong>Modelos produtivos:</strong><br>
+  ▸ <strong>Tanques-rede:</strong> 75% volume · barato, escalável<br>
+  ▸ <strong>Tanques escavados:</strong> 20% · tradicional, controle total<br>
+  ▸ <strong>Geomembrana:</strong> Em ascensão · 30 peixes/m² (vs 7)<br>
+  ▸ <strong>RAS recirculação:</strong> 1% · premium, biossegurança<br><br>
+  <strong>Por que Brasil é tão competitivo?</strong><br>
+  ▸ <strong>Clima tropical:</strong> Tilápia adora calor (cresce o ano todo)<br>
+  ▸ <strong>Reservatórios hidrelétricos:</strong> Itaipu, Furnas, Promissão<br>
+  ▸ <strong>Custo grãos baixo:</strong> Brasil = #1 milho/soja mundial<br>
+  ▸ <strong>Genética avançada:</strong> Embrapa, Aquabel<br>
+  ▸ <strong>Cooperativismo:</strong> C.Vale, Lar, Coopavel<br>
+  ▸ <strong>Frigoríficos modernos:</strong> 21+ unidades só em SP<br>
+  ▸ <strong>Cadeia integrada:</strong> Alevino → Engorda → Abate → Filé</p>
+</div>
+
+<div class="co up">
+  <h4>📈 Preço Tilápia em ALTA · Poder de Compra do Produtor em RECORDE!</h4>
+  <p><strong>Trajetória dos preços:</strong><br>
+  ▸ <strong>1ºS/2025:</strong> R$ 7,92/kg (queda −20,6% real!)<br>
+  ▸ <strong>2ºS/2025:</strong> R$ 8,41/kg (recuperação)<br>
+  ▸ <strong>Dez/2025:</strong> R$ 8,80/kg<br>
+  ▸ <strong>Jan/2026:</strong> R$ 9,40/kg (forte alta!)<br>
+  ▸ <strong>Mar/2026:</strong> R$ 9,80/kg<br>
+  ▸ <strong>Abr/2026 (atual):</strong> R$ 9,90/kg (consolidação!)<br>
+  ▸ <strong>Variação 6 meses:</strong> +12,5%!<br><br>
+  <strong>Por estado/região:</strong><br>
+  ▸ <strong>🥇 Norte do Paraná:</strong> R$ 10,47/kg (mais alto!)<br>
+  ▸ <strong>🥈 Triângulo Mineiro:</strong> R$ 10,23/kg<br>
+  ▸ <strong>🥉 Grandes Lagos:</strong> R$ 10,06/kg<br>
+  ▸ <strong>4º Morada Nova:</strong> R$ 9,78/kg<br>
+  ▸ <strong>5º Oeste do Paraná:</strong> R$ 8,97/kg (mais baixo)<br>
+  ▸ <strong>Spread:</strong> R$ 1,50/kg · arbitragem possível<br><br>
+  <strong>Drivers da alta 2026:</strong><br>
+  ▸ <strong>1. Oferta restrita:</strong> Povoamento contido início 2025<br>
+  ▸ <strong>2. Frio prolongado:</strong> Escassez alevinos no inverno<br>
+  ▸ <strong>3. Demanda firme:</strong> Trade-down do boi gordo (R$ 354/@!)<br>
+  ▸ <strong>4. Quaresma 2026:</strong> Tradicional aumento consumo peixe<br>
+  ▸ <strong>5. Custo ração caiu:</strong> Milho/soja em queda 2025<br>
+  ▸ <strong>6. Marketing setor:</strong> Campanha "tilápia 100% BR"<br><br>
+  <strong>Poder de compra do produtor (CEPEA):</strong><br>
+  ▸ <strong>Janeiro/2026:</strong> RECORDE da série histórica!<br>
+  ▸ <strong>Início série:</strong> jul/2021<br>
+  ▸ <strong>Causa:</strong> Preço peixe firme + ração mais barata<br>
+  ▸ <strong>Margem produtor:</strong> Melhor desde 2021<br>
+  ▸ <strong>Atratividade:</strong> Forte estímulo expansão atividade<br>
+  ▸ <strong>Investimentos:</strong> Crescendo (R$ 7 mi de Niehues em PR)<br><br>
+  <strong>Cenário próximos meses:</strong><br>
+  ▸ <strong>Maio/2026:</strong> Preço deve sustentar (R$ 9,80-10,20/kg)<br>
+  ▸ <strong>Inverno 2026:</strong> Alta natural (oferta menor)<br>
+  ▸ <strong>2ºS/2026:</strong> Faixa esperada R$ 10-11/kg<br>
+  ▸ <strong>Risco:</strong> Importação Vietnã pressionando<br>
+  ▸ <strong>Oportunidade:</strong> Margem produtor segue alta!</p>
+</div>
+
+<div class="co dn">
+  <h4>📉 Exportação DESPENCOU 39%! Tarifaço Trump foi catastrófico para Tilápia BR</h4>
+  <p><strong>Crise da exportação 2026:</strong><br>
+  ▸ <strong>1ºT/26 receita:</strong> US$ 11,2 mi (−39%!)<br>
+  ▸ <strong>1ºT/25 referência:</strong> US$ 18,5 mi (3.900 t)<br>
+  ▸ <strong>Janeiro/26 volume:</strong> 916 t (−45,5%!)<br>
+  ▸ <strong>Causa principal:</strong> Tarifaço Trump (15% sobre pescado BR)<br>
+  ▸ <strong>EUA respondia por 87%</strong> da receita exportação BR!<br><br>
+  <strong>Cronologia da crise:</strong><br>
+  ▸ <strong>Jan/2025:</strong> Trump anuncia tarifaço<br>
+  ▸ <strong>Mar/2025:</strong> Tarifa 15% entra em vigor<br>
+  ▸ <strong>Mai-Dez/2025:</strong> Empresas absorvem perda (margens caem)<br>
+  ▸ <strong>Final 2025:</strong> Volume cai 1% (mas receita estável)<br>
+  ▸ <strong>1ºT/2026:</strong> Queda forte −39%!<br>
+  ▸ <strong>Mar/2026:</strong> Suprema Corte EUA derruba tarifaço<br>
+  ▸ <strong>Nova tarifa:</strong> 10% (vs 15% anterior)<br>
+  ▸ <strong>Recuperação:</strong> 2ºT/26 em diante<br><br>
+  <strong>Impacto por categoria de produto:</strong><br>
+  ▸ <strong>Filé fresco:</strong> Categoria mais afetada (peso refrigerado)<br>
+  ▸ <strong>Filé congelado:</strong> +421% em 2025! (estratégia premium)<br>
+  ▸ <strong>Peixe inteiro:</strong> Volume estável<br>
+  ▸ <strong>Subprodutos:</strong> Crescimento (couro, óleo)<br><br>
+  <strong>Top destinos exportação BR (2025):</strong><br>
+  ▸ <strong>🇺🇸 EUA:</strong> 87% (US$ 52 mi · concentração perigosa!)<br>
+  ▸ <strong>🇨🇦 Canadá:</strong> 4%<br>
+  ▸ <strong>🇵🇪 Peru:</strong> 4%<br>
+  ▸ <strong>🇨🇳 China:</strong> 2%<br>
+  ▸ <strong>🇻🇳 Vietnã:</strong> 1% (paradoxo: importam o nosso!)<br>
+  ▸ <strong>🇲🇽 México:</strong> 5º (em ascensão!)<br><br>
+  <strong>Estratégia recuperação setor 2026:</strong><br>
+  ▸ <strong>Feira Boston (mar/26):</strong> Refazer contratos EUA<br>
+  ▸ <strong>Diversificação:</strong> México em forte alta<br>
+  ▸ <strong>Halal certificado:</strong> Em expansão<br>
+  ▸ <strong>UE:</strong> Acordo Mercosul facilita acesso<br>
+  ▸ <strong>Ásia:</strong> Vietnã, China, Japão (novo)<br>
+  ▸ <strong>América Latina:</strong> Peru, México, Colômbia<br><br>
+  <strong>Concorrentes globais (importação EUA):</strong><br>
+  ▸ <strong>1º Honduras:</strong> Líder absoluto<br>
+  ▸ <strong>2º Costa Rica:</strong> Premium<br>
+  ▸ <strong>3º Colômbia:</strong> Crescente<br>
+  ▸ <strong>4º Equador:</strong> Tradicional<br>
+  ▸ <strong>5º Brasil:</strong> CAIU (era 4º) por causa do tarifaço!<br><br>
+  <strong>Lição aprendida:</strong> Concentração de 87% em 1 mercado = RISCO MÁXIMO. Setor precisa diversificar urgentemente.</p>
+</div>
+
+<div class="co or">
+  <h4>⚠️ ALERTA VIETNÃ! Brasil é IMPORTADOR LÍQUIDO pela 1ª vez! · CNA Pediu Suspensão!</h4>
+  <p><strong>O cenário inédito 2026:</strong><br>
+  ▸ <strong>Fevereiro/26:</strong> Brasil IMPORTOU 1,3 mil t do Vietnã!<br>
+  ▸ <strong>Equivale a:</strong> 6,5% da produção mensal nacional!<br>
+  ▸ <strong>Pela 1ª vez na história:</strong> Importação > Exportação<br>
+  ▸ <strong>Sinal de alerta MÁXIMO!</strong><br><br>
+  <strong>Por que Vietnã está dominando?</strong><br>
+  ▸ <strong>Preço:</strong> Filé vietnamita 20-30% mais barato!<br>
+  ▸ <strong>Volume:</strong> Vietnã produz 1,5 mi t/ano (2x BR!)<br>
+  ▸ <strong>Subsídios:</strong> Governo vietnamita ajuda (EUA suspeita "dumping")<br>
+  ▸ <strong>Pesticidas:</strong> Uso permitido (BR proibiu há anos)<br>
+  ▸ <strong>Antibióticos:</strong> Resíduos detectados em testes<br>
+  ▸ <strong>Custo trabalhista:</strong> Muito menor<br>
+  ▸ <strong>Logística:</strong> Containers cheios direto para Brasil<br>
+  ▸ <strong>Câmbio:</strong> Dong vietnamita desvalorizado<br><br>
+  <strong>Riscos para o consumidor BR:</strong><br>
+  ▸ <strong>Antibióticos (Tetraciclina, Cloranfenicol):</strong> Resistência bacteriana<br>
+  ▸ <strong>Pesticidas (Malachite Green):</strong> Carcinogênico, banido em 50+ países<br>
+  ▸ <strong>Tilápia Lake Virus (TiLV):</strong> Doença que pode contaminar plantéis BR<br>
+  ▸ <strong>Metais pesados:</strong> Mercúrio em alguns lotes<br>
+  ▸ <strong>Microplásticos:</strong> Águas vietnamitas contaminadas<br><br>
+  <strong>Defesa do setor BR (Peixe BR + CNA):</strong><br>
+  ▸ <strong>Pedido formal MAPA:</strong> Suspender importação Vietnã<br>
+  ▸ <strong>Inspeção rigorosa:</strong> Lote por lote<br>
+  ▸ <strong>Selo origem obrigatório:</strong> "Tilápia 100% Brasileira"<br>
+  ▸ <strong>Marketing:</strong> "Compre Brasil" no varejo<br>
+  ▸ <strong>Industrialização coprodutos:</strong> Couro, óleo, farinha (margem)<br>
+  ▸ <strong>Foco premium:</strong> Restaurantes · supermercados nobres<br>
+  ▸ <strong>Diferenciação:</strong> Sustentabilidade, frescor, segurança<br><br>
+  <strong>Discussão ambiental polêmica:</strong><br>
+  ▸ <strong>Tilápia é "exótica invasora":</strong> Origem africana<br>
+  ▸ <strong>Movimento ambientalista:</strong> Quer incluir em listas oficiais<br>
+  ▸ <strong>Risco:</strong> Restrições produção em águas abertas<br>
+  ▸ <strong>Defesa Peixe BR:</strong> Tilápia em tanques-rede é controlada<br>
+  ▸ <strong>Embrapa:</strong> Estudos comprovam baixo impacto se manejada<br><br>
+  <strong>Conclusão:</strong> Cenário PARADOXAL · Brasil produz mais que nunca · vende mais barato no mercado interno · mas vê Vietnã ganhando espaço · setor precisa de barreiras técnicas urgentes!</p>
+</div>
+
+<div class="co bl">
+  <h4>🥇 Paraná é IMBATÍVEL · 27% Nacional · Modelo Cooperado é o Segredo</h4>
+  <p><strong>PR — Capital da Tilápia BR:</strong><br>
+  ▸ <strong>Produção 2025:</strong> 273.100 t (+9,1%!)<br>
+  ▸ <strong>Crescimento 10 anos:</strong> +170%!<br>
+  ▸ <strong>VBP tilápia PR (2024):</strong> R$ 1,83 bi<br>
+  ▸ <strong>27% da produção nacional</strong><br>
+  ▸ <strong>98% da produção paranaense é tilápia!</strong><br>
+  ▸ <strong>80% concentrado no Oeste paranaense</strong><br><br>
+  <strong>Cooperativismo paranaense:</strong><br>
+  ▸ <strong>C.Vale:</strong> Maior · Palotina · investimentos R$ 7 mi piscicultor!<br>
+  ▸ <strong>Lar Cooperativa:</strong> Medianeira<br>
+  ▸ <strong>Copacol:</strong> Cafelândia<br>
+  ▸ <strong>Coopavel:</strong> Cascavel<br>
+  ▸ <strong>Modelo integrado:</strong> Coop fornece alevinos, ração, assistência<br>
+  ▸ <strong>Compra garantida:</strong> Coop compra toda produção<br>
+  ▸ <strong>Renda produtor:</strong> R$ 0,80-1,50/kg vivo<br>
+  ▸ <strong>Margem operacional:</strong> 15-25% (saudável!)<br><br>
+  <strong>Pólos produtivos PR:</strong><br>
+  ▸ <strong>Toledo:</strong> Líder absoluto · cluster industrial<br>
+  ▸ <strong>Cascavel:</strong> Forte indústria<br>
+  ▸ <strong>Palotina:</strong> Cooperativismo C.Vale<br>
+  ▸ <strong>Foz do Iguaçu:</strong> Tanques-rede em Itaipu<br>
+  ▸ <strong>Marechal Cândido Rondon:</strong> Tradição alemã<br>
+  ▸ <strong>Maringá:</strong> Cluster Cocamar<br><br>
+  <strong>Tecnologia em ascensão (Niehues · Palotina):</strong><br>
+  ▸ <strong>Investimento:</strong> R$ 7 milhões em geomembrana<br>
+  ▸ <strong>Tanques convencionais:</strong> 9 unidades · 17,5 ha<br>
+  ▸ <strong>Tanques novos geomembrana:</strong> 12 × 16x250 m<br>
+  ▸ <strong>Densidade peixes:</strong> 30/m² (vs 7 convencional · +328%!)<br>
+  ▸ <strong>Aumento alojamento:</strong> +72% em mesma área<br>
+  ▸ <strong>Redução água:</strong> −90%<br>
+  ▸ <strong>ROI:</strong> 10 anos<br>
+  ▸ <strong>Capacidade:</strong> 2 mi peixes/ciclo (vs 1,2 mi anterior)<br><br>
+  <strong>Por que PR é tão competitivo?</strong><br>
+  ▸ <strong>Cooperativismo organizado:</strong> Modelo único<br>
+  ▸ <strong>Reservatório Itaipu:</strong> Imenso · gratuito<br>
+  ▸ <strong>Indústrias modernas:</strong> Plantas Toledo, Cascavel<br>
+  ▸ <strong>Pesquisa IDR-Paraná:</strong> Genética, manejo<br>
+  ▸ <strong>Logística:</strong> Próximo Porto Paranaguá<br>
+  ▸ <strong>Mão obra qualificada:</strong> Tradição agrícola<br>
+  ▸ <strong>Clima:</strong> Tropical (Oeste) · ideal tilápia</p>
+</div>
+
+<div class="co cy">
+  <h4>📍 Outros Estados · São Paulo, MG, SC, MA · Tambaqui é a Joia Escondida</h4>
+  <p><strong>São Paulo (2º · 93,7 mil t):</strong><br>
+  ▸ <strong>Crescimento 2025:</strong> +0,54% (modesto · região saturada)<br>
+  ▸ <strong>Faturamento:</strong> R$ 494 milhões<br>
+  ▸ <strong>21 frigoríficos especializados</strong> · 86% do abate<br>
+  ▸ <strong>Tanques-rede em reservatórios:</strong> 75% volume produzido<br>
+  ▸ <strong>Reservatórios:</strong> Ilha Solteira, Três Irmãos, Promissão, Furnas<br>
+  ▸ <strong>Subprodutos:</strong> Couro (calçados), óleo, farinha<br>
+  ▸ <strong>Atacado SP:</strong> Maior consumidor BR<br><br>
+  <strong>Minas Gerais (3º · 77,5 mil t):</strong><br>
+  ▸ <strong>Triângulo Mineiro:</strong> R$ 10,23/kg (preço alto)<br>
+  ▸ <strong>Morada Nova de Minas:</strong> Tradicional · R$ 9,78/kg<br>
+  ▸ <strong>Pesca esportiva:</strong> Mercado paralelo forte (pesque-pague)<br>
+  ▸ <strong>Reservatório Furnas:</strong> Tanques-rede em ascensão<br><br>
+  <strong>Santa Catarina (4º · 63,4 mil t):</strong><br>
+  ▸ <strong>Diversificação espécies:</strong> Tilápia + truta + outros<br>
+  ▸ <strong>Truta arco-íris:</strong> Nicho premium serra catarinense<br>
+  ▸ <strong>Cooperativismo:</strong> Cooperalfa, Cooperserra<br><br>
+  <strong>Maranhão (5º · 59,6 mil t · SURPRESA!):</strong><br>
+  ▸ <strong>Crescimento explosivo</strong> em 2025<br>
+  ▸ <strong>Subiu várias posições</strong> no ranking<br>
+  ▸ <strong>Investimentos federais:</strong> Aquicultura prioritária<br>
+  ▸ <strong>Açudes do Nordeste:</strong> Potencial gigante<br>
+  ▸ <strong>Mercado consumidor:</strong> NE em crescimento<br><br>
+  <strong>🐟 TAMBAQUI — A "joia escondida" da Amazônia:</strong><br>
+  ▸ <strong>Produção:</strong> ~150 mil t (parte dos 257 mil t de nativos)<br>
+  ▸ <strong>Líder:</strong> Rondônia, Pará, Amazonas, Roraima<br>
+  ▸ <strong>Custo produção:</strong> R$ 4,50-8,90/kg<br>
+  ▸ <strong>Preço mercado:</strong> R$ 5,50-10,00/kg<br>
+  ▸ <strong>Margem por tonelada:</strong> R$ 1.890-3.970 (atrativa!)<br>
+  ▸ <strong>Vantagem:</strong> Espécie nativa · sustentabilidade Amazônia<br>
+  ▸ <strong>Potencial industrial:</strong> Pele para couro premium<br>
+  ▸ <strong>Sabor:</strong> Carne saborosa · poucos espinhos<br>
+  ▸ <strong>Limitação:</strong> Crescimento mais lento que tilápia (10-12 meses)<br>
+  ▸ <strong>Mercado:</strong> Forte consumo regional · pouco exportado<br><br>
+  <strong>Outras espécies em ascensão:</strong><br>
+  ▸ <strong>Pirarucu:</strong> Premium amazônico (R$ 30-50/kg!)<br>
+  ▸ <strong>Pintado:</strong> Cativeiro PR/MG · R$ 15-25/kg<br>
+  ▸ <strong>Pacu:</strong> Tradicional MS · R$ 12-18/kg<br>
+  ▸ <strong>Truta arco-íris:</strong> Sul · R$ 25-40/kg<br>
+  ▸ <strong>Curimatá:</strong> Norte/NE · barato<br>
+  ▸ <strong>Surubim:</strong> Premium · R$ 25-35/kg</p>
+</div>
+
+<div class="co pu">
+  <h4>🏦 Macro: Selic Baixa Ajuda · Dólar Fraco Tem Pouco Impacto · Setor Doméstico-Driven</h4>
+  <p><strong>Decisão Copom (29/04):</strong> Selic cortada para 14,50% (−0,25 p.p.)<br>
+  <strong>Dólar:</strong> R$ 4,9523 (mín 2 anos!)<br><br>
+  <strong>Para o setor piscícola:</strong><br>
+  ▸ <strong>Selic 14,50%:</strong> Crédito custeio mais acessível<br>
+  ▸ <strong>Plano Safra Aquicultura 26/27:</strong> Linhas específicas<br>
+  ▸ <strong>BNDES:</strong> Tanques-rede, geomembrana, RAS<br>
+  ▸ <strong>FCO Pesca:</strong> Forte para Centro-Oeste<br>
+  ▸ <strong>FNE:</strong> Maranhão em ascensão<br>
+  ▸ <strong>Refinanciamento:</strong> Piscicultores alongam dívidas<br><br>
+  <strong>Dólar fraco — IMPACTOS:</strong><br>
+  ▸ ✗ <strong>Reduz receita exportação</strong> em R$ (mas exportação é só 1,5% da produção!)<br>
+  ▸ ✓ <strong>Insumos importados</strong> mais baratos (premix, vitaminas)<br>
+  ▸ ✓ <strong>Genética importada</strong> (linhagens GIFT, Spring) reduz custo<br>
+  ▸ ✓ <strong>Equipamentos modernos</strong> (Israel, Noruega, Japão) baratos<br>
+  ▸ ✓ <strong>Aeradores, bombas, redes:</strong> Importados<br><br>
+  <strong>Cálculo paridade exportação tilápia:</strong><br>
+  ▸ <strong>Preço médio export:</strong> US$ 4.500/t (filé congelado)<br>
+  ▸ <strong>Em R$ (4,95):</strong> R$ 22.275/t = R$ 22,28/kg<br>
+  ▸ <strong>Atual mercado interno:</strong> R$ 9,90/kg (vivo) · R$ 25-30/kg (filé varejo)<br>
+  ▸ <strong>Interno é competitivo</strong> · exportação não é prioridade<br>
+  ▸ <strong>Setor é DOMÉSTICO-DRIVEN</strong><br><br>
+  <strong>Novo Ministro da Pesca (Édipo Araújo · abr/26):</strong><br>
+  ▸ <strong>Foco:</strong> Tilápia importada Vietnã<br>
+  ▸ <strong>Agenda regulatória:</strong> Licenciamento simplificado<br>
+  ▸ <strong>PL desburocratização:</strong> Em tramitação<br>
+  ▸ <strong>Peixe BR otimista:</strong> Diálogo construtivo<br>
+  ▸ <strong>Prioridades:</strong> Sanidade, exportação, infraestrutura<br><br>
+  <strong>Cenário composto:</strong><br>
+  ▸ <strong>Doméstico FORTE</strong> (preços recordes!)<br>
+  ▸ <strong>Exportação FRACA</strong> (tarifaço Trump)<br>
+  ▸ <strong>Custos sob controle</strong> (milho/soja em queda)<br>
+  ▸ <strong>Selic baixa</strong> (alívio crédito)<br>
+  ▸ <strong>Concorrência Vietnã</strong> (alerta máximo!)<br>
+  ▸ <strong>= Cenário POSITIVO p/ produtor BR</strong><br>
+  ▸ <strong>= NEGATIVO p/ exportador (curto prazo)</strong><br><br>
+  <strong>Conclusão:</strong> Setor está em ciclo POSITIVO interno. Preços firmes + custos controlados + Selic baixa = momento favorável para investir e expandir. Mas atenção máxima: a) Tarifaço Trump (recuperação 2ºT/26), b) Vietnã (barreiras técnicas urgentes), c) Discussão "exótica invasora" (defender setor publicamente).</p>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#06b6d4,#22d3ee)">🌡️</div><h2>Termômetros do Mercado <span>— Pressões e Vetores</span></h2></div>
+
+<div class="grid3">
+  <div class="card">
+    <div class="thermo"><h4>📊 Preço Tilápia BR</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:80%"></div></div>
+      <div class="th-lb"><span>Crash</span><span>Médio</span><span>Pico</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ ALTO!</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">R$ 9,90/kg · alta consistente</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🐟 Produção BR</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:90%"></div></div>
+      <div class="th-lb"><span>Fraca</span><span>Média</span><span>Recorde</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ RECORDE!</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">1,011 mi t · clube do milhão!</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🌍 Exportação</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:18%"></div></div>
+      <div class="th-lb"><span>Crash</span><span>Média</span><span>Forte</span></div>
+      <p style="font-size:.78rem;color:var(--dn);margin-top:8px;font-weight:700">⬇ CRASH!</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">−39% 1ºT · tarifaço Trump</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>💰 Margem Produtor</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:88%"></div></div>
+      <div class="th-lb"><span>Negativa</span><span>Média</span><span>Excelente</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ RECORDE!</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">Poder compra recorde série!</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>⚠️ Concorrência Vietnã</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--up),var(--nt),var(--dn))"><div class="th-marker" style="left:75%"></div></div>
+      <div class="th-lb"><span>Fraca</span><span>Média</span><span>Forte</span></div>
+      <p style="font-size:.78rem;color:var(--dn);margin-top:8px;font-weight:700">⬆ ALERTA!</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">Imp > Exp 1ª vez na história!</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🌽 Custos Ração</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--up),var(--nt),var(--dn))"><div class="th-marker" style="left:35%"></div></div>
+      <div class="th-lb"><span>Barato</span><span>Médio</span><span>Caro</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬇ FAVORÁVEL</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">Milho/soja em queda</p>
+    </div>
+  </div>
+</div>
+
+<div class="dv"></div>
+
+<div class="opinion">
+  <h3>🎯 Opinião do Analista — Brasil Entrou no Clube do Milhão · Mas Vietnã é Alerta MÁXIMO!</h3>
+
+  <p><strong>O setor piscícola brasileiro vive momento HISTÓRICO em 2026: BRASIL ENTROU NO CLUBE DO MILHÃO de toneladas em 2025 (1,011 mi t · +4,41% · apenas 7 países do mundo superam!) · Maior produtor das AMÉRICAS · 4º maior produtor mundial de tilápia (atrás China, Indonésia, Egito) · Crescimento desde 2015: +58,6%! TILÁPIA é a estrela absoluta com 707.495 t (70% nacional · +6,83%). PARANÁ é IMBATÍVEL com 273 mil t (+9,1% · 27% nacional · 98% paranaense é tilápia · cooperativismo C.Vale, Lar, Coopavel domina!). PREÇO TILÁPIA em ALTA: R$ 9,90/kg média BR · Norte PR R$ 10,47/kg (mais alto). PODER DE COMPRA do produtor em RECORDE histórico (jan/2026)! Custos sob controle (milho R$ 66,67 · soja R$ 128,47 em queda). Receita anual setor: R$ 9 bi · 3 mi empregos. MAS atenção: EXPORTAÇÃO DESPENCOU 39% no 1ºT/26 (tarifaço Trump 15% · 87% concentração EUA = risco máximo · Suprema Corte derrubou em mar/26 mas estrago feito). PRIMEIRO MOMENTO HISTÓRICO: Brasil virou IMPORTADOR LÍQUIDO em fev/26 (1,3 mil t de tilápia do VIETNÃ · 6,5% produção mensal!) · CNA pediu suspensão · Peixe BR pressiona MAPA. Selic 14,50% + dólar R$ 4,95 = cenário positivo para produtor doméstico. SETOR EM PLENA EXPANSÃO MAS PRECISA DEFENDER MERCADO INTERNO!</strong></p>
+
+  <p><strong>Semana 27-30/abr (curta · feriado 1º Mai) — Em síntese:</strong><br>
+  ▸ <strong>Tilápia média BR (CEPEA):</strong> R$ 9,90/kg<br>
+  ▸ <strong>Norte PR:</strong> R$ 10,47/kg · <strong>Triângulo MG:</strong> R$ 10,23/kg<br>
+  ▸ <strong>Grandes Lagos:</strong> R$ 10,06/kg · <strong>Oeste PR:</strong> R$ 8,97/kg<br>
+  ▸ <strong>Produção total 2025:</strong> 1,011 mi t (+4,41%) · CLUBE DO MILHÃO!<br>
+  ▸ <strong>Tilápia 2025:</strong> 707 mil t (70% · +6,83%)<br>
+  ▸ <strong>Top estado:</strong> Paraná 273 mil t (27% nacional · +9,1%)<br>
+  ▸ <strong>Receita setor:</strong> R$ 9 bi anual · 3 mi empregos<br>
+  ▸ <strong>Export 1ºT/26:</strong> US$ 11,2 mi (−39%! tarifaço Trump)<br>
+  ▸ <strong>Imp Vietnã fev/26:</strong> 1,3 mil t (6,5% prod mensal · ALERTA!)<br>
+  ▸ <strong>Custos:</strong> Milho R$ 66,67 · Soja R$ 128,47 (estável-queda)<br>
+  ▸ <strong>Margem produtor:</strong> Poder de compra RECORDE!<br>
+  ▸ <strong>Selic:</strong> 14,50% · <strong>Dólar:</strong> R$ 4,95</p>
+
+  <p><strong>Recomendações estratégicas:</strong></p>
+
+  <p><strong>1. PRODUTOR INTEGRADO COOPERATIVA: APROVEITE MOMENTO RECORDE · EXPANDA AGORA!</strong> Margem produtor em pico histórico · Selic baixa · custos controlados. C.Vale, Lar, Copacol, Coopavel oferecem contratos com remuneração R$ 0,80-1,50/kg vivo. Margem operacional 15-25%. Em granja 80 toneladas/ano = R$ 70-120 mil renda anual. Investir em geomembrana (Niehues fez +72% alojamento com R$ 7 mi).</p>
+
+  <p><strong>2. PRODUTOR INDEPENDENTE: BUSQUE INTEGRAÇÃO OU TANQUES-REDE EM RESERVATÓRIOS!</strong> Mercado livre é arriscado (oscilações). Modelo cooperado é mais seguro. Alternativa: tanques-rede em reservatórios (Itaipu, Furnas, Ilha Solteira) · investimento R$ 80-120 mil/1.000 m³ · capacidade 60-80 t/ciclo · ROI 3-5 anos. Outorga d'água é o desafio · negocie com ANA/IAT.</p>
+
+  <p><strong>3. EMPRESÁRIO RURAL: SELIC BAIXA + DEMANDA FORTE = HORA DE INVESTIR EM TANQUES MODERNOS!</strong> Geomembrana é o futuro: 30 peixes/m² (vs 7 convencional · +328% densidade). Investimento R$ 200-400 mil/ha · ROI 5-7 anos · economia 90% água. RAS (recirculação) é premium: R$ 1-3 mi/sistema · ROI 7-10 anos · biossegurança total. BNDES tem linhas específicas via Plano Safra Aquicultura 26/27.</p>
+
+  <p><strong>4. EXPORTADORES (BRF Aqua, Geneseas, Aquabel): DIVERSIFICAR URGENTE!</strong> 87% concentração EUA é INSANIDADE estratégica. Tarifaço Trump derrubou setor em 39%. Foco: a) México (5º importador, em alta), b) Canadá (premium · sushi), c) UE (acordo Mercosul facilita), d) Halal certificado para Oriente Médio, e) Ásia (paradoxo: vender para Vietnã, China, Japão). Feira Boston (mar/26) é oportunidade.</p>
+
+  <p><strong>5. INDÚSTRIA FRIGORÍFICA: APROVEITE CRESCIMENTO COPRODUTOS!</strong> Filé é só 30-35% da carcaça. Coprodutos (couro, óleo, farinha, gelatina) podem representar 30-40% da receita. Couro de tilápia: indústria calçadista paga R$ 25-40/peça. Óleo: ômega-3 premium. Farinha de peixe: ração animal. Industrialização vertical é chave para competir com Vietnã.</p>
+
+  <p><strong>6. ALERTA VIETNÃ: DEFENDA O SETOR · APOIE BARREIRAS TÉCNICAS!</strong> Brasil virou IMPORTADOR LÍQUIDO em fev/26 (1ª vez história!). 1,3 mil t/mês = 6,5% produção. Risco sanitário: antibióticos, pesticidas, TiLV. Apoie iniciativas Peixe BR + CNA junto MAPA. Use selo "Tilápia 100% BR". Marketing nas redes sociais. Pressione restaurantes/varejo a comprarem nacional.</p>
+
+  <p><strong>7. CONSUMIDOR FINAL: COMPRE TILÁPIA BRASILEIRA · EXIJA RASTREABILIDADE!</strong> Selo origem é direito do consumidor. Tilápia BR: R$ 25-30/kg filé varejo. Vietnã: R$ 18-22/kg (mais barato MAS riscos sanitários). Diferença R$ 7-8/kg vale a pena pela segurança. Apoie produtor nacional!</p>
+
+  <div class="opinion .scenarios" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px">
+    <div class="sc up">
+      <h5>🟢 Cenário Altista</h5>
+      <p>Tarifaço Trump revertido total · MAPA bloqueia Vietnã · UE abre · México explode · custos caem · Selic em queda → <strong>Produção 1,1 mi t · Tilápia R$ 11-12/kg · margem produtor mantida</strong>. Probabilidade: ~35%</p>
+    </div>
+    <div class="sc nt">
+      <h5>🟡 Cenário Neutro</h5>
+      <p>Mercado lateral · custos estáveis · Vietnã controlado parcialmente · exportação recupera 50% · doméstico forte → <strong>Produção 1,05 mi t · Tilápia R$ 9,50-10,50/kg · margem positiva</strong>. Probabilidade: ~50%</p>
+    </div>
+    <div class="sc dn">
+      <h5>🔴 Cenário Baixista</h5>
+      <p>Vietnã domina mercado interno · MAPA não atua · custos disparam · TiLV chega BR · "exótica invasora" passa → <strong>Produção 0,95 mi t · Tilápia R$ 7,50-8,50/kg · prejuízo independente</strong>. Probabilidade: ~15%</p>
+    </div>
+  </div>
+
+  <div class="sig">📅 Análise Rural IN · Quinta, 30/Abr/2026 · Semana curta (feriado 1º Mai) · BRASIL ENTROU NO CLUBE DO MILHÃO · TILÁPIA BR É 4ª MUNDIAL · MAS ALERTA VIETNÃ IMPORTAÇÃO HISTÓRICA!</div>
+</div>
+
+<footer class="footer"><div class="wrap">
+  <div class="footer-brand"><span class="r">Rural</span> <span class="i">IN</span></div>
+  <p>Radar Agro Semanal · Peixes · Semana 27–30 Abril 2026<br>
+  Fontes: CEPEA-Esalq/USP · Peixe BR · Embrapa Pesca e Aquicultura · Globo Rural · Agrimidia · Seafood Brasil · IEA-APTA · IDR-Paraná · Ministério da Pesca · Banco Central · COPOM · Secex/MDIC</p>
+  <div class="footer-credits">
+    <h4>Análise e Construção</h4>
+    <div class="name">Dr. Sidney Souza</div>
+    <div class="title">Economista e Adm. Agrícola — Estrategista Econômico do Produtor</div>
+    <div class="desc">Especialista em economia da fazenda e gestão de risco no agro<br>Transformamos dados da fazenda em decisões econômicas<br>Ajudamos produtores a entender se o mercado sustenta seu negócio</div>
+    <div class="contact">📧 <a href="mailto:sidneyagro@gmail.com">sidneyagro@gmail.com</a> · 📱 <a href="tel:+5564992266886">(64) 9 9226-6886</a> · 📸 <a href="https://instagram.com/ruralin.ai" target="_blank">@ruralin.ai</a></div>
+  </div>
+  <p style="margin-top:18px"><em>⚠️ Material informativo. Não constitui recomendação de investimento.</em></p>
+</div></footer>
+
+</div>
+
+<script>
+const gc='rgba(16,36,62,.5)';
+const tt={backgroundColor:'rgba(6,16,28,.97)',borderColor:'#1a3358',borderWidth:1,titleFont:{size:11,weight:'700'},bodyFont:{size:10},padding:10,cornerRadius:8};
+
+new Chart(document.getElementById('ch1').getContext('2d'),{
+  type:'line',
+  data:{labels:['Mai/25','Jul/25','Set/25','Nov/25','Jan/26','Mar/26','Abr/26'],
+    datasets:[{label:'Tilápia BR média (R$/kg)',data:[7.92,8.20,8.41,8.60,9.40,9.80,9.90],
+      borderColor:'#06b6d4',backgroundColor:'rgba(14,165,233,.13)',borderWidth:3,fill:true,tension:.3,pointRadius:5,pointBackgroundColor:'#06b6d4',pointBorderColor:'#67e8f9',pointBorderWidth:1.5}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+    scales:{y:{min:7,max:11,grid:{color:gc},ticks:{callback:function(v){return'R$'+v.toFixed(2)},font:{size:9,weight:'600'},color:'#a5f3fc'}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#a5f3fc'}}}}
+});
+
+new Chart(document.getElementById('ch2').getContext('2d'),{
+  type:'bar',
+  data:{labels:['2015','2017','2019','2021','2023','2024','2025'],
+    datasets:[{label:'Produção total (mil t)',data:[638,720,802,861,887,968,1011],backgroundColor:'rgba(14,165,233,.7)',borderColor:'#0ea5e9',borderWidth:2,borderRadius:7,yAxisID:'y'},
+      {label:'Tilápia (mil t)',data:[285,360,432,520,620,662,707],backgroundColor:'rgba(34,197,94,.6)',borderColor:'#22c55e',borderWidth:2,borderRadius:7,yAxisID:'y'}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{color:'#a5f3fc',font:{size:10,weight:'600'},boxWidth:14,padding:8}},tooltip:tt},
+    scales:{y:{min:0,max:1100,grid:{color:gc},ticks:{callback:function(v){return v+' mil'},font:{size:9,weight:'600'},color:'#a5f3fc'}},x:{grid:{display:false},ticks:{font:{size:11,weight:'700'},color:'#a5f3fc'}}}}
+});
+
+new Chart(document.getElementById('ch3').getContext('2d'),{
+  type:'bar',
+  data:{labels:['🥇 Paraná','🥈 São Paulo','🥉 Minas Gerais','4º Santa Catarina','5º Maranhão'],
+    datasets:[{label:'mil t (2025)',data:[273.1,93.7,77.5,63.4,59.6],
+      backgroundColor:function(c){if(c.dataIndex===0)return 'rgba(14,165,233,.75)';if(c.dataIndex===1)return 'rgba(6,182,212,.65)';if(c.dataIndex===2)return 'rgba(34,197,94,.55)';return 'rgba(168,85,247,.5)'},
+      borderColor:function(c){if(c.dataIndex===0)return '#0ea5e9';if(c.dataIndex===1)return '#06b6d4';if(c.dataIndex===2)return '#22c55e';return '#a855f7'},
+      borderWidth:2,borderRadius:7}]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+    scales:{x:{min:0,max:300,grid:{color:gc},ticks:{callback:function(v){return v+' mil t'},font:{size:9,weight:'600'},color:'#a5f3fc'}},y:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#a5f3fc'}}}}
+});
+
+new Chart(document.getElementById('ch4').getContext('2d'),{
+  type:'doughnut',
+  data:{labels:['🇺🇸 EUA (87%)','🇨🇦 Canadá (4%)','🇵🇪 Peru (4%)','🇨🇳 China (2%)','🇻🇳 Vietnã (1%)','Outros (2%)'],
+    datasets:[{data:[87,4,4,2,1,2],
+      backgroundColor:['rgba(239,68,68,.75)','rgba(14,165,233,.65)','rgba(245,158,11,.6)','rgba(220,38,38,.55)','rgba(168,85,247,.5)','rgba(160,160,160,.4)'],
+      borderColor:['#ef4444','#0ea5e9','#f59e0b','#dc2626','#a855f7','#a0a0a0'],
+      borderWidth:2,hoverOffset:8}]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom',labels:{color:'#a5f3fc',font:{size:9,weight:'600'},boxWidth:12,padding:6}},tooltip:tt},
+    cutout:'58%'}
+});
+
+new Chart(document.getElementById('ch5').getContext('2d'),{
+  type:'bar',
+  data:{labels:['1ºT/24','1ºT/25','1ºT/26'],
+    datasets:[{label:'Receita (US$ mi)',data:[8.7,18.5,11.2],
+      backgroundColor:function(c){if(c.dataIndex===2)return 'rgba(239,68,68,.7)';return 'rgba(34,197,94,.6)'},
+      borderColor:function(c){if(c.dataIndex===2)return '#ef4444';return '#22c55e'},
+      borderWidth:2,borderRadius:8}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+    scales:{y:{min:0,max:22,grid:{color:gc},ticks:{callback:function(v){return'$'+v+'mi'},font:{size:9,weight:'600'},color:'#a5f3fc'}},x:{grid:{display:false},ticks:{font:{size:11,weight:'700'},color:'#a5f3fc'}}}}
+});
+
+new Chart(document.getElementById('ch6').getContext('2d'),{
+  type:'bar',
+  data:{labels:['Custo Total','Receita Atual'],
+    datasets:[{label:'R$/kg vivo',data:[7.80,9.90],backgroundColor:['rgba(245,158,11,.7)','rgba(34,197,94,.7)'],borderColor:['#f59e0b','#22c55e'],borderWidth:2,borderRadius:8}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt,
+    annotation:{annotations:{
+      gap:{type:'label',xValue:0.5,yValue:8.85,content:['💰 GAP','+R$ 2,10/kg','MARGEM 27%!'],font:{size:11,weight:'bold'},color:'#22c55e',backgroundColor:'rgba(34,197,94,.13)',padding:6}
+    }}},
+    scales:{y:{min:0,max:11,grid:{color:gc},ticks:{callback:function(v){return'R$'+v.toFixed(2)},font:{size:9,weight:'600'},color:'#a5f3fc'}},x:{grid:{display:false},ticks:{font:{size:11,weight:'700'},color:'#a5f3fc'}}}}
+});
+</script>
+</body>
+</html>

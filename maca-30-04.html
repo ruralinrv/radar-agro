@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Rural IN — Maçã · 27-30 Abr 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0405;--bg2:#160810;--bg3:#1f0d18;--bg4:#2a1322;--border:#2e1620;--border2:#42202e;--apl:#dc2626;--apl2:#ef4444;--apl3:#f87171;--leaf:#65a30d;--leaf2:#84cc16;--leaf3:#a3e635;--text:#fef2f2;--text2:#fecaca;--text3:#a8a29e;--text4:#78716c;--up:#22c55e;--dn:#ef4444;--nt:#eab308;--blue:#3b82f6;--purple:#a855f7;--orange:#f97316;--cyan:#06b6d4;--gold:#fbbf24;--pink:#ec4899;--r:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 1100px 800px at 15% 10%,rgba(220,38,38,.13),transparent),radial-gradient(ellipse 900px 700px at 85% 90%,rgba(101,163,13,.1),transparent);pointer-events:none;z-index:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+.nav{background:rgba(22,8,16,.95);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:14px}
+.nav-logo-img{height:42px;width:auto;border-radius:8px}
+.nav-logo{font-weight:900;font-size:1.2rem}
+.nav-logo .r{color:var(--apl2)}.nav-logo .i{color:var(--leaf2)}
+.nav-badge{background:linear-gradient(135deg,#dc2626,#65a30d);padding:5px 14px;border-radius:20px;font-size:.7rem;font-weight:800;color:#fef2f2;letter-spacing:.6px;box-shadow:0 0 25px rgba(220,38,38,.5)}
+.nav-back{color:var(--text3);font-size:.8rem;text-decoration:none}
+.hero{padding:54px 0 40px}
+.hero-top{display:flex;align-items:center;gap:22px;margin-bottom:16px}
+.hero-icon-wrap{width:84px;height:84px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,rgba(220,38,38,.4),transparent 70%);border-radius:50%}
+.hero-icon{font-size:3.6rem;filter:drop-shadow(0 6px 22px rgba(220,38,38,.7))}
+.hero-texts h1{font-size:2.4rem;font-weight:900;letter-spacing:-1.2px;line-height:1.1}
+.hero-texts h1 .hl{background:linear-gradient(135deg,#dc2626,#ef4444,#65a30d,#84cc16);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-texts .sub{font-size:.9rem;color:var(--text2);margin-top:6px;font-weight:500}
+.hero-bar{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border-radius:22px;font-size:.72rem;font-weight:700;border:1px solid}
+.chip.up{color:var(--up);border-color:rgba(34,197,94,.3);background:rgba(34,197,94,.08)}
+.chip.dn{color:var(--dn);border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.08)}
+.chip.nt{color:var(--nt);border-color:rgba(234,179,8,.4);background:rgba(234,179,8,.1)}
+.chip.ap{color:var(--apl2);border-color:rgba(220,38,38,.5);background:rgba(220,38,38,.13)}
+.chip.lf{color:var(--leaf2);border-color:rgba(101,163,13,.4);background:rgba(101,163,13,.1)}
+.chip.bl{color:var(--blue);border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.08)}
+.bignum-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+.bignum{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:20px 18px;text-align:center}
+.bignum .v{font-size:1.7rem;font-weight:900;letter-spacing:-1px;line-height:1;margin-bottom:6px}
+.bignum .v.up{color:var(--up)}.bignum .v.dn{color:var(--dn)}.bignum .v.nt{color:var(--nt)}.bignum .v.ap{color:var(--apl2)}.bignum .v.lf{color:var(--leaf2)}
+.bignum .l{font-size:.72rem;color:var(--text2);font-weight:600}
+.bignum .s{font-size:.66rem;color:var(--text3);margin-top:3px}
+.alert{border-radius:var(--r);padding:18px 22px;margin-bottom:14px;display:flex;gap:14px;border:1px solid;font-size:.85rem;line-height:1.75;color:var(--text2);position:relative}
+.alert::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
+.alert strong{color:var(--text)}
+.alert .ai{font-size:1.4rem;flex-shrink:0;margin-top:1px}
+.alert.green{background:rgba(34,197,94,.06);border-color:rgba(34,197,94,.25)}.alert.green::before{background:var(--up)}
+.alert.red{background:rgba(239,68,68,.06);border-color:rgba(239,68,68,.25)}.alert.red::before{background:var(--dn)}
+.alert.amber{background:rgba(234,179,8,.08);border-color:rgba(234,179,8,.3)}.alert.amber::before{background:var(--nt)}
+.alert.blue{background:rgba(59,130,246,.06);border-color:rgba(59,130,246,.25)}.alert.blue::before{background:var(--blue)}
+.alert.purple{background:rgba(168,85,247,.06);border-color:rgba(168,85,247,.25)}.alert.purple::before{background:var(--purple)}
+.alert.apple{background:rgba(220,38,38,.1);border-color:rgba(220,38,38,.4)}.alert.apple::before{background:var(--apl)}
+.alert.leaf{background:rgba(101,163,13,.08);border-color:rgba(101,163,13,.3)}.alert.leaf::before{background:var(--leaf)}
+.alert.orange{background:rgba(249,115,22,.08);border-color:rgba(249,115,22,.3)}.alert.orange::before{background:var(--orange)}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin:24px 0}
+.kpi{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:16px 18px;position:relative}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2)}
+.kpi.up::before{background:linear-gradient(90deg,var(--up),var(--leaf2))}
+.kpi.dn::before{background:linear-gradient(90deg,var(--dn),var(--orange))}
+.kpi.nt::before{background:linear-gradient(90deg,var(--nt),#fde047)}
+.kpi.ap::before{background:linear-gradient(90deg,var(--apl),var(--apl2))}
+.kpi.lf::before{background:linear-gradient(90deg,var(--leaf),var(--leaf2))}
+.kpi.bl::before{background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.kpi.pu::before{background:linear-gradient(90deg,var(--purple),var(--pink))}
+.kpi-lb{font-size:.6rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:5px;font-weight:700}
+.kpi-val{font-size:1.18rem;font-weight:900;line-height:1.2}
+.kpi-val.up{color:var(--up)}.kpi-val.dn{color:var(--dn)}.kpi-val.nt{color:var(--nt)}.kpi-val.ap{color:var(--apl2)}.kpi-val.lf{color:var(--leaf2)}.kpi-val.bl{color:var(--blue)}.kpi-val.pu{color:var(--purple)}
+.kpi-sub{font-size:.66rem;color:var(--text3);margin-top:3px;font-weight:500}
+.dv{height:1px;background:linear-gradient(90deg,transparent,var(--apl) 50%,transparent);margin:36px 0}
+.stitle{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.stitle .icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;background:linear-gradient(135deg,#dc2626,#65a30d)}
+.stitle h2{font-size:1.18rem;font-weight:800}
+.stitle h2 span{color:var(--text2);font-weight:400;font-size:.85rem;margin-left:4px}
+.chart-box{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--r);padding:22px 24px;margin-bottom:14px}
+.chart-box h3{font-size:.9rem;color:var(--text);margin-bottom:14px;font-weight:700;display:flex;align-items:center;gap:8px}
+.chart-box h3 .ch-tag{margin-left:auto;font-size:.62rem;font-weight:700;padding:2px 10px;border-radius:10px;background:rgba(220,38,38,.18);color:var(--apl3)}
+.chart-wrap{position:relative;height:280px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:800px){.grid2{grid-template-columns:1fr}}
+.tbl-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--border);margin-bottom:14px;background:var(--bg2)}
+table{width:100%;border-collapse:collapse;font-size:.78rem}
+thead th{background:var(--bg3);padding:12px 14px;text-align:center;font-weight:800;color:var(--text2);font-size:.66rem;text-transform:uppercase;letter-spacing:.9px;border-bottom:1px solid var(--border)}
+tbody td{padding:10px 12px;border-bottom:1px solid rgba(46,22,32,.5);text-align:center}
+.td-name{text-align:left!important;font-weight:700;white-space:nowrap}
+.td-up{color:var(--up);font-weight:800}.td-dn{color:var(--dn);font-weight:800}.td-nt{color:var(--nt);font-weight:800}
+.opinion{background:linear-gradient(135deg,rgba(220,38,38,.13),rgba(101,163,13,.08));border:1px solid rgba(220,38,38,.4);border-radius:var(--r);padding:30px 32px;margin:26px 0;position:relative}
+.opinion::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#dc2626,#65a30d,#dc2626)}
+.opinion h3{font-size:1.08rem;font-weight:800;color:var(--apl3);margin-bottom:12px}
+.opinion p{font-size:.88rem;color:var(--text2);line-height:1.9;margin-bottom:12px}
+.opinion p strong{color:var(--text)}
+.opinion .scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.opinion .sc{padding:14px 16px;border-radius:10px;border:1px solid;background:rgba(0,0,0,.3)}
+.opinion .sc.up{border-color:rgba(34,197,94,.3)}.opinion .sc.nt{border-color:rgba(234,179,8,.3)}.opinion .sc.dn{border-color:rgba(239,68,68,.3)}
+.opinion .sc h5{font-size:.78rem;font-weight:800;margin-bottom:6px}
+.opinion .sc.up h5{color:var(--up)}.opinion .sc.nt h5{color:var(--nt)}.opinion .sc.dn h5{color:var(--dn)}
+.opinion .sc p{font-size:.74rem;line-height:1.6;margin:0}
+@media(max-width:700px){.opinion .scenarios{grid-template-columns:1fr}}
+.opinion .sig{margin-top:18px;padding-top:14px;border-top:1px solid rgba(220,38,38,.2);font-size:.78rem;color:var(--text3);font-style:italic}
+.footer{border-top:1px solid var(--border);padding:42px 0;text-align:center;margin-top:36px}
+.footer-brand{font-size:1.5rem;font-weight:900;margin-bottom:12px}
+.footer-brand .r{color:var(--apl2)}.footer-brand .i{color:var(--leaf2)}
+.footer p{font-size:.78rem;color:var(--text3);line-height:1.8}
+.footer-credits{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+.footer-credits h4{font-size:.92rem;color:var(--apl3);font-weight:700;margin-bottom:6px}
+.footer-credits .name{font-size:1.05rem;font-weight:800;color:var(--text)}
+.footer-credits .title{font-size:.78rem;color:var(--leaf3);font-weight:600;margin-bottom:8px}
+.footer-credits .desc{font-size:.74rem;color:var(--text2);max-width:540px;margin:0 auto 12px}
+.footer-credits .contact{font-size:.74rem;color:var(--text3)}
+.footer-credits .contact a{color:var(--apl3);text-decoration:none}
+@media(max-width:700px){.bignum-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.hero-top{flex-direction:column;text-align:center}.hero-texts h1{font-size:1.65rem}.kpi-row{grid-template-columns:repeat(2,1fr)}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap"><div class="nav-left"><img src="https://ruralinrv.github.io/ruralin/logo.png" alt="Rural IN" class="nav-logo-img" onerror="this.style.display='none'"><div class="nav-logo"><span class="r">Rural</span> <span class="i">IN</span></div><div class="nav-badge">🍎 MAÇÃ</div></div><a href="portal-30-04.html" class="nav-back">← Voltar</a></div></nav>
+
+<div class="wrap">
+
+<section class="hero">
+  <div class="hero-top">
+    <div class="hero-icon-wrap"><span class="hero-icon">🍎</span></div>
+    <div class="hero-texts">
+      <h1><span class="hl">Maçã</span> · Radar Semanal</h1>
+      <div class="sub">27–30 Abril 2026 · Safra RECORDE 1,15 mi t (+20%) · Preços DESPENCAM (-21,9%) · Gala domina · Export 60 mil t</div>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <span class="chip dn">📉 Fuji Ceagesp: R$ 6,47/kg (-21,9% ano!)</span>
+    <span class="chip dn">📉 Gala cat 1: R$ 100,55/cx (queda)</span>
+    <span class="chip ap">🍎 Safra 25/26: 1,05-1,15 mi t (+20%)</span>
+    <span class="chip lf">🌳 SC: +27,9% · RS: 47% produção</span>
+    <span class="chip up">🚢 Export 60 mil t (RS 40k + SC 20k)</span>
+    <span class="chip nt">⚠️ Importação 235 mil t (recorde 30 anos)</span>
+  </div>
+</section>
+
+<div class="bignum-row">
+  <div class="bignum"><div class="v dn">R$ 100,55</div><div class="l">Gala graúda cat 1 (cx 18kg)</div><div class="s">↓ 4,7% · oferta alta</div></div>
+  <div class="bignum"><div class="v dn">R$ 6,47/kg</div><div class="l">Fuji Ceagesp (28/04)</div><div class="s">↓ 21,9% vs ano · oferta forte</div></div>
+  <div class="bignum"><div class="v ap">1,15 mi t</div><div class="l">Safra BR 25/26 (+20%)</div><div class="s">RECUPERAÇÃO histórica!</div></div>
+  <div class="bignum"><div class="v lf">60 mil t</div><div class="l">Export 25/26 projetada</div><div class="s">RS 40k + SC 20k · 20+ países</div></div>
+</div>
+
+<div class="alert apple">
+  <span class="ai">🍎</span>
+  <div><strong style="color:var(--apl3)">SAFRA 2025/26 É RECORDE DE RECUPERAÇÃO! 1,05-1,15 milhão t (+20%!) · Volta à média histórica · Qualidade SUPERIOR</strong><br>
+  <strong>Brasil em maçã (ABPM 2026):</strong><br>
+  ▸ <strong>Produção 25/26:</strong> 1,05-1,15 milhão t (+20% vs 24/25)<br>
+  ▸ <strong>Safra anterior 24/25:</strong> 850 mil t (afetada clima)<br>
+  ▸ <strong>Variação:</strong> +200-300 mil t recuperação<br>
+  ▸ <strong>Volta à média histórica:</strong> 1,1-1,2 mi t/ano<br>
+  ▸ <strong>Posição mundial:</strong> 9º produtor (atrás China · EUA · UE · Polônia · Turquia · Irã · Itália · Índia)<br>
+  ▸ <strong>Área plantada BR:</strong> ~33 mil hectares<br>
+  ▸ <strong>Produtividade média:</strong> 35-40 t/ha (alta!)<br>
+  ▸ <strong>Valor produção:</strong> R$ 3,5 bi/ano<br>
+  ▸ <strong>Empregos:</strong> 100 mil diretos · 250 mil indiretos<br><br>
+  <strong>Distribuição produção BR:</strong><br>
+  ▸ <strong>🥇 Rio Grande do Sul:</strong> 47% produção (Vacaria · Bom Jesus · Caxias)<br>
+  ▸ <strong>🥈 Santa Catarina:</strong> 48% produção (Lages · Fraiburgo · São Joaquim)<br>
+  ▸ <strong>🥉 Paraná:</strong> 4% produção (Palmas)<br>
+  ▸ <strong>4º MG · SP · ES:</strong> 1% (mínimo · alta altitude)<br>
+  ▸ <strong>RS+SC:</strong> 95% produção (concentração extrema!)<br><br>
+  <strong>Variedades cultivadas BR:</strong><br>
+  ▸ <strong>🥇 Fuji:</strong> 51,2% produção (longa conservação · sabor doce)<br>
+  ▸ <strong>🥈 Gala:</strong> 47,2% produção (precoce · rosada · doce-ácida)<br>
+  ▸ <strong>🥉 Eva:</strong> 1,6% (precoce · adapta clima · ES/MG)<br>
+  ▸ <strong>Outras:</strong> Cripps Pink (Pink Lady) · Granny Smith · Belgala<br><br>
+  <strong>Por que +20% em 25/26? Boas condições climáticas!</strong><br>
+  ▸ <strong>Inverno 2025 com horas-frio adequadas</strong> (essencial!)<br>
+  ▸ <strong>Sem excesso de chuva</strong> na floração<br>
+  ▸ <strong>Sem ondas de calor</strong> na frutificação<br>
+  ▸ <strong>Temperatura amena</strong> na maturação<br>
+  ▸ <strong>Geadas controladas</strong><br>
+  ▸ <strong>Investimento tecnológico:</strong> Manejo · genética · porta-enxertos<br><br>
+  <strong>Qualidade SUPERIOR safra 25/26:</strong><br>
+  ▸ <strong>Maçãs MAIORES</strong> (calibres 80-90mm)<br>
+  ▸ <strong>Coloração mais avermelhada</strong> (gala intensa!)<br>
+  ▸ <strong>Maior suculência</strong><br>
+  ▸ <strong>Equilíbrio açúcar-acidez:</strong> Ideal mercado externo<br>
+  ▸ <strong>Brix elevado:</strong> 13-15º (sabor doce)<br>
+  ▸ <strong>Mais competitividade internacional</strong></div>
+</div>
+
+<div class="alert red">
+  <span class="ai">📉</span>
+  <div><strong style="color:var(--dn)">PREÇOS EM QUEDA HISTÓRICA! Fuji Ceagesp R$ 6,47/kg (-21,9% ano!) · Menor preço em 4 anos · Safra abundante pressiona</strong><br>
+  <strong>Cotações ABRIL/2026 (Cepea/HF Brasil):</strong><br>
+  <strong>GALA (regiões classificadoras · cx 18 kg):</strong><br>
+  ▸ <strong>Graúda CAT 1:</strong> R$ 100,55/cx (-4,68% sem) · R$ 5,59/kg<br>
+  ▸ <strong>Graúda CAT 3:</strong> R$ 62,55/cx (-13,98%! sem) · R$ 3,47/kg<br>
+  ▸ <strong>Pico recente CAT 1:</strong> R$ 138,00/cx (fev/26)<br>
+  ▸ <strong>Pico recente CAT 3:</strong> R$ 103,75/cx<br>
+  ▸ <strong>Variação ano:</strong> -25-35%<br><br>
+  <strong>FUJI:</strong><br>
+  ▸ <strong>Graúda CAT 1:</strong> R$ 105,83/cx (-3,78% sem)<br>
+  ▸ <strong>Atacado Ceagesp:</strong> R$ 6,47/kg (28/04)<br>
+  ▸ <strong>Comparativo abril/25:</strong> R$ 8,28/kg<br>
+  ▸ <strong>Variação ano:</strong> -21,9%! 📉<br>
+  ▸ <strong>Variação mês:</strong> -11,6%<br><br>
+  <strong>Atacado Ceagesp (graúda cat 1):</strong><br>
+  ▸ <strong>Gala:</strong> R$ 124,74/cx (-1% sem)<br>
+  ▸ <strong>Margem:</strong> +24% sobre produtor<br><br>
+  <strong>Por que despencou?</strong><br>
+  ▸ <strong>1. Safra abundante (+20%):</strong> Oferta forte<br>
+  ▸ <strong>2. Demanda absorção limitada</strong> mercado interno<br>
+  ▸ <strong>3. Estoque safra anterior</strong> ainda no mercado<br>
+  ▸ <strong>4. Importação 235 mil t (recorde 30 anos!):</strong> Concorrência<br>
+  ▸ <strong>5. Estoques classificadores cheios</strong><br>
+  ▸ <strong>6. Categoria 3 (menor qualidade):</strong> Sofre mais<br>
+  ▸ <strong>7. Avanço colheita Fuji:</strong> Mais oferta<br><br>
+  <strong>Histórico recente (Cepea Gala cat 1):</strong><br>
+  ▸ <strong>Jan/2026:</strong> R$ 145,00/cx<br>
+  ▸ <strong>Fev/2026:</strong> R$ 138,00/cx<br>
+  ▸ <strong>Mar/2026:</strong> R$ 108,33/cx<br>
+  ▸ <strong>06/04/2026:</strong> R$ 100,55/cx<br>
+  ▸ <strong>30/04/2026:</strong> R$ ~95-100/cx (estimativa)<br>
+  ▸ <strong>Tendência:</strong> Quedas continuam até maio<br>
+  ▸ <strong>Recuperação:</strong> Esperada jul-set 2026<br><br>
+  <strong>Histórico macro · Conab Prohort:</strong><br>
+  ▸ <strong>Queda ponderada Ceasas mês:</strong> -8,89%<br>
+  ▸ <strong>Outras frutas em queda:</strong> Laranja (-2%) · mamão papaya<br>
+  ▸ <strong>Em alta:</strong> Banana (+10,56%) · melancia<br>
+  ▸ <strong>Maçã puxando movimento baixista frutas</strong></div>
+</div>
+
+<div class="alert leaf">
+  <span class="ai">🌳</span>
+  <div><strong style="color:var(--leaf2)">SUL DOMINA! RS é #1 (Vacaria 50% prod RS) · SC #2 (Lages · Fraiburgo · São Joaquim) · Cluster Sul é vital!</strong><br>
+  <strong>RIO GRANDE DO SUL · 47% produção BR:</strong><br>
+  ▸ <strong>Vacaria:</strong> 50% RS · capital nacional da maçã!<br>
+  ▸ <strong>Bom Jesus:</strong> Top produtor<br>
+  ▸ <strong>Monte Alegre dos Campos · São Francisco de Paula</strong><br>
+  ▸ <strong>Caxias do Sul:</strong> Tradição<br>
+  ▸ <strong>Campos de Cima da Serra:</strong> Região oficial<br>
+  ▸ <strong>Variedades:</strong> Fuji + Gala + Belgala (clone exclusivo Rasip)<br>
+  ▸ <strong>Festa Maçã Vacaria:</strong> Outubro · 175 anos município<br><br>
+  <strong>SANTA CATARINA · 48% produção BR:</strong><br>
+  ▸ <strong>Campos de Lages:</strong> 1º produtor SC<br>
+  ▸ <strong>Joaçaba:</strong> 2º produtor<br>
+  ▸ <strong>Curitibanos:</strong> 3º produtor<br>
+  ▸ <strong>Fraiburgo:</strong> Capital da maçã SC (festa nov!)<br>
+  ▸ <strong>São Joaquim:</strong> Maçãs premium · altitude 1.400m<br>
+  ▸ <strong>Safra 25/26 SC:</strong> +27,9%! · 615 mil t projetadas<br>
+  ▸ <strong>Fuji SC:</strong> 51,2% · +14,4% produção<br>
+  ▸ <strong>Gala SC:</strong> 47,2% · +48,3% produção (recuperação!)<br>
+  ▸ <strong>Precoces SC:</strong> 1,6% · +2,2%<br><br>
+  <strong>PARANÁ · 4% produção:</strong><br>
+  ▸ <strong>Palmas:</strong> Principal cidade<br>
+  ▸ <strong>Pequena escala</strong><br><br>
+  <strong>Por que Sul produz tanto?</strong><br>
+  ▸ <strong>Horas-frio adequadas:</strong> 600-1.200 horas <7,2°C<br>
+  ▸ <strong>Inverno bem definido</strong><br>
+  ▸ <strong>Altitude:</strong> 800-1.400m (essencial maçã!)<br>
+  ▸ <strong>Solos drenados:</strong> Basalto · vulcânico<br>
+  ▸ <strong>Pluviosidade adequada:</strong> 1.500 mm/ano<br>
+  ▸ <strong>Histórico imigrantes europeus:</strong> Tradição<br>
+  ▸ <strong>Pesquisa Embrapa Uva e Vinho · UFRGS · UDESC</strong><br>
+  ▸ <strong>Empresas líderes:</strong> Rasip · Schio · Frutale · Hiragami · Sanjo · Fischer<br><br>
+  <strong>Top empresas/grupos:</strong><br>
+  ▸ <strong>RAR Agro (Rasip):</strong> 55 mil t safra 25/26 (+30%!) · líder<br>
+  ▸ <strong>Schio:</strong> Vacaria · destaque exportação<br>
+  ▸ <strong>Frutale Caxias:</strong> Tradição<br>
+  ▸ <strong>Hiragami:</strong> SC · qualidade premium<br>
+  ▸ <strong>Sanjo · Fischer Fraiburgo</strong><br>
+  ▸ <strong>Pomi Fruti · Eskimo</strong><br>
+  ▸ <strong>Cooperativa Sanjo</strong><br><br>
+  <strong>Pesquisa & inovação:</strong><br>
+  ▸ <strong>Field Day & Giro Técnico:</strong> Vacaria · Lages · São Joaquim (jan/26)<br>
+  ▸ <strong>Porta-enxertos novos:</strong> G.202 · G.41 · G.214 · G.969<br>
+  ▸ <strong>Sistemas adensados:</strong> 2.700-3.000 plantas/ha (vs 600 tradicional!)<br>
+  ▸ <strong>Bidimensional · Bi-axis · Multi-líder:</strong> Sistemas modernos<br>
+  ▸ <strong>Belgala (clone exclusivo Rasip):</strong> 33-38 t/ha</div>
+</div>
+
+<div class="alert blue">
+  <span class="ai">🚢</span>
+  <div><strong style="color:var(--blue)">EXPORTAÇÃO 60 MIL T! RS 40k + SC 20k · 20+ países · Bangladesh #1 · Substituindo Rússia!</strong><br>
+  <strong>Exportação BR safra 25/26 (ABPM):</strong><br>
+  ▸ <strong>Volume projetado:</strong> 60 mil toneladas<br>
+  ▸ <strong>Rio Grande do Sul:</strong> 40 mil t (67%)<br>
+  ▸ <strong>Santa Catarina:</strong> 20 mil t (33%)<br>
+  ▸ <strong>Variedade:</strong> 95% Gala · 5% Fuji<br>
+  ▸ <strong>Receita FOB esperada:</strong> US$ 60-70 milhões<br>
+  ▸ <strong>% da safra:</strong> ~5,5% (interno absorve 94,5%)<br><br>
+  <strong>Top destinos exportação BR:</strong><br>
+  ▸ <strong>🥇 Bangladesh:</strong> 52,3% volume (mercado-chave!)<br>
+  ▸ <strong>🥈 Índia:</strong> 40,2% (substituindo Rússia!)<br>
+  ▸ <strong>🥉 Portugal · Irlanda · UK:</strong> UE consolidado<br>
+  ▸ <strong>4º Emirados Árabes Unidos:</strong> Oriente Médio<br>
+  ▸ <strong>5º Rússia:</strong> Recuperando<br>
+  ▸ <strong>6º Países Baixos · Arábia Saudita</strong><br>
+  ▸ <strong>+ 15 países:</strong> Total 20+ destinos<br><br>
+  <strong>Trajetória exportação BR:</strong><br>
+  ▸ <strong>2020/21:</strong> 80 mil t (recorde recente)<br>
+  ▸ <strong>2021/22:</strong> 70 mil t<br>
+  ▸ <strong>2022/23:</strong> 50 mil t (clima ruim)<br>
+  ▸ <strong>2023/24:</strong> 35 mil t (forte queda)<br>
+  ▸ <strong>2024/25:</strong> 40 mil t (recuperação)<br>
+  ▸ <strong>2025/26 (proj):</strong> 60 mil t (+50%!)<br><br>
+  <strong>Avanços logísticos 2026:</strong><br>
+  ▸ <strong>Certificação fitossanitária descentralizada:</strong> São Joaquim + Fraiburgo<br>
+  ▸ <strong>Antes:</strong> Apenas Vacaria/RS ou Itajaí/SC<br>
+  ▸ <strong>Porto Imbituba (SC):</strong> Mais próximo · economia logística<br>
+  ▸ <strong>Já certificadas SJ:</strong> 530 t safra atual<br>
+  ▸ <strong>Reduz custos · aumenta competitividade</strong><br>
+  ▸ <strong>Prolonga vida útil</strong> da fruta perecível<br><br>
+  <strong>Por que Bangladesh é #1?</strong><br>
+  ▸ <strong>Demanda crescente classe média</strong> (180 mi habitantes!)<br>
+  ▸ <strong>Maçã = símbolo status</strong> · presente em festas religiosas<br>
+  ▸ <strong>Logística viável:</strong> Containers refrigerados<br>
+  ▸ <strong>Brasil oferece preço competitivo</strong> vs UE/EUA<br>
+  ▸ <strong>Variedade Gala:</strong> Mais aceita pela cor<br>
+  ▸ <strong>Cresceu 10x última década</strong><br><br>
+  <strong>Por que Índia substituiu Rússia?</strong><br>
+  ▸ <strong>Sanções Rússia (guerra Ucrânia):</strong> Logística complicada<br>
+  ▸ <strong>Pagamentos:</strong> Rublo desvalorizado<br>
+  ▸ <strong>Índia:</strong> Mercado de 1,4 bi habitantes<br>
+  ▸ <strong>Maçãs UE/Polônia:</strong> Não atendem demanda<br>
+  ▸ <strong>BR ganhou espaço:</strong> Oportunidade história<br>
+  ▸ <strong>Acordos sanitários:</strong> MAPA conseguiu abertura<br><br>
+  <strong>Mercado externo é VITAL:</strong><br>
+  ▸ <strong>Equilibra oferta interna</strong> safra alta<br>
+  ▸ <strong>Mantém preços</strong> mercado interno<br>
+  ▸ <strong>Padrão qualidade superior</strong> · CAT 1<br>
+  ▸ <strong>Geração de divisas:</strong> US$ 70 mi/ano<br>
+  ▸ <strong>Marca "Brazil Apples"</strong> ganhando força</div>
+</div>
+
+<div class="alert orange">
+  <span class="ai">⚠️</span>
+  <div><strong style="color:var(--orange)">IMPORTAÇÃO RECORDE EM 30 ANOS! 235 mil t em 2024 · 4x mais que normal · Concorrência aperta produtor BR!</strong><br>
+  <strong>Importação BR (ABPM · MAPA):</strong><br>
+  ▸ <strong>2024 (último ano):</strong> 235 mil toneladas! 🚨<br>
+  ▸ <strong>Cota normal últimos anos:</strong> 50-60 mil t<br>
+  ▸ <strong>Variação:</strong> +290% vs normal<br>
+  ▸ <strong>Maior volume desde 1996:</strong> 325 mil t (30 anos!)<br>
+  ▸ <strong>Razão:</strong> Quebras safra BR 2022-2024 (clima)<br>
+  ▸ <strong>Tendência 2026:</strong> Cair com safra +20%<br><br>
+  <strong>De onde vêm as maçãs importadas?</strong><br>
+  ▸ <strong>🥇 Argentina:</strong> 45% (Mercosul · zero tarifa)<br>
+  ▸ <strong>🥈 Chile:</strong> 25% (proximidade · qualidade)<br>
+  ▸ <strong>🥉 França · Itália:</strong> 15% (UE premium)<br>
+  ▸ <strong>4º EUA · Polônia:</strong> 10%<br>
+  ▸ <strong>5º Outros:</strong> 5% (Nova Zelândia · África Sul)<br><br>
+  <strong>Variedades importadas:</strong><br>
+  ▸ <strong>Pink Lady (Cripps Pink):</strong> Premium · 30%<br>
+  ▸ <strong>Granny Smith:</strong> Verde · culinária · 20%<br>
+  ▸ <strong>Red Delicious:</strong> Tradicional · 15%<br>
+  ▸ <strong>Gala importada:</strong> 20% (concorre direto BR)<br>
+  ▸ <strong>Fuji importada:</strong> 10%<br>
+  ▸ <strong>Outros:</strong> 5% (Honeycrisp · Ambrosia)<br><br>
+  <strong>Impacto na produção BR:</strong><br>
+  ▸ <strong>Pressão preços:</strong> Mercado abastecido<br>
+  ▸ <strong>Competição direta:</strong> Gala/Fuji importada<br>
+  ▸ <strong>Margem produtor BR:</strong> Reduzida<br>
+  ▸ <strong>Mas:</strong> Premium importadas (Pink Lady) abre espaço<br>
+  ▸ <strong>2026 deve cair:</strong> Safra BR cheia reduz necessidade<br><br>
+  <strong>Macro: Selic 14,50% e Real R$ 4,95 favorecem importação:</strong><br>
+  ▸ <strong>Dólar baixo:</strong> Maçã importada mais barata em R$<br>
+  ▸ <strong>Argentina · Chile:</strong> Concorrência intensa<br>
+  ▸ <strong>Mercosul (Argentina):</strong> Tarifa zero<br>
+  ▸ <strong>Importação preocupa setor</strong><br><br>
+  <strong>Estratégias produtor BR vs importação:</strong><br>
+  ▸ <strong>Foco qualidade premium</strong> CAT 1<br>
+  ▸ <strong>Diferenciar:</strong> "Maçã do Sul" · IG · selo origem<br>
+  ▸ <strong>Variedades exclusivas BR:</strong> Belgala · Eva · Princesa<br>
+  ▸ <strong>Verticalização:</strong> Cooperativa direto consumidor<br>
+  ▸ <strong>Marketing:</strong> Sustentabilidade · agricultura familiar Sul<br>
+  ▸ <strong>Mercado externo:</strong> Não depender só interno<br>
+  ▸ <strong>Defensivo comercial:</strong> ABPM pode pedir antidumping</div>
+</div>
+
+<div class="alert purple">
+  <span class="ai">🔬</span>
+  <div><strong style="color:var(--purple)">DESAFIOS · Pragas · Doenças · Clima · Tecnificação · Investimento alto · Mas margens consolidadas!</strong><br>
+  <strong>Top 6 pragas/doenças maçã BR:</strong><br>
+  ▸ <strong>1. Sarna da macieira (Venturia inaequalis):</strong> Fungo nº1 · pulverização frequente<br>
+  ▸ <strong>2. Mosca-das-frutas (Anastrepha):</strong> Inseto · monitoramento<br>
+  ▸ <strong>3. Cancro europeu das pomáceas:</strong> Bacteriose<br>
+  ▸ <strong>4. Traça da maçã:</strong> Cydia pomonella · larva<br>
+  ▸ <strong>5. Podridão branca (Botryosphaeria):</strong> Frutos · pós-colheita<br>
+  ▸ <strong>6. Oídio · ácaros:</strong> Secundárias mas relevantes<br><br>
+  <strong>Custos defensivos (1 hectare maçã):</strong><br>
+  ▸ <strong>Fungicidas (sarna):</strong> R$ 8-12 mil/ano (15-20 aplicações!)<br>
+  ▸ <strong>Inseticidas:</strong> R$ 4-6 mil/ano<br>
+  ▸ <strong>Bactericidas:</strong> R$ 2-3 mil/ano<br>
+  ▸ <strong>Total defensivos:</strong> R$ 14-21 mil/ha/ano<br>
+  ▸ <strong>Adubação:</strong> R$ 8-12 mil/ha/ano<br>
+  ▸ <strong>Mão de obra:</strong> R$ 15-20 mil/ha (poda · raleio · colheita)<br>
+  ▸ <strong>Total operacional:</strong> R$ 40-55 mil/ha/ano<br>
+  ▸ <strong>Investimento implantação:</strong> R$ 80-120 mil/ha (3-4 anos retorno)<br><br>
+  <strong>Produtividade maçã BR:</strong><br>
+  ▸ <strong>Tradicional (600 plantas/ha):</strong> 25-35 t/ha<br>
+  ▸ <strong>Adensado moderno (2.700 plantas):</strong> 45-65 t/ha<br>
+  ▸ <strong>Bi-axis (2.747 plantas):</strong> 38-50 t/ha<br>
+  ▸ <strong>Multi-líder:</strong> 50+ t/ha<br>
+  ▸ <strong>Belgala/G.969 (Rasip):</strong> 38,6 t/ha<br>
+  ▸ <strong>Brasil top empresas:</strong> 50-65 t/ha (mundial topo!)<br><br>
+  <strong>Margem produtor (cenário atual abr/26):</strong><br>
+  ▸ <strong>Custo total CAT 1:</strong> R$ 80-100/cx 18kg (R$ 4,40-5,55/kg)<br>
+  ▸ <strong>Preço Gala CAT 1:</strong> R$ 100,55/cx<br>
+  ▸ <strong>Margem CAT 1:</strong> +R$ 0-20/cx (apertada!)<br>
+  ▸ <strong>Custo CAT 3:</strong> R$ 50-65/cx<br>
+  ▸ <strong>Preço CAT 3:</strong> R$ 62,55/cx<br>
+  ▸ <strong>Margem CAT 3:</strong> Marginal · prejuízo possível<br>
+  ▸ <strong>Mas pico safra (jul-set):</strong> R$ 130-150/cx · margens boas<br><br>
+  <strong>Sistemas modernos (Field Day 2026):</strong><br>
+  ▸ <strong>Porta-enxertos Geneva (G.202 · G.41 · G.214 · G.969):</strong> Resistência · vigor controlado<br>
+  ▸ <strong>Adensamento 2.700-3.000 plantas/ha:</strong> Padrão moderno<br>
+  ▸ <strong>Bidimensional (palmeta):</strong> Manejo facilitado<br>
+  ▸ <strong>Bi-axis:</strong> Eficiência luz<br>
+  ▸ <strong>Multi-líder:</strong> Máxima produtividade<br>
+  ▸ <strong>Telado anti-granizo:</strong> R$ 50-100 mil/ha · ROI 2-3 anos<br>
+  ▸ <strong>Irrigação localizada:</strong> Padrão<br>
+  ▸ <strong>Câmaras frias atmosfera controlada:</strong> Conservação 8-10 meses</div>
+</div>
+
+<div class="alert green">
+  <span class="ai">🍴</span>
+  <div><strong style="color:var(--up)">CONSUMO BR FORTE! 6,5 kg/hab/ano · 3ª fruta + consumida (atrás banana e laranja) · Saúde + premium gourmet</strong><br>
+  <strong>Consumo per capita maçã:</strong><br>
+  ▸ <strong>🥇 Polônia:</strong> 22 kg/hab/ano<br>
+  ▸ <strong>🥈 Itália:</strong> 16 kg/hab/ano<br>
+  ▸ <strong>🥉 Alemanha:</strong> 14 kg/hab/ano<br>
+  ▸ <strong>4º EUA:</strong> 8 kg/hab/ano<br>
+  ▸ <strong>5º BRASIL:</strong> 6,5 kg/hab/ano<br>
+  ▸ <strong>Tendência BR:</strong> +5% ao ano<br>
+  ▸ <strong>Posição BR no consumo:</strong> 3ª fruta mais consumida<br><br>
+  <strong>Top frutas mais consumidas BR:</strong><br>
+  ▸ <strong>🥇 Banana:</strong> 26 kg/hab/ano<br>
+  ▸ <strong>🥈 Laranja:</strong> 14 kg/hab/ano<br>
+  ▸ <strong>🥉 MAÇÃ:</strong> 6,5 kg/hab/ano<br>
+  ▸ <strong>4º Mamão:</strong> 4,5 kg<br>
+  ▸ <strong>5º Melancia:</strong> 4 kg<br>
+  ▸ <strong>6º Manga:</strong> 3,5 kg<br>
+  ▸ <strong>7º Abacaxi:</strong> 3 kg<br><br>
+  <strong>Por que maçã é popular?</strong><br>
+  ▸ <strong>Praticidade:</strong> Lavou e comeu<br>
+  ▸ <strong>Conservação longa:</strong> 7-10 dias geladeira<br>
+  ▸ <strong>Versatilidade:</strong> In natura · sucos · doces · saladas<br>
+  ▸ <strong>Preço acessível:</strong> R$ 6-12/kg varejo<br>
+  ▸ <strong>Saudável:</strong> Fibras · vitamina C · antioxidantes<br>
+  ▸ <strong>"An apple a day keeps the doctor away"</strong><br>
+  ▸ <strong>Lancheira escolar · escritório</strong><br>
+  ▸ <strong>Status premium:</strong> Pink Lady · gourmet<br><br>
+  <strong>Nutrição (100g maçã com casca):</strong><br>
+  ▸ <strong>Calorias:</strong> 52 kcal (baixa!)<br>
+  ▸ <strong>Carboidratos:</strong> 14g<br>
+  ▸ <strong>Fibras:</strong> 2,4g (boa fonte)<br>
+  ▸ <strong>Açúcares naturais:</strong> 10,4g (frutose)<br>
+  ▸ <strong>Vitamina C:</strong> 4,6 mg<br>
+  ▸ <strong>Potássio:</strong> 107 mg<br>
+  ▸ <strong>Antioxidantes:</strong> Quercetina · catequinas (anti-inflamatórios)<br>
+  ▸ <strong>Pectina:</strong> Saúde intestinal<br><br>
+  <strong>Mercado de varejo BR:</strong><br>
+  ▸ <strong>Supermercados:</strong> 60% volume<br>
+  ▸ <strong>Feiras livres:</strong> 20%<br>
+  ▸ <strong>Hortifrúti gourmet:</strong> 12% (Pink Lady · Fuji premium)<br>
+  ▸ <strong>Mercado direto cooperativas:</strong> 8% (crescendo!)<br>
+  ▸ <strong>Margem varejo:</strong> 50-100% sobre atacado<br><br>
+  <strong>Tendências consumo 2026:</strong><br>
+  ▸ <strong>Maçã orgânica:</strong> +15% ao ano · premium R$ 15-20/kg<br>
+  ▸ <strong>Variedades premium:</strong> Pink Lady · Honeycrisp<br>
+  ▸ <strong>Suco industrializado:</strong> Cresce 8% ao ano<br>
+  ▸ <strong>Vinagre de maçã:</strong> Boom saúde-fitness<br>
+  ▸ <strong>Cidra (sidra):</strong> Bebida fermentada · gourmet<br>
+  ▸ <strong>Snack desidratada:</strong> Chips de maçã<br>
+  ▸ <strong>Compotas · doces artesanais:</strong> Indicação geográfica<br>
+  ▸ <strong>Maçã verde Granny:</strong> Fitness · low carb</div>
+</div>
+
+<div class="alert amber">
+  <span class="ai">🏦</span>
+  <div><strong style="color:var(--nt)">MACRO: Selic 14,50% e Real R$ 4,95 = cenário MISTO para maçã BR · Importação favorecida · Exportação pressionada</strong><br>
+  Copom cortou Selic (29/04) para 14,50% (-0,25 pp). Dólar em R$ 4,9523 (mín 2 anos!).<br><br>
+  <strong>IMPACTOS no setor maçã BR:</strong><br>
+  ▸ ✗ <strong>Importação Argentina/Chile:</strong> Dólar baixo encarece em R$ MENOS · concorrência aumenta!<br>
+  ▸ ✗ <strong>Exportação BR:</strong> Receita em R$ menor (Real forte)<br>
+  ▸ ✗ <strong>Margem exportador:</strong> Pressionada<br>
+  ▸ ✓ <strong>Insumos importados (defensivos · adubos):</strong> -10-12% em R$<br>
+  ▸ ✓ <strong>Maquinário · embalagem:</strong> Mais barato<br>
+  ▸ ✓ <strong>Crédito Plano Safra:</strong> Taxas menores<br>
+  ▸ ✓ <strong>Telado anti-granizo importado:</strong> -15% custo<br><br>
+  <strong>Linhas de crédito maçã:</strong><br>
+  ▸ <strong>Plano Safra 26/27 (junho/26):</strong> Volume R$ 550 bi<br>
+  ▸ <strong>Pronaf:</strong> Pequenos · taxas 4-6%<br>
+  ▸ <strong>Pronamp:</strong> Médios · taxas 8-10%<br>
+  ▸ <strong>BNDES Fruticultura:</strong> Investimento (telado · pomares)<br>
+  ▸ <strong>FCO/FNE/FNO:</strong> Variantes regionais<br>
+  ▸ <strong>Custeio até R$ 6 milhões/ano</strong> (médio)<br>
+  ▸ <strong>FUNCAFÉ-equivalente:</strong> Não há · setor pleiteia FUNFRUT<br><br>
+  <strong>Cálculo retorno (1 hectare maçã moderna):</strong><br>
+  ▸ <strong>Investimento implantação:</strong> R$ 100 mil<br>
+  ▸ <strong>Produtividade:</strong> 50 t/ha<br>
+  ▸ <strong>Preço médio anual:</strong> R$ 5,50/kg (média Cat 1+3)<br>
+  ▸ <strong>Receita bruta:</strong> R$ 275 mil/ha/ano<br>
+  ▸ <strong>Custo operacional:</strong> R$ 50 mil/ha<br>
+  ▸ <strong>Margem bruta:</strong> R$ 225 mil/ha<br>
+  ▸ <strong>Payback:</strong> 4-5 anos<br>
+  ▸ <strong>Ciclo produtivo:</strong> 20-25 anos<br>
+  ▸ <strong>ROI 20 anos:</strong> 350-450% (excelente!)<br><br>
+  <strong>Riscos macro:</strong><br>
+  ▸ <strong>Real continuar forte:</strong> Pressão exportação<br>
+  ▸ <strong>Importação manter elevada:</strong> Competição<br>
+  ▸ <strong>Inflação fertilizantes (Ormuz):</strong> Custos sobem<br>
+  ▸ <strong>Mudanças climáticas:</strong> Horas-frio reduzindo Sul!<br>
+  ▸ <strong>Eleições BR 2026:</strong> Volatilidade política</div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon">📊</div><h2>Indicadores-Chave <span>— Cepea/HF · ABPM · Epagri · Conab</span></h2></div>
+
+<div class="kpi-row">
+  <div class="kpi dn"><div class="kpi-lb">Gala cat 1 18kg</div><div class="kpi-val dn">R$ 100,55</div><div class="kpi-sub">↓ 4,7% sem · -27% ano</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Gala cat 3 18kg</div><div class="kpi-val dn">R$ 62,55</div><div class="kpi-sub">↓ 14% · CAT inferior sofre</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Fuji cat 1 18kg</div><div class="kpi-val dn">R$ 105,83</div><div class="kpi-sub">↓ 3,8% semana</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Fuji Ceagesp kg</div><div class="kpi-val dn">R$ 6,47</div><div class="kpi-sub">↓ 21,9% ano · 4 anos baixo!</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Gala Ceagesp 18kg</div><div class="kpi-val nt">R$ 124,74</div><div class="kpi-sub">atacado SP</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Maçã varejo BR</div><div class="kpi-val nt">R$ 8-12</div><div class="kpi-sub">/kg · varia variedade</div></div>
+  <div class="kpi ap"><div class="kpi-lb">Safra BR 25/26</div><div class="kpi-val ap">1,15 mi t</div><div class="kpi-sub">+20% · recuperação!</div></div>
+  <div class="kpi ap"><div class="kpi-lb">Safra SC 25/26</div><div class="kpi-val ap">615 mil t</div><div class="kpi-sub">+27,9%! · Lages líder</div></div>
+  <div class="kpi lf"><div class="kpi-lb">Export 25/26 proj</div><div class="kpi-val lf">60 mil t</div><div class="kpi-sub">+50% · 20+ países</div></div>
+  <div class="kpi lf"><div class="kpi-lb">RS exportação</div><div class="kpi-val lf">40 mil t</div><div class="kpi-sub">67% · Vacaria líder</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Importação 2024</div><div class="kpi-val nt">235 mil t</div><div class="kpi-sub">RECORDE 30 anos!</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Per capita BR</div><div class="kpi-val nt">6,5 kg</div><div class="kpi-sub">/hab/ano · 3ª fruta BR</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Área plantada BR</div><div class="kpi-val nt">~33 mil ha</div><div class="kpi-sub">RS+SC = 95%</div></div>
+  <div class="kpi up"><div class="kpi-lb">Produtividade média</div><div class="kpi-val up">35-40 t/ha</div><div class="kpi-sub">topo mundial!</div></div>
+  <div class="kpi pu"><div class="kpi-lb">Selic 29/04</div><div class="kpi-val pu">14,50%</div><div class="kpi-sub">↓ 0,25 pp</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Dólar 30/04</div><div class="kpi-val dn">R$ 4,95</div><div class="kpi-sub">prejudica exportador</div></div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon">📍</div><h2>Cotações da Semana <span>— Maçã CAT 1 · Variedades · Regiões · Abr/26</span></h2></div>
+
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Variedade/Região</th><th>Tipo</th><th>Mar/26</th><th>06/04</th><th>30/04 est</th><th>Var. Mês</th><th>Var. Ano</th></tr></thead>
+<tbody>
+<tr><td class="td-name">🍎 Gala graúda</td><td>CAT 1 (cx 18kg)</td><td>108,33</td><td>100,55</td><td class="td-dn">~95,00</td><td class="td-dn">-12%</td><td class="td-dn">-25%</td></tr>
+<tr><td class="td-name">🍎 Gala graúda</td><td>CAT 3 (cx 18kg)</td><td>72,10</td><td>62,55</td><td class="td-dn">~58,00</td><td class="td-dn">-19%</td><td class="td-dn">-35%</td></tr>
+<tr><td class="td-name">🍎 Fuji graúda</td><td>CAT 1 (cx 18kg)</td><td>110,00</td><td>105,83</td><td class="td-dn">~100,00</td><td class="td-dn">-9%</td><td class="td-dn">-20%</td></tr>
+<tr><td class="td-name">🍎 Eva precoce</td><td>(cx 18kg)</td><td>95,00</td><td>85,00</td><td class="td-dn">~80,00</td><td class="td-dn">-16%</td><td class="td-dn">-18%</td></tr>
+<tr><td class="td-name">📊 Gala atacado</td><td>Ceagesp-SP cat 1</td><td>126,44</td><td>124,74</td><td class="td-nt">~120,00</td><td class="td-dn">-5%</td><td class="td-dn">-22%</td></tr>
+<tr><td class="td-name">📊 Fuji atacado</td><td>Ceagesp-SP kg</td><td>7,30</td><td>6,80</td><td class="td-dn">6,47</td><td class="td-dn">-11%</td><td class="td-dn">-21,9%</td></tr>
+<tr><td class="td-name">📊 Maçã import.</td><td>Ceagesp-SP kg</td><td>7,15</td><td>6,75</td><td class="td-nt">6,40</td><td class="td-dn">-10%</td><td class="td-dn">-18%</td></tr>
+<tr><td class="td-name">🛒 Varejo BR</td><td>Gala kg</td><td>8,50</td><td>7,90</td><td class="td-dn">7,50</td><td class="td-dn">-12%</td><td class="td-dn">-22%</td></tr>
+<tr><td class="td-name">🛒 Varejo BR</td><td>Fuji kg</td><td>9,80</td><td>9,20</td><td class="td-dn">8,80</td><td class="td-dn">-10%</td><td class="td-dn">-20%</td></tr>
+<tr><td class="td-name">🛒 Varejo BR</td><td>Pink Lady kg</td><td>15,00</td><td>14,50</td><td class="td-nt">14,00</td><td class="td-dn">-7%</td><td class="td-dn">-10%</td></tr>
+</tbody>
+</table>
+</div>
+
+<p style="font-size:.78rem;color:var(--text3);margin-top:6px;text-align:center"><em>Cotações maçã 30/04/26 estimativa Cepea/Ceagesp · CAT 1 = 1ª qualidade, 18 kg padrão · Pink Lady premium importada · Fonte: Hortifrúti/Cepea/HF Brasil/Ceagesp</em></p>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon">📈</div><h2>Análise Gráfica <span>— 6 perspectivas · Trajetória · Variedades · Estados · Export · Import · Calendário</span></h2></div>
+
+<div class="grid2">
+  <div class="chart-box"><h3>📊 Gala vs Fuji · Cat 1 · 12 sem <span class="ch-tag">R$/cx 18kg</span></h3><div class="chart-wrap"><canvas id="ch1"></canvas></div></div>
+  <div class="chart-box"><h3>🍎 Variedades BR (Safra 25/26) <span class="ch-tag">% participação</span></h3><div class="chart-wrap"><canvas id="ch2"></canvas></div></div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box"><h3>🌳 Top Produtores BR <span class="ch-tag">% safra</span></h3><div class="chart-wrap"><canvas id="ch3"></canvas></div></div>
+  <div class="chart-box"><h3>🚢 Exportação · Trajetória <span class="ch-tag">mil t · safras</span></h3><div class="chart-wrap"><canvas id="ch4"></canvas></div></div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box"><h3>📦 Importação BR · Crise 2024 <span class="ch-tag">mil t</span></h3><div class="chart-wrap"><canvas id="ch5"></canvas></div></div>
+  <div class="chart-box"><h3>📅 Calendário Safra & Preço <span class="ch-tag">R$/cx · ciclo</span></h3><div class="chart-wrap"><canvas id="ch6"></canvas></div></div>
+</div>
+
+<div class="dv"></div>
+
+<div class="opinion">
+  <h3>🎯 Opinião do Analista — Safra Recorde · Preços em Queda · Mas BR está se MODERNIZANDO!</h3>
+
+  <p><strong>O setor de maçã brasileiro vive um momento HISTÓRICO em abril/2026: SAFRA 2025/26 é RECORDE DE RECUPERAÇÃO com 1,05-1,15 milhão de toneladas (+20%!) · volta à média histórica após dois anos catastróficos · qualidade SUPERIOR (calibres maiores · cor mais avermelhada · sabor equilibrado) · TECNOLOGIA AVANÇADA (porta-enxertos Geneva G.969 · adensamento 2.700-3.000 plantas/ha · Bi-axis · Multi-líder · telado anti-granizo). MAS PREÇOS DESPENCAM: Gala cat 1 a R$ 100,55/cx (-4,7% sem · -27% ano) · cat 3 a R$ 62,55 (-14%!) · Fuji Ceagesp R$ 6,47/kg (-21,9% ano · MENOR PREÇO EM 4 ANOS!) · Conab Prohort registra queda média 8,89% nas Ceasas. Razões: oferta abundante · estoques anteriores · IMPORTAÇÃO RECORDE 235 mil t em 2024 (4x normal · maior desde 1996!) · Real forte favorece importação Argentina/Chile. EXPORTAÇÃO BR DECOLA: 60 mil t projetadas safra 25/26 (+50%!) · RS 40k + SC 20k · Bangladesh #1 (52,3%) · Índia substituindo Rússia (40,2%) · 20+ países · certificação descentralizada São Joaquim/Fraiburgo · Porto Imbituba reduz custos. RS+SC = 95% produção (Vacaria · Lages · Fraiburgo · São Joaquim epicentros) · empresas líderes Rasip/Schio/Frutale/Hiragami inovam. Selic 14,50% e dólar baixo são MISTOS: bom para insumos importados · ruim para exportador. PRODUTOR BR: aposte em qualidade premium · marca Sul · cooperativismo · exportação · variedades novas (Belgala · Princesa · Pink Lady).</strong></p>
+
+  <p><strong>Semana 30/abr/2026 — Em síntese:</strong><br>
+  ▸ <strong>Gala graúda CAT 1:</strong> R$ 100,55/cx 18kg (-4,7% sem!)<br>
+  ▸ <strong>Gala graúda CAT 3:</strong> R$ 62,55/cx (-14% sem!)<br>
+  ▸ <strong>Fuji graúda CAT 1:</strong> R$ 105,83/cx (-3,8% sem)<br>
+  ▸ <strong>Fuji Ceagesp varejo:</strong> R$ 6,47/kg (-21,9% ano · 4 anos!)<br>
+  ▸ <strong>Gala Ceagesp atacado:</strong> R$ 124,74/cx<br>
+  ▸ <strong>Varejo BR:</strong> R$ 7,50-8,80/kg gala/fuji · Pink Lady R$ 14<br>
+  ▸ <strong>Safra BR 25/26:</strong> 1,05-1,15 mi t (+20%!)<br>
+  ▸ <strong>Safra SC 25/26:</strong> 615 mil t (+27,9%!)<br>
+  ▸ <strong>Variedades:</strong> Fuji 51,2% · Gala 47,2% · Eva 1,6%<br>
+  ▸ <strong>Exportação 25/26 proj:</strong> 60 mil t (+50%!)<br>
+  ▸ <strong>Top destinos:</strong> Bangladesh 52% · Índia 40%<br>
+  ▸ <strong>Importação 2024:</strong> 235 mil t (RECORDE 30 anos!)<br>
+  ▸ <strong>Per capita BR:</strong> 6,5 kg/hab (3ª fruta + consumida)<br>
+  ▸ <strong>Selic 29/04:</strong> 14,50% · <strong>Dólar 30/04:</strong> R$ 4,95<br>
+  ▸ <strong>Margem produtor CAT 1:</strong> Apertada (+R$ 0-20/cx)<br>
+  ▸ <strong>Conab Prohort:</strong> Queda 8,89% nas Ceasas no mês</p>
+
+  <p><strong>Recomendações estratégicas:</strong></p>
+
+  <p><strong>1. PRODUTOR PEQUENO/MÉDIO: Foque em QUALIDADE CAT 1 e cooperativismo!</strong> Cat 3 está no prejuízo. Estratégias: a) Investir em raleio (menos frutos · maiores · melhor qualidade), b) Telado anti-granizo (proteção CAT 1), c) Cooperativa (Sanjo · regional) para escala, d) Variedade Belgala (clone Rasip · vendas garantidas) ou Princesa, e) Vender direto consumidor (e-commerce · feiras · entrega), f) Indicação Geográfica para "Maçã de Vacaria" ou "Maçã de São Joaquim".</p>
+
+  <p><strong>2. PRODUTOR GRANDE (Rasip · Schio · Hiragami): EXPORTE MAIS!</strong> Mercado externo é vital. Estratégias: a) Bangladesh + Índia são prioridade (95% volume export), b) Diversificar UE (Itália · Holanda · Portugal), c) Oriente Médio (EAU · Arábia Saudita · ricos em poder compra), d) Hedge cambial (Real forte prejudica receita), e) Porto Imbituba (logística mais barata), f) Marketing "Brazil Apples" internacional, g) Certificação GlobalGAP · Rainforest Alliance.</p>
+
+  <p><strong>3. ATENÇÃO À IMPORTAÇÃO! Real forte + Mercosul = invasão!</strong> 235 mil t em 2024 destruiu mercado. Estratégias: a) ABPM deve estudar antidumping (Argentina/Chile dumpando), b) Pressão MAPA por tarifa anti-circumvention, c) Marketing "Maçã do Sul é melhor" (verdade!), d) Diferenciar variedades exclusivas BR, e) Selo de origem · IG Vacaria/Fraiburgo, f) Apoio governo (FUNFRUT · linha exclusiva).</p>
+
+  <p><strong>4. INVESTIR EM TECNOLOGIA: Adensamento + Porta-enxertos modernos!</strong> Sistemas tradicionais (600 plantas/ha · 25-35 t/ha) ficam obsoletos. Estratégias: a) Bi-axis ou Multi-líder (50+ t/ha), b) Porta-enxertos Geneva (G.202/G.41/G.214/G.969 · resistência), c) Belgala em maior área (clone exclusivo · mais valor), d) Telado anti-granizo (R$ 80 mil/ha · ROI 3 anos), e) Irrigação localizada · fertirrigação, f) Drones · sensores · IA precisão.</p>
+
+  <p><strong>5. PRODUTOS DE VALOR AGREGADO: Vinagre · Sidra · Suco · Desidratada!</strong> Maçã in natura tem margem apertada. Estratégias: a) Vinagre de maçã orgânico (boom saúde · R$ 25-40/L), b) Sidra/cidra artesanal (gourmet · R$ 30-60/garrafa), c) Suco prensado a frio (premium R$ 15-25/L), d) Maçã desidratada chips (snack saudável), e) Compota artesanal (IG · R$ 20/pote), f) Marketing direct-to-consumer.</p>
+
+  <p><strong>6. CICLO DE PREÇOS · Não vender no fundo!</strong> Pico de oferta abr-mai derruba preços · jul-set tem alta. Estratégias: a) Câmara fria atmosfera controlada (conserva 8-10 meses!), b) Vender Fuji escalonado (set-dez melhor preço), c) Não vender Gala desespero abril-maio, d) Estoque estratégico para entressafra, e) Travas comerciais com mercados (preço fixo julho-setembro), f) Aproveitar baixa preço para vender importadores Bangladesh/Índia.</p>
+
+  <p><strong>7. AGENDA: a) Plano Safra 26/27 em junho/26 (taxas subsidiadas!), b) Festa da Maçã Vacaria outubro/26, c) Festa da Maçã Fraiburgo novembro/26, d) Field Day Vacaria janeiro/27 (tecnologia!), e) COP30 Belém nov/26 (carbono · sustentabilidade), f) Acompanhar política importação MAPA/MDIC.</strong></p>
+
+  <div class="opinion .scenarios" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px">
+    <div class="sc up"><h5>🟢 Cenário Altista</h5><p>Importação cai com safra cheia · clima estável · Real desvaloriza para R$ 5,30 · exportação atinge 80 mil t · Bangladesh+Índia bombam · ABPM antidumping aprovado · preços recuperam jul-set · Gala cat 1 R$ 130/cx no pico → <strong>Setor lucra · margens recuperam</strong>. Probabilidade: ~30%</p></div>
+    <div class="sc nt"><h5>🟡 Cenário Neutro</h5><p>Preços continuam pressionados abr-jun · recuperação parcial jul-out (R$ 110-130/cx Gala) · exportação 60 mil t · importação ainda alta (180 mil t) · margem CAT 1 apertada · CAT 3 prejuízo · cooperativismo cresce → <strong>Cenário misto · CAT 1 sobrevive</strong>. Probabilidade: ~50%</p></div>
+    <div class="sc dn"><h5>🔴 Cenário Baixista</h5><p>Real continua R$ 4,80 · importação Argentina/Chile dispara · safra mundial farta · Bangladesh reduz compras · preço Gala cat 1 R$ 80-90/cx · Fuji R$ 5,50/kg Ceagesp · pomares pequenos quebram · setor encolhe → <strong>Crise · CAT 3 abandona</strong>. Probabilidade: ~20%</p></div>
+  </div>
+
+  <div class="sig">📅 Análise Rural IN · Quinta, 30/Abr/2026 · Semana curta (feriado 1º Mai) · SAFRA RECORDE +20% · PREÇOS DESPENCAM · IMPORTAÇÃO RECORDE 30 ANOS · BR MODERNIZA E EXPORTA!</div>
+</div>
+
+<footer class="footer"><div class="wrap">
+  <div class="footer-brand"><span class="r">Rural</span> <span class="i">IN</span></div>
+  <p>Radar Agro Semanal · Maçã · Semana 27–30 Abril 2026<br>Fontes: Cepea/Esalq · HF Brasil · Hortifrúti/Cepea · ABPM (Associação Brasileira Produtores Maçã) · Epagri/Cepa · Ceagesp · Conab Prohort · IBGE · MAPA · UDESC · UFRGS · Embrapa Uva e Vinho · Rasip Agro · CNN Brasil · Globo Rural · Revista da Fruta · Notícias Agrícolas</p>
+  <div class="footer-credits">
+    <h4>Análise e Construção</h4>
+    <div class="name">Dr. Sidney Souza</div>
+    <div class="title">Economista e Adm. Agrícola — Estrategista Econômico do Produtor</div>
+    <div class="desc">Especialista em economia da fazenda e gestão de risco no agro<br>Transformamos dados da fazenda em decisões econômicas</div>
+    <div class="contact">📧 <a href="mailto:sidneyagro@gmail.com">sidneyagro@gmail.com</a> · 📱 <a href="tel:+5564992266886">(64) 9 9226-6886</a> · 📸 <a href="https://instagram.com/ruralin.ai" target="_blank">@ruralin.ai</a></div>
+  </div>
+  <p style="margin-top:18px"><em>⚠️ Material informativo. Não constitui recomendação de investimento.</em></p>
+</div></footer>
+
+</div>
+
+<script>
+const gc='rgba(46,22,32,.5)';
+const tt={backgroundColor:'rgba(22,8,16,.97)',borderColor:'#42202e',borderWidth:1,titleFont:{size:11,weight:'700'},bodyFont:{size:10},padding:10,cornerRadius:8};
+
+new Chart(document.getElementById('ch1').getContext('2d'),{type:'line',
+data:{labels:['Jan/26','Fev/26','Mar/26','06/04','13/04','20/04','30/04'],
+datasets:[
+{label:'Gala cat 1',data:[145,138,108,100.55,98,96,95],borderColor:'#dc2626',backgroundColor:'rgba(220,38,38,.18)',borderWidth:3,fill:false,tension:.3,pointRadius:5},
+{label:'Fuji cat 1',data:[140,128,110,105.83,103,101,100],borderColor:'#84cc16',backgroundColor:'rgba(132,204,22,.13)',borderWidth:3,fill:false,tension:.3,pointRadius:5}
+]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{color:'#fecaca',font:{size:10},boxWidth:14,padding:8}},tooltip:tt},
+scales:{y:{min:80,max:160,grid:{color:gc},ticks:{callback:v=>'R$'+v,font:{size:9},color:'#fecaca'}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#fecaca'}}}}});
+
+new Chart(document.getElementById('ch2').getContext('2d'),{type:'doughnut',
+data:{labels:['Fuji (51,2%)','Gala (47,2%)','Eva precoces (1,6%)'],
+datasets:[{data:[51.2,47.2,1.6],
+backgroundColor:['rgba(132,204,22,.7)','rgba(220,38,38,.7)','rgba(251,191,36,.7)'],
+borderColor:['#84cc16','#dc2626','#fbbf24'],borderWidth:2,hoverOffset:8}]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#fecaca',font:{size:10},boxWidth:12,padding:8}},tooltip:tt},cutout:'58%'}});
+
+new Chart(document.getElementById('ch3').getContext('2d'),{type:'doughnut',
+data:{labels:['🥇 RS (47%)','🥈 SC (48%)','🥉 PR (4%)','Outros (1%)'],
+datasets:[{data:[47,48,4,1],
+backgroundColor:['rgba(220,38,38,.7)','rgba(132,204,22,.7)','rgba(59,130,246,.7)','rgba(120,113,108,.5)'],
+borderColor:['#dc2626','#84cc16','#3b82f6','#78716c'],borderWidth:2,hoverOffset:8}]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#fecaca',font:{size:10},boxWidth:12,padding:8}},tooltip:tt},cutout:'58%'}});
+
+new Chart(document.getElementById('ch4').getContext('2d'),{type:'bar',
+data:{labels:['20/21','21/22','22/23','23/24','24/25','25/26 proj'],
+datasets:[{label:'Export (mil t)',data:[80,70,50,35,40,60],
+backgroundColor:c=>c.dataIndex===5?'rgba(34,197,94,.85)':'rgba(220,38,38,.65)',
+borderColor:c=>c.dataIndex===5?'#22c55e':'#dc2626',borderWidth:2,borderRadius:7}]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+scales:{y:{min:0,max:90,grid:{color:gc},ticks:{font:{size:9},color:'#fecaca'}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#fecaca'}}}}});
+
+new Chart(document.getElementById('ch5').getContext('2d'),{type:'bar',
+data:{labels:['2020','2021','2022','2023','2024','2025 est'],
+datasets:[{label:'Importação (mil t)',data:[55,60,75,180,235,150],
+backgroundColor:c=>c.dataIndex===4?'rgba(239,68,68,.85)':c.parsed.y>=100?'rgba(234,179,8,.7)':'rgba(34,197,94,.6)',
+borderColor:c=>c.dataIndex===4?'#ef4444':c.parsed.y>=100?'#eab308':'#22c55e',borderWidth:2,borderRadius:7}]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+scales:{y:{min:0,max:260,grid:{color:gc},ticks:{font:{size:9},color:'#fecaca'}},x:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#fecaca'}}}}});
+
+new Chart(document.getElementById('ch6').getContext('2d'),{type:'line',
+data:{labels:['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+datasets:[{label:'Preço Gala cat 1',data:[145,138,108,100,90,95,110,125,140,145,150,148],
+borderColor:'#dc2626',backgroundColor:'rgba(220,38,38,.18)',borderWidth:3,fill:true,tension:.3,pointRadius:5}]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+scales:{y:{min:80,max:160,grid:{color:gc},ticks:{callback:v=>'R$'+v,font:{size:9},color:'#fecaca'}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#fecaca'}}}}});
+</script>
+</body>
+</html>

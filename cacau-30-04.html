@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Rural IN — Cacau · Radar Agro Semanal · 27-30 Abr 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0604;--bg2:#120907;--bg3:#1a0e09;--bg4:#23150d;--border:#2d1d12;--border2:#3d291a;--accent:#451a03;--accent2:#7c2d12;--accent3:#92400e;--cocoa:#a3501a;--cocoa2:#c2641f;--cocoa3:#d97706;--gold:#fbbf24;--gold2:#fcd34d;--cream:#fef3c7;--text:#f3e8d8;--text2:#c4b094;--text3:#8a7660;--up:#22c55e;--upDark:#15803d;--dn:#ef4444;--dnDark:#b91c1c;--nt:#eab308;--blue:#3b82f6;--purple:#a855f7;--orange:#f97316;--cyan:#06b6d4;--teal:#14b8a6;--pink:#ec4899;--lime:#84cc16;--r:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 1000px 700px at 10% 15%,rgba(124,45,18,.1),transparent),radial-gradient(ellipse 800px 600px at 90% 85%,rgba(163,80,26,.06),transparent),radial-gradient(ellipse 600px 500px at 50% 50%,rgba(217,119,6,.04),transparent);pointer-events:none;z-index:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+
+.nav{background:rgba(18,9,7,.95);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:14px}
+.nav-logo-img{height:42px;width:auto;border-radius:8px}
+.nav-logo{font-weight:900;font-size:1.2rem}
+.nav-logo .r{color:var(--cocoa3)}
+.nav-logo .i{color:#22c55e}
+.nav-badge{background:linear-gradient(135deg,#451a03,#92400e);border:1px solid rgba(217,119,6,.4);padding:5px 14px;border-radius:20px;font-size:.7rem;font-weight:800;color:var(--cream);letter-spacing:.6px;box-shadow:0 0 20px rgba(124,45,18,.4)}
+.nav-back{color:var(--text3);font-size:.8rem;text-decoration:none;transition:color .2s}
+.nav-back:hover{color:var(--cocoa3)}
+
+.hero{padding:54px 0 40px;position:relative;text-align:left}
+.hero::after{content:'';position:absolute;bottom:0;left:0;width:240px;height:3px;background:linear-gradient(90deg,var(--accent2),var(--cocoa3),transparent)}
+.hero-top{display:flex;align-items:center;gap:22px;margin-bottom:16px}
+.hero-icon-wrap{position:relative;width:84px;height:84px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,rgba(124,45,18,.3),transparent 70%);border-radius:50%}
+.hero-icon{font-size:3.6rem;filter:drop-shadow(0 6px 18px rgba(124,45,18,.6))}
+.hero-texts h1{font-size:2.4rem;font-weight:900;letter-spacing:-1.2px;line-height:1.1}
+.hero-texts h1 .hl{background:linear-gradient(135deg,#7c2d12,#92400e,#a3501a,#d97706);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-texts .sub{font-size:.9rem;color:var(--text2);margin-top:6px;font-weight:500}
+.hero-bar{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border-radius:22px;font-size:.72rem;font-weight:700;border:1px solid;backdrop-filter:blur(8px)}
+.chip.up{color:var(--up);border-color:rgba(34,197,94,.3);background:rgba(34,197,94,.08)}
+.chip.dn{color:var(--dn);border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.08)}
+.chip.nt{color:var(--nt);border-color:rgba(234,179,8,.3);background:rgba(234,179,8,.08)}
+.chip.bl{color:var(--blue);border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.08)}
+.chip.pu{color:var(--purple);border-color:rgba(168,85,247,.3);background:rgba(168,85,247,.08)}
+.chip.or{color:var(--orange);border-color:rgba(249,115,22,.3);background:rgba(249,115,22,.08)}
+.chip.cc{color:var(--cocoa3);border-color:rgba(217,119,6,.3);background:rgba(217,119,6,.08)}
+
+.alert{border-radius:var(--r);padding:18px 22px;margin-bottom:14px;display:flex;align-items:flex-start;gap:14px;border:1px solid;font-size:.85rem;line-height:1.75;color:var(--text2);position:relative;overflow:hidden}
+.alert::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
+.alert strong{color:var(--text)}
+.alert .ai{font-size:1.4rem;flex-shrink:0;margin-top:1px}
+.alert.green{background:linear-gradient(90deg,rgba(34,197,94,.08),rgba(34,197,94,.02));border-color:rgba(34,197,94,.25)}
+.alert.green::before{background:var(--up)}
+.alert.red{background:linear-gradient(90deg,rgba(239,68,68,.08),rgba(239,68,68,.02));border-color:rgba(239,68,68,.25)}
+.alert.red::before{background:var(--dn)}
+.alert.amber{background:linear-gradient(90deg,rgba(234,179,8,.08),rgba(234,179,8,.02));border-color:rgba(234,179,8,.25)}
+.alert.amber::before{background:var(--nt)}
+.alert.blue{background:linear-gradient(90deg,rgba(59,130,246,.08),rgba(59,130,246,.02));border-color:rgba(59,130,246,.25)}
+.alert.blue::before{background:var(--blue)}
+.alert.purple{background:linear-gradient(90deg,rgba(168,85,247,.08),rgba(168,85,247,.02));border-color:rgba(168,85,247,.25)}
+.alert.purple::before{background:var(--purple)}
+.alert.cyan{background:linear-gradient(90deg,rgba(6,182,212,.08),rgba(6,182,212,.02));border-color:rgba(6,182,212,.25)}
+.alert.cyan::before{background:var(--cyan)}
+.alert.orange{background:linear-gradient(90deg,rgba(249,115,22,.1),rgba(249,115,22,.02));border-color:rgba(249,115,22,.3)}
+.alert.orange::before{background:var(--orange)}
+.alert.cocoa{background:linear-gradient(90deg,rgba(124,45,18,.13),rgba(217,119,6,.04));border-color:rgba(217,119,6,.3)}
+.alert.cocoa::before{background:var(--cocoa3)}
+
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin:24px 0}
+.kpi{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:16px 18px;position:relative;overflow:hidden;transition:all .25s ease}
+.kpi:hover{transform:translateY(-3px);border-color:var(--border2);box-shadow:0 12px 30px rgba(0,0,0,.5)}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2)}
+.kpi.up::before{background:linear-gradient(90deg,var(--up),var(--lime))}
+.kpi.dn::before{background:linear-gradient(90deg,var(--dn),var(--orange))}
+.kpi.nt::before{background:linear-gradient(90deg,var(--nt),var(--gold))}
+.kpi.bl::before{background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.kpi.pu::before{background:linear-gradient(90deg,var(--purple),var(--pink))}
+.kpi.or::before{background:linear-gradient(90deg,var(--orange),var(--gold))}
+.kpi.cc::before{background:linear-gradient(90deg,var(--accent2),var(--cocoa3))}
+.kpi-lb{font-size:.6rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:5px;font-weight:700}
+.kpi-val{font-size:1.18rem;font-weight:900;letter-spacing:-.5px;line-height:1.2}
+.kpi-val.up{color:var(--up)}
+.kpi-val.dn{color:var(--dn)}
+.kpi-val.nt{color:var(--nt)}
+.kpi-val.bl{color:var(--blue)}
+.kpi-val.pu{color:var(--purple)}
+.kpi-val.or{color:var(--orange)}
+.kpi-val.cc{color:var(--cocoa3)}
+.kpi-sub{font-size:.66rem;color:var(--text3);margin-top:3px;font-weight:500}
+
+.dv{height:1px;background:linear-gradient(90deg,transparent,var(--border2) 20%,var(--cocoa3) 50%,var(--border2) 80%,transparent);margin:36px 0}
+
+.stitle{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.stitle .icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;box-shadow:0 4px 14px rgba(0,0,0,.4)}
+.stitle h2{font-size:1.18rem;font-weight:800;letter-spacing:-.3px}
+.stitle h2 span{color:var(--text2);font-weight:400;font-size:.85rem;margin-left:4px}
+
+.co{border-radius:var(--r);padding:20px 24px;margin-bottom:14px;border-left:4px solid;font-size:.85rem;color:var(--text2);line-height:1.85;position:relative;background:linear-gradient(90deg,var(--bg2),var(--bg3))}
+.co strong{color:var(--text)}
+.co h4{font-size:.98rem;font-weight:800;margin-bottom:10px;letter-spacing:-.2px}
+.co.up{border-color:var(--up)}.co.up h4{color:var(--up)}
+.co.dn{border-color:var(--dn)}.co.dn h4{color:var(--dn)}
+.co.nt{border-color:var(--nt)}.co.nt h4{color:var(--nt)}
+.co.bl{border-color:var(--blue)}.co.bl h4{color:var(--blue)}
+.co.or{border-color:var(--orange)}.co.or h4{color:var(--orange)}
+.co.pu{border-color:var(--purple)}.co.pu h4{color:var(--purple)}
+.co.cy{border-color:var(--cyan)}.co.cy h4{color:var(--cyan)}
+.co.cc{border-color:var(--cocoa3)}.co.cc h4{color:var(--cocoa3)}
+
+.chart-box{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--r);padding:22px 24px;margin-bottom:14px;overflow:hidden;transition:border-color .2s}
+.chart-box:hover{border-color:var(--border2)}
+.chart-box h3{font-size:.9rem;color:var(--text);margin-bottom:14px;font-weight:700;display:flex;align-items:center;gap:8px}
+.chart-box h3 .ch-tag{margin-left:auto;font-size:.62rem;font-weight:700;padding:2px 10px;border-radius:10px;background:rgba(124,45,18,.18);color:var(--cocoa3);letter-spacing:.5px}
+.chart-wrap{position:relative;height:290px;overflow:hidden}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:800px){.grid2,.grid3{grid-template-columns:1fr}}
+
+.tbl-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--border);margin-bottom:14px;background:var(--bg2)}
+table{width:100%;border-collapse:collapse;font-size:.78rem}
+thead th{background:linear-gradient(180deg,var(--bg3),var(--bg4));padding:12px 14px;text-align:center;font-weight:800;color:var(--text2);font-size:.66rem;text-transform:uppercase;letter-spacing:.9px;border-bottom:1px solid var(--border)}
+tbody td{padding:10px 12px;border-bottom:1px solid rgba(45,29,18,.5);text-align:center}
+tbody tr:hover{background:rgba(124,45,18,.05)}
+.td-name{text-align:left!important;font-weight:700;white-space:nowrap}
+.td-up{color:var(--up);font-weight:800}
+.td-dn{color:var(--dn);font-weight:800}
+.td-nt{color:var(--nt);font-weight:800}
+
+.thermo{margin:14px 0}
+.thermo h4{font-size:.84rem;color:var(--text);margin-bottom:10px;font-weight:700}
+.th-bar{height:14px;border-radius:7px;position:relative;box-shadow:inset 0 1px 4px rgba(0,0,0,.4)}
+.th-marker{position:absolute;top:-6px;width:4px;height:26px;background:#fff;border-radius:2px;transform:translateX(-50%);box-shadow:0 0 12px rgba(255,255,255,.6)}
+.th-lb{display:flex;justify-content:space-between;font-size:.66rem;color:var(--text3);margin-top:6px;font-weight:600}
+
+.card{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--r);padding:22px 26px;margin-bottom:14px;transition:border-color .2s}
+.card:hover{border-color:var(--border2)}
+
+.opinion{background:linear-gradient(135deg,rgba(124,45,18,.18),rgba(217,119,6,.06),rgba(124,45,18,.02));border:1px solid rgba(217,119,6,.3);border-radius:var(--r);padding:30px 32px;margin:26px 0;position:relative;overflow:hidden}
+.opinion::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent2),var(--cocoa3),var(--accent2))}
+.opinion h3{font-size:1.08rem;font-weight:800;color:var(--cocoa3);margin-bottom:12px;letter-spacing:-.2px}
+.opinion p{font-size:.88rem;color:var(--text2);line-height:1.9;margin-bottom:12px}
+.opinion p strong{color:var(--text)}
+.opinion .scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.opinion .sc{padding:14px 16px;border-radius:10px;border:1px solid;background:rgba(0,0,0,.3)}
+.opinion .sc.up{border-color:rgba(34,197,94,.3)}
+.opinion .sc.nt{border-color:rgba(234,179,8,.3)}
+.opinion .sc.dn{border-color:rgba(239,68,68,.3)}
+.opinion .sc h5{font-size:.78rem;font-weight:800;margin-bottom:6px}
+.opinion .sc.up h5{color:var(--up)}
+.opinion .sc.nt h5{color:var(--nt)}
+.opinion .sc.dn h5{color:var(--dn)}
+.opinion .sc p{font-size:.74rem;line-height:1.6;margin:0}
+@media(max-width:700px){.opinion .scenarios{grid-template-columns:1fr}}
+.opinion .sig{margin-top:18px;padding-top:14px;border-top:1px solid rgba(217,119,6,.2);font-size:.78rem;color:var(--text3);font-style:italic;display:flex;align-items:center;gap:8px}
+
+.footer{border-top:1px solid var(--border);padding:42px 0;text-align:center;margin-top:36px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.5))}
+.footer-brand{font-size:1.5rem;font-weight:900;margin-bottom:12px}
+.footer-brand .r{color:var(--cocoa3)}
+.footer-brand .i{color:#22c55e}
+.footer p{font-size:.78rem;color:var(--text3);line-height:1.8}
+.footer-credits{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+.footer-credits h4{font-size:.92rem;color:var(--cocoa3);font-weight:700;margin-bottom:6px}
+.footer-credits .name{font-size:1.05rem;font-weight:800;color:var(--text);margin-bottom:2px}
+.footer-credits .title{font-size:.78rem;color:var(--gold2);font-weight:600;margin-bottom:8px}
+.footer-credits .desc{font-size:.74rem;color:var(--text2);line-height:1.7;max-width:540px;margin:0 auto 12px}
+.footer-credits .contact{font-size:.74rem;color:var(--text3)}
+.footer-credits .contact a{color:var(--cocoa3);text-decoration:none}
+.footer-credits .contact a:hover{text-decoration:underline}
+
+.bignum-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+.bignum{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:20px 18px;text-align:center;position:relative;overflow:hidden}
+.bignum::after{content:'';position:absolute;top:-50%;right:-30%;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(124,45,18,.13),transparent 70%)}
+.bignum .v{font-size:1.7rem;font-weight:900;letter-spacing:-1px;line-height:1;margin-bottom:6px;position:relative;z-index:1}
+.bignum .v.up{color:var(--up)}
+.bignum .v.dn{color:var(--dn)}
+.bignum .v.nt{color:var(--nt)}
+.bignum .v.bl{color:var(--blue)}
+.bignum .v.or{color:var(--orange)}
+.bignum .v.cc{color:var(--cocoa3)}
+.bignum .l{font-size:.72rem;color:var(--text2);font-weight:600;position:relative;z-index:1}
+.bignum .s{font-size:.66rem;color:var(--text3);margin-top:3px}
+@media(max-width:700px){.bignum-row{grid-template-columns:repeat(2,1fr)}}
+
+@media(max-width:600px){
+  .hero-top{flex-direction:column;text-align:center;gap:12px}
+  .hero-texts h1{font-size:1.65rem}
+  .nav .wrap{flex-direction:column;gap:10px}
+  .kpi-row{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1"></script>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap"><div class="nav-left"><img src="https://ruralinrv.github.io/ruralin/logo.png" alt="Rural IN" class="nav-logo-img" onerror="this.style.display='none'"><div class="nav-logo"><span class="r">Rural</span> <span class="i">IN</span></div><div class="nav-badge">🍫 CACAU</div></div><a href="portal-30-04.html" class="nav-back">← Voltar ao Portal</a></div></nav>
+
+<div class="wrap">
+
+<section class="hero">
+  <div class="hero-top">
+    <div class="hero-icon-wrap"><span class="hero-icon">🍫</span></div>
+    <div class="hero-texts">
+      <h1><span class="hl">Cacau</span> · Radar Semanal</h1>
+      <div class="sub">Semana 27–30 Abril 2026 (curta · feriado 1º Mai) · ICE Nova York · ICE Londres · AIPC · StoneX · Itaú BBA · Bahia · Pará · Costa do Marfim · Gana</div>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <span class="chip up">🚀 ICE NY: US$ 3.569/t (+4,66% dia!)</span>
+    <span class="chip up">📈 Var. semana: +8,3% (Hershey/Mondelez!)</span>
+    <span class="chip cc">🇧🇷 Bahia: R$ 200,00/arroba</span>
+    <span class="chip dn">⚠️ Excedente global 26/27: 149 mil t</span>
+    <span class="chip or">🏭 Moagem BR 1ºT: estagnada (−0,8%)</span>
+    <span class="chip pu">🏦 Selic: 14,75% → 14,50%</span>
+  </div>
+</section>
+
+<div class="bignum-row">
+  <div class="bignum"><div class="v up">US$ 3.569</div><div class="l">ICE Nova York · 30/04 (Jul/26)</div><div class="s">+4,66% dia · maior em 2 semanas!</div></div>
+  <div class="bignum"><div class="v cc">R$ 200,00</div><div class="l">Bahia · arroba 15kg (físico)</div><div class="s">Recuperação após pressão</div></div>
+  <div class="bignum"><div class="v up">+61,1%</div><div class="l">Recebimento BR 1ºT 2026</div><div class="s">28,6 mil t · Bahia + Pará 96,5%</div></div>
+  <div class="bignum"><div class="v dn">−14,6%</div><div class="l">Moagem BR 2025</div><div class="s">195,9 mil t · demanda fraca!</div></div>
+</div>
+
+<div class="alert green">
+  <span class="ai">🚀</span>
+  <div><strong style="color:var(--up)">SEMANA EM ALTA: ICE NY DISPAROU +8,3% NA SEMANA · MAIOR EM 2 SEMANAS NO FECHAMENTO!</strong><br>
+  <strong>Trajetória da semana 27-30/abr:</strong> 27/04 (seg) <strong>US$ 3.296</strong> (−3,93%) → 28/04 (ter) <strong>US$ 3.380</strong> (+2,55% · Ormuz!) → 29/04 (qua) <strong>~US$ 3.410</strong> → 30/04 (qui) <strong>US$ 3.569 (+4,66%)</strong>! <strong>Gatilhos da quinta-feira:</strong> Hershey e Mondelez (gigantes do chocolate) reportaram <strong>resultados melhores que o esperado</strong> · indicam que demanda do consumidor por chocolate <strong>permanece estável apesar de preços elevados</strong>. <strong>StoneX</strong> também reduziu projeção de excedente global 26/27 para <strong>149 mil t</strong> (vs 247 mil t da temporada atual).<br><br>
+  <strong>Barchart:</strong> "<em>Os sinais de que a demanda do consumidor por chocolate permanece resiliente estão impulsionando os preços do cacau.</em>"</div>
+</div>
+
+<div class="alert cocoa">
+  <span class="ai">🍫</span>
+  <div><strong style="color:var(--cocoa3)">VOLATILIDADE EXTREMA: CACAU CAIU 70%+ DESDE PICO HISTÓRICO DE US$ 12.000/T (ABR/24)!</strong><br>
+  <strong>Trajetória histórica:</strong><br>
+  ▸ <strong>Abril 2024:</strong> Recorde de US$ 12.000/t (escassez crítica África)<br>
+  ▸ <strong>Fim 2025:</strong> Próximo de US$ 11.000/t<br>
+  ▸ <strong>Fev 2026:</strong> ~US$ 3.000/t (queda de >70%!)<br>
+  ▸ <strong>Abril 2026:</strong> Lateralizado em US$ 3.300-3.600/t<br><br>
+  <strong>Cacau Londres (mar/26):</strong> Fechou março em £2.487/t (+5,5% no dia · <strong>+23% no mês de março!</strong>) — pico em £2.494 dia 17/mar.<br><br>
+  <strong>Análise técnica (Mercado do Cacau):</strong> RSI em 46,5% · zona neutra · sem viés direcional claro. Estoques certificados ICE caíram para 2.615.208 sacas. <strong>Volume baixo</strong> · <strong>interesse aberto recuou</strong> · sinaliza cautela dos agentes financeiros.</div>
+</div>
+
+<div class="alert blue">
+  <span class="ai">🇧🇷</span>
+  <div><strong style="color:var(--blue)">BRASIL VOLTA A PRODUZIR! Recebimento +61,1% no 1ºT 2026 · Bahia e Pará dominam</strong><br>
+  <strong>AIPC/SindiDados — 1º trimestre 2026:</strong><br>
+  ▸ <strong>Recebimento total:</strong> 28.605 t (+61,1% vs 1ºT/25!)<br>
+  ▸ <strong>Bahia:</strong> 16.208 t (+38,9%) · <strong>56,7% nacional</strong><br>
+  ▸ <strong>Pará:</strong> 11.388 t (<strong>+169,7%!</strong>) · 39,8% · <strong>cresce mais rápido!</strong><br>
+  ▸ <strong>Espírito Santo:</strong> 809 t (−53,6%)<br>
+  ▸ <strong>Rondônia:</strong> 177 t (+48,7%)<br>
+  ▸ <strong>Bahia + Pará:</strong> 96,5% da produção nacional!<br><br>
+  <strong>Anna Paula Losi (AIPC):</strong> "<em>Embora haja crescimento na base anual, o volume ainda é significativamente inferior ao da safra principal. O Brasil inicia 2026 com maior oferta de cacau, mas sem reação equivalente da indústria.</em>"<br><br>
+  <strong>2025 (ano completo):</strong> Recebimento de 186.137 t (+3,7%) · Bahia 112,5 mil t (+5,7%) · Pará 61,5 mil t (−6,3%) · ES 10.054 t (quase dobrou!) · RO 1.795 t (+36,4%).<br><br>
+  <strong>Bahia 2025:</strong> Produção de 137 mil t · valor bruto de R$ 6,5 bilhões · projeção 2026 cresce 5%+ (IBGE).</div>
+</div>
+
+<div class="alert red">
+  <span class="ai">🏭</span>
+  <div><strong style="color:var(--dn)">MOAGEM BR ESTAGNADA! Apesar do +61% de recebimento, indústria não absorve · GARGALO É DEMANDA</strong><br>
+  <strong>AIPC — Moagem 1ºT 2026:</strong><br>
+  ▸ <strong>Total:</strong> 51.715 t (−0,8% vs 1ºT/25)<br>
+  ▸ <strong>vs 4ºT/25:</strong> Praticamente estável (−0,2%)<br>
+  ▸ <strong>2025 completo:</strong> 195.882 t (−14,6% vs 2024!)<br><br>
+  <strong>Anna Paula Losi (AIPC):</strong> "<em>A moagem praticamente não reage, mesmo com mais cacau disponível. Isso deixa claro que o gargalo não está na oferta, mas na demanda e na competitividade.</em>"<br><br>
+  <strong>Razões da fraqueza:</strong><br>
+  ▸ <strong>Choque dos preços 2024-2025</strong> chegou ao consumidor final<br>
+  ▸ <strong>Indústria de chocolate</strong> reduziu gramaturas, reformulou produtos, usou substitutos<br>
+  ▸ <strong>Demora na recuperação:</strong> "Em 2024 e 2025 demorou cair a demanda · agora a recuperação também vai levar algum tempo"<br>
+  ▸ <strong>Importações de amêndoas BR:</strong> caíram 37,5% (mais oferta interna)<br>
+  ▸ <strong>Exportações de derivados:</strong> recuaram 15,4% (demanda externa fraca)</div>
+</div>
+
+<div class="alert orange">
+  <span class="ai">📊</span>
+  <div><strong style="color:var(--orange)">SUPERÁVIT GLOBAL: STONEX REDUZ ESTIMATIVA · 26/27 EM 149 MIL T (vs 247 MIL DE 25/26)</strong><br>
+  <strong>Projeções globais (StoneX):</strong><br>
+  ▸ <strong>2024/25:</strong> Excedente de 79 mil t<br>
+  ▸ <strong>2025/26 (atual):</strong> Excedente de <strong>247 mil t</strong><br>
+  ▸ <strong>2026/27 (próx · inicia outubro):</strong> Excedente de <strong>149 mil t</strong> (−40%!)<br><br>
+  <strong>Itaú BBA (com dados ICO):</strong><br>
+  ▸ Excedente 25/26: 287 mil t (5,7% da produção global!)<br>
+  ▸ Quebra dependência da África (que respondeu por 70% historicamente)<br><br>
+  <strong>Costa do Marfim (atual ano comercial até 19/04/26):</strong> Embarques de 1,51 mi t (+0,7% vs anterior · estabilidade).<br><br>
+  <strong>Risco emergente:</strong> "Safra intermediária da Costa do Marfim entra em risco com chuvas abaixo da média" — irregularidade climática preocupa para próximas semanas. <strong>Cenário 26/27:</strong> El Niño pode trazer clima quente/seco · prejuízo às lavouras África e sul Bahia. Itaú BBA: "<em>Cacau é commodity altamente volátil. Um ano e meio após máximas, voltamos aos patamares das últimas décadas.</em>"</div>
+</div>
+
+<div class="alert amber">
+  <span class="ai">🛒</span>
+  <div><strong style="color:var(--nt)">DEMANDA: CHOCOLATE NA AMÉRICA DO NORTE CAI 1,3% · MOAGEM GLOBAL −2,4% NO 1ºT</strong><br>
+  <strong>Vendas de chocolate (Circana · 13 sem encerradas em 22/03):</strong><br>
+  ▸ <strong>América do Norte:</strong> −1,3% a/a (mais leve)<br>
+  ▸ <strong>Europa:</strong> Estabilidade<br>
+  ▸ <strong>Brasil:</strong> Em recuperação lenta<br><br>
+  <strong>Moagem global (StoneX 1ºT 2026):</strong><br>
+  ▸ <strong>Europa:</strong> ~−2 a −4%<br>
+  ▸ <strong>América do Norte:</strong> ~−10 a −12% (esperado)<br>
+  ▸ <strong>Total global 1ºT:</strong> −2,4% (vs −7,7% no 4ºT/25)<br>
+  ▸ <strong>Tendência:</strong> Desaceleração da queda · sem reversão clara<br><br>
+  <strong>StoneX:</strong> "<em>A leitura segue refletindo ajustes estruturais promovidos pela indústria de confeitaria após o choque altista de preços nos últimos anos, como redução de gramaturas, reformulação de produtos e maior uso de substituições.</em>" <strong>Conclusão:</strong> Demanda <strong>ainda fraca</strong>, mas <strong>resultados de Hershey/Mondelez</strong> sinalizam estabilização <strong>positiva</strong>.</div>
+</div>
+
+<div class="alert purple">
+  <span class="ai">🏦</span>
+  <div><strong style="color:var(--purple)">EVENTO MACRO: COPOM CORTOU SELIC PARA 14,50%! Dólar fraco pressiona spot brasileiro</strong><br>
+  Banco Central reduziu Selic em <strong>0,25 p.p.</strong> (29/04). <strong>Dólar:</strong> R$ 4,9523 (mín. 2 anos!). <strong>Para o cacau brasileiro:</strong> <strong>Dólar fraco</strong> = preço FOB BR fica menos competitivo · <strong>importações desencorajadas</strong> (caíram 37,5% no 1ºT) · mas <strong>exportações de derivados também caíram</strong> 15,4%. <strong>Cacau é commodity dolarizada</strong> — preço interno espelha ICE NY com câmbio. Se dólar reagir para R$ 5,30, arroba bahiana volta para R$ 220-240 facilmente.<br><br>
+  <strong>Sazonalidade:</strong> Cacau ingressou no índice de commodities da Bloomberg · ficou MAIS sensível a movimentos macro/geopolíticos. Adilson Reis: "<em>Agora o cacau segue o mesmo padrão das demais commodities, e a maioria está sendo impactada por todos esses problemas macro e situações geopolíticas.</em>"</div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#451a03,#7c2d12)">📊</div><h2>Indicadores-Chave <span>— ICE NY · ICE Londres · AIPC · StoneX · Macro</span></h2></div>
+
+<div class="kpi-row">
+  <div class="kpi up"><div class="kpi-lb">ICE NY 30/04 (Jul/26)</div><div class="kpi-val up">US$ 3.569</div><div class="kpi-sub">+4,66% dia · 2 sem!</div></div>
+  <div class="kpi up"><div class="kpi-lb">Var. semana ICE NY</div><div class="kpi-val up">+8,3%</div><div class="kpi-sub">Demanda Hershey/Mondelez!</div></div>
+  <div class="kpi cc"><div class="kpi-lb">ICE Londres mar/26</div><div class="kpi-val cc">£2.487</div><div class="kpi-sub">+5,5% dia · +23% mês!</div></div>
+  <div class="kpi cc"><div class="kpi-lb">Bahia · arroba 15kg</div><div class="kpi-val cc">R$ 200,00</div><div class="kpi-sub">Recuperação física BR</div></div>
+  <div class="kpi cc"><div class="kpi-lb">Espírito Santo · sc</div><div class="kpi-val cc">R$ 800,00</div><div class="kpi-sub">Saca</div></div>
+  <div class="kpi cc"><div class="kpi-lb">Pará · kg</div><div class="kpi-val cc">R$ 12,50</div><div class="kpi-sub">Mercado físico</div></div>
+  <div class="kpi up"><div class="kpi-lb">Recebimento BR 1ºT/26</div><div class="kpi-val up">28,6 mil t</div><div class="kpi-sub">+61,1% a/a · forte!</div></div>
+  <div class="kpi up"><div class="kpi-lb">Bahia 1ºT/26</div><div class="kpi-val up">16,2 mil t</div><div class="kpi-sub">+38,9% · 56,7% nacional</div></div>
+  <div class="kpi up"><div class="kpi-lb">Pará 1ºT/26</div><div class="kpi-val up">11,4 mil t</div><div class="kpi-sub">+169,7%! · 39,8%</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Moagem BR 1ºT/26</div><div class="kpi-val dn">51,7 mil t</div><div class="kpi-sub">−0,8% · estagnada</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Moagem BR 2025</div><div class="kpi-val dn">195,9 mil t</div><div class="kpi-sub">−14,6% a/a · grave!</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Excedente global 25/26</div><div class="kpi-val nt">247 mil t</div><div class="kpi-sub">StoneX · 5,7% produção</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Excedente global 26/27</div><div class="kpi-val nt">149 mil t</div><div class="kpi-sub">−40% · StoneX projeção</div></div>
+  <div class="kpi or"><div class="kpi-lb">Bahia produção 2025</div><div class="kpi-val or">137 mil t</div><div class="kpi-sub">R$ 6,5 bi VBP</div></div>
+  <div class="kpi pu"><div class="kpi-lb">Selic 29/04</div><div class="kpi-val pu">14,50% a.a.</div><div class="kpi-sub">↓ 0,25 p.p. CORTE</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Dólar 30/04</div><div class="kpi-val dn">R$ 4,9523</div><div class="kpi-sub">−1,00% · mín. 2 anos</div></div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#451a03,#7c2d12)">📍</div><h2>Cotações da Semana <span>— ICE NY · Físico Brasil · 27 a 30 Abril 2026</span></h2></div>
+
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Indicador</th><th>27/04 (seg)</th><th>28/04 (ter)</th><th>29/04 (qua)</th><th>30/04 (qui)</th><th>Var. Semana</th></tr></thead>
+<tbody>
+<tr><td class="td-name">🍫 ICE NY Cacau Jul/26 (US$/t)</td><td class="td-dn">US$ 3.296</td><td class="td-up">US$ 3.380</td><td>~US$ 3.410</td><td class="td-up">US$ 3.569</td><td class="td-up">+8,3%</td></tr>
+<tr><td class="td-name">📊 Variação Diária (%)</td><td class="td-dn">−3,93%</td><td class="td-up">+2,55%</td><td>+0,89%</td><td class="td-up">+4,66%</td><td>—</td></tr>
+<tr><td class="td-name">🇬🇧 ICE Londres £/t (mar/26)</td><td colspan="3">Fechou março em £2.487 (+5,5% mar)</td><td>£2.487</td><td class="td-up">+23% mês mar</td></tr>
+<tr><td class="td-name">📍 Bahia · arroba 15kg (R$)</td><td colspan="4">R$ 200,00 (recuperação)</td><td class="td-up">Estável</td></tr>
+<tr><td class="td-name">📍 Espírito Santo · saca (R$)</td><td colspan="4">R$ 800,00</td><td>Estável</td></tr>
+<tr><td class="td-name">📍 Pará · kg (R$)</td><td colspan="4">R$ 12,50</td><td>Estável</td></tr>
+<tr><td class="td-name">📦 Estoques ICE certificados</td><td colspan="3">2.615.208 sacas (queda 6.942)</td><td>Confortáveis</td><td class="td-dn">Recuo</td></tr>
+</tbody>
+</table>
+</div>
+
+<p style="font-size:.78rem;color:var(--text3);margin-top:6px;text-align:center"><em>ICE NY = bolsa de Nova York · referência mundial · Jul/26 = contrato mais líquido · Físico BR = praças produtoras</em></p>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#451a03,#7c2d12)">📈</div><h2>Análise Gráfica <span>— 6 perspectivas · ICE NY · Histórico · Brasil · Estados · Moagem · Excedentes</span></h2></div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📊 ICE NY Cacau — Trajetória Diária <span class="ch-tag">Abr/26 · US$/t</span></h3>
+    <div class="chart-wrap"><canvas id="ch1"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>🎢 Cacau Histórico — Pico e Crash <span class="ch-tag">2023-2026 · US$/t</span></h3>
+    <div class="chart-wrap"><canvas id="ch2"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>🇧🇷 Recebimento BR — 1ºT/25 vs 1ºT/26 <span class="ch-tag">AIPC · mil t</span></h3>
+    <div class="chart-wrap"><canvas id="ch3"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>🥇 Recebimento BR por Estado 1ºT/26 <span class="ch-tag">% nacional</span></h3>
+    <div class="chart-wrap"><canvas id="ch4"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>🏭 Moagem BR vs Recebimento <span class="ch-tag">1ºT 2025 e 2026 · mil t</span></h3>
+    <div class="chart-wrap"><canvas id="ch5"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>📊 Excedente Global Cacau — Projeções <span class="ch-tag">StoneX · mil t</span></h3>
+    <div class="chart-wrap"><canvas id="ch6"></canvas></div>
+  </div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#7c2d12,#92400e)">🔍</div><h2>Análise Aprofundada <span>— A grande virada do mercado de cacau em 2026</span></h2></div>
+
+<div class="co cc">
+  <h4>🍫 A Tese Central: Cacau Tenta Encontrar Novo Equilíbrio Após Crash de 70%!</h4>
+  <p><strong>O cacau brasileiro vive momento ÚNICO na história recente:</strong><br>
+  ▸ <strong>Pico em abril/24:</strong> US$ 12.000/t (recorde absoluto · escassez crítica África)<br>
+  ▸ <strong>Hoje (abr/26):</strong> US$ 3.569/t (queda de 70%+ · normalização)<br>
+  ▸ <strong>Esta semana:</strong> +8,3% · maior em 2 semanas<br>
+  ▸ <strong>Bahia:</strong> R$ 200,00/arroba (recuperação após pressão)<br><br>
+  <strong>Por que essa virada brutal?</strong><br>
+  ▸ <strong>2024-2025:</strong> Preços altíssimos derrubaram demanda · indústria reformulou produtos<br>
+  ▸ <strong>Produção mundial cresceu 11%</strong> (Equador + Bahia se destacaram)<br>
+  ▸ <strong>Costa do Marfim e Gana</strong> recuperaram parcialmente · embarques estáveis<br>
+  ▸ <strong>Moagem global caiu 7,7% no 4ºT/25</strong> · suaviza para −2,4% no 1ºT/26<br>
+  ▸ <strong>Cacau ingressou no índice Bloomberg</strong> · ficou ainda mais sensível ao macro<br><br>
+  <strong>Anna Paula Losi (AIPC):</strong> "<em>O cacau é uma commodity altamente volátil. Um ano e meio após as máximas históricas, vimos os preços voltarem aos patamares das últimas décadas. Essa volatilidade gera apreensão em toda a cadeia.</em>"<br><br>
+  <strong>Estado atual:</strong> Mercado em <strong>consolidação técnica</strong> entre US$ 3.000-3.700/t · busca novo equilíbrio. Cada notícia de demanda (Hershey/Mondelez) ou oferta (chuvas Costa do Marfim) move 4-5% nas duas direções.</p>
+</div>
+
+<div class="co up">
+  <h4>📈 Esta Semana: Cacau Foi a Estrela das Commodities Tropicais!</h4>
+  <p><strong>A semana 27-30/abr foi de virada altista após queda inicial:</strong><br>
+  ▸ <strong>Segunda 27/04:</strong> US$ 3.296 (−3,93%) — abertura ruim com Costa do Marfim ofertada<br>
+  ▸ <strong>Terça 28/04:</strong> US$ 3.380 (+2,55%) — Estreito de Ormuz pressiona logística<br>
+  ▸ <strong>Quarta 29/04:</strong> ~US$ 3.410 — consolidação<br>
+  ▸ <strong>Quinta 30/04:</strong> <strong>US$ 3.569 (+4,66%!)</strong> — disparo com Hershey/Mondelez!<br><br>
+  <strong>Os 3 catalisadores da reviravolta:</strong><br>
+  ▸ <strong>Hershey + Mondelez:</strong> Resultados melhores que o esperado · demanda RESILIENTE<br>
+  ▸ <strong>StoneX:</strong> Reduziu projeção excedente 26/27 para 149 mil t (vs 247 atual = −40%)<br>
+  ▸ <strong>Costa do Marfim:</strong> Chuvas abaixo da média ameaçam safra intermediária<br><br>
+  <strong>Implicação para o Brasil:</strong><br>
+  ICE NY a US$ 3.569 ≈ R$ 17.700/t = <strong>R$ 265/arroba</strong> (paridade teórica). Bahia em R$ 200 indica <strong>desconto de 25%</strong> ao preço internacional · <strong>espaço para alta</strong> no físico brasileiro nas próximas semanas se cenário se mantiver.<br><br>
+  <strong>Barchart:</strong> "<em>Os sinais de que a demanda do consumidor por chocolate permanece resiliente estão impulsionando os preços do cacau.</em>"</p>
+</div>
+
+<div class="co bl">
+  <h4>🇧🇷 Brasil: Renascimento da Produção · Bahia + Pará Disparam!</h4>
+  <p><strong>O cenário brasileiro mudou radicalmente em 2026:</strong><br>
+  ▸ <strong>Recebimento 1ºT/26:</strong> 28.605 t (+61,1% vs 1ºT/25!)<br>
+  ▸ <strong>Bahia 1ºT/26:</strong> 16.208 t (+38,9%) · <strong>56,7% nacional</strong><br>
+  ▸ <strong>Pará 1ºT/26:</strong> 11.388 t (<strong>+169,7%!</strong>) · 39,8%<br>
+  ▸ <strong>ES 1ºT/26:</strong> 809 t (−53,6%)<br>
+  ▸ <strong>Rondônia 1ºT/26:</strong> 177 t (+48,7%)<br>
+  ▸ <strong>Bahia + Pará = 96,5% nacional</strong><br><br>
+  <strong>Bahia 2025 (ano cheio):</strong><br>
+  ▸ Produção: 137 mil t<br>
+  ▸ VBP: R$ 6,5 bilhões<br>
+  ▸ Recebimento total: 112,5 mil t (+5,7% vs 2024)<br>
+  ▸ Projeção 2026 (IBGE): +5%+<br><br>
+  <strong>Razões do crescimento:</strong><br>
+  ▸ <strong>Preços altos 2024-2025</strong> incentivaram retomada<br>
+  ▸ <strong>Investimento em qualidade e sustentabilidade</strong><br>
+  ▸ <strong>Controle fitossanitário</strong> (vassoura-de-bruxa)<br>
+  ▸ <strong>Novas variedades</strong> resistentes<br>
+  ▸ <strong>Diversificação:</strong> Pará explodiu como novo polo<br>
+  ▸ <strong>Plantio sustentável</strong> (sistema cabruca + agroflorestal)<br><br>
+  <strong>Pablo Barrozo (Seagri-BA):</strong> "<em>O cacau baiano vem crescendo em produtividade, com expansão da cultura em novos territórios. Adoção de novas tecnologias aliadas a práticas sustentáveis valorizam o fruto nos mercados nacional e internacional.</em>"</p>
+</div>
+
+<div class="co dn">
+  <h4>🏭 Moagem Estagnada: A Indústria Não Consegue Absorver Mais Oferta!</h4>
+  <p><strong>O grande paradoxo brasileiro de 2026:</strong><br>
+  ▸ <strong>Recebimento +61,1%</strong> · indústria recebe mais matéria-prima<br>
+  ▸ <strong>Mas moagem −0,8%</strong> · processamento estagnado<br>
+  ▸ <strong>Estoques crescem</strong> · armazéns industriais lotados<br><br>
+  <strong>Anna Paula Losi (AIPC):</strong> "<em>A moagem praticamente não reage, mesmo com mais cacau disponível. Isso deixa claro que o gargalo não está na oferta, mas na demanda e na competitividade.</em>"<br><br>
+  <strong>Por que demanda fraca?</strong><br>
+  ▸ <strong>Choque de preços 2024-2025</strong> chegou ao consumidor<br>
+  ▸ <strong>Indústria de chocolate:</strong> reduziu gramaturas (barras menores)<br>
+  ▸ <strong>Reformulação:</strong> menos cacau, mais inclusões/recheios<br>
+  ▸ <strong>Substitutos:</strong> alfarroba, gorduras vegetais, "chocolate" sem cacau<br>
+  ▸ <strong>Vendas chocolate AmN −1,3%</strong> nas últimas 13 semanas<br>
+  ▸ <strong>Moagem global 1ºT −2,4%</strong> (vs −7,7% do trimestre anterior)<br><br>
+  <strong>Comércio externo BR:</strong><br>
+  ▸ <strong>Importações de amêndoas:</strong> −37,5% (mais oferta interna)<br>
+  ▸ <strong>Exportações de derivados:</strong> −15,4% (demanda externa fraca)<br>
+  ▸ <strong>Brasil ainda é importador líquido</strong> de cacau (consome mais que produz)<br><br>
+  <strong>Quando vem a recuperação?</strong> "<em>Em 2024 e 2025 demorou cair a demanda · agora a recuperação também vai levar algum tempo</em>" — provavelmente 2º semestre de 2026 ou 2027.</p>
+</div>
+
+<div class="co or">
+  <h4>📊 Cenário Global: Excedente Cai pela Metade entre 25/26 e 26/27!</h4>
+  <p><strong>Projeções de balanço (StoneX):</strong><br>
+  ▸ <strong>2024/25:</strong> Excedente de 79 mil t<br>
+  ▸ <strong>2025/26 (atual):</strong> Excedente de <strong>247 mil t</strong> (5,7% produção · Itaú BBA estima 287 mil)<br>
+  ▸ <strong>2026/27 (proj.):</strong> Excedente <strong>149 mil t</strong> (−40%!)<br><br>
+  <strong>Por que a redução do excedente?</strong><br>
+  ▸ <strong>Demanda em recuperação gradual</strong> · resultados Hershey/Mondelez positivos<br>
+  ▸ <strong>El Niño previsto para 2º semestre/26</strong> · prejudica África e sul Bahia<br>
+  ▸ <strong>Costa do Marfim:</strong> Safra intermediária com chuvas abaixo da média<br>
+  ▸ <strong>Lavouras envelhecidas</strong> em Gana e Costa do Marfim<br>
+  ▸ <strong>Recuperação da demanda industrial</strong><br><br>
+  <strong>Costa do Marfim (atual ano comercial · 1/out/25 a 19/abr/26):</strong><br>
+  ▸ Embarques: 1,51 mi t (+0,7% a/a · estabilidade)<br>
+  ▸ Maior produtor mundial (~70% global junto com Gana)<br>
+  ▸ Lavouras antigas + baixa adoção tecnológica<br><br>
+  <strong>Implicação:</strong> Mercado <strong>vai do alívio ao reaperto gradual</strong>. Se demanda recuperar 5-10% em 2026, com excedente caindo, preços podem reagir para US$ 4.000-5.000/t no fim do ano. <strong>Itaú BBA:</strong> "<em>Mesmo com maior oferta, a queda nos preços ao consumidor não é certa. A indústria segurou parte dos repasses, mas agora tenta recompor margens.</em>"</p>
+</div>
+
+<div class="co cy">
+  <h4>📦 Estoques e Análise Técnica: Cautela dos Agentes Financeiros</h4>
+  <p><strong>Estoques certificados ICE (portos EUA):</strong><br>
+  ▸ <strong>Atual:</strong> 2.615.208 sacas<br>
+  ▸ <strong>Variação recente:</strong> −6.942 sacas (queda gradual)<br>
+  ▸ <strong>Patamar:</strong> Confortável dentro do contexto de demanda enfraquecida<br><br>
+  <strong>Análise técnica (Mercado do Cacau):</strong><br>
+  ▸ <strong>RSI Jul/26:</strong> 46,5% · zona neutra (sem viés direcional)<br>
+  ▸ <strong>Volume:</strong> 21.842 contratos · em queda<br>
+  ▸ <strong>Interesse aberto:</strong> 195.094 posições (−669 contratos · cautela)<br>
+  ▸ <strong>Faixa atual:</strong> US$ 3.300-3.700/t<br>
+  ▸ <strong>Suporte:</strong> US$ 3.250 · <strong>Resistência:</strong> US$ 3.700-3.800<br><br>
+  <strong>Sinais técnicos:</strong><br>
+  ▸ <strong>Fundos:</strong> Reduzindo posições · cautela<br>
+  ▸ <strong>Volatilidade moderada:</strong> Diferente do "freak show" de 2024<br>
+  ▸ <strong>Mercado consolidando</strong> · aguarda direcionador claro<br><br>
+  <strong>Adilson Reis (analista):</strong> "<em>Agora o cacau segue o mesmo padrão das demais commodities, e a maioria delas está sendo impactadas por todos esses problemas macro e situações geopolíticas. O mercado continua pouco ofertado, mas também está pouco demandado.</em>" Trata-se de um <strong>impasse técnico</strong> que pode ser quebrado por: recuperação de consumo, El Niño, ou novo choque África.</p>
+</div>
+
+<div class="co pu">
+  <h4>🏦 Macro: Selic, Câmbio e o Cacau Brasileiro Dolarizado</h4>
+  <p><strong>Decisão Copom (29/04):</strong> Selic cortada para 14,50% (−0,25 p.p.)<br>
+  <strong>Dólar:</strong> R$ 4,9523 (mín. 2 anos!)<br><br>
+  <strong>Para o cacau brasileiro (commodity 100% dolarizada):</strong><br>
+  ▸ <strong>Cacau é DOLARIZADO:</strong> Preço interno = ICE NY × dólar ÷ frete<br>
+  ▸ <strong>Dólar fraco</strong> = preço em R$ menor para mesma cotação NY<br>
+  ▸ <strong>Hoje:</strong> US$ 3.569/t × R$ 4,9523 ≈ R$ 17.677/t = <strong>R$ 265/arroba</strong> (paridade)<br>
+  ▸ <strong>Bahia em R$ 200/@:</strong> Físico está com <strong>desconto de 25%</strong> à paridade!<br><br>
+  <strong>Cálculo prático para produtor:</strong><br>
+  ▸ Cada R$ 0,30 a mais no dólar = +R$ 16/arroba (5%)<br>
+  ▸ Cada US$ 100 a mais no ICE NY = +R$ 7/arroba (3,5%)<br>
+  ▸ <strong>Combinação:</strong> US$ 4.000/t + R$ 5,30 = R$ 320/arroba (+60%!)<br><br>
+  <strong>Selic menor:</strong><br>
+  ▸ Custo de armazenagem reduz<br>
+  ▸ Crédito para investimento (renovação cacauais) mais barato<br>
+  ▸ Capital de giro para tradings menor custo<br><br>
+  <strong>Risco a monitorar:</strong> Se inflação acelerar (alimentos + combustíveis) e Copom interromper cortes, dólar pode reagir para R$ 5,30 facilmente · <strong>preço da arroba pode SUBIR R$ 50</strong> em 2-3 meses sem precisar de alta no ICE NY.</p>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#7c2d12,#92400e)">🌡️</div><h2>Termômetros do Mercado <span>— Pressões e Vetores</span></h2></div>
+
+<div class="grid3">
+  <div class="card">
+    <div class="thermo"><h4>📈 ICE NY Cacau</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:65%"></div></div>
+      <div class="th-lb"><span>Crash</span><span>Médio</span><span>Pico</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ EM ALTA</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">+8,3% sem · maior em 2 semanas</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🇧🇷 Físico BR (Bahia)</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:55%"></div></div>
+      <div class="th-lb"><span>Pressão</span><span>Médio</span><span>Forte</span></div>
+      <p style="font-size:.78rem;color:var(--nt);margin-top:8px;font-weight:700">→ RECUPERAÇÃO</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">R$ 200/@ · desconto 25% sobre NY</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🌱 Produção BR</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:80%"></div></div>
+      <div class="th-lb"><span>Fraca</span><span>Média</span><span>Forte</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ FORTE!</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">Recebimento +61,1% no 1ºT!</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🏭 Moagem/Demanda BR</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:25%"></div></div>
+      <div class="th-lb"><span>Fraca</span><span>Média</span><span>Forte</span></div>
+      <p style="font-size:.78rem;color:var(--dn);margin-top:8px;font-weight:700">⬇ MUITO FRACA</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">−14,6% em 2025 · estagnada 1ºT/26</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🌍 Excedente Global</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--up),var(--nt),var(--dn))"><div class="th-marker" style="left:65%"></div></div>
+      <div class="th-lb"><span>Déficit</span><span>Equil.</span><span>Excesso</span></div>
+      <p style="font-size:.78rem;color:var(--nt);margin-top:8px;font-weight:700">→ EXCEDENTE</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">247 mil t 25/26 · cai p/ 149 em 26/27</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>💵 Câmbio (Dólar)</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--up),var(--nt),var(--dn))"><div class="th-marker" style="left:25%"></div></div>
+      <div class="th-lb"><span>Forte ($)</span><span>Médio</span><span>Fraco ($)</span></div>
+      <p style="font-size:.78rem;color:var(--dn);margin-top:8px;font-weight:700">⬇ DÓLAR FRACO</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">R$ 4,9523 · pressiona spot BR</p>
+    </div>
+  </div>
+</div>
+
+<div class="dv"></div>
+
+<div class="opinion">
+  <h3>🎯 Opinião do Analista — Cacau Tenta Encontrar Novo Equilíbrio Após Crash de 70%!</h3>
+
+  <p><strong>O cacau brasileiro vive momento ÚNICO em 2026: ICE NY disparou +8,3% só nesta semana (US$ 3.569/t no fechamento de 30/04 · maior em 2 semanas), Hershey e Mondelez (gigantes do chocolate) reportaram resultados melhores que o esperado indicando que demanda do consumidor "permanece resiliente apesar de preços elevados", StoneX reduziu projeção de excedente global 26/27 para 149 mil t (vs 247 mil atual = −40%!), Brasil renasceu na produção (+61,1% no 1ºT com Bahia + Pará dominando 96,5%), mas moagem industrial brasileira segue ESTAGNADA (−0,8%) — gargalo NÃO está na oferta, está na demanda. Bahia em R$ 200/arroba está com 25% de desconto sobre paridade internacional · espaço para alta. Quem produz cacau de qualidade vive momento de transição, mas com fundamentos voltando a favor estrutural.</strong></p>
+
+  <p><strong>Semana 27-30/abr (curta · feriado 1º Mai) — Em síntese:</strong><br>
+  ▸ <strong>ICE NY 30/04:</strong> US$ 3.569/t (+4,66% dia · +8,3% semana!)<br>
+  ▸ <strong>Bahia físico:</strong> R$ 200,00/arroba 15kg<br>
+  ▸ <strong>ES físico:</strong> R$ 800,00/saca · <strong>Pará:</strong> R$ 12,50/kg<br>
+  ▸ <strong>Recebimento BR 1ºT/26:</strong> 28,6 mil t (+61,1%!)<br>
+  ▸ <strong>Bahia + Pará:</strong> 96,5% nacional · Pará explodiu +169,7%<br>
+  ▸ <strong>Moagem BR 1ºT/26:</strong> 51,7 mil t (−0,8% · estagnada!)<br>
+  ▸ <strong>Excedente global 25/26 (StoneX):</strong> 247 mil t · cai p/ 149 em 26/27<br>
+  ▸ <strong>Selic:</strong> Cortada para 14,50% · <strong>Dólar:</strong> R$ 4,9523</p>
+
+  <p><strong>Recomendações estratégicas:</strong></p>
+
+  <p><strong>1. SE TEM CACAU EM ESTOQUE: SEGURE PARA MAIO/JUNHO!</strong> Bahia em R$ 200/@ está com <strong>25% de desconto sobre paridade ICE NY</strong> (R$ 265). Com Selic cortada para 14,50%, custo de armazenagem reduz. <strong>Espere movimentos do dólar e reação da demanda</strong>. Se Hershey/Mondelez confirmarem recuperação no 2ºT, mercado pode disparar para R$ 230-260/@.</p>
+
+  <p><strong>2. APROVEITE A VOLATILIDADE PARA HEDGES PARCIAIS!</strong> Cacau está MUITO volátil (4-5% de variação diária). Travar 30-50% via NDF ou contratos a termo em R$ 220-240/@ é estratégia inteligente para garantir fluxo de caixa. Mantenha 50-70% sem hedge para captar potenciais altas.</p>
+
+  <p><strong>3. INVESTIMENTO EM QUALIDADE COMPENSA MUITO!</strong> Cacau premium (fermentado, secado adequadamente, sem defeitos) tem prêmio de 30-50% sobre cacau commodity. Indústrias como Cargill, Barry Callebaut, Dengo e Lindt PAGAM PREÇOS especiais para cacau de origem certificada. <strong>Investir em pós-colheita rende mais que aumentar área plantada.</strong></p>
+
+  <p><strong>4. PARÁ É O NOVO POLO! Atenção produtores!</strong> Pará cresceu +169,7% no 1ºT/26 (vs +38,9% Bahia). Está se tornando 2º maior produtor BR (39,8% nacional). Sistemas agroflorestais (cabruca + cacau) + clima favorável + apoio governo. Para quem está plantando ou expandindo: Pará é fronteira oportunidade.</p>
+
+  <p><strong>5. CUIDADO COM PROBLEMAS FITOSSANITÁRIOS!</strong> Bahia ainda lida com vassoura-de-bruxa em algumas áreas. Investimento em controle (poda, fungicida, monitoramento) é ESSENCIAL. Variedades resistentes (CCN-51, PH-16, Sca-6) devem ser priorizadas em novos plantios. <strong>Uma planta doente custa 70% da produção potencial.</strong></p>
+
+  <p><strong>6. EL NIÑO É O CORINGA DO 2º SEMESTRE!</strong> Itaú BBA alerta: "El Niño pode trazer clima mais quente e seco, prejudicando lavouras na África e no sul da Bahia." Se ocorrer (probabilidade 50-60%), excedente global pode virar déficit · ICE NY pode reagir para US$ 4.500-5.500/t · arroba bahiana para R$ 280-320. <strong>Acompanhe boletins INMET, NOAA, climatempo.</strong></p>
+
+  <p><strong>7. CACAU É CULTURA DE LONGO PRAZO!</strong> Diferente de soja (anual) ou café (5-7 anos), cacau é cultura PERMANENTE com 25-30 anos produtivos. Decisões de plantio precisam ser MUITO bem pensadas. Hoje os preços ainda compensam · em 2024 compensavam MUITO · em 2027-2028 podem voltar a comprimir margem se demanda demorar a reagir. <strong>Foco em qualidade + diversificação (cabruca + outros frutos) reduz risco.</strong></p>
+
+  <div class="opinion .scenarios" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px">
+    <div class="sc up">
+      <h5>🟢 Cenário Altista</h5>
+      <p>Demanda recupera (Hershey/Mondelez) + El Niño no 2º sem + dólar a R$ 5,30 → <strong>ICE NY US$ 4.500-5.500/t · Bahia R$ 280-320/@</strong>. Probabilidade: ~30%</p>
+    </div>
+    <div class="sc nt">
+      <h5>🟡 Cenário Neutro</h5>
+      <p>Mercado consolida em torno US$ 3.300-3.800 · demanda recupera lentamente · safra normal África → <strong>ICE NY US$ 3.300-3.900/t · Bahia R$ 200-240/@</strong>. Probabilidade: ~50%</p>
+    </div>
+    <div class="sc dn">
+      <h5>🔴 Cenário Baixista</h5>
+      <p>Demanda continua fraca + safras 26/27 fortes na África + dólar abaixo R$ 4,80 → <strong>ICE NY US$ 2.800-3.200/t · Bahia R$ 170-195/@</strong>. Probabilidade: ~20%</p>
+    </div>
+  </div>
+
+  <div class="sig">📅 Análise Rural IN · Quinta-feira, 30/Abr/2026 · Semana curta (feriado 1º Mai) · Cacau é a commodity tropical mais volátil — atenção redobrada!</div>
+</div>
+
+<footer class="footer"><div class="wrap">
+  <div class="footer-brand"><span class="r">Rural</span> <span class="i">IN</span></div>
+  <p>Radar Agro Semanal · Cacau · Semana 27–30 Abril 2026<br>
+  Fontes: ICE Nova York · ICE Londres · AIPC (Associação Nacional das Indústrias Processadoras de Cacau) · SindiDados-Campos Consultores · StoneX · Itaú BBA · Organização Internacional do Cacau (ICO) · Mercado do Cacau · Barchart · Reuters · CNN Brasil · Globo Rural · Seagri-BA · IBGE · Banco Central · COPOM</p>
+  <div class="footer-credits">
+    <h4>Análise e Construção</h4>
+    <div class="name">Dr. Sidney Souza</div>
+    <div class="title">Economista e Adm. Agrícola — Estrategista Econômico do Produtor</div>
+    <div class="desc">Especialista em economia da fazenda e gestão de risco no agro<br>Transformamos dados da fazenda em decisões econômicas<br>Ajudamos produtores a entender se o mercado sustenta seu negócio</div>
+    <div class="contact">📧 <a href="mailto:sidneyagro@gmail.com">sidneyagro@gmail.com</a> · 📱 <a href="tel:+5564992266886">(64) 9 9226-6886</a> · 📸 <a href="https://instagram.com/ruralin.ai" target="_blank">@ruralin.ai</a></div>
+  </div>
+  <p style="margin-top:18px"><em>⚠️ Material informativo. Não constitui recomendação de investimento. Consulte profissionais habilitados.</em></p>
+</div></footer>
+
+</div>
+
+<script>
+const gc='rgba(45,29,18,.5)';
+const tt={backgroundColor:'rgba(18,9,7,.97)',borderColor:'#3d291a',borderWidth:1,titleFont:{size:11,weight:'700'},bodyFont:{size:10},padding:10,cornerRadius:8};
+
+// CH1: ICE NY trajetória da semana
+new Chart(document.getElementById('ch1').getContext('2d'),{
+  type:'line',
+  data:{
+    labels:['09/04','13/04','17/04','20/04','22/04','24/04','27/04','28/04','29/04','30/04'],
+    datasets:[{label:'ICE NY Cacau Jul/26 (US$/t)',data:[3450,3530,3431,3395,3380,3431,3296,3380,3410,3569],
+      borderColor:'#d97706',backgroundColor:'rgba(217,119,6,.13)',borderWidth:3,fill:true,tension:.3,pointRadius:4,pointBackgroundColor:'#d97706',pointBorderColor:'#fbbf24',pointBorderWidth:1.5}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tt,
+      annotation:{annotations:{
+        peak:{type:'label',xValue:9,yValue:3620,content:['🚀 Hershey/Mondelez!','+4,66%'],font:{size:9,weight:'bold'},color:'#22c55e',backgroundColor:'rgba(34,197,94,.13)',padding:4},
+        low:{type:'label',xValue:6,yValue:3260,content:['📉 Mín. semana','US$ 3.296'],font:{size:9,weight:'bold'},color:'#ef4444',backgroundColor:'rgba(239,68,68,.13)',padding:4}
+      }}
+    },
+    scales:{y:{min:3200,max:3650,grid:{color:gc},ticks:{callback:function(v){return'$ '+v},font:{size:9,weight:'600'},color:'#c4b094'}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#c4b094'}}}
+  }
+});
+
+// CH2: Histórico crash do cacau
+new Chart(document.getElementById('ch2').getContext('2d'),{
+  type:'line',
+  data:{
+    labels:['Jan/23','Jul/23','Jan/24','Abr/24','Jul/24','Jan/25','Jul/25','Jan/26','Abr/26'],
+    datasets:[{label:'ICE NY Cacau (US$/t)',data:[2750,3500,5800,12000,9200,10800,6500,3200,3569],
+      borderColor:'#7c2d12',backgroundColor:'rgba(124,45,18,.18)',borderWidth:3,fill:true,tension:.3,pointRadius:5,pointBackgroundColor:'#7c2d12',pointBorderColor:'#d97706',pointBorderWidth:2}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tt,
+      annotation:{annotations:{
+        peak:{type:'label',xValue:3,yValue:11500,content:['🏆 RECORDE!','US$ 12.000'],font:{size:10,weight:'bold'},color:'#ef4444',backgroundColor:'rgba(239,68,68,.13)',padding:5},
+        low:{type:'label',xValue:7,yValue:3500,content:['📉 −70%!','Crash'],font:{size:10,weight:'bold'},color:'#22c55e',backgroundColor:'rgba(34,197,94,.13)',padding:5}
+      }}
+    },
+    scales:{y:{min:2000,max:13000,grid:{color:gc},ticks:{callback:function(v){return'$ '+v.toLocaleString()},font:{size:8,weight:'600'},color:'#c4b094'}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#c4b094'}}}
+  }
+});
+
+// CH3: Recebimento BR 1ºT/25 vs 1ºT/26
+new Chart(document.getElementById('ch3').getContext('2d'),{
+  type:'bar',
+  data:{
+    labels:['1ºT 2025','1ºT 2026'],
+    datasets:[{label:'Recebimento (mil t)',data:[17.76,28.61],
+      backgroundColor:['rgba(122,134,154,.5)','rgba(34,197,94,.65)'],
+      borderColor:['#7a869a','#22c55e'],
+      borderWidth:2,borderRadius:7}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tt,
+      annotation:{annotations:{
+        rec:{type:'label',xValue:1,yValue:31,content:['🚀 +61,1%!','Renascimento BR'],font:{size:9,weight:'bold'},color:'#22c55e',backgroundColor:'rgba(34,197,94,.13)',padding:5}
+      }}
+    },
+    scales:{y:{min:0,max:33,grid:{color:gc},ticks:{callback:function(v){return v+' mil t'},font:{size:9,weight:'600'},color:'#c4b094'}},x:{grid:{display:false},ticks:{font:{size:11,weight:'700'},color:'#c4b094'}}}
+  }
+});
+
+// CH4: Estados BR (donut)
+new Chart(document.getElementById('ch4').getContext('2d'),{
+  type:'doughnut',
+  data:{
+    labels:['Bahia (56,7%)','Pará (39,8%)','Espírito Santo (2,8%)','Rondônia (0,6%)','Outros (0,1%)'],
+    datasets:[{data:[56.7,39.8,2.8,0.6,0.1],
+      backgroundColor:['rgba(124,45,18,.75)','rgba(217,119,6,.7)','rgba(132,204,22,.55)','rgba(168,85,247,.5)','rgba(122,134,154,.4)'],
+      borderColor:['#7c2d12','#d97706','#84cc16','#a855f7','#7a869a'],
+      borderWidth:2,hoverOffset:8}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{position:'bottom',labels:{color:'#c4b094',font:{size:9,weight:'600'},boxWidth:12,padding:6}},
+      tooltip:{...tt,callbacks:{label:function(c){return c.label+': '+c.parsed+'%'}}}
+    },
+    cutout:'58%'
+  }
+});
+
+// CH5: Moagem vs Recebimento
+new Chart(document.getElementById('ch5').getContext('2d'),{
+  type:'bar',
+  data:{
+    labels:['1ºT 2025','1ºT 2026'],
+    datasets:[
+      {label:'Recebimento (mil t)',data:[17.76,28.61],
+        backgroundColor:'rgba(34,197,94,.6)',borderColor:'#22c55e',borderWidth:2,borderRadius:6},
+      {label:'Moagem (mil t)',data:[52.13,51.72],
+        backgroundColor:'rgba(239,68,68,.55)',borderColor:'#ef4444',borderWidth:2,borderRadius:6}
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{display:true,position:'top',labels:{color:'#c4b094',font:{size:10,weight:'600'},boxWidth:14,padding:8}},
+      tooltip:tt,
+      annotation:{annotations:{
+        gap:{type:'label',xValue:1,yValue:42,content:['📊 Gargalo!','demanda fraca'],font:{size:9,weight:'bold'},color:'#ef4444',backgroundColor:'rgba(239,68,68,.13)',padding:4}
+      }}
+    },
+    scales:{y:{min:0,max:60,grid:{color:gc},ticks:{callback:function(v){return v+' mil t'},font:{size:9,weight:'600'},color:'#c4b094'}},x:{grid:{display:false},ticks:{font:{size:11,weight:'700'},color:'#c4b094'}}}
+  }
+});
+
+// CH6: Excedente global histórico
+new Chart(document.getElementById('ch6').getContext('2d'),{
+  type:'bar',
+  data:{
+    labels:['2023/24 (déficit)','2024/25','2025/26 (atual)','2026/27 (proj.)'],
+    datasets:[{label:'Saldo (mil t)',data:[-374,79,247,149],
+      backgroundColor:function(c){
+        if(c.parsed.y<0)return 'rgba(239,68,68,.65)';
+        if(c.dataIndex===2)return 'rgba(245,158,11,.65)';
+        return 'rgba(34,197,94,.55)';
+      },
+      borderColor:function(c){
+        if(c.parsed.y<0)return '#ef4444';
+        if(c.dataIndex===2)return '#f59e0b';
+        return '#22c55e';
+      },
+      borderWidth:2,borderRadius:7}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tt,
+      annotation:{annotations:{
+        d:{type:'label',xValue:0,yValue:-410,content:['💥 Choque!','déficit recorde'],font:{size:9,weight:'bold'},color:'#ef4444',backgroundColor:'rgba(239,68,68,.13)',padding:4},
+        n:{type:'label',xValue:3,yValue:180,content:['📊 −40%','vs atual'],font:{size:9,weight:'bold'},color:'#22c55e',backgroundColor:'rgba(34,197,94,.13)',padding:4}
+      }}
+    },
+    scales:{y:{min:-450,max:300,grid:{color:gc},ticks:{callback:function(v){return v+' mil t'},font:{size:9,weight:'600'},color:'#c4b094'}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#c4b094',maxRotation:0}}}
+  }
+});
+</script>
+</body>
+</html>

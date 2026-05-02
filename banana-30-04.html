@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Rural IN — Banana · 27-30 Abr 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0c05;--bg2:#13160b;--bg3:#1c2010;--bg4:#262d18;--border:#2a2f1a;--border2:#3d4424;--ban:#fde047;--ban2:#facc15;--ban3:#eab308;--ban4:#fbbf24;--leaf:#84cc16;--leaf2:#65a30d;--text:#fefce8;--text2:#fef9c3;--text3:#a8a29e;--text4:#78716c;--up:#22c55e;--dn:#ef4444;--nt:#eab308;--blue:#3b82f6;--purple:#a855f7;--orange:#f97316;--cyan:#06b6d4;--pink:#ec4899;--r:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 1100px 800px at 10% 10%,rgba(253,224,71,.1),transparent),radial-gradient(ellipse 900px 700px at 90% 90%,rgba(132,204,22,.08),transparent);pointer-events:none;z-index:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+.nav{background:rgba(19,22,11,.95);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:14px}
+.nav-logo-img{height:42px;width:auto;border-radius:8px}
+.nav-logo{font-weight:900;font-size:1.2rem}
+.nav-logo .r{color:var(--ban)}.nav-logo .i{color:var(--leaf)}
+.nav-badge{background:linear-gradient(135deg,#fde047,#facc15);padding:5px 14px;border-radius:20px;font-size:.7rem;font-weight:800;color:#0a0c05;letter-spacing:.6px;box-shadow:0 0 25px rgba(253,224,71,.4)}
+.nav-back{color:var(--text3);font-size:.8rem;text-decoration:none}
+.hero{padding:54px 0 40px}
+.hero-top{display:flex;align-items:center;gap:22px;margin-bottom:16px}
+.hero-icon-wrap{width:84px;height:84px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,rgba(253,224,71,.4),transparent 70%);border-radius:50%}
+.hero-icon{font-size:3.6rem;filter:drop-shadow(0 6px 22px rgba(253,224,71,.6))}
+.hero-texts h1{font-size:2.4rem;font-weight:900;letter-spacing:-1.2px;line-height:1.1}
+.hero-texts h1 .hl{background:linear-gradient(135deg,#fde047,#facc15,#84cc16,#65a30d);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-texts .sub{font-size:.9rem;color:var(--text2);margin-top:6px;font-weight:500}
+.hero-bar{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border-radius:22px;font-size:.72rem;font-weight:700;border:1px solid}
+.chip.up{color:var(--up);border-color:rgba(34,197,94,.3);background:rgba(34,197,94,.08)}
+.chip.dn{color:var(--dn);border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.08)}
+.chip.nt{color:var(--nt);border-color:rgba(234,179,8,.4);background:rgba(234,179,8,.1)}
+.chip.bn{color:var(--ban);border-color:rgba(253,224,71,.5);background:rgba(253,224,71,.13)}
+.chip.lf{color:var(--leaf);border-color:rgba(132,204,22,.4);background:rgba(132,204,22,.1)}
+.chip.or{color:var(--orange);border-color:rgba(249,115,22,.3);background:rgba(249,115,22,.08)}
+.bignum-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+.bignum{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:20px 18px;text-align:center}
+.bignum .v{font-size:1.7rem;font-weight:900;letter-spacing:-1px;line-height:1;margin-bottom:6px}
+.bignum .v.up{color:var(--up)}.bignum .v.dn{color:var(--dn)}.bignum .v.nt{color:var(--nt)}.bignum .v.bn{color:var(--ban)}.bignum .v.lf{color:var(--leaf)}
+.bignum .l{font-size:.72rem;color:var(--text2);font-weight:600}
+.bignum .s{font-size:.66rem;color:var(--text3);margin-top:3px}
+.alert{border-radius:var(--r);padding:18px 22px;margin-bottom:14px;display:flex;gap:14px;border:1px solid;font-size:.85rem;line-height:1.75;color:var(--text2);position:relative}
+.alert::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
+.alert strong{color:var(--text)}
+.alert .ai{font-size:1.4rem;flex-shrink:0;margin-top:1px}
+.alert.green{background:rgba(34,197,94,.06);border-color:rgba(34,197,94,.25)}.alert.green::before{background:var(--up)}
+.alert.red{background:rgba(239,68,68,.06);border-color:rgba(239,68,68,.25)}.alert.red::before{background:var(--dn)}
+.alert.amber{background:rgba(234,179,8,.08);border-color:rgba(234,179,8,.3)}.alert.amber::before{background:var(--nt)}
+.alert.blue{background:rgba(59,130,246,.06);border-color:rgba(59,130,246,.25)}.alert.blue::before{background:var(--blue)}
+.alert.purple{background:rgba(168,85,247,.06);border-color:rgba(168,85,247,.25)}.alert.purple::before{background:var(--purple)}
+.alert.banana{background:rgba(253,224,71,.1);border-color:rgba(253,224,71,.4)}.alert.banana::before{background:var(--ban)}
+.alert.leaf{background:rgba(132,204,22,.08);border-color:rgba(132,204,22,.3)}.alert.leaf::before{background:var(--leaf)}
+.alert.orange{background:rgba(249,115,22,.08);border-color:rgba(249,115,22,.3)}.alert.orange::before{background:var(--orange)}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin:24px 0}
+.kpi{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:16px 18px;position:relative}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2)}
+.kpi.up::before{background:linear-gradient(90deg,var(--up),var(--leaf))}
+.kpi.dn::before{background:linear-gradient(90deg,var(--dn),var(--orange))}
+.kpi.nt::before{background:linear-gradient(90deg,var(--nt),#fde047)}
+.kpi.bn::before{background:linear-gradient(90deg,var(--ban),var(--ban2))}
+.kpi.lf::before{background:linear-gradient(90deg,var(--leaf),#a3e635)}
+.kpi.bl::before{background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.kpi.pu::before{background:linear-gradient(90deg,var(--purple),var(--pink))}
+.kpi-lb{font-size:.6rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:5px;font-weight:700}
+.kpi-val{font-size:1.18rem;font-weight:900;line-height:1.2}
+.kpi-val.up{color:var(--up)}.kpi-val.dn{color:var(--dn)}.kpi-val.nt{color:var(--nt)}.kpi-val.bn{color:var(--ban)}.kpi-val.lf{color:var(--leaf)}.kpi-val.bl{color:var(--blue)}.kpi-val.pu{color:var(--purple)}
+.kpi-sub{font-size:.66rem;color:var(--text3);margin-top:3px;font-weight:500}
+.dv{height:1px;background:linear-gradient(90deg,transparent,var(--ban) 50%,transparent);margin:36px 0}
+.stitle{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.stitle .icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;background:linear-gradient(135deg,#fde047,#84cc16)}
+.stitle h2{font-size:1.18rem;font-weight:800}
+.stitle h2 span{color:var(--text2);font-weight:400;font-size:.85rem;margin-left:4px}
+.chart-box{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--r);padding:22px 24px;margin-bottom:14px}
+.chart-box h3{font-size:.9rem;color:var(--text);margin-bottom:14px;font-weight:700;display:flex;align-items:center;gap:8px}
+.chart-box h3 .ch-tag{margin-left:auto;font-size:.62rem;font-weight:700;padding:2px 10px;border-radius:10px;background:rgba(253,224,71,.18);color:var(--ban)}
+.chart-wrap{position:relative;height:280px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:800px){.grid2{grid-template-columns:1fr}}
+.tbl-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--border);margin-bottom:14px;background:var(--bg2)}
+table{width:100%;border-collapse:collapse;font-size:.78rem}
+thead th{background:var(--bg3);padding:12px 14px;text-align:center;font-weight:800;color:var(--text2);font-size:.66rem;text-transform:uppercase;letter-spacing:.9px;border-bottom:1px solid var(--border)}
+tbody td{padding:10px 12px;border-bottom:1px solid rgba(42,47,26,.5);text-align:center}
+.td-name{text-align:left!important;font-weight:700;white-space:nowrap}
+.td-up{color:var(--up);font-weight:800}.td-dn{color:var(--dn);font-weight:800}.td-nt{color:var(--nt);font-weight:800}
+.opinion{background:linear-gradient(135deg,rgba(253,224,71,.13),rgba(132,204,22,.08));border:1px solid rgba(253,224,71,.4);border-radius:var(--r);padding:30px 32px;margin:26px 0;position:relative}
+.opinion::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#fde047,#84cc16,#fde047)}
+.opinion h3{font-size:1.08rem;font-weight:800;color:var(--ban);margin-bottom:12px}
+.opinion p{font-size:.88rem;color:var(--text2);line-height:1.9;margin-bottom:12px}
+.opinion p strong{color:var(--text)}
+.opinion .scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.opinion .sc{padding:14px 16px;border-radius:10px;border:1px solid;background:rgba(0,0,0,.3)}
+.opinion .sc.up{border-color:rgba(34,197,94,.3)}.opinion .sc.nt{border-color:rgba(234,179,8,.3)}.opinion .sc.dn{border-color:rgba(239,68,68,.3)}
+.opinion .sc h5{font-size:.78rem;font-weight:800;margin-bottom:6px}
+.opinion .sc.up h5{color:var(--up)}.opinion .sc.nt h5{color:var(--nt)}.opinion .sc.dn h5{color:var(--dn)}
+.opinion .sc p{font-size:.74rem;line-height:1.6;margin:0}
+@media(max-width:700px){.opinion .scenarios{grid-template-columns:1fr}}
+.opinion .sig{margin-top:18px;padding-top:14px;border-top:1px solid rgba(253,224,71,.2);font-size:.78rem;color:var(--text3);font-style:italic}
+.footer{border-top:1px solid var(--border);padding:42px 0;text-align:center;margin-top:36px}
+.footer-brand{font-size:1.5rem;font-weight:900;margin-bottom:12px}
+.footer-brand .r{color:var(--ban)}.footer-brand .i{color:var(--leaf)}
+.footer p{font-size:.78rem;color:var(--text3);line-height:1.8}
+.footer-credits{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+.footer-credits h4{font-size:.92rem;color:var(--ban);font-weight:700;margin-bottom:6px}
+.footer-credits .name{font-size:1.05rem;font-weight:800;color:var(--text)}
+.footer-credits .title{font-size:.78rem;color:var(--leaf);font-weight:600;margin-bottom:8px}
+.footer-credits .desc{font-size:.74rem;color:var(--text2);max-width:540px;margin:0 auto 12px}
+.footer-credits .contact{font-size:.74rem;color:var(--text3)}
+.footer-credits .contact a{color:var(--ban);text-decoration:none}
+@media(max-width:700px){.bignum-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.hero-top{flex-direction:column;text-align:center}.hero-texts h1{font-size:1.65rem}.kpi-row{grid-template-columns:repeat(2,1fr)}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap"><div class="nav-left"><img src="https://ruralinrv.github.io/ruralin/logo.png" alt="Rural IN" class="nav-logo-img" onerror="this.style.display='none'"><div class="nav-logo"><span class="r">Rural</span> <span class="i">IN</span></div><div class="nav-badge">🍌 BANANA</div></div><a href="portal-30-04.html" class="nav-back">← Voltar</a></div></nav>
+
+<div class="wrap">
+
+<section class="hero">
+  <div class="hero-top">
+    <div class="hero-icon-wrap"><span class="hero-icon">🍌</span></div>
+    <div class="hero-texts">
+      <h1><span class="hl">Banana</span> · Radar Semanal</h1>
+      <div class="sub">27–30 Abril 2026 · Nanica EM QUEDA (-13%) · Prata em ALTA (+28%) · SC lidera · Pico oferta abr-jun · Mal-do-Panamá</div>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <span class="chip dn">📉 Nanica SC: R$ 0,98/kg (-13%)</span>
+    <span class="chip up">📈 Prata SC: R$ 2,95/kg (+28%!)</span>
+    <span class="chip bn">🥇 SC líder · 768 mil t (+17,5%)</span>
+    <span class="chip lf">🚢 Export jan/26: 6 mil t (+118%!)</span>
+    <span class="chip nt">⚠️ Mal-do-Panamá ataca prata</span>
+    <span class="chip up">📊 IPPA Banana 1ºT/26: +23,1%!</span>
+  </div>
+</section>
+
+<div class="bignum-row">
+  <div class="bignum"><div class="v dn">R$ 0,98/kg</div><div class="l">Nanica SC (13-17/04)</div><div class="s">↓ 13% · pico oferta abr-jun</div></div>
+  <div class="bignum"><div class="v up">R$ 2,95/kg</div><div class="l">Prata SC (13-17/04)</div><div class="s">↑ 28% · oferta restrita!</div></div>
+  <div class="bignum"><div class="v bn">768 mil t</div><div class="l">Safra SC 24/25 (+17,5%)</div><div class="s">RECORDE histórico SC!</div></div>
+  <div class="bignum"><div class="v lf">+118%</div><div class="l">Export jan/26 vs 2025</div><div class="s">6 mil t · US$ 22,8 mi (FOB)</div></div>
+</div>
+
+<div class="alert banana">
+  <span class="ai">🍌</span>
+  <div><strong style="color:var(--ban)">SETOR EM CONTRASTE! Nanica DESPENCA com pico de oferta · Prata DISPARA com escassez! Safra SC RECORDE · 768 mil t!</strong><br>
+  <strong>Brasil em bananicultura mundial:</strong><br>
+  ▸ <strong>Produção BR 2025:</strong> ~7 milhões de toneladas/ano<br>
+  ▸ <strong>Posição mundial:</strong> 4º maior produtor (atrás Índia, China, Indonésia)<br>
+  ▸ <strong>Área plantada BR:</strong> ~430 mil hectares<br>
+  ▸ <strong>Produtividade média:</strong> 16-20 t/ha<br>
+  ▸ <strong>Consumo per capita BR:</strong> 26 kg/hab/ano (alto!)<br>
+  ▸ <strong>Posição consumo:</strong> Top 5 mundial<br>
+  ▸ <strong>Cadeia produtiva:</strong> 500 mil empregos diretos<br>
+  ▸ <strong>Valor produção:</strong> R$ 12 bi/ano<br><br>
+  <strong>Top produtores BR (IBGE 2024):</strong><br>
+  ▸ <strong>🥇 SP:</strong> 1,15 mi t (16,5% nacional · Vale Ribeira)<br>
+  ▸ <strong>🥈 BA:</strong> 1,10 mi t (Bom Jesus da Lapa · Vale São Francisco)<br>
+  ▸ <strong>🥉 MG:</strong> 870 mil t (Norte MG · Janaúba)<br>
+  ▸ <strong>4º SC:</strong> 768 mil t (Norte SC · Corupá · 2º exportador!)<br>
+  ▸ <strong>5º PA:</strong> 580 mil t (Belém · Castanhal)<br>
+  ▸ <strong>6º PE:</strong> 320 mil t (Vale São Francisco)<br>
+  ▸ <strong>7º CE:</strong> 280 mil t<br>
+  ▸ <strong>Norte+NE:</strong> 50% produção · clima ideal<br><br>
+  <strong>Variedades cultivadas no Brasil:</strong><br>
+  ▸ <strong>🥇 Prata · Pacovan:</strong> 60% produção (Norte MG · BA · NE)<br>
+  ▸ <strong>🥈 Nanica · Nanicão (Cavendish):</strong> 30% (SP · SC · exportação!)<br>
+  ▸ <strong>🥉 Maçã:</strong> 5% (premium · suscetível ao mal-do-panamá)<br>
+  ▸ <strong>4º Terra · D'Angola:</strong> 3% (cocção · Norte/NE)<br>
+  ▸ <strong>5º Outras:</strong> 2% (Mysore · Ouro · Caturra)<br><br>
+  <strong>Selos de qualidade:</strong><br>
+  ▸ <strong>IG Corupá (SC):</strong> "Nanicão de Corupá" (2018) · denominação origem<br>
+  ▸ <strong>Banana mais doce do BR</strong> (clima · solo · relevo)<br>
+  ▸ <strong>Asbanco:</strong> Associação Bananicultores Corupá<br>
+  ▸ <strong>Selo Origem Vale do Ribeira</strong> (em estudo)<br><br>
+  <strong>Características do mercado BR:</strong><br>
+  ▸ <strong>Mercado interno:</strong> 95% produção<br>
+  ▸ <strong>Exportação:</strong> Apenas 5% (mas crescendo!)<br>
+  ▸ <strong>Concorrência interna:</strong> Equador · Colômbia (importação)<br>
+  ▸ <strong>Estimativa 2026:</strong> Produção +3% · safra firme</div>
+</div>
+
+<div class="alert red">
+  <span class="ai">📉</span>
+  <div><strong style="color:var(--dn)">NANICA EM QUEDA · R$ 0,98/kg em SC (-13%) · Pico oferta + feriado Tiradentes derrubam!</strong><br>
+  <strong>Cotações banana NANICA (13-17/04 · Cepea/HF Brasil):</strong><br>
+  ▸ <strong>Norte SC (1ª qualidade):</strong> R$ 0,98/kg (↓ 13% semana!)<br>
+  ▸ <strong>Vale Ribeira (SP):</strong> R$ 1,20-1,40/kg<br>
+  ▸ <strong>Atacado SP (CEAGESP):</strong> R$ 1,80-2,20/kg<br>
+  ▸ <strong>Norte MG (1ª):</strong> R$ 1,50/kg<br>
+  ▸ <strong>BA (Vale SF):</strong> R$ 1,40/kg<br>
+  ▸ <strong>PA · CE:</strong> R$ 1,60/kg<br><br>
+  <strong>Por que NANICA caiu?</strong><br>
+  ▸ <strong>1. PICO de oferta:</strong> Calendário abr-jun (escalada produção)<br>
+  ▸ <strong>2. Norte SC produzindo MUITO:</strong> Safra recorde<br>
+  ▸ <strong>3. Substituição prata→nanica</strong> em MG/BA aumentou volume<br>
+  ▸ <strong>4. Feriado Tiradentes (21/04):</strong> Cancelamento cargas atacado<br>
+  ▸ <strong>5. Atacadistas reduziram pedidos</strong><br>
+  ▸ <strong>6. Logística travada feriado</strong><br>
+  ▸ <strong>7. Gargalo distribuição</strong><br><br>
+  <strong>Histórico Nanica SC (Cepea):</strong><br>
+  ▸ <strong>Jan/2026:</strong> R$ 1,30/kg<br>
+  ▸ <strong>Fev/2026:</strong> R$ 1,15/kg<br>
+  ▸ <strong>Mar/2026:</strong> R$ 1,12/kg<br>
+  ▸ <strong>06-10/04:</strong> R$ 1,13/kg<br>
+  ▸ <strong>13-17/04:</strong> R$ 0,98/kg (↓ 13%!)<br>
+  ▸ <strong>Variação ano:</strong> -25%<br>
+  ▸ <strong>Média 2025:</strong> R$ 1,54/kg (-18% vs 2024)<br><br>
+  <strong>Calendário oferta NANICA BR:</strong><br>
+  ▸ <strong>Jan-Mar:</strong> Oferta MÉDIA · preços firmes<br>
+  ▸ <strong>Abr-Jun:</strong> PICO de oferta · preços despencam<br>
+  ▸ <strong>Jul-Set:</strong> Oferta REDUZIDA (frio · geadas SC) · preços sobem<br>
+  ▸ <strong>Out-Dez:</strong> Recuperação gradual<br><br>
+  <strong>Custos produção nanica (Vale Ribeira):</strong><br>
+  ▸ <strong>Custo produção:</strong> R$ 1,10-1,30/kg<br>
+  ▸ <strong>Preço atual R$ 0,98:</strong> ABAIXO do custo!<br>
+  ▸ <strong>Produtor no PREJUÍZO</strong> em abril/26<br>
+  ▸ <strong>Apenas SC com IG Corupá:</strong> Margem positiva<br><br>
+  <strong>Atacadistas:</strong><br>
+  ▸ <strong>CEAGESP-SP:</strong> Maior centro distribuição<br>
+  ▸ <strong>CeasaMinas:</strong> 2º maior<br>
+  ▸ <strong>CEASA-RJ · CEASA-DF:</strong> Importantes<br>
+  ▸ <strong>Margem atacado:</strong> 80-150% sobre produtor<br>
+  ▸ <strong>Margem varejo:</strong> 200-300% sobre produtor!<br><br>
+  <strong>Perspectivas próximas semanas:</strong><br>
+  ▸ <strong>Cepea:</strong> Quedas devem continuar maio<br>
+  ▸ <strong>Recuperação:</strong> Esperada julho-agosto<br>
+  ▸ <strong>Frio · geadas SC:</strong> Reduzirão oferta no inverno<br>
+  ▸ <strong>Pico preço:</strong> Set-Out 2026 (R$ 1,80-2,20)</div>
+</div>
+
+<div class="alert green">
+  <span class="ai">📈</span>
+  <div><strong style="color:var(--up)">PRATA DISPARA! R$ 2,95/kg em SC (+28%!) · Oferta restrita · Mal-do-panamá pressiona!</strong><br>
+  <strong>Cotações banana PRATA (13-17/04):</strong><br>
+  ▸ <strong>Norte SC (1ª qualidade):</strong> R$ 2,95/kg (↑ 28% semana!)<br>
+  ▸ <strong>Vale Ribeira (SP):</strong> R$ 2,80-3,20/kg<br>
+  ▸ <strong>Norte MG (Janaúba):</strong> R$ 2,50/kg<br>
+  ▸ <strong>BA (Bom Jesus da Lapa):</strong> R$ 2,40/kg<br>
+  ▸ <strong>Atacado SP:</strong> R$ 4,50-5,50/kg<br>
+  ▸ <strong>Varejo BR:</strong> R$ 7-9/kg<br><br>
+  <strong>Por que PRATA disparou?</strong><br>
+  ▸ <strong>1. Oferta RESTRITA</strong> em Norte SC e Vale Ribeira<br>
+  ▸ <strong>2. Volumes significativos</strong> só no 2º semestre<br>
+  ▸ <strong>3. Mal-do-Panamá:</strong> Reduz áreas plantio (MG · BA · PE!)<br>
+  ▸ <strong>4. Substituição prata→nanica</strong> em produtores<br>
+  ▸ <strong>5. Produtores migraram</strong> para variedade mais resistente<br>
+  ▸ <strong>6. Demanda firme</strong> mercado interno (preferência BR)<br>
+  ▸ <strong>7. Margem alta</strong> · produtor recompensado<br><br>
+  <strong>Histórico Prata SC (Cepea):</strong><br>
+  ▸ <strong>Jan/2026:</strong> R$ 2,10/kg<br>
+  ▸ <strong>Fev/2026:</strong> R$ 2,20/kg<br>
+  ▸ <strong>Mar/2026:</strong> R$ 2,30/kg<br>
+  ▸ <strong>06-10/04:</strong> R$ 2,31/kg<br>
+  ▸ <strong>13-17/04:</strong> R$ 2,95/kg (↑ 28%!)<br>
+  ▸ <strong>Variação ano:</strong> +40%<br>
+  ▸ <strong>Pico esperado:</strong> R$ 3,50-4,00/kg até julho<br><br>
+  <strong>MAL-DO-PANAMÁ · A grande ameaça da PRATA:</strong><br>
+  ▸ <strong>Causador:</strong> Fungo Fusarium oxysporum<br>
+  ▸ <strong>Ataca:</strong> Sistema vascular planta · raízes<br>
+  ▸ <strong>Sintomas:</strong> Folhas amarelas · murcha · morte<br>
+  ▸ <strong>Reduz produtividade · qualidade · vida planta</strong><br>
+  ▸ <strong>Pode causar PERDA TOTAL</strong> da área<br>
+  ▸ <strong>Sem cura:</strong> Solo contaminado por décadas!<br>
+  ▸ <strong>Raça TR4 (Tropical Race 4):</strong> A mais devastadora<br>
+  ▸ <strong>BR ainda livre TR4!</strong> Mas raças anteriores presentes<br><br>
+  <strong>Áreas afetadas pelo Mal-do-Panamá no BR:</strong><br>
+  ▸ <strong>Norte MG (Janaúba):</strong> 30-40% áreas afetadas<br>
+  ▸ <strong>Vale São Francisco (BA/PE):</strong> Forte expansão fungo<br>
+  ▸ <strong>Bom Jesus da Lapa (BA):</strong> Crescimento alarmante<br>
+  ▸ <strong>Delfinópolis (MG):</strong> Áreas comprometidas<br>
+  ▸ <strong>Solução:</strong> Substituição por nanica (resistente!)<br><br>
+  <strong>Por que PRATA é preferida no BR?</strong><br>
+  ▸ <strong>Sabor mais marcante:</strong> Suave · doce · azedo<br>
+  ▸ <strong>Casca mais grossa:</strong> Menos perdas<br>
+  ▸ <strong>Resistência transporte:</strong> Boa<br>
+  ▸ <strong>Tradição cultural:</strong> Norte/NE come prata<br>
+  ▸ <strong>Polpa firme:</strong> Cocção · banana frita<br>
+  ▸ <strong>Versatilidade culinária</strong></div>
+</div>
+
+<div class="alert leaf">
+  <span class="ai">🇸🇨</span>
+  <div><strong style="color:var(--leaf)">SANTA CATARINA · O PIVÔ DA BANANA BR · 768 mil t (+17,5%) · 50% das exportações nacionais!</strong><br>
+  <strong>SC em números (Epagri/Cepa 2024/25):</strong><br>
+  ▸ <strong>Produção 24/25:</strong> 768 mil toneladas (+17,5%!)<br>
+  ▸ <strong>Área plantada:</strong> 28,4 mil hectares<br>
+  ▸ <strong>Produtividade:</strong> 27 t/ha (uma das maiores BR!)<br>
+  ▸ <strong>Caturra/Nanica:</strong> +18% produção<br>
+  ▸ <strong>Prata:</strong> +15,2% produção<br>
+  ▸ <strong>4º produtor BR · 2º exportador BR · 50% exportações 1ºS!</strong><br><br>
+  <strong>Regiões produtoras SC:</strong><br>
+  ▸ <strong>🥇 Norte SC:</strong> Corupá · Jaraguá do Sul · São Bento · Schroeder<br>
+  ▸ <strong>🥈 Vale do Itapocu:</strong> Forte produção<br>
+  ▸ <strong>🥉 Litoral Norte:</strong> Garuva · Joinville<br>
+  ▸ <strong>4º Vale do Rio Itajaí:</strong> Tradição<br>
+  ▸ <strong>5º Médio Vale:</strong> Complemento<br><br>
+  <strong>IG Corupá (Indicação Geográfica · 2018):</strong><br>
+  ▸ <strong>Selo INPI:</strong> Denominação de Origem (DO)<br>
+  ▸ <strong>Banana-nanica mais doce do BR</strong><br>
+  ▸ <strong>Variedade Cavendish</strong> (subgrupo)<br>
+  ▸ <strong>Tempo plantio-colheita:</strong> Maior (concentra amido)<br>
+  ▸ <strong>Imigrantes alemães</strong> trouxeram cultivo<br>
+  ▸ <strong>Asbanco:</strong> Associação produtores · gestão IG<br>
+  ▸ <strong>Eliane Müller:</strong> Diretora Asbanco<br>
+  ▸ <strong>Mercado premium:</strong> R$ 1,50-2,00/kg produtor<br><br>
+  <strong>Por que SC produz a melhor banana?</strong><br>
+  ▸ <strong>Clima ameno · subtropical:</strong> Sem extremos<br>
+  ▸ <strong>Solo fértil:</strong> Origem vulcânica/sedimentar<br>
+  ▸ <strong>Relevo montanhoso:</strong> Drenagem natural<br>
+  ▸ <strong>Chuvas regulares:</strong> 1.500-2.000 mm/ano<br>
+  ▸ <strong>Tempo maturação maior</strong> = mais açúcar<br>
+  ▸ <strong>Amido se converte em sacarose</strong><br>
+  ▸ <strong>Nanicão de Corupá:</strong> 22-25 ºBrix (alta!)<br><br>
+  <strong>Desafios climáticos 2025:</strong><br>
+  ▸ <strong>Geada junho/2025</strong> em Norte SC<br>
+  ▸ <strong>Chilling (frio):</strong> Comprometeu casca<br>
+  ▸ <strong>Colheita antecipada:</strong> Antes maturação ideal<br>
+  ▸ <strong>Mas produção total:</strong> Recorde mesmo assim<br>
+  ▸ <strong>Geadas pontuais:</strong> Não devastaram<br><br>
+  <strong>Cooperativismo SC:</strong><br>
+  ▸ <strong>Produtores criando cooperativa</strong> em SC (2025/26)<br>
+  ▸ <strong>"Banana doce por natureza":</strong> Marca regional<br>
+  ▸ <strong>Verticalização:</strong> Produtor → consumidor<br>
+  ▸ <strong>Reduz dependência atacado</strong></div>
+</div>
+
+<div class="alert blue">
+  <span class="ai">🚢</span>
+  <div><strong style="color:var(--blue)">EXPORTAÇÃO ACELERA! Janeiro/26: 6 mil t (+118% vs 2025!) · US$ 22,8 mi · BR DESBANCA Equador-Colômbia em alguns mercados!</strong><br>
+  <strong>Exportação Brasil 2026 (jan/26):</strong><br>
+  ▸ <strong>Volume jan/26:</strong> 6 mil toneladas<br>
+  ▸ <strong>Variação vs jan/25:</strong> +118,3%! 🚀<br>
+  ▸ <strong>Receita FOB:</strong> US$ 22,8 milhões<br>
+  ▸ <strong>Variação dez/25:</strong> -6,3% volume · -13,7% receita<br>
+  ▸ <strong>Preço médio FOB:</strong> US$ 3,80/kg<br>
+  ▸ <strong>2025 fechado:</strong> 75 mil t · US$ 280 mi (recorde!)<br>
+  ▸ <strong>Variedade exportada:</strong> 95% NANICA (Cavendish)<br><br>
+  <strong>Por que exportação BR cresce?</strong><br>
+  ▸ <strong>1. Entraves Paraguai · Bolívia · Colômbia · Peru</strong> (problemas climáticos · sanitários)<br>
+  ▸ <strong>2. Aumento produção SC nanica</strong> (qualidade)<br>
+  ▸ <strong>3. Inverno rigoroso 2025</strong> reduziu Equador<br>
+  ▸ <strong>4. Banana SC tem doçura diferenciada</strong> (IG Corupá)<br>
+  ▸ <strong>5. Logística porto Itajaí</strong> melhorou<br>
+  ▸ <strong>6. Demanda Mercosul/UE</strong> crescente<br>
+  ▸ <strong>7. Marca "Brazil Banana"</strong> ganha força<br><br>
+  <strong>Principais destinos exportação BR:</strong><br>
+  ▸ <strong>🥇 Argentina:</strong> 35% (vizinho · logística)<br>
+  ▸ <strong>🥈 Uruguai:</strong> 18%<br>
+  ▸ <strong>🥉 Chile:</strong> 12%<br>
+  ▸ <strong>4º Itália:</strong> 10% (UE premium)<br>
+  ▸ <strong>5º Reino Unido:</strong> 8%<br>
+  ▸ <strong>6º Holanda:</strong> 7% (porta UE)<br>
+  ▸ <strong>7º Outros:</strong> 10% (Paraguai · EUA · Alemanha)<br><br>
+  <strong>Cenário mundial banana:</strong><br>
+  ▸ <strong>🥇 Equador:</strong> 35% exportação mundial (líder!)<br>
+  ▸ <strong>🥈 Filipinas:</strong> 15%<br>
+  ▸ <strong>🥉 Costa Rica:</strong> 12%<br>
+  ▸ <strong>4º Colômbia:</strong> 10%<br>
+  ▸ <strong>5º Guatemala:</strong> 8%<br>
+  ▸ <strong>BRASIL:</strong> ~1% exportação mundial (mas crescendo!)<br>
+  ▸ <strong>Importadores top:</strong> EUA · UE · Rússia · Japão · China<br><br>
+  <strong>Polêmica · IMPORTAÇÃO Equador:</strong><br>
+  ▸ <strong>Governo BR considera</strong> abrir mercado para Equador<br>
+  ▸ <strong>Produtores SC PROTESTAM:</strong> Pede revisão!<br>
+  ▸ <strong>Risco mal-do-panamá TR4:</strong> Equador tem foco<br>
+  ▸ <strong>Concorrência preço:</strong> Equador 30-40% mais barato<br>
+  ▸ <strong>Asbanco lidera resistência</strong><br>
+  ▸ <strong>Decisão pendente</strong> em 2026<br><br>
+  <strong>Janeiro tradicionalmente é mais fraco:</strong><br>
+  ▸ <strong>Pós-festas fim ano</strong> reduz consumo<br>
+  ▸ <strong>Férias escolares</strong> esfria demanda<br>
+  ▸ <strong>Mas 2026 surpreendeu</strong> com +118%!<br>
+  ▸ <strong>Concorrência Colômbia · Equador</strong> melhorou para BR</div>
+</div>
+
+<div class="alert orange">
+  <span class="ai">⚠️</span>
+  <div><strong style="color:var(--orange)">DESAFIOS DA BANANICULTURA BR · Doenças · Clima · Logística · Importação Equador!</strong><br>
+  <strong>Top 5 doenças/pragas:</strong><br>
+  ▸ <strong>1. Mal-do-Panamá (Fusarium oxysporum):</strong> Pior · sem cura<br>
+  &nbsp;&nbsp;Raça TR4 (Tropical Race 4) é apocalíptica<br>
+  &nbsp;&nbsp;Brasil ainda LIVRE TR4 (mas perto!)<br>
+  ▸ <strong>2. Sigatoka-amarela (Mycosphaerella musicola):</strong> Folhas<br>
+  ▸ <strong>3. Sigatoka-negra (Mycosphaerella fijiensis):</strong> Mais agressiva · presente Norte BR<br>
+  ▸ <strong>4. Moko (Ralstonia solanacearum):</strong> Bacteriose · presente Amazônia<br>
+  ▸ <strong>5. Broca do rizoma (Cosmopolites sordidus):</strong> Inseto<br><br>
+  <strong>Manejo integrado:</strong><br>
+  ▸ <strong>Fungicidas Sigatoka:</strong> Mancozeb · estrobilurina · triazol<br>
+  ▸ <strong>Insumos:</strong> R$ 4-8 mil/ha/ano<br>
+  ▸ <strong>Variedades resistentes:</strong> Pacovan-Ken · BRS Princesa · BRS Tropical<br>
+  ▸ <strong>Controle biológico:</strong> Trichoderma · Bacillus<br>
+  ▸ <strong>Mudas micropropagadas:</strong> Sanidade garantida<br>
+  ▸ <strong>Rotação de áreas:</strong> Difícil banana (perene)<br><br>
+  <strong>Custos plantio banana (1 hectare · ano):</strong><br>
+  ▸ <strong>Mudas (1.500-2.000):</strong> R$ 3-5 mil<br>
+  ▸ <strong>Adubação:</strong> R$ 6-10 mil/ano<br>
+  ▸ <strong>Defensivos · sigatoka:</strong> R$ 4-8 mil/ano<br>
+  ▸ <strong>Mão de obra:</strong> R$ 8-12 mil/ano<br>
+  ▸ <strong>Irrigação · manejo:</strong> R$ 3-5 mil<br>
+  ▸ <strong>Colheita · embalagem:</strong> R$ 5-8 mil<br>
+  ▸ <strong>Total ano produtivo:</strong> R$ 30-50 mil/ha<br>
+  ▸ <strong>Produtividade boa:</strong> 25-35 t/ha<br>
+  ▸ <strong>Custo R$/kg:</strong> R$ 1,00-1,80<br><br>
+  <strong>Margem produtor (banana nanica):</strong><br>
+  ▸ <strong>Custo total:</strong> R$ 1,20/kg<br>
+  ▸ <strong>Preço atual nanica SC:</strong> R$ 0,98/kg<br>
+  ▸ <strong>Margem:</strong> NEGATIVA -R$ 0,22/kg!<br>
+  ▸ <strong>Produtor no PREJUÍZO em abr/26</strong><br>
+  ▸ <strong>Apenas IG Corupá (R$ 1,50+):</strong> Margem positiva<br><br>
+  <strong>Margem produtor (banana prata):</strong><br>
+  ▸ <strong>Custo total:</strong> R$ 1,40/kg (mais defensivos)<br>
+  ▸ <strong>Preço atual prata SC:</strong> R$ 2,95/kg<br>
+  ▸ <strong>Margem:</strong> +R$ 1,55/kg (110% lucro!)<br>
+  ▸ <strong>Produtor LUCRA forte abr/26</strong><br>
+  ▸ <strong>Mas mal-do-panamá ameaça</strong><br><br>
+  <strong>Indicador macro · IPPA-Hortifrutícolas (Cepea 1ºT/26):</strong><br>
+  ▸ <strong>Banana:</strong> +23,1% (alta!)<br>
+  ▸ <strong>Batata:</strong> +5,1%<br>
+  ▸ <strong>Tomate:</strong> -4,3%<br>
+  ▸ <strong>Laranja:</strong> -55,8% (devastador!)<br>
+  ▸ <strong>IPPA-Hortifruti geral:</strong> -14% no trimestre</div>
+</div>
+
+<div class="alert purple">
+  <span class="ai">🍴</span>
+  <div><strong style="color:var(--purple)">MERCADO INTERNO É O REI! Consumo per capita BR 26 kg/hab (top 5 mundo!) · Fruta universal!</strong><br>
+  <strong>Consumo banana per capita:</strong><br>
+  ▸ <strong>🥇 Uganda:</strong> 240 kg/hab/ano (cocção · prato principal!)<br>
+  ▸ <strong>🥈 Equador:</strong> 70 kg/hab/ano<br>
+  ▸ <strong>🥉 Filipinas:</strong> 50 kg/hab/ano<br>
+  ▸ <strong>4º Colômbia:</strong> 35 kg/hab/ano<br>
+  ▸ <strong>5º BRASIL:</strong> 26 kg/hab/ano<br>
+  ▸ <strong>EUA:</strong> 12 kg/hab/ano<br>
+  ▸ <strong>UE média:</strong> 11 kg/hab/ano<br><br>
+  <strong>Brasileiro AMA banana!</strong><br>
+  ▸ <strong>Fruta mais consumida</strong> no BR · acessível<br>
+  ▸ <strong>Café da manhã:</strong> Tradicional<br>
+  ▸ <strong>Lanche tarde:</strong> Universal<br>
+  ▸ <strong>Almoço:</strong> Sobremesa frequente<br>
+  ▸ <strong>Esportistas:</strong> Pré-treino · pós-treino<br>
+  ▸ <strong>Vitaminas:</strong> Banana com leite icônica<br>
+  ▸ <strong>Cocção:</strong> Banana frita · doce · pão · bolo<br><br>
+  <strong>Por que banana é tão popular?</strong><br>
+  ▸ <strong>Preço acessível:</strong> R$ 5-9/kg varejo (mais barato fruta!)<br>
+  ▸ <strong>Disponibilidade:</strong> 365 dias/ano<br>
+  ▸ <strong>Sem casca a lavar:</strong> Praticidade<br>
+  ▸ <strong>Embalagem natural:</strong> Casca protege<br>
+  ▸ <strong>Energia rápida:</strong> Carboidratos + frutose<br>
+  ▸ <strong>Potássio:</strong> 358 mg/100g (alto!)<br>
+  ▸ <strong>Triptofano:</strong> Bem-estar (serotonina)<br>
+  ▸ <strong>Vitamina B6 · C · fibras</strong><br><br>
+  <strong>Comparativo nutricional (100g):</strong><br>
+  ▸ <strong>Calorias:</strong> 89 kcal (média entre frutas)<br>
+  ▸ <strong>Carboidratos:</strong> 23g<br>
+  ▸ <strong>Açúcares:</strong> 12g<br>
+  ▸ <strong>Fibras:</strong> 2,6g<br>
+  ▸ <strong>Potássio:</strong> 358 mg<br>
+  ▸ <strong>Magnésio:</strong> 27 mg<br>
+  ▸ <strong>Vitamina B6:</strong> 20% VD<br><br>
+  <strong>Tendências de consumo 2026:</strong><br>
+  ▸ <strong>Banana orgânica:</strong> +20% ao ano · premium<br>
+  ▸ <strong>Banana frita pronta:</strong> Snack saudável<br>
+  ▸ <strong>Banana congelada/desidratada:</strong> Smoothies<br>
+  ▸ <strong>Banana verde:</strong> Biomassa (gastronomia · fitness)<br>
+  ▸ <strong>Vinagre de banana:</strong> Nicho gourmet<br>
+  ▸ <strong>Cerveja de banana:</strong> Artesanal · crescente<br>
+  ▸ <strong>Farinha banana verde:</strong> Sem glúten<br><br>
+  <strong>Vendas no varejo BR:</strong><br>
+  ▸ <strong>Supermercados:</strong> 45% volume<br>
+  ▸ <strong>Feiras livres:</strong> 30% (tradição)<br>
+  ▸ <strong>Sacolões:</strong> 15%<br>
+  ▸ <strong>Outros:</strong> 10% (mercearias · hortifrúti gourmet)<br>
+  ▸ <strong>Margem varejo:</strong> 100-200% sobre atacado<br>
+  ▸ <strong>Perdas pós-colheita:</strong> 20-30% (alto!)</div>
+</div>
+
+<div class="alert amber">
+  <span class="ai">🏦</span>
+  <div><strong style="color:var(--nt)">MACRO: Selic 14,50% e Real R$ 4,95 favorecem custos · Mas exportação perde competitividade!</strong><br>
+  Copom cortou Selic (29/04) para 14,50% (-0,25 pp). Dólar em R$ 4,9523 (mín 2 anos!).<br><br>
+  <strong>Para o setor de banana — IMPACTOS:</strong><br>
+  ▸ ✓ <strong>Insumos importados (defensivos · adubos):</strong> -10-12% em R$<br>
+  ▸ ✓ <strong>Maquinário irrigação:</strong> Mais barato<br>
+  ▸ ✓ <strong>Crédito rural Plano Safra 26/27:</strong> Taxas menores<br>
+  ▸ ✗ <strong>Exportação BR:</strong> Receita em R$ menor (Real forte)<br>
+  ▸ ✗ <strong>Concorrência Equador-Colômbia:</strong> Preços + competitivos<br>
+  ▸ ✗ <strong>Margem exportação SC:</strong> Pressionada<br><br>
+  <strong>Linhas de crédito banana:</strong><br>
+  ▸ <strong>Plano Safra 26/27 (junho/26):</strong> R$ 550 bi total<br>
+  ▸ <strong>Pronaf:</strong> Pequenos produtores · taxas 4-6%<br>
+  ▸ <strong>Pronamp:</strong> Médios · taxas 8-10%<br>
+  ▸ <strong>BNDES Pecuária + Fruticultura:</strong> Investimento<br>
+  ▸ <strong>FCO/FNE:</strong> Forte para Norte · Centro-Oeste<br>
+  ▸ <strong>Custeio até R$ 6 milhões/ano</strong> (médio)<br><br>
+  <strong>Cenário composto 2026 banana:</strong><br>
+  ▸ <strong>Nanica em queda</strong> (negativo produtor abril)<br>
+  ▸ <strong>Prata em alta</strong> (positivo produtor)<br>
+  ▸ <strong>Exportação cresce 118%</strong> (positivo)<br>
+  ▸ <strong>Mal-do-panamá:</strong> Risco existencial<br>
+  ▸ <strong>Importação Equador:</strong> Ameaça aberta<br>
+  ▸ <strong>Selic baixa:</strong> Alívio crédito<br>
+  ▸ <strong>= Cenário MISTO</strong> · gestão chave<br><br>
+  <strong>Recomendações estratégicas:</strong><br>
+  ▸ <strong>Diversificar variedades:</strong> Não dependa só nanica OU prata<br>
+  ▸ <strong>Investir em IG/marca:</strong> "Banana de SC" agrega valor<br>
+  ▸ <strong>Verticalizar:</strong> Cooperativa · venda direta<br>
+  ▸ <strong>Sanidade:</strong> Mudas micropropagadas · prevenir TR4<br>
+  ▸ <strong>Exportação:</strong> Aproveitar logística porto Itajaí<br>
+  ▸ <strong>Plantios novos:</strong> Variedades resistentes (BRS Princesa)</div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon">📊</div><h2>Indicadores-Chave <span>— Cepea/HF · Epagri · Comex · IBGE</span></h2></div>
+
+<div class="kpi-row">
+  <div class="kpi dn"><div class="kpi-lb">Nanica SC 1ª</div><div class="kpi-val dn">R$ 0,98</div><div class="kpi-sub">/kg · ↓ 13% semana</div></div>
+  <div class="kpi up"><div class="kpi-lb">Prata SC 1ª</div><div class="kpi-val up">R$ 2,95</div><div class="kpi-sub">/kg · ↑ 28% semana!</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Nanica V.Ribeira</div><div class="kpi-val nt">R$ 1,30</div><div class="kpi-sub">/kg · queda</div></div>
+  <div class="kpi up"><div class="kpi-lb">Prata Norte MG</div><div class="kpi-val up">R$ 2,50</div><div class="kpi-sub">/kg · firme</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Nanica atacado SP</div><div class="kpi-val nt">R$ 2,00</div><div class="kpi-sub">/kg · CEAGESP</div></div>
+  <div class="kpi up"><div class="kpi-lb">Prata atacado SP</div><div class="kpi-val up">R$ 5,00</div><div class="kpi-sub">/kg · CEAGESP</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Banana varejo BR</div><div class="kpi-val nt">R$ 7-9</div><div class="kpi-sub">/kg · varia tipo</div></div>
+  <div class="kpi bn"><div class="kpi-lb">Produção SC 24/25</div><div class="kpi-val bn">768 mil t</div><div class="kpi-sub">+17,5% RECORDE!</div></div>
+  <div class="kpi bn"><div class="kpi-lb">Produção BR 2025</div><div class="kpi-val bn">~7 mi t</div><div class="kpi-sub">4º produtor mundial</div></div>
+  <div class="kpi up"><div class="kpi-lb">Export jan/26</div><div class="kpi-val up">+118%</div><div class="kpi-sub">6 mil t · US$ 22,8 mi</div></div>
+  <div class="kpi up"><div class="kpi-lb">IPPA Banana 1ºT/26</div><div class="kpi-val up">+23,1%</div><div class="kpi-sub">Cepea · alta!</div></div>
+  <div class="kpi lf"><div class="kpi-lb">Per capita BR</div><div class="kpi-val lf">26 kg</div><div class="kpi-sub">/hab/ano · top 5 mundo</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Área plantada SC</div><div class="kpi-val nt">28,4 mil ha</div><div class="kpi-sub">expansão</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Produtividade SC</div><div class="kpi-val nt">27 t/ha</div><div class="kpi-sub">uma das maiores BR</div></div>
+  <div class="kpi pu"><div class="kpi-lb">Selic 29/04</div><div class="kpi-val pu">14,50%</div><div class="kpi-sub">↓ 0,25 pp</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Dólar 30/04</div><div class="kpi-val dn">R$ 4,95</div><div class="kpi-sub">prejudica exportação</div></div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon">📍</div><h2>Cotações da Semana <span>— Banana 1ª qualidade · Estados · Abr/26</span></h2></div>
+
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Região</th><th>Variedade</th><th>06-10/04</th><th>13-17/04</th><th>Var. Sem.</th><th>Var. Ano</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td class="td-name">🥇 Norte SC (Corupá)</td><td>Nanica IG</td><td>1,50</td><td class="td-up">1,55</td><td class="td-up">+3,3%</td><td class="td-up">+5%</td><td class="td-up">Premium</td></tr>
+<tr><td class="td-name">Norte SC</td><td>Nanica</td><td>1,13</td><td class="td-dn">0,98</td><td class="td-dn">-13%</td><td class="td-dn">-25%</td><td class="td-dn">Pico oferta</td></tr>
+<tr><td class="td-name">Vale Ribeira (SP)</td><td>Nanica</td><td>1,40</td><td class="td-dn">1,30</td><td class="td-dn">-7%</td><td class="td-dn">-17%</td><td class="td-dn">Caindo</td></tr>
+<tr><td class="td-name">Norte MG</td><td>Nanica</td><td>1,55</td><td class="td-dn">1,50</td><td class="td-dn">-3%</td><td class="td-nt">-5%</td><td class="td-nt">Estável</td></tr>
+<tr><td class="td-name">BA (V. São Francisco)</td><td>Nanica</td><td>1,45</td><td class="td-dn">1,40</td><td class="td-dn">-3%</td><td class="td-nt">-3%</td><td class="td-nt">Estável</td></tr>
+<tr><td class="td-name">PA (Belém)</td><td>Nanica</td><td>1,60</td><td class="td-nt">1,60</td><td class="td-nt">0%</td><td class="td-nt">+2%</td><td class="td-nt">Estável</td></tr>
+<tr><td class="td-name">🥇 Norte SC</td><td>Prata</td><td>2,31</td><td class="td-up">2,95</td><td class="td-up">+28%!</td><td class="td-up">+40%</td><td class="td-up">Disparou!</td></tr>
+<tr><td class="td-name">Vale Ribeira (SP)</td><td>Prata</td><td>2,80</td><td class="td-up">3,00</td><td class="td-up">+7%</td><td class="td-up">+25%</td><td class="td-up">Em alta</td></tr>
+<tr><td class="td-name">Norte MG (Janaúba)</td><td>Prata</td><td>2,40</td><td class="td-up">2,50</td><td class="td-up">+4%</td><td class="td-up">+15%</td><td class="td-up">Em alta</td></tr>
+<tr><td class="td-name">BA (Bom Jesus Lapa)</td><td>Prata</td><td>2,30</td><td class="td-up">2,40</td><td class="td-up">+4%</td><td class="td-up">+12%</td><td class="td-up">Em alta</td></tr>
+<tr><td class="td-name">📊 Atacado CEAGESP-SP</td><td>Nanica</td><td>2,20</td><td class="td-dn">2,00</td><td class="td-dn">-9%</td><td class="td-dn">-15%</td><td class="td-dn">Caindo</td></tr>
+<tr><td class="td-name">📊 Atacado CEAGESP-SP</td><td>Prata</td><td>4,80</td><td class="td-up">5,30</td><td class="td-up">+10%</td><td class="td-up">+30%</td><td class="td-up">Em alta</td></tr>
+</tbody>
+</table>
+</div>
+
+<p style="font-size:.78rem;color:var(--text3);margin-top:6px;text-align:center"><em>Banana 1ª qualidade R$/kg · Nanica DESPENCANDO (pico oferta abr-jun) · Prata DISPARANDO (oferta restrita + mal-do-panamá) · Cepea/HF Brasil</em></p>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon">📈</div><h2>Análise Gráfica <span>— 6 perspectivas · Trajetória · Variedades · Estados · Export · Mundo · Mal-do-Panamá</span></h2></div>
+
+<div class="grid2">
+  <div class="chart-box"><h3>📊 Nanica vs Prata · Norte SC <span class="ch-tag">R$/kg · 12 sem</span></h3><div class="chart-wrap"><canvas id="ch1"></canvas></div></div>
+  <div class="chart-box"><h3>🍌 Top Produtores BR <span class="ch-tag">mil t · 2024</span></h3><div class="chart-wrap"><canvas id="ch2"></canvas></div></div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box"><h3>🌍 Top Exportadores Mundo <span class="ch-tag">% mundial</span></h3><div class="chart-wrap"><canvas id="ch3"></canvas></div></div>
+  <div class="chart-box"><h3>🚢 Exportação BR · Trajetória <span class="ch-tag">mil t</span></h3><div class="chart-wrap"><canvas id="ch4"></canvas></div></div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box"><h3>📅 Calendário Oferta Nanica BR <span class="ch-tag">% pico</span></h3><div class="chart-wrap"><canvas id="ch5"></canvas></div></div>
+  <div class="chart-box"><h3>💰 Margem Produtor · Nanica vs Prata <span class="ch-tag">R$/kg</span></h3><div class="chart-wrap"><canvas id="ch6"></canvas></div></div>
+</div>
+
+<div class="dv"></div>
+
+<div class="opinion">
+  <h3>🎯 Opinião do Analista — Mercado em CONTRASTE! Nanica desabou · Prata disparou · SC é a chave!</h3>
+
+  <p><strong>O setor de banana brasileiro vive um momento de CONTRASTE EXTREMO em abril/2026: NANICA EM QUEDA LIVRE (-13% na semana · R$ 0,98/kg em Santa Catarina · pior preço em 2 anos!) por causa do PICO de oferta (calendário abril-junho) + cancelamento cargas no feriado de Tiradentes · enquanto a PRATA DISPAROU (+28% semana · R$ 2,95/kg!) por OFERTA RESTRITA + Mal-do-Panamá devastando áreas em MG/BA/PE · IPPA-Banana Cepea SOBE +23,1% no 1ºT/26 (alta!). SC é a ESTRELA da temporada: produção recorde 768 mil t (+17,5%!) · 28,4 mil ha · 27 t/ha (uma das maiores produtividades BR) · IG Corupá garante prêmio de mercado · 50% das exportações BR · cooperativismo crescendo. EXPORTAÇÃO BR DECOLOU em janeiro (+118% vs 2025! 6 mil t · US$ 22,8 mi FOB) com entraves em Paraguai/Bolívia/Colômbia/Peru abrindo espaço. Mas RISCOS pairam: Mal-do-Panamá Raça TR4 ainda fora do BR mas próximo · governo considera ABRIR mercado para Equador (produtores SC protestam!) · concorrência preço difícil. Brasil é 4º produtor mundial · 26 kg/hab/ano (top 5 consumidor!) · banana é fruta-rainha popular. Selic 14,50% + dólar fraco = custos bons + exportação pressionada. PRODUTOR PRECISA DIVERSIFICAR variedades · investir em sanidade · valorizar IG · cooperativismo!</strong></p>
+
+  <p><strong>Semana 13-17/abr (Cepea) — Em síntese:</strong><br>
+  ▸ <strong>Nanica Norte SC:</strong> R$ 0,98/kg (↓ 13% · pico oferta!)<br>
+  ▸ <strong>Prata Norte SC:</strong> R$ 2,95/kg (↑ 28%! oferta restrita)<br>
+  ▸ <strong>Nanica Vale Ribeira (SP):</strong> R$ 1,30/kg<br>
+  ▸ <strong>Prata Norte MG (Janaúba):</strong> R$ 2,50/kg<br>
+  ▸ <strong>Nanica IG Corupá:</strong> R$ 1,55/kg (premium!)<br>
+  ▸ <strong>Atacado CEAGESP nanica:</strong> R$ 2,00/kg<br>
+  ▸ <strong>Atacado CEAGESP prata:</strong> R$ 5,30/kg<br>
+  ▸ <strong>Varejo BR:</strong> R$ 7-9/kg<br>
+  ▸ <strong>Produção BR 2025:</strong> ~7 milhões t (4º mundo)<br>
+  ▸ <strong>SC produção 24/25:</strong> 768 mil t (+17,5%!)<br>
+  ▸ <strong>Per capita BR:</strong> 26 kg/hab/ano (top 5 mundo!)<br>
+  ▸ <strong>Export jan/26:</strong> 6 mil t · US$ 22,8 mi (+118% vs 2025!)<br>
+  ▸ <strong>IPPA-Banana 1ºT/26:</strong> +23,1% Cepea<br>
+  ▸ <strong>Margem nanica:</strong> NEGATIVA -R$ 0,22/kg (prejuízo!)<br>
+  ▸ <strong>Margem prata:</strong> +R$ 1,55/kg (110% lucro!)<br>
+  ▸ <strong>Selic:</strong> 14,50% · <strong>Dólar:</strong> R$ 4,95</p>
+
+  <p><strong>Recomendações estratégicas:</strong></p>
+
+  <p><strong>1. PRODUTOR NANICA: Aguente o tranco abr-jun · Lucro virá no segundo semestre!</strong> Pico de oferta vai pressionar até junho. Estratégias: a) Reduzir custos (mão de obra · adubação balanceada · controle Sigatoka), b) Vender para mercado interno (atacado · CEASA), c) Cooperativismo: parta para vender direto, d) Buscar IG/selo (agrega R$ 0,40-0,80/kg!), e) Aproveitar pico preços jul-set (ano produtivo médio: lucrativo), f) Plano Safra 26/27 (junho) para refinanciar.</p>
+
+  <p><strong>2. PRODUTOR PRATA: APROVEITE A ALTA HISTÓRICA · Mas cuide das doenças!</strong> Margem +110% atualmente. Estratégias: a) Acelerar colheita ponto ideal · vender no pico, b) Diversificar canais (atacado · feira · sacolão · supermercado), c) URGENTE: monitorar Mal-do-Panamá (TR4 perto BR!), d) Substituição gradual por variedades resistentes (Pacovan-Ken · BRS Princesa · BRS Tropical), e) Mudas micropropagadas (sanidade total), f) Reservar parte do lucro para investir em manejo · não gastar tudo!</p>
+
+  <p><strong>3. PRODUTOR SC (NANICA premium): SUA MARCA É OURO!</strong> IG Corupá agrega valor enorme. Estratégias: a) Foco em qualidade (22+ ºBrix), b) Embalagem premium (caixas individuais · selo IG visível), c) Cooperativa "Banana doce por natureza" (em formação), d) Verticalização: e-commerce direto consumidor, e) Banana orgânica certificada (+50% preço!), f) Exportação prioritária (Itália · Argentina valorizam).</p>
+
+  <p><strong>4. EXPORTADOR: Aproveite o momento BR substituir Equador-Colômbia!</strong> Exportação +118% jan/26 mostra demanda forte. Estratégias: a) Foco mercados Mercosul (Argentina · Uruguai · Chile), b) UE crescente (Itália · Holanda · UK), c) Logística porto Itajaí (mais barato), d) Hedge dólar (Real forte prejudica receita), e) Acordo Mercosul-UE abre janelas, f) Marca "Brazil Banana" precisa marketing internacional.</p>
+
+  <p><strong>5. ATENÇÃO TOTAL · MAL-DO-PANAMÁ TR4 É EXISTENCIAL!</strong> Brasil ainda livre TR4 mas América do Sul tem foco. Se entrar = catástrofe. Ações: a) Bioseguridade rigorosa (lavar botas · rodas · não circular áreas suspeitas), b) Trabalhadores migrantes: cuidado, c) Mudas certificadas APENAS, d) Variedades resistentes em substituição preventiva, e) Apoiar pesquisa Embrapa Mandioca e Fruticultura, f) NÃO viajar a Equador/Colômbia/Filipinas sem protocolo!</p>
+
+  <p><strong>6. COOPERATIVISMO É O FUTURO!</strong> Asbanco em SC mostra caminho. Estratégias: a) Formar cooperativa regional (sair do atacado), b) Marketing direto (Instagram · TikTok), c) E-commerce (Mercado Livre · iFood · supermercados online), d) Câmaras frias compartilhadas, e) Logística cooperada, f) Negociação preço junto · escala vencer atacado.</p>
+
+  <p><strong>7. AGENDA DE ATENÇÃO: a) Decisão governo sobre IMPORTAÇÃO Equador (acompanhar!), b) Plano Safra 26/27 em junho (taxas subsidiadas), c) Geadas SC junho-julho (preparar plástico/cobertura), d) Pico de oferta abr-jun (não vender desespero!), e) Pico preços jul-set (preparar estoque), f) COP30 em Belém nov/26 (carbono · sustentabilidade).</strong></p>
+
+  <div class="opinion .scenarios" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px">
+    <div class="sc up"><h5>🟢 Cenário Altista</h5><p>Importação Equador BLOQUEADA · Mal-do-panamá TR4 longe · Cooperativa SC consolida · Nanica retoma R$ 1,80/kg em set · Prata mantém R$ 3,00 · Export +200% no ano · IG Corupá expande → <strong>Setor lucrativo · margem 30%</strong>. Probabilidade: ~30%</p></div>
+    <div class="sc nt"><h5>🟡 Cenário Neutro</h5><p>Nanica em ciclo normal (queda abr-jun · alta jul-set R$ 1,50/kg) · Prata firme R$ 2,50-3,00 · Mal-do-panamá controlado · Export +50% · governo adia decisão Equador → <strong>Cenário misto · gestão chave</strong>. Probabilidade: ~50%</p></div>
+    <div class="sc dn"><h5>🔴 Cenário Baixista</h5><p>Governo abre Equador · TR4 entra BR · safra SC sofre geada forte · Nanica cai R$ 0,70/kg · prata afetada panamá · cadeia em crise → <strong>Crise · falências · setor encolhe</strong>. Probabilidade: ~20%</p></div>
+  </div>
+
+  <div class="sig">📅 Análise Rural IN · Quinta, 30/Abr/2026 · Semana curta (feriado 1º Mai) · NANICA DESPENCA · PRATA DISPARA · SC RECORDE · TR4 É AMEAÇA EXISTENCIAL!</div>
+</div>
+
+<footer class="footer"><div class="wrap">
+  <div class="footer-brand"><span class="r">Rural</span> <span class="i">IN</span></div>
+  <p>Radar Agro Semanal · Banana · Semana 27–30 Abril 2026<br>Fontes: Cepea/Esalq · HF Brasil · Hortifrúti/Cepea · Epagri/Cepa · IBGE · Comex Stat · Asbanco · Embrapa Mandioca e Fruticultura · INPI (IG Corupá) · Globo Rural · Notícias Agrícolas · Broto Notícias · Agrolink · FAO</p>
+  <div class="footer-credits">
+    <h4>Análise e Construção</h4>
+    <div class="name">Dr. Sidney Souza</div>
+    <div class="title">Economista e Adm. Agrícola — Estrategista Econômico do Produtor</div>
+    <div class="desc">Especialista em economia da fazenda e gestão de risco no agro<br>Transformamos dados da fazenda em decisões econômicas</div>
+    <div class="contact">📧 <a href="mailto:sidneyagro@gmail.com">sidneyagro@gmail.com</a> · 📱 <a href="tel:+5564992266886">(64) 9 9226-6886</a> · 📸 <a href="https://instagram.com/ruralin.ai" target="_blank">@ruralin.ai</a></div>
+  </div>
+  <p style="margin-top:18px"><em>⚠️ Material informativo. Não constitui recomendação de investimento.</em></p>
+</div></footer>
+
+</div>
+
+<script>
+const gc='rgba(42,47,26,.5)';
+const tt={backgroundColor:'rgba(19,22,11,.97)',borderColor:'#3d4424',borderWidth:1,titleFont:{size:11,weight:'700'},bodyFont:{size:10},padding:10,cornerRadius:8};
+
+new Chart(document.getElementById('ch1').getContext('2d'),{type:'line',
+data:{labels:['Jan/26','Fev/26','Mar/26','30/03','06/04','13/04','17/04'],
+datasets:[
+{label:'Nanica SC',data:[1.30,1.15,1.12,1.15,1.13,1.05,0.98],borderColor:'#facc15',backgroundColor:'rgba(250,204,21,.18)',borderWidth:3,fill:false,tension:.3,pointRadius:5},
+{label:'Prata SC',data:[2.10,2.20,2.30,2.28,2.31,2.55,2.95],borderColor:'#84cc16',backgroundColor:'rgba(132,204,22,.18)',borderWidth:3,fill:false,tension:.3,pointRadius:5}
+]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{color:'#fef9c3',font:{size:10},boxWidth:14,padding:8}},tooltip:tt},
+scales:{y:{min:0.5,max:3.5,grid:{color:gc},ticks:{callback:v=>'R$'+v.toFixed(2),font:{size:9},color:'#fef9c3'}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#fef9c3'}}}}});
+
+new Chart(document.getElementById('ch2').getContext('2d'),{type:'bar',
+data:{labels:['🥇 SP','🥈 BA','🥉 MG','SC','PA','PE','CE'],
+datasets:[{label:'Produção (mil t)',data:[1150,1100,870,768,580,320,280],
+backgroundColor:c=>c.dataIndex===3?'rgba(132,204,22,.85)':c.dataIndex<=2?'rgba(253,224,71,.7)':'rgba(250,204,21,.5)',
+borderColor:c=>c.dataIndex===3?'#84cc16':'#facc15',borderWidth:2,borderRadius:7}]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+scales:{y:{min:0,max:1300,grid:{color:gc},ticks:{font:{size:9},color:'#fef9c3'}},x:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#fef9c3'}}}}});
+
+new Chart(document.getElementById('ch3').getContext('2d'),{type:'doughnut',
+data:{labels:['🥇 Equador (35%)','🥈 Filipinas (15%)','🥉 Costa Rica (12%)','Colômbia (10%)','Guatemala (8%)','BRASIL (1%)','Outros (19%)'],
+datasets:[{data:[35,15,12,10,8,1,19],
+backgroundColor:['rgba(239,68,68,.7)','rgba(168,85,247,.7)','rgba(59,130,246,.7)','rgba(249,115,22,.7)','rgba(234,179,8,.7)','rgba(132,204,22,.85)','rgba(120,113,108,.5)'],
+borderColor:['#ef4444','#a855f7','#3b82f6','#f97316','#eab308','#84cc16','#78716c'],
+borderWidth:2,hoverOffset:8}]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#fef9c3',font:{size:9},boxWidth:12,padding:6}},tooltip:tt},cutout:'58%'}});
+
+new Chart(document.getElementById('ch4').getContext('2d'),{type:'bar',
+data:{labels:['Jan/24','Jan/25','Mar/25','Jun/25','Set/25','Dez/25','Jan/26'],
+datasets:[{label:'Exportação (mil t)',data:[2.0,2.7,4.5,7.0,8.5,6.4,6.0],
+backgroundColor:c=>c.dataIndex===6?'rgba(132,204,22,.85)':'rgba(253,224,71,.65)',
+borderColor:c=>c.dataIndex===6?'#84cc16':'#fde047',borderWidth:2,borderRadius:7}]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+scales:{y:{min:0,max:10,grid:{color:gc},ticks:{font:{size:9},color:'#fef9c3'}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#fef9c3'}}}}});
+
+new Chart(document.getElementById('ch5').getContext('2d'),{type:'bar',
+data:{labels:['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+datasets:[{label:'Oferta Nanica BR',data:[60,65,75,95,100,90,55,45,40,55,70,75],
+backgroundColor:c=>c.parsed.y>=85?'rgba(239,68,68,.7)':c.parsed.y>=60?'rgba(234,179,8,.6)':'rgba(34,197,94,.6)',
+borderColor:c=>c.parsed.y>=85?'#ef4444':c.parsed.y>=60?'#eab308':'#22c55e',borderWidth:2,borderRadius:7}]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+scales:{y:{min:0,max:110,grid:{color:gc},ticks:{callback:v=>v+'%',font:{size:9},color:'#fef9c3'}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#fef9c3'}}}}});
+
+new Chart(document.getElementById('ch6').getContext('2d'),{type:'bar',
+data:{labels:['Custo Nanica','Preço Nanica','Custo Prata','Preço Prata'],
+datasets:[{label:'R$/kg',data:[1.20,0.98,1.40,2.95],
+backgroundColor:['rgba(249,115,22,.7)','rgba(239,68,68,.7)','rgba(249,115,22,.7)','rgba(34,197,94,.85)'],
+borderColor:['#f97316','#ef4444','#f97316','#22c55e'],borderWidth:2,borderRadius:7}]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+scales:{y:{min:0,max:3.5,grid:{color:gc},ticks:{callback:v=>'R$'+v.toFixed(2),font:{size:9},color:'#fef9c3'}},x:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#fef9c3'}}}}});
+</script>
+</body>
+</html>

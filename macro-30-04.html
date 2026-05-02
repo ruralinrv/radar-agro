@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Rural IN — Macro & Geopolítica · 27-30 Abr 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#040810;--bg2:#0a0f1c;--bg3:#10172a;--bg4:#1a2440;--border:#1e2a4a;--border2:#2a3a60;--neon:#06b6d4;--neon3:#22d3ee;--gold:#f59e0b;--gold2:#fcd34d;--text:#f0f9ff;--text2:#cbd5e1;--text3:#94a3b8;--up:#22c55e;--dn:#ef4444;--nt:#eab308;--blue:#3b82f6;--purple:#a855f7;--orange:#f97316;--leaf2:#84cc16;--r:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 1100px 800px at 15% 10%,rgba(6,182,212,.13),transparent),radial-gradient(ellipse 900px 700px at 85% 90%,rgba(245,158,11,.08),transparent);pointer-events:none;z-index:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+.nav{background:rgba(10,15,28,.95);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:14px}
+.nav-logo-img{height:42px;width:auto;border-radius:8px}
+.nav-logo{font-weight:900;font-size:1.2rem}
+.nav-logo .r{color:var(--neon)}.nav-logo .i{color:var(--leaf2)}
+.nav-badge{background:linear-gradient(135deg,#06b6d4,#0891b2);padding:5px 14px;border-radius:20px;font-size:.7rem;font-weight:800;color:#040810;letter-spacing:.6px;box-shadow:0 0 25px rgba(6,182,212,.5)}
+.nav-back{color:var(--text3);font-size:.8rem;text-decoration:none}
+.hero{padding:54px 0 40px}
+.hero-top{display:flex;align-items:center;gap:22px;margin-bottom:16px}
+.hero-icon-wrap{width:84px;height:84px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,rgba(6,182,212,.4),transparent 70%);border-radius:50%}
+.hero-icon{font-size:3.6rem;filter:drop-shadow(0 6px 22px rgba(6,182,212,.7))}
+.hero-texts h1{font-size:2.4rem;font-weight:900;letter-spacing:-1.2px;line-height:1.1}
+.hero-texts h1 .hl{background:linear-gradient(135deg,#06b6d4,#22d3ee,#f59e0b,#fcd34d);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-texts .sub{font-size:.9rem;color:var(--text2);margin-top:6px;font-weight:500}
+.hero-bar{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border-radius:22px;font-size:.72rem;font-weight:700;border:1px solid}
+.chip.up{color:var(--up);border-color:rgba(34,197,94,.3);background:rgba(34,197,94,.08)}
+.chip.dn{color:var(--dn);border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.08)}
+.chip.nt{color:var(--nt);border-color:rgba(234,179,8,.4);background:rgba(234,179,8,.1)}
+.chip.cy{color:var(--neon);border-color:rgba(6,182,212,.5);background:rgba(6,182,212,.13)}
+.chip.or{color:var(--orange);border-color:rgba(249,115,22,.3);background:rgba(249,115,22,.08)}
+.bignum-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+.bignum{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:20px 18px;text-align:center}
+.bignum .v{font-size:1.7rem;font-weight:900;letter-spacing:-1px;line-height:1;margin-bottom:6px}
+.bignum .v.up{color:var(--up)}.bignum .v.dn{color:var(--dn)}.bignum .v.cy{color:var(--neon3)}.bignum .v.gd{color:var(--gold)}
+.bignum .l{font-size:.72rem;color:var(--text2);font-weight:600}
+.bignum .s{font-size:.66rem;color:var(--text3);margin-top:3px}
+.alert{border-radius:var(--r);padding:18px 22px;margin-bottom:14px;display:flex;gap:14px;border:1px solid;font-size:.85rem;line-height:1.75;color:var(--text2);position:relative}
+.alert::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
+.alert strong{color:var(--text)}
+.alert .ai{font-size:1.4rem;flex-shrink:0;margin-top:1px}
+.alert.green{background:rgba(34,197,94,.06);border-color:rgba(34,197,94,.25)}.alert.green::before{background:var(--up)}
+.alert.red{background:rgba(239,68,68,.06);border-color:rgba(239,68,68,.25)}.alert.red::before{background:var(--dn)}
+.alert.amber{background:rgba(234,179,8,.08);border-color:rgba(234,179,8,.3)}.alert.amber::before{background:var(--nt)}
+.alert.blue{background:rgba(59,130,246,.06);border-color:rgba(59,130,246,.25)}.alert.blue::before{background:var(--blue)}
+.alert.purple{background:rgba(168,85,247,.06);border-color:rgba(168,85,247,.25)}.alert.purple::before{background:var(--purple)}
+.alert.cyan{background:rgba(6,182,212,.1);border-color:rgba(6,182,212,.4)}.alert.cyan::before{background:var(--neon)}
+.alert.orange{background:rgba(249,115,22,.08);border-color:rgba(249,115,22,.3)}.alert.orange::before{background:var(--orange)}
+.alert.gold{background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.35)}.alert.gold::before{background:var(--gold)}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin:24px 0}
+.kpi{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:16px 18px;position:relative}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2)}
+.kpi.up::before{background:linear-gradient(90deg,var(--up),var(--leaf2))}
+.kpi.dn::before{background:linear-gradient(90deg,var(--dn),var(--orange))}
+.kpi.nt::before{background:linear-gradient(90deg,var(--nt),#fde047)}
+.kpi.cy::before{background:linear-gradient(90deg,var(--neon),var(--neon3))}
+.kpi.gd::before{background:linear-gradient(90deg,var(--gold),var(--gold2))}
+.kpi.pu::before{background:linear-gradient(90deg,var(--purple),#ec4899)}
+.kpi-lb{font-size:.6rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:5px;font-weight:700}
+.kpi-val{font-size:1.18rem;font-weight:900;line-height:1.2}
+.kpi-val.up{color:var(--up)}.kpi-val.dn{color:var(--dn)}.kpi-val.nt{color:var(--nt)}.kpi-val.cy{color:var(--neon)}.kpi-val.gd{color:var(--gold)}.kpi-val.pu{color:var(--purple)}
+.kpi-sub{font-size:.66rem;color:var(--text3);margin-top:3px;font-weight:500}
+.dv{height:1px;background:linear-gradient(90deg,transparent,var(--neon) 50%,transparent);margin:36px 0}
+.stitle{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.stitle .icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;background:linear-gradient(135deg,#06b6d4,#0891b2)}
+.stitle h2{font-size:1.18rem;font-weight:800}
+.stitle h2 span{color:var(--text2);font-weight:400;font-size:.85rem;margin-left:4px}
+.chart-box{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--r);padding:22px 24px;margin-bottom:14px}
+.chart-box h3{font-size:.9rem;color:var(--text);margin-bottom:14px;font-weight:700;display:flex;align-items:center;gap:8px}
+.chart-box h3 .ch-tag{margin-left:auto;font-size:.62rem;font-weight:700;padding:2px 10px;border-radius:10px;background:rgba(6,182,212,.18);color:var(--neon3)}
+.chart-wrap{position:relative;height:280px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:800px){.grid2{grid-template-columns:1fr}}
+.tbl-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--border);margin-bottom:14px;background:var(--bg2)}
+table{width:100%;border-collapse:collapse;font-size:.78rem}
+thead th{background:var(--bg3);padding:12px 14px;text-align:center;font-weight:800;color:var(--text2);font-size:.66rem;text-transform:uppercase;letter-spacing:.9px;border-bottom:1px solid var(--border)}
+tbody td{padding:10px 12px;border-bottom:1px solid rgba(30,42,74,.5);text-align:center}
+.td-name{text-align:left!important;font-weight:700;white-space:nowrap}
+.td-up{color:var(--up);font-weight:800}.td-dn{color:var(--dn);font-weight:800}.td-nt{color:var(--nt);font-weight:800}
+.opinion{background:linear-gradient(135deg,rgba(6,182,212,.13),rgba(245,158,11,.05));border:1px solid rgba(6,182,212,.4);border-radius:var(--r);padding:30px 32px;margin:26px 0;position:relative}
+.opinion::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#06b6d4,#22d3ee,#f59e0b,#06b6d4)}
+.opinion h3{font-size:1.08rem;font-weight:800;color:var(--neon3);margin-bottom:12px}
+.opinion p{font-size:.88rem;color:var(--text2);line-height:1.9;margin-bottom:12px}
+.opinion p strong{color:var(--text)}
+.opinion .scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.opinion .sc{padding:14px 16px;border-radius:10px;border:1px solid;background:rgba(0,0,0,.3)}
+.opinion .sc.up{border-color:rgba(34,197,94,.3)}.opinion .sc.nt{border-color:rgba(234,179,8,.3)}.opinion .sc.dn{border-color:rgba(239,68,68,.3)}
+.opinion .sc h5{font-size:.78rem;font-weight:800;margin-bottom:6px}
+.opinion .sc.up h5{color:var(--up)}.opinion .sc.nt h5{color:var(--nt)}.opinion .sc.dn h5{color:var(--dn)}
+.opinion .sc p{font-size:.74rem;line-height:1.6;margin:0}
+@media(max-width:700px){.opinion .scenarios{grid-template-columns:1fr}}
+.opinion .sig{margin-top:18px;padding-top:14px;border-top:1px solid rgba(6,182,212,.2);font-size:.78rem;color:var(--text3);font-style:italic}
+.footer{border-top:1px solid var(--border);padding:42px 0;text-align:center;margin-top:36px}
+.footer-brand{font-size:1.5rem;font-weight:900;margin-bottom:12px}
+.footer-brand .r{color:var(--neon)}.footer-brand .i{color:var(--leaf2)}
+.footer p{font-size:.78rem;color:var(--text3);line-height:1.8}
+.footer-credits{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+.footer-credits h4{font-size:.92rem;color:var(--neon3);font-weight:700;margin-bottom:6px}
+.footer-credits .name{font-size:1.05rem;font-weight:800;color:var(--text)}
+.footer-credits .title{font-size:.78rem;color:var(--gold2);font-weight:600;margin-bottom:8px}
+.footer-credits .desc{font-size:.74rem;color:var(--text2);max-width:540px;margin:0 auto 12px}
+.footer-credits .contact{font-size:.74rem;color:var(--text3)}
+.footer-credits .contact a{color:var(--neon3);text-decoration:none}
+@media(max-width:700px){.bignum-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.hero-top{flex-direction:column;text-align:center}.hero-texts h1{font-size:1.65rem}.kpi-row{grid-template-columns:repeat(2,1fr)}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap"><div class="nav-left"><img src="https://ruralinrv.github.io/ruralin/logo.png" alt="Rural IN" class="nav-logo-img" onerror="this.style.display='none'"><div class="nav-logo"><span class="r">Rural</span> <span class="i">IN</span></div><div class="nav-badge">🌐 MACRO & GEO</div></div><a href="portal-30-04.html" class="nav-back">← Voltar</a></div></nav>
+
+<div class="wrap">
+
+<section class="hero">
+  <div class="hero-top">
+    <div class="hero-icon-wrap"><span class="hero-icon">🌐</span></div>
+    <div class="hero-texts">
+      <h1><span class="hl">Macro & Geopolítica</span></h1>
+      <div class="sub">27–30 Abril 2026 · COPOM cortou Selic para 14,50%! · Guerra Irã 2 meses · Ormuz bloqueado · BRASIL é PORTO SEGURO!</div>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <span class="chip cy">🏦 Selic: 14,50% (↓ 0,25 pp · 2º corte!)</span>
+    <span class="chip dn">⚔️ Guerra Irã · Ormuz bloqueado</span>
+    <span class="chip dn">💵 Dólar R$ 4,95 (mín 2 anos!)</span>
+    <span class="chip nt">📊 IPCA Focus 2026: 4,9%</span>
+    <span class="chip up">🇧🇷 Agro recordes · BR vence!</span>
+    <span class="chip or">🇺🇸 Trump tarifas + Fed mantém 3,75%</span>
+  </div>
+</section>
+
+<div class="bignum-row">
+  <div class="bignum"><div class="v cy">14,50%</div><div class="l">Selic Brasil (29/04/26)</div><div class="s">↓ 0,25 pp · 2º corte unânime!</div></div>
+  <div class="bignum"><div class="v up">+9,3%</div><div class="l">Juro Real Brasil</div><div class="s">2º MAIOR DO MUNDO!</div></div>
+  <div class="bignum"><div class="v dn">R$ 4,9523</div><div class="l">Dólar (mín 2 anos!)</div><div class="s">Real é a moeda forte global</div></div>
+  <div class="bignum"><div class="v gd">US$ 100/bbl</div><div class="l">Petróleo Brent</div><div class="s">Ormuz bloqueado · guerra!</div></div>
+</div>
+
+<div class="alert cyan">
+  <span class="ai">🏦</span>
+  <div><strong style="color:var(--neon3)">COPOM CORTOU SELIC PARA 14,50%! Decisão UNÂNIME · 2º corte consecutivo · "Serenidade e cautela"</strong><br>
+  <strong>Decisão Copom (29/04/2026):</strong><br>
+  ▸ <strong>Selic anterior:</strong> 14,75% a.a.<br>
+  ▸ <strong>Selic nova:</strong> 14,50% a.a. (↓ 0,25 pp)<br>
+  ▸ <strong>Decisão:</strong> UNÂNIME (Galípolo + 6 diretores)<br>
+  ▸ <strong>Esperado mercado:</strong> 114 de 122 instituições (93%)<br>
+  ▸ <strong>Pico recente:</strong> 15,00% (dez/25 · 7 altas seguidas)<br>
+  ▸ <strong>Maior nível desde:</strong> Outubro/2006! (20 anos)<br>
+  ▸ <strong>Próxima reunião:</strong> 17-18/06/2026<br><br>
+  <strong>Comunicado oficial:</strong><br>
+  ▸ <strong>"Serenidade e cautela":</strong> Tom mantido<br>
+  ▸ <strong>Oriente Médio:</strong> Citado como risco principal<br>
+  ▸ <strong>Inflação:</strong> "Cheia e subjacentes ACELERARAM"<br>
+  ▸ <strong>"Distanciamento adicional da meta"</strong><br>
+  ▸ <strong>Atividade:</strong> Trajetória de moderação<br>
+  ▸ <strong>Mercado de trabalho:</strong> Resiliente<br>
+  ▸ <strong>Riscos:</strong> "Mais elevados que o usual"<br><br>
+  <strong>Projeções de inflação:</strong><br>
+  ▸ <strong>IPCA 2026 (Focus):</strong> 4,9% (acima meta!)<br>
+  ▸ <strong>IPCA 2027 (Focus):</strong> 4,0%<br>
+  ▸ <strong>Copom 4ºT/27:</strong> 3,5%<br>
+  ▸ <strong>Meta:</strong> 3,00% ± 1,50% (limite 4,5%)<br>
+  ▸ <strong>BC prevê:</strong> Inflação ESTOURA teto em 2026!<br><br>
+  <strong>Fed (mesma quarta-feira):</strong><br>
+  ▸ <strong>Fed Funds:</strong> 3,5-3,75% MANTIDO<br>
+  ▸ <strong>Decisão dividida:</strong><br>
+  &nbsp;&nbsp;▸ Stephen Miran (Trump): votou CORTE<br>
+  &nbsp;&nbsp;▸ Hammack, Kashkari, Logan: MANTER<br>
+  ▸ <strong>Fed reconheceu:</strong> "Inflação elevada · energia alta"<br>
+  ▸ <strong>Powell:</strong> "Esperar para ver"<br><br>
+  <strong>Por que cortou apesar da inflação alta?</strong><br>
+  ▸ <strong>Atividade desacelera:</strong> Juros funcionaram<br>
+  ▸ <strong>Período prolongado restritivo:</strong> Meses em 14,75%<br>
+  ▸ <strong>Real apreciou:</strong> Termos de troca melhoram<br>
+  ▸ <strong>Mas cautela:</strong> Não sinalizou cortes futuros<br>
+  ▸ <strong>Galípolo:</strong> "Conservadorismo" mantido</div>
+</div>
+
+<div class="alert red">
+  <span class="ai">⚔️</span>
+  <div><strong style="color:var(--dn)">GUERRA IRÃ × EUA-ISRAEL · 2 meses · ORMUZ BLOQUEADO · Energia mundial em chamas!</strong><br>
+  <strong>Cronologia:</strong><br>
+  ▸ <strong>Final 2025:</strong> Israel ataca instalações nucleares Irã<br>
+  ▸ <strong>Início 2026:</strong> EUA entra · Trump apoia Israel<br>
+  ▸ <strong>Mar/2026:</strong> Irã BLOQUEIA Estreito de Ormuz!<br>
+  ▸ <strong>Abr/2026:</strong> Trump anuncia bloqueio naval EUA<br>
+  ▸ <strong>13/04:</strong> China condena · pede cessar-fogo<br>
+  ▸ <strong>20/04:</strong> Irã frena negociações · executa "espiões"<br>
+  ▸ <strong>30/04:</strong> SEM SOLUÇÃO · conflito persiste<br><br>
+  <strong>Estreito de Ormuz — POR QUE É CRÍTICO:</strong><br>
+  ▸ <strong>20% do petróleo global</strong> passa por ali<br>
+  ▸ <strong>17 milhões de barris/dia</strong> (normal)<br>
+  ▸ <strong>Largura mínima:</strong> 33 km (navegável só 3 km)<br>
+  ▸ <strong>Maiores compradores:</strong> China · Índia · Japão · Coreia<br>
+  ▸ <strong>Bloqueio = ENERGIA MUNDIAL</strong> em risco<br><br>
+  <strong>Impactos imediatos:</strong><br>
+  ▸ <strong>Petróleo Brent:</strong> US$ 95-105/bbl (era US$ 70 em 2024)<br>
+  ▸ <strong>Variação 6 meses:</strong> +30-45%<br>
+  ▸ <strong>Diesel BR:</strong> Reajustes consecutivos Petrobras<br>
+  ▸ <strong>Fertilizantes:</strong> Ureia +30% · MAP +25%<br>
+  ▸ <strong>Frete marítimo:</strong> +30-40%<br>
+  ▸ <strong>Seguro Ormuz:</strong> +200% pré-guerra<br>
+  ▸ <strong>Inflação global:</strong> Energia puxando<br><br>
+  <strong>Para o agro brasileiro:</strong><br>
+  ▸ <strong>Diesel:</strong> Custo plantio +15-20%<br>
+  ▸ <strong>Fertilizantes:</strong> +25-30% (BR importa 85%!)<br>
+  ▸ <strong>Frete grãos:</strong> Encareceu · margem pressionada<br>
+  ▸ ✓ <strong>Soja BR vence:</strong> China abandona EUA · busca BR<br>
+  ▸ ✓ <strong>Carne BR:</strong> Demanda alta · oferta global limitada<br>
+  ▸ ✓ <strong>Café · açúcar:</strong> Pressão alta global<br><br>
+  <strong>Quem ganha com o caos?</strong><br>
+  ▸ <strong>BRASIL:</strong> Soja · café · carne · etanol bombam<br>
+  ▸ <strong>Rússia:</strong> Vende mais petróleo (BRICS+)<br>
+  ▸ <strong>Arábia Saudita:</strong> ARAMCO recorde<br>
+  ▸ <strong>Argentina:</strong> Vaca Muerta produz mais</div>
+</div>
+
+<div class="alert orange">
+  <span class="ai">🇺🇸</span>
+  <div><strong style="color:var(--orange)">TRUMP 1 ANO · Tarifaço 23% China · BRASIL VENCE · Soja EUA em CRISE PROFUNDA!</strong><br>
+  <strong>"Dia da Liberação" (02/04/2025) — 1 ano:</strong><br>
+  ▸ <strong>Tarifa base:</strong> 10% sobre TODAS importações EUA<br>
+  ▸ <strong>UE:</strong> 20%<br>
+  ▸ <strong>China:</strong> 34% inicial · escalou 100%+ em pico<br>
+  ▸ <strong>Hoje (2026):</strong> Tarifas China estabilizaram em 23%<br>
+  ▸ <strong>Tarifa efetiva média EUA:</strong> 10% (era 2,5%!)<br>
+  ▸ <strong>Maior nível em 1 SÉCULO!</strong><br><br>
+  <strong>Resposta da China — Tarifas retaliatórias:</strong><br>
+  ▸ <strong>Frango · trigo · milho · algodão EUA:</strong> +15%<br>
+  ▸ <strong>Soja · carne · suíno · lácteos EUA:</strong> +10%<br>
+  ▸ <strong>Atinge base eleitoral Trump (Cinturão Agrícola)</strong><br><br>
+  <strong>RESULTADO: BRASIL DESBANCA EUA na China!</strong><br>
+  ▸ <strong>Soja:</strong> 75% importações China é BR (era 60%!)<br>
+  ▸ <strong>Algodão:</strong> +30% China<br>
+  ▸ <strong>Carne suína:</strong> Volume recorde<br>
+  ▸ <strong>Frango:</strong> +20% China + Japão<br>
+  ▸ <strong>Milho BR:</strong> Habilitado 2024 · explodindo<br><br>
+  <strong>Crise farmers EUA — TEMPESTADE PERFEITA:</strong><br>
+  ▸ <strong>Quase metade</strong> reporta piora financeira!<br>
+  ▸ <strong>Custos:</strong> Fertilizantes +25-45% · diesel +30%<br>
+  ▸ <strong>Sequence:</strong> 61% das áreas EUA em SECA (NOAA!)<br>
+  ▸ <strong>Sudeste EUA:</strong> 97% afetado<br>
+  ▸ <strong>Oeste EUA:</strong> 2/3 afetado<br>
+  ▸ <strong>Tarifas + guerra + seca</strong> = devastação<br>
+  ▸ <strong>Falências em alta</strong><br>
+  ▸ <strong>Soja EUA 2026:</strong> -8% projetado<br>
+  ▸ <strong>Apesar disso, ainda apoiam Trump</strong> (Geórgia: Sam Watson)<br><br>
+  <strong>Trump perdeu a guerra com China:</strong><br>
+  ▸ China resistiu · PIB +5% no 1ºT/26<br>
+  ▸ BRICS+ ampliou para 11 membros<br>
+  ▸ Yuan ganhou força<br>
+  ▸ EUA isolado · aliados europeus afastam<br>
+  ▸ Mid-term EUA novembro/2026 · risco perda</div>
+</div>
+
+<div class="alert green">
+  <span class="ai">🇧🇷</span>
+  <div><strong style="color:var(--up)">BRASIL VENCE A GUERRA COMERCIAL! Real forte · Agro bombando · BRICS+ favorece!</strong><br>
+  <strong>Real valorizado — POR QUE?</strong><br>
+  ▸ <strong>Dólar/Real:</strong> R$ 4,9523 (29/04 · mín 2 anos!)<br>
+  ▸ <strong>Pico recente:</strong> R$ 6,30 (dez/2024)<br>
+  ▸ <strong>Variação 16 meses:</strong> -21% (Real APRECIOU!)<br>
+  ▸ <strong>Razão #1:</strong> Juro Real 9,3% (2º mundo)<br>
+  ▸ <strong>Razão #2:</strong> Fed mantém · BC corta moderado<br>
+  ▸ <strong>Razão #3:</strong> Capital estrangeiro entra forte<br>
+  ▸ <strong>Razão #4:</strong> Agro gera US$ 165 bi/ano!<br>
+  ▸ <strong>Razão #5:</strong> BRICS+ alternativa<br><br>
+  <strong>PIB Brasil 2026 (projeções):</strong><br>
+  ▸ <strong>Focus:</strong> +1,8% (desaceleração)<br>
+  ▸ <strong>2025 fechado:</strong> +2,5% (sólido)<br>
+  ▸ <strong>2024:</strong> +3,4% (forte!)<br><br>
+  <strong>Inflação BR (IPCA):</strong><br>
+  ▸ <strong>IPCA 12 meses:</strong> 5,2%<br>
+  ▸ <strong>Meta:</strong> 3% ± 1,5% (limite 4,5%)<br>
+  ▸ <strong>Acima da meta!</strong><br>
+  ▸ <strong>Pressões:</strong> Energia (guerra) + alimentos<br>
+  ▸ <strong>Leite:</strong> +11,7% mar/26 · café +30% · diesel +18%<br><br>
+  <strong>Mercado de trabalho — RESILIENTE:</strong><br>
+  ▸ <strong>Desemprego:</strong> 6,1% (mín histórica recente!)<br>
+  ▸ <strong>Massa salarial:</strong> +5,4% real (2025 vs 2024)<br>
+  ▸ <strong>Caged:</strong> Geração empregos formal forte<br><br>
+  <strong>Balança comercial BR 2025:</strong><br>
+  ▸ <strong>Exportações:</strong> US$ 339 bi (recorde!)<br>
+  ▸ <strong>Saldo:</strong> US$ 70 bi (recorde!)<br>
+  ▸ <strong>Agro lidera:</strong> US$ 165 bi (49% pauta)<br><br>
+  <strong>Top exportações agro 2025:</strong><br>
+  ▸ <strong>🥇 Soja:</strong> US$ 53 bi<br>
+  ▸ <strong>🥈 Açúcar:</strong> US$ 16 bi<br>
+  ▸ <strong>🥉 Café:</strong> US$ 14,2 bi (recorde!)<br>
+  ▸ <strong>4º Carne bovina:</strong> US$ 13,5 bi<br>
+  ▸ <strong>5º Carne frango:</strong> US$ 9,8 bi<br>
+  ▸ <strong>6º Milho:</strong> US$ 8,5 bi<br>
+  ▸ <strong>7º Celulose:</strong> US$ 7 bi · <strong>8º Algodão:</strong> US$ 5 bi<br><br>
+  <strong>Risco fiscal — Único calcanhar:</strong><br>
+  ▸ <strong>Déficit primário 2025:</strong> -0,5% PIB<br>
+  ▸ <strong>Dívida bruta:</strong> 76% PIB (alta!)<br>
+  ▸ <strong>Mercado:</strong> Cobra disciplina</div>
+</div>
+
+<div class="alert blue">
+  <span class="ai">🇨🇳</span>
+  <div><strong style="color:var(--blue)">CHINA RESILIENTE · PIB +5%! Resistiu guerra · Compra MAIS Brasil · BRICS+ ampliou!</strong><br>
+  <strong>China — Indicadores 2026 (1ºT):</strong><br>
+  ▸ <strong>PIB 1ºT/2026:</strong> +5,0% (acima esperado!)<br>
+  ▸ <strong>Indústria mar:</strong> +5,7%<br>
+  ▸ <strong>Vendas varejo:</strong> +1,7% (fraco)<br>
+  ▸ <strong>Investimento fixo:</strong> +1,7%<br>
+  ▸ <strong>Reservas estratégicas petróleo:</strong> 90 dias<br>
+  ▸ <strong>Diversificação:</strong> Rússia · Brasil · África<br><br>
+  <strong>China abandona EUA · BUSCA BRASIL:</strong><br>
+  ▸ <strong>Soja BR:</strong> 75% importações China<br>
+  ▸ <strong>Carne bovina BR:</strong> Volume recorde<br>
+  ▸ <strong>Frango BR:</strong> +20% China<br>
+  ▸ <strong>Algodão BR:</strong> +30% China<br>
+  ▸ <strong>Café BR:</strong> Mercado premium SH/Pequim<br>
+  ▸ <strong>Milho BR:</strong> Habilitado 2024 · explodindo<br><br>
+  <strong>BRICS+ ganha força (Cúpula 2026 BR!):</strong><br>
+  ▸ <strong>11 membros:</strong> Brasil · Rússia · Índia · China · África Sul · EAU · Egito · Etiópia · Irã · Arábia Saudita · Indonésia<br>
+  ▸ <strong>~50% PIB mundial</strong> (paridade)<br>
+  ▸ <strong>Comércio em moedas locais:</strong> Yuan · Real · Rupia<br>
+  ▸ <strong>NDB (Banco BRICS):</strong> Alternativa FMI<br>
+  ▸ <strong>Cúpula 2026:</strong> Brasília · Lula presidente<br><br>
+  <strong>Riscos crescem para China:</strong><br>
+  ▸ <strong>Crise imobiliária:</strong> Evergrande · Country Garden<br>
+  ▸ <strong>Consumo interno fraco</strong><br>
+  ▸ <strong>Demografia:</strong> População caindo<br>
+  ▸ <strong>Tarifas EUA 23%:</strong> Pressionam exportações<br>
+  ▸ <strong>Mas reservas + estímulos seguram</strong></div>
+</div>
+
+<div class="alert gold">
+  <span class="ai">🛢️</span>
+  <div><strong style="color:var(--gold)">PETRÓLEO US$ 100 · OURO RECORDE US$ 3.450 · Café 50 anos · Cacau 110%! Caos beneficia BR!</strong><br>
+  <strong>Petróleo (Brent · barril):</strong><br>
+  ▸ <strong>Atual:</strong> US$ 95-105 (volátil!)<br>
+  ▸ <strong>Pré-guerra Irã:</strong> US$ 70-75<br>
+  ▸ <strong>Variação:</strong> +30-45% em 6 meses<br>
+  ▸ <strong>Pico recente:</strong> US$ 115 (anúncio Ormuz)<br>
+  ▸ <strong>WTI EUA:</strong> US$ 90-100<br><br>
+  <strong>Diesel Brasil:</strong><br>
+  ▸ <strong>Refinaria média:</strong> R$ 4,30/L<br>
+  ▸ <strong>Bomba consumidor:</strong> R$ 6,80-7,20/L<br>
+  ▸ <strong>Reajustes Petrobras:</strong> 4 em 2026!<br>
+  ▸ <strong>Para o agro:</strong> Custo +15-20%<br><br>
+  <strong>Ouro — RECORDE histórico!</strong><br>
+  ▸ <strong>Atual:</strong> US$ 3.450/oz<br>
+  ▸ <strong>Início 2026:</strong> US$ 2.700<br>
+  ▸ <strong>Variação:</strong> +28% no ano<br>
+  ▸ <strong>Razão:</strong> Refúgio · guerra · inflação · BCs comprando<br><br>
+  <strong>Commodities agrícolas (CBOT/NY):</strong><br>
+  ▸ <strong>Soja CBOT:</strong> US$ 10,30/bushel<br>
+  ▸ <strong>Milho CBOT:</strong> US$ 4,50/bushel<br>
+  ▸ <strong>Trigo CBOT:</strong> US$ 5,80/bushel<br>
+  ▸ <strong>Algodão NY:</strong> US¢ 78/lb<br>
+  ▸ <strong>Café arábica NY:</strong> US¢ 350/lb (recorde 50 anos!)<br>
+  ▸ <strong>Açúcar NY:</strong> US¢ 19/lb<br>
+  ▸ <strong>Cacau Londres:</strong> US$ 7.500/t (recorde · +110%!)<br>
+  ▸ <strong>Suco laranja:</strong> US¢ 380/lb<br><br>
+  <strong>Fertilizantes em CRISE:</strong><br>
+  ▸ <strong>Brasil importa 85%!</strong><br>
+  ▸ <strong>Ureia:</strong> US$ 480/t (era US$ 320)<br>
+  ▸ <strong>MAP:</strong> US$ 660/t (era US$ 540)<br>
+  ▸ <strong>Cloreto Potássio:</strong> US$ 380/t<br>
+  ▸ <strong>Custo plantio safra 26/27:</strong> +18-25%</div>
+</div>
+
+<div class="alert purple">
+  <span class="ai">🌍</span>
+  <div><strong style="color:var(--purple)">TENSÕES GLOBAIS · UE estagnada · Mercosul-UE assinado · COP30 Belém · MUNDO MULTIPOLAR!</strong><br>
+  <strong>União Europeia — DECLÍNIO:</strong><br>
+  ▸ <strong>PIB UE 2026:</strong> +0,8% (estagnação)<br>
+  ▸ <strong>Alemanha:</strong> 2º ano de recessão (-0,3%)<br>
+  ▸ <strong>Crise energética:</strong> Sem gás russo<br>
+  ▸ <strong>Indústria caindo:</strong> Auto · química · siderurgia<br><br>
+  <strong>Acordo Mercosul-UE (17/01/2026):</strong><br>
+  ▸ <strong>Assinado em Assunção</strong> (Paraguai)<br>
+  ▸ <strong>Para BR:</strong> Carne · etanol · soja · café entram UE<br>
+  ▸ <strong>Cota carne BR:</strong> 99 mil t/ano<br>
+  ▸ <strong>Cota etanol BR:</strong> 200 mil t<br>
+  ▸ <strong>Café BR:</strong> Tarifa zero<br>
+  ▸ <strong>Riscos:</strong> Lácteos · vinhos · queijos UE entram BR<br><br>
+  <strong>Ucrânia — guerra continua:</strong><br>
+  ▸ <strong>4 anos de conflito</strong><br>
+  ▸ <strong>Trump pressiona acordo</strong> · sem sucesso<br>
+  ▸ <strong>Brasil ganha:</strong> Vácuo trigo · milho · girassol<br><br>
+  <strong>Taiwan — tensão CHINA:</strong><br>
+  ▸ <strong>China pressiona:</strong> Manobras militares<br>
+  ▸ <strong>Trump apoia Taiwan:</strong> Vendas armas<br>
+  ▸ <strong>Risco invasão:</strong> Cresce 2026-2027<br>
+  ▸ <strong>Se invadir:</strong> Catástrofe semicondutores global<br><br>
+  <strong>Eixo Pequim-Moscou-Pyongyang-Teerã</strong> consolidado<br><br>
+  <strong>COP30 Belém (nov/2026):</strong><br>
+  ▸ <strong>Brasil sedia</strong> Conferência do Clima<br>
+  ▸ <strong>Lula tema central</strong><br>
+  ▸ <strong>Foco:</strong> Amazônia · transição energética<br>
+  ▸ <strong>Para o agro:</strong> Crédito carbono · ABC+ · sustentabilidade<br><br>
+  <strong>Eleições BR 2026 (novembro):</strong><br>
+  ▸ <strong>Lula candidato?</strong> 80 anos · provável<br>
+  ▸ <strong>Direita:</strong> Tarcísio (SP) favorito<br>
+  ▸ <strong>Bolsonaro:</strong> Inelegível até 2030<br>
+  ▸ <strong>Mercado tenso:</strong> Cobra responsabilidade fiscal</div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon">📊</div><h2>Indicadores-Chave <span>— Macro Brasil · Mundo · Mercados</span></h2></div>
+
+<div class="kpi-row">
+  <div class="kpi cy"><div class="kpi-lb">Selic Brasil</div><div class="kpi-val cy">14,50%</div><div class="kpi-sub">↓ 0,25 pp · 2º corte</div></div>
+  <div class="kpi nt"><div class="kpi-lb">IPCA 12 meses</div><div class="kpi-val nt">5,2%</div><div class="kpi-sub">acima meta 4,5%!</div></div>
+  <div class="kpi up"><div class="kpi-lb">Juro Real BR</div><div class="kpi-val up">+9,3%</div><div class="kpi-sub">2º maior do mundo!</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Dólar/Real</div><div class="kpi-val dn">R$ 4,95</div><div class="kpi-sub">mín 2 anos · Real forte</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Fed Funds</div><div class="kpi-val nt">3,75%</div><div class="kpi-sub">mantido</div></div>
+  <div class="kpi nt"><div class="kpi-lb">PIB Brasil 2026</div><div class="kpi-val nt">+1,8%</div><div class="kpi-sub">desacelera</div></div>
+  <div class="kpi up"><div class="kpi-lb">PIB China 1ºT/26</div><div class="kpi-val up">+5,0%</div><div class="kpi-sub">resistente</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Petróleo Brent</div><div class="kpi-val dn">US$ 100</div><div class="kpi-sub">guerra Irã!</div></div>
+  <div class="kpi gd"><div class="kpi-lb">Ouro</div><div class="kpi-val gd">US$ 3.450</div><div class="kpi-sub">RECORDE histórico!</div></div>
+  <div class="kpi up"><div class="kpi-lb">Soja CBOT</div><div class="kpi-val up">US$ 10,30</div><div class="kpi-sub">/bushel · firme</div></div>
+  <div class="kpi up"><div class="kpi-lb">Café NY arábica</div><div class="kpi-val up">US¢ 350</div><div class="kpi-sub">/lb · recorde 50 anos!</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Tarifa Trump China</div><div class="kpi-val dn">23%</div><div class="kpi-sub">era 2,5% pré-tarifaço</div></div>
+  <div class="kpi up"><div class="kpi-lb">Saldo balança 2025</div><div class="kpi-val up">US$ 70 bi</div><div class="kpi-sub">recorde!</div></div>
+  <div class="kpi up"><div class="kpi-lb">Agro export 2025</div><div class="kpi-val up">US$ 165 bi</div><div class="kpi-sub">49% pauta!</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Dívida/PIB</div><div class="kpi-val dn">76%</div><div class="kpi-sub">risco fiscal</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Desemprego BR</div><div class="kpi-val nt">6,1%</div><div class="kpi-sub">mín recente</div></div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon">📍</div><h2>Tabela Geopolítica <span>— Países × Indicadores · Abr/2026</span></h2></div>
+
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>País</th><th>PIB 2026</th><th>Inflação</th><th>Juros</th><th>Status Geo</th><th>Para Agro BR</th></tr></thead>
+<tbody>
+<tr><td class="td-name">🇧🇷 Brasil</td><td class="td-up">+1,8%</td><td class="td-nt">5,2%</td><td>14,50%</td><td class="td-up">Porto seguro!</td><td class="td-up">VENCEDOR ✓</td></tr>
+<tr><td class="td-name">🇺🇸 EUA</td><td>+1,5%</td><td class="td-nt">3,2%</td><td>3,75%</td><td class="td-dn">Trump + seca</td><td class="td-up">Inimigo enfraquecido</td></tr>
+<tr><td class="td-name">🇨🇳 China</td><td class="td-up">+5,0%</td><td>1,2%</td><td>3,10%</td><td class="td-nt">Resistente</td><td class="td-up">CLIENTE #1!</td></tr>
+<tr><td class="td-name">🇪🇺 UE</td><td class="td-nt">+0,8%</td><td>2,8%</td><td>2,75%</td><td class="td-dn">Estagnação</td><td class="td-up">Mercosul-UE</td></tr>
+<tr><td class="td-name">🇯🇵 Japão</td><td>+0,9%</td><td>2,4%</td><td>0,75%</td><td class="td-nt">BoJ subiu</td><td class="td-up">Compra carne · café</td></tr>
+<tr><td class="td-name">🇮🇳 Índia</td><td class="td-up">+6,5%</td><td>5,5%</td><td>5,00%</td><td class="td-up">Cresce mais!</td><td class="td-up">Açúcar · soja</td></tr>
+<tr><td class="td-name">🇷🇺 Rússia</td><td>+2,8%</td><td class="td-nt">9,1%</td><td>16%</td><td class="td-dn">Guerra Ucrânia</td><td class="td-up">Vende fertilizante</td></tr>
+<tr><td class="td-name">🇦🇷 Argentina</td><td class="td-up">+4,5%</td><td class="td-dn">90%</td><td>30%</td><td class="td-up">Milei estabiliza</td><td class="td-dn">Concorrente</td></tr>
+<tr><td class="td-name">🇸🇦 Arábia Sau.</td><td>+3,5%</td><td>2,0%</td><td>5,00%</td><td class="td-up">Petróleo alto</td><td class="td-up">Compra carne</td></tr>
+<tr><td class="td-name">🇮🇷 Irã (guerra)</td><td class="td-dn">-3%</td><td class="td-dn">35%</td><td>20%</td><td class="td-dn">EM GUERRA!</td><td class="td-dn">Risco fertilizantes</td></tr>
+<tr><td class="td-name">🇹🇷 Turquia</td><td>+3%</td><td class="td-dn">38%</td><td>50%</td><td class="td-nt">Erdogan equilibra</td><td class="td-nt">Emergente</td></tr>
+</tbody>
+</table>
+</div>
+
+<p style="font-size:.78rem;color:var(--text3);margin-top:6px;text-align:center"><em>Brasil = PORTO SEGURO no mundo em chamas · China · Índia · Mercosul-UE são oportunidades · EUA enfraquecido</em></p>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon">📈</div><h2>Análise Gráfica <span>— Selic · Dólar · IPCA · Juros mundo · PIBs · Commodities</span></h2></div>
+
+<div class="grid2">
+  <div class="chart-box"><h3>📊 Selic Brasil · 18 Meses <span class="ch-tag">% a.a.</span></h3><div class="chart-wrap"><canvas id="ch1"></canvas></div></div>
+  <div class="chart-box"><h3>💵 Dólar/Real · 18 Meses <span class="ch-tag">R$/USD</span></h3><div class="chart-wrap"><canvas id="ch2"></canvas></div></div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box"><h3>📉 IPCA Brasil vs Meta <span class="ch-tag">% 12m</span></h3><div class="chart-wrap"><canvas id="ch3"></canvas></div></div>
+  <div class="chart-box"><h3>🌍 Juros Reais Mundo <span class="ch-tag">% real</span></h3><div class="chart-wrap"><canvas id="ch4"></canvas></div></div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box"><h3>🌐 PIB 2026 · Top Economias <span class="ch-tag">% crescimento</span></h3><div class="chart-wrap"><canvas id="ch5"></canvas></div></div>
+  <div class="chart-box"><h3>🛢️ Commodities · Variação 12M <span class="ch-tag">%</span></h3><div class="chart-wrap"><canvas id="ch6"></canvas></div></div>
+</div>
+
+<div class="dv"></div>
+
+<div class="opinion">
+  <h3>🎯 Opinião do Analista — BRASIL é o GRANDE VENCEDOR DO CAOS GLOBAL!</h3>
+
+  <p><strong>O CENÁRIO MACRO-GEOPOLÍTICO de Abril/2026 é o mais COMPLEXO em décadas — e o BRASIL é o GRANDE VENCEDOR! Selic 14,50% (2º corte unânime · juro real 9,3% · 2º MAIOR DO MUNDO!) · Dólar R$ 4,95 (mín 2 anos · Real forte) · IPCA 5,2% (acima meta mas controlado) · PIB +1,8% projetado. Enquanto isso, GUERRA IRÃ entra no 2º mês com ESTREITO DE ORMUZ BLOQUEADO (20% petróleo mundial!), Brent US$ 100/bbl · TRUMP completou 1 ANO com tarifa média 23% China · CHINA RESISTIU com PIB +5,0% · FED MANTÉM 3,75% · UE estagnada · EUA em SECA HISTÓRICA (61% áreas afetadas! 97% sudeste!) · farmers americanos em "TEMPESTADE PERFEITA" (tarifas + guerra + seca). RESULTADO: Brasil recebe demanda recorde · Real valorizado · Agro bombando (US$ 165 bi · 49% pauta · saldo balança US$ 70 bi RECORDE!) · BRICS+ ampliou para 11 membros · Mercosul-UE assinado em janeiro · COP30 em Belém em novembro. CHINA absorve 75% da soja BR. ÚNICOS RISCOS: FISCAL (dívida 76% PIB) e ELEIÇÕES 2026 polarizadas. PRODUTOR BRASILEIRO: VOCÊ ESTÁ NO MELHOR LUGAR DO MUNDO!</strong></p>
+
+  <p><strong>Resumo da semana 27-30/abr:</strong><br>
+  ▸ <strong>🏦 Selic:</strong> 14,50% (↓ 0,25 pp · UNÂNIME · 2º corte)<br>
+  ▸ <strong>📊 IPCA Focus 2026:</strong> 4,9% (acima meta 4,5%)<br>
+  ▸ <strong>📈 Juro Real BR:</strong> +9,3% (2º maior do mundo!)<br>
+  ▸ <strong>💵 Dólar:</strong> R$ 4,9523 (mín 2 anos!)<br>
+  ▸ <strong>🇺🇸 Fed:</strong> 3,75% mantido (Powell cauteloso)<br>
+  ▸ <strong>🇨🇳 PIB China 1ºT:</strong> +5,0% (resistente!)<br>
+  ▸ <strong>🛢️ Brent:</strong> US$ 100/bbl · Ormuz bloqueado<br>
+  ▸ <strong>🥇 Ouro:</strong> US$ 3.450/oz (RECORDE!)<br>
+  ▸ <strong>☕ Café NY:</strong> US¢ 350/lb (recorde 50 anos!)<br>
+  ▸ <strong>🌽 Soja CBOT:</strong> US$ 10,30/bushel<br>
+  ▸ <strong>🇧🇷 Saldo balança 2025:</strong> US$ 70 bi (recorde!)<br>
+  ▸ <strong>🌾 Agro export:</strong> US$ 165 bi (49% pauta!)<br>
+  ▸ <strong>🚨 Dívida/PIB:</strong> 76% (risco fiscal!)<br>
+  ▸ <strong>⚔️ Guerra Irã:</strong> 2º mês · sem solução<br>
+  ▸ <strong>🌎 BRICS+:</strong> 11 membros · Cúpula 2026 em BR<br>
+  ▸ <strong>🌳 COP30:</strong> Belém · novembro 2026<br>
+  ▸ <strong>🗳️ Eleições BR:</strong> Novembro · Lula × Tarcísio</p>
+
+  <p><strong>Recomendações estratégicas:</strong></p>
+
+  <p><strong>1. PRODUTOR RURAL: APROVEITE O MELHOR MOMENTO DA HISTÓRIA!</strong> Demanda mundial recorde · soja R$ 130/sc · café R$ 1.880/sc · boi R$ 354/@. Mas custos disparam. Estratégias: a) Travar fertilizantes 26/27 AGORA, b) Hedge dólar via BM&F, c) Hedge grãos via CBOT/B3, d) Plano Safra 26/27 em junho · aproveitar Selic 14,50% (vai cair mais), e) Plano ABC+ Carbono.</p>
+
+  <p><strong>2. EXPORTADOR: DIVERSIFIQUE!</strong> 50% pauta para China é risco alto. Foque também em: a) Índia (1,4 bi habitantes · cresce +6,5%), b) Oriente Médio (EAU · Arábia Saudita), c) Sudeste Asiático (Vietnã · Indonésia), d) Mercosul-UE (acordo abriu portas), e) América Latina.</p>
+
+  <p><strong>3. INVESTIDOR FINANCEIRO: RENDA FIXA BR é IMBATÍVEL!</strong> Selic 14,50% + IPCA 5,2% = juro real 9,3% (2º mundo!). Tesouro Selic · CDB · LCI/LCA · Tesouro IPCA+ pagam excelente. Diversificar BRL + USD (15-25%) + Ouro (5-10%) é a estratégia clássica.</p>
+
+  <p><strong>4. EMPRESÁRIO: MODERNIZE COM SELIC EM QUEDA!</strong> Plano Safra 26/27 (junho) terá taxas subsidiadas. Investir em: irrigação · maquinário · ILPF · biossegurança · genética · energia solar · digital (sensores · drones · GPS).</p>
+
+  <p><strong>5. PROTEJA-SE DOS RISCOS!</strong> Cenários catastróficos possíveis: a) Ormuz totalmente fechado por meses → petróleo US$ 200, b) China invade Taiwan → semicondutores travam, c) Eleições BR caóticas → Real volta a R$ 6+. Estratégia: hedge dólar 15-25% · ouro 5-10% · não alavancar.</p>
+
+  <p><strong>6. APROVEITE MERCOSUL-UE (JANEIRO 2026)!</strong> Carne · etanol · café · suco com tarifas zero gradualmente em UE. Foco: a) Carne BR para UE (cota 99 mil t), b) Café BR tarifa zero, c) Etanol BR (cota 200 mil t). Mas cuidado: lácteos · vinhos UE pressionarão BR.</p>
+
+  <p><strong>7. FIQUE DE OLHO NA COP30 EM BELÉM (NOV/2026)!</strong> Brasil sedia · acordos bilionários · foco Amazônia · agricultura sustentável. Para o agro: crédito carbono · ABC+ R$ 5 bi · pecuária regenerativa · ILPF · selo verde para exportação. EMPRESA QUE ANTECIPAR SUSTENTABILIDADE VENCE!</p>
+
+  <div class="opinion .scenarios" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px">
+    <div class="sc up"><h5>🟢 Cenário Altista (Brasil voa!)</h5><p>Acordo Trump-Xi · cessar-fogo Irã · Ormuz reaberto · petróleo US$ 75 · Lula reeleito com fiscal sob controle · Mercosul-UE ratificado · COP30 sucesso → <strong>PIB +2,5% · IPCA 4% · Selic 11% · Real R$ 4,50</strong>. Probabilidade: ~25%</p></div>
+    <div class="sc nt"><h5>🟡 Cenário Neutro (Mais provável!)</h5><p>Conflito Irã congelado · Ormuz parcial · petróleo US$ 90-105 · Trump x China lateral · BR navegando bem · agro firme · eleições polarizadas mas calmas → <strong>PIB +1,8% · IPCA 5% · Selic 13% · Real R$ 5,00</strong>. Probabilidade: ~55%</p></div>
+    <div class="sc dn"><h5>🔴 Cenário Baixista (Caos!)</h5><p>Guerra Irã escala · Ormuz fechado · petróleo US$ 200 · China invade Taiwan · Trump impeachment · BR fiscal quebra · eleições caóticas → <strong>PIB -1% · IPCA 8% · Selic 18% · Real R$ 7</strong>. Probabilidade: ~20%</p></div>
+  </div>
+
+  <div class="sig">📅 Análise Rural IN · Quinta, 30/Abr/2026 · Semana curta (feriado 1º Mai) · COPOM 14,50% · GUERRA IRÃ · TRUMP TARIFAS · BRASIL é PORTO SEGURO · AGRO VENCE!</div>
+</div>
+
+<footer class="footer"><div class="wrap">
+  <div class="footer-brand"><span class="r">Rural</span> <span class="i">IN</span></div>
+  <p>Radar Agro Semanal · Macroeconomia & Geopolítica · Semana 27–30 Abril 2026<br>Fontes: Banco Central · COPOM · Focus · IBGE · Tesouro · IPEA · FGV · Reuters · Bloomberg · CNN Brasil · Valor Econômico · Estadão · OECD · FMI · Fed · BCE · OPEC · IEA · FAO · Secex/MDIC · CONAB · CEPEA</p>
+  <div class="footer-credits">
+    <h4>Análise e Construção</h4>
+    <div class="name">Dr. Sidney Souza</div>
+    <div class="title">Economista e Adm. Agrícola — Estrategista Econômico do Produtor</div>
+    <div class="desc">Especialista em economia da fazenda e gestão de risco no agro<br>Transformamos dados da fazenda em decisões econômicas</div>
+    <div class="contact">📧 <a href="mailto:sidneyagro@gmail.com">sidneyagro@gmail.com</a> · 📱 <a href="tel:+5564992266886">(64) 9 9226-6886</a> · 📸 <a href="https://instagram.com/ruralin.ai" target="_blank">@ruralin.ai</a></div>
+  </div>
+  <p style="margin-top:18px"><em>⚠️ Material informativo. Não constitui recomendação de investimento.</em></p>
+</div></footer>
+
+</div>
+
+<script>
+const gc='rgba(30,42,74,.5)';
+const tt={backgroundColor:'rgba(10,15,28,.97)',borderColor:'#2a3a60',borderWidth:1,titleFont:{size:11,weight:'700'},bodyFont:{size:10},padding:10,cornerRadius:8};
+
+new Chart(document.getElementById('ch1').getContext('2d'),{type:'line',
+data:{labels:['Out/24','Dez/24','Mar/25','Jun/25','Set/25','Dez/25','Mar/26','Abr/26'],
+datasets:[{label:'Selic',data:[10.50,12.25,13.25,14.25,14.75,15.00,14.75,14.50],borderColor:'#06b6d4',backgroundColor:'rgba(6,182,212,.18)',borderWidth:3,fill:true,tension:.3,pointRadius:5}]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+scales:{y:{min:9,max:16,grid:{color:gc},ticks:{callback:v=>v+'%',font:{size:9},color:'#cbd5e1'}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#cbd5e1'}}}}});
+
+new Chart(document.getElementById('ch2').getContext('2d'),{type:'line',
+data:{labels:['Out/24','Dez/24','Mar/25','Jun/25','Set/25','Dez/25','Mar/26','Abr/26'],
+datasets:[{label:'Dólar',data:[5.65,6.30,5.90,5.65,5.40,5.20,5.05,4.95],borderColor:'#22c55e',backgroundColor:'rgba(34,197,94,.18)',borderWidth:3,fill:true,tension:.3,pointRadius:5}]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+scales:{y:{min:4.7,max:6.5,grid:{color:gc},ticks:{callback:v=>'R$'+v.toFixed(2),font:{size:9},color:'#cbd5e1'}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#cbd5e1'}}}}});
+
+new Chart(document.getElementById('ch3').getContext('2d'),{type:'line',
+data:{labels:['Jan/25','Abr/25','Jul/25','Out/25','Jan/26','Abr/26'],
+datasets:[
+{label:'IPCA 12m',data:[4.5,4.8,5.1,5.3,5.4,5.2],borderColor:'#ef4444',backgroundColor:'rgba(239,68,68,.13)',borderWidth:3,fill:false,tension:.3,pointRadius:5},
+{label:'Teto meta (4,5%)',data:[4.5,4.5,4.5,4.5,4.5,4.5],borderColor:'#eab308',backgroundColor:'transparent',borderWidth:2,borderDash:[5,5],pointRadius:0},
+{label:'Centro (3%)',data:[3,3,3,3,3,3],borderColor:'#22c55e',backgroundColor:'transparent',borderWidth:2,borderDash:[3,3],pointRadius:0}
+]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{color:'#cbd5e1',font:{size:10},boxWidth:14,padding:8}},tooltip:tt},
+scales:{y:{min:2,max:6,grid:{color:gc},ticks:{callback:v=>v+'%',font:{size:9},color:'#cbd5e1'}},x:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#cbd5e1'}}}}});
+
+new Chart(document.getElementById('ch4').getContext('2d'),{type:'bar',
+data:{labels:['🇹🇷 Turquia','🇧🇷 Brasil','🇲🇽 México','🇿🇦 Á.Sul','🇨🇳 China','🇮🇳 Índia','🇺🇸 EUA','🇪🇺 UE','🇯🇵 Japão'],
+datasets:[{label:'Juro Real',data:[12.0,9.3,6.5,3.5,1.9,1.0,0.55,-0.05,-1.65],
+backgroundColor:c=>c.dataIndex===1?'rgba(6,182,212,.85)':c.parsed.y>=5?'rgba(34,197,94,.7)':c.parsed.y>=0?'rgba(234,179,8,.6)':'rgba(239,68,68,.6)',
+borderColor:c=>c.dataIndex===1?'#22d3ee':c.parsed.y>=5?'#22c55e':c.parsed.y>=0?'#eab308':'#ef4444',
+borderWidth:2,borderRadius:7}]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+scales:{y:{min:-3,max:13,grid:{color:gc},ticks:{callback:v=>v+'%',font:{size:9},color:'#cbd5e1'}},x:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#cbd5e1'}}}}});
+
+new Chart(document.getElementById('ch5').getContext('2d'),{type:'bar',
+data:{labels:['🇮🇳 Índia','🇨🇳 China','🇸🇦 ArábSau','🇷🇺 Rússia','🇧🇷 Brasil','🇺🇸 EUA','🇪🇺 UE','🇯🇵 Japão','🇮🇷 Irã'],
+datasets:[{label:'PIB 2026',data:[6.5,5.0,3.5,2.8,1.8,1.5,0.8,0.9,-3.0],
+backgroundColor:c=>c.dataIndex===4?'rgba(6,182,212,.85)':c.parsed.x>=4?'rgba(34,197,94,.7)':c.parsed.x>=1?'rgba(234,179,8,.6)':'rgba(239,68,68,.6)',
+borderColor:c=>c.dataIndex===4?'#22d3ee':c.parsed.x>=4?'#22c55e':c.parsed.x>=1?'#eab308':'#ef4444',
+borderWidth:2,borderRadius:7}]},
+options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+scales:{x:{min:-4,max:7,grid:{color:gc},ticks:{callback:v=>v+'%',font:{size:9},color:'#cbd5e1'}},y:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#cbd5e1'}}}}});
+
+new Chart(document.getElementById('ch6').getContext('2d'),{type:'bar',
+data:{labels:['Cacau','Café','Petróleo','Ouro','Carne BR','Açúcar','Soja','Milho','Algodão'],
+datasets:[{label:'Var 12M',data:[110,75,42,28,12,7,-2,-8,-15],
+backgroundColor:c=>c.parsed.y>=20?'rgba(34,197,94,.7)':c.parsed.y>=0?'rgba(234,179,8,.6)':'rgba(239,68,68,.6)',
+borderColor:c=>c.parsed.y>=20?'#22c55e':c.parsed.y>=0?'#eab308':'#ef4444',
+borderWidth:2,borderRadius:7}]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+scales:{y:{min:-25,max:120,grid:{color:gc},ticks:{callback:v=>v+'%',font:{size:9},color:'#cbd5e1'}},x:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#cbd5e1'}}}}});
+</script>
+</body>
+</html>

@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Rural IN — Feijão · Radar Agro Semanal · 27-30 Abr 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0805;--bg2:#120e0a;--bg3:#1a140e;--bg4:#241c14;--border:#2d2418;--border2:#3d3022;--accent:#78350f;--accent2:#92400e;--accent3:#b45309;--bean:#fbbf24;--bean2:#fcd34d;--bean3:#fde68a;--carioca:#d97706;--preto:#451a03;--cream:#fef3c7;--text:#f5e9d8;--text2:#c9b89e;--text3:#8a7660;--up:#22c55e;--upDark:#15803d;--dn:#ef4444;--dnDark:#b91c1c;--nt:#eab308;--blue:#3b82f6;--purple:#a855f7;--orange:#f97316;--cyan:#06b6d4;--teal:#14b8a6;--pink:#ec4899;--lime:#84cc16;--r:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 1000px 700px at 10% 15%,rgba(146,64,14,.08),transparent),radial-gradient(ellipse 800px 600px at 90% 85%,rgba(217,119,6,.05),transparent),radial-gradient(ellipse 600px 500px at 50% 50%,rgba(180,83,9,.04),transparent);pointer-events:none;z-index:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+
+.nav{background:rgba(18,14,10,.95);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:14px}
+.nav-logo-img{height:42px;width:auto;border-radius:8px}
+.nav-logo{font-weight:900;font-size:1.2rem}
+.nav-logo .r{color:var(--carioca)}
+.nav-logo .i{color:#22c55e}
+.nav-badge{background:linear-gradient(135deg,#451a03,#92400e);border:1px solid rgba(217,119,6,.4);padding:5px 14px;border-radius:20px;font-size:.7rem;font-weight:800;color:var(--cream);letter-spacing:.6px;box-shadow:0 0 20px rgba(146,64,14,.3)}
+.nav-back{color:var(--text3);font-size:.8rem;text-decoration:none;transition:color .2s}
+.nav-back:hover{color:var(--carioca)}
+
+.hero{padding:54px 0 40px;position:relative;text-align:left}
+.hero::after{content:'';position:absolute;bottom:0;left:0;width:240px;height:3px;background:linear-gradient(90deg,var(--accent2),var(--carioca),transparent)}
+.hero-top{display:flex;align-items:center;gap:22px;margin-bottom:16px}
+.hero-icon-wrap{position:relative;width:84px;height:84px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,rgba(146,64,14,.25),transparent 70%);border-radius:50%}
+.hero-icon{font-size:3.6rem;filter:drop-shadow(0 6px 18px rgba(146,64,14,.5))}
+.hero-texts h1{font-size:2.4rem;font-weight:900;letter-spacing:-1.2px;line-height:1.1}
+.hero-texts h1 .hl{background:linear-gradient(135deg,#92400e,#b45309,#d97706,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-texts .sub{font-size:.9rem;color:var(--text2);margin-top:6px;font-weight:500}
+.hero-bar{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border-radius:22px;font-size:.72rem;font-weight:700;border:1px solid;backdrop-filter:blur(8px)}
+.chip.up{color:var(--up);border-color:rgba(34,197,94,.3);background:rgba(34,197,94,.08)}
+.chip.dn{color:var(--dn);border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.08)}
+.chip.nt{color:var(--nt);border-color:rgba(234,179,8,.3);background:rgba(234,179,8,.08)}
+.chip.bl{color:var(--blue);border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.08)}
+.chip.pu{color:var(--purple);border-color:rgba(168,85,247,.3);background:rgba(168,85,247,.08)}
+.chip.or{color:var(--orange);border-color:rgba(249,115,22,.3);background:rgba(249,115,22,.08)}
+.chip.cf{color:var(--carioca);border-color:rgba(217,119,6,.3);background:rgba(217,119,6,.08)}
+
+.alert{border-radius:var(--r);padding:18px 22px;margin-bottom:14px;display:flex;align-items:flex-start;gap:14px;border:1px solid;font-size:.85rem;line-height:1.75;color:var(--text2);position:relative;overflow:hidden}
+.alert::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
+.alert strong{color:var(--text)}
+.alert .ai{font-size:1.4rem;flex-shrink:0;margin-top:1px}
+.alert.green{background:linear-gradient(90deg,rgba(34,197,94,.08),rgba(34,197,94,.02));border-color:rgba(34,197,94,.25)}
+.alert.green::before{background:var(--up)}
+.alert.red{background:linear-gradient(90deg,rgba(239,68,68,.08),rgba(239,68,68,.02));border-color:rgba(239,68,68,.25)}
+.alert.red::before{background:var(--dn)}
+.alert.amber{background:linear-gradient(90deg,rgba(234,179,8,.08),rgba(234,179,8,.02));border-color:rgba(234,179,8,.25)}
+.alert.amber::before{background:var(--nt)}
+.alert.blue{background:linear-gradient(90deg,rgba(59,130,246,.08),rgba(59,130,246,.02));border-color:rgba(59,130,246,.25)}
+.alert.blue::before{background:var(--blue)}
+.alert.purple{background:linear-gradient(90deg,rgba(168,85,247,.08),rgba(168,85,247,.02));border-color:rgba(168,85,247,.25)}
+.alert.purple::before{background:var(--purple)}
+.alert.cyan{background:linear-gradient(90deg,rgba(6,182,212,.08),rgba(6,182,212,.02));border-color:rgba(6,182,212,.25)}
+.alert.cyan::before{background:var(--cyan)}
+.alert.orange{background:linear-gradient(90deg,rgba(249,115,22,.1),rgba(249,115,22,.02));border-color:rgba(249,115,22,.3)}
+.alert.orange::before{background:var(--orange)}
+
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin:24px 0}
+.kpi{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:16px 18px;position:relative;overflow:hidden;transition:all .25s ease}
+.kpi:hover{transform:translateY(-3px);border-color:var(--border2);box-shadow:0 12px 30px rgba(0,0,0,.5)}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2)}
+.kpi.up::before{background:linear-gradient(90deg,var(--up),var(--lime))}
+.kpi.dn::before{background:linear-gradient(90deg,var(--dn),var(--orange))}
+.kpi.nt::before{background:linear-gradient(90deg,var(--nt),var(--bean))}
+.kpi.bl::before{background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.kpi.pu::before{background:linear-gradient(90deg,var(--purple),var(--pink))}
+.kpi.or::before{background:linear-gradient(90deg,var(--orange),var(--bean))}
+.kpi.cf::before{background:linear-gradient(90deg,var(--carioca),var(--bean))}
+.kpi-lb{font-size:.6rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:5px;font-weight:700}
+.kpi-val{font-size:1.18rem;font-weight:900;letter-spacing:-.5px;line-height:1.2}
+.kpi-val.up{color:var(--up)}
+.kpi-val.dn{color:var(--dn)}
+.kpi-val.nt{color:var(--nt)}
+.kpi-val.bl{color:var(--blue)}
+.kpi-val.pu{color:var(--purple)}
+.kpi-val.or{color:var(--orange)}
+.kpi-val.cf{color:var(--carioca)}
+.kpi-sub{font-size:.66rem;color:var(--text3);margin-top:3px;font-weight:500}
+
+.dv{height:1px;background:linear-gradient(90deg,transparent,var(--border2) 20%,var(--accent2) 50%,var(--border2) 80%,transparent);margin:36px 0}
+
+.stitle{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.stitle .icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;box-shadow:0 4px 14px rgba(0,0,0,.4)}
+.stitle h2{font-size:1.18rem;font-weight:800;letter-spacing:-.3px}
+.stitle h2 span{color:var(--text2);font-weight:400;font-size:.85rem;margin-left:4px}
+
+.co{border-radius:var(--r);padding:20px 24px;margin-bottom:14px;border-left:4px solid;font-size:.85rem;color:var(--text2);line-height:1.85;position:relative;background:linear-gradient(90deg,var(--bg2),var(--bg3))}
+.co strong{color:var(--text)}
+.co h4{font-size:.98rem;font-weight:800;margin-bottom:10px;letter-spacing:-.2px}
+.co.up{border-color:var(--up)}.co.up h4{color:var(--up)}
+.co.dn{border-color:var(--dn)}.co.dn h4{color:var(--dn)}
+.co.nt{border-color:var(--nt)}.co.nt h4{color:var(--nt)}
+.co.bl{border-color:var(--blue)}.co.bl h4{color:var(--blue)}
+.co.or{border-color:var(--orange)}.co.or h4{color:var(--orange)}
+.co.pu{border-color:var(--purple)}.co.pu h4{color:var(--purple)}
+.co.cy{border-color:var(--cyan)}.co.cy h4{color:var(--cyan)}
+.co.cf{border-color:var(--carioca)}.co.cf h4{color:var(--carioca)}
+
+.chart-box{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--r);padding:22px 24px;margin-bottom:14px;overflow:hidden;transition:border-color .2s}
+.chart-box:hover{border-color:var(--border2)}
+.chart-box h3{font-size:.9rem;color:var(--text);margin-bottom:14px;font-weight:700;display:flex;align-items:center;gap:8px}
+.chart-box h3 .ch-tag{margin-left:auto;font-size:.62rem;font-weight:700;padding:2px 10px;border-radius:10px;background:rgba(146,64,14,.18);color:var(--carioca);letter-spacing:.5px}
+.chart-wrap{position:relative;height:290px;overflow:hidden}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:800px){.grid2,.grid3{grid-template-columns:1fr}}
+
+.tbl-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--border);margin-bottom:14px;background:var(--bg2)}
+table{width:100%;border-collapse:collapse;font-size:.78rem}
+thead th{background:linear-gradient(180deg,var(--bg3),var(--bg4));padding:12px 14px;text-align:center;font-weight:800;color:var(--text2);font-size:.66rem;text-transform:uppercase;letter-spacing:.9px;border-bottom:1px solid var(--border)}
+tbody td{padding:10px 12px;border-bottom:1px solid rgba(45,36,24,.5);text-align:center}
+tbody tr:hover{background:rgba(146,64,14,.05)}
+.td-name{text-align:left!important;font-weight:700;white-space:nowrap}
+.td-up{color:var(--up);font-weight:800}
+.td-dn{color:var(--dn);font-weight:800}
+.td-nt{color:var(--nt);font-weight:800}
+
+.thermo{margin:14px 0}
+.thermo h4{font-size:.84rem;color:var(--text);margin-bottom:10px;font-weight:700}
+.th-bar{height:14px;border-radius:7px;position:relative;box-shadow:inset 0 1px 4px rgba(0,0,0,.4)}
+.th-marker{position:absolute;top:-6px;width:4px;height:26px;background:#fff;border-radius:2px;transform:translateX(-50%);box-shadow:0 0 12px rgba(255,255,255,.6)}
+.th-lb{display:flex;justify-content:space-between;font-size:.66rem;color:var(--text3);margin-top:6px;font-weight:600}
+
+.card{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--r);padding:22px 26px;margin-bottom:14px;transition:border-color .2s}
+.card:hover{border-color:var(--border2)}
+
+.opinion{background:linear-gradient(135deg,rgba(146,64,14,.15),rgba(217,119,6,.05),rgba(146,64,14,.02));border:1px solid rgba(217,119,6,.3);border-radius:var(--r);padding:30px 32px;margin:26px 0;position:relative;overflow:hidden}
+.opinion::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent2),var(--carioca),var(--accent2))}
+.opinion h3{font-size:1.08rem;font-weight:800;color:var(--bean);margin-bottom:12px;letter-spacing:-.2px}
+.opinion p{font-size:.88rem;color:var(--text2);line-height:1.9;margin-bottom:12px}
+.opinion p strong{color:var(--text)}
+.opinion .scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.opinion .sc{padding:14px 16px;border-radius:10px;border:1px solid;background:rgba(0,0,0,.3)}
+.opinion .sc.up{border-color:rgba(34,197,94,.3)}
+.opinion .sc.nt{border-color:rgba(234,179,8,.3)}
+.opinion .sc.dn{border-color:rgba(239,68,68,.3)}
+.opinion .sc h5{font-size:.78rem;font-weight:800;margin-bottom:6px}
+.opinion .sc.up h5{color:var(--up)}
+.opinion .sc.nt h5{color:var(--nt)}
+.opinion .sc.dn h5{color:var(--dn)}
+.opinion .sc p{font-size:.74rem;line-height:1.6;margin:0}
+@media(max-width:700px){.opinion .scenarios{grid-template-columns:1fr}}
+.opinion .sig{margin-top:18px;padding-top:14px;border-top:1px solid rgba(217,119,6,.2);font-size:.78rem;color:var(--text3);font-style:italic;display:flex;align-items:center;gap:8px}
+
+.footer{border-top:1px solid var(--border);padding:42px 0;text-align:center;margin-top:36px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.5))}
+.footer-brand{font-size:1.5rem;font-weight:900;margin-bottom:12px}
+.footer-brand .r{color:var(--carioca)}
+.footer-brand .i{color:#22c55e}
+.footer p{font-size:.78rem;color:var(--text3);line-height:1.8}
+.footer-credits{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+.footer-credits h4{font-size:.92rem;color:var(--carioca);font-weight:700;margin-bottom:6px}
+.footer-credits .name{font-size:1.05rem;font-weight:800;color:var(--text);margin-bottom:2px}
+.footer-credits .title{font-size:.78rem;color:var(--bean);font-weight:600;margin-bottom:8px}
+.footer-credits .desc{font-size:.74rem;color:var(--text2);line-height:1.7;max-width:540px;margin:0 auto 12px}
+.footer-credits .contact{font-size:.74rem;color:var(--text3)}
+.footer-credits .contact a{color:var(--carioca);text-decoration:none}
+.footer-credits .contact a:hover{text-decoration:underline}
+
+.bignum-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+.bignum{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:20px 18px;text-align:center;position:relative;overflow:hidden}
+.bignum::after{content:'';position:absolute;top:-50%;right:-30%;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(146,64,14,.12),transparent 70%)}
+.bignum .v{font-size:1.7rem;font-weight:900;letter-spacing:-1px;line-height:1;margin-bottom:6px;position:relative;z-index:1}
+.bignum .v.up{color:var(--up)}
+.bignum .v.dn{color:var(--dn)}
+.bignum .v.nt{color:var(--nt)}
+.bignum .v.bl{color:var(--blue)}
+.bignum .v.or{color:var(--orange)}
+.bignum .v.cf{color:var(--carioca)}
+.bignum .l{font-size:.72rem;color:var(--text2);font-weight:600;position:relative;z-index:1}
+.bignum .s{font-size:.66rem;color:var(--text3);margin-top:3px}
+@media(max-width:700px){.bignum-row{grid-template-columns:repeat(2,1fr)}}
+
+@media(max-width:600px){
+  .hero-top{flex-direction:column;text-align:center;gap:12px}
+  .hero-texts h1{font-size:1.65rem}
+  .nav .wrap{flex-direction:column;gap:10px}
+  .kpi-row{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1"></script>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap"><div class="nav-left"><img src="https://ruralinrv.github.io/ruralin/logo.png" alt="Rural IN" class="nav-logo-img" onerror="this.style.display='none'"><div class="nav-logo"><span class="r">Rural</span> <span class="i">IN</span></div><div class="nav-badge">🫘 FEIJÃO</div></div><a href="portal-30-04.html" class="nav-back">← Voltar ao Portal</a></div></nav>
+
+<div class="wrap">
+
+<section class="hero">
+  <div class="hero-top">
+    <div class="hero-icon-wrap"><span class="hero-icon">🫘</span></div>
+    <div class="hero-texts">
+      <h1><span class="hl">Feijão</span> · Radar Semanal</h1>
+      <div class="sub">Semana 27–30 Abril 2026 (curta · feriado 1º Mai) · CEPEA/CNA · CONAB · Secex · IPCA · Indicador Carioca/Preto · 7 Praças Acompanhadas</div>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <span class="chip up">📈 Carioca Itapeva: R$ 395,85/sc</span>
+    <span class="chip up">🚀 Nordeste RS: +4,30% em 1 dia!</span>
+    <span class="chip dn">📉 Preto pressionado · 2ª safra próxima</span>
+    <span class="chip cf">🇧🇷 Safra 25/26: 2,9 mi t (−4,7%)</span>
+    <span class="chip or">📊 IPCA mar: Carioca +27,73% 12m!</span>
+    <span class="chip pu">🏦 Selic: 14,75% → 14,50%</span>
+  </div>
+</section>
+
+<div class="bignum-row">
+  <div class="bignum"><div class="v up">R$ 395,85</div><div class="l">Carioca Itapeva (9+)</div><div class="s">+0,11% dia · maior preço!</div></div>
+  <div class="bignum"><div class="v cf">R$ 390,00</div><div class="l">Carioca NW Minas (9+)</div><div class="s">+1,25% dia</div></div>
+  <div class="bignum"><div class="v dn">R$ 171,35</div><div class="l">Preto Curitiba (Tipo 1)</div><div class="s">Pressionado · 2ª safra</div></div>
+  <div class="bignum"><div class="v nt">2,9 mi t</div><div class="l">Safra BR 25/26 (CONAB)</div><div class="s">−4,7% · 2º ano de queda</div></div>
+</div>
+
+<div class="alert green">
+  <span class="ai">🚀</span>
+  <div><strong style="color:var(--up)">CARIOCA REAGE FORTE NA TRANSIÇÃO ENTRE SAFRAS! Escassez de qualidade premium</strong><br>
+  <strong>CEPEA 30/04 (Carioca notas 9+):</strong> Itapeva R$ 395,85/sc · NW Minas R$ 390,00 · Curitiba R$ 371,48 · Leste GO R$ 345,10 · Nordeste RS R$ 340,96 (+4,30% no dia!). <strong>Movimento da semana 17-24/abr (CEPEA/CNA):</strong> Metade Sul PR <strong>+8,94%</strong>, Leste GO <strong>+9,48%</strong>, Leste SC +5,04%, Itapeva +2,35%. <strong>Cepea:</strong> "<em>O comportamento do feijão carioca reforça um mercado ajustado no curto prazo, com altas disseminadas nas principais regiões produtoras.</em>" Driver: escassez de grãos premium (peneira 12 / nota 9+) na transição entre 1ª e 2ª safra.</div>
+</div>
+
+<div class="alert red">
+  <span class="ai">📉</span>
+  <div><strong style="color:var(--dn)">FEIJÃO PRETO SOB PRESSÃO! 2ª SAFRA PRÓXIMA + DEMANDA FRACA</strong><br>
+  <strong>CEPEA 30/04 (Preto Tipo 1):</strong> Curitiba R$ 171,35 · Itapeva R$ 188,43 (+0,76%) · regiões em queda. <strong>Cepea:</strong> "<em>As cotações do feijão preto seguem em queda, pressionadas pela proximidade da segunda safra. A demanda mais fraca limita a capacidade de reação dos preços.</em>" Em 12 meses, IPCA do preto acumula <strong>−13,95%</strong> (queda nominal!). Altas pontuais: Curitiba +2,34% e Oeste SC +1,80% (compras específicas).<br><br>
+  <strong>Spread Carioca-Preto:</strong> R$ 200/sc (carioca 9+ a R$ 395 vs preto a R$ 188) — <strong>diferença histórica recorde!</strong> Em condições normais o spread é R$ 80-120.</div>
+</div>
+
+<div class="alert orange">
+  <span class="ai">📊</span>
+  <div><strong style="color:var(--orange)">IPCA MARÇO: CARIOCA EXPLODIU +15,40% NO MÊS · +27,73% EM 12 MESES!</strong><br>
+  <strong>IBGE — IPCA março/26:</strong><br>
+  ▸ <strong>Feijão Carioca:</strong> +15,40% no mês · <strong>+27,73% em 12 meses</strong> (recorde!)<br>
+  ▸ <strong>Feijão Preto:</strong> +7,12% no mês · −13,95% em 12 meses (recuperação parcial)<br><br>
+  <strong>Cepea:</strong> "<em>As expressivas altas registradas no campo no início do ano continuam sendo repassadas ao varejo. Em fevereiro, o carioca atingiu valorização recorde de +29,3% mês a mês — maior aumento já registrado para esse produto.</em>" <strong>O reflexo no consumidor:</strong> prato popular ficou substancialmente mais caro · pressão sobre orçamento doméstico · varejo já mostra resistência em absorver novos repasses.</div>
+</div>
+
+<div class="alert cyan">
+  <span class="ai">🚢</span>
+  <div><strong style="color:var(--cyan)">EXPORTAÇÕES EM ALTA: +51,3% A/A em MARÇO! Brasil aproveita preços altos</strong><br>
+  <strong>Secex Março/26:</strong><br>
+  ▸ <strong>Exportações:</strong> 27,28 mil t (+2,4% m/m · <strong>+51,3% vs mar/25!</strong>)<br>
+  ▸ <strong>Importações:</strong> 3,13 mil t (−17% m/m · mas <strong>4x maior</strong> que mar/25!)<br><br>
+  <strong>Análise:</strong> Preços internos altos e dólar relativamente alto incentivaram <strong>exportações recordes</strong> ao mesmo tempo que escassez interna obrigou <strong>importações 4x maiores</strong> que o ano anterior. Movimento atípico para o feijão (que historicamente é cultura de mercado interno). Principais destinos exportação: Itália, Israel, EUA, México, Portugal. Origem importação: Argentina (preto), México (carioca premium), China (caupi).</div>
+</div>
+
+<div class="alert blue">
+  <span class="ai">🇧🇷</span>
+  <div><strong style="color:var(--blue)">CONAB: SAFRA 2025/26 EM 2,9 MI T (−4,7%) · 2º ANO CONSECUTIVO DE QUEDA!</strong><br>
+  <strong>CONAB 7º levantamento (14/04):</strong><br>
+  ▸ <strong>Produção total 25/26:</strong> 2,9 mi t (vs 3,1 mi em 24/25 · −4,7%)<br>
+  ▸ <strong>Área plantada:</strong> 2,58 mi ha (−4,2%)<br>
+  ▸ <strong>Produtividade:</strong> 1.130 kg/ha (−0,6%)<br>
+  ▸ <strong>Carioca (1,7 mi t):</strong> Praticamente estável<br>
+  ▸ <strong>Preto:</strong> Maior pressão de queda<br>
+  ▸ <strong>3 safras anuais:</strong> 1ª (ago-dez · 50%) · 2ª (jan-abr · 35%) · 3ª (mai-jul · 15%)<br><br>
+  <strong>Razões:</strong> menor rentabilidade vs soja/milho + mosca-branca em algumas regiões + clima irregular no Sul + transição climática El Niño/La Niña. <strong>Brasil é o maior produtor mundial</strong> de feijão · cultura essencial para segurança alimentar.</div>
+</div>
+
+<div class="alert amber">
+  <span class="ai">⚠️</span>
+  <div><strong style="color:var(--nt)">SEGUNDA SAFRA SOB ATENÇÃO! Incertezas climáticas no Sul podem agravar oferta</strong><br>
+  A <strong>2ª safra (semeada jan-abr · colhida mai-jul)</strong> representa ~35% da produção anual e está agora em fase de enchimento de grãos. <strong>Cepea:</strong> "<em>O mercado busca um novo equilíbrio, influenciado pela transição para a segunda safra, especialmente diante das incertezas climáticas no Sul do País.</em>"<br><br>
+  <strong>Riscos no radar:</strong><br>
+  ▸ Excesso de chuvas no PR/SC pode reduzir qualidade dos grãos (afeta carioca premium)<br>
+  ▸ Geadas precoces em maio (acelera colheita prematura)<br>
+  ▸ Doenças fúngicas favorecidas pelo excesso de umidade<br><br>
+  <strong>O que isso significa:</strong> Se a 2ª safra <strong>frustrar</strong>, preços do carioca podem voltar a subir em junho-julho. Se vier <strong>bem</strong>, atual reação termina rápido. <strong>Próximas 4-6 semanas são decisivas</strong>.</div>
+</div>
+
+<div class="alert purple">
+  <span class="ai">🏦</span>
+  <div><strong style="color:var(--purple)">EVENTO MACRO: COPOM CORTOU SELIC PARA 14,50%! Demanda interna pode reagir</strong><br>
+  Banco Central reduziu Selic em <strong>0,25 p.p.</strong> (29/04). <strong>Para o feijão:</strong> commodity <strong>100% de mercado interno</strong> (sem cotação externa de referência). <strong>Selic menor</strong> = consumidor com menor compromisso de juros = mais espaço no orçamento para alimentação. <strong>Mas:</strong> efeito é gradual (3-6 meses). <strong>Dólar a R$ 4,9523</strong> (mín. 2 anos) reduz custo de importação argentina (preto) e mexicana (carioca premium) — <strong>pressão adicional sobre o feijão preto</strong>.</div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#451a03,#92400e)">📊</div><h2>Indicadores-Chave <span>— CEPEA · CONAB · Secex · IPCA · Macro</span></h2></div>
+
+<div class="kpi-row">
+  <div class="kpi cf"><div class="kpi-lb">Carioca Itapeva 9+</div><div class="kpi-val cf">R$ 395,85</div><div class="kpi-sub">Maior preço · 30/04</div></div>
+  <div class="kpi cf"><div class="kpi-lb">Carioca NW Minas 9+</div><div class="kpi-val cf">R$ 390,00</div><div class="kpi-sub">+1,25% dia</div></div>
+  <div class="kpi cf"><div class="kpi-lb">Carioca Curitiba 9+</div><div class="kpi-val cf">R$ 371,48</div><div class="kpi-sub">+0,73% dia</div></div>
+  <div class="kpi cf"><div class="kpi-lb">Carioca Leste GO 9+</div><div class="kpi-val cf">R$ 345,10</div><div class="kpi-sub">+1,45% · sem +9,48%!</div></div>
+  <div class="kpi up"><div class="kpi-lb">Carioca NE RS 9+</div><div class="kpi-val up">R$ 340,96</div><div class="kpi-sub">+4,30% · maior alta dia!</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Carioca M.Sul PR 9+</div><div class="kpi-val nt">R$ 337,78</div><div class="kpi-sub">Sem +8,94%!</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Carioca Leste SC 9+</div><div class="kpi-val nt">R$ 342,50</div><div class="kpi-sub">Sem +5,04%</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Preto Curitiba T1</div><div class="kpi-val dn">R$ 171,35</div><div class="kpi-sub">Pressão · 2ª safra</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Preto Itapeva T1</div><div class="kpi-val dn">R$ 188,43</div><div class="kpi-sub">+0,76% · pontual</div></div>
+  <div class="kpi or"><div class="kpi-lb">IPCA Carioca mar</div><div class="kpi-val or">+15,40%</div><div class="kpi-sub">12 meses: +27,73%!</div></div>
+  <div class="kpi or"><div class="kpi-lb">IPCA Preto mar</div><div class="kpi-val or">+7,12%</div><div class="kpi-sub">12 meses: −13,95%</div></div>
+  <div class="kpi up"><div class="kpi-lb">Export. mar/26</div><div class="kpi-val up">27,28 mil t</div><div class="kpi-sub">+51,3% a/a!</div></div>
+  <div class="kpi bl"><div class="kpi-lb">Import. mar/26</div><div class="kpi-val bl">3,13 mil t</div><div class="kpi-sub">4x mar/25</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Safra 25/26 BR</div><div class="kpi-val dn">2,9 mi t</div><div class="kpi-sub">−4,7% · 2º ano queda</div></div>
+  <div class="kpi pu"><div class="kpi-lb">Selic 29/04</div><div class="kpi-val pu">14,50% a.a.</div><div class="kpi-sub">↓ 0,25 p.p. · CORTE</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Dólar 30/04</div><div class="kpi-val dn">R$ 4,9523</div><div class="kpi-sub">−1,00% · mín. 2 anos</div></div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#451a03,#7c2d12)">📍</div><h2>Cotações por Praça <span>— CEPEA/CNA · 30/04/2026 · R$/saca 60 kg</span></h2></div>
+
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Praça</th><th>Carioca 9+</th><th>Var. Dia</th><th>Carioca 8/8,5</th><th>Var. Dia</th><th>Preto T1</th><th>Var. 17-24/abr (9+)</th></tr></thead>
+<tbody>
+<tr><td class="td-name">📍 Itapeva (SP)</td><td class="td-up">R$ 395,85</td><td class="td-up">+0,11%</td><td>R$ 337,91</td><td>+0,14%</td><td>R$ 188,43</td><td class="td-up">+2,35%</td></tr>
+<tr><td class="td-name">📍 Noroeste de Minas</td><td class="td-up">R$ 390,00</td><td class="td-up">+1,25%</td><td>R$ 347,25</td><td>+1,18%</td><td>—</td><td class="td-up">+7,75% (8/8,5)</td></tr>
+<tr><td class="td-name">📍 Curitiba (PR)</td><td class="td-up">R$ 371,48</td><td class="td-up">+0,73%</td><td>R$ 340,42</td><td>+0,86%</td><td class="td-dn">R$ 171,35</td><td>—</td></tr>
+<tr><td class="td-name">📍 Leste Goiano</td><td class="td-up">R$ 345,10</td><td class="td-up">+1,45%</td><td>R$ 327,26</td><td>+0,27%</td><td>—</td><td class="td-up">+9,48%!</td></tr>
+<tr><td class="td-name">📍 Leste de SC</td><td>R$ 342,50</td><td>0,00%</td><td>R$ 338,33</td><td>0,00%</td><td>—</td><td class="td-up">+5,04%</td></tr>
+<tr><td class="td-name">📍 Nordeste Rio-grandense</td><td class="td-up">R$ 340,96</td><td class="td-up">+4,30%!</td><td>R$ 320,65</td><td>0,00%</td><td>—</td><td>—</td></tr>
+<tr><td class="td-name">📍 Metade Sul do Paraná</td><td>R$ 337,78</td><td>0,00%</td><td>R$ 318,93</td><td>+0,15%</td><td>—</td><td class="td-up">+8,94%!</td></tr>
+<tr><td class="td-name">📍 Triângulo Mineiro/Alto Pna.</td><td>—</td><td>—</td><td>R$ 340,00</td><td>+0,42%</td><td>—</td><td>Estável</td></tr>
+<tr><td class="td-name">📍 Sorriso (MT)</td><td>—</td><td>—</td><td>R$ 315,96</td><td>+0,38%</td><td>—</td><td>—</td></tr>
+<tr><td class="td-name">📍 Noroeste do Paraná</td><td>—</td><td>—</td><td>R$ 344,25</td><td>0,00%</td><td>—</td><td>—</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#451a03,#92400e)">📈</div><h2>Análise Gráfica <span>— 6 perspectivas · Carioca por região · Preto · Spread · Safras · IPCA · Comércio</span></h2></div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📊 Carioca 9+ — Comparativo de Praças <span class="ch-tag">30/04 · R$/sc</span></h3>
+    <div class="chart-wrap"><canvas id="ch1"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>📈 Variação Semanal Carioca 9+ <span class="ch-tag">17-24/abr · % por praça</span></h3>
+    <div class="chart-wrap"><canvas id="ch2"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>🥇 Carioca vs Preto — Spread Histórico <span class="ch-tag">R$/sc · Curitiba</span></h3>
+    <div class="chart-wrap"><canvas id="ch3"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>🇧🇷 Safra BR Feijão — Histórico <span class="ch-tag">CONAB · mi t</span></h3>
+    <div class="chart-wrap"><canvas id="ch4"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📊 IPCA Feijão — Carioca x Preto <span class="ch-tag">12 meses · IBGE</span></h3>
+    <div class="chart-wrap"><canvas id="ch5"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>🚢 Balança Comercial Feijão <span class="ch-tag">mar/26 vs mar/25 · mil t</span></h3>
+    <div class="chart-wrap"><canvas id="ch6"></canvas></div>
+  </div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#451a03,#92400e)">🔍</div><h2>Análise Aprofundada <span>— A grande dualidade do mercado de feijão em 2026</span></h2></div>
+
+<div class="co cf">
+  <h4>🥇 A Tese Central: Carioca É Estrela · Preto É Vítima da Safra Próxima</h4>
+  <p><strong>O mercado de feijão vive uma das maiores dicotomias da história entre as duas variedades:</strong><br>
+  ▸ <strong>Carioca premium:</strong> R$ 395,85/sc em Itapeva — <strong>3 meses de altas históricas!</strong><br>
+  ▸ <strong>Carioca em 12 meses:</strong> +27,73% no IPCA (recorde absoluto!)<br>
+  ▸ <strong>Preto Tipo 1:</strong> R$ 171,35/sc em Curitiba — em queda<br>
+  ▸ <strong>Preto em 12 meses:</strong> −13,95% no IPCA<br>
+  ▸ <strong>Spread carioca-preto:</strong> R$ 200/sc (vs média histórica de R$ 80-120)<br><br>
+  <strong>Por quê essa divergência?</strong><br>
+  ▸ <strong>Carioca:</strong> Escassez de qualidade premium (peneira 12 / nota 9+) na transição de safras + 1ª safra menor + 2ª safra ainda não chegou<br>
+  ▸ <strong>Preto:</strong> Concentração da 2ª safra no PR/SC já em fase final · oferta começa a aumentar · demanda historicamente menor (apenas Sul/Sudeste consomem mais)<br>
+  ▸ <strong>Demanda:</strong> Consumidor brasileiro preferiu cada vez mais o carioca (preferência regional Sudeste/Centro-Oeste/Norte)<br><br>
+  <strong>Cepea:</strong> "<em>Produtores tentam elevar os preços, mas esbarram na disponibilidade restrita desses grãos e na dificuldade de repasse ao varejo.</em>" Janela aberta para quem TEM carioca premium estocado.</p>
+</div>
+
+<div class="co up">
+  <h4>📈 Carioca: Reação Forte na Última Semana de Abril (17-24)!</h4>
+  <p><strong>Movimento expressivo nos preços do carioca premium (qualidade 9+):</strong><br>
+  ▸ <strong>Leste Goiano:</strong> +9,48% (sem 17-24/abr)<br>
+  ▸ <strong>Metade Sul do Paraná:</strong> +8,94%<br>
+  ▸ <strong>Leste de Santa Catarina:</strong> +5,04%<br>
+  ▸ <strong>Itapeva (SP):</strong> +2,35%<br><br>
+  <strong>Carioca qualidade intermediária (notas 8/8,5):</strong><br>
+  ▸ <strong>Leste Santa Catarina:</strong> +12,17% (líder!)<br>
+  ▸ <strong>Noroeste de Minas:</strong> +7,75%<br>
+  ▸ <strong>Leste Goiano:</strong> +6,61%<br>
+  ▸ <strong>Metade Sul do Paraná:</strong> +6,37%<br><br>
+  <strong>Cepea:</strong> "<em>A valorização também foi generalizada, sinalizando que a restrição de oferta já alcança a base do mercado.</em>" Isso é um sinal IMPORTANTE: quando até a qualidade intermediária sobe, indica escassez sistêmica — não apenas premium.<br><br>
+  <strong>Próximos dias (30/04):</strong> Nordeste RS deu salto de +4,30% no fechamento — sinal que altas continuam mesmo no fim do mês.</p>
+</div>
+
+<div class="co dn">
+  <h4>📉 Preto: Pressão Estrutural · Não Há Reação à Vista</h4>
+  <p><strong>O cenário do feijão preto é o oposto:</strong><br>
+  ▸ <strong>Curitiba T1:</strong> R$ 171,35 (estável · sem reação)<br>
+  ▸ <strong>Itapeva T1:</strong> R$ 188,43 (+0,76% · pontual)<br>
+  ▸ <strong>IPCA 12 meses:</strong> −13,95% (queda nominal forte!)<br>
+  ▸ <strong>Recuperação parcial:</strong> +7,12% só em março<br><br>
+  <strong>Causas estruturais da fraqueza:</strong><br>
+  ▸ <strong>Concentração regional:</strong> Preto é mais consumido no Sul (RS, SC, PR) e em SP capital<br>
+  ▸ <strong>2ª safra do PR/SC</strong> já em fase de colheita iminente · oferta aumentando<br>
+  ▸ <strong>Importação Argentina</strong> ativa (4x mais que ano anterior) com dólar fraco<br>
+  ▸ <strong>Mudança de hábito:</strong> Migração lenta para carioca em diversas regiões<br>
+  ▸ <strong>Estoques industriais</strong> cobertos com 2ª safra próxima<br><br>
+  <strong>Cepea:</strong> "<em>A demanda mais fraca limita a capacidade de reação dos preços, mesmo diante de ajustes pontuais na oferta.</em>" Para produtor de preto: <strong>vender já</strong>. Esperar pela 2ª safra é receita para vender mais barato.</p>
+</div>
+
+<div class="co bl">
+  <h4>🇧🇷 CONAB: Safra 25/26 em −4,7% · 2º Ano Consecutivo de Queda!</h4>
+  <p><strong>O panorama nacional pelo 7º levantamento (14/04):</strong><br>
+  ▸ <strong>Produção total 25/26:</strong> 2,9 mi t (vs 3,1 mi em 24/25)<br>
+  ▸ <strong>Variação:</strong> −4,7%<br>
+  ▸ <strong>Área plantada:</strong> 2,58 mi ha (−4,2%)<br>
+  ▸ <strong>Produtividade:</strong> 1.130 kg/ha (−0,6%)<br>
+  ▸ <strong>Carioca (~1,7 mi t):</strong> Estável vs 24/25<br>
+  ▸ <strong>Preto:</strong> Maior queda relativa<br><br>
+  <strong>Razões da retração estrutural:</strong><br>
+  ▸ <strong>Menor rentabilidade</strong> do feijão vs soja, milho safrinha e algodão<br>
+  ▸ <strong>Mosca-branca</strong> em algumas regiões produtoras (especialmente GO, BA)<br>
+  ▸ <strong>Custos elevados</strong> (insumos, fertilizantes, mão-de-obra)<br>
+  ▸ <strong>Margens apertadas</strong> levam a área menor<br>
+  ▸ <strong>El Niño/La Niña em transição</strong> · clima irregular no Sul<br><br>
+  <strong>Calendário de safras:</strong><br>
+  ▸ <strong>1ª safra (50%):</strong> Plantio ago-dez · colheita jan-abr<br>
+  ▸ <strong>2ª safra (35%):</strong> Plantio jan-abr · colheita mai-jul ⬅ <strong>FOCO ATUAL!</strong><br>
+  ▸ <strong>3ª safra irrigada (15%):</strong> Plantio mai-jul · colheita ago-out<br><br>
+  <strong>Brasil:</strong> Maior produtor mundial · cultura de segurança alimentar.</p>
+</div>
+
+<div class="co cy">
+  <h4>📊 IPCA: O Termômetro do Bolso do Consumidor</h4>
+  <p><strong>O dado mais surpreendente do mês — Carioca disparou no IPCA:</strong><br>
+  ▸ <strong>Março/26 — Carioca:</strong> +15,40% no mês (forte repasse!)<br>
+  ▸ <strong>12 meses — Carioca:</strong> +27,73% (RECORDE!)<br>
+  ▸ <strong>Março/26 — Preto:</strong> +7,12% no mês<br>
+  ▸ <strong>12 meses — Preto:</strong> −13,95% (deflação!)<br><br>
+  <strong>O que isso significa para o produtor?</strong><br>
+  ▸ <strong>Carioca:</strong> Indústria conseguiu repassar parte das altas. <strong>Resistência</strong> aparece agora em abril (varejo travou novos repasses) — por isso o atual recuo de demanda.<br>
+  ▸ <strong>Preto:</strong> Repasse parcial · varejo absorveu queda do produtor de 2025 e agora resiste a subir mesmo com produtor pedindo mais.<br><br>
+  <strong>Análise estratégica:</strong><br>
+  Quando IPCA do feijão acumula >25% em 12 meses, <strong>política pública</strong> entra em ação:<br>
+  ▸ Liberação de estoques da CONAB (PEPRO, PEP)<br>
+  ▸ Importação facilitada (queda de tarifas temporariamente)<br>
+  ▸ Pressão sobre indústria para reduzir margens<br><br>
+  <strong>Risco para o produtor:</strong> próximos meses podem ter <strong>intervenção governamental</strong> para baratear o feijão no prato do consumidor — afetando preço pago ao produtor.</p>
+</div>
+
+<div class="co or">
+  <h4>🚢 Balança Comercial: Brasil Exporta MUITO Mais e Importa MAIS!</h4>
+  <p><strong>Movimento atípico na balança do feijão em março/26:</strong><br>
+  ▸ <strong>Exportações:</strong> 27,28 mil t (+51,3% vs mar/25!)<br>
+  ▸ <strong>Importações:</strong> 3,13 mil t (4x mar/25!)<br><br>
+  <strong>Por que isso é incomum?</strong><br>
+  Feijão é tradicionalmente cultura de mercado interno. Brasil é o <strong>maior produtor mundial</strong> mas também grande consumidor. Em anos normais, exportações são <strong>10-15 mil t/mês</strong> e importações são <strong>500-1500 t/mês</strong>.<br><br>
+  <strong>Drivers do movimento atípico:</strong><br>
+  ▸ <strong>Exportações altas:</strong> Preços internos elevados <strong>incentivaram</strong> exportadores brasileiros a buscar mercado externo (Itália, Israel, México, EUA, Portugal)<br>
+  ▸ <strong>Importações altas:</strong> Escassez interna específica + dólar fraco facilitou compras Argentina (preto) e México (carioca premium)<br><br>
+  <strong>Implicação prática:</strong> Mercado brasileiro está <strong>mais conectado ao externo</strong> que historicamente. <strong>Riscos cambiais</strong> ganham importância. Se dólar voltar a R$ 5,30, preto importado encarece imediatamente — inverte parte da pressão atual.</p>
+</div>
+
+<div class="co pu">
+  <h4>🏦 Macro: Selic, Câmbio e o Bolso do Consumidor</h4>
+  <p><strong>Decisão Copom (29/04):</strong> Selic cortada para 14,50% (−0,25 p.p.)<br>
+  <strong>Dólar:</strong> R$ 4,9523 (mín. 2 anos!)<br><br>
+  <strong>Para o feijão (cultura essencialmente doméstica):</strong><br>
+  ▸ <strong>Selic menor</strong> = consumidor com mais espaço orçamentário<br>
+  ▸ <strong>Demanda interna</strong> pode reagir em 3-6 meses<br>
+  ▸ <strong>Custo de carregamento</strong> do estoque (fluxo de caixa do produtor) cai<br><br>
+  <strong>Dólar fraco — efeito misto:</strong><br>
+  ▸ ✓ Reduz custo de fertilizantes/defensivos<br>
+  ▸ ✗ Facilita importação argentina/mexicana (pressão sobre preto especialmente)<br>
+  ▸ ✗ Reduz competitividade da exportação brasileira<br><br>
+  <strong>Cenário base para 2026:</strong><br>
+  ▸ Selic deve cair mais 1-2 cortes (chegar a 14,00-13,75% até final do ano)<br>
+  ▸ Inflação alimentar controlada via importações + 2ª safra<br>
+  ▸ Câmbio lateralizado em R$ 4,80-5,20<br>
+  ▸ Pressão política para reduzir IPCA do feijão (recorde de 12 meses!)</p>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#451a03,#92400e)">🌡️</div><h2>Termômetros do Mercado <span>— Pressões e Vetores</span></h2></div>
+
+<div class="grid3">
+  <div class="card">
+    <div class="thermo"><h4>🥇 Carioca Premium 9+</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:88%"></div></div>
+      <div class="th-lb"><span>Fraco</span><span>Médio</span><span>Forte</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ MUITO FORTE!</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">Itapeva R$ 395,85 · Sem +8,94% PR!</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🥈 Carioca Intermediária</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:75%"></div></div>
+      <div class="th-lb"><span>Fraco</span><span>Médio</span><span>Forte</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ FORTE</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">Sem +12,17% Leste SC! Generalizado.</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🌑 Feijão Preto</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:25%"></div></div>
+      <div class="th-lb"><span>Fraco</span><span>Médio</span><span>Forte</span></div>
+      <p style="font-size:.78rem;color:var(--dn);margin-top:8px;font-weight:700">⬇ FRACO</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">Curitiba R$ 171,35 · 2ª safra próxima.</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🌧️ 2ª Safra (Sul)</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--up),var(--nt),var(--dn))"><div class="th-marker" style="left:55%"></div></div>
+      <div class="th-lb"><span>Boa</span><span>Média</span><span>Crítica</span></div>
+      <p style="font-size:.78rem;color:var(--nt);margin-top:8px;font-weight:700">⚠ INCERTA</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">Cepea: incertezas climáticas no Sul!</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🛒 Demanda Varejo</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:30%"></div></div>
+      <div class="th-lb"><span>Fraca</span><span>Média</span><span>Forte</span></div>
+      <p style="font-size:.78rem;color:var(--dn);margin-top:8px;font-weight:700">⬇ RETRAÍDA</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">Varejo resiste · IPCA já +27,73%!</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🚢 Comércio Exterior</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:80%"></div></div>
+      <div class="th-lb"><span>Fraco</span><span>Médio</span><span>Forte</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ ATÍPICO!</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">Exp +51% · Imp 4x · ano histórico!</p>
+    </div>
+  </div>
+</div>
+
+<div class="dv"></div>
+
+<div class="opinion">
+  <h3>🎯 Opinião do Analista — Feijão é A Cultura da Dualidade em 2026!</h3>
+
+  <p><strong>O feijão brasileiro vive a maior dicotomia da sua história recente: enquanto o CARIOCA premium dispara para R$ 395,85/sc em Itapeva (com altas semanais de +8 a +9,5% nas principais praças produtoras), o PRETO segue pressionado a R$ 171,35/sc em Curitiba pela proximidade da 2ª safra e demanda enfraquecida. O spread carioca-preto atingiu R$ 200/sc — o maior da história! IPCA do carioca em 12 meses bateu RECORDE absoluto de +27,73%, enquanto o preto registra deflação de −13,95%. Quem tem carioca premium estocado vive momento de ouro. Quem tem preto: vender JÁ antes da 2ª safra chegar.</strong></p>
+
+  <p><strong>Semana 27-30/abr (curta · feriado 1º Mai) — Em síntese:</strong><br>
+  ▸ <strong>Carioca 9+ Itapeva:</strong> R$ 395,85/sc (+0,11% dia · maior preço!)<br>
+  ▸ <strong>Carioca 9+ NW Minas:</strong> R$ 390,00/sc (+1,25%)<br>
+  ▸ <strong>Carioca 9+ Curitiba:</strong> R$ 371,48/sc (+0,73%)<br>
+  ▸ <strong>Carioca 9+ NE RS:</strong> R$ 340,96/sc (+4,30% — destaque!)<br>
+  ▸ <strong>Preto T1 Curitiba:</strong> R$ 171,35/sc (estável · pressionado)<br>
+  ▸ <strong>Var. semana 17-24/abr:</strong> Leste GO +9,48% · M.Sul PR +8,94%<br>
+  ▸ <strong>Safra BR 25/26:</strong> 2,9 mi t (CONAB · −4,7%)<br>
+  ▸ <strong>IPCA Carioca 12 meses:</strong> +27,73% (RECORDE!)<br>
+  ▸ <strong>Selic:</strong> Cortada para 14,50% · <strong>Dólar:</strong> R$ 4,9523</p>
+
+  <p><strong>Recomendações estratégicas:</strong></p>
+
+  <p><strong>1. SE TEM CARIOCA PREMIUM (9+) ESTOCADO: VENDA 60-70% AGORA!</strong> R$ 395,85/sc em Itapeva e R$ 390 em NW Minas são patamares <strong>HISTÓRICOS</strong>. IPCA já mostrou que varejo está resistindo (recorde +27,73% em 12 meses!). <strong>Ponto de virada está próximo</strong>: 2ª safra colhida em mai-jul + intervenção governamental possível + indústria com mais oferta. Capture o prêmio, não fique gananço esperando R$ 410-420/sc.</p>
+
+  <p><strong>2. SE TEM PRETO ESTOCADO: VENDA URGENTE!</strong> Cenário <strong>desfavorável continua</strong>: 2ª safra do PR/SC em colheita iminente + importação Argentina ativa + IPCA em deflação 12m. <strong>Não há catalisador altista no horizonte.</strong> Preto a R$ 171/sc pode ir para R$ 150-160 em junho com nova safra. Liquide 80-90% do estoque <strong>em maio</strong>.</p>
+
+  <p><strong>3. SE ESTÁ NA 2ª SAFRA (PLANTIO JAN-ABR): MONITORE CLIMA!</strong> Cepea destaca <strong>incertezas climáticas no Sul</strong>. Excesso de chuvas no PR/SC = perda de qualidade dos grãos = carioca cai de 9+ para 8/8,5 = perde R$ 50-60/sc instantaneamente! <strong>Estratégia:</strong> Acelere colheita com tempo bom · cuide secagem · armazene apenas grãos premium para spread maior.</p>
+
+  <p><strong>4. APROVEITE A QUALIDADE PARA CAPTURAR PRÊMIO!</strong> Spread Carioca 9+ vs 8/8,5 está em R$ 50-60/sc (vs média histórica de R$ 30/sc). <strong>Investimento em qualidade compensa duplo:</strong> beneficiamento + classificação + peneiragem rigorosa. Cada saca que sobe de 8,5 para 9+ rende +R$ 50.</p>
+
+  <p><strong>5. DIVERSIFICAÇÃO REGIONAL É CHAVE!</strong> Itapeva (R$ 395,85) e NW Minas (R$ 390,00) lideram. Curitiba (R$ 371,48) e Leste GO (R$ 345,10) intermediários. M.Sul PR e NE RS (~R$ 340) menores. <strong>Quem pode logisticamente entregar em SP (Itapeva)</strong> tem prêmio de R$ 50/sc sobre preços do PR. Vale considerar frete vs spread.</p>
+
+  <p><strong>6. ATENÇÃO AO RISCO POLÍTICO!</strong> IPCA em +27,73% no carioca em 12 meses é <strong>número politicamente sensível</strong>. CONAB pode liberar estoques (PEPRO/PEP), governo pode reduzir tarifa de importação, indústria pode ser pressionada. <strong>Próximas 4-6 semanas</strong> são decisivas para saber se virá intervenção. Vale acompanhar Brasília.</p>
+
+  <p><strong>7. PARA O PRODUTOR QUE PLANEJA 3ª SAFRA (IRRIGADA · MAI-JUL):</strong> Selic cortada para 14,50% reduz custo de capital de giro. Preço atual do carioca premium (R$ 380-395/sc) <strong>justifica investimento em irrigação e qualidade</strong>. 3ª safra colhida em ago-out pega janela de baixa oferta nacional · prêmio histórico médio de R$ 60-100/sc.</p>
+
+  <div class="scenarios">
+    <div class="sc up">
+      <h5>🟢 Cenário Altista</h5>
+      <p>2ª safra frustra (clima ruim Sul) + intervenção atrasa + dólar em alta → <strong>Carioca premium R$ 410-440/sc até jun</strong>. Probabilidade: ~20%</p>
+    </div>
+    <div class="sc nt">
+      <h5>🟡 Cenário Neutro</h5>
+      <p>2ª safra normal + varejo resiste + 3ª safra começando → <strong>Carioca premium R$ 340-390/sc · Preto R$ 160-180/sc</strong>. Probabilidade: ~55%</p>
+    </div>
+    <div class="sc dn">
+      <h5>🔴 Cenário Baixista</h5>
+      <p>2ª safra boa + intervenção CONAB + dólar baixo + import. ativa → <strong>Carioca premium R$ 280-320/sc · Preto R$ 140-160/sc</strong>. Probabilidade: ~25%</p>
+    </div>
+  </div>
+
+  <div class="sig">📅 Análise Rural IN · Quinta-feira, 30/Abr/2026 · Semana curta (feriado 1º Mai) · Maio é o mês decisivo da 2ª safra!</div>
+</div>
+
+<footer class="footer"><div class="wrap">
+  <div class="footer-brand"><span class="r">Rural</span> <span class="i">IN</span></div>
+  <p>Radar Agro Semanal · Feijão · Semana 27–30 Abril 2026<br>
+  Fontes: CEPEA/ESALQ-USP · Indicador CEPEA/CNA · CONAB · Secex/MDIC · IBGE (IPCA) · IMEA · Banco Central · COPOM · Globo Rural · Notícias Agrícolas · Agrolink · Cenário MT · Broto Notícias</p>
+  <div class="footer-credits">
+    <h4>Análise e Construção</h4>
+    <div class="name">Dr. Sidney Souza</div>
+    <div class="title">Economista e Adm. Agrícola — Estrategista Econômico do Produtor</div>
+    <div class="desc">Especialista em economia da fazenda e gestão de risco no agro<br>Transformamos dados da fazenda em decisões econômicas<br>Ajudamos produtores a entender se o mercado sustenta seu negócio</div>
+    <div class="contact">📧 <a href="mailto:sidneyagro@gmail.com">sidneyagro@gmail.com</a> · 📱 <a href="tel:+5564992266886">(64) 9 9226-6886</a> · 📸 <a href="https://instagram.com/ruralin.ai" target="_blank">@ruralin.ai</a></div>
+  </div>
+  <p style="margin-top:18px"><em>⚠️ Material informativo. Não constitui recomendação de investimento. Consulte profissionais habilitados.</em></p>
+</div></footer>
+
+</div>
+
+<script>
+const gc='rgba(45,36,24,.5)';
+const tt={backgroundColor:'rgba(18,14,10,.97)',borderColor:'#3d3022',borderWidth:1,titleFont:{size:11,weight:'700'},bodyFont:{size:10},padding:10,cornerRadius:8};
+
+// CH1: Carioca 9+ por praça
+new Chart(document.getElementById('ch1').getContext('2d'),{
+  type:'bar',
+  data:{
+    labels:['Itapeva (SP)','NW Minas','Curitiba','Leste GO','Leste SC','NE Rio-grand.','Met.Sul PR'],
+    datasets:[{label:'R$/sc 60kg',data:[395.85,390.00,371.48,345.10,342.50,340.96,337.78],
+      backgroundColor:function(c){
+        const colors=['rgba(34,197,94,.7)','rgba(34,197,94,.65)','rgba(217,119,6,.65)','rgba(217,119,6,.5)','rgba(217,119,6,.45)','rgba(217,119,6,.4)','rgba(217,119,6,.35)'];
+        return colors[c.dataIndex];
+      },
+      borderColor:function(c){
+        const colors=['#22c55e','#22c55e','#d97706','#d97706','#d97706','#d97706','#d97706'];
+        return colors[c.dataIndex];
+      },
+      borderWidth:2,borderRadius:7}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tt,
+      annotation:{annotations:{
+        top:{type:'label',xValue:0,yValue:407,content:['🥇 Líder!','R$ 395,85'],font:{size:9,weight:'bold'},color:'#22c55e',backgroundColor:'rgba(34,197,94,.13)',padding:4}
+      }}
+    },
+    scales:{y:{min:325,max:415,grid:{color:gc},ticks:{callback:function(v){return'R$ '+v.toFixed(0)},font:{size:9,weight:'600'},color:'#c9b89e'}},x:{grid:{display:false},ticks:{font:{size:8,weight:'700'},color:'#c9b89e',maxRotation:35,minRotation:35}}}
+  }
+});
+
+// CH2: Variação semanal por praça
+new Chart(document.getElementById('ch2').getContext('2d'),{
+  type:'bar',
+  data:{
+    labels:['Leste GO','Met.Sul PR','Leste SC','Itapeva','Curitiba','NW Minas','NE RS'],
+    datasets:[{label:'Var. % 17-24/abr',data:[9.48,8.94,5.04,2.35,1.50,1.20,0.80],
+      backgroundColor:function(c){
+        if(c.parsed.y>=8)return 'rgba(34,197,94,.7)';
+        if(c.parsed.y>=5)return 'rgba(132,204,22,.6)';
+        if(c.parsed.y>=2)return 'rgba(234,179,8,.55)';
+        return 'rgba(249,115,22,.45)';
+      },
+      borderColor:function(c){
+        if(c.parsed.y>=8)return '#22c55e';
+        if(c.parsed.y>=5)return '#84cc16';
+        if(c.parsed.y>=2)return '#eab308';
+        return '#f97316';
+      },
+      borderWidth:2,borderRadius:7}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tt,
+      annotation:{annotations:{
+        rec:{type:'label',xValue:0,yValue:10.2,content:['🚀 LIDER!','+9,48%'],font:{size:9,weight:'bold'},color:'#22c55e',backgroundColor:'rgba(34,197,94,.13)',padding:4}
+      }}
+    },
+    scales:{y:{min:0,max:11,grid:{color:gc},ticks:{callback:function(v){return v+'%'},font:{size:9,weight:'600'},color:'#c9b89e'}},x:{grid:{display:false},ticks:{font:{size:8,weight:'700'},color:'#c9b89e',maxRotation:30,minRotation:30}}}
+  }
+});
+
+// CH3: Carioca vs Preto Curitiba — Histórico
+new Chart(document.getElementById('ch3').getContext('2d'),{
+  type:'line',
+  data:{
+    labels:['Out/25','Nov/25','Dez/25','Jan/26','Fev/26','Mar/26','Abr/26'],
+    datasets:[
+      {label:'Carioca 9+ (R$/sc)',data:[210,235,265,290,330,360,371.48],
+        borderColor:'#d97706',backgroundColor:'rgba(217,119,6,.12)',borderWidth:3,fill:true,tension:.3,pointRadius:4,pointBackgroundColor:'#d97706'},
+      {label:'Preto T1 (R$/sc)',data:[195,200,205,200,190,180,171.35],
+        borderColor:'#451a03',backgroundColor:'rgba(69,26,3,.18)',borderWidth:3,fill:true,tension:.3,pointRadius:4,pointBackgroundColor:'#451a03'}
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{display:true,position:'top',labels:{color:'#c9b89e',font:{size:10,weight:'600'},boxWidth:14,padding:8}},
+      tooltip:tt,
+      annotation:{annotations:{
+        sp:{type:'label',xValue:6,yValue:280,content:['📊 Spread R$ 200!','RECORDE!'],font:{size:9,weight:'bold'},color:'#fbbf24',backgroundColor:'rgba(251,191,36,.13)',padding:4}
+      }}
+    },
+    scales:{y:{min:150,max:400,grid:{color:gc},ticks:{callback:function(v){return'R$ '+v},font:{size:9,weight:'600'},color:'#c9b89e'}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#c9b89e'}}}
+  }
+});
+
+// CH4: Histórico safras BR
+new Chart(document.getElementById('ch4').getContext('2d'),{
+  type:'bar',
+  data:{
+    labels:['21/22','22/23','23/24','24/25','25/26'],
+    datasets:[{label:'mi t',data:[2.85,3.14,3.28,3.05,2.90],
+      backgroundColor:function(c){
+        if(c.dataIndex===4)return 'rgba(239,68,68,.6)';
+        if(c.dataIndex===2)return 'rgba(34,197,94,.55)';
+        return 'rgba(217,119,6,.5)';
+      },
+      borderColor:function(c){
+        if(c.dataIndex===4)return '#ef4444';
+        if(c.dataIndex===2)return '#22c55e';
+        return '#d97706';
+      },
+      borderWidth:2,borderRadius:7}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tt,
+      annotation:{annotations:{
+        rec:{type:'label',xValue:4,yValue:3.15,content:['📉 −4,7%','2º ano queda!'],font:{size:9,weight:'bold'},color:'#ef4444',backgroundColor:'rgba(239,68,68,.13)',padding:5}
+      }}
+    },
+    scales:{y:{min:2.5,max:3.5,grid:{color:gc},ticks:{callback:function(v){return v.toFixed(1)+' mi t'},font:{size:9,weight:'600'},color:'#c9b89e'}},x:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#c9b89e'}}}
+  }
+});
+
+// CH5: IPCA 12 meses
+new Chart(document.getElementById('ch5').getContext('2d'),{
+  type:'bar',
+  data:{
+    labels:['Carioca (12m)','Carioca (mar)','Preto (mar)','Preto (12m)'],
+    datasets:[{label:'Variação %',data:[27.73,15.40,7.12,-13.95],
+      backgroundColor:function(c){
+        if(c.parsed.y>15)return 'rgba(239,68,68,.7)';
+        if(c.parsed.y>5)return 'rgba(249,115,22,.6)';
+        if(c.parsed.y>0)return 'rgba(234,179,8,.55)';
+        return 'rgba(34,197,94,.55)';
+      },
+      borderColor:function(c){
+        if(c.parsed.y>15)return '#ef4444';
+        if(c.parsed.y>5)return '#f97316';
+        if(c.parsed.y>0)return '#eab308';
+        return '#22c55e';
+      },
+      borderWidth:2,borderRadius:7}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tt,
+      annotation:{annotations:{
+        rec:{type:'label',xValue:0,yValue:30,content:['🔥 RECORDE!','+27,73%'],font:{size:9,weight:'bold'},color:'#ef4444',backgroundColor:'rgba(239,68,68,.13)',padding:4},
+        def:{type:'label',xValue:3,yValue:-16.5,content:['📉 Deflação','−13,95%'],font:{size:9,weight:'bold'},color:'#22c55e',backgroundColor:'rgba(34,197,94,.13)',padding:4}
+      }}
+    },
+    scales:{y:{min:-18,max:32,grid:{color:gc},ticks:{callback:function(v){return v+'%'},font:{size:9,weight:'600'},color:'#c9b89e'}},x:{grid:{display:false},ticks:{font:{size:8,weight:'700'},color:'#c9b89e',maxRotation:0}}}
+  }
+});
+
+// CH6: Balança comercial mar/26 vs mar/25
+new Chart(document.getElementById('ch6').getContext('2d'),{
+  type:'bar',
+  data:{
+    labels:['Exportações','Importações'],
+    datasets:[
+      {label:'Mar/25 (mil t)',data:[18.03,0.78],backgroundColor:'rgba(122,134,154,.5)',borderColor:'#7a869a',borderWidth:2,borderRadius:6},
+      {label:'Mar/26 (mil t)',data:[27.28,3.13],backgroundColor:'rgba(217,119,6,.6)',borderColor:'#d97706',borderWidth:2,borderRadius:6}
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{display:true,position:'top',labels:{color:'#c9b89e',font:{size:10,weight:'600'},boxWidth:14,padding:8}},
+      tooltip:tt,
+      annotation:{annotations:{
+        ex:{type:'label',xValue:0,yValue:30,content:['📈 +51,3% a/a'],font:{size:9,weight:'bold'},color:'#22c55e',backgroundColor:'rgba(34,197,94,.13)',padding:4},
+        im:{type:'label',xValue:1,yValue:5,content:['📈 4x mais!'],font:{size:9,weight:'bold'},color:'#ef4444',backgroundColor:'rgba(239,68,68,.13)',padding:4}
+      }}
+    },
+    scales:{y:{min:0,max:32,grid:{color:gc},ticks:{callback:function(v){return v+' mil t'},font:{size:9,weight:'600'},color:'#c9b89e'}},x:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#c9b89e'}}}
+  }
+});
+</script>
+</body>
+</html>

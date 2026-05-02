@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Rural IN — Leite · 27-30 Abr 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0f;--bg2:#13131c;--bg3:#1a1a26;--bg4:#252535;--border:#2a2a3a;--border2:#3a3a4f;--milk:#f8fafc;--milk2:#e2e8f0;--milk3:#cbd5e1;--accent:#64748b;--accent2:#94a3b8;--blue:#3b82f6;--cream:#fef3c7;--text:#f8fafc;--text2:#cbd5e1;--text3:#94a3b8;--text4:#64748b;--up:#22c55e;--dn:#ef4444;--nt:#eab308;--purple:#a855f7;--orange:#f97316;--pink:#ec4899;--leaf2:#84cc16;--gold:#f59e0b;--cyan:#06b6d4;--r:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 1000px 700px at 10% 15%,rgba(248,250,252,.06),transparent),radial-gradient(ellipse 800px 600px at 90% 85%,rgba(203,213,225,.04),transparent);pointer-events:none;z-index:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+.nav{background:rgba(19,19,28,.95);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:14px}
+.nav-logo-img{height:42px;width:auto;border-radius:8px}
+.nav-logo{font-weight:900;font-size:1.2rem}
+.nav-logo .r{color:var(--milk2)}
+.nav-logo .i{color:var(--leaf2)}
+.nav-badge{background:linear-gradient(135deg,#f8fafc,#cbd5e1);border:1px solid rgba(248,250,252,.5);padding:5px 14px;border-radius:20px;font-size:.7rem;font-weight:800;color:#0a0a0f;letter-spacing:.6px;box-shadow:0 0 25px rgba(248,250,252,.3)}
+.nav-back{color:var(--text3);font-size:.8rem;text-decoration:none}
+.nav-back:hover{color:var(--milk2)}
+.hero{padding:54px 0 40px;position:relative}
+.hero::after{content:'';position:absolute;bottom:0;left:0;width:240px;height:3px;background:linear-gradient(90deg,#f8fafc,var(--milk3),transparent)}
+.hero-top{display:flex;align-items:center;gap:22px;margin-bottom:16px}
+.hero-icon-wrap{width:84px;height:84px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,rgba(248,250,252,.25),transparent 70%);border-radius:50%}
+.hero-icon{font-size:3.6rem;filter:drop-shadow(0 6px 18px rgba(248,250,252,.4))}
+.hero-texts h1{font-size:2.4rem;font-weight:900;letter-spacing:-1.2px;line-height:1.1}
+.hero-texts h1 .hl{background:linear-gradient(135deg,#f8fafc,#e2e8f0,#cbd5e1,#94a3b8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-texts .sub{font-size:.9rem;color:var(--text2);margin-top:6px;font-weight:500}
+.hero-bar{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border-radius:22px;font-size:.72rem;font-weight:700;border:1px solid}
+.chip.up{color:var(--up);border-color:rgba(34,197,94,.3);background:rgba(34,197,94,.08)}
+.chip.dn{color:var(--dn);border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.08)}
+.chip.nt{color:var(--nt);border-color:rgba(234,179,8,.4);background:rgba(234,179,8,.1)}
+.chip.pu{color:var(--purple);border-color:rgba(168,85,247,.3);background:rgba(168,85,247,.08)}
+.chip.mk{color:var(--milk2);border-color:rgba(203,213,225,.4);background:rgba(248,250,252,.08)}
+.chip.or{color:var(--orange);border-color:rgba(249,115,22,.3);background:rgba(249,115,22,.08)}
+.chip.bl{color:var(--blue);border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.08)}
+.alert{border-radius:var(--r);padding:18px 22px;margin-bottom:14px;display:flex;gap:14px;border:1px solid;font-size:.85rem;line-height:1.75;color:var(--text2);position:relative}
+.alert::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
+.alert strong{color:var(--text)}
+.alert .ai{font-size:1.4rem;flex-shrink:0;margin-top:1px}
+.alert.green{background:linear-gradient(90deg,rgba(34,197,94,.08),rgba(34,197,94,.02));border-color:rgba(34,197,94,.25)}
+.alert.green::before{background:var(--up)}
+.alert.red{background:linear-gradient(90deg,rgba(239,68,68,.08),rgba(239,68,68,.02));border-color:rgba(239,68,68,.25)}
+.alert.red::before{background:var(--dn)}
+.alert.amber{background:linear-gradient(90deg,rgba(234,179,8,.1),rgba(234,179,8,.02));border-color:rgba(234,179,8,.3)}
+.alert.amber::before{background:var(--nt)}
+.alert.blue{background:linear-gradient(90deg,rgba(59,130,246,.08),rgba(59,130,246,.02));border-color:rgba(59,130,246,.25)}
+.alert.blue::before{background:var(--blue)}
+.alert.purple{background:linear-gradient(90deg,rgba(168,85,247,.08),rgba(168,85,247,.02));border-color:rgba(168,85,247,.25)}
+.alert.purple::before{background:var(--purple)}
+.alert.orange{background:linear-gradient(90deg,rgba(249,115,22,.1),rgba(249,115,22,.02));border-color:rgba(249,115,22,.3)}
+.alert.orange::before{background:var(--orange)}
+.alert.milk{background:linear-gradient(90deg,rgba(203,213,225,.13),rgba(248,250,252,.04));border-color:rgba(203,213,225,.4)}
+.alert.milk::before{background:var(--milk2)}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin:24px 0}
+.kpi{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:16px 18px;position:relative;transition:all .25s}
+.kpi:hover{transform:translateY(-3px);border-color:var(--border2)}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2)}
+.kpi.up::before{background:linear-gradient(90deg,var(--up),var(--leaf2))}
+.kpi.dn::before{background:linear-gradient(90deg,var(--dn),var(--orange))}
+.kpi.nt::before{background:linear-gradient(90deg,var(--nt),#fde047)}
+.kpi.bl::before{background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.kpi.pu::before{background:linear-gradient(90deg,var(--purple),var(--pink))}
+.kpi.or::before{background:linear-gradient(90deg,var(--orange),#fde047)}
+.kpi.mk::before{background:linear-gradient(90deg,#cbd5e1,var(--milk2))}
+.kpi-lb{font-size:.6rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:5px;font-weight:700}
+.kpi-val{font-size:1.18rem;font-weight:900;letter-spacing:-.5px;line-height:1.2}
+.kpi-val.up{color:var(--up)}.kpi-val.dn{color:var(--dn)}.kpi-val.nt{color:var(--nt)}.kpi-val.bl{color:var(--blue)}.kpi-val.pu{color:var(--purple)}.kpi-val.or{color:var(--orange)}.kpi-val.mk{color:var(--milk2)}
+.kpi-sub{font-size:.66rem;color:var(--text3);margin-top:3px;font-weight:500}
+.dv{height:1px;background:linear-gradient(90deg,transparent,var(--border2) 20%,var(--milk2) 50%,var(--border2) 80%,transparent);margin:36px 0}
+.stitle{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.stitle .icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.stitle h2{font-size:1.18rem;font-weight:800;letter-spacing:-.3px}
+.stitle h2 span{color:var(--text2);font-weight:400;font-size:.85rem;margin-left:4px}
+.co{border-radius:var(--r);padding:20px 24px;margin-bottom:14px;border-left:4px solid;font-size:.85rem;color:var(--text2);line-height:1.85;background:linear-gradient(90deg,var(--bg2),var(--bg3))}
+.co strong{color:var(--text)}
+.co h4{font-size:.98rem;font-weight:800;margin-bottom:10px}
+.co.up{border-color:var(--up)}.co.up h4{color:var(--up)}
+.co.dn{border-color:var(--dn)}.co.dn h4{color:var(--dn)}
+.co.nt{border-color:var(--nt)}.co.nt h4{color:var(--nt)}
+.co.bl{border-color:var(--blue)}.co.bl h4{color:var(--blue)}
+.co.or{border-color:var(--orange)}.co.or h4{color:var(--orange)}
+.co.pu{border-color:var(--purple)}.co.pu h4{color:var(--purple)}
+.co.mk{border-color:var(--milk2)}.co.mk h4{color:var(--milk2)}
+.chart-box{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--r);padding:22px 24px;margin-bottom:14px}
+.chart-box h3{font-size:.9rem;color:var(--text);margin-bottom:14px;font-weight:700;display:flex;align-items:center;gap:8px}
+.chart-box h3 .ch-tag{margin-left:auto;font-size:.62rem;font-weight:700;padding:2px 10px;border-radius:10px;background:rgba(203,213,225,.18);color:var(--milk2)}
+.chart-wrap{position:relative;height:290px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:800px){.grid2,.grid3{grid-template-columns:1fr}}
+.tbl-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--border);margin-bottom:14px;background:var(--bg2)}
+table{width:100%;border-collapse:collapse;font-size:.78rem}
+thead th{background:linear-gradient(180deg,var(--bg3),var(--bg4));padding:12px 14px;text-align:center;font-weight:800;color:var(--text2);font-size:.66rem;text-transform:uppercase;letter-spacing:.9px;border-bottom:1px solid var(--border)}
+tbody td{padding:10px 12px;border-bottom:1px solid rgba(42,42,58,.5);text-align:center}
+tbody tr:hover{background:rgba(203,213,225,.05)}
+.td-name{text-align:left!important;font-weight:700;white-space:nowrap}
+.td-up{color:var(--up);font-weight:800}.td-dn{color:var(--dn);font-weight:800}.td-nt{color:var(--nt);font-weight:800}
+.thermo h4{font-size:.84rem;color:var(--text);margin-bottom:10px;font-weight:700}
+.th-bar{height:14px;border-radius:7px;position:relative;box-shadow:inset 0 1px 4px rgba(0,0,0,.4)}
+.th-marker{position:absolute;top:-6px;width:4px;height:26px;background:#fff;border-radius:2px;transform:translateX(-50%);box-shadow:0 0 12px rgba(255,255,255,.6)}
+.th-lb{display:flex;justify-content:space-between;font-size:.66rem;color:var(--text3);margin-top:6px;font-weight:600}
+.card{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--r);padding:22px 26px;margin-bottom:14px}
+.opinion{background:linear-gradient(135deg,rgba(203,213,225,.18),rgba(248,250,252,.06),rgba(203,213,225,.02));border:1px solid rgba(248,250,252,.3);border-radius:var(--r);padding:30px 32px;margin:26px 0;position:relative}
+.opinion::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#cbd5e1,var(--milk2),#f8fafc,#cbd5e1)}
+.opinion h3{font-size:1.08rem;font-weight:800;color:var(--milk2);margin-bottom:12px}
+.opinion p{font-size:.88rem;color:var(--text2);line-height:1.9;margin-bottom:12px}
+.opinion p strong{color:var(--text)}
+.opinion .scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.opinion .sc{padding:14px 16px;border-radius:10px;border:1px solid;background:rgba(0,0,0,.3)}
+.opinion .sc.up{border-color:rgba(34,197,94,.3)}.opinion .sc.nt{border-color:rgba(234,179,8,.3)}.opinion .sc.dn{border-color:rgba(239,68,68,.3)}
+.opinion .sc h5{font-size:.78rem;font-weight:800;margin-bottom:6px}
+.opinion .sc.up h5{color:var(--up)}.opinion .sc.nt h5{color:var(--nt)}.opinion .sc.dn h5{color:var(--dn)}
+.opinion .sc p{font-size:.74rem;line-height:1.6;margin:0}
+@media(max-width:700px){.opinion .scenarios{grid-template-columns:1fr}}
+.opinion .sig{margin-top:18px;padding-top:14px;border-top:1px solid rgba(203,213,225,.2);font-size:.78rem;color:var(--text3);font-style:italic}
+.footer{border-top:1px solid var(--border);padding:42px 0;text-align:center;margin-top:36px}
+.footer-brand{font-size:1.5rem;font-weight:900;margin-bottom:12px}
+.footer-brand .r{color:var(--milk2)}.footer-brand .i{color:var(--leaf2)}
+.footer p{font-size:.78rem;color:var(--text3);line-height:1.8}
+.footer-credits{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+.footer-credits h4{font-size:.92rem;color:var(--milk2);font-weight:700;margin-bottom:6px}
+.footer-credits .name{font-size:1.05rem;font-weight:800;color:var(--text)}
+.footer-credits .title{font-size:.78rem;color:var(--milk3);font-weight:600;margin-bottom:8px}
+.footer-credits .desc{font-size:.74rem;color:var(--text2);line-height:1.7;max-width:540px;margin:0 auto 12px}
+.footer-credits .contact{font-size:.74rem;color:var(--text3)}
+.footer-credits .contact a{color:var(--milk2);text-decoration:none}
+.bignum-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+.bignum{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:20px 18px;text-align:center}
+.bignum .v{font-size:1.7rem;font-weight:900;letter-spacing:-1px;line-height:1;margin-bottom:6px}
+.bignum .v.up{color:var(--up)}.bignum .v.dn{color:var(--dn)}.bignum .v.nt{color:var(--nt)}.bignum .v.mk{color:var(--milk2)}
+.bignum .l{font-size:.72rem;color:var(--text2);font-weight:600}
+.bignum .s{font-size:.66rem;color:var(--text3);margin-top:3px}
+@media(max-width:700px){.bignum-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.hero-top{flex-direction:column;text-align:center}.hero-texts h1{font-size:1.65rem}.kpi-row{grid-template-columns:repeat(2,1fr)}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap"><div class="nav-left"><img src="https://ruralinrv.github.io/ruralin/logo.png" alt="Rural IN" class="nav-logo-img" onerror="this.style.display='none'"><div class="nav-logo"><span class="r">Rural</span> <span class="i">IN</span></div><div class="nav-badge">🥛 LEITE</div></div><a href="portal-30-04.html" class="nav-back">← Voltar</a></div></nav>
+
+<div class="wrap">
+
+<section class="hero">
+  <div class="hero-top">
+    <div class="hero-icon-wrap"><span class="hero-icon">🥛</span></div>
+    <div class="hero-texts">
+      <h1><span class="hl">Leite</span> · Radar Semanal</h1>
+      <div class="sub">27–30 Abril 2026 · CEPEA · Embrapa · 3ª alta consecutiva! · Mar/26: R$ 2,3924/L (+10,5%) · Oferta restrita · UHT R$ 4,94/L</div>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <span class="chip mk">📊 Média BR Mar: R$ 2,39/L (+10,5%)</span>
+    <span class="chip up">📈 3ª alta consecutiva!</span>
+    <span class="chip dn">📉 ICAP-L: −11,1% 1ºT (oferta cai!)</span>
+    <span class="chip or">🥛 UHT atacado: R$ 4,94/L (+19%)</span>
+    <span class="chip nt">🌍 Imports +33,3%! Déficit US$95mi</span>
+    <span class="chip pu">🏦 Selic: 14,75% → 14,50%</span>
+  </div>
+</section>
+
+<div class="bignum-row">
+  <div class="bignum"><div class="v mk">R$ 2,3924</div><div class="l">Média BR Mar/26 ao produtor</div><div class="s">+10,5% mês · 3ª alta consecutiva</div></div>
+  <div class="bignum"><div class="v up">+17,6%</div><div class="l">Acumulado 1ºT/26</div><div class="s">Mas −18,7% real vs mar/25</div></div>
+  <div class="bignum"><div class="v dn">−11,1%</div><div class="l">ICAP-L 1ºT/26 (captação)</div><div class="s">Oferta restrita · entressafra</div></div>
+  <div class="bignum"><div class="v nt">R$ 4,94/L</div><div class="l">Leite UHT atacado SP</div><div class="s">+19% sobre março!</div></div>
+</div>
+
+<div class="alert milk">
+  <span class="ai">🥛</span>
+  <div><strong style="color:var(--milk2)">3ª ALTA CONSECUTIVA! Preço ao produtor sobe 10,5% em março/26 · Maior salto em meses!</strong><br>
+  <strong>CEPEA · Boletim do Leite Abril/2026 (Ano 32, Nº 370):</strong><br>
+  ▸ <strong>Mar/26 Média Brasil:</strong> R$ 2,3924/L (+10,5% vs fev)<br>
+  ▸ <strong>Fev/26:</strong> R$ 2,1464/L (+5,43%)<br>
+  ▸ <strong>Jan/26:</strong> R$ 2,0367/L (+2,4%)<br>
+  ▸ <strong>Dez/25:</strong> R$ 1,99/L (mínima ciclo!)<br>
+  ▸ <strong>Acum 1ºT/26:</strong> +17,6% nominal!<br>
+  ▸ <strong>Mas −18,7% real</strong> vs mar/25 (deflacionado IPCA)<br>
+  ▸ <strong>Média 1ºT/26:</strong> R$ 2,2038/L (−23,6% real ano)<br><br>
+  <strong>Por estado (CEPEA · Mar/26):</strong><br>
+  ▸ <strong>🥇 PR:</strong> R$ 2,4719/L (mais alto!)<br>
+  ▸ <strong>🥈 MG:</strong> R$ 2,4580/L (gigante leiteiro)<br>
+  ▸ <strong>🥉 SP:</strong> R$ 2,4249/L<br>
+  ▸ <strong>4º SC:</strong> R$ 2,3593/L<br>
+  ▸ <strong>5º GO:</strong> R$ 2,3391/L<br>
+  ▸ <strong>6º RS:</strong> R$ 2,3061/L<br>
+  ▸ <strong>7º RJ:</strong> R$ 2,2789/L<br>
+  ▸ <strong>8º BA:</strong> R$ 2,1858/L<br>
+  ▸ <strong>9º ES:</strong> R$ 2,0555/L (menor)<br><br>
+  <strong>Por que essa alta forte?</strong><br>
+  ▸ <strong>Oferta caiu MUITO:</strong> ICAP-L −11,1% no 1ºT/26<br>
+  ▸ <strong>Sazonalidade:</strong> Pasto pior · custo nutrição alto<br>
+  ▸ <strong>Cautela investimentos:</strong> Reflexo crise 2025 (preços caíram 9 meses!)<br>
+  ▸ <strong>Competição laticínios:</strong> Brigando por matéria-prima escassa<br>
+  ▸ <strong>Leite spot em alta:</strong> Antecipou movimento<br>
+  ▸ <strong>Importações em alta:</strong> Sintoma da escassez!</div>
+</div>
+
+<div class="alert green">
+  <span class="ai">📈</span>
+  <div><strong style="color:var(--up)">PRODUÇÃO 2025 BATEU RECORDE! 27,4 bi litros · +7,3% vs 2020 · Brasil é gigante mundial!</strong><br>
+  <strong>IBGE · Produção 2025:</strong><br>
+  ▸ <strong>Total Brasil 2025:</strong> 27,4 bilhões de litros (RECORDE!)<br>
+  ▸ <strong>Crescimento:</strong> +7,3% vs 2020 (recorde anterior)<br>
+  ▸ <strong>4ºT/2025:</strong> +8,6% vs 4ºT/24 (recorde trimestral)<br>
+  ▸ <strong>Goiás 4ºT/25:</strong> +10,2% (melhor desde 2020!)<br>
+  ▸ <strong>Goiás total 2025:</strong> 2,3 bi litros<br>
+  ▸ <strong>Posição mundial:</strong> 5º maior produtor (atrás Índia, EUA, Paquistão, China)<br><br>
+  <strong>Top 6 estados produtores 2025 (estimativa):</strong><br>
+  ▸ <strong>🥇 Minas Gerais:</strong> ~9 bi L (33% nacional!)<br>
+  ▸ <strong>🥈 Paraná:</strong> ~4,8 bi L (17%)<br>
+  ▸ <strong>🥉 Rio Grande do Sul:</strong> ~4,5 bi L (16%)<br>
+  ▸ <strong>4º Goiás:</strong> 2,3 bi L (8,4%)<br>
+  ▸ <strong>5º Santa Catarina:</strong> ~2,5 bi L (9%)<br>
+  ▸ <strong>6º São Paulo:</strong> ~1,5 bi L (5,5%)<br><br>
+  <strong>Trajetória produção:</strong><br>
+  ▸ <strong>2020:</strong> 25,5 bi L (referência)<br>
+  ▸ <strong>2024:</strong> 25,5 bi L (estagnado)<br>
+  ▸ <strong>2025:</strong> 27,4 bi L (+6,8% vs 24!)<br>
+  ▸ <strong>1ºS/2025:</strong> Disparou +9,3% no 2ºT (maior em 10 anos!)<br>
+  ▸ <strong>2026:</strong> Início com cautela · oferta restrita<br><br>
+  <strong>Bubalinocultura em ascensão:</strong><br>
+  ▸ <strong>Rebanho búfalos BR:</strong> 1,8 mi cabeças (+20,2% em 5 anos!)<br>
+  ▸ <strong>Goiás:</strong> +4,1% (mais moderado)<br>
+  ▸ <strong>Leite búfalo:</strong> Premium · queijos especiais (mussarela buffalo)<br>
+  ▸ <strong>Mercado:</strong> Restaurantes, pizzarias, gastronomia<br>
+  ▸ <strong>Preço:</strong> 2-3x leite bovino</div>
+</div>
+
+<div class="alert orange">
+  <span class="ai">🥛</span>
+  <div><strong style="color:var(--orange)">DERIVADOS DISPARARAM! UHT R$ 4,94/L · Muçarela e Leite em pó também subiram forte!</strong><br>
+  <strong>Atacado SP (1ª quinzena abr/26):</strong><br>
+  ▸ <strong>Leite UHT:</strong> R$ 4,94/L (+19% sobre março!)<br>
+  ▸ <strong>Leite UHT Mar/26:</strong> R$ 4,16/L (alta histórica)<br>
+  ▸ <strong>Muçarela:</strong> Repasses de preços firmes<br>
+  ▸ <strong>Leite em pó:</strong> Em alta consistente<br>
+  ▸ <strong>Spot leite cru:</strong> R$ 2,065/L (jan) → R$ 2,30/L (abr)<br><br>
+  <strong>Para o consumidor (IPCA · Mar/26):</strong><br>
+  ▸ <strong>Leite longa vida:</strong> +11,7%! (encareceu fortemente)<br>
+  ▸ <strong>Iogurte:</strong> +1,58%<br>
+  ▸ <strong>Queijo:</strong> +1,95%<br>
+  ▸ <strong>Leite em pó:</strong> +0,85%<br>
+  ▸ <strong>Manteiga:</strong> +1,2%<br>
+  ▸ <strong>Cesta lácteos:</strong> Forte impacto inflação alimentação<br><br>
+  <strong>Conseleites apontam mais altas:</strong><br>
+  ▸ <strong>Paraná:</strong> Lidera projeções<br>
+  ▸ <strong>Rio Grande do Sul:</strong> 2º maior alta projetada<br>
+  ▸ <strong>Santa Catarina:</strong> Forte<br>
+  ▸ <strong>Minas Gerais:</strong> Também em alta<br>
+  ▸ <strong>Tendência disseminada</strong> · não pontual<br><br>
+  <strong>Leite spot (atacado bruto):</strong><br>
+  ▸ <strong>Jan/26 1ª quinz:</strong> R$ 1,74/L (estável)<br>
+  ▸ <strong>Jan/26 2ª quinz:</strong> R$ 2,065/L (+18,7%!)<br>
+  ▸ <strong>Mar/26 ambas quinz:</strong> Em alta<br>
+  ▸ <strong>Spot é termômetro</strong> · antecipa movimentos<br><br>
+  <strong>Repasses ao varejo:</strong> Indústria está repassando custos · consumidor sente no bolso · efeito inflacionário lácteos forte 2026.</div>
+</div>
+
+<div class="alert red">
+  <span class="ai">🌍</span>
+  <div><strong style="color:var(--dn)">IMPORTAÇÕES DISPARARAM! +33,3% em mar/26 · 242,6 mi litros EqL · Déficit US$ 95 mi!</strong><br>
+  <strong>Comércio Exterior Lácteos · Mar/26 (Secex):</strong><br>
+  ▸ <strong>Importações:</strong> 242,65 mi L EqL (+33,3% vs fev!)<br>
+  ▸ <strong>Exportações:</strong> 5,6 mi L EqL (+11,2%)<br>
+  ▸ <strong>Déficit balança láctea:</strong> US$ 95 milhões (+32% mês!)<br>
+  ▸ <strong>Razão BR é deficitário</strong> · sempre importou<br><br>
+  <strong>Ironia do mercado 2026:</strong><br>
+  ▸ <strong>Produção interna BR caindo</strong> (ICAP-L −11,1%)<br>
+  ▸ <strong>Demanda interna firme</strong><br>
+  ▸ <strong>Indústria importa</strong> para suprir gap<br>
+  ▸ <strong>Origem principal:</strong> Argentina, Uruguai, União Europeia<br>
+  ▸ <strong>Produto principal:</strong> Leite em pó (54% das importações)<br><br>
+  <strong>Histórico importações 2025:</strong><br>
+  ▸ <strong>2025 total:</strong> Bi 2 bi L EqL importados<br>
+  ▸ <strong>Argentina e Uruguai:</strong> +7-8% produção em 2025<br>
+  ▸ <strong>Mercosul:</strong> Permite fluxo livre<br>
+  ▸ <strong>Câmbio:</strong> Dólar fraco (R$ 4,95) ENCARECE importação · positivo p/ produtor BR<br><br>
+  <strong>Exportações BR (2026):</strong><br>
+  ▸ <strong>Fev/26:</strong> 3,2 mil t (+15,1%)<br>
+  ▸ <strong>Goiás:</strong> 61,4 t (+112%! · destaque)<br>
+  ▸ <strong>Destinos:</strong> Países africanos · vizinhos LatAm<br>
+  ▸ <strong>Produtos:</strong> Leite em pó, queijo, manteiga<br>
+  ▸ <strong>BR não é grande exportador</strong> (consome quase tudo)<br><br>
+  <strong>Dinâmica esperada:</strong> Com produção BR caindo + dólar fraco · importações continuarão altas · pressionando déficit · MAS ajudando a CONTROLAR preço ao consumidor (oferta complementar do exterior).</div>
+</div>
+
+<div class="alert nt">
+  <span class="ai">🐄</span>
+  <div><strong style="color:var(--nt)">CUSTOS APERTANDO! COE +0,46% mar · +2,11% acum 1ºT · Pasto ruim aumenta nutrição</strong><br>
+  <strong>CEPEA — Custo Operacional Efetivo (COE) Mar/26:</strong><br>
+  ▸ <strong>Variação Mar:</strong> +0,46% Média Brasil<br>
+  ▸ <strong>Acum 1ºT/26:</strong> +2,11%<br>
+  ▸ <strong>Sazonalidade outono:</strong> Pasto piora<br>
+  ▸ <strong>Nutrição animal:</strong> Custo subiu (silagem, concentrado)<br>
+  ▸ <strong>Operações agrícolas:</strong> Preparo solo encareceu<br><br>
+  <strong>Estrutura de custos pecuária leiteira BR:</strong><br>
+  ▸ <strong>Alimentação rebanho:</strong> 55-65% custo total<br>
+  ▸ <strong>Concentrado/ração:</strong> 30-35% (milho + soja)<br>
+  ▸ <strong>Silagem/volumoso:</strong> 20-25%<br>
+  ▸ <strong>Mão de obra:</strong> 12-18%<br>
+  ▸ <strong>Sanidade/medicamentos:</strong> 5-8%<br>
+  ▸ <strong>Energia + combustível:</strong> 4-6%<br>
+  ▸ <strong>Depreciação/manutenção:</strong> 8-12%<br>
+  ▸ <strong>Reprodução (sêmen):</strong> 2-4%<br><br>
+  <strong>Custo médio (litro de leite produzido BR):</strong><br>
+  ▸ <strong>Pequeno produtor:</strong> R$ 2,30-2,80/L (margem apertada)<br>
+  ▸ <strong>Médio produtor:</strong> R$ 1,80-2,20/L (saudável)<br>
+  ▸ <strong>Grande produtor (top 1%):</strong> R$ 1,30-1,60/L (lucro alto)<br>
+  ▸ <strong>Preço atual recebido:</strong> R$ 2,39/L<br>
+  ▸ <strong>Margem produtor médio:</strong> R$ 0,19-0,59/L (8-25%)<br><br>
+  <strong>Cotações insumos atuais (CEPEA):</strong><br>
+  ▸ <strong>Milho Campinas:</strong> R$ 66,67/sc<br>
+  ▸ <strong>Soja Paranaguá:</strong> R$ 128,47/sc<br>
+  ▸ <strong>Farelo soja 47%:</strong> R$ 1.520/t<br>
+  ▸ <strong>Núcleo proteico:</strong> R$ 3,00-4,50/kg<br><br>
+  <strong>Quem ganha/perde?</strong><br>
+  ▸ <strong>Pequeno (até 100 L/dia):</strong> Margem zero/negativa · risco de saída atividade<br>
+  ▸ <strong>Médio (100-500 L/dia):</strong> Margem ok · 70% dos produtores BR<br>
+  ▸ <strong>Grande (>500 L/dia):</strong> Lucro forte · escala<br>
+  ▸ <strong>Top tecnificado:</strong> Vacas 30+ L/dia · margem 30-40%</div>
+</div>
+
+<div class="alert blue">
+  <span class="ai">🥄</span>
+  <div><strong style="color:var(--blue)">CONSUMO BR · Lácteos é staple alimentar! 173 L/hab/ano · Cesta básica resiliente</strong><br>
+  <strong>Brasil é grande consumidor:</strong><br>
+  ▸ <strong>Consumo per capita:</strong> 173 L equivalente-leite/hab/ano<br>
+  ▸ <strong>Distribuição:</strong> Leite fluido, queijo, iogurte, manteiga<br>
+  ▸ <strong>Recomendação OMS:</strong> 200 L/hab/ano (Brasil ainda abaixo)<br>
+  ▸ <strong>Mercado interno:</strong> R$ 100+ bi/ano<br>
+  ▸ <strong>Indústria de laticínios:</strong> 2.500+ empresas<br><br>
+  <strong>Maiores empresas BR:</strong><br>
+  ▸ <strong>Lactalis:</strong> Ex-Parmalat · líder UHT<br>
+  ▸ <strong>Nestlé:</strong> Iogurtes · sobremesas<br>
+  ▸ <strong>Vigor (J. Macêdo):</strong> Queijos, manteiga<br>
+  ▸ <strong>Itambé (Cooperativa):</strong> MG · forte<br>
+  ▸ <strong>Embaré:</strong> Lácteos diversos<br>
+  ▸ <strong>Frimesa (Coop):</strong> PR · queijos<br>
+  ▸ <strong>Castrolanda:</strong> PR · cooperativa premium<br>
+  ▸ <strong>CCGL:</strong> RS · Cooperativa Central<br>
+  ▸ <strong>Piracanjuba (Bela Vista):</strong> GO · UHT<br>
+  ▸ <strong>Italac:</strong> GO · líder regional<br><br>
+  <strong>Tendências consumo 2026:</strong><br>
+  ▸ <strong>Premium e funcional:</strong> Probióticos, kefir, lactose-free<br>
+  ▸ <strong>Plant-based concorrência:</strong> Aveia, soja (mas pequena)<br>
+  ▸ <strong>Sem lactose:</strong> Em forte expansão<br>
+  ▸ <strong>Queijos especiais:</strong> Forte crescimento<br>
+  ▸ <strong>Marcas próprias supermercado:</strong> Pressão preço<br>
+  ▸ <strong>Iogurte grego:</strong> Premium em alta<br><br>
+  <strong>Inflação lácteos é desafio 2026:</strong><br>
+  ▸ <strong>Preços subindo</strong> impacta classes C/D/E<br>
+  ▸ <strong>Trade-down:</strong> Leite UHT → leite em pó<br>
+  ▸ <strong>Substituição:</strong> Queijo nobre → mussarela popular<br>
+  ▸ <strong>Risco:</strong> Demanda pode esfriar se preços continuarem subindo</div>
+</div>
+
+<div class="alert purple">
+  <span class="ai">🏦</span>
+  <div><strong style="color:var(--purple)">MACRO: COPOM CORTOU SELIC PARA 14,50%! Crédito + dólar fraco · Cenário misto p/ leite</strong><br>
+  Banco Central cortou Selic em 0,25 p.p. (29/04). <strong>Dólar:</strong> R$ 4,9523 (mín 2 anos!).<br><br>
+  <strong>Para o setor leiteiro:</strong><br>
+  ▸ <strong>Selic 14,50%:</strong> Crédito custeio mais barato<br>
+  ▸ <strong>BNDES Leite:</strong> Linhas modernização ordenha · resfriamento<br>
+  ▸ <strong>Plano Safra 26/27:</strong> Foco confinamento, genética, sêmen sexado<br>
+  ▸ <strong>Pronaf Leite:</strong> Pequenos produtores · forte<br>
+  ▸ <strong>Refinanciamento:</strong> Pequenos descapitalizados pós-2025 alongam dívidas<br><br>
+  <strong>Dólar fraco — IMPACTOS DUPLOS:</strong><br>
+  ▸ ✓ <strong>Encarece importação leite</strong> (Argentina, Uruguai) · positivo p/ produtor BR!<br>
+  ▸ ✓ <strong>Limita pressão</strong> de leite em pó importado<br>
+  ▸ ✓ <strong>Sêmen sexado importado</strong> mais barato<br>
+  ▸ ✓ <strong>Equipamentos modernos</strong> (DeLaval, Lely robôs) baratos<br>
+  ▸ ✗ <strong>Pouco efeito direto:</strong> Leite BR não é exportado<br><br>
+  <strong>Cenário composto 2026:</strong><br>
+  ▸ <strong>Preço produtor SOBE</strong> (positivo!)<br>
+  ▸ <strong>Custos sobem</strong> (negativo)<br>
+  ▸ <strong>Margem produtor:</strong> Recuperando · ainda apertada<br>
+  ▸ <strong>Selic baixa:</strong> Alívio crédito<br>
+  ▸ <strong>Dólar fraco:</strong> Bom (limita importação)<br>
+  ▸ <strong>Importações altas:</strong> Negativo (mas necessário p/ atender demanda)<br>
+  ▸ <strong>= Cenário POSITIVO p/ produtor médio/grande</strong><br>
+  ▸ <strong>= APERTADO p/ pequeno produtor</strong><br><br>
+  <strong>Conclusão:</strong> Setor lácteo BR vive ciclo de RECUPERAÇÃO em 2026 após o ano difícil de 2025. Produtor que sobreviveu e investiu agora colhe benefício. Pequeno produtor (até 100 L/dia) continua em risco · concentração da atividade segue inevitável.</div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#cbd5e1,#94a3b8)">📊</div><h2>Indicadores-Chave <span>— CEPEA · IBGE · Embrapa · Macro</span></h2></div>
+
+<div class="kpi-row">
+  <div class="kpi mk"><div class="kpi-lb">Média BR Mar/26</div><div class="kpi-val mk">R$ 2,39</div><div class="kpi-sub">/L · +10,5% mês!</div></div>
+  <div class="kpi up"><div class="kpi-lb">PR (mais alto)</div><div class="kpi-val up">R$ 2,47</div><div class="kpi-sub">/L · líder preço</div></div>
+  <div class="kpi up"><div class="kpi-lb">Minas Gerais</div><div class="kpi-val up">R$ 2,46</div><div class="kpi-sub">/L · gigante BR</div></div>
+  <div class="kpi nt"><div class="kpi-lb">São Paulo</div><div class="kpi-val nt">R$ 2,42</div><div class="kpi-sub">/L · forte demanda</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Goiás</div><div class="kpi-val nt">R$ 2,34</div><div class="kpi-sub">/L · em ascensão</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Rio Grande do Sul</div><div class="kpi-val nt">R$ 2,31</div><div class="kpi-sub">/L · Sul tradicional</div></div>
+  <div class="kpi up"><div class="kpi-lb">Acumulado 1ºT/26</div><div class="kpi-val up">+17,6%</div><div class="kpi-sub">Mas −18,7% real</div></div>
+  <div class="kpi up"><div class="kpi-lb">Produção 2025 BR</div><div class="kpi-val up">27,4 bi L</div><div class="kpi-sub">RECORDE! +7,3% vs 2020</div></div>
+  <div class="kpi dn"><div class="kpi-lb">ICAP-L 1ºT/26</div><div class="kpi-val dn">−11,1%</div><div class="kpi-sub">Captação caindo!</div></div>
+  <div class="kpi or"><div class="kpi-lb">UHT atacado SP</div><div class="kpi-val or">R$ 4,94</div><div class="kpi-sub">/L · +19% mês!</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Spot leite cru</div><div class="kpi-val nt">R$ 2,30</div><div class="kpi-sub">/L · termômetro</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Importações Mar/26</div><div class="kpi-val dn">+33,3%</div><div class="kpi-sub">242,6 mi L EqL</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Déficit balança</div><div class="kpi-val dn">US$ 95 mi</div><div class="kpi-sub">+32% no mês!</div></div>
+  <div class="kpi nt"><div class="kpi-lb">COE acum 1ºT</div><div class="kpi-val nt">+2,11%</div><div class="kpi-sub">Custos subindo</div></div>
+  <div class="kpi pu"><div class="kpi-lb">Selic 29/04</div><div class="kpi-val pu">14,50%</div><div class="kpi-sub">↓ 0,25 p.p.</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Dólar 30/04</div><div class="kpi-val dn">R$ 4,95</div><div class="kpi-sub">Mín 2 anos</div></div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#cbd5e1,#94a3b8)">📍</div><h2>Cotações da Semana <span>— CEPEA · 9 Estados · 27 a 30 Abril 2026</span></h2></div>
+
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Estado</th><th>Jan/26</th><th>Fev/26</th><th>Mar/26</th><th>Var. Mês</th><th>Var. 1ºT</th><th>vs Mar/25 real</th></tr></thead>
+<tbody>
+<tr><td class="td-name">🥇 Paraná (líder!)</td><td>2,0355</td><td>2,1660</td><td class="td-up">2,4719</td><td class="td-up">+14,1%</td><td class="td-up">+21,4%</td><td class="td-dn">−17%</td></tr>
+<tr><td class="td-name">🥈 Minas Gerais</td><td>2,0102</td><td>2,2030</td><td class="td-up">2,4580</td><td class="td-up">+11,6%</td><td class="td-up">+22,3%</td><td class="td-dn">−18%</td></tr>
+<tr><td class="td-name">🥉 São Paulo</td><td>2,1056</td><td>2,1963</td><td class="td-up">2,4249</td><td class="td-up">+10,4%</td><td class="td-up">+15,2%</td><td class="td-dn">−18%</td></tr>
+<tr><td class="td-name">4º Santa Catarina</td><td>1,9580</td><td>2,0727</td><td class="td-up">2,3593</td><td class="td-up">+13,8%</td><td class="td-up">+20,5%</td><td class="td-dn">−19%</td></tr>
+<tr><td class="td-name">5º Goiás</td><td>1,9234</td><td>2,1037</td><td class="td-up">2,3391</td><td class="td-up">+11,2%</td><td class="td-up">+21,6%</td><td class="td-dn">−18%</td></tr>
+<tr><td class="td-name">6º Rio Grande do Sul</td><td>2,0046</td><td>2,0962</td><td class="td-up">2,3061</td><td class="td-up">+10,0%</td><td class="td-up">+15,0%</td><td class="td-dn">−20%</td></tr>
+<tr><td class="td-name">7º Rio de Janeiro</td><td>1,9856</td><td>2,1370</td><td class="td-up">2,2789</td><td class="td-up">+6,6%</td><td class="td-up">+14,8%</td><td class="td-dn">−19%</td></tr>
+<tr><td class="td-name">8º Bahia</td><td>1,8967</td><td>2,0967</td><td class="td-up">2,1858</td><td class="td-up">+4,3%</td><td class="td-up">+15,2%</td><td class="td-dn">−21%</td></tr>
+<tr><td class="td-name">9º Espírito Santo</td><td>1,8345</td><td>1,9865</td><td class="td-up">2,0555</td><td class="td-up">+3,5%</td><td class="td-up">+12,0%</td><td class="td-dn">−22%</td></tr>
+<tr><td class="td-name">📊 Média Brasil</td><td>2,0367</td><td>2,1464</td><td class="td-up">2,3924</td><td class="td-up">+10,5%</td><td class="td-up">+17,6%</td><td class="td-dn">−18,7%</td></tr>
+</tbody>
+</table>
+</div>
+
+<p style="font-size:.78rem;color:var(--text3);margin-top:6px;text-align:center"><em>Dados CEPEA · 3ª alta consecutiva · Mas em termos reais (deflacionado IPCA) ainda muito abaixo de 2025 · Tendência de continuidade da alta esperada em abril/maio</em></p>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#cbd5e1,#94a3b8)">📈</div><h2>Análise Gráfica <span>— 6 perspectivas · Trajetória · Estados · Captação · UHT · Importação · Margem</span></h2></div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📊 Média BR Leite Produtor · 12 Meses <span class="ch-tag">CEPEA · R$/L</span></h3>
+    <div class="chart-wrap"><canvas id="ch1"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>🥛 Leite Top 6 Estados Mar/26 <span class="ch-tag">CEPEA · R$/L</span></h3>
+    <div class="chart-wrap"><canvas id="ch2"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📉 ICAP-L · Captação 1ºT/26 <span class="ch-tag">Mensal · queda</span></h3>
+    <div class="chart-wrap"><canvas id="ch3"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>🥄 Leite UHT Atacado SP · Trajetória <span class="ch-tag">R$/L</span></h3>
+    <div class="chart-wrap"><canvas id="ch4"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>🌍 Balança Láctea Mar/26 <span class="ch-tag">mi L EqL</span></h3>
+    <div class="chart-wrap"><canvas id="ch5"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>💰 Margem Produtor Médio <span class="ch-tag">R$/L</span></h3>
+    <div class="chart-wrap"><canvas id="ch6"></canvas></div>
+  </div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#94a3b8,#cbd5e1)">🔍</div><h2>Análise Aprofundada <span>— Recuperação após crise 2025 · Oferta restrita · Cenário positivo</span></h2></div>
+
+<div class="co mk">
+  <h4>🥛 A Tese Central: Setor LÁCTEO em RECUPERAÇÃO após Crise de 2025!</h4>
+  <p><strong>Brasil é gigante mundial:</strong><br>
+  ▸ <strong>5º produtor mundial</strong> de leite (atrás Índia, EUA, Paquistão, China)<br>
+  ▸ <strong>Produção 2025:</strong> 27,4 bi litros (RECORDE!)<br>
+  ▸ <strong>Crescimento vs 2020:</strong> +7,3%<br>
+  ▸ <strong>Mercado interno:</strong> R$ 100+ bi/ano<br>
+  ▸ <strong>Empregos:</strong> 4 mi pessoas na cadeia (campo + indústria)<br>
+  ▸ <strong>Indústria laticínios:</strong> 2.500+ empresas<br>
+  ▸ <strong>Consumo per capita:</strong> 173 L EqL/ano<br><br>
+  <strong>Crise de 2025 (lição dura):</strong><br>
+  ▸ <strong>1ºS/2025:</strong> Produção disparou +9,3% (maior em 10 anos!)<br>
+  ▸ <strong>Sobreoferta:</strong> Preços despencaram 9 meses consecutivos<br>
+  ▸ <strong>Mín dez/25:</strong> R$ 1,99/L (queda −22,6% vs 2024!)<br>
+  ▸ <strong>Pequenos produtores:</strong> Saíram da atividade em massa<br>
+  ▸ <strong>Margens negativas:</strong> Maioria do ano<br><br>
+  <strong>Recuperação 2026 (3ª alta consecutiva!):</strong><br>
+  ▸ <strong>Jan/26:</strong> +2,4% (R$ 2,04/L)<br>
+  ▸ <strong>Fev/26:</strong> +5,43% (R$ 2,15/L)<br>
+  ▸ <strong>Mar/26:</strong> +10,5% (R$ 2,39/L) · acelerou!<br>
+  ▸ <strong>Acumulado:</strong> +17,6% nominal<br>
+  ▸ <strong>Real:</strong> Ainda −18,7% vs mar/25<br><br>
+  <strong>Por que essa recuperação?</strong><br>
+  ▸ <strong>1. Oferta restringiu:</strong> ICAP-L caiu −11,1% no 1ºT<br>
+  ▸ <strong>2. Pequenos saíram:</strong> Reduziu produção total<br>
+  ▸ <strong>3. Cautela investimentos:</strong> Restantes seguraram<br>
+  ▸ <strong>4. Sazonalidade pasto:</strong> Outono pior<br>
+  ▸ <strong>5. Demanda firme:</strong> Mercado interno consume<br>
+  ▸ <strong>6. Importações encarecem:</strong> Dólar mais alto<br><br>
+  <strong>Tendência continua:</strong> Cepea projeta alta forte mantida em abril/maio. Inverno (mai-set) tradicionalmente preço mais alto (entressafra). Setor pode encerrar 2026 acima de R$ 2,80/L em pico.</p>
+</div>
+
+<div class="co up">
+  <h4>📈 ICAP-L Mostra a Verdade · Captação CAIU 11,1% no 1ºT/26 · Oferta Restrita Real!</h4>
+  <p><strong>Índice de Captação de Leite (ICAP-L · CEPEA):</strong><br>
+  ▸ <strong>Jan/26:</strong> Inicial · base 100<br>
+  ▸ <strong>Fev/26:</strong> −3,6% vs jan<br>
+  ▸ <strong>Mar/26:</strong> −3,9% vs fev<br>
+  ▸ <strong>Acum 1ºT/26:</strong> −11,1% vs jan<br>
+  ▸ <strong>Comparativo 2024:</strong> Bem abaixo<br>
+  ▸ <strong>Disseminado:</strong> Todas as bacias em queda<br><br>
+  <strong>Por que captação caiu tanto?</strong><br>
+  ▸ <strong>Crise 2025 deixou cicatriz:</strong> Pequenos saíram<br>
+  ▸ <strong>Investimentos cautelosos:</strong> Restantes seguraram expansão<br>
+  ▸ <strong>Sazonalidade:</strong> Outono BR · pasto pior<br>
+  ▸ <strong>Custo nutrição alto:</strong> Confinamento mais caro<br>
+  ▸ <strong>Vacas mais jovens:</strong> Genética em transição<br><br>
+  <strong>Estados mais afetados (queda produção):</strong><br>
+  ▸ <strong>Minas Gerais:</strong> Líder · queda significativa<br>
+  ▸ <strong>Paraná:</strong> Forte queda<br>
+  ▸ <strong>Goiás:</strong> Recuo notável<br>
+  ▸ <strong>RS:</strong> Mais resiliente (recuperação enchentes 2024)<br>
+  ▸ <strong>SC:</strong> Manteve melhor<br><br>
+  <strong>Quando vai recuperar?</strong><br>
+  ▸ <strong>Mai-Jul/26:</strong> Inverno · oferta segue restrita<br>
+  ▸ <strong>Ago-Set/26:</strong> Início safra primavera<br>
+  ▸ <strong>Out-Dez/26:</strong> Recuperação esperada<br>
+  ▸ <strong>2027:</strong> Volta a crescer (provável)<br><br>
+  <strong>Cautela com investimentos:</strong> Produtor médio/grande está RECUPERANDO MARGEM agora · não vai expandir agressivamente · pode não retomar volume 2025 antes de 2027.</p>
+</div>
+
+<div class="co or">
+  <h4>🥄 Derivados em ALTA FORTE · UHT R$ 4,94 (+19%!) · Repasse ao Consumidor!</h4>
+  <p><strong>Atacado SP — Trajetória Lácteos 2026:</strong><br>
+  ▸ <strong>Leite UHT Mar/26:</strong> R$ 4,16/L<br>
+  ▸ <strong>Leite UHT 1ª quinz Abr/26:</strong> R$ 4,94/L (+19%!)<br>
+  ▸ <strong>Variação 6 meses:</strong> +35-40%!<br>
+  ▸ <strong>Muçarela:</strong> Reajustes consecutivos<br>
+  ▸ <strong>Leite em pó:</strong> Em alta<br>
+  ▸ <strong>Manteiga:</strong> Premium · forte alta<br><br>
+  <strong>IPCA Mar/26 — Cesta Lácteos:</strong><br>
+  ▸ <strong>Leite longa vida:</strong> +11,7% mês!<br>
+  ▸ <strong>Leite longa vida fev:</strong> +1,2%<br>
+  ▸ <strong>Leite longa vida jan:</strong> −5,6%<br>
+  ▸ <strong>Iogurte:</strong> +1,58%<br>
+  ▸ <strong>Queijo:</strong> +1,95%<br>
+  ▸ <strong>Leite em pó:</strong> +0,85%<br>
+  ▸ <strong>Manteiga:</strong> +1,2%<br><br>
+  <strong>Spot leite cru — Termômetro:</strong><br>
+  ▸ <strong>Jan/26 1ª quinz:</strong> R$ 1,74/L<br>
+  ▸ <strong>Jan/26 2ª quinz:</strong> R$ 2,065/L (+18,7%!)<br>
+  ▸ <strong>Mar/26:</strong> R$ 2,30/L<br>
+  ▸ <strong>Abr/26:</strong> Tendência alta<br>
+  ▸ <strong>Função:</strong> Antecipa movimento mercado físico<br><br>
+  <strong>Conseleites (preço de referência mensal):</strong><br>
+  ▸ <strong>Paraná:</strong> Lidera projeções alta<br>
+  ▸ <strong>RS:</strong> Forte alta projetada<br>
+  ▸ <strong>SC:</strong> Acompanha<br>
+  ▸ <strong>MG:</strong> Em alta<br>
+  ▸ <strong>Sinalização disseminada</strong><br><br>
+  <strong>Repasse ao consumidor:</strong><br>
+  ▸ <strong>Indústria:</strong> Compra leite cru mais caro<br>
+  ▸ <strong>Atacado:</strong> Reajusta preços (defasagem 30-45 dias)<br>
+  ▸ <strong>Varejo:</strong> Repassa ao final (defasagem +15 dias)<br>
+  ▸ <strong>Total ciclo:</strong> 45-60 dias da fazenda à prateleira<br>
+  ▸ <strong>Risco:</strong> Demanda pode esfriar se preços continuarem altos<br>
+  ▸ <strong>Trade-down:</strong> Consumidor migra para marcas mais baratas</p>
+</div>
+
+<div class="co dn">
+  <h4>🌍 Importações DISPARARAM 33%! Argentina + Uruguai Suprem Gap Brasileiro</h4>
+  <p><strong>Comércio Exterior Lácteos Mar/26 (Secex):</strong><br>
+  ▸ <strong>Importações:</strong> 242,65 mi L EqL (+33,3% vs fev!)<br>
+  ▸ <strong>Exportações:</strong> 5,6 mi L EqL (+11,2%)<br>
+  ▸ <strong>Déficit balança:</strong> US$ 95 mi (+32%!)<br>
+  ▸ <strong>Brasil é DEFICITÁRIO</strong> em lácteos · sempre foi<br><br>
+  <strong>Origens das importações:</strong><br>
+  ▸ <strong>🇦🇷 Argentina:</strong> 35-40% (líder · Mercosul)<br>
+  ▸ <strong>🇺🇾 Uruguai:</strong> 25-30% (forte produção)<br>
+  ▸ <strong>🇺🇸 EUA:</strong> 10-15% (leite em pó)<br>
+  ▸ <strong>🇪🇺 UE (Holanda, Alemanha):</strong> 10% (queijos premium)<br>
+  ▸ <strong>🇳🇿 Nova Zelândia:</strong> 5% (manteiga premium)<br><br>
+  <strong>Produtos importados (composição):</strong><br>
+  ▸ <strong>Leite em pó (LPI/LPD):</strong> 54% das importações<br>
+  ▸ <strong>Queijos:</strong> 25% (especialmente premium)<br>
+  ▸ <strong>Manteiga:</strong> 10%<br>
+  ▸ <strong>Soro de leite (whey):</strong> 8% (indústria proteínas)<br>
+  ▸ <strong>Outros:</strong> 3%<br><br>
+  <strong>Por que importação cresceu tanto?</strong><br>
+  ▸ <strong>1. Produção BR caindo:</strong> ICAP-L −11,1%<br>
+  ▸ <strong>2. Demanda interna firme:</strong> Indústria precisa<br>
+  ▸ <strong>3. Argentina e Uruguai:</strong> +7-8% produção 2025<br>
+  ▸ <strong>4. Mercosul:</strong> Tarifa zero · fluxo livre<br>
+  ▸ <strong>5. Spread atrativo:</strong> Preço internacional ainda baixo<br>
+  ▸ <strong>6. Logística rápida:</strong> Caminhão pelo Sul<br><br>
+  <strong>Mas câmbio mudou jogo (abr/26):</strong><br>
+  ▸ <strong>Dólar caiu para R$ 4,95</strong> (mín 2 anos!)<br>
+  ▸ <strong>Encareceu importação BR</strong> em 8-10%<br>
+  ▸ <strong>Spread reduzido</strong> · atratividade cai<br>
+  ▸ <strong>2ºT/26:</strong> Pode haver redução importações<br>
+  ▸ <strong>Bom p/ produtor BR</strong><br><br>
+  <strong>Exportações modestas:</strong><br>
+  ▸ <strong>BR não é grande exportador</strong><br>
+  ▸ <strong>5,6 mi L EqL/mês:</strong> Volume pequeno<br>
+  ▸ <strong>Destinos:</strong> Países africanos · LatAm vizinhos<br>
+  ▸ <strong>Goiás:</strong> Cresceu 112% em fev/26 (destaque!)<br>
+  ▸ <strong>Produtos:</strong> Leite em pó · queijos<br>
+  ▸ <strong>Estratégia:</strong> Excedente quando há</p>
+</div>
+
+<div class="co bl">
+  <h4>📍 Top Estados · Minas Gerais Domina · GO em Ascensão · Sul Tradicional</h4>
+  <p><strong>🥇 Minas Gerais (líder histórico):</strong><br>
+  ▸ <strong>Produção 2025:</strong> ~9 bi litros (33% nacional!)<br>
+  ▸ <strong>Tradição centenária:</strong> Triângulo Mineiro · Sul de MG<br>
+  ▸ <strong>Bacias principais:</strong> Pouso Alegre, Juiz de Fora, Uberaba<br>
+  ▸ <strong>Cooperativas:</strong> Itambé, Coovel, Cemil, Centroleite<br>
+  ▸ <strong>Indústria:</strong> Centenas de queijarias artesanais (Serro, Canastra)<br>
+  ▸ <strong>Mar/26 preço:</strong> R$ 2,4580/L (2º mais alto BR)<br><br>
+  <strong>🥈 Paraná (qualidade premium):</strong><br>
+  ▸ <strong>Produção 2025:</strong> ~4,8 bi L (17%)<br>
+  ▸ <strong>Cluster Castro/Carambei:</strong> Holandeses · DOPs<br>
+  ▸ <strong>Cooperativas fortes:</strong> Castrolanda, Frísia, Capal<br>
+  ▸ <strong>Tecnificação:</strong> Top BR · vacas 35+ L/dia<br>
+  ▸ <strong>Mar/26 preço:</strong> R$ 2,4719/L (LÍDER de preço!)<br>
+  ▸ <strong>Razão preço alto:</strong> Qualidade superior · sólidos altos<br><br>
+  <strong>🥉 Rio Grande do Sul (Sul tradicional):</strong><br>
+  ▸ <strong>Produção 2025:</strong> ~4,5 bi L (16%)<br>
+  ▸ <strong>Recuperação enchentes 2024:</strong> Forte<br>
+  ▸ <strong>Cooperativas:</strong> CCGL, Languiru, Santa Clara<br>
+  ▸ <strong>Concentração:</strong> Vale do Taquari · Noroeste<br>
+  ▸ <strong>Mar/26 preço:</strong> R$ 2,3061/L<br><br>
+  <strong>4º Goiás (em forte ascensão!):</strong><br>
+  ▸ <strong>Produção 2025:</strong> 2,3 bi L<br>
+  ▸ <strong>4ºT/25:</strong> +10,2% (melhor desde 2020!)<br>
+  ▸ <strong>Cooperativas:</strong> CCPR, Centroleite Goiás<br>
+  ▸ <strong>Indústrias:</strong> Italac, Piracanjuba (sede!)<br>
+  ▸ <strong>Mar/26 preço:</strong> R$ 2,3391/L<br>
+  ▸ <strong>Crescimento exportação:</strong> +112% em fev/26!<br><br>
+  <strong>5º Santa Catarina:</strong><br>
+  ▸ <strong>Produção 2025:</strong> ~2,5 bi L (9%)<br>
+  ▸ <strong>Modelo:</strong> Pequenas e médias propriedades<br>
+  ▸ <strong>Cooperativismo forte</strong><br>
+  ▸ <strong>Mar/26 preço:</strong> R$ 2,3593/L<br><br>
+  <strong>6º São Paulo:</strong><br>
+  ▸ <strong>Produção 2025:</strong> ~1,5 bi L (5,5%)<br>
+  ▸ <strong>Em queda:</strong> Urbanização pressiona<br>
+  ▸ <strong>Mas mercado consumidor enorme</strong><br>
+  ▸ <strong>Mar/26 preço:</strong> R$ 2,4249/L (3º mais alto)<br><br>
+  <strong>Bubalinocultura emergente:</strong><br>
+  ▸ <strong>Rebanho BR:</strong> 1,8 mi cabeças (+20% em 5 anos!)<br>
+  ▸ <strong>Líderes:</strong> Pará, Amazonas, MS<br>
+  ▸ <strong>Leite búfalo:</strong> Premium · queijo mussarela buffalo<br>
+  ▸ <strong>Preço:</strong> 2-3x leite bovino (R$ 6-8/L!)<br>
+  ▸ <strong>Mercado:</strong> Restaurantes · pizzarias gourmet</p>
+</div>
+
+<div class="co nt">
+  <h4>💰 Custos · COE Subindo · Margem do Produtor Recupera mas Apertada</h4>
+  <p><strong>CEPEA — Custo Operacional Efetivo (COE) Mar/26:</strong><br>
+  ▸ <strong>Variação Mar:</strong> +0,46% Média Brasil<br>
+  ▸ <strong>Acum 1ºT/26:</strong> +2,11%<br>
+  ▸ <strong>Sazonalidade:</strong> Outono · pasto pior<br>
+  ▸ <strong>Nutrição animal:</strong> Custo subiu (silagem, concentrado)<br>
+  ▸ <strong>Operações agrícolas:</strong> Preparo solo encareceu<br><br>
+  <strong>Estrutura custos pecuária leiteira BR:</strong><br>
+  ▸ <strong>Alimentação rebanho:</strong> 55-65% custo total<br>
+  ▸ <strong>Concentrado/ração:</strong> 30-35% (milho + soja)<br>
+  ▸ <strong>Silagem/volumoso:</strong> 20-25%<br>
+  ▸ <strong>Mão de obra:</strong> 12-18%<br>
+  ▸ <strong>Sanidade/medicamentos:</strong> 5-8%<br>
+  ▸ <strong>Energia + combustível:</strong> 4-6%<br>
+  ▸ <strong>Depreciação/manutenção:</strong> 8-12%<br>
+  ▸ <strong>Reprodução (sêmen):</strong> 2-4%<br><br>
+  <strong>Custo médio (litro de leite produzido):</strong><br>
+  ▸ <strong>Pequeno produtor (até 100 L/dia):</strong> R$ 2,30-2,80/L<br>
+  ▸ <strong>Médio (100-500 L/dia):</strong> R$ 1,80-2,20/L<br>
+  ▸ <strong>Grande (500-2.000 L/dia):</strong> R$ 1,50-1,80/L<br>
+  ▸ <strong>Top tecnificado:</strong> R$ 1,30-1,60/L<br>
+  ▸ <strong>Preço atual recebido:</strong> R$ 2,39/L Média BR<br><br>
+  <strong>Análise por categoria de produtor:</strong><br>
+  ▸ <strong>Pequeno (60% produtores):</strong> Margem ZERO/NEGATIVA<br>
+  &nbsp;&nbsp;Vacas 12-18 L/dia · pouca tecnificação · saída atividade<br>
+  ▸ <strong>Médio (30% produtores):</strong> Margem R$ 0,19-0,59/L (8-25%)<br>
+  &nbsp;&nbsp;Vacas 18-25 L/dia · cooperado · viável<br>
+  ▸ <strong>Grande (10% produtores):</strong> Margem R$ 0,59-0,89/L (25-37%)<br>
+  &nbsp;&nbsp;Vacas 25-35 L/dia · empresarial · lucrativo<br>
+  ▸ <strong>Top 1% tecnificado:</strong> Margem R$ 0,79-1,09/L (33-46%)<br>
+  &nbsp;&nbsp;Vacas 35+ L/dia · confinamento · super lucrativo<br><br>
+  <strong>Concentração inexorável:</strong><br>
+  ▸ <strong>Brasil tinha 1,3 mi produtores</strong> em 2010<br>
+  ▸ <strong>Hoje:</strong> ~700 mil (queda 46%!)<br>
+  ▸ <strong>2030 projeção:</strong> 400 mil produtores<br>
+  ▸ <strong>Aumento de escala</strong> · profissionalização<br>
+  ▸ <strong>Pequeno tradicional:</strong> Em extinção<br>
+  ▸ <strong>Sobreviventes:</strong> Tecnificados ou cooperados</p>
+</div>
+
+<div class="co pu">
+  <h4>🏦 Macro: Selic Baixa + Dólar Fraco = Ambos POSITIVOS · Cenário Recuperação Continua</h4>
+  <p><strong>Decisão Copom (29/04):</strong> Selic cortada para 14,50% (−0,25 p.p.)<br>
+  <strong>Dólar:</strong> R$ 4,9523 (mín 2 anos!)<br><br>
+  <strong>Para o setor lácteo:</strong><br>
+  ▸ <strong>Selic 14,50%:</strong> Crédito custeio mais barato<br>
+  ▸ <strong>BNDES Leite:</strong> Linhas modernização<br>
+  ▸ <strong>Plano Safra 26/27:</strong> Foco confinamento, sêmen sexado<br>
+  ▸ <strong>Pronaf:</strong> Pequenos produtores acessam<br>
+  ▸ <strong>Refinanciamento:</strong> Pequenos descapitalizados pós-2025 alongam<br><br>
+  <strong>Dólar fraco — IMPACTO POSITIVO inédito:</strong><br>
+  ▸ ✓ <strong>Encarece importação leite</strong> · positivo p/ produtor BR!<br>
+  ▸ ✓ <strong>Limita pressão</strong> de leite em pó argentino/uruguaio<br>
+  ▸ ✓ <strong>Spread importação reduzido</strong><br>
+  ▸ ✓ <strong>Sêmen sexado importado</strong> mais barato (compra)<br>
+  ▸ ✓ <strong>Equipamentos modernos</strong> (DeLaval, Lely robôs) baratos<br>
+  ▸ ✗ <strong>Pouco efeito direto:</strong> Leite BR não é exportado significativamente<br><br>
+  <strong>Investimentos viáveis com Selic baixa:</strong><br>
+  ▸ <strong>Robô de ordenha (Lely, DeLaval):</strong> R$ 800 mi-1,2 mi (50-70 vacas)<br>
+  ▸ <strong>Sêmen sexado:</strong> Aumenta produção feminina (vacas)<br>
+  ▸ <strong>Confinamento (free-stall):</strong> R$ 8-15 mil/vaca<br>
+  ▸ <strong>Resfriador a granel:</strong> R$ 50-150 mil<br>
+  ▸ <strong>Genética premium:</strong> Holandesa, Jersey<br>
+  ▸ <strong>Silagem mecanizada:</strong> Reduz custo nutrição<br><br>
+  <strong>Cenário composto 2026:</strong><br>
+  ▸ <strong>Preço produtor SOBE</strong> (positivo!)<br>
+  ▸ <strong>Custos sobem moderado</strong> (negativo leve)<br>
+  ▸ <strong>Margem produtor:</strong> Recuperando<br>
+  ▸ <strong>Selic baixa:</strong> Alívio crédito<br>
+  ▸ <strong>Dólar fraco:</strong> Bom (limita importação)<br>
+  ▸ <strong>Importações altas:</strong> Negativo (mas necessário)<br>
+  ▸ <strong>= Cenário POSITIVO p/ produtor médio/grande</strong><br>
+  ▸ <strong>= APERTADO p/ pequeno produtor</strong><br><br>
+  <strong>Conclusão:</strong> Setor lácteo BR vive ciclo de RECUPERAÇÃO em 2026 após o ano difícil de 2025. Produtor que sobreviveu e investiu agora colhe benefício. Pequeno produtor (até 100 L/dia) continua em risco · concentração da atividade segue inevitável.</p>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#94a3b8,#cbd5e1)">🌡️</div><h2>Termômetros do Mercado <span>— Pressões e Vetores</span></h2></div>
+
+<div class="grid3">
+  <div class="card">
+    <div class="thermo"><h4>📊 Preço Produtor BR</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:62%"></div></div>
+      <div class="th-lb"><span>Crash</span><span>Médio</span><span>Pico</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ RECUPERANDO</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">R$ 2,39/L · 3ª alta consecutiva</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🥛 Captação ICAP-L</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:22%"></div></div>
+      <div class="th-lb"><span>Restrita</span><span>Média</span><span>Recorde</span></div>
+      <p style="font-size:.78rem;color:var(--dn);margin-top:8px;font-weight:700">⬇ RESTRITA</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">−11,1% no 1ºT/26!</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🥄 Derivados (UHT, queijo)</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:88%"></div></div>
+      <div class="th-lb"><span>Crash</span><span>Médio</span><span>Pico</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ DISPAROU!</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">UHT R$ 4,94/L · +19% mês!</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>💰 Margem Produtor Médio</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:55%"></div></div>
+      <div class="th-lb"><span>Negativa</span><span>Média</span><span>Excelente</span></div>
+      <p style="font-size:.78rem;color:var(--nt);margin-top:8px;font-weight:700">→ MELHORANDO</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">R$ 0,19-0,59/L (8-25%)</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🌍 Importações</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--up),var(--nt),var(--dn))"><div class="th-marker" style="left:80%"></div></div>
+      <div class="th-lb"><span>Baixa</span><span>Média</span><span>Alta</span></div>
+      <p style="font-size:.78rem;color:var(--dn);margin-top:8px;font-weight:700">⬆ ALTAS</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">+33,3% mar/26 · déficit US$ 95mi</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🌽 Custos Ração</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--up),var(--nt),var(--dn))"><div class="th-marker" style="left:42%"></div></div>
+      <div class="th-lb"><span>Barato</span><span>Médio</span><span>Caro</span></div>
+      <p style="font-size:.78rem;color:var(--nt);margin-top:8px;font-weight:700">→ ESTÁVEL</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">COE +2,11% 1ºT</p>
+    </div>
+  </div>
+</div>
+
+<div class="dv"></div>
+
+<div class="opinion">
+  <h3>🎯 Opinião do Analista — Setor LÁCTEO em RECUPERAÇÃO! Hora de Apostar nos Sobreviventes!</h3>
+
+  <p><strong>O setor lácteo brasileiro vive ciclo de RECUPERAÇÃO em 2026 após a CRISE de 2025: PRODUÇÃO 2025 atingiu RECORDE de 27,4 bi litros (+7,3% vs 2020 · Brasil é 5º produtor mundial!). Mas crise se instalou: SOBREOFERTA derrubou preços por 9 meses · mín dez/25 R$ 1,99/L (−22,6% vs 2024!). Pequenos produtores SAÍRAM da atividade em massa. RECUPERAÇÃO começou: Jan +2,4% · Fev +5,43% · MAR/26 +10,5%! (Média BR R$ 2,3924/L · 3ª alta consecutiva). PR lidera (R$ 2,47/L) · MG (R$ 2,46/L · maior produtor BR). MAS em termos REAIS ainda −18,7% vs mar/25. Razões da alta: a) ICAP-L (captação) caiu 11,1% no 1ºT, b) Sazonalidade outono pior, c) Pequenos saíram (oferta menor), d) Indústria briga matéria-prima. UHT atacado SP DISPAROU para R$ 4,94/L (+19% mês!) · IPCA leite longa vida +11,7% mar! IMPORTAÇÕES dispararam +33,3% (242 mi L EqL · déficit US$ 95 mi · Argentina + Uruguai suprem gap). COE +2,11% acum 1ºT (custos subindo levemente). Selic 14,50% + dólar R$ 4,95 = ambos POSITIVOS p/ leite. Margem produtor médio R$ 0,19-0,59/L (8-25%) recuperando. Concentração inevitável: BR tinha 1,3 mi produtores (2010) · hoje 700 mil · 2030 projeção 400 mil. PRODUTOR SOBREVIVENTE = VENCEDOR!</strong></p>
+
+  <p><strong>Semana 27-30/abr (curta · feriado 1º Mai) — Em síntese:</strong><br>
+  ▸ <strong>Média BR Mar/26:</strong> R$ 2,3924/L (+10,5% mês · 3ª alta consecutiva!)<br>
+  ▸ <strong>PR (líder!):</strong> R$ 2,4719/L · <strong>MG:</strong> R$ 2,4580/L · <strong>SP:</strong> R$ 2,4249/L<br>
+  ▸ <strong>SC:</strong> R$ 2,3593/L · <strong>GO:</strong> R$ 2,3391/L · <strong>RS:</strong> R$ 2,3061/L<br>
+  ▸ <strong>RJ:</strong> R$ 2,2789/L · <strong>BA:</strong> R$ 2,1858/L · <strong>ES:</strong> R$ 2,0555/L<br>
+  ▸ <strong>Acum 1ºT/26:</strong> +17,6% nominal · −18,7% real (vs mar/25)<br>
+  ▸ <strong>Produção 2025:</strong> 27,4 bi L (RECORDE · +7,3% vs 2020)<br>
+  ▸ <strong>ICAP-L 1ºT/26:</strong> −11,1% (oferta restrita!)<br>
+  ▸ <strong>UHT atacado SP:</strong> R$ 4,94/L (+19% mês!)<br>
+  ▸ <strong>Spot leite cru:</strong> R$ 2,30/L (em alta)<br>
+  ▸ <strong>Importações Mar:</strong> 242,6 mi L EqL (+33,3%! · déficit US$ 95 mi)<br>
+  ▸ <strong>Argentina + Uruguai:</strong> 60-70% das importações<br>
+  ▸ <strong>Custos:</strong> COE +2,11% acum · ração estável<br>
+  ▸ <strong>Selic:</strong> 14,50% · <strong>Dólar:</strong> R$ 4,95 (limita importação · positivo!)</p>
+
+  <p><strong>Recomendações estratégicas:</strong></p>
+
+  <p><strong>1. PRODUTOR PEQUENO (até 100 L/dia): EVOLUA OU SAIA!</strong> Custo R$ 2,30-2,80/L vs preço R$ 2,39/L = margem zero/negativa. Opções: a) Tecnificar (vacas 18+ L/dia · genética melhorada · sêmen sexado), b) Cooperar (Castrolanda, Itambé · taxa garantida), c) Migrar para produção orgânica/A2 (premium R$ 4-6/L), d) Diversificar (queijo artesanal · iogurte caseiro), e) SAIR e migrar para frango/suíno integrado.</p>
+
+  <p><strong>2. PRODUTOR MÉDIO (100-500 L/dia): MOMENTO DE INVESTIR · APROVEITE SELIC BAIXA!</strong> Margem R$ 0,19-0,59/L (8-25%) recuperando. Selic 14,50% com tendência queda. BNDES Leite tem linhas favoráveis. Investimentos viáveis: a) Sêmen sexado (vacas 70%+ · expansão sustentável), b) Resfriador granel (qualidade leite · bonificação coop), c) Pasto rotacionado intensivo (Voisin), d) Genética holandesa/jersey, e) Silagem mecanizada.</p>
+
+  <p><strong>3. PRODUTOR GRANDE (500+ L/dia): PROFISSIONALIZE · ROBOTIZE!</strong> Margem R$ 0,59-1,09/L (25-46%) saudável. Investimentos premium: a) Robô de ordenha (Lely, DeLaval · R$ 800 mil-1,2 mi · 50-70 vacas/robô), b) Confinamento free-stall (R$ 8-15 mil/vaca · vacas 35+ L/dia), c) Sistema TMR (mistura total · nutrição precisa), d) Sensores/colares (cio · alimentação · saúde), e) Energia solar (reduz custo 40-60%).</p>
+
+  <p><strong>4. INVESTIDORES (cooperativas, industriais): APROVEITE PREÇO ATACADO ALTO!</strong> UHT R$ 4,94/L · margem industrial atrativa (40-50% sobre cru). Itambé, Castrolanda, Frísia, Lactalis devem reportar bons resultados. Risco: oferta volátil pode afetar produção. Aposta: integração vertical (compra granjas) · marca premium (queijos especiais).</p>
+
+  <p><strong>5. ATENÇÃO À CONCENTRAÇÃO INEVITÁVEL!</strong> BR perdeu 600 mil produtores (2010-2025). Tendência segue. Quem sobrevive: tecnificados, cooperados, escala. Pequeno tradicional sumirá. Política pública (Pronaf) tenta amortecer. Mas força econômica é mais forte. Empresário rural precisa decidir: a) Investir e crescer (50-300 vacas em ordenha), b) Cooperar (taxa garantida + bonificação), c) Sair e fazer outra coisa.</p>
+
+  <p><strong>6. CONSUMIDOR FINAL: ATENÇÃO À CESTA LÁCTEOS!</strong> Inflação lácteos forte 2026. Estratégias: a) Comprar marcas próprias supermercado (15-25% mais barato), b) Trocar UHT por leite em pó (durabilidade · custo/L menor), c) Comprar queijo direto produtor (online · feira), d) Aproveitar promoções (compra mensal · congelar). Família 4 pessoas pode economizar R$ 100-200/mês.</p>
+
+  <p><strong>7. ACOMPANHE INVERNO (mai-set/26)!</strong> Entressafra natural. Preços tendem a SUBIR mais (oferta restrita + demanda firme). Faixa esperada: R$ 2,80-3,20/L em pico (jul-ago). Produtor: aproveitar preço alto · vender máximo. Indústria: estocar derivados antes da alta. Investidor: olhar ações Lactalis, Camil, Vigor (se cotadas).</p>
+
+  <div class="opinion .scenarios" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px">
+    <div class="sc up">
+      <h5>🟢 Cenário Altista</h5>
+      <p>ICAP-L continua caindo · Argentina+Uruguai produzem menos · dólar segue baixo · custos caem · Quaresma 2027 puxa demanda → <strong>Preço R$ 2,80-3,20/L · margem 30%+ · investimentos bombam</strong>. Probabilidade: ~40%</p>
+    </div>
+    <div class="sc nt">
+      <h5>🟡 Cenário Neutro</h5>
+      <p>Mercado lateral · oferta recupera gradualmente · importações estáveis · custos estáveis · demanda média → <strong>Preço R$ 2,40-2,70/L · margem 15-20% · concentração segue</strong>. Probabilidade: ~45%</p>
+    </div>
+    <div class="sc dn">
+      <h5>🔴 Cenário Baixista</h5>
+      <p>Produção recupera fortemente · importações disparam · dólar despenca · demanda esfria · sobreoferta volta → <strong>Preço R$ 2,00-2,30/L · margem zero · pequenos saem</strong>. Probabilidade: ~15%</p>
+    </div>
+  </div>
+
+  <div class="sig">📅 Análise Rural IN · Quinta, 30/Abr/2026 · Semana curta (feriado 1º Mai) · 3ª ALTA CONSECUTIVA · OFERTA RESTRITA · IMPORTAÇÕES BOMBAM · MARGEM PRODUTOR EM RECUPERAÇÃO!</div>
+</div>
+
+<footer class="footer"><div class="wrap">
+  <div class="footer-brand"><span class="r">Rural</span> <span class="i">IN</span></div>
+  <p>Radar Agro Semanal · Leite · Semana 27–30 Abril 2026<br>
+  Fontes: CEPEA-Esalq/USP · Boletim do Leite Abr/2026 · Embrapa Gado de Leite · Cileite · IBGE · Secex/MDIC · MilkPoint · OCB · SEAPA-GO · Rabobank · Sociedade Nacional de Agricultura · Banco Central · COPOM</p>
+  <div class="footer-credits">
+    <h4>Análise e Construção</h4>
+    <div class="name">Dr. Sidney Souza</div>
+    <div class="title">Economista e Adm. Agrícola — Estrategista Econômico do Produtor</div>
+    <div class="desc">Especialista em economia da fazenda e gestão de risco no agro<br>Transformamos dados da fazenda em decisões econômicas<br>Ajudamos produtores a entender se o mercado sustenta seu negócio</div>
+    <div class="contact">📧 <a href="mailto:sidneyagro@gmail.com">sidneyagro@gmail.com</a> · 📱 <a href="tel:+5564992266886">(64) 9 9226-6886</a> · 📸 <a href="https://instagram.com/ruralin.ai" target="_blank">@ruralin.ai</a></div>
+  </div>
+  <p style="margin-top:18px"><em>⚠️ Material informativo. Não constitui recomendação de investimento.</em></p>
+</div></footer>
+
+</div>
+
+<script>
+const gc='rgba(42,42,58,.5)';
+const tt={backgroundColor:'rgba(19,19,28,.97)',borderColor:'#3a3a4f',borderWidth:1,titleFont:{size:11,weight:'700'},bodyFont:{size:10},padding:10,cornerRadius:8};
+
+new Chart(document.getElementById('ch1').getContext('2d'),{
+  type:'line',
+  data:{labels:['Mai/25','Jul/25','Set/25','Nov/25','Dez/25','Jan/26','Fev/26','Mar/26'],
+    datasets:[{label:'Média BR Leite (R$/L)',data:[2.45,2.30,2.10,2.02,1.99,2.04,2.15,2.39],
+      borderColor:'#cbd5e1',backgroundColor:'rgba(203,213,225,.13)',borderWidth:3,fill:true,tension:.3,pointRadius:5,pointBackgroundColor:'#cbd5e1',pointBorderColor:'#f8fafc',pointBorderWidth:1.5}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+    scales:{y:{min:1.8,max:2.6,grid:{color:gc},ticks:{callback:function(v){return'R$'+v.toFixed(2)},font:{size:9,weight:'600'},color:'#cbd5e1'}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#cbd5e1'}}}}
+});
+
+new Chart(document.getElementById('ch2').getContext('2d'),{
+  type:'bar',
+  data:{labels:['🥇 PR','🥈 MG','🥉 SP','SC','GO','RS','RJ','BA','ES'],
+    datasets:[{label:'R$/L (Mar/26)',data:[2.4719,2.4580,2.4249,2.3593,2.3391,2.3061,2.2789,2.1858,2.0555],
+      backgroundColor:function(c){if(c.dataIndex<=2)return 'rgba(34,197,94,.7)';if(c.dataIndex<=5)return 'rgba(203,213,225,.55)';return 'rgba(245,158,11,.5)'},
+      borderColor:function(c){if(c.dataIndex<=2)return '#22c55e';if(c.dataIndex<=5)return '#cbd5e1';return '#f59e0b'},
+      borderWidth:2,borderRadius:7}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+    scales:{y:{min:1.9,max:2.6,grid:{color:gc},ticks:{callback:function(v){return'R$'+v.toFixed(2)},font:{size:9,weight:'600'},color:'#cbd5e1'}},x:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#cbd5e1'}}}}
+});
+
+new Chart(document.getElementById('ch3').getContext('2d'),{
+  type:'line',
+  data:{labels:['Dez/25','Jan/26','Fev/26','Mar/26'],
+    datasets:[{label:'ICAP-L (índice base 100 jan/26)',data:[105,100,96.4,92.7],
+      borderColor:'#ef4444',backgroundColor:'rgba(239,68,68,.13)',borderWidth:3,fill:true,tension:.3,pointRadius:6}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+    scales:{y:{min:88,max:108,grid:{color:gc},ticks:{font:{size:9,weight:'600'},color:'#cbd5e1'}},x:{grid:{display:false},ticks:{font:{size:11,weight:'700'},color:'#cbd5e1'}}}}
+});
+
+new Chart(document.getElementById('ch4').getContext('2d'),{
+  type:'line',
+  data:{labels:['Out/25','Nov/25','Dez/25','Jan/26','Fev/26','Mar/26','Abr/26'],
+    datasets:[{label:'UHT Atacado SP (R$/L)',data:[3.50,3.40,3.30,3.36,3.55,4.16,4.94],
+      borderColor:'#f97316',backgroundColor:'rgba(249,115,22,.13)',borderWidth:3,fill:true,tension:.3,pointRadius:5}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+    scales:{y:{min:3,max:5.2,grid:{color:gc},ticks:{callback:function(v){return'R$'+v.toFixed(2)},font:{size:9,weight:'600'},color:'#cbd5e1'}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#cbd5e1'}}}}
+});
+
+new Chart(document.getElementById('ch5').getContext('2d'),{
+  type:'bar',
+  data:{labels:['Importações','Exportações','Déficit'],
+    datasets:[{label:'mi L EqL (Mar/26)',data:[242.65,5.6,237.05],
+      backgroundColor:['rgba(239,68,68,.7)','rgba(34,197,94,.6)','rgba(168,85,247,.7)'],
+      borderColor:['#ef4444','#22c55e','#a855f7'],
+      borderWidth:2,borderRadius:8}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+    scales:{y:{min:0,max:260,grid:{color:gc},ticks:{font:{size:9,weight:'600'},color:'#cbd5e1'}},x:{grid:{display:false},ticks:{font:{size:11,weight:'700'},color:'#cbd5e1'}}}}
+});
+
+new Chart(document.getElementById('ch6').getContext('2d'),{
+  type:'bar',
+  data:{labels:['Custo Médio','Receita (Mar/26)'],
+    datasets:[{label:'R$/L (produtor médio)',data:[2.00,2.39],backgroundColor:['rgba(245,158,11,.7)','rgba(34,197,94,.7)'],borderColor:['#f59e0b','#22c55e'],borderWidth:2,borderRadius:8}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt,
+    annotation:{annotations:{
+      gap:{type:'label',xValue:0.5,yValue:2.20,content:['💰 GAP','+R$ 0,39/L','MARGEM 16%!'],font:{size:11,weight:'bold'},color:'#22c55e',backgroundColor:'rgba(34,197,94,.13)',padding:6}
+    }}},
+    scales:{y:{min:0,max:3,grid:{color:gc},ticks:{callback:function(v){return'R$'+v.toFixed(2)},font:{size:9,weight:'600'},color:'#cbd5e1'}},x:{grid:{display:false},ticks:{font:{size:11,weight:'700'},color:'#cbd5e1'}}}}
+});
+</script>
+</body>
+</html>

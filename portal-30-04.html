@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Rural IN — Portal · Radar Agro Semanal · 30 Abril 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#08090d;--bg2:#0f1117;--bg3:#161821;--bg4:#1f2230;
+  --border:#252836;--border2:#3a3f52;
+  --text:#f1f5f9;--text2:#cbd5e1;--text3:#94a3b8;--text4:#64748b;
+  --green:#22c55e;--green2:#4ade80;--green3:#86efac;
+  --gold:#fbbf24;--gold2:#fde047;
+  --emerald:#10b981;--blue:#3b82f6;--cyan:#06b6d4;
+  --purple:#a855f7;--pink:#ec4899;--orange:#f97316;--red:#ef4444;
+  --r:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+body::before{
+  content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 1200px 900px at 10% 0%,rgba(34,197,94,.13),transparent),
+    radial-gradient(ellipse 1000px 800px at 90% 50%,rgba(251,191,36,.09),transparent),
+    radial-gradient(ellipse 900px 700px at 50% 100%,rgba(59,130,246,.08),transparent);
+  pointer-events:none;z-index:0;
+}
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+
+/* NAV */
+.nav{background:rgba(15,17,23,.92);backdrop-filter:blur(28px);border-bottom:1px solid var(--border);padding:14px 0;position:sticky;top:0;z-index:100}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.nav-left{display:flex;align-items:center;gap:14px}
+.nav-logo-img{height:46px;width:auto;border-radius:10px}
+.nav-logo{font-weight:900;font-size:1.3rem;letter-spacing:-.5px}
+.nav-logo .r{color:var(--green)}.nav-logo .i{color:var(--gold)}
+.nav-badge{background:linear-gradient(135deg,#22c55e,#fbbf24);padding:6px 16px;border-radius:22px;font-size:.72rem;font-weight:800;color:#0a0a0a;letter-spacing:.7px;box-shadow:0 0 30px rgba(34,197,94,.4)}
+.nav-date{font-size:.75rem;color:var(--text3);font-weight:600}
+
+/* HERO */
+.hero{padding:70px 0 50px;text-align:center;position:relative}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);color:var(--green);padding:8px 20px;border-radius:24px;font-size:.78rem;font-weight:700;margin-bottom:20px;letter-spacing:.5px}
+.hero-tag .pulse{width:8px;height:8px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+.hero h1{font-size:3.4rem;font-weight:900;letter-spacing:-2px;line-height:1.05;margin-bottom:20px}
+.hero h1 .hl{background:linear-gradient(135deg,#22c55e,#10b981,#fbbf24,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% 200%;animation:grad 6s ease infinite}
+@keyframes grad{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.hero-sub{font-size:1.05rem;color:var(--text2);max-width:760px;margin:0 auto 28px;line-height:1.7}
+.hero-stats{display:flex;justify-content:center;gap:36px;flex-wrap:wrap;margin-top:24px;padding-top:24px;border-top:1px solid var(--border)}
+.hero-stat{text-align:center}
+.hero-stat .v{font-size:1.7rem;font-weight:900;background:linear-gradient(135deg,#22c55e,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.hero-stat .l{font-size:.7rem;color:var(--text3);margin-top:4px;font-weight:600;text-transform:uppercase;letter-spacing:.8px}
+
+/* DESTAQUES */
+.highlights{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:30px 0 50px}
+.hl-card{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:18px 20px;position:relative;overflow:hidden}
+.hl-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.hl-card.up::before{background:linear-gradient(90deg,#22c55e,#86efac)}
+.hl-card.dn::before{background:linear-gradient(90deg,#ef4444,#f97316)}
+.hl-card.gd::before{background:linear-gradient(90deg,#fbbf24,#fde047)}
+.hl-card.bl::before{background:linear-gradient(90deg,#3b82f6,#06b6d4)}
+.hl-card .lbl{font-size:.62rem;color:var(--text3);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.hl-card .val{font-size:1.4rem;font-weight:900;line-height:1.1;margin-bottom:4px}
+.hl-card.up .val{color:var(--green)}
+.hl-card.dn .val{color:var(--red)}
+.hl-card.gd .val{color:var(--gold)}
+.hl-card.bl .val{color:var(--blue)}
+.hl-card .desc{font-size:.72rem;color:var(--text3);font-weight:500}
+
+/* SEÇÕES */
+.section{margin:54px 0}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.section-head h2{font-size:1.5rem;font-weight:800;display:flex;align-items:center;gap:14px}
+.section-head h2 .ico{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.section-head h2 .ico.gr{background:linear-gradient(135deg,#22c55e,#10b981)}
+.section-head h2 .ico.gd{background:linear-gradient(135deg,#fbbf24,#f97316)}
+.section-head h2 .ico.bl{background:linear-gradient(135deg,#3b82f6,#06b6d4)}
+.section-head h2 .ico.pk{background:linear-gradient(135deg,#ec4899,#a855f7)}
+.section-head h2 .ico.or{background:linear-gradient(135deg,#f97316,#fbbf24)}
+.section-head .count{font-size:.78rem;color:var(--text3);font-weight:600;background:var(--bg3);padding:6px 14px;border-radius:14px;border:1px solid var(--border)}
+
+/* GRID DE CARDS */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+
+/* CARD CULTURA */
+.card{
+  background:linear-gradient(160deg,var(--bg2),var(--bg3));
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px 18px;
+  text-decoration:none;
+  color:var(--text);
+  display:block;
+  position:relative;
+  overflow:hidden;
+  transition:all .35s cubic-bezier(.4,0,.2,1);
+  cursor:pointer;
+}
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--accent,var(--border2));
+  transition:height .3s;
+}
+.card::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.06),transparent 40%);
+  opacity:0;transition:opacity .3s;pointer-events:none;
+}
+.card:hover{transform:translateY(-4px);border-color:var(--accent,var(--border2));box-shadow:0 12px 40px -10px rgba(0,0,0,.5),0 0 0 1px var(--accent,var(--border2))}
+.card:hover::before{height:5px}
+.card:hover::after{opacity:1}
+.card-emoji{font-size:2rem;line-height:1;margin-bottom:10px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.4))}
+.card-name{font-size:1.05rem;font-weight:800;letter-spacing:-.3px;margin-bottom:6px;color:var(--text)}
+.card-stat{font-size:.78rem;color:var(--text2);font-weight:600;line-height:1.4;margin-bottom:10px}
+.card-stat .var{font-weight:800}
+.card-stat .var.up{color:var(--green)}
+.card-stat .var.dn{color:var(--red)}
+.card-stat .var.nt{color:var(--gold)}
+.card-foot{display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid rgba(255,255,255,.05)}
+.card-tag{font-size:.62rem;background:rgba(255,255,255,.06);padding:3px 9px;border-radius:8px;color:var(--text3);font-weight:700;letter-spacing:.5px}
+.card-arrow{font-size:.85rem;color:var(--text3);transition:transform .3s}
+.card:hover .card-arrow{transform:translateX(3px);color:var(--accent,var(--text))}
+
+/* Acentos por cultura */
+.card.soja{--accent:#22c55e}
+.card.milho{--accent:#fbbf24}
+.card.cafe{--accent:#92400e}
+.card.algodao{--accent:#e2e8f0}
+.card.trigo{--accent:#d4a574}
+.card.feijao{--accent:#dc2626}
+.card.arroz{--accent:#fef9c3}
+.card.cacau{--accent:#7c2d12}
+.card.laranja{--accent:#f97316}
+.card.sorgo{--accent:#b45309}
+.card.cana{--accent:#84cc16}
+.card.amendoim{--accent:#d97706}
+.card.girassol{--accent:#facc15}
+.card.boi{--accent:#a16207}
+.card.frango{--accent:#fbbf24}
+.card.suino{--accent:#fda4af}
+.card.peixes{--accent:#06b6d4}
+.card.leite{--accent:#f1f5f9}
+.card.ovos{--accent:#fef3c7}
+.card.ovinos{--accent:#a8a29e}
+.card.banana{--accent:#fde047}
+.card.maca{--accent:#dc2626}
+.card.uva{--accent:#a855f7}
+.card.manga{--accent:#f97316}
+.card.abacaxi{--accent:#facc15}
+.card.macro{--accent:#3b82f6}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--border);padding:48px 0 36px;text-align:center;margin-top:60px;background:var(--bg2)}
+.footer-brand{font-size:1.6rem;font-weight:900;margin-bottom:14px;letter-spacing:-.5px}
+.footer-brand .r{color:var(--green)}.footer-brand .i{color:var(--gold)}
+.footer p{font-size:.78rem;color:var(--text3);line-height:1.8;max-width:740px;margin:0 auto}
+.footer-credits{margin-top:28px;padding-top:24px;border-top:1px solid var(--border);max-width:600px;margin-left:auto;margin-right:auto}
+.footer-credits h4{font-size:.92rem;color:var(--green2);font-weight:700;margin-bottom:6px}
+.footer-credits .name{font-size:1.1rem;font-weight:800;color:var(--text);margin-bottom:2px}
+.footer-credits .title{font-size:.78rem;color:var(--gold);font-weight:600;margin-bottom:12px}
+.footer-credits .desc{font-size:.74rem;color:var(--text2);margin-bottom:14px}
+.footer-credits .contact{font-size:.78rem;color:var(--text3)}
+.footer-credits .contact a{color:var(--green2);text-decoration:none;margin:0 6px}
+.footer-credits .contact a:hover{text-decoration:underline}
+.disc{margin-top:20px;font-size:.7rem;color:var(--text4);font-style:italic}
+
+@media(max-width:1000px){.highlights{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){
+  .hero h1{font-size:2.2rem}
+  .hero-stats{gap:18px}
+  .hero-stat .v{font-size:1.3rem}
+  .grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .card{padding:16px 14px}
+  .card-emoji{font-size:1.7rem}
+  .card-name{font-size:.95rem}
+  .section-head h2{font-size:1.15rem}
+}
+@media(max-width:420px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-left">
+      <img src="https://ruralinrv.github.io/ruralin/logo.png" alt="Rural IN" class="nav-logo-img" onerror="this.style.display='none'">
+      <div class="nav-logo"><span class="r">Rural</span> <span class="i">IN</span></div>
+      <div class="nav-badge">📊 PORTAL · 30/04/26</div>
+    </div>
+    <div class="nav-date">Quinta · Semana 27–30 Abr</div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<section class="hero">
+  <div class="hero-tag"><span class="pulse"></span> RADAR AGRO ATUALIZADO · ABRIL/2026</div>
+  <h1><span class="hl">Portal Rural IN</span><br>Inteligência do Agro Brasileiro</h1>
+  <p class="hero-sub">Análise semanal completa de <strong>24 cadeias produtivas</strong> · Cotações Cepea · Conab · IBGE · USDA · Estatísticas oficiais e visões estratégicas para o produtor brasileiro tomar decisões inteligentes.</p>
+
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="v">25</div><div class="l">Relatórios Premium</div></div>
+    <div class="hero-stat"><div class="v">9</div><div class="l">Categorias</div></div>
+    <div class="hero-stat"><div class="v">200+</div><div class="l">Indicadores</div></div>
+    <div class="hero-stat"><div class="v">150+</div><div class="l">Gráficos Interativos</div></div>
+    <div class="hero-stat"><div class="v">30/04</div><div class="l">Última Atualização</div></div>
+  </div>
+</section>
+
+<!-- DESTAQUES DA SEMANA -->
+<div class="highlights">
+  <div class="hl-card up">
+    <div class="lbl">📈 Maior Alta da Semana</div>
+    <div class="val">Boi Gordo</div>
+    <div class="desc">@ R$ 355,45 · arroba sustenta IPPA</div>
+  </div>
+  <div class="hl-card dn">
+    <div class="lbl">📉 Maior Queda</div>
+    <div class="val">Café -16,6%</div>
+    <div class="desc">IPPA Cana e Café 1ºT/26</div>
+  </div>
+  <div class="hl-card gd">
+    <div class="lbl">🌾 Safra Recorde 25/26</div>
+    <div class="val">356,3 mi t</div>
+    <div class="desc">Conab · soja 179,2 + milho 139,6</div>
+  </div>
+  <div class="hl-card bl">
+    <div class="lbl">🏦 Macro</div>
+    <div class="val">Selic 14,50%</div>
+    <div class="desc">↓ 0,25 pp · Dólar R$ 4,95</div>
+  </div>
+</div>
+
+<!-- GRÃOS -->
+<section class="section">
+  <div class="section-head">
+    <h2><span class="ico gr">🌾</span> Grãos & Cereais</h2>
+    <span class="count">6 culturas</span>
+  </div>
+  <div class="grid">
+    <a href="soja-30-04.html" class="card soja">
+      <div class="card-emoji">🌱</div>
+      <div class="card-name">Soja</div>
+      <div class="card-stat">R$ 124,10/sc · <span class="var nt">↔️ estável</span><br>Safra 179,2 mi t</div>
+      <div class="card-foot"><span class="card-tag">CEPEA</span><span class="card-arrow">→</span></div>
+    </a>
+    <a href="milho-30-04.html" class="card milho">
+      <div class="card-emoji">🌽</div>
+      <div class="card-name">Milho</div>
+      <div class="card-stat">R$ 70,34/sc · <span class="var dn">↓ pressão</span><br>Safra 139,6 mi t</div>
+      <div class="card-foot"><span class="card-tag">CEPEA</span><span class="card-arrow">→</span></div>
+    </a>
+    <a href="trigo-30-04.html" class="card trigo">
+      <div class="card-emoji">🌾</div>
+      <div class="card-name">Trigo</div>
+      <div class="card-stat">R$ 1.380/t · <span class="var dn">↓ baixa</span><br>PR · RS lideram</div>
+      <div class="card-foot"><span class="card-tag">CEPEA</span><span class="card-arrow">→</span></div>
+    </a>
+    <a href="arroz-30-04.html" class="card arroz">
+      <div class="card-emoji">🍚</div>
+      <div class="card-name">Arroz</div>
+      <div class="card-stat">R$ 61,83/sc · <span class="var dn">↓ retração</span><br>RS = 70% BR</div>
+      <div class="card-foot"><span class="card-tag">CEPEA</span><span class="card-arrow">→</span></div>
+    </a>
+    <a href="feijao-30-04.html" class="card feijao">
+      <div class="card-emoji">🫘</div>
+      <div class="card-name">Feijão</div>
+      <div class="card-stat">Carioca em queda<br>3ª safra · oferta alta</div>
+      <div class="card-foot"><span class="card-tag">CEPEA</span><span class="card-arrow">→</span></div>
+    </a>
+    <a href="sorgo-30-04.html" class="card sorgo">
+      <div class="card-emoji">🌾</div>
+      <div class="card-name">Sorgo</div>
+      <div class="card-stat">R$ 45-50/sc · <span class="var up">↑ firme</span><br>GO · MG · MT</div>
+      <div class="card-foot"><span class="card-tag">CONAB</span><span class="card-arrow">→</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- COMMODITIES INDUSTRIAIS -->
+<section class="section">
+  <div class="section-head">
+    <h2><span class="ico or">🏭</span> Commodities Industriais</h2>
+    <span class="count">4 culturas</span>
+  </div>
+  <div class="grid">
+    <a href="cafe-30-04.html" class="card cafe">
+      <div class="card-emoji">☕</div>
+      <div class="card-name">Café</div>
+      <div class="card-stat">R$ 1.947,89/sc · <span class="var dn">↓ -16,6%</span><br>Arábica · Conillon R$ 1.016</div>
+      <div class="card-foot"><span class="card-tag">CEPEA</span><span class="card-arrow">→</span></div>
+    </a>
+    <a href="algodao-30-04.html" class="card algodao">
+      <div class="card-emoji">☁️</div>
+      <div class="card-name">Algodão</div>
+      <div class="card-stat">R$ 380,77/@ · <span class="var nt">↔️ sustentado</span><br>BR 2º exportador mundial</div>
+      <div class="card-foot"><span class="card-tag">CEPEA</span><span class="card-arrow">→</span></div>
+    </a>
+    <a href="cana-de-acucar-30-04.html" class="card cana">
+      <div class="card-emoji">🎋</div>
+      <div class="card-name">Cana-de-Açúcar</div>
+      <div class="card-stat">Açúcar R$ 103,29 · Etanol R$ 3.023<br>Safra 25/26 inicia</div>
+      <div class="card-foot"><span class="card-tag">CEPEA</span><span class="card-arrow">→</span></div>
+    </a>
+    <a href="cacau-30-04.html" class="card cacau">
+      <div class="card-emoji">🍫</div>
+      <div class="card-name">Cacau</div>
+      <div class="card-stat">Preço HISTÓRICO global<br>BA · PA · ES lideram</div>
+      <div class="card-foot"><span class="card-tag">CEPLAC</span><span class="card-arrow">→</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- OLEAGINOSAS -->
+<section class="section">
+  <div class="section-head">
+    <h2><span class="ico gd">🌻</span> Oleaginosas</h2>
+    <span class="count">2 culturas</span>
+  </div>
+  <div class="grid">
+    <a href="amendoim-30-04.html" class="card amendoim">
+      <div class="card-emoji">🥜</div>
+      <div class="card-name">Amendoim</div>
+      <div class="card-stat">SP = 90% BR<br>Safra plena · qualidade alta</div>
+      <div class="card-foot"><span class="card-tag">CEPEA</span><span class="card-arrow">→</span></div>
+    </a>
+    <a href="girassol-30-04.html" class="card girassol">
+      <div class="card-emoji">🌻</div>
+      <div class="card-name">Girassol</div>
+      <div class="card-stat">MT · MS · GO<br>Óleo · biodiesel · mel</div>
+      <div class="card-foot"><span class="card-tag">CONAB</span><span class="card-arrow">→</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- PROTEÍNA ANIMAL -->
+<section class="section">
+  <div class="section-head">
+    <h2><span class="ico pk">🥩</span> Proteína Animal</h2>
+    <span class="count">5 cadeias</span>
+  </div>
+  <div class="grid">
+    <a href="boi-30-04.html" class="card boi">
+      <div class="card-emoji">🐂</div>
+      <div class="card-name">Boi Gordo</div>
+      <div class="card-stat">R$ 355,45/@ · <span class="var up">↑ sustenta IPPA</span><br>Bezerro R$ 3.285</div>
+      <div class="card-foot"><span class="card-tag">CEPEA</span><span class="card-arrow">→</span></div>
+    </a>
+    <a href="frango-30-04.html" class="card frango">
+      <div class="card-emoji">🐔</div>
+      <div class="card-name">Frango</div>
+      <div class="card-stat">Recordes export 1ºT/26<br>Vivo · congelado</div>
+      <div class="card-foot"><span class="card-tag">CEPEA</span><span class="card-arrow">→</span></div>
+    </a>
+    <a href="suino-30-04.html" class="card suino">
+      <div class="card-emoji">🐖</div>
+      <div class="card-name">Suíno</div>
+      <div class="card-stat"><span class="var up">↑ Maior vantagem em 4 anos</span><br>vs carne bovina · alta china</div>
+      <div class="card-foot"><span class="card-tag">CEPEA</span><span class="card-arrow">→</span></div>
+    </a>
+    <a href="peixes-30-04.html" class="card peixes">
+      <div class="card-emoji">🐟</div>
+      <div class="card-name">Peixes</div>
+      <div class="card-stat">Tilápia · pirarucu · tambaqui<br>Aquicultura cresce 8%</div>
+      <div class="card-foot"><span class="card-tag">PEIXE BR</span><span class="card-arrow">→</span></div>
+    </a>
+    <a href="ovinos-30-04.html" class="card ovinos">
+      <div class="card-emoji">🐑</div>
+      <div class="card-name">Ovinos</div>
+      <div class="card-stat">RS · NE lideram<br>Carne premium · lã</div>
+      <div class="card-foot"><span class="card-tag">ARCO</span><span class="card-arrow">→</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- DERIVADOS PECUÁRIA -->
+<section class="section">
+  <div class="section-head">
+    <h2><span class="ico bl">🥛</span> Derivados da Pecuária</h2>
+    <span class="count">2 cadeias</span>
+  </div>
+  <div class="grid">
+    <a href="leite-30-04.html" class="card leite">
+      <div class="card-emoji">🥛</div>
+      <div class="card-name">Leite</div>
+      <div class="card-stat">MG líder · BR 4º mundo<br>Custo pressionado · spot firme</div>
+      <div class="card-foot"><span class="card-tag">CEPEA</span><span class="card-arrow">→</span></div>
+    </a>
+    <a href="ovos-30-04.html" class="card ovos">
+      <div class="card-emoji">🥚</div>
+      <div class="card-name">Ovos</div>
+      <div class="card-stat"><span class="var dn">↓ Demanda externa cai</span><br>Embarques limitados</div>
+      <div class="card-foot"><span class="card-tag">CEPEA</span><span class="card-arrow">→</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- FRUTICULTURA -->
+<section class="section">
+  <div class="section-head">
+    <h2><span class="ico or">🍎</span> Fruticultura</h2>
+    <span class="count">6 culturas</span>
+  </div>
+  <div class="grid">
+    <a href="laranja-30-04.html" class="card laranja">
+      <div class="card-emoji">🍊</div>
+      <div class="card-name">Laranja</div>
+      <div class="card-stat">Pera R$ 93,82/cx · <span class="var dn">↓ -1,75%</span><br>Indústria R$ 47,30 · -18%</div>
+      <div class="card-foot"><span class="card-tag">CEPEA</span><span class="card-arrow">→</span></div>
+    </a>
+    <a href="banana-30-04.html" class="card banana">
+      <div class="card-emoji">🍌</div>
+      <div class="card-name">Banana</div>
+      <div class="card-stat">Prata BA -16,6% mês<br>SP · BA · MG lideram</div>
+      <div class="card-foot"><span class="card-tag">FAEB</span><span class="card-arrow">→</span></div>
+    </a>
+    <a href="maca-30-04.html" class="card maca">
+      <div class="card-emoji">🍎</div>
+      <div class="card-name">Maçã</div>
+      <div class="card-stat">Safra 25/26 recupera<br>SC · RS · PR · export ↑</div>
+      <div class="card-foot"><span class="card-tag">HF/CEPEA</span><span class="card-arrow">→</span></div>
+    </a>
+    <a href="uva-30-04.html" class="card uva">
+      <div class="card-emoji">🍇</div>
+      <div class="card-name">Uva</div>
+      <div class="card-stat">Verde +11,7% (CEASA/MS)<br>Vale SF · qualidade afetada</div>
+      <div class="card-foot"><span class="card-tag">HF/CEPEA</span><span class="card-arrow">→</span></div>
+    </a>
+    <a href="manga-30-04.html" class="card manga">
+      <div class="card-emoji">🥭</div>
+      <div class="card-name">Manga</div>
+      <div class="card-stat">Tommy Vale SF R$ 2,51 · <span class="var dn">↓-10%</span><br>Palmer R$ 1,94 estável</div>
+      <div class="card-foot"><span class="card-tag">HF/CEPEA</span><span class="card-arrow">→</span></div>
+    </a>
+    <a href="abacaxi-30-04.html" class="card abacaxi">
+      <div class="card-emoji">🍍</div>
+      <div class="card-name">Abacaxi</div>
+      <div class="card-stat">Pérola SP R$ 6,17/un<br>PB líder · 300,9 mi frutos</div>
+      <div class="card-foot"><span class="card-tag">IBGE</span><span class="card-arrow">→</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- MACRO -->
+<section class="section">
+  <div class="section-head">
+    <h2><span class="ico bl">🌐</span> Cenário Macro & Geopolítico</h2>
+    <span class="count">1 análise</span>
+  </div>
+  <div class="grid">
+    <a href="macro-30-04.html" class="card macro">
+      <div class="card-emoji">🌐</div>
+      <div class="card-name">Macro & Geo</div>
+      <div class="card-stat">Selic 14,50% · Dólar R$ 4,95<br>IPPA -9,79% · Mercosul-UE</div>
+      <div class="card-foot"><span class="card-tag">BCB · IBGE</span><span class="card-arrow">→</span></div>
+    </a>
+  </div>
+</section>
+
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-brand"><span class="r">Rural</span> <span class="i">IN</span></div>
+    <p>Portal de Inteligência Agropecuária · Radar Semanal · Cotações · Análises Técnicas e Estratégicas<br>
+    Fontes: Cepea/Esalq · Conab · IBGE · USDA · MAPA · Embrapa · ABRAFRUTAS · ABPA · ABCS · ABIEC · Peixe BR · BCB · IPEA · Globo Rural · Notícias Agrícolas · Agrolink</p>
+
+    <div class="footer-credits">
+      <h4>Análise e Construção</h4>
+      <div class="name">Dr. Sidney Souza</div>
+      <div class="title">Economista e Adm. Agrícola — Estrategista Econômico do Produtor</div>
+      <div class="desc">Especialista em economia da fazenda e gestão de risco no agro<br>Transformamos dados da fazenda em decisões econômicas inteligentes</div>
+      <div class="contact">
+        📧 <a href="mailto:sidneyagro@gmail.com">sidneyagro@gmail.com</a> ·
+        📱 <a href="tel:+5564992266886">(64) 9 9226-6886</a> ·
+        📸 <a href="https://instagram.com/ruralin.ai" target="_blank">@ruralin.ai</a>
+      </div>
+    </div>
+
+    <p class="disc">⚠️ Material informativo. Não constitui recomendação de investimento. Consulte sempre um profissional habilitado antes de tomar decisões econômicas.</p>
+  </div>
+</footer>
+
+<script>
+// Efeito spotlight nos cards (mouse tracking)
+document.querySelectorAll('.card').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
+    card.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
+  });
+});
+</script>
+
+</body>
+</html>

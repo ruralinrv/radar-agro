@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Rural IN — Boi Gordo · 27-30 Abr 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0604;--bg2:#120906;--bg3:#1a0f08;--bg4:#23170b;--border:#2c1d10;--border2:#3d2818;--accent:#7c2d12;--accent2:#9a3412;--accent3:#c2410c;--meat:#dc2626;--meat2:#ef4444;--meat3:#f87171;--rust:#a16207;--rust2:#ca8a04;--text:#fef2f2;--text2:#fed7aa;--text3:#a89968;--up:#22c55e;--dn:#ef4444;--nt:#eab308;--blue:#3b82f6;--purple:#a855f7;--orange:#f97316;--cyan:#06b6d4;--leaf2:#84cc16;--r:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 1000px 700px at 10% 15%,rgba(220,38,38,.1),transparent),radial-gradient(ellipse 800px 600px at 90% 85%,rgba(161,98,7,.08),transparent);pointer-events:none;z-index:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+.nav{background:rgba(18,9,6,.95);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:14px}
+.nav-logo-img{height:42px;width:auto;border-radius:8px}
+.nav-logo{font-weight:900;font-size:1.2rem}
+.nav-logo .r{color:var(--meat2)}
+.nav-logo .i{color:var(--leaf2)}
+.nav-badge{background:linear-gradient(135deg,#7c2d12,#dc2626);border:1px solid rgba(248,113,113,.5);padding:5px 14px;border-radius:20px;font-size:.7rem;font-weight:800;color:#fef2f2;letter-spacing:.6px;box-shadow:0 0 25px rgba(220,38,38,.4)}
+.nav-back{color:var(--text3);font-size:.8rem;text-decoration:none}
+.nav-back:hover{color:var(--meat2)}
+.hero{padding:54px 0 40px;position:relative}
+.hero::after{content:'';position:absolute;bottom:0;left:0;width:240px;height:3px;background:linear-gradient(90deg,#7c2d12,var(--meat2),transparent)}
+.hero-top{display:flex;align-items:center;gap:22px;margin-bottom:16px}
+.hero-icon-wrap{width:84px;height:84px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,rgba(220,38,38,.4),transparent 70%);border-radius:50%}
+.hero-icon{font-size:3.6rem;filter:drop-shadow(0 6px 18px rgba(220,38,38,.7))}
+.hero-texts h1{font-size:2.4rem;font-weight:900;letter-spacing:-1.2px;line-height:1.1}
+.hero-texts h1 .hl{background:linear-gradient(135deg,#7c2d12,#9a3412,#dc2626,#f87171);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-texts .sub{font-size:.9rem;color:var(--text2);margin-top:6px;font-weight:500}
+.hero-bar{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border-radius:22px;font-size:.72rem;font-weight:700;border:1px solid}
+.chip.up{color:var(--up);border-color:rgba(34,197,94,.3);background:rgba(34,197,94,.08)}
+.chip.dn{color:var(--dn);border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.08)}
+.chip.nt{color:var(--nt);border-color:rgba(234,179,8,.4);background:rgba(234,179,8,.1)}
+.chip.pu{color:var(--purple);border-color:rgba(168,85,247,.3);background:rgba(168,85,247,.08)}
+.chip.mt{color:var(--meat2);border-color:rgba(248,113,113,.5);background:rgba(220,38,38,.13)}
+.chip.or{color:var(--orange);border-color:rgba(249,115,22,.3);background:rgba(249,115,22,.08)}
+.chip.bl{color:var(--blue);border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.08)}
+.alert{border-radius:var(--r);padding:18px 22px;margin-bottom:14px;display:flex;gap:14px;border:1px solid;font-size:.85rem;line-height:1.75;color:var(--text2);position:relative}
+.alert::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
+.alert strong{color:var(--text)}
+.alert .ai{font-size:1.4rem;flex-shrink:0;margin-top:1px}
+.alert.green{background:linear-gradient(90deg,rgba(34,197,94,.08),rgba(34,197,94,.02));border-color:rgba(34,197,94,.25)}
+.alert.green::before{background:var(--up)}
+.alert.red{background:linear-gradient(90deg,rgba(239,68,68,.08),rgba(239,68,68,.02));border-color:rgba(239,68,68,.25)}
+.alert.red::before{background:var(--dn)}
+.alert.amber{background:linear-gradient(90deg,rgba(234,179,8,.1),rgba(234,179,8,.02));border-color:rgba(234,179,8,.3)}
+.alert.amber::before{background:var(--nt)}
+.alert.blue{background:linear-gradient(90deg,rgba(59,130,246,.08),rgba(59,130,246,.02));border-color:rgba(59,130,246,.25)}
+.alert.blue::before{background:var(--blue)}
+.alert.purple{background:linear-gradient(90deg,rgba(168,85,247,.08),rgba(168,85,247,.02));border-color:rgba(168,85,247,.25)}
+.alert.purple::before{background:var(--purple)}
+.alert.cyan{background:linear-gradient(90deg,rgba(6,182,212,.08),rgba(6,182,212,.02));border-color:rgba(6,182,212,.25)}
+.alert.cyan::before{background:var(--cyan)}
+.alert.orange{background:linear-gradient(90deg,rgba(249,115,22,.1),rgba(249,115,22,.02));border-color:rgba(249,115,22,.3)}
+.alert.orange::before{background:var(--orange)}
+.alert.meat{background:linear-gradient(90deg,rgba(220,38,38,.13),rgba(248,113,113,.04));border-color:rgba(220,38,38,.4)}
+.alert.meat::before{background:var(--meat2)}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin:24px 0}
+.kpi{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:16px 18px;position:relative;transition:all .25s}
+.kpi:hover{transform:translateY(-3px);border-color:var(--border2)}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2)}
+.kpi.up::before{background:linear-gradient(90deg,var(--up),var(--leaf2))}
+.kpi.dn::before{background:linear-gradient(90deg,var(--dn),var(--orange))}
+.kpi.nt::before{background:linear-gradient(90deg,var(--nt),#fde047)}
+.kpi.bl::before{background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.kpi.pu::before{background:linear-gradient(90deg,var(--purple),#ec4899)}
+.kpi.or::before{background:linear-gradient(90deg,var(--orange),#fde047)}
+.kpi.mt::before{background:linear-gradient(90deg,#7c2d12,var(--meat2))}
+.kpi-lb{font-size:.6rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:5px;font-weight:700}
+.kpi-val{font-size:1.18rem;font-weight:900;letter-spacing:-.5px;line-height:1.2}
+.kpi-val.up{color:var(--up)}.kpi-val.dn{color:var(--dn)}.kpi-val.nt{color:var(--nt)}.kpi-val.bl{color:var(--blue)}.kpi-val.pu{color:var(--purple)}.kpi-val.or{color:var(--orange)}.kpi-val.mt{color:var(--meat2)}
+.kpi-sub{font-size:.66rem;color:var(--text3);margin-top:3px;font-weight:500}
+.dv{height:1px;background:linear-gradient(90deg,transparent,var(--border2) 20%,var(--meat2) 50%,var(--border2) 80%,transparent);margin:36px 0}
+.stitle{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.stitle .icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.stitle h2{font-size:1.18rem;font-weight:800;letter-spacing:-.3px}
+.stitle h2 span{color:var(--text2);font-weight:400;font-size:.85rem;margin-left:4px}
+.co{border-radius:var(--r);padding:20px 24px;margin-bottom:14px;border-left:4px solid;font-size:.85rem;color:var(--text2);line-height:1.85;background:linear-gradient(90deg,var(--bg2),var(--bg3))}
+.co strong{color:var(--text)}
+.co h4{font-size:.98rem;font-weight:800;margin-bottom:10px}
+.co.up{border-color:var(--up)}.co.up h4{color:var(--up)}
+.co.dn{border-color:var(--dn)}.co.dn h4{color:var(--dn)}
+.co.nt{border-color:var(--nt)}.co.nt h4{color:var(--nt)}
+.co.bl{border-color:var(--blue)}.co.bl h4{color:var(--blue)}
+.co.or{border-color:var(--orange)}.co.or h4{color:var(--orange)}
+.co.pu{border-color:var(--purple)}.co.pu h4{color:var(--purple)}
+.co.cy{border-color:var(--cyan)}.co.cy h4{color:var(--cyan)}
+.co.mt{border-color:var(--meat2)}.co.mt h4{color:var(--meat2)}
+.chart-box{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--r);padding:22px 24px;margin-bottom:14px}
+.chart-box h3{font-size:.9rem;color:var(--text);margin-bottom:14px;font-weight:700;display:flex;align-items:center;gap:8px}
+.chart-box h3 .ch-tag{margin-left:auto;font-size:.62rem;font-weight:700;padding:2px 10px;border-radius:10px;background:rgba(220,38,38,.18);color:var(--meat2)}
+.chart-wrap{position:relative;height:290px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:800px){.grid2,.grid3{grid-template-columns:1fr}}
+.tbl-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--border);margin-bottom:14px;background:var(--bg2)}
+table{width:100%;border-collapse:collapse;font-size:.78rem}
+thead th{background:linear-gradient(180deg,var(--bg3),var(--bg4));padding:12px 14px;text-align:center;font-weight:800;color:var(--text2);font-size:.66rem;text-transform:uppercase;letter-spacing:.9px;border-bottom:1px solid var(--border)}
+tbody td{padding:10px 12px;border-bottom:1px solid rgba(44,29,16,.5);text-align:center}
+tbody tr:hover{background:rgba(220,38,38,.05)}
+.td-name{text-align:left!important;font-weight:700;white-space:nowrap}
+.td-up{color:var(--up);font-weight:800}.td-dn{color:var(--dn);font-weight:800}.td-nt{color:var(--nt);font-weight:800}
+.thermo h4{font-size:.84rem;color:var(--text);margin-bottom:10px;font-weight:700}
+.th-bar{height:14px;border-radius:7px;position:relative;box-shadow:inset 0 1px 4px rgba(0,0,0,.4)}
+.th-marker{position:absolute;top:-6px;width:4px;height:26px;background:#fff;border-radius:2px;transform:translateX(-50%);box-shadow:0 0 12px rgba(255,255,255,.6)}
+.th-lb{display:flex;justify-content:space-between;font-size:.66rem;color:var(--text3);margin-top:6px;font-weight:600}
+.card{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--r);padding:22px 26px;margin-bottom:14px}
+.opinion{background:linear-gradient(135deg,rgba(220,38,38,.18),rgba(248,113,113,.06),rgba(220,38,38,.02));border:1px solid rgba(248,113,113,.35);border-radius:var(--r);padding:30px 32px;margin:26px 0;position:relative}
+.opinion::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#7c2d12,var(--meat2),#f87171,#7c2d12)}
+.opinion h3{font-size:1.08rem;font-weight:800;color:var(--meat2);margin-bottom:12px}
+.opinion p{font-size:.88rem;color:var(--text2);line-height:1.9;margin-bottom:12px}
+.opinion p strong{color:var(--text)}
+.opinion .scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.opinion .sc{padding:14px 16px;border-radius:10px;border:1px solid;background:rgba(0,0,0,.3)}
+.opinion .sc.up{border-color:rgba(34,197,94,.3)}.opinion .sc.nt{border-color:rgba(234,179,8,.3)}.opinion .sc.dn{border-color:rgba(239,68,68,.3)}
+.opinion .sc h5{font-size:.78rem;font-weight:800;margin-bottom:6px}
+.opinion .sc.up h5{color:var(--up)}.opinion .sc.nt h5{color:var(--nt)}.opinion .sc.dn h5{color:var(--dn)}
+.opinion .sc p{font-size:.74rem;line-height:1.6;margin:0}
+@media(max-width:700px){.opinion .scenarios{grid-template-columns:1fr}}
+.opinion .sig{margin-top:18px;padding-top:14px;border-top:1px solid rgba(248,113,113,.2);font-size:.78rem;color:var(--text3);font-style:italic}
+.footer{border-top:1px solid var(--border);padding:42px 0;text-align:center;margin-top:36px}
+.footer-brand{font-size:1.5rem;font-weight:900;margin-bottom:12px}
+.footer-brand .r{color:var(--meat2)}.footer-brand .i{color:var(--leaf2)}
+.footer p{font-size:.78rem;color:var(--text3);line-height:1.8}
+.footer-credits{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+.footer-credits h4{font-size:.92rem;color:var(--meat2);font-weight:700;margin-bottom:6px}
+.footer-credits .name{font-size:1.05rem;font-weight:800;color:var(--text);margin-bottom:2px}
+.footer-credits .title{font-size:.78rem;color:var(--meat3);font-weight:600;margin-bottom:8px}
+.footer-credits .desc{font-size:.74rem;color:var(--text2);line-height:1.7;max-width:540px;margin:0 auto 12px}
+.footer-credits .contact{font-size:.74rem;color:var(--text3)}
+.footer-credits .contact a{color:var(--meat2);text-decoration:none}
+.bignum-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+.bignum{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:20px 18px;text-align:center}
+.bignum .v{font-size:1.7rem;font-weight:900;letter-spacing:-1px;line-height:1;margin-bottom:6px}
+.bignum .v.up{color:var(--up)}.bignum .v.dn{color:var(--dn)}.bignum .v.nt{color:var(--nt)}.bignum .v.mt{color:var(--meat2)}
+.bignum .l{font-size:.72rem;color:var(--text2);font-weight:600}
+.bignum .s{font-size:.66rem;color:var(--text3);margin-top:3px}
+@media(max-width:700px){.bignum-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.hero-top{flex-direction:column;text-align:center}.hero-texts h1{font-size:1.65rem}.kpi-row{grid-template-columns:repeat(2,1fr)}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap"><div class="nav-left"><img src="https://ruralinrv.github.io/ruralin/logo.png" alt="Rural IN" class="nav-logo-img" onerror="this.style.display='none'"><div class="nav-logo"><span class="r">Rural</span> <span class="i">IN</span></div><div class="nav-badge">🐂 BOI GORDO</div></div><a href="portal-30-04.html" class="nav-back">← Voltar</a></div></nav>
+
+<div class="wrap">
+
+<section class="hero">
+  <div class="hero-top">
+    <div class="hero-icon-wrap"><span class="hero-icon">🐂</span></div>
+    <div class="hero-texts">
+      <h1><span class="hl">Boi Gordo</span> · Radar Semanal</h1>
+      <div class="sub">27–30 Abril 2026 · CEPEA · Scot · ABIEC · B3 · Brasil é REI mundial · Recordes históricos · China + EUA puxando demanda!</div>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <span class="chip mt">📊 CEPEA 30/04: R$ 354,45/@</span>
+    <span class="chip up">🇨🇳 Export Mar: 270,8 mil t (+9,1%!)</span>
+    <span class="chip up">📈 Receita Mar: US$ 1,48 bi (+26%!)</span>
+    <span class="chip nt">🏆 Recorde abr: R$ 367,30/@</span>
+    <span class="chip dn">📉 Outono: queda 0,84% sem</span>
+    <span class="chip pu">🏦 Selic: 14,75% → 14,50%</span>
+  </div>
+</section>
+
+<div class="bignum-row">
+  <div class="bignum"><div class="v mt">R$ 354,45</div><div class="l">CEPEA/SP arroba 30/04</div><div class="s">−0,23% dia · −0,44% mês</div></div>
+  <div class="bignum"><div class="v up">270,8 mil t</div><div class="l">Export Mar/26 (+9,1%!)</div><div class="s">Receita US$ 1,48 bi (+26%)</div></div>
+  <div class="bignum"><div class="v up">801,9 mil t</div><div class="l">Acumulado 1ºT/26 (+18,4%!)</div><div class="s">Receita US$ 4,33 bi (+34,3%)</div></div>
+  <div class="bignum"><div class="v mt">R$ 367,30</div><div class="l">Pico nominal histórico (15/04)</div><div class="s">Recorde absoluto série!</div></div>
+</div>
+
+<div class="alert meat">
+  <span class="ai">🐂</span>
+  <div><strong style="color:var(--meat2)">BOI GORDO BATEU RECORDE HISTÓRICO ABSOLUTO EM ABRIL! Brasil consolida liderança mundial!</strong><br>
+  <strong>Cepea/Esalq — Indicador Boi Gordo SP:</strong><br>
+  ▸ <strong>Pico (15/04):</strong> R$ 367,30/@ (RECORDE NOMINAL!)<br>
+  ▸ <strong>Média abril:</strong> R$ 363,82/@ (+13% vs jan · +14% vs abr/25 real!)<br>
+  ▸ <strong>Recorde real anterior:</strong> R$ 364,82 (nov/2011 · pico série)<br>
+  ▸ <strong>Recorde nominal absoluto:</strong> R$ 367,30 (atual!)<br>
+  ▸ <strong>30/04:</strong> R$ 354,45/@ (acomodação outonal)<br><br>
+  <strong>Trajetória abril (CEPEA):</strong><br>
+  ▸ <strong>09/04:</strong> R$ 365,45/@<br>
+  ▸ <strong>15/04:</strong> R$ 367,30/@ (PICO!)<br>
+  ▸ <strong>22/04:</strong> R$ 363,85/@<br>
+  ▸ <strong>27/04:</strong> R$ 360,70/@<br>
+  ▸ <strong>30/04:</strong> R$ 354,45/@<br>
+  ▸ <strong>Variação semanal:</strong> −0,84%<br>
+  ▸ <strong>Mês acumulado:</strong> ainda em alta de 1,69%<br><br>
+  <strong>Recorde nominal 2026 vs 2011 (real):</strong><br>
+  ▸ Em valor REAL (deflacionado), atingiu RECORDE histórico absoluto!<br>
+  ▸ Pecuarista vive momento DE OURO inédito<br>
+  ▸ Relação de troca: 9,12 @ para comprar bezerro (melhor em 12 meses!)</div>
+</div>
+
+<div class="alert green">
+  <span class="ai">🇨🇳</span>
+  <div><strong style="color:var(--up)">EXPORTAÇÃO BATE RECORDE HISTÓRICO! 1º TRIMESTRE FOI O MELHOR DA SÉRIE!</strong><br>
+  <strong>ABIEC — Exportações 1º Trimestre 2026:</strong><br>
+  ▸ <strong>Volume total:</strong> 801,9 mil t (+18,4% vs 1ºT/25!)<br>
+  ▸ <strong>Receita total:</strong> US$ 4,33 bilhões (+34,3%!)<br>
+  ▸ <strong>Preço médio:</strong> US$ 5.398/t (+13,5%!)<br><br>
+  <strong>Janeiro 2026 (recorde histórico):</strong><br>
+  ▸ <strong>Volume:</strong> 264 mil t (+26,1%!)<br>
+  ▸ <strong>Receita:</strong> US$ 1,404 bi (+40,2%!)<br><br>
+  <strong>Fevereiro 2026 (recorde fev histórico):</strong><br>
+  ▸ <strong>Volume:</strong> 267,3 mil t (+21,6%!)<br>
+  ▸ <strong>Receita:</strong> US$ 1,44 bi (+38,2%!)<br><br>
+  <strong>Março 2026 (melhor do ano!):</strong><br>
+  ▸ <strong>Volume:</strong> 270,8 mil t (+9,1%!)<br>
+  ▸ <strong>Receita:</strong> US$ 1,48 bi (+26%!)<br><br>
+  <strong>Top destinos março/26:</strong><br>
+  ▸ <strong>🇨🇳 China:</strong> 105,4 mil t (+8,4% · US$ 603 mi · +30,1%!)<br>
+  ▸ <strong>🇺🇸 EUA:</strong> 38,1 mil t (US$ 238,5 mi · +5,7%)<br>
+  ▸ <strong>🇨🇱 Chile:</strong> 15,3 mil t (+37,7% · explodiu!)<br>
+  ▸ <strong>🇪🇺 UE:</strong> 9,1 mil t (+25,1%)<br>
+  ▸ <strong>🇲🇽 México:</strong> 8,0 mil t (+39%!)<br><br>
+  <strong>Brasil 2025 (recorde anual):</strong><br>
+  ▸ <strong>Total exportado:</strong> 3,5 milhões t (+21%!)<br>
+  ▸ <strong>Para 177 países!</strong> Diversificação total<br>
+  ▸ <strong>Brasil = MAIOR exportador MUNDIAL</strong></div>
+</div>
+
+<div class="alert orange">
+  <span class="ai">🇨🇳</span>
+  <div><strong style="color:var(--orange)">COTA CHINESA: 1,1 MILHÃO DE TONELADAS SEM SOBRETAXA! Tema crítico para 2026</strong><br>
+  <strong>Acordo China-Brasil 2026:</strong><br>
+  ▸ <strong>Cota livre de tarifa:</strong> 1,1 milhão t/ano para o Brasil<br>
+  ▸ <strong>Volume 2025:</strong> 1,69 mi t (Brasil → China)<br>
+  ▸ <strong>Cota = 35% MENOS</strong> que volume 2025!<br>
+  ▸ <strong>Acima da cota:</strong> Tarifa de 55%! (proibitiva)<br>
+  ▸ <strong>Esgotamento previsto:</strong> Maio-Junho/2026<br><br>
+  <strong>Por que a corrida chinesa puxou preços?</strong><br>
+  ▸ <strong>Frigoríficos correndo</strong> para fechar quotas em 1ºT/26<br>
+  ▸ <strong>Demanda chinesa firme:</strong> +30% receita em março<br>
+  ▸ <strong>Pós-cota:</strong> Volume DEVE CAIR substancialmente<br>
+  ▸ <strong>2º semestre:</strong> Possível pressão baixista no preço<br><br>
+  <strong>Estratégia Brasileira (Roberto Perosa · ABIEC):</strong><br>
+  ▸ <strong>Manter 3,3-3,5 mi t</strong> total exportação 2026<br>
+  ▸ <strong>Diversificação:</strong> Japão, Vietnã, Coreia do Sul, Turquia<br>
+  ▸ <strong>Sudeste Asiático:</strong> Missão ABIEC (Vietnã + Indonésia)<br>
+  ▸ <strong>Singapura:</strong> Estreia FHA 2026<br>
+  ▸ <strong>Países árabes:</strong> Recorde 2025!<br>
+  ▸ <strong>EUA acelerando:</strong> +63% em janeiro!</div>
+</div>
+
+<div class="alert blue">
+  <span class="ai">📊</span>
+  <div><strong style="color:var(--blue)">PREÇOS POR ESTADO · SP lidera · MT em ascensão · GO/MG mais baratos</strong><br>
+  <strong>Cotações 30/04/2026 (Pecuaria.com.br · à vista):</strong><br>
+  ▸ <strong>🥇 São Paulo:</strong> R$ 356,00/@<br>
+  ▸ <strong>🥈 Mato Grosso:</strong> R$ 353,00/@<br>
+  ▸ <strong>🥉 Rio de Janeiro:</strong> R$ 346,00/@<br>
+  ▸ <strong>4º Mato Grosso do Sul:</strong> R$ 344,00/@<br>
+  ▸ <strong>5º Goiás:</strong> R$ 339,00/@<br>
+  ▸ <strong>6º Minas Gerais:</strong> R$ 334,00/@<br><br>
+  <strong>Spread regional:</strong><br>
+  ▸ <strong>SP - MG:</strong> R$ 22/@ (premium SP)<br>
+  ▸ <strong>SP - GO:</strong> R$ 17/@<br>
+  ▸ <strong>MT em alta:</strong> Demanda china + frigoríficos JBS/Marfrig<br><br>
+  <strong>Cotações Scot Consultoria (Praças regionais):</strong><br>
+  ▸ <strong>SP Barretos/Araçatuba:</strong> R$ 360,50 vista · R$ 365 30D<br>
+  ▸ <strong>MS Dourados/C.Grande:</strong> R$ 350-351,50 vista<br>
+  ▸ <strong>MT Cuiabá:</strong> R$ 355,50 vista<br>
+  ▸ <strong>MG Triângulo:</strong> R$ 346 vista · R$ 350 30D<br>
+  ▸ <strong>GO Goiânia:</strong> R$ 347,50 vista<br>
+  ▸ <strong>PA (Pará):</strong> R$ 320-335 (mais barato)<br><br>
+  <strong>Carne no atacado (estável):</strong><br>
+  ▸ <strong>Quarto dianteiro:</strong> R$ 23/kg<br>
+  ▸ <strong>Quarto traseiro:</strong> R$ 28/kg<br>
+  ▸ <strong>Ponta de agulha:</strong> R$ 21/kg</div>
+</div>
+
+<div class="alert nt">
+  <span class="ai">🐮</span>
+  <div><strong style="color:var(--nt)">REPOSIÇÃO EM CHAMAS! Bezerro nelore MS sustenta alta · Pecuarista de cria EM OURO</strong><br>
+  <strong>Indicador CEPEA Bezerro (MS · 8-12 meses):</strong><br>
+  ▸ <strong>Média abril:</strong> R$ 3.316,71/cabeça (+19,45% vs abr/25!)<br>
+  ▸ <strong>30/04:</strong> R$ 3.389,87/cabeça<br>
+  ▸ <strong>Vs jan/26:</strong> +7,43%<br>
+  ▸ <strong>Recorde real:</strong> R$ 3.610,13 (abril/2021)<br>
+  ▸ <strong>Tendência:</strong> Firme · sustentação alta<br><br>
+  <strong>Relação de troca (Boi/Bezerro):</strong><br>
+  ▸ <strong>Abril/26:</strong> 9,12 arrobas para comprar 1 bezerro<br>
+  ▸ <strong>Abril/25:</strong> 8,71 arrobas (era melhor para o terminador)<br>
+  ▸ <strong>Atual = pior em 12 meses</strong> para o terminador (mais arrobas para repor)<br>
+  ▸ <strong>Mas:</strong> Boi gordo a R$ 363/@ x bezerro caro = ainda LUCRATIVO<br><br>
+  <strong>Categorias femininas SP (Scot · 25/04):</strong><br>
+  ▸ <strong>Vaca:</strong> R$ 332/@ (caiu R$ 3 após oferta aumentar)<br>
+  ▸ <strong>Novilha:</strong> R$ 342/@ (ajuste outonal)<br>
+  ▸ <strong>Vaca premium leite:</strong> Selo emergente<br><br>
+  <strong>Quem ganha mais nesse cenário?</strong><br>
+  ▸ <strong>Pecuarista de CRIA:</strong> Vendendo bezerro caro<br>
+  ▸ <strong>Pecuarista de RECRIA:</strong> Margem apertada<br>
+  ▸ <strong>Pecuarista TERMINADOR:</strong> Boi alto compensa bezerro caro<br>
+  ▸ <strong>FRIGORÍFICOS:</strong> Margem apertada · cota china dilui custo</div>
+</div>
+
+<div class="alert red">
+  <span class="ai">📉</span>
+  <div><strong style="color:var(--dn)">SINAIS DE PRESSÃO À FRENTE! Outono · oferta sobe · varejo enfraquece</strong><br>
+  <strong>Mudança de cenário (25-30/04):</strong><br>
+  ▸ <strong>Ciclo entrando no outono:</strong> Pastagens diminuem · oferta animais sobe<br>
+  ▸ <strong>Vacas e novilhas:</strong> Já com queda R$ 3/@<br>
+  ▸ <strong>Frigoríficos:</strong> Tentando comprar mais barato<br>
+  ▸ <strong>Escalas de abate:</strong> Alongando (5-15 dias)<br>
+  ▸ <strong>Ociosidade indústria:</strong> Aumentando<br>
+  ▸ <strong>Férias coletivas:</strong> Frigoríficos em MT (anunciadas)<br><br>
+  <strong>3 fatores de pressão:</strong><br>
+  ▸ <strong>1. Esgotamento cota chinesa</strong> (mai-jun) · volume cai<br>
+  ▸ <strong>2. Aumento oferta outonal</strong> · clássico<br>
+  ▸ <strong>3. Varejo doméstico enfraquecendo</strong> · 2ª quinzena<br>
+  ▸ <strong>4. B3 futuros em queda</strong> · sinal antecipado<br>
+  ▸ <strong>5. Restrição orçamentária consumidor</strong> · trade-down para frango<br><br>
+  <strong>Consumo doméstico:</strong><br>
+  ▸ <strong>Varejo perdendo tração</strong> ao longo da semana<br>
+  ▸ <strong>Consumidor migrou</strong> para proteínas mais baratas<br>
+  ▸ <strong>Atacado fraco</strong> · distribuição limitada<br>
+  ▸ <strong>Frango/suíno</strong> ganhando market share interno<br><br>
+  <strong>Cenário base maio/26:</strong> Acomodação técnica · faixa R$ 340-365/@. Não rompimento da queda · só ajuste de pico. Recuperação esperada em jul-ago (entressafra).</div>
+</div>
+
+<div class="alert cyan">
+  <span class="ai">📦</span>
+  <div><strong style="color:var(--cyan)">MT EM EVIDÊNCIA · ABATE BATE RECORDE 1ºT/26 · IMEA confirma boom</strong><br>
+  <strong>IMEA (Mato Grosso) — 1ºT/26:</strong><br>
+  ▸ <strong>Abate bovino MT:</strong> RECORDE histórico para 1ºT!<br>
+  ▸ <strong>VBP pecuário:</strong> +6,87% (esperado)<br>
+  ▸ <strong>Frigoríficos MT:</strong> Operando alta capacidade<br>
+  ▸ <strong>Posição MT:</strong> Líder em rebanho · 33+ mi cabeças<br><br>
+  <strong>Top estados produtores (rebanho 2025):</strong><br>
+  ▸ <strong>1º Mato Grosso:</strong> 33+ mi cabeças<br>
+  ▸ <strong>2º Goiás:</strong> 24 mi cabeças<br>
+  ▸ <strong>3º Mato Grosso do Sul:</strong> 18 mi cabeças<br>
+  ▸ <strong>4º Pará:</strong> 22 mi cabeças<br>
+  ▸ <strong>5º Minas Gerais:</strong> 22 mi cabeças<br>
+  ▸ <strong>6º Rondônia:</strong> 14 mi cabeças<br>
+  ▸ <strong>Total Brasil:</strong> ~225 mi cabeças (maior rebanho mundial!)<br><br>
+  <strong>Frigoríficos líderes BR:</strong><br>
+  ▸ <strong>JBS:</strong> Maior do mundo (controle 30% abate BR)<br>
+  ▸ <strong>Marfrig:</strong> 2º BR · expansão China<br>
+  ▸ <strong>Minerva:</strong> 3º BR · foco exportação<br>
+  ▸ <strong>Frigol, Mercúrio, Naturafrig:</strong> Regionais<br><br>
+  <strong>Cota chinesa por frigorífico:</strong> Distribuída entre 30+ plantas habilitadas. JBS, Marfrig, Minerva detêm ~70% das cotas.</div>
+</div>
+
+<div class="alert purple">
+  <span class="ai">🏦</span>
+  <div><strong style="color:var(--purple)">EVENTO MACRO: COPOM CORTOU SELIC PARA 14,50%! Cenário POSITIVO para pecuária</strong><br>
+  Banco Central cortou Selic em 0,25 p.p. (29/04). <strong>Dólar:</strong> R$ 4,9523 (mín 2 anos!).<br><br>
+  <strong>Para o setor pecuário:</strong><br>
+  ▸ <strong>Selic 14,50%:</strong> Crédito pecuário mais barato<br>
+  ▸ <strong>Plano Safra Pecuário 26/27:</strong> Linhas custeio + investimento<br>
+  ▸ <strong>BNDES Pecuária:</strong> Confinamento · genética · pastagem<br>
+  ▸ <strong>Investimento confinamento:</strong> Mais viável<br>
+  ▸ <strong>Refinanciamento:</strong> Pecuaristas alongam dívidas<br><br>
+  <strong>Dólar fraco (R$ 4,95) — IMPACTOS DUPLOS:</strong><br>
+  ▸ ✗ <strong>Reduz receita exportação</strong> em R$<br>
+  ▸ ✗ <strong>Frigoríficos podem comprar mais barato</strong> · pressão na arroba<br>
+  ▸ ✓ <strong>Mas volume de cota chinesa</strong> compensa<br>
+  ▸ ✓ <strong>Insumos importados</strong> (sal mineral, vacinas) ficam mais baratos<br><br>
+  <strong>Cálculo de paridade:</strong><br>
+  ▸ <strong>Carne in natura média:</strong> US$ 5.475/t (Mar/26)<br>
+  ▸ <strong>Em R$ (4,95):</strong> R$ 27.101/t<br>
+  ▸ <strong>Por kg carcaça:</strong> R$ 27/kg<br>
+  ▸ <strong>Equivalente arroba:</strong> R$ 405/@ (rendimento 50%)<br>
+  ▸ <strong>Atual:</strong> R$ 354/@<br>
+  ▸ <strong>Margem frigorífico:</strong> ~R$ 51/@ (boa para o setor)<br><br>
+  <strong>Cenário composto:</strong><br>
+  ▸ <strong>Recordes em export</strong> (positivo)<br>
+  ▸ <strong>Cota chinesa esgotando</strong> (atenção mai-jun)<br>
+  ▸ <strong>Selic baixa</strong> (alívio crédito)<br>
+  ▸ <strong>Outono pressionando</strong> (clássico ciclo)<br>
+  ▸ <strong>= Cenário NEUTRO-POSITIVO</strong> com volatilidade</div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#7c2d12,#9a3412)">📊</div><h2>Indicadores-Chave <span>— CEPEA · ABIEC · Macro · Atacado</span></h2></div>
+
+<div class="kpi-row">
+  <div class="kpi mt"><div class="kpi-lb">CEPEA SP 30/04</div><div class="kpi-val mt">R$ 354,45</div><div class="kpi-sub">−0,23% dia</div></div>
+  <div class="kpi up"><div class="kpi-lb">Recorde nominal abr (15/04)</div><div class="kpi-val up">R$ 367,30</div><div class="kpi-sub">RECORDE histórico!</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Média abril/26</div><div class="kpi-val nt">R$ 363,82</div><div class="kpi-sub">+14% vs abr/25 real</div></div>
+  <div class="kpi up"><div class="kpi-lb">Bezerro MS 30/04</div><div class="kpi-val up">R$ 3.389</div><div class="kpi-sub">+19,45% vs abr/25!</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Relação de troca</div><div class="kpi-val nt">9,12 @</div><div class="kpi-sub">para repor 1 bezerro</div></div>
+  <div class="kpi up"><div class="kpi-lb">Export Mar/26 volume</div><div class="kpi-val up">270,8 mil t</div><div class="kpi-sub">+9,1% vs mar/25</div></div>
+  <div class="kpi up"><div class="kpi-lb">Export Mar receita</div><div class="kpi-val up">US$ 1,48 bi</div><div class="kpi-sub">+26%! · preço médio +15,5%</div></div>
+  <div class="kpi up"><div class="kpi-lb">Acum 1ºT/26 volume</div><div class="kpi-val up">801,9 mil t</div><div class="kpi-sub">+18,4%! recorde série</div></div>
+  <div class="kpi up"><div class="kpi-lb">Acum 1ºT/26 receita</div><div class="kpi-val up">US$ 4,33 bi</div><div class="kpi-sub">+34,3%!</div></div>
+  <div class="kpi mt"><div class="kpi-lb">China Mar volume</div><div class="kpi-val mt">105,4 mil t</div><div class="kpi-sub">+8,4% · líder destino</div></div>
+  <div class="kpi mt"><div class="kpi-lb">EUA Mar volume</div><div class="kpi-val mt">38,1 mil t</div><div class="kpi-sub">−9,5% · receita +5,7%</div></div>
+  <div class="kpi or"><div class="kpi-lb">Cota China sem tarifa</div><div class="kpi-val or">1,1 mi t</div><div class="kpi-sub">−35% vs 2025!</div></div>
+  <div class="kpi nt"><div class="kpi-lb">MT preço arroba 30/04</div><div class="kpi-val nt">R$ 353</div><div class="kpi-sub">2º melhor BR</div></div>
+  <div class="kpi dn"><div class="kpi-lb">GO preço arroba 30/04</div><div class="kpi-val dn">R$ 339</div><div class="kpi-sub">Praças mais baratas</div></div>
+  <div class="kpi pu"><div class="kpi-lb">Selic 29/04</div><div class="kpi-val pu">14,50%</div><div class="kpi-sub">↓ 0,25 p.p.</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Dólar 30/04</div><div class="kpi-val dn">R$ 4,9523</div><div class="kpi-sub">Mín 2 anos</div></div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#7c2d12,#9a3412)">📍</div><h2>Cotações da Semana <span>— CEPEA · Pecuaria.com · 27 a 30 Abril 2026</span></h2></div>
+
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Praça</th><th>27/04</th><th>28/04</th><th>29/04</th><th>30/04</th><th>Var. Sem</th><th>Var. Mês</th></tr></thead>
+<tbody>
+<tr><td class="td-name">📊 CEPEA Indicador SP</td><td>360,70</td><td>358,40</td><td>355,25</td><td class="td-dn">354,45</td><td class="td-dn">−1,8%</td><td class="td-dn">−0,44%</td></tr>
+<tr><td class="td-name">🥇 São Paulo (físico)</td><td>365</td><td>362</td><td>360</td><td class="td-dn">356</td><td class="td-dn">−2,5%</td><td class="td-up">+1,2%</td></tr>
+<tr><td class="td-name">🥈 Mato Grosso</td><td>360</td><td>358</td><td>355</td><td class="td-nt">353</td><td class="td-dn">−1,9%</td><td class="td-up">+1,8%</td></tr>
+<tr><td class="td-name">🥉 Rio de Janeiro</td><td>352</td><td>350</td><td>348</td><td>346</td><td class="td-dn">−1,7%</td><td class="td-up">+0,5%</td></tr>
+<tr><td class="td-name">📍 Mato Grosso do Sul</td><td>350</td><td>348</td><td>346</td><td>344</td><td class="td-dn">−1,7%</td><td class="td-up">+0,8%</td></tr>
+<tr><td class="td-name">📍 Goiás</td><td>347</td><td>344</td><td>342</td><td>339</td><td class="td-dn">−2,3%</td><td>0,0%</td></tr>
+<tr><td class="td-name">📍 Minas Gerais</td><td>340</td><td>338</td><td>336</td><td>334</td><td class="td-dn">−1,8%</td><td class="td-dn">−0,3%</td></tr>
+<tr><td class="td-name">🐮 Bezerro MS (cabeça)</td><td>3.380</td><td>3.385</td><td>3.388</td><td class="td-up">3.389</td><td class="td-up">+0,4%</td><td class="td-up">+2,9%</td></tr>
+<tr><td class="td-name">🥩 Vaca SP (@)</td><td>335</td><td>335</td><td>333</td><td>332</td><td class="td-dn">−0,9%</td><td class="td-up">+0,6%</td></tr>
+<tr><td class="td-name">🥩 Novilha SP (@)</td><td>345</td><td>345</td><td>343</td><td>342</td><td class="td-dn">−0,9%</td><td class="td-up">+0,9%</td></tr>
+</tbody>
+</table>
+</div>
+
+<p style="font-size:.78rem;color:var(--text3);margin-top:6px;text-align:center"><em>Indicador CEPEA/ESALQ é referência nacional · Praças físicas variam conforme prazo (vista vs 30 dias) · acomodação outonal típica</em></p>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#7c2d12,#9a3412)">📈</div><h2>Análise Gráfica <span>— 6 perspectivas · CEPEA · Export · China · Estados · Bezerro · Macro</span></h2></div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📊 CEPEA Boi Gordo · Trajetória 12 Meses <span class="ch-tag">R$/@</span></h3>
+    <div class="chart-wrap"><canvas id="ch1"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>🌍 Exportação Brasil 1ºT/26 <span class="ch-tag">ABIEC · mil t/mês</span></h3>
+    <div class="chart-wrap"><canvas id="ch2"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>🇨🇳 Top Destinos Mar/26 <span class="ch-tag">ABIEC · % volume</span></h3>
+    <div class="chart-wrap"><canvas id="ch3"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>📍 Preços por Estado 30/04 <span class="ch-tag">R$/arroba</span></h3>
+    <div class="chart-wrap"><canvas id="ch4"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>🐮 Bezerro MS · Evolução <span class="ch-tag">CEPEA · R$/cabeça</span></h3>
+    <div class="chart-wrap"><canvas id="ch5"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>🐂 Top Rebanhos por Estado <span class="ch-tag">2025 · mi cabeças</span></h3>
+    <div class="chart-wrap"><canvas id="ch6"></canvas></div>
+  </div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#9a3412,#dc2626)">🔍</div><h2>Análise Aprofundada <span>— O ano de OURO da pecuária brasileira em 2026</span></h2></div>
+
+<div class="co mt">
+  <h4>🐂 A Tese Central: Brasil Vive ANO DE OURO da Pecuária!</h4>
+  <p><strong>Cenário inédito conjugando 4 forças:</strong><br>
+  ▸ <strong>1. Recorde histórico CEPEA:</strong> R$ 367,30/@ (15/04) · superando real de 2011<br>
+  ▸ <strong>2. Recorde exportação 1ºT/26:</strong> 801,9 mil t (+18,4%!) · receita US$ 4,33 bi (+34,3%!)<br>
+  ▸ <strong>3. China + EUA puxando:</strong> 60% das vendas externas<br>
+  ▸ <strong>4. Diversificação para 177 países!</strong><br><br>
+  <strong>Por que está rolando esse boom?</strong><br>
+  ▸ <strong>EUA:</strong> Quebra rebanho local · BR supre · +63% jan!<br>
+  ▸ <strong>China:</strong> Cota 1,1 mi t puxando exportação acelerada<br>
+  ▸ <strong>Real fraco:</strong> Brasil ultra-competitivo<br>
+  ▸ <strong>Oferta interna restrita:</strong> Pasto · ciclo de baixa<br>
+  ▸ <strong>Pecuarista resistente:</strong> Não vende a menos<br>
+  ▸ <strong>Preço médio export:</strong> US$ 5.475/t (+15,5% vs mar/25!)<br><br>
+  <strong>Conclusão:</strong> Brasil consolidou liderança MUNDIAL em carne bovina. Pecuarista terminador vive momento de OURO. Pecuarista de cria também (bezerro +19,45%!). Único perdedor: consumidor doméstico (carne cara · trade-down para frango/suíno).</p>
+</div>
+
+<div class="co up">
+  <h4>📈 Recorde Histórico CEPEA · R$ 367,30 Supera Pico Real de 2011!</h4>
+  <p><strong>Análise técnica do recorde:</strong><br>
+  ▸ <strong>Pico nominal absoluto:</strong> R$ 367,30/@ (15/04/2026)<br>
+  ▸ <strong>Pico real anterior:</strong> R$ 364,82/@ (nov/2011 · deflacionado)<br>
+  ▸ <strong>Diferença:</strong> Atual SUPEROU em valor REAL!<br>
+  ▸ <strong>Implicação:</strong> Pecuarista NUNCA ganhou tanto na história!<br><br>
+  <strong>Trajetória recente:</strong><br>
+  ▸ <strong>Jan/26:</strong> R$ 322/@ (média)<br>
+  ▸ <strong>Fev/26:</strong> R$ 348/@<br>
+  ▸ <strong>Mar/26:</strong> R$ 358/@<br>
+  ▸ <strong>Abr/26 média:</strong> R$ 363,82/@ (+13% vs jan!)<br>
+  ▸ <strong>Pico abr (15):</strong> R$ 367,30/@<br>
+  ▸ <strong>Atual (30/04):</strong> R$ 354,45/@ (acomodação)<br><br>
+  <strong>Drivers da alta abril:</strong><br>
+  ▸ <strong>Corrida cota chinesa</strong> · frigoríficos pagando mais<br>
+  ▸ <strong>Oferta restrita pasto</strong> · final ciclo verão<br>
+  ▸ <strong>Confinamento esgotando estoques</strong><br>
+  ▸ <strong>Demanda EUA acelerando</strong> · +63% janeiro!<br>
+  ▸ <strong>Postura firme produtor</strong> · resistência venda<br><br>
+  <strong>Comparativo histórico:</strong><br>
+  ▸ <strong>2011 (nov):</strong> R$ 364,82 (real) · era ciclo China primário<br>
+  ▸ <strong>2014:</strong> R$ 145/@ · ciclo de baixa<br>
+  ▸ <strong>2020 (covid):</strong> R$ 280/@ · disparada<br>
+  ▸ <strong>2022:</strong> R$ 312/@<br>
+  ▸ <strong>2024:</strong> R$ 250/@ (mínima ciclo)<br>
+  ▸ <strong>2026 abril:</strong> R$ 367/@ · NOVO PICO!</p>
+</div>
+
+<div class="co bl">
+  <h4>🇨🇳 Cota Chinesa: A Faca de Dois Gumes do Mercado em 2026</h4>
+  <p><strong>O que é a cota:</strong><br>
+  ▸ <strong>Volume:</strong> 1,1 milhão de toneladas/ano sem tarifa<br>
+  ▸ <strong>Acima:</strong> Tarifa 55% (proibitiva)<br>
+  ▸ <strong>2025:</strong> Brasil exportou 1,69 mi t à China<br>
+  ▸ <strong>2026 cota = 35% MENOS que 2025!</strong><br>
+  ▸ <strong>Vigência:</strong> Janeiro a dezembro<br><br>
+  <strong>Por que isso é uma "faca de dois gumes"?</strong><br>
+  ▸ <strong>FACETA POSITIVA (em curso):</strong><br>
+  &nbsp;&nbsp;▸ Frigoríficos correndo para vender em 1ºT/26<br>
+  &nbsp;&nbsp;▸ Volume +30% receita China em mar/26<br>
+  &nbsp;&nbsp;▸ Preços puxados para cima<br>
+  &nbsp;&nbsp;▸ Pecuarista beneficiado<br>
+  ▸ <strong>FACETA NEGATIVA (mai-jun à frente):</strong><br>
+  &nbsp;&nbsp;▸ Cota DEVE esgotar entre mai-jun<br>
+  &nbsp;&nbsp;▸ Volume China cai abruptamente<br>
+  &nbsp;&nbsp;▸ Frigoríficos param de pagar premium<br>
+  &nbsp;&nbsp;▸ Pressão baixista no preço<br>
+  &nbsp;&nbsp;▸ B3 já antecipou (futuros em queda)<br><br>
+  <strong>Cenário pós-cota:</strong><br>
+  ▸ <strong>Junho-dezembro:</strong> Volumes China caem para 30-50 mil t/mês (vs 100+ atual)<br>
+  ▸ <strong>Compensação:</strong> Diversificação (Japão, Vietnã, Coreia, Turquia)<br>
+  ▸ <strong>EUA:</strong> Continua crescendo (já dobrou em janeiro!)<br>
+  ▸ <strong>Países árabes:</strong> Recordes 2025<br>
+  ▸ <strong>UE:</strong> +25,1% março · crescente<br><br>
+  <strong>Estratégia ABIEC:</strong> Não substituir China · COMPLEMENTAR. Mercado total 3,3-3,5 mi t mantido.</p>
+</div>
+
+<div class="co cy">
+  <h4>📍 Spread Regional: SP Premium · GO/MG Mais Baratos · MT em Ascensão</h4>
+  <p><strong>Dinâmica regional 30/04:</strong><br>
+  ▸ <strong>SP R$ 356:</strong> Premium logística + indústria + consumo Sudeste<br>
+  ▸ <strong>MT R$ 353:</strong> 2º maior · frigoríficos JBS/Marfrig fortes<br>
+  ▸ <strong>RJ R$ 346:</strong> Premium consumo + qualidade<br>
+  ▸ <strong>MS R$ 344:</strong> Reposição premium · genética nelore<br>
+  ▸ <strong>GO R$ 339:</strong> Distância dos portos · frigoríficos médios<br>
+  ▸ <strong>MG R$ 334:</strong> Mais barato · oferta abundante<br><br>
+  <strong>Spread SP-MG:</strong><br>
+  ▸ <strong>R$ 22/@</strong> (≈ 6%)<br>
+  ▸ <strong>Razão:</strong> Frete + impostos diferentes + escala<br>
+  ▸ <strong>Oportunidade:</strong> Pecuarista MG vendendo direto a frigorífico SP (frete R$ 8-12/@)<br>
+  ▸ <strong>Margem líquida MG → SP:</strong> R$ 10-14/@ extras<br><br>
+  <strong>MT em ascensão (foco especial):</strong><br>
+  ▸ <strong>Abate MT 1ºT/26:</strong> RECORDE histórico (IMEA)<br>
+  ▸ <strong>Frigoríficos:</strong> JBS, Marfrig, Minerva, Frigol expandindo<br>
+  ▸ <strong>Razão:</strong> Maior rebanho BR (33+ mi cabeças) + cota china<br>
+  ▸ <strong>Logística:</strong> Hidrovia Madeira-Amazonas para Manaus/Macapá<br>
+  ▸ <strong>Produtividade:</strong> Confinamento maior nos últimos 5 anos<br>
+  ▸ <strong>Genética:</strong> Cruzamento industrial em alta<br><br>
+  <strong>PA (Pará) — Mais barato (R$ 320-335):</strong><br>
+  ▸ <strong>Maior oferta:</strong> Rebanho 22+ mi cabeças<br>
+  ▸ <strong>Distância grande</strong> dos portos exportadores<br>
+  ▸ <strong>Frete encarece</strong> · pecuarista perde<br>
+  ▸ <strong>Frigoríficos locais:</strong> Atacarejo doméstico Norte/Nordeste<br>
+  ▸ <strong>Oportunidade:</strong> Especialização carne premium · IG Pará</p>
+</div>
+
+<div class="co or">
+  <h4>🌎 EUA Acelerando! +63% em Janeiro · Brasil Substitui Rebanho Americano</h4>
+  <p><strong>Crescimento espetacular EUA 2026:</strong><br>
+  ▸ <strong>Janeiro:</strong> 29,9 mil t (+63% vs jan/25!)<br>
+  ▸ <strong>Fevereiro:</strong> 39,4 mil t<br>
+  ▸ <strong>Março:</strong> 38,1 mil t (-9,5% volume mas +5,7% receita)<br>
+  ▸ <strong>Receita média:</strong> US$ 6.260/t (+16,8%)<br><br>
+  <strong>Por que EUA está comprando tanto?</strong><br>
+  ▸ <strong>Rebanho EUA em 70 anos de baixa:</strong> Menor desde 1951!<br>
+  ▸ <strong>Seca histórica</strong> reduziu pastagens (Texas, Oklahoma)<br>
+  ▸ <strong>Custo doméstico EUA:</strong> Recorde alto<br>
+  ▸ <strong>Carne moída barata BR:</strong> Substitui carcaças locais<br>
+  ▸ <strong>Hambúrgueres fast-food:</strong> Demanda firme<br>
+  ▸ <strong>Trade Tariff:</strong> Trump questionou mas não bloqueou ainda<br><br>
+  <strong>Risco geopolítico:</strong><br>
+  ▸ <strong>Trump tarifou Brasil em algumas commodities</strong><br>
+  ▸ <strong>Carne bovina:</strong> Ainda passa relativamente livre<br>
+  ▸ <strong>Frigoríficos atentos:</strong> Janela pode fechar<br>
+  ▸ <strong>JBS USA:</strong> Operação grande nos EUA · vantagem comparativa<br><br>
+  <strong>Outros mercados em crescimento:</strong><br>
+  ▸ <strong>🇨🇱 Chile:</strong> +37,7% volume · classe média comprando<br>
+  ▸ <strong>🇲🇽 México:</strong> +39% · NAFTA ajuda<br>
+  ▸ <strong>🇪🇺 UE:</strong> +25,1% · Mercosul-UE ainda em ratificação<br>
+  ▸ <strong>🇲🇦 Marrocos:</strong> Crescente<br>
+  ▸ <strong>🇮🇩 Indonésia:</strong> 14 frigoríficos BR habilitados<br>
+  ▸ <strong>🇯🇵 Japão:</strong> Possível abertura 2026<br>
+  ▸ <strong>🇰🇷 Coreia do Sul:</strong> Negociação adiantada</p>
+</div>
+
+<div class="co nt">
+  <h4>🐮 Pecuarista de Cria em OURO! Bezerro Subiu 19,45% em 12 Meses</h4>
+  <p><strong>Indicador CEPEA Bezerro Nelore (MS):</strong><br>
+  ▸ <strong>Abr/25:</strong> R$ 2.778/cabeça (referência)<br>
+  ▸ <strong>Abr/26 média:</strong> R$ 3.316,71/cabeça (+19,45%!)<br>
+  ▸ <strong>30/04/26:</strong> R$ 3.389,87/cabeça (+22%!)<br>
+  ▸ <strong>Recorde real:</strong> R$ 3.610,13 (abr/2021)<br><br>
+  <strong>Por que bezerro está caro?</strong><br>
+  ▸ <strong>Demanda terminação alta</strong> (boi gordo recorde)<br>
+  ▸ <strong>Oferta cria limitada</strong> (ciclo)<br>
+  ▸ <strong>Pecuarista de cria não vende</strong> a menos<br>
+  ▸ <strong>Confinamento expandindo</strong> · puxa demanda<br>
+  ▸ <strong>Custo bezerro x boi:</strong> Relação 9,12 @ (mais arrobas para repor)<br><br>
+  <strong>Margem por etapa do ciclo (estimativa):</strong><br>
+  ▸ <strong>CRIA (vende bezerro):</strong> R$ 600-900/cabeça lucro<br>
+  ▸ <strong>RECRIA (recria 16-20m):</strong> R$ 350-500/cabeça lucro<br>
+  ▸ <strong>TERMINAÇÃO (engorda):</strong> R$ 400-700/cabeça lucro<br>
+  ▸ <strong>CICLO COMPLETO:</strong> R$ 1.350-2.100/animal<br><br>
+  <strong>Quem mais ganha:</strong><br>
+  ▸ <strong>1º Pecuarista de CRIA</strong> (bezerro +19,45%)<br>
+  ▸ <strong>2º Pecuarista CICLO COMPLETO</strong> (boi gordo recorde)<br>
+  ▸ <strong>3º TERMINADOR</strong> (boi recorde compensa bezerro caro)<br>
+  ▸ <strong>4º RECRIADOR</strong> (margem mais apertada)<br><br>
+  <strong>Estratégia ideal por perfil:</strong><br>
+  ▸ <strong>Pequeno produtor:</strong> Ciclo completo (não vender bezerro caro)<br>
+  ▸ <strong>Médio produtor:</strong> Cria + recria<br>
+  ▸ <strong>Grande produtor:</strong> Confinamento + cria intensiva</p>
+</div>
+
+<div class="co dn">
+  <h4>📉 Sinais de Pressão: Outono + Cota China Esgotando + Varejo Fraco</h4>
+  <p><strong>3 sinais clássicos de mudança:</strong><br>
+  ▸ <strong>1. Aumento oferta outono:</strong> Pastagens diminuindo · pecuaristas vendendo<br>
+  ▸ <strong>2. Cota chinesa esgotando:</strong> Mai-jun · volume cai abruptamente<br>
+  ▸ <strong>3. Varejo doméstico fraco:</strong> 2ª quinzena · trade-down<br><br>
+  <strong>Movimentos recentes (25-30/04):</strong><br>
+  ▸ <strong>Vacas/novilhas:</strong> Já caíram R$ 3/@<br>
+  ▸ <strong>Frigoríficos MT:</strong> Férias coletivas anunciadas<br>
+  ▸ <strong>B3 futuros:</strong> Em queda · sinaliza correção<br>
+  ▸ <strong>Escalas alongando:</strong> 5-15 dias (era 3-7)<br>
+  ▸ <strong>Atacado:</strong> Distribuição fraca<br>
+  ▸ <strong>Consumidor:</strong> Migrou para frango/suíno<br><br>
+  <strong>Histórico ciclos sazonais:</strong><br>
+  ▸ <strong>Mar-Abr:</strong> Pico (entressafra · oferta restrita)<br>
+  ▸ <strong>Mai-Jun:</strong> Acomodação (outono começa)<br>
+  ▸ <strong>Jul-Ago:</strong> Mínima (oferta sobra)<br>
+  ▸ <strong>Set-Out:</strong> Recuperação<br>
+  ▸ <strong>Nov-Dez:</strong> Pico anual (festas + entressafra)<br><br>
+  <strong>Cenário base maio-julho/26:</strong><br>
+  ▸ <strong>Faixa CEPEA:</strong> R$ 335-365/@<br>
+  ▸ <strong>Mínima possível:</strong> R$ 320/@<br>
+  ▸ <strong>Volatilidade:</strong> Alta (cota china + B3)<br>
+  ▸ <strong>Recuperação:</strong> Esperada agosto-outubro<br>
+  ▸ <strong>Pico 2026:</strong> Pode chegar R$ 380/@ no nov/dez<br><br>
+  <strong>Risco principal:</strong> Se cota chinesa esgotar e EUA recuar (tarifas Trump), pode haver queda mais forte. Mas demanda interna firme + diversificação evitam crash.</p>
+</div>
+
+<div class="co pu">
+  <h4>🏦 Macro: Selic Baixa + Real Fraco = Cenário Modestamente Positivo</h4>
+  <p><strong>Decisão Copom (29/04):</strong> Selic cortada para 14,50% (−0,25 p.p.)<br>
+  <strong>Dólar:</strong> R$ 4,9523 (mín 2 anos!)<br><br>
+  <strong>Para o setor pecuário:</strong><br>
+  ▸ <strong>Selic 14,50%:</strong> Crédito custeio mais barato<br>
+  ▸ <strong>Plano Safra Pecuário 26/27:</strong> Em formação<br>
+  ▸ <strong>BNDES Pecuária:</strong> Linhas confinamento + genética<br>
+  ▸ <strong>Investimento:</strong> Mais viável (compra terra · cerca · maquinário)<br>
+  ▸ <strong>Refinanciamento:</strong> Pecuaristas alongando dívidas<br><br>
+  <strong>Dólar fraco — IMPACTOS DUPLOS:</strong><br>
+  ▸ ✗ <strong>Reduz receita exportação</strong> em R$<br>
+  ▸ ✗ <strong>Frigoríficos compram bezerro/boi mais barato</strong> · pressão arroba<br>
+  ▸ ✓ <strong>Cota chinesa garantida</strong> em volume (compensa)<br>
+  ▸ ✓ <strong>Insumos importados</strong> ficam mais baratos (vacinas, sal mineral)<br><br>
+  <strong>Cálculo de paridade exportação:</strong><br>
+  ▸ <strong>Carne in natura média:</strong> US$ 5.475/t (mar/26)<br>
+  ▸ <strong>Em R$ (4,95):</strong> R$ 27.101/t<br>
+  ▸ <strong>Por kg carcaça:</strong> R$ 27,10<br>
+  ▸ <strong>Equivalente arroba:</strong> R$ 405/@ (rendimento 50% carcaça)<br>
+  ▸ <strong>Atual SP CEPEA:</strong> R$ 354,45/@<br>
+  ▸ <strong>Margem frigorífico bruta:</strong> ~R$ 50/@<br>
+  ▸ <strong>Custos abate + frete + lucro:</strong> R$ 30-40/@<br>
+  ▸ <strong>Margem líquida frigorífico:</strong> R$ 10-20/@<br><br>
+  <strong>Cenário composto:</strong><br>
+  ▸ <strong>Recordes export</strong> (positivo)<br>
+  ▸ <strong>Cota chinesa esgotando</strong> (atenção)<br>
+  ▸ <strong>Selic baixa</strong> (alívio)<br>
+  ▸ <strong>Outono pressionando</strong> (clássico)<br>
+  ▸ <strong>= NEUTRO-POSITIVO</strong> com volatilidade elevada</p>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#9a3412,#dc2626)">🌡️</div><h2>Termômetros do Mercado <span>— Pressões e Vetores</span></h2></div>
+
+<div class="grid3">
+  <div class="card">
+    <div class="thermo"><h4>📊 Preço CEPEA SP</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:88%"></div></div>
+      <div class="th-lb"><span>Crash</span><span>Médio</span><span>Pico</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ RECORDE!</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">R$ 367,30 pico abr · acomodando</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🌍 Exportação BR</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:92%"></div></div>
+      <div class="th-lb"><span>Fraca</span><span>Média</span><span>Recorde</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ RECORDE!</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">+18,4% volume · +34,3% receita 1ºT</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🇨🇳 Cota China</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:25%"></div></div>
+      <div class="th-lb"><span>Esgotada</span><span>Média</span><span>Aberta</span></div>
+      <p style="font-size:.78rem;color:var(--dn);margin-top:8px;font-weight:700">⬇ ESGOTANDO</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">Mai-Jun: fim previsto · pressão!</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🐮 Bezerro MS</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:85%"></div></div>
+      <div class="th-lb"><span>Baixa</span><span>Médio</span><span>Recorde</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ FORTE</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">+19,45% ano · cria em ouro!</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🍖 Consumo Doméstico</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:35%"></div></div>
+      <div class="th-lb"><span>Fraco</span><span>Médio</span><span>Forte</span></div>
+      <p style="font-size:.78rem;color:var(--dn);margin-top:8px;font-weight:700">⬇ FRACO</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">Trade-down para frango</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🇺🇸 EUA Demanda</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:88%"></div></div>
+      <div class="th-lb"><span>Fraca</span><span>Média</span><span>Boom</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ BOOM!</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">+63% jan · rebanho EUA quebrado</p>
+    </div>
+  </div>
+</div>
+
+<div class="dv"></div>
+
+<div class="opinion">
+  <h3>🎯 Opinião do Analista — Brasil Vive ANO DE OURO da Pecuária Mundial!</h3>
+
+  <p><strong>O Brasil vive momento HISTÓRICO da pecuária bovina em 2026: BOI GORDO BATEU RECORDE NOMINAL ABSOLUTO em 15/04 com R$ 367,30/@ no CEPEA-Esalq SP (superando real de nov/2011) · média abril R$ 363,82/@ (+14% vs abr/25 real!) · ATUAL R$ 354,45 em acomodação outonal. EXPORTAÇÕES BATERAM RECORDE HISTÓRICO no 1ºT/26: 801,9 mil t (+18,4%!) com receita US$ 4,33 bi (+34,3%!). MARÇO foi o melhor mês do ano (270,8 mil t · US$ 1,48 bi · +26%!). CHINA lidera com 105,4 mil t (+30% receita!) · EUA acelerou +63% em janeiro (rebanho americano em 70 anos de baixa!). Brasil exporta para 177 PAÍSES! BEZERRO MS bate +19,45% (R$ 3.389/cabeça) · pecuarista de CRIA em OURO. SP lidera preços (R$ 356) · MT em ascensão (R$ 353 · abate recorde IMEA) · GO/MG mais baratos. ALERTA: Cota chinesa de 1,1 mi t deve esgotar mai-jun · pressão baixista esperada. Selic 14,50% + dólar R$ 4,95 + outono = ciclo NORMALIZANDO. RECORDES NÃO DURAM PARA SEMPRE · APROVEITE A JANELA DE OURO!</strong></p>
+
+  <p><strong>Semana 27-30/abr (curta · feriado 1º Mai) — Em síntese:</strong><br>
+  ▸ <strong>CEPEA SP 30/04:</strong> R$ 354,45/@ (−0,23% dia · −0,44% mês)<br>
+  ▸ <strong>Pico abril:</strong> R$ 367,30/@ (15/04 · RECORDE!)<br>
+  ▸ <strong>Bezerro MS:</strong> R$ 3.389/cabeça (+19,45% ano)<br>
+  ▸ <strong>SP preço físico:</strong> R$ 356 · MT R$ 353 · GO R$ 339 · MG R$ 334<br>
+  ▸ <strong>Export 1ºT/26:</strong> 801,9 mil t (+18,4%) · US$ 4,33 bi (+34,3%)<br>
+  ▸ <strong>Export Mar:</strong> 270,8 mil t · US$ 1,48 bi (recorde do ano!)<br>
+  ▸ <strong>China Mar:</strong> 105,4 mil t (+8,4%) · receita +30,1%<br>
+  ▸ <strong>EUA Mar:</strong> 38,1 mil t · receita +5,7%<br>
+  ▸ <strong>Cota China 2026:</strong> 1,1 mi t · esgotando mai-jun<br>
+  ▸ <strong>Atacado:</strong> Dianteiro R$ 23/kg · Traseiro R$ 28/kg<br>
+  ▸ <strong>Selic:</strong> 14,50% · <strong>Dólar:</strong> R$ 4,9523</p>
+
+  <p><strong>Recomendações estratégicas:</strong></p>
+
+  <p><strong>1. PECUARISTA DE TERMINAÇÃO: VENDA AGORA SE PUDER!</strong> Pico CEPEA atingido em 15/04 (R$ 367,30). Acomodação já em curso. Mai-jun deve trazer pressão (cota china esgotando + outono). Janela de OURO para vender. Se tem boi pronto, NEGOCIE! Quem espera pode pegar R$ 340-355 em vez de R$ 367.</p>
+
+  <p><strong>2. PECUARISTA DE CRIA: NÃO VENDA BEZERRO AGORA!</strong> Bezerro MS subiu +19,45% em 12 meses. Demanda firme (terminadores precisando). Se tem condições, segure até maio-julho. Possibilidade de chegar R$ 3.500-3.600/cabeça. Em propriedade de 500 vacas, isso é R$ 100-150 mil extras.</p>
+
+  <p><strong>3. PECUARISTA RECRIADOR: APERTE A MARGEM · OPERE COM FOCO!</strong> Comprou bezerro caro (R$ 3.300+) · vende boi gordo (R$ 354+). Margem virou apertada. Estratégias: a) Confinamento intensivo (ganho 30-40 dias), b) Genética taurina cruzada (carcaça melhor · prêmio frigorífico), c) Contrato direto com frigorífico (elimina atravessador).</p>
+
+  <p><strong>4. CONFINADOR: PROTEJA-SE COM B3!</strong> Hedge no boi gordo futuro. Posições em vendas para mai/jun-ago/26 a R$ 350-370/@. Quem confina 5-15 mil cabeças deve travar 60-80% do volume. Se preço cair para R$ 320, hedge salva R$ 30-50/@ (em 10 mil cabeças = R$ 4-7 milhões!).</p>
+
+  <p><strong>5. ATENÇÃO À COTA CHINESA · ESGOTAMENTO EM MAI-JUN!</strong> Frigoríficos JBS, Marfrig, Minerva detém maior parte das cotas. Quando esgotar, demanda externa cai abruptamente. Resultado: pressão na arroba. Quem tem boi para entrega mai-jun deve pré-vender ou hedgear AGORA.</p>
+
+  <p><strong>6. EMPRESÁRIOS RURAIS: APROVEITE SELIC BAIXA PARA INVESTIR!</strong> Selic 14,50% com tendência queda. Plano Safra Pecuário 26/27 sai em junho. Investimentos viáveis: a) Confinamento (ROI 18-25%), b) Genética (touros TOP), c) Pastagem reformada (ROI 25-35%), d) Cercas inteligentes (telemetria), e) Compra terra (especulação ciclo).</p>
+
+  <p><strong>7. DIVERSIFIQUE EXPORTAÇÃO! NÃO DEPENDER SÓ DE CHINA!</strong> Para frigoríficos: invistam em Japão (abertura 2026?), Coreia do Sul, Vietnã, Indonésia (já 14 plantas habilitadas), Singapura (FHA 2026), países árabes. Pecuaristas: produza com selo de qualidade · BR Carbon Neutral · IG regional · agrega valor 15-25%.</p>
+
+  <div class="opinion .scenarios" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px">
+    <div class="sc up">
+      <h5>🟢 Cenário Altista</h5>
+      <p>EUA tarifa zero · cota china renovada · Japão abre · seca pasto BR · ciclo de baixa rebanho global → <strong>CEPEA R$ 380-410/@ · Export 3,8 mi t · Bezerro R$ 3.700+</strong>. Probabilidade: ~30%</p>
+    </div>
+    <div class="sc nt">
+      <h5>🟡 Cenário Neutro</h5>
+      <p>Cota china esgota · diversificação compensa · oferta outono normal · varejo estável · Selic cai gradualmente → <strong>CEPEA R$ 335-365/@ · Export 3,5 mi t · Bezerro R$ 3.300-3.500</strong>. Probabilidade: ~50%</p>
+    </div>
+    <div class="sc dn">
+      <h5>🔴 Cenário Baixista</h5>
+      <p>Trump tarifa BR · cota china não renovada · safra recorde global · varejo BR fraco · ciclo alta rebanho → <strong>CEPEA R$ 290-320/@ · Export 3,2 mi t · Bezerro R$ 2.900-3.100</strong>. Probabilidade: ~20%</p>
+    </div>
+  </div>
+
+  <div class="sig">📅 Análise Rural IN · Quinta, 30/Abr/2026 · Semana curta (feriado 1º Mai) · ANO DE OURO DA PECUÁRIA BR · RECORDES HISTÓRICOS · CHINA + EUA + DIVERSIFICAÇÃO PARA 177 PAÍSES!</div>
+</div>
+
+<footer class="footer"><div class="wrap">
+  <div class="footer-brand"><span class="r">Rural</span> <span class="i">IN</span></div>
+  <p>Radar Agro Semanal · Boi Gordo · Semana 27–30 Abril 2026<br>
+  Fontes: CEPEA-Esalq/USP · ABIEC · Scot Consultoria · Agrifatto · Safras & Mercado · IMEA · Globo Rural · UOL · BeefPoint · Pecuária.com.br · MDIC/Secex · Banco Central · COPOM · B3</p>
+  <div class="footer-credits">
+    <h4>Análise e Construção</h4>
+    <div class="name">Dr. Sidney Souza</div>
+    <div class="title">Economista e Adm. Agrícola — Estrategista Econômico do Produtor</div>
+    <div class="desc">Especialista em economia da fazenda e gestão de risco no agro<br>Transformamos dados da fazenda em decisões econômicas<br>Ajudamos produtores a entender se o mercado sustenta seu negócio</div>
+    <div class="contact">📧 <a href="mailto:sidneyagro@gmail.com">sidneyagro@gmail.com</a> · 📱 <a href="tel:+5564992266886">(64) 9 9226-6886</a> · 📸 <a href="https://instagram.com/ruralin.ai" target="_blank">@ruralin.ai</a></div>
+  </div>
+  <p style="margin-top:18px"><em>⚠️ Material informativo. Não constitui recomendação de investimento.</em></p>
+</div></footer>
+
+</div>
+
+<script>
+const gc='rgba(44,29,16,.5)';
+const tt={backgroundColor:'rgba(18,9,6,.97)',borderColor:'#3d2818',borderWidth:1,titleFont:{size:11,weight:'700'},bodyFont:{size:10},padding:10,cornerRadius:8};
+
+new Chart(document.getElementById('ch1').getContext('2d'),{
+  type:'line',
+  data:{labels:['Mai/25','Jul/25','Set/25','Nov/25','Jan/26','Mar/26','15/04','30/04'],
+    datasets:[{label:'CEPEA Boi Gordo SP (R$/@)',data:[295,310,322,335,322,358,367.30,354.45],
+      borderColor:'#dc2626',backgroundColor:'rgba(220,38,38,.13)',borderWidth:3,fill:true,tension:.3,pointRadius:5,pointBackgroundColor:'#dc2626',pointBorderColor:'#f87171',pointBorderWidth:1.5}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+    scales:{y:{min:280,max:380,grid:{color:gc},ticks:{callback:function(v){return'R$'+v},font:{size:9,weight:'600'},color:'#fed7aa'}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#fed7aa'}}}}
+});
+
+new Chart(document.getElementById('ch2').getContext('2d'),{
+  type:'bar',
+  data:{labels:['Jan/26','Fev/26','Mar/26'],
+    datasets:[{label:'Volume (mil t)',data:[264,267.3,270.8],backgroundColor:'rgba(220,38,38,.7)',borderColor:'#dc2626',borderWidth:2,borderRadius:7,yAxisID:'y'},
+      {label:'Receita (US$ bi)',data:[1.404,1.44,1.48],backgroundColor:'rgba(34,197,94,.6)',borderColor:'#22c55e',borderWidth:2,borderRadius:7,yAxisID:'y1',type:'line',tension:.2,pointRadius:6}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{color:'#fed7aa',font:{size:10,weight:'600'},boxWidth:14,padding:8}},tooltip:tt},
+    scales:{y:{position:'left',min:255,max:280,grid:{color:gc},ticks:{callback:function(v){return v+' mil t'},font:{size:9,weight:'600'},color:'#fed7aa'}},
+      y1:{position:'right',min:1.3,max:1.55,grid:{display:false},ticks:{callback:function(v){return'$'+v.toFixed(2)+'bi'},font:{size:9,weight:'600'},color:'#22c55e'}},
+      x:{grid:{display:false},ticks:{font:{size:11,weight:'700'},color:'#fed7aa'}}}}
+});
+
+new Chart(document.getElementById('ch3').getContext('2d'),{
+  type:'doughnut',
+  data:{labels:['🇨🇳 China (39%)','🇺🇸 EUA (14%)','🇨🇱 Chile (6%)','🇪🇺 UE (3%)','🇲🇽 México (3%)','Outros (35%)'],
+    datasets:[{data:[39,14,6,3,3,35],
+      backgroundColor:['rgba(220,38,38,.75)','rgba(59,130,246,.6)','rgba(34,197,94,.55)','rgba(168,85,247,.5)','rgba(245,158,11,.5)','rgba(160,160,160,.4)'],
+      borderColor:['#dc2626','#3b82f6','#22c55e','#a855f7','#f59e0b','#a0a0a0'],
+      borderWidth:2,hoverOffset:8}]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom',labels:{color:'#fed7aa',font:{size:9,weight:'600'},boxWidth:12,padding:6}},tooltip:tt},
+    cutout:'58%'}
+});
+
+new Chart(document.getElementById('ch4').getContext('2d'),{
+  type:'bar',
+  data:{labels:['SP','MT','RJ','MS','GO','MG'],
+    datasets:[{label:'R$/@ (30/04)',data:[356,353,346,344,339,334],
+      backgroundColor:function(c){if(c.dataIndex===0)return 'rgba(34,197,94,.7)';if(c.dataIndex<=2)return 'rgba(220,38,38,.65)';return 'rgba(245,158,11,.55)'},
+      borderColor:function(c){if(c.dataIndex===0)return '#22c55e';if(c.dataIndex<=2)return '#dc2626';return '#f59e0b'},
+      borderWidth:2,borderRadius:7}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+    scales:{y:{min:325,max:360,grid:{color:gc},ticks:{callback:function(v){return'R$'+v},font:{size:9,weight:'600'},color:'#fed7aa'}},x:{grid:{display:false},ticks:{font:{size:11,weight:'700'},color:'#fed7aa'}}}}
+});
+
+new Chart(document.getElementById('ch5').getContext('2d'),{
+  type:'line',
+  data:{labels:['Abr/25','Jul/25','Out/25','Jan/26','Abr/26'],
+    datasets:[{label:'Bezerro MS (R$/cabeça)',data:[2778,2890,3050,3088,3389],
+      borderColor:'#22c55e',backgroundColor:'rgba(34,197,94,.13)',borderWidth:3,fill:true,tension:.3,pointRadius:6,pointBackgroundColor:'#22c55e',pointBorderColor:'#84cc16',pointBorderWidth:2}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+    scales:{y:{min:2700,max:3500,grid:{color:gc},ticks:{callback:function(v){return'R$'+v},font:{size:9,weight:'600'},color:'#fed7aa'}},x:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#fed7aa'}}}}
+});
+
+new Chart(document.getElementById('ch6').getContext('2d'),{
+  type:'bar',
+  data:{labels:['MT','GO','PA','MG','MS','RO','BA'],
+    datasets:[{label:'Rebanho (mi cabeças)',data:[33,24,22,22,18,14,11],
+      backgroundColor:function(c){if(c.dataIndex===0)return 'rgba(34,197,94,.75)';return 'rgba(220,38,38,.55)'},
+      borderColor:function(c){if(c.dataIndex===0)return '#22c55e';return '#dc2626'},
+      borderWidth:2,borderRadius:7}]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+    scales:{x:{min:0,max:35,grid:{color:gc},ticks:{callback:function(v){return v+' mi'},font:{size:9,weight:'600'},color:'#fed7aa'}},y:{grid:{display:false},ticks:{font:{size:11,weight:'700'},color:'#fed7aa'}}}}
+});
+</script>
+</body>
+</html>

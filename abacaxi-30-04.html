@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Rural IN — Abacaxi · 27-30 Abr 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0905;--bg2:#15130a;--bg3:#1f1c10;--bg4:#2a2618;--border:#2e2a1a;--border2:#42392a;--ab:#facc15;--ab2:#fde047;--ab3:#fef08a;--ab4:#eab308;--leaf:#15803d;--leaf2:#16a34a;--leaf3:#22c55e;--leaf4:#86efac;--text:#fefce8;--text2:#fef9c3;--text3:#a8a29e;--text4:#78716c;--up:#22c55e;--dn:#ef4444;--nt:#eab308;--blue:#3b82f6;--purple:#a855f7;--orange:#f97316;--cyan:#06b6d4;--pink:#ec4899;--red:#dc2626;--gold:#fbbf24;--r:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 1100px 800px at 15% 10%,rgba(250,204,21,.13),transparent),radial-gradient(ellipse 900px 700px at 85% 90%,rgba(22,163,74,.1),transparent);pointer-events:none;z-index:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+.nav{background:rgba(21,19,10,.95);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:14px}
+.nav-logo-img{height:42px;width:auto;border-radius:8px}
+.nav-logo{font-weight:900;font-size:1.2rem}
+.nav-logo .r{color:var(--ab)}.nav-logo .i{color:var(--leaf2)}
+.nav-badge{background:linear-gradient(135deg,#facc15,#16a34a);padding:5px 14px;border-radius:20px;font-size:.7rem;font-weight:800;color:#0a0905;letter-spacing:.6px;box-shadow:0 0 25px rgba(250,204,21,.5)}
+.nav-back{color:var(--text3);font-size:.8rem;text-decoration:none}
+.hero{padding:54px 0 40px}
+.hero-top{display:flex;align-items:center;gap:22px;margin-bottom:16px}
+.hero-icon-wrap{width:84px;height:84px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,rgba(250,204,21,.4),transparent 70%);border-radius:50%}
+.hero-icon{font-size:3.6rem;filter:drop-shadow(0 6px 22px rgba(250,204,21,.6))}
+.hero-texts h1{font-size:2.4rem;font-weight:900;letter-spacing:-1.2px;line-height:1.1}
+.hero-texts h1 .hl{background:linear-gradient(135deg,#facc15,#fde047,#16a34a,#22c55e);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-texts .sub{font-size:.9rem;color:var(--text2);margin-top:6px;font-weight:500}
+.hero-bar{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border-radius:22px;font-size:.72rem;font-weight:700;border:1px solid}
+.chip.up{color:var(--up);border-color:rgba(34,197,94,.3);background:rgba(34,197,94,.08)}
+.chip.dn{color:var(--dn);border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.08)}
+.chip.nt{color:var(--nt);border-color:rgba(234,179,8,.4);background:rgba(234,179,8,.1)}
+.chip.ab{color:var(--ab);border-color:rgba(250,204,21,.5);background:rgba(250,204,21,.13)}
+.chip.lf{color:var(--leaf3);border-color:rgba(22,163,74,.4);background:rgba(22,163,74,.1)}
+.chip.bl{color:var(--blue);border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.08)}
+.chip.gd{color:var(--gold);border-color:rgba(251,191,36,.4);background:rgba(251,191,36,.1)}
+.bignum-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+.bignum{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:20px 18px;text-align:center}
+.bignum .v{font-size:1.7rem;font-weight:900;letter-spacing:-1px;line-height:1;margin-bottom:6px}
+.bignum .v.up{color:var(--up)}.bignum .v.dn{color:var(--dn)}.bignum .v.nt{color:var(--nt)}.bignum .v.ab{color:var(--ab)}.bignum .v.lf{color:var(--leaf3)}
+.bignum .l{font-size:.72rem;color:var(--text2);font-weight:600}
+.bignum .s{font-size:.66rem;color:var(--text3);margin-top:3px}
+.alert{border-radius:var(--r);padding:18px 22px;margin-bottom:14px;display:flex;gap:14px;border:1px solid;font-size:.85rem;line-height:1.75;color:var(--text2);position:relative}
+.alert::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
+.alert strong{color:var(--text)}
+.alert .ai{font-size:1.4rem;flex-shrink:0;margin-top:1px}
+.alert.green{background:rgba(34,197,94,.06);border-color:rgba(34,197,94,.25)}.alert.green::before{background:var(--up)}
+.alert.red{background:rgba(239,68,68,.06);border-color:rgba(239,68,68,.25)}.alert.red::before{background:var(--dn)}
+.alert.amber{background:rgba(234,179,8,.08);border-color:rgba(234,179,8,.3)}.alert.amber::before{background:var(--nt)}
+.alert.blue{background:rgba(59,130,246,.06);border-color:rgba(59,130,246,.25)}.alert.blue::before{background:var(--blue)}
+.alert.purple{background:rgba(168,85,247,.06);border-color:rgba(168,85,247,.25)}.alert.purple::before{background:var(--purple)}
+.alert.pine{background:rgba(250,204,21,.1);border-color:rgba(250,204,21,.4)}.alert.pine::before{background:var(--ab)}
+.alert.leaf{background:rgba(22,163,74,.08);border-color:rgba(22,163,74,.3)}.alert.leaf::before{background:var(--leaf2)}
+.alert.orange{background:rgba(249,115,22,.08);border-color:rgba(249,115,22,.3)}.alert.orange::before{background:var(--orange)}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin:24px 0}
+.kpi{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:16px 18px;position:relative}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2)}
+.kpi.up::before{background:linear-gradient(90deg,var(--up),var(--leaf3))}
+.kpi.dn::before{background:linear-gradient(90deg,var(--dn),var(--orange))}
+.kpi.nt::before{background:linear-gradient(90deg,var(--nt),#fde047)}
+.kpi.ab::before{background:linear-gradient(90deg,var(--ab),var(--ab2))}
+.kpi.lf::before{background:linear-gradient(90deg,var(--leaf2),var(--leaf3))}
+.kpi.bl::before{background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.kpi.pu::before{background:linear-gradient(90deg,var(--purple),var(--pink))}
+.kpi-lb{font-size:.6rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:5px;font-weight:700}
+.kpi-val{font-size:1.18rem;font-weight:900;line-height:1.2}
+.kpi-val.up{color:var(--up)}.kpi-val.dn{color:var(--dn)}.kpi-val.nt{color:var(--nt)}.kpi-val.ab{color:var(--ab)}.kpi-val.lf{color:var(--leaf3)}.kpi-val.bl{color:var(--blue)}.kpi-val.pu{color:var(--purple)}
+.kpi-sub{font-size:.66rem;color:var(--text3);margin-top:3px;font-weight:500}
+.dv{height:1px;background:linear-gradient(90deg,transparent,var(--ab) 50%,transparent);margin:36px 0}
+.stitle{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.stitle .icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;background:linear-gradient(135deg,#facc15,#16a34a)}
+.stitle h2{font-size:1.18rem;font-weight:800}
+.stitle h2 span{color:var(--text2);font-weight:400;font-size:.85rem;margin-left:4px}
+.chart-box{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--r);padding:22px 24px;margin-bottom:14px}
+.chart-box h3{font-size:.9rem;color:var(--text);margin-bottom:14px;font-weight:700;display:flex;align-items:center;gap:8px}
+.chart-box h3 .ch-tag{margin-left:auto;font-size:.62rem;font-weight:700;padding:2px 10px;border-radius:10px;background:rgba(250,204,21,.18);color:var(--ab)}
+.chart-wrap{position:relative;height:280px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:800px){.grid2{grid-template-columns:1fr}}
+.tbl-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--border);margin-bottom:14px;background:var(--bg2)}
+table{width:100%;border-collapse:collapse;font-size:.78rem}
+thead th{background:var(--bg3);padding:12px 14px;text-align:center;font-weight:800;color:var(--text2);font-size:.66rem;text-transform:uppercase;letter-spacing:.9px;border-bottom:1px solid var(--border)}
+tbody td{padding:10px 12px;border-bottom:1px solid rgba(46,42,26,.5);text-align:center}
+.td-name{text-align:left!important;font-weight:700;white-space:nowrap}
+.td-up{color:var(--up);font-weight:800}.td-dn{color:var(--dn);font-weight:800}.td-nt{color:var(--nt);font-weight:800}
+.opinion{background:linear-gradient(135deg,rgba(250,204,21,.13),rgba(22,163,74,.08));border:1px solid rgba(250,204,21,.4);border-radius:var(--r);padding:30px 32px;margin:26px 0;position:relative}
+.opinion::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#facc15,#16a34a,#facc15)}
+.opinion h3{font-size:1.08rem;font-weight:800;color:var(--ab);margin-bottom:12px}
+.opinion p{font-size:.88rem;color:var(--text2);line-height:1.9;margin-bottom:12px}
+.opinion p strong{color:var(--text)}
+.opinion .scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.opinion .sc{padding:14px 16px;border-radius:10px;border:1px solid;background:rgba(0,0,0,.3)}
+.opinion .sc.up{border-color:rgba(34,197,94,.3)}.opinion .sc.nt{border-color:rgba(234,179,8,.3)}.opinion .sc.dn{border-color:rgba(239,68,68,.3)}
+.opinion .sc h5{font-size:.78rem;font-weight:800;margin-bottom:6px}
+.opinion .sc.up h5{color:var(--up)}.opinion .sc.nt h5{color:var(--nt)}.opinion .sc.dn h5{color:var(--dn)}
+.opinion .sc p{font-size:.74rem;line-height:1.6;margin:0}
+@media(max-width:700px){.opinion .scenarios{grid-template-columns:1fr}}
+.opinion .sig{margin-top:18px;padding-top:14px;border-top:1px solid rgba(250,204,21,.2);font-size:.78rem;color:var(--text3);font-style:italic}
+.footer{border-top:1px solid var(--border);padding:42px 0;text-align:center;margin-top:36px}
+.footer-brand{font-size:1.5rem;font-weight:900;margin-bottom:12px}
+.footer-brand .r{color:var(--ab)}.footer-brand .i{color:var(--leaf3)}
+.footer p{font-size:.78rem;color:var(--text3);line-height:1.8}
+.footer-credits{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+.footer-credits h4{font-size:.92rem;color:var(--ab);font-weight:700;margin-bottom:6px}
+.footer-credits .name{font-size:1.05rem;font-weight:800;color:var(--text)}
+.footer-credits .title{font-size:.78rem;color:var(--leaf3);font-weight:600;margin-bottom:8px}
+.footer-credits .desc{font-size:.74rem;color:var(--text2);max-width:540px;margin:0 auto 12px}
+.footer-credits .contact{font-size:.74rem;color:var(--text3)}
+.footer-credits .contact a{color:var(--ab);text-decoration:none}
+@media(max-width:700px){.bignum-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.hero-top{flex-direction:column;text-align:center}.hero-texts h1{font-size:1.65rem}.kpi-row{grid-template-columns:repeat(2,1fr)}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap"><div class="nav-left"><img src="https://ruralinrv.github.io/ruralin/logo.png" alt="Rural IN" class="nav-logo-img" onerror="this.style.display='none'"><div class="nav-logo"><span class="r">Rural</span> <span class="i">IN</span></div><div class="nav-badge">🍍 ABACAXI</div></div><a href="portal-30-04.html" class="nav-back">← Voltar</a></div></nav>
+
+<div class="wrap">
+
+<section class="hero">
+  <div class="hero-top">
+    <div class="hero-icon-wrap"><span class="hero-icon">🍍</span></div>
+    <div class="hero-texts">
+      <h1><span class="hl">Abacaxi</span> · Radar Semanal</h1>
+      <div class="sub">27–30 Abril 2026 · Pérola Campinas R$ 5,00/kg (firme) · BR é 4º produtor MUNDIAL · Paraíba volta ao topo (300 mi frutos!) · Calor reduz oferta</div>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <span class="chip up">📈 Pérola Campinas: R$ 5,00/kg (+5,9% sem!)</span>
+    <span class="chip nt">↔️ Pérola Ceagesp: R$ 8,21 (8 frutos)</span>
+    <span class="chip ab">🍍 BR 4º produtor mundial · ~8% safra</span>
+    <span class="chip lf">🥇 Paraíba volta ao topo (300 mi frutos)</span>
+    <span class="chip dn">🌡️ Calor + entressafra reduzem oferta</span>
+    <span class="chip gd">🛒 Varejo R$ 8,50-14/kg capitais</span>
+  </div>
+</section>
+
+<div class="bignum-row">
+  <div class="bignum"><div class="v up">R$ 5,00/kg</div><div class="l">Pérola Graúdo · Campinas/SP</div><div class="s">↑ 5,93% · oferta restrita</div></div>
+  <div class="bignum"><div class="v nt">R$ 8,21</div><div class="l">Pérola Ceagesp (8 frutos)</div><div class="s">unidade · estável semana</div></div>
+  <div class="bignum"><div class="v ab">300,9 mi</div><div class="l">Frutos PB safra 2024 (#1)</div><div class="s">PA: 290,4 mi · MG: 143,7 mi</div></div>
+  <div class="bignum"><div class="v lf">~8% safra</div><div class="l">BR no mundo (4º produtor)</div><div class="s">Indonésia · Filipinas · Costa Rica · BR</div></div>
+</div>
+
+<div class="alert pine">
+  <span class="ai">🍍</span>
+  <div><strong style="color:var(--ab)">SETOR EM ENTRESSAFRA RIGOROSA! Calor reduz oferta · Pérola RJ/PB a caminho · Safra plena entre jun-dez · BR é gigante mundial!</strong><br>
+  <strong>Brasil em abacaxi mundial:</strong><br>
+  ▸ <strong>Produção BR 2024:</strong> ~2,4 bi de frutos (≈3 mi t)<br>
+  ▸ <strong>Posição mundial:</strong> 4º produtor (~8% safra mundial)<br>
+  ▸ <strong>Líderes mundiais:</strong> Indonésia (12%) · Filipinas (10%) · Costa Rica (9%) · BRASIL (8%) · China (7%)<br>
+  ▸ <strong>Costa Rica:</strong> Domina exportação mundial (variedade MD2 · Golden)<br>
+  ▸ <strong>Área plantada BR:</strong> ~70 mil hectares<br>
+  ▸ <strong>Produtividade média:</strong> 35-50 t/ha (uma das maiores!)<br>
+  ▸ <strong>Valor produção 2024:</strong> R$ 4,3 bi/ano<br>
+  ▸ <strong>Empregos diretos:</strong> 80 mil famílias (agricultura familiar predominante)<br>
+  ▸ <strong>Mercado BR:</strong> 95% interno · 5% exportação<br><br>
+  <strong>Top produtores Brasil 2024 (IBGE):</strong><br>
+  ▸ <strong>🥇 Paraíba:</strong> 300,9 milhões frutos (volta ao topo!)<br>
+  ▸ <strong>🥈 Pará:</strong> 290,4 milhões (R$ 1,08 bi · maior valor!)<br>
+  ▸ <strong>🥉 Minas Gerais:</strong> 143,7 milhões<br>
+  ▸ <strong>4º Rio de Janeiro:</strong> 135,3 milhões<br>
+  ▸ <strong>5º Tocantins:</strong> 120 milhões<br>
+  ▸ <strong>6º Goiás · MS · BA:</strong> Crescentes<br><br>
+  <strong>Top municípios produtores:</strong><br>
+  ▸ <strong>🥇 Pedras de Fogo (PB):</strong> 68,4 milhões frutos!<br>
+  ▸ <strong>🥈 Itapororoca (PB):</strong> 60 milhões<br>
+  ▸ <strong>🥉 Araçagi (PB):</strong> 48 milhões<br>
+  ▸ <strong>4º Floresta do Araguaia (PA):</strong> Maior PA<br>
+  ▸ <strong>5º Salinópolis (PA):</strong> Tradicional<br>
+  ▸ <strong>6º Santa Rita (PB) · Lagoa de Dentro (PB)</strong><br>
+  ▸ <strong>7º Frutal · Monte Alegre (MG)</strong><br>
+  ▸ <strong>8º Sapeaçu · Itaberaba (BA)</strong><br><br>
+  <strong>Variedades cultivadas BR:</strong><br>
+  ▸ <strong>🥇 Pérola:</strong> 70-80% produção (típica BR · doce · branca · cilíndrica)<br>
+  ▸ <strong>🥈 Smooth Cayenne (Havaí):</strong> 12-15% (suculenta · industrial · com espinhos folhas)<br>
+  ▸ <strong>🥉 Vitória/IAC:</strong> 5-8% (resistente fusariose · Embrapa)<br>
+  ▸ <strong>4º Imperial:</strong> 2-3% (premium · sabor superior · Embrapa)<br>
+  ▸ <strong>5º MD2 (Gold):</strong> 1-2% (importada · Costa Rica · super doce)<br>
+  ▸ <strong>6º Outras:</strong> Jupi · Boituva · Roxo · regionais<br><br>
+  <strong>Característica do mercado BR:</strong><br>
+  ▸ <strong>Mercado interno:</strong> 95% produção (Brasil consome quase tudo)<br>
+  ▸ <strong>Exportação:</strong> Apenas 5% (potencial enorme!)<br>
+  ▸ <strong>Indústria suco:</strong> 15% volume<br>
+  ▸ <strong>Estimativa 2026:</strong> Produção +3-5% · safra normal<br>
+  ▸ <strong>Importação:</strong> Mínima (Costa Rica MD2 premium)</div>
+</div>
+
+<div class="alert green">
+  <span class="ai">📈</span>
+  <div><strong style="color:var(--up)">PÉROLA EM ALTA na entressafra! Campinas R$ 5,00/kg (+5,9%!) · Calor + frete encareceram · Aproveite até junho!</strong><br>
+  <strong>Cotações ABRIL/2026 (Ceasa/Ceagesp/Notícias Agrícolas):</strong><br>
+  <strong>Atacado Pérola - principais mercados:</strong><br>
+  ▸ <strong>Ceasa Campinas/SP (Pérola graúdo):</strong> R$ 5,00/kg (↑ 5,93% sem!) · 30/04<br>
+  ▸ <strong>Ceasa BH/MG (Pérola médio):</strong> R$ 60,00/dúzia (estável)<br>
+  ▸ <strong>Ceagesp/SP (Pérola 8 frutos):</strong> R$ 8,21/un (↓ 1,34% leve)<br>
+  ▸ <strong>Ceasa/MS (caixa 20kg):</strong> R$ 130,00 (↑ 7,66% · diesel encareceu frete!)<br>
+  ▸ <strong>Variação mês:</strong> +12-18%<br>
+  ▸ <strong>Variação ano:</strong> +25-40%<br><br>
+  <strong>Preços ao produtor (variedade Pérola):</strong><br>
+  ▸ <strong>Pedras de Fogo (PB):</strong> R$ 2,50-3,20/un<br>
+  ▸ <strong>Pará (Floresta Araguaia):</strong> R$ 2,00-2,80/un<br>
+  ▸ <strong>Norte MG:</strong> R$ 2,80-3,50/un<br>
+  ▸ <strong>RJ (Sul Fluminense):</strong> R$ 3,00-3,80/un<br>
+  ▸ <strong>Sidrolândia/MS:</strong> R$ 3,00-3,50/un<br>
+  ▸ <strong>Havaí (mais difícil cultivo):</strong> R$ 4,50-5,00/un<br><br>
+  <strong>Por que entressafra está APERTADA?</strong><br>
+  ▸ <strong>1. CALOR EXCESSIVO 2025-26:</strong> Reduziu calibre frutos (Embrapa)<br>
+  ▸ <strong>2. Menor teor de açúcar:</strong> Frutas de menor padrão<br>
+  ▸ <strong>3. Pérola PB/PA em fim safra:</strong> Volume cai abr-mai<br>
+  ▸ <strong>4. RJ ainda colhendo:</strong> Mas volume restrito<br>
+  ▸ <strong>5. Frete diesel ELEVADO:</strong> Encareceu logística<br>
+  ▸ <strong>6. Fertilizantes em alta:</strong> Custo final pressionado<br>
+  ▸ <strong>7. Exportação mais atrativa:</strong> Drena oferta interna<br>
+  ▸ <strong>8. Conab Prohort:</strong> Hortifruti -14% no 1ºT (geral) mas abacaxi resiliente<br><br>
+  <strong>Mercado de varejo BR (capitais):</strong><br>
+  ▸ <strong>SP capital (Pérola):</strong> R$ 9,50-12/kg<br>
+  ▸ <strong>RJ capital:</strong> R$ 10-13/kg<br>
+  ▸ <strong>BH capital:</strong> R$ 8,50-11/kg<br>
+  ▸ <strong>Recife:</strong> R$ 8-10/kg<br>
+  ▸ <strong>Bairros nobres:</strong> Acima R$ 14-15/un (já passou barreira!)<br>
+  ▸ <strong>Variação 2026 vs 2025:</strong> +30-40% nas capitais!<br>
+  ▸ <strong>Margem varejo:</strong> 80-150% sobre atacado<br>
+  ▸ <strong>Perdas pós-colheita:</strong> 20-30% (alta · fruta sensível)<br><br>
+  <strong>Calendário oferta abacaxi BR:</strong><br>
+  ▸ <strong>Jan-Mar:</strong> Oferta forte · safra PB/PA pico<br>
+  ▸ <strong>Abr-Mai:</strong> Entressafra · oferta cai · preços sobem!<br>
+  ▸ <strong>Jun-Ago:</strong> Recuperação · MG/RJ entram<br>
+  ▸ <strong>Set-Dez:</strong> Pico safra principal · oferta abundante (PB/PA volta forte)<br>
+  ▸ <strong>Tecnologia indução floração:</strong> Permite oferta o ano todo (paclobutrazol · etileno)<br>
+  ▸ <strong>Janeiro pico verão:</strong> Maior demanda mas oferta também alta</div>
+</div>
+
+<div class="alert leaf">
+  <span class="ai">🥇</span>
+  <div><strong style="color:var(--leaf3)">PARAÍBA VOLTOU AO TOPO! 300,9 milhões de frutos · Pedras de Fogo capital (68,4 mi!) · 70% Pérola · Agricultura familiar!</strong><br>
+  <strong>PARAÍBA · #1 do Brasil em 2024:</strong><br>
+  ▸ <strong>Produção:</strong> 300,9 milhões de frutos<br>
+  ▸ <strong>Posição 2023:</strong> Era 2º (304,8 mi · queda 1,3%)<br>
+  ▸ <strong>Reconquistou liderança em 2024</strong><br>
+  ▸ <strong>Valor produção:</strong> R$ 671,8 milhões (+42,4%!)<br>
+  ▸ <strong>Participação no agro PB:</strong> 22,2% (2ª maior PB!)<br>
+  ▸ <strong>Variedade dominante:</strong> Pérola (70%)<br>
+  ▸ <strong>Característica:</strong> Agricultura familiar · pequenas propriedades<br><br>
+  <strong>Top municípios PB:</strong><br>
+  ▸ <strong>🥇 Pedras de Fogo:</strong> 68,4 milhões frutos (capital!)<br>
+  ▸ <strong>🥈 Itapororoca:</strong> 60 milhões<br>
+  ▸ <strong>🥉 Araçagi:</strong> 48 milhões<br>
+  ▸ <strong>4º Santa Rita:</strong> 31,5 milhões<br>
+  ▸ <strong>5º Lagoa de Dentro:</strong> 12 milhões<br>
+  ▸ <strong>Mais municípios:</strong> Mamanguape · Marcação · Cuité de Mamanguape<br><br>
+  <strong>Por que PB lidera?</strong><br>
+  ▸ <strong>Zona da Mata litoral:</strong> Próximo ao mar<br>
+  ▸ <strong>Luminosidade ANO TODO:</strong> Garante doçura (Brix alto!)<br>
+  ▸ <strong>Chuvas bem distribuídas:</strong> Ideal abacaxizeiro<br>
+  ▸ <strong>Solo argiloso-arenoso:</strong> Drenagem perfeita<br>
+  ▸ <strong>Tradição secular:</strong> Cultura familiar<br>
+  ▸ <strong>Empaer-PB:</strong> Pesquisa e extensão<br>
+  ▸ <strong>Cooperativismo crescente</strong><br>
+  ▸ <strong>Pico safra jun-dez</strong> + colheita ano todo<br><br>
+  <strong>PARÁ · #2 com MAIOR valor produção:</strong><br>
+  ▸ <strong>Produção 2024:</strong> 290,4 milhões frutos<br>
+  ▸ <strong>Valor produção:</strong> R$ 1,08 BILHÃO! (maior do BR!)<br>
+  ▸ <strong>Por que valor maior?</strong> Frutos maiores · qualidade<br>
+  ▸ <strong>Top município:</strong> Floresta do Araguaia (Sul PA)<br>
+  ▸ <strong>Outros:</strong> Conceição Araguaia · Salinópolis<br>
+  ▸ <strong>Variedade:</strong> Pérola + Smooth Cayenne (industrial)<br>
+  ▸ <strong>Oferta CEASAs:</strong> Abastece MS · DF · Centro-Oeste<br>
+  ▸ <strong>Logística:</strong> Caminhões 1.500-2.000 km<br><br>
+  <strong>MINAS GERAIS · #3 (143,7 mi frutos):</strong><br>
+  ▸ <strong>Norte MG:</strong> Frutal · Monte Alegre<br>
+  ▸ <strong>Triângulo Mineiro:</strong> Itapagipe · Campina Verde<br>
+  ▸ <strong>Vale do Mucuri:</strong> Tradição<br>
+  ▸ <strong>Variedade:</strong> Pérola predomina<br>
+  ▸ <strong>Mercado:</strong> SP · RJ · BH<br><br>
+  <strong>RIO DE JANEIRO · #4 (135,3 mi):</strong><br>
+  ▸ <strong>Sapucaia · Sumidouro · Nova Friburgo</strong><br>
+  ▸ <strong>Norte Fluminense:</strong> Polo<br>
+  ▸ <strong>Variedade:</strong> Pérola + Smooth Cayenne<br>
+  ▸ <strong>Próximo ao consumo</strong> SP/RJ<br><br>
+  <strong>Outros estados emergentes:</strong><br>
+  ▸ <strong>TO (Tocantins):</strong> 120 milhões · Miracema/Babaçulândia<br>
+  ▸ <strong>MS (Mato Grosso do Sul):</strong> Sidrolândia · agricultura familiar<br>
+  ▸ <strong>BA · GO · ES:</strong> Produções regionais<br>
+  ▸ <strong>SC + outros Sul:</strong> Mínimos (clima limita)</div>
+</div>
+
+<div class="alert blue">
+  <span class="ai">🚢</span>
+  <div><strong style="color:var(--blue)">EXPORTAÇÃO BR · Frutas BR atingem US$ 1,45 BI em 2025 (recorde 3º ano!) · Abacaxi tem POTENCIAL gigante (apenas 5%)</strong><br>
+  <strong>Exportação frutas BR 2025 (Abrafrutas):</strong><br>
+  ▸ <strong>Volume total frutas:</strong> US$ 1,45 BILHÃO (recorde histórico!)<br>
+  ▸ <strong>Crescimento 2025:</strong> +12% valor · +19,6% volume<br>
+  ▸ <strong>Recorde 3º ano consecutivo!</strong><br>
+  ▸ <strong>Abacaxi participação:</strong> ~3% (US$ 30-40 mi · pequeno mas crescendo)<br>
+  ▸ <strong>Volume abacaxi exportado:</strong> ~5-7 mil toneladas<br><br>
+  <strong>Exportação abacaxi BR:</strong><br>
+  ▸ <strong>Volume:</strong> ~5 mil toneladas (apenas 5% produção)<br>
+  ▸ <strong>Líderes mundiais exportação:</strong><br>
+  &nbsp;&nbsp;🥇 Costa Rica (60% mundo · MD2!)<br>
+  &nbsp;&nbsp;🥈 Filipinas (15%)<br>
+  &nbsp;&nbsp;🥉 Equador · Honduras<br>
+  ▸ <strong>BR é pequeno na exportação</strong> mas POTENCIAL ENORME<br>
+  ▸ <strong>Variedade exportada:</strong> Pérola (mas mercado prefere MD2)<br>
+  ▸ <strong>Concorrência forte</strong> Costa Rica<br><br>
+  <strong>Top destinos abacaxi BR:</strong><br>
+  ▸ <strong>🥇 Argentina:</strong> 35% (vizinho · Mercosul)<br>
+  ▸ <strong>🥈 Uruguai:</strong> 18%<br>
+  ▸ <strong>🥉 Paraguai:</strong> 15%<br>
+  ▸ <strong>4º Chile:</strong> 12%<br>
+  ▸ <strong>5º Espanha · UE:</strong> 10%<br>
+  ▸ <strong>6º Outros:</strong> 10% (Bolívia · Peru · Oriente)<br><br>
+  <strong>Acordo Mercosul-UE (jan/2026):</strong><br>
+  ▸ <strong>Tarifas zero para uvas</strong> (já em vigor)<br>
+  ▸ <strong>Para abacaxi:</strong> Cota 5 mil t inicial · cresce<br>
+  ▸ <strong>Concorrência Costa Rica MD2</strong> permanece forte<br>
+  ▸ <strong>Brasil precisa investir em MD2</strong> para UE<br><br>
+  <strong>Por que BR não exporta mais?</strong><br>
+  ▸ <strong>Variedade Pérola tem casca FRÁGIL:</strong> Não viaja bem<br>
+  ▸ <strong>MD2 (Costa Rica) é resistente:</strong> Casca dourada<br>
+  ▸ <strong>Logística:</strong> Distância grande Brasil-Europa<br>
+  ▸ <strong>Falta certificação · GlobalGAP</strong><br>
+  ▸ <strong>Custo logística:</strong> Alto<br>
+  ▸ <strong>Mercado interno absorve quase tudo</strong><br>
+  ▸ <strong>Industrialização baixa</strong><br><br>
+  <strong>Indústria de suco/polpa BR:</strong><br>
+  ▸ <strong>Volume processado:</strong> ~400 mil toneladas/ano<br>
+  ▸ <strong>Top processadoras:</strong> Cargill · Sucocítrico Cutrale · Maguary<br>
+  ▸ <strong>Suco concentrado:</strong> Exportação cresce<br>
+  ▸ <strong>Polpa congelada:</strong> Mercado nacional<br>
+  ▸ <strong>Pedaços em calda:</strong> Conservas (boom!)<br>
+  ▸ <strong>Preço produtor indústria:</strong> R$ 0,80-1,40/kg<br>
+  ▸ <strong>Margem indústria:</strong> Apertada · só refugo de mesa</div>
+</div>
+
+<div class="alert orange">
+  <span class="ai">⚠️</span>
+  <div><strong style="color:var(--orange)">DESAFIOS · Fusariose (devastadora!) · Cochonilha · Calor extremo · Frete diesel · Concorrência Costa Rica MD2!</strong><br>
+  <strong>Top doenças/pragas abacaxi BR:</strong><br>
+  ▸ <strong>1. FUSARIOSE (Fusarium guttiforme):</strong> Pior · pode dizimar pomar!<br>
+  &nbsp;&nbsp;Variedade Vitória RESISTENTE (Embrapa salvou setor!)<br>
+  ▸ <strong>2. Cochonilha (Dysmicoccus brevipes):</strong> Inseto sugador · vetor wilt<br>
+  ▸ <strong>3. Wilt do abacaxi:</strong> Vírus transmitido cochonilha<br>
+  ▸ <strong>4. Podridão do olho (Phytophthora):</strong> Fungo · perdas<br>
+  ▸ <strong>5. Broca do fruto (Strymon basalides):</strong> Lagarta<br>
+  ▸ <strong>6. Murcha bacteriana:</strong> Plantas tombam<br>
+  ▸ <strong>7. Nematoides:</strong> Solo<br><br>
+  <strong>Custos produção abacaxi (1 hectare):</strong><br>
+  ▸ <strong>Mudas (35-40 mil/ha):</strong> R$ 8-15 mil (parte 1ª safra)<br>
+  ▸ <strong>Adubação · fertilizantes:</strong> R$ 8-14 mil/ano<br>
+  ▸ <strong>Defensivos (fusariose · cochonilha):</strong> R$ 4-8 mil/ano<br>
+  ▸ <strong>Indução floração (etileno · carbureto):</strong> R$ 1-2 mil/ha<br>
+  ▸ <strong>Mão de obra (plantio · capina · colheita):</strong> R$ 15-25 mil/ha<br>
+  ▸ <strong>Papelão proteção sol:</strong> R$ 2-4 mil/ha<br>
+  ▸ <strong>Total operacional:</strong> R$ 35-60 mil/ha (ciclo 18-24 meses!)<br>
+  ▸ <strong>Custo R$/fruto:</strong> R$ 0,80-1,40 (médio)<br>
+  ▸ <strong>Custo R$/kg:</strong> R$ 0,60-1,10<br><br>
+  <strong>Margem produtor (cenário atual abr/26):</strong><br>
+  ▸ <strong>Pérola Pedras de Fogo (PB):</strong> R$ 2,50-3,20/un<br>
+  ▸ <strong>Custo total:</strong> R$ 1,00-1,40/un<br>
+  ▸ <strong>Margem Pérola:</strong> +R$ 1,10-2,20/un (100-200% lucro!)<br>
+  ▸ <strong>Havaí (mais difícil):</strong> R$ 4,50-5,00/un · margem ainda maior<br>
+  ▸ <strong>Indústria:</strong> Margem apertada (só refugo)<br>
+  ▸ <strong>Em entressafra atual:</strong> Margens DOBRAM!<br><br>
+  <strong>Tecnologia recomendada:</strong><br>
+  ▸ <strong>Variedade Vitória (Embrapa):</strong> Resistente fusariose · ESSENCIAL<br>
+  ▸ <strong>Indução floração (etileno · carbureto · paclobutrazol):</strong> Controla colheita<br>
+  ▸ <strong>Irrigação localizada:</strong> Especialmente PA/MG<br>
+  ▸ <strong>Cobertura plástica:</strong> Mulching · controla mato + umidade<br>
+  ▸ <strong>Adubação foliar:</strong> Resposta rápida<br>
+  ▸ <strong>Papelão/folhas no fruto:</strong> Evita queimadura sol<br>
+  ▸ <strong>Mudas micropropagadas:</strong> Sanidade total<br>
+  ▸ <strong>Drones · sensores · IA:</strong> Cultivos inteligentes<br><br>
+  <strong>Riscos para 2026:</strong><br>
+  ▸ <strong>Calor extremo:</strong> Reduz calibre · sabor<br>
+  ▸ <strong>Fusariose</strong> ainda preocupa Pérola<br>
+  ▸ <strong>Diesel/frete</strong> elevado encarece logística<br>
+  ▸ <strong>Concorrência Costa Rica MD2</strong> na UE<br>
+  ▸ <strong>Importação MD2</strong> cresce no varejo gourmet BR<br>
+  ▸ <strong>El Niño/La Niña:</strong> Impacto Nordeste<br>
+  ▸ <strong>Eleições BR 2026:</strong> Volatilidade política</div>
+</div>
+
+<div class="alert purple">
+  <span class="ai">🍴</span>
+  <div><strong style="color:var(--purple)">CONSUMO BR FORTE! 12 kg/hab/ano · Top 5 mundo! Suco · sobremesas · churrasco · saúde tropical (bromelina)!</strong><br>
+  <strong>Consumo per capita abacaxi:</strong><br>
+  ▸ <strong>🥇 Costa Rica:</strong> 25 kg/hab/ano<br>
+  ▸ <strong>🥈 Filipinas:</strong> 18 kg/hab/ano<br>
+  ▸ <strong>🥉 Tailândia:</strong> 14 kg/hab/ano<br>
+  ▸ <strong>4º Indonésia:</strong> 13 kg/hab/ano<br>
+  ▸ <strong>5º BRASIL:</strong> 12 kg/hab/ano (top 5 mundo!)<br>
+  ▸ <strong>EUA:</strong> 3 kg/hab/ano<br>
+  ▸ <strong>UE média:</strong> 2 kg/hab/ano<br><br>
+  <strong>Por que abacaxi é amado no BR?</strong><br>
+  ▸ <strong>Sabor único · doce-ácido:</strong> Refrescante<br>
+  ▸ <strong>Disponibilidade ano todo:</strong> Indução floração<br>
+  ▸ <strong>Versatilidade:</strong> In natura · suco · sobremesa · culinária<br>
+  ▸ <strong>Churrasco BR:</strong> Acompanhamento clássico (com canela!)<br>
+  ▸ <strong>Vitamina C alta:</strong> 47 mg/100g<br>
+  ▸ <strong>Bromelina:</strong> Enzima digestiva (anti-inflamatória)<br>
+  ▸ <strong>Pico verão:</strong> Caipirinha · suco gelado<br>
+  ▸ <strong>Festa junina:</strong> Doces tradicionais<br><br>
+  <strong>Nutrição (100g abacaxi maduro):</strong><br>
+  ▸ <strong>Calorias:</strong> 50 kcal (baixa!)<br>
+  ▸ <strong>Carboidratos:</strong> 13g<br>
+  ▸ <strong>Açúcares naturais:</strong> 9,9g (frutose)<br>
+  ▸ <strong>Fibras:</strong> 1,4g<br>
+  ▸ <strong>Vitamina C:</strong> 47 mg (78% VD!)<br>
+  ▸ <strong>Manganês:</strong> 100% VD!<br>
+  ▸ <strong>Bromelina:</strong> Enzima exclusiva (digestão · anti-inflamatório)<br>
+  ▸ <strong>Vitaminas B1 · B6 · folato</strong><br><br>
+  <strong>Tendências consumo 2026:</strong><br>
+  ▸ <strong>Abacaxi orgânico:</strong> +18% ao ano · premium R$ 12-18/un<br>
+  ▸ <strong>Pedaços frescos prontos (cut fruit):</strong> Boom supermercados<br>
+  ▸ <strong>Suco integral premium:</strong> R$ 12-25/L<br>
+  ▸ <strong>Polpa congelada:</strong> Smoothies · vitaminas<br>
+  ▸ <strong>Abacaxi desidratado:</strong> Snack saudável<br>
+  ▸ <strong>Pizza havaiana:</strong> Polêmica mas presente!<br>
+  ▸ <strong>Caipirinha de abacaxi:</strong> Coquetelaria<br>
+  ▸ <strong>Vinagre · vinho de abacaxi:</strong> Nichos<br>
+  ▸ <strong>Bromelina (suplemento):</strong> Mercado farmacêutico<br><br>
+  <strong>Mercado de varejo BR:</strong><br>
+  ▸ <strong>Supermercados:</strong> 50% volume<br>
+  ▸ <strong>Feiras livres:</strong> 25%<br>
+  ▸ <strong>Sacolões/hortifrúti:</strong> 18%<br>
+  ▸ <strong>Atacado direto:</strong> 7%<br>
+  ▸ <strong>Margem varejo:</strong> 80-150% sobre atacado<br>
+  ▸ <strong>Perdas pós-colheita:</strong> 25-30% (alta!)<br>
+  ▸ <strong>Logística refrigerada:</strong> Reduz perdas (12-15°C)<br><br>
+  <strong>Indústria/Processamento:</strong><br>
+  ▸ <strong>Suco:</strong> Maguary · Aurora · Hering · Jandaia<br>
+  ▸ <strong>Pedaços em calda (Del Monte BR):</strong> Importação Filipinas<br>
+  ▸ <strong>Polpa:</strong> De Marchi · Hortolândia<br>
+  ▸ <strong>Bromelina (farmacêutico):</strong> Indústria nicho<br>
+  ▸ <strong>Cosméticos (skincare):</strong> AHA natural</div>
+</div>
+
+<div class="alert amber">
+  <span class="ai">🏦</span>
+  <div><strong style="color:var(--nt)">MACRO: Selic 14,50% e Real R$ 4,95 = MISTO para abacaxi · Insumos baratos · Importação MD2 favorecida!</strong><br>
+  Copom cortou Selic (29/04) para 14,50% (-0,25 pp). Dólar em R$ 4,9523 (mín 2 anos!).<br><br>
+  <strong>IMPACTOS no setor abacaxi BR:</strong><br>
+  ▸ ✓ <strong>Insumos importados (defensivos · adubos · etileno):</strong> -10-12% em R$<br>
+  ▸ ✓ <strong>Maquinário · embalagens:</strong> Mais barato<br>
+  ▸ ✓ <strong>Crédito Plano Safra:</strong> Taxas menores<br>
+  ▸ ✓ <strong>FNE Nordeste (Banco do Nordeste):</strong> Taxas baixas<br>
+  ▸ ✗ <strong>Importação MD2 Costa Rica:</strong> Mais barata (concorrência premium)<br>
+  ▸ ✗ <strong>Diesel pressionando frete:</strong> Encarece logística (Pará-MS-DF)<br>
+  ▸ ✗ <strong>Exportação BR:</strong> Receita em R$ menor<br>
+  ▸ ✗ <strong>IPPA-Hortifruti 1ºT/26:</strong> -14% (mas abacaxi resistiu!)<br><br>
+  <strong>Linhas de crédito abacaxi:</strong><br>
+  ▸ <strong>Plano Safra 26/27 (junho/26):</strong> Volume R$ 550 bi<br>
+  ▸ <strong>Pronaf:</strong> Pequenos · taxas 4-6% (perfil principal!)<br>
+  ▸ <strong>Pronamp:</strong> Médios · taxas 8-10%<br>
+  ▸ <strong>BNDES Fruticultura:</strong> Investimento (irrigação · tecnologia)<br>
+  ▸ <strong>FNE Nordeste:</strong> 6-8% · até 18 anos<br>
+  ▸ <strong>Custeio até R$ 6 milhões/ano</strong><br>
+  ▸ <strong>Empaer-PB · Emater-PA · Emater-MG:</strong> Apoio técnico<br><br>
+  <strong>Cálculo retorno (1 hectare abacaxi Pérola PB):</strong><br>
+  ▸ <strong>Investimento implantação:</strong> R$ 30-40 mil<br>
+  ▸ <strong>Produtividade:</strong> 35.000 frutos/ha (1 fruto = 1 planta)<br>
+  ▸ <strong>Preço médio anual ao produtor:</strong> R$ 2,80/un<br>
+  ▸ <strong>Receita bruta:</strong> R$ 98 mil/ha/ciclo<br>
+  ▸ <strong>Custo operacional:</strong> R$ 50 mil/ha/ciclo<br>
+  ▸ <strong>Margem bruta:</strong> R$ 48 mil/ha/ciclo (18-24 meses)<br>
+  ▸ <strong>Payback:</strong> Praticamente 1 ciclo<br>
+  ▸ <strong>ROI:</strong> 90-120% por ciclo<br>
+  ▸ <strong>Em entressafra (R$ 3,50/un):</strong> Margem dobra!<br><br>
+  <strong>Riscos macro:</strong><br>
+  ▸ <strong>Real continuar forte:</strong> Pressão exportação<br>
+  ▸ <strong>Importação MD2:</strong> Concorrência gourmet<br>
+  ▸ <strong>Diesel/frete elevado:</strong> Custos sobem<br>
+  ▸ <strong>Mudanças climáticas:</strong> Calor extremo · seca PB<br>
+  ▸ <strong>El Niño/La Niña:</strong> Atenção 2026/27<br>
+  ▸ <strong>Eleições BR 2026:</strong> Volatilidade política</div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon">📊</div><h2>Indicadores-Chave <span>— Cepea/HF · Ceasas · IBGE · Abrafrutas</span></h2></div>
+
+<div class="kpi-row">
+  <div class="kpi up"><div class="kpi-lb">Pérola Campinas/SP</div><div class="kpi-val up">R$ 5,00</div><div class="kpi-sub">/kg · ↑ 5,93% sem · firme</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Pérola BH/MG dúzia</div><div class="kpi-val nt">R$ 60,00</div><div class="kpi-sub">/dz · estável</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Pérola Ceagesp 8 frutos</div><div class="kpi-val nt">R$ 8,21</div><div class="kpi-sub">/un · ↓ 1,34%</div></div>
+  <div class="kpi up"><div class="kpi-lb">Pérola Ceasa/MS cx 20kg</div><div class="kpi-val up">R$ 130,00</div><div class="kpi-sub">↑ 7,66% · diesel encareceu</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Pérola produtor PB</div><div class="kpi-val nt">R$ 2,80</div><div class="kpi-sub">/un · pequeno produtor</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Havaí produtor</div><div class="kpi-val nt">R$ 4,75</div><div class="kpi-sub">/un · premium · MS/PB</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Varejo BR capitais</div><div class="kpi-val nt">R$ 8,50-14</div><div class="kpi-sub">/un · disparou em 2026</div></div>
+  <div class="kpi ab"><div class="kpi-lb">PB safra 2024</div><div class="kpi-val ab">300,9 mi</div><div class="kpi-sub">frutos · #1 BR · volta topo</div></div>
+  <div class="kpi ab"><div class="kpi-lb">PA safra 2024</div><div class="kpi-val ab">290,4 mi</div><div class="kpi-sub">frutos · valor R$ 1,08 bi (#1)</div></div>
+  <div class="kpi ab"><div class="kpi-lb">Produção BR</div><div class="kpi-val ab">~2,4 bi</div><div class="kpi-sub">frutos · 4º produtor mundo</div></div>
+  <div class="kpi lf"><div class="kpi-lb">Área plantada BR</div><div class="kpi-val lf">~70 mil ha</div><div class="kpi-sub">PB+PA = 50%</div></div>
+  <div class="kpi lf"><div class="kpi-lb">Per capita BR</div><div class="kpi-val lf">12 kg</div><div class="kpi-sub">/hab/ano · top 5 mundo!</div></div>
+  <div class="kpi bl"><div class="kpi-lb">Export frutas BR 2025</div><div class="kpi-val bl">US$ 1,45 bi</div><div class="kpi-sub">recorde 3º ano</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Variedade dominante</div><div class="kpi-val nt">Pérola 70%</div><div class="kpi-sub">Smooth Cayenne 15%</div></div>
+  <div class="kpi pu"><div class="kpi-lb">Selic 29/04</div><div class="kpi-val pu">14,50%</div><div class="kpi-sub">↓ 0,25 pp</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Dólar 30/04</div><div class="kpi-val dn">R$ 4,95</div><div class="kpi-sub">favorece importação MD2</div></div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon">📍</div><h2>Cotações da Semana <span>— Abacaxi · Variedades · Mercados · Abr/26</span></h2></div>
+
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Mercado/Variedade</th><th>Unidade</th><th>23/04</th><th>27/04</th><th>30/04</th><th>Var. Sem.</th><th>Var. Mês</th></tr></thead>
+<tbody>
+<tr><td class="td-name">📊 Pérola Campinas/SP</td><td>Graúdo R$/kg</td><td>4,72</td><td>4,72</td><td class="td-up">5,00</td><td class="td-up">+5,93%</td><td class="td-up">+12%</td></tr>
+<tr><td class="td-name">📊 Pérola BH/MG</td><td>Médio R$/dúzia</td><td>60,00</td><td>60,00</td><td class="td-nt">60,00</td><td class="td-nt">0,0%</td><td class="td-up">+8%</td></tr>
+<tr><td class="td-name">📊 Pérola Ceagesp/SP</td><td>8 frutos R$/un</td><td>8,00</td><td>8,00</td><td class="td-nt">8,10</td><td class="td-up">+1,3%</td><td class="td-up">+9%</td></tr>
+<tr><td class="td-name">📊 Pérola Ceasa/MS</td><td>cx 20kg</td><td>120,00</td><td>125,00</td><td class="td-up">130,00</td><td class="td-up">+7,66%</td><td class="td-up">+15%</td></tr>
+<tr><td class="td-name">🍍 Pérola produtor PB</td><td>R$/un</td><td>2,80</td><td>2,90</td><td class="td-up">2,95</td><td class="td-up">+5%</td><td class="td-up">+18%</td></tr>
+<tr><td class="td-name">🍍 Pérola produtor PA</td><td>R$/un</td><td>2,40</td><td>2,50</td><td class="td-up">2,55</td><td class="td-up">+6%</td><td class="td-up">+15%</td></tr>
+<tr><td class="td-name">🍍 Pérola produtor MG</td><td>R$/un</td><td>3,20</td><td>3,25</td><td class="td-up">3,30</td><td class="td-up">+3%</td><td class="td-up">+12%</td></tr>
+<tr><td class="td-name">🍍 Pérola produtor RJ</td><td>R$/un</td><td>3,40</td><td>3,50</td><td class="td-up">3,60</td><td class="td-up">+6%</td><td class="td-up">+15%</td></tr>
+<tr><td class="td-name">🍍 Havaí Sidrolândia/MS</td><td>R$/un</td><td>4,60</td><td>4,75</td><td class="td-up">4,80</td><td class="td-up">+4%</td><td class="td-up">+10%</td></tr>
+<tr><td class="td-name">🛒 Varejo SP capital</td><td>Pérola R$/kg</td><td>9,80</td><td>10,50</td><td class="td-up">11,20</td><td class="td-up">+14%</td><td class="td-up">+30%</td></tr>
+<tr><td class="td-name">🛒 Varejo RJ capital</td><td>Pérola R$/kg</td><td>10,50</td><td>11,80</td><td class="td-up">12,50</td><td class="td-up">+19%</td><td class="td-up">+35%</td></tr>
+<tr><td class="td-name">🏭 Indústria suco</td><td>R$/kg</td><td>1,20</td><td>1,25</td><td class="td-nt">1,30</td><td class="td-up">+8%</td><td class="td-up">+12%</td></tr>
+</tbody>
+</table>
+</div>
+
+<p style="font-size:.78rem;color:var(--text3);margin-top:6px;text-align:center"><em>Cotações abacaxi 30/04/26 · Fonte: Notícias Agrícolas (Ceasa/Ceagesp) · IBGE · Empaer-PB · Sistemas estaduais · Pérola = variedade dominante BR · Havaí = Smooth Cayenne</em></p>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon">📈</div><h2>Análise Gráfica <span>— 6 perspectivas · Trajetória · Estados · Variedades · Mundo · Calendário · Custos</span></h2></div>
+
+<div class="grid2">
+  <div class="chart-box"><h3>📊 Pérola Atacado · Ceasas BR <span class="ch-tag">R$/kg · 12 sem</span></h3><div class="chart-wrap"><canvas id="ch1"></canvas></div></div>
+  <div class="chart-box"><h3>🇧🇷 Top Estados Produtores 2024 <span class="ch-tag">milhões frutos</span></h3><div class="chart-wrap"><canvas id="ch2"></canvas></div></div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box"><h3>🍍 Variedades BR <span class="ch-tag">% participação</span></h3><div class="chart-wrap"><canvas id="ch3"></canvas></div></div>
+  <div class="chart-box"><h3>🌍 Top Produtores Mundo <span class="ch-tag">% safra</span></h3><div class="chart-wrap"><canvas id="ch4"></canvas></div></div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box"><h3>📅 Calendário Oferta BR <span class="ch-tag">% pico anual</span></h3><div class="chart-wrap"><canvas id="ch5"></canvas></div></div>
+  <div class="chart-box"><h3>💰 Margem Produtor Pérola <span class="ch-tag">R$/un · custo vs preço</span></h3><div class="chart-wrap"><canvas id="ch6"></canvas></div></div>
+</div>
+
+<div class="dv"></div>
+
+<div class="opinion">
+  <h3>🎯 Opinião do Analista — Entressafra Aperta · Preços Sobem · Paraíba Volta ao Topo · Brasil é Gigante!</h3>
+
+  <p><strong>O setor de abacaxi brasileiro vive uma SEMANA DE ALTAS em abril/2026 com a entressafra rigorosa pressionando preços: PÉROLA EM CAMPINAS A R$ 5,00/kg (+5,93% sem!) · CEASA/MS dispara 7,66% (R$ 130/cx 20kg · diesel encareceu frete) · Ceagesp R$ 8,21 por unidade (8 frutos) · varejo nas capitais BATE R$ 12-14/un! Razão: CALOR EXTREMO 2025-26 reduziu calibre frutos · Pérola PB/PA em fim de safra · diesel/frete em alta encarece logística (PA-DF distância gigante) · entressafra abr-mai sempre rigorosa. PARAÍBA VOLTA AO TOPO em 2024 com 300,9 milhões de frutos (vs PA 290,4 mi · MG 143,7 mi · RJ 135,3 mi) · Pedras de Fogo é capital nacional (68,4 mi frutos!) · Itapororoca (60 mi) · Araçagi (48 mi) · agricultura familiar predomina. PARÁ tem MAIOR VALOR (R$ 1,08 bilhão vs R$ 671 mi PB!) com frutos maiores. BRASIL é 4º produtor MUNDIAL (~8% safra · ~2,4 bi frutos) atrás Indonésia · Filipinas · Costa Rica. Pérola domina (70-80%) com Smooth Cayenne (Havaí) 15% e Vitória/Imperial (Embrapa) crescentes. Per capita BR é 12 kg/hab/ano (TOP 5 mundo!) · Brasil consome 95% (apenas 5% exportação · potencial gigante mas Pérola tem casca frágil vs MD2 Costa Rica). Bromelina · vitamina C · manganês 100% VD = saúde tropical. Frutas BR exportaram US$ 1,45 BI em 2025 (recorde!). Selic 14,50% + dólar baixo é misto. PRODUTOR: aproveite entressafra · invista em Vitória (resistente fusariose) · indução floração · cooperativismo · valor agregado!</strong></p>
+
+  <p><strong>Semana 27-30/abr/2026 — Em síntese:</strong><br>
+  ▸ <strong>Pérola Graúdo Campinas:</strong> R$ 5,00/kg (↑ 5,93%!)<br>
+  ▸ <strong>Pérola BH dúzia:</strong> R$ 60,00 (estável)<br>
+  ▸ <strong>Pérola Ceagesp 8 frutos:</strong> R$ 8,21<br>
+  ▸ <strong>Pérola Ceasa/MS cx 20kg:</strong> R$ 130 (↑ 7,66%)<br>
+  ▸ <strong>Pérola produtor PB:</strong> R$ 2,95/un<br>
+  ▸ <strong>Havaí produtor MS:</strong> R$ 4,80/un<br>
+  ▸ <strong>Varejo SP capital:</strong> R$ 11,20/kg<br>
+  ▸ <strong>Varejo RJ capital:</strong> R$ 12,50/kg<br>
+  ▸ <strong>Indústria suco:</strong> R$ 1,30/kg<br>
+  ▸ <strong>Produção BR 2024:</strong> 2,4 bi frutos (4º mundo!)<br>
+  ▸ <strong>PB safra 2024:</strong> 300,9 mi frutos (#1!)<br>
+  ▸ <strong>PA valor produção:</strong> R$ 1,08 bi (#1 BR!)<br>
+  ▸ <strong>Variedades:</strong> Pérola 70% · Havaí 15% · Vitória 5%<br>
+  ▸ <strong>Per capita BR:</strong> 12 kg/hab (top 5 mundo!)<br>
+  ▸ <strong>Exportação frutas BR 2025:</strong> US$ 1,45 bi (recorde!)<br>
+  ▸ <strong>Selic:</strong> 14,50% · <strong>Dólar:</strong> R$ 4,95<br>
+  ▸ <strong>Margem produtor Pérola:</strong> 100-200% lucro!</p>
+
+  <p><strong>Recomendações estratégicas:</strong></p>
+
+  <p><strong>1. PRODUTOR PEQUENO/MÉDIO PB/PA: APROVEITE ENTRESSAFRA · Margem dobra!</strong> Estratégias: a) Indução floração escalonada (etileno · paclobutrazol · carbureto) para colher abr-mai (preços altos!), b) Variedade Vitória RESISTE FUSARIOSE (essencial!), c) Cooperativismo (escoamento + insumos baratos), d) Vender direto consumidor (e-commerce frutas · Mercado Livre · feiras orgânicas), e) Empaer-PB orientação técnica gratuita, f) Embalagem/papelão proteção sol (qualidade premium).</p>
+
+  <p><strong>2. PRODUTOR MG/RJ: PROXIMIDADE SP/RJ é OURO!</strong> Logística mais barata · margem maior. Estratégias: a) Pérola para varejo gourmet, b) Cut fruit (pedaços prontos R$ 18-25/kg!), c) Direct-to-consumer · entrega rápida, d) Wine clubs/Pineapple clubs (assinatura mensal), e) Eventos · degustações, f) Marketing redes sociais.</p>
+
+  <p><strong>3. ATENÇÃO À FUSARIOSE! Pode dizimar pomar!</strong> Estratégias: a) Plantar variedade VITÓRIA (Embrapa · resistente!), b) Mudas certificadas micropropagadas (sanidade total), c) Manejo integrado (não plantar área contaminada), d) Drenagem solo (fungo gosta umidade), e) Rotação culturas (5+ anos), f) Apoio Embrapa Mandioca e Fruticultura.</p>
+
+  <p><strong>4. INVESTIR EM TECNOLOGIA · Indução floração é OURO!</strong> Permite colheita o ano todo · oferta planejada. Estratégias: a) Etileno · paclobutrazol · carbureto cálcio, b) Programar para entressafra (preços altos), c) Irrigação localizada (PA · MS), d) Cobertura plástica mulching (controle mato + umidade), e) Drones · sensores · IA, f) Adubação foliar resposta rápida.</p>
+
+  <p><strong>5. PRODUTOS DE VALOR AGREGADO!</strong> Margem in natura é boa · agregado é EXCELENTE. Estratégias: a) Polpa congelada (R$ 8-15/kg), b) Suco integral premium (R$ 12-25/L), c) Abacaxi desidratado (snack saudável · R$ 40-60/kg!), d) Doces · geleias artesanais, e) Vinagre de abacaxi (nicho), f) Bromelina (suplemento farmacêutico · alta margem!), g) Cosméticos AHA natural.</p>
+
+  <p><strong>6. EXPORTAÇÃO É POTENCIAL ENORME!</strong> Apenas 5% produção · BR fica para trás Costa Rica. Estratégias: a) Investir em variedade MD2 (mas Costa Rica domina · BR tem que apostar Pérola+ certificada), b) GlobalGAP certificação (essencial UE), c) Mercosul vizinhos (Argentina 35% destino), d) Logística refrigerada (12-15°C), e) Pacote APHIS para EUA (tratamento), f) Wine clubs internacionais.</p>
+
+  <p><strong>7. AGENDA: a) Plano Safra 26/27 em junho/26 (taxas subsidiadas), b) FNE Nordeste (BNB · 6-8%), c) Festa do Abacaxi Itapororoca (out/26), d) Festa do Abacaxi Pedras de Fogo (set/26), e) Frutal/Anuga UE (out/26), f) Dia do Agricultor (jul/26), g) COP30 Belém nov/26 (sustentabilidade · carbono).</strong></p>
+
+  <div class="opinion .scenarios" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px">
+    <div class="sc up"><h5>🟢 Cenário Altista</h5><p>Entressafra mantém Pérola R$ 3,50/un produtor mai-jun · varejo R$ 14-16/un capitais · safra 26/27 +5% · indução escalonada gera ano lucrativo · cooperativismo cresce · Vitória substitui Pérola (resistência) · Mercosul-UE abre para abacaxi → <strong>Setor lucra · margem 200%+</strong>. Probabilidade: ~35%</p></div>
+    <div class="sc nt"><h5>🟡 Cenário Neutro</h5><p>Pérola produtor R$ 2,80-3,20 · safra plena jun-dez derruba para R$ 1,80-2,20 · varejo R$ 9-12 · margem 100-150% · oferta normal · entressafra gera picos pontuais · concorrência MD2 importada cresce gourmet → <strong>Cenário misto · entressafra premia</strong>. Probabilidade: ~50%</p></div>
+    <div class="sc dn"><h5>🔴 Cenário Baixista</h5><p>Calor extremo persiste · qualidade ruim · preços caem mai-jun (R$ 2,00) · safra superoferta jul-dez · fusariose ataca pomares Pérola · Costa Rica MD2 invade gourmet · diesel persiste alto · pequenos quebram → <strong>Crise · pequenos sofrem</strong>. Probabilidade: ~15%</p></div>
+  </div>
+
+  <div class="sig">📅 Análise Rural IN · Quinta, 30/Abr/2026 · Semana curta (feriado 1º Mai) · ENTRESSAFRA APERTA · PARAÍBA #1 · BR 4º MUNDO · CALOR PRESSIONA · MARGENS DOBRAM!</div>
+</div>
+
+<footer class="footer"><div class="wrap">
+  <div class="footer-brand"><span class="r">Rural</span> <span class="i">IN</span></div>
+  <p>Radar Agro Semanal · Abacaxi · Semana 27–30 Abril 2026<br>Fontes: Cepea/Esalq · HF Brasil · Hortifrúti/Cepea · Ceasa/MS · Ceasa Campinas · Ceasa BH · Ceagesp/SP · IBGE · Empaer-PB · Embrapa Mandioca e Fruticultura · Abrafrutas · Notícias Agrícolas · Globo Rural · Rei do Abacaxi · Conab Prohort · MAPA</p>
+  <div class="footer-credits">
+    <h4>Análise e Construção</h4>
+    <div class="name">Dr. Sidney Souza</div>
+    <div class="title">Economista e Adm. Agrícola — Estrategista Econômico do Produtor</div>
+    <div class="desc">Especialista em economia da fazenda e gestão de risco no agro<br>Transformamos dados da fazenda em decisões econômicas</div>
+    <div class="contact">📧 <a href="mailto:sidneyagro@gmail.com">sidneyagro@gmail.com</a> · 📱 <a href="tel:+5564992266886">(64) 9 9226-6886</a> · 📸 <a href="https://instagram.com/ruralin.ai" target="_blank">@ruralin.ai</a></div>
+  </div>
+  <p style="margin-top:18px"><em>⚠️ Material informativo. Não constitui recomendação de investimento.</em></p>
+</div></footer>
+
+</div>
+
+<script>
+const gc='rgba(46,42,26,.5)';
+const tt={backgroundColor:'rgba(21,19,10,.97)',borderColor:'#42392a',borderWidth:1,titleFont:{size:11,weight:'700'},bodyFont:{size:10},padding:10,cornerRadius:8};
+
+new Chart(document.getElementById('ch1').getContext('2d'),{type:'line',
+data:{labels:['Fev/26','Mar/26','06/04','13/04','20/04','27/04','30/04'],
+datasets:[
+{label:'Campinas R$/kg',data:[4.20,4.45,4.50,4.60,4.72,4.72,5.00],borderColor:'#facc15',backgroundColor:'rgba(250,204,21,.18)',borderWidth:3,fill:false,tension:.3,pointRadius:5},
+{label:'Ceagesp R$/un',data:[7.20,7.50,7.60,7.80,7.90,8.00,8.21],borderColor:'#16a34a',backgroundColor:'rgba(22,163,74,.13)',borderWidth:3,fill:false,tension:.3,pointRadius:5}
+]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{color:'#fef9c3',font:{size:10},boxWidth:14,padding:8}},tooltip:tt},
+scales:{y:{min:3,max:9,grid:{color:gc},ticks:{callback:v=>'R$'+v.toFixed(1),font:{size:9},color:'#fef9c3'}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#fef9c3'}}}}});
+
+new Chart(document.getElementById('ch2').getContext('2d'),{type:'bar',
+data:{labels:['🥇 PB','🥈 PA','🥉 MG','RJ','TO','MS','BA','GO'],
+datasets:[{label:'Milhões frutos',data:[300.9,290.4,143.7,135.3,120,75,55,45],
+backgroundColor:c=>c.dataIndex===0?'rgba(250,204,21,.85)':c.dataIndex===1?'rgba(22,163,74,.7)':'rgba(132,204,22,.55)',
+borderColor:c=>c.dataIndex===0?'#facc15':c.dataIndex===1?'#16a34a':'#84cc16',borderWidth:2,borderRadius:7}]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+scales:{y:{min:0,max:340,grid:{color:gc},ticks:{font:{size:9},color:'#fef9c3'}},x:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#fef9c3'}}}}});
+
+new Chart(document.getElementById('ch3').getContext('2d'),{type:'doughnut',
+data:{labels:['🥇 Pérola (75%)','🥈 Smooth Cayenne/Havaí (15%)','🥉 Vitória (5%)','Imperial (3%)','MD2 (1%)','Outras (1%)'],
+datasets:[{data:[75,15,5,3,1,1],
+backgroundColor:['rgba(250,204,21,.7)','rgba(132,204,22,.7)','rgba(22,163,74,.6)','rgba(168,85,247,.7)','rgba(251,191,36,.7)','rgba(120,113,108,.5)'],
+borderColor:['#facc15','#84cc16','#16a34a','#a855f7','#fbbf24','#78716c'],borderWidth:2,hoverOffset:8}]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#fef9c3',font:{size:9},boxWidth:12,padding:6}},tooltip:tt},cutout:'58%'}});
+
+new Chart(document.getElementById('ch4').getContext('2d'),{type:'bar',
+data:{labels:['🇮🇩 Indonésia','🇵🇭 Filipinas','🇨🇷 Costa Rica','🇧🇷 BRASIL','🇨🇳 China','🇹🇭 Tailândia','🇮🇳 Índia','🇲🇽 México'],
+datasets:[{label:'% mundial',data:[12,10,9,8,7,6,5,4],
+backgroundColor:c=>c.dataIndex===3?'rgba(250,204,21,.9)':'rgba(132,204,22,.6)',
+borderColor:c=>c.dataIndex===3?'#facc15':'#84cc16',borderWidth:2,borderRadius:7}]},
+options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+scales:{x:{min:0,max:14,grid:{color:gc},ticks:{callback:v=>v+'%',font:{size:9},color:'#fef9c3'}},y:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#fef9c3'}}}}});
+
+new Chart(document.getElementById('ch5').getContext('2d'),{type:'bar',
+data:{labels:['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+datasets:[{label:'Oferta BR (% pico)',data:[85,80,75,55,50,65,75,85,95,100,95,90],
+backgroundColor:c=>c.parsed.y>=85?'rgba(34,197,94,.7)':c.parsed.y>=70?'rgba(250,204,21,.6)':'rgba(239,68,68,.7)',
+borderColor:c=>c.parsed.y>=85?'#22c55e':c.parsed.y>=70?'#facc15':'#ef4444',borderWidth:2,borderRadius:7}]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+scales:{y:{min:40,max:110,grid:{color:gc},ticks:{callback:v=>v+'%',font:{size:9},color:'#fef9c3'}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#fef9c3'}}}}});
+
+new Chart(document.getElementById('ch6').getContext('2d'),{type:'bar',
+data:{labels:['Custo médio','Preço PA','Preço PB','Preço MG','Preço RJ','Havaí MS'],
+datasets:[{label:'R$/un',data:[1.20,2.55,2.95,3.30,3.60,4.80],
+backgroundColor:c=>c.dataIndex===0?'rgba(239,68,68,.7)':'rgba(34,197,94,.7)',
+borderColor:c=>c.dataIndex===0?'#ef4444':'#22c55e',borderWidth:2,borderRadius:7}]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+scales:{y:{min:0,max:5.5,grid:{color:gc},ticks:{callback:v=>'R$'+v.toFixed(1),font:{size:9},color:'#fef9c3'}},x:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#fef9c3'}}}}});
+</script>
+</body>
+</html>

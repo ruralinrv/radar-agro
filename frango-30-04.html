@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Rural IN — Frango · 27-30 Abr 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0904;--bg2:#120e06;--bg3:#1a1408;--bg4:#23190d;--border:#2c2210;--border2:#3d3018;--gold:#f59e0b;--gold2:#fbbf24;--gold3:#fcd34d;--amber:#d97706;--orange:#ea580c;--cream:#fef3c7;--text:#fef3c7;--text2:#fed7aa;--text3:#a89968;--up:#22c55e;--dn:#ef4444;--nt:#eab308;--blue:#3b82f6;--purple:#a855f7;--cyan:#06b6d4;--pink:#ec4899;--leaf2:#84cc16;--meat2:#ef4444;--r:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 1000px 700px at 10% 15%,rgba(245,158,11,.12),transparent),radial-gradient(ellipse 800px 600px at 90% 85%,rgba(217,119,6,.08),transparent);pointer-events:none;z-index:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+.nav{background:rgba(18,14,6,.95);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:14px}
+.nav-logo-img{height:42px;width:auto;border-radius:8px}
+.nav-logo{font-weight:900;font-size:1.2rem}
+.nav-logo .r{color:var(--gold2)}
+.nav-logo .i{color:var(--leaf2)}
+.nav-badge{background:linear-gradient(135deg,#d97706,#f59e0b);border:1px solid rgba(252,211,77,.5);padding:5px 14px;border-radius:20px;font-size:.7rem;font-weight:800;color:#1a1408;letter-spacing:.6px;box-shadow:0 0 25px rgba(245,158,11,.5)}
+.nav-back{color:var(--text3);font-size:.8rem;text-decoration:none}
+.nav-back:hover{color:var(--gold2)}
+.hero{padding:54px 0 40px;position:relative}
+.hero::after{content:'';position:absolute;bottom:0;left:0;width:240px;height:3px;background:linear-gradient(90deg,#d97706,var(--gold2),transparent)}
+.hero-top{display:flex;align-items:center;gap:22px;margin-bottom:16px}
+.hero-icon-wrap{width:84px;height:84px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,rgba(245,158,11,.4),transparent 70%);border-radius:50%}
+.hero-icon{font-size:3.6rem;filter:drop-shadow(0 6px 18px rgba(245,158,11,.7))}
+.hero-texts h1{font-size:2.4rem;font-weight:900;letter-spacing:-1.2px;line-height:1.1}
+.hero-texts h1 .hl{background:linear-gradient(135deg,#d97706,#ea580c,#f59e0b,#fcd34d);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-texts .sub{font-size:.9rem;color:var(--text2);margin-top:6px;font-weight:500}
+.hero-bar{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border-radius:22px;font-size:.72rem;font-weight:700;border:1px solid}
+.chip.up{color:var(--up);border-color:rgba(34,197,94,.3);background:rgba(34,197,94,.08)}
+.chip.dn{color:var(--dn);border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.08)}
+.chip.nt{color:var(--nt);border-color:rgba(234,179,8,.4);background:rgba(234,179,8,.1)}
+.chip.pu{color:var(--purple);border-color:rgba(168,85,247,.3);background:rgba(168,85,247,.08)}
+.chip.gd{color:var(--gold2);border-color:rgba(252,211,77,.5);background:rgba(245,158,11,.13)}
+.chip.or{color:var(--orange);border-color:rgba(234,88,12,.4);background:rgba(234,88,12,.1)}
+.chip.bl{color:var(--blue);border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.08)}
+.alert{border-radius:var(--r);padding:18px 22px;margin-bottom:14px;display:flex;gap:14px;border:1px solid;font-size:.85rem;line-height:1.75;color:var(--text2);position:relative}
+.alert::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
+.alert strong{color:var(--text)}
+.alert .ai{font-size:1.4rem;flex-shrink:0;margin-top:1px}
+.alert.green{background:linear-gradient(90deg,rgba(34,197,94,.08),rgba(34,197,94,.02));border-color:rgba(34,197,94,.25)}
+.alert.green::before{background:var(--up)}
+.alert.red{background:linear-gradient(90deg,rgba(239,68,68,.08),rgba(239,68,68,.02));border-color:rgba(239,68,68,.25)}
+.alert.red::before{background:var(--dn)}
+.alert.amber{background:linear-gradient(90deg,rgba(234,179,8,.1),rgba(234,179,8,.02));border-color:rgba(234,179,8,.3)}
+.alert.amber::before{background:var(--nt)}
+.alert.blue{background:linear-gradient(90deg,rgba(59,130,246,.08),rgba(59,130,246,.02));border-color:rgba(59,130,246,.25)}
+.alert.blue::before{background:var(--blue)}
+.alert.purple{background:linear-gradient(90deg,rgba(168,85,247,.08),rgba(168,85,247,.02));border-color:rgba(168,85,247,.25)}
+.alert.purple::before{background:var(--purple)}
+.alert.cyan{background:linear-gradient(90deg,rgba(6,182,212,.08),rgba(6,182,212,.02));border-color:rgba(6,182,212,.25)}
+.alert.cyan::before{background:var(--cyan)}
+.alert.orange{background:linear-gradient(90deg,rgba(234,88,12,.13),rgba(234,88,12,.02));border-color:rgba(234,88,12,.4)}
+.alert.orange::before{background:var(--orange)}
+.alert.gold{background:linear-gradient(90deg,rgba(245,158,11,.15),rgba(252,211,77,.04));border-color:rgba(245,158,11,.4)}
+.alert.gold::before{background:var(--gold2)}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin:24px 0}
+.kpi{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:16px 18px;position:relative;transition:all .25s}
+.kpi:hover{transform:translateY(-3px);border-color:var(--border2)}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2)}
+.kpi.up::before{background:linear-gradient(90deg,var(--up),var(--leaf2))}
+.kpi.dn::before{background:linear-gradient(90deg,var(--dn),var(--orange))}
+.kpi.nt::before{background:linear-gradient(90deg,var(--nt),var(--gold3))}
+.kpi.bl::before{background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.kpi.pu::before{background:linear-gradient(90deg,var(--purple),var(--pink))}
+.kpi.or::before{background:linear-gradient(90deg,var(--orange),var(--gold3))}
+.kpi.gd::before{background:linear-gradient(90deg,#d97706,var(--gold2))}
+.kpi-lb{font-size:.6rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:5px;font-weight:700}
+.kpi-val{font-size:1.18rem;font-weight:900;letter-spacing:-.5px;line-height:1.2}
+.kpi-val.up{color:var(--up)}.kpi-val.dn{color:var(--dn)}.kpi-val.nt{color:var(--nt)}.kpi-val.bl{color:var(--blue)}.kpi-val.pu{color:var(--purple)}.kpi-val.or{color:var(--orange)}.kpi-val.gd{color:var(--gold2)}
+.kpi-sub{font-size:.66rem;color:var(--text3);margin-top:3px;font-weight:500}
+.dv{height:1px;background:linear-gradient(90deg,transparent,var(--border2) 20%,var(--gold2) 50%,var(--border2) 80%,transparent);margin:36px 0}
+.stitle{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.stitle .icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.stitle h2{font-size:1.18rem;font-weight:800;letter-spacing:-.3px}
+.stitle h2 span{color:var(--text2);font-weight:400;font-size:.85rem;margin-left:4px}
+.co{border-radius:var(--r);padding:20px 24px;margin-bottom:14px;border-left:4px solid;font-size:.85rem;color:var(--text2);line-height:1.85;background:linear-gradient(90deg,var(--bg2),var(--bg3))}
+.co strong{color:var(--text)}
+.co h4{font-size:.98rem;font-weight:800;margin-bottom:10px}
+.co.up{border-color:var(--up)}.co.up h4{color:var(--up)}
+.co.dn{border-color:var(--dn)}.co.dn h4{color:var(--dn)}
+.co.nt{border-color:var(--nt)}.co.nt h4{color:var(--nt)}
+.co.bl{border-color:var(--blue)}.co.bl h4{color:var(--blue)}
+.co.or{border-color:var(--orange)}.co.or h4{color:var(--orange)}
+.co.pu{border-color:var(--purple)}.co.pu h4{color:var(--purple)}
+.co.cy{border-color:var(--cyan)}.co.cy h4{color:var(--cyan)}
+.co.gd{border-color:var(--gold2)}.co.gd h4{color:var(--gold2)}
+.chart-box{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--r);padding:22px 24px;margin-bottom:14px}
+.chart-box h3{font-size:.9rem;color:var(--text);margin-bottom:14px;font-weight:700;display:flex;align-items:center;gap:8px}
+.chart-box h3 .ch-tag{margin-left:auto;font-size:.62rem;font-weight:700;padding:2px 10px;border-radius:10px;background:rgba(245,158,11,.18);color:var(--gold2)}
+.chart-wrap{position:relative;height:290px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:800px){.grid2,.grid3{grid-template-columns:1fr}}
+.tbl-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--border);margin-bottom:14px;background:var(--bg2)}
+table{width:100%;border-collapse:collapse;font-size:.78rem}
+thead th{background:linear-gradient(180deg,var(--bg3),var(--bg4));padding:12px 14px;text-align:center;font-weight:800;color:var(--text2);font-size:.66rem;text-transform:uppercase;letter-spacing:.9px;border-bottom:1px solid var(--border)}
+tbody td{padding:10px 12px;border-bottom:1px solid rgba(44,34,16,.5);text-align:center}
+tbody tr:hover{background:rgba(245,158,11,.05)}
+.td-name{text-align:left!important;font-weight:700;white-space:nowrap}
+.td-up{color:var(--up);font-weight:800}.td-dn{color:var(--dn);font-weight:800}.td-nt{color:var(--nt);font-weight:800}
+.thermo h4{font-size:.84rem;color:var(--text);margin-bottom:10px;font-weight:700}
+.th-bar{height:14px;border-radius:7px;position:relative;box-shadow:inset 0 1px 4px rgba(0,0,0,.4)}
+.th-marker{position:absolute;top:-6px;width:4px;height:26px;background:#fff;border-radius:2px;transform:translateX(-50%);box-shadow:0 0 12px rgba(255,255,255,.6)}
+.th-lb{display:flex;justify-content:space-between;font-size:.66rem;color:var(--text3);margin-top:6px;font-weight:600}
+.card{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--r);padding:22px 26px;margin-bottom:14px}
+.opinion{background:linear-gradient(135deg,rgba(245,158,11,.18),rgba(252,211,77,.06),rgba(245,158,11,.02));border:1px solid rgba(252,211,77,.35);border-radius:var(--r);padding:30px 32px;margin:26px 0;position:relative}
+.opinion::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#d97706,var(--gold2),var(--gold3),#d97706)}
+.opinion h3{font-size:1.08rem;font-weight:800;color:var(--gold2);margin-bottom:12px}
+.opinion p{font-size:.88rem;color:var(--text2);line-height:1.9;margin-bottom:12px}
+.opinion p strong{color:var(--text)}
+.opinion .scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.opinion .sc{padding:14px 16px;border-radius:10px;border:1px solid;background:rgba(0,0,0,.3)}
+.opinion .sc.up{border-color:rgba(34,197,94,.3)}.opinion .sc.nt{border-color:rgba(234,179,8,.3)}.opinion .sc.dn{border-color:rgba(239,68,68,.3)}
+.opinion .sc h5{font-size:.78rem;font-weight:800;margin-bottom:6px}
+.opinion .sc.up h5{color:var(--up)}.opinion .sc.nt h5{color:var(--nt)}.opinion .sc.dn h5{color:var(--dn)}
+.opinion .sc p{font-size:.74rem;line-height:1.6;margin:0}
+@media(max-width:700px){.opinion .scenarios{grid-template-columns:1fr}}
+.opinion .sig{margin-top:18px;padding-top:14px;border-top:1px solid rgba(252,211,77,.2);font-size:.78rem;color:var(--text3);font-style:italic}
+.footer{border-top:1px solid var(--border);padding:42px 0;text-align:center;margin-top:36px}
+.footer-brand{font-size:1.5rem;font-weight:900;margin-bottom:12px}
+.footer-brand .r{color:var(--gold2)}.footer-brand .i{color:var(--leaf2)}
+.footer p{font-size:.78rem;color:var(--text3);line-height:1.8}
+.footer-credits{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+.footer-credits h4{font-size:.92rem;color:var(--gold2);font-weight:700;margin-bottom:6px}
+.footer-credits .name{font-size:1.05rem;font-weight:800;color:var(--text)}
+.footer-credits .title{font-size:.78rem;color:var(--gold3);font-weight:600;margin-bottom:8px}
+.footer-credits .desc{font-size:.74rem;color:var(--text2);line-height:1.7;max-width:540px;margin:0 auto 12px}
+.footer-credits .contact{font-size:.74rem;color:var(--text3)}
+.footer-credits .contact a{color:var(--gold2);text-decoration:none}
+.bignum-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+.bignum{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:20px 18px;text-align:center}
+.bignum .v{font-size:1.7rem;font-weight:900;letter-spacing:-1px;line-height:1;margin-bottom:6px}
+.bignum .v.up{color:var(--up)}.bignum .v.dn{color:var(--dn)}.bignum .v.gd{color:var(--gold2)}
+.bignum .l{font-size:.72rem;color:var(--text2);font-weight:600}
+.bignum .s{font-size:.66rem;color:var(--text3);margin-top:3px}
+@media(max-width:700px){.bignum-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.hero-top{flex-direction:column;text-align:center}.hero-texts h1{font-size:1.65rem}.kpi-row{grid-template-columns:repeat(2,1fr)}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap"><div class="nav-left"><img src="https://ruralinrv.github.io/ruralin/logo.png" alt="Rural IN" class="nav-logo-img" onerror="this.style.display='none'"><div class="nav-logo"><span class="r">Rural</span> <span class="i">IN</span></div><div class="nav-badge">🐔 FRANGO</div></div><a href="portal-30-04.html" class="nav-back">← Voltar</a></div></nav>
+
+<div class="wrap">
+
+<section class="hero">
+  <div class="hero-top">
+    <div class="hero-icon-wrap"><span class="hero-icon">🐔</span></div>
+    <div class="hero-texts">
+      <h1><span class="hl">Frango</span> · Radar Semanal</h1>
+      <div class="sub">27–30 Abril 2026 · CEPEA · ABPA · Brasil é o REI MUNDIAL · Recordes 1ºT! · China retomou · Japão +85% · Influenza superada!</div>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <span class="chip gd">📊 CEPEA SP: R$ 7,24/kg</span>
+    <span class="chip up">🌍 Export Mar: 504,3 mil t (+6%!)</span>
+    <span class="chip up">📈 Receita Mar: US$ 944,7 mi (RECORDE!)</span>
+    <span class="chip up">🇨🇳 China retomou 51,8 mil t (+11,6%)</span>
+    <span class="chip up">🇯🇵 Japão: +41,3% volume!</span>
+    <span class="chip pu">🏦 Selic: 14,75% → 14,50%</span>
+  </div>
+</section>
+
+<div class="bignum-row">
+  <div class="bignum"><div class="v gd">R$ 7,24/kg</div><div class="l">CEPEA SP frango (24/04)</div><div class="s">Queda recente · oferta equil.</div></div>
+  <div class="bignum"><div class="v up">504,3 mil t</div><div class="l">Export Mar/26 (+6%!)</div><div class="s">Receita US$ 944,7 mi RECORDE</div></div>
+  <div class="bignum"><div class="v up">1,456 mi t</div><div class="l">Acum 1ºT/26 (+5%)</div><div class="s">US$ 2,764 bi (+6,9%)</div></div>
+  <div class="bignum"><div class="v gd">5,324 mi t</div><div class="l">Total 2025 (recorde!)</div><div class="s">Brasil = #1 MUNDIAL!</div></div>
+</div>
+
+<div class="alert gold">
+  <span class="ai">🐔</span>
+  <div><strong style="color:var(--gold2)">FRANGO BRASILEIRO É REI MUNDIAL ABSOLUTO! Brasil exportou 5,324 mi t em 2025 (RECORDE!)</strong><br>
+  <strong>Brasil no mundo do frango:</strong><br>
+  ▸ <strong>Produção BR 2025:</strong> ~14,8 milhões de toneladas<br>
+  ▸ <strong>Exportação BR 2025:</strong> 5,324 mi t (RECORDE histórico!)<br>
+  ▸ <strong>Receita BR 2025:</strong> US$ 9,79 bilhões<br>
+  ▸ <strong>BR é #1 EXPORTADOR MUNDIAL</strong> de frango!<br>
+  ▸ <strong>Posição:</strong> ~36% do mercado mundial de exportação<br><br>
+  <strong>Top estados produtores (jan/26):</strong><br>
+  ▸ <strong>1º Paraná:</strong> 187,7 mil t (+3,9%) · líder absoluto!<br>
+  ▸ <strong>2º Santa Catarina:</strong> 103,1 mil t (+9,3%)<br>
+  ▸ <strong>3º Rio Grande do Sul:</strong> 58,7 mil t (+0,75%)<br>
+  ▸ <strong>4º São Paulo:</strong> 26,7 mil t (+2%)<br>
+  ▸ <strong>5º Goiás:</strong> 25,6 mil t (+9,5%)<br><br>
+  <strong>Recuperação total da gripe aviária 2025:</strong><br>
+  ▸ Foco isolado em maio/2025 superado!<br>
+  ▸ China retomou em fev/26 nos níveis pré-foco<br>
+  ▸ União Europeia também<br>
+  ▸ Recorde anual confirmado<br>
+  ▸ Capacidade industrial intacta · 200+ frigoríficos habilitados</div>
+</div>
+
+<div class="alert green">
+  <span class="ai">🌍</span>
+  <div><strong style="color:var(--up)">EXPORTAÇÃO BATE RECORDE EM RECEITA NO 1ºT/26! US$ 944,7 mi em março (recorde absoluto!)</strong><br>
+  <strong>ABPA — Trajetória 2026:</strong><br>
+  ▸ <strong>Janeiro:</strong> 459 mil t (+3,6%) · US$ 874 mi (+5,8%)<br>
+  ▸ <strong>Fevereiro:</strong> 493,2 mil t (+5,3%) · US$ 945,4 mi (+8,6%)<br>
+  ▸ <strong>Março:</strong> 504,3 mil t (+6%!) · US$ 944,7 mi (+6,2% RECORDE!)<br>
+  ▸ <strong>Acumulado 1ºT/26:</strong> 1,456 mi t (+5%) · US$ 2,764 bi (+6,9%)<br>
+  ▸ <strong>Abril (parcial):</strong> 380,5 mil t · US$ 706,7 mi (4ª semana)<br><br>
+  <strong>Top destinos março/26:</strong><br>
+  ▸ <strong>🇨🇳 China:</strong> 51,8 mil t (+11,6% RETOMADA!)<br>
+  ▸ <strong>🇯🇵 Japão:</strong> 42,1 mil t (+41,3%! BOOM!)<br>
+  ▸ <strong>🇸🇦 Arábia Saudita:</strong> 38,7 mil t (−5,3%)<br>
+  ▸ <strong>🇿🇦 África do Sul:</strong> 33,1 mil t (+21,4%!)<br>
+  ▸ <strong>🇪🇺 UE:</strong> 30,7 mil t (+33,7%!)<br>
+  ▸ <strong>🇵🇭 Filipinas:</strong> +29% (top crescimento)<br>
+  ▸ <strong>🇰🇷 Coreia do Sul:</strong> +2,4%<br>
+  ▸ <strong>🇲🇽 México:</strong> −24,3% (queda)<br><br>
+  <strong>Preço médio exportação:</strong><br>
+  ▸ <strong>Abril/26:</strong> US$ 1.857/t (+1,2% vs abr/25)<br>
+  ▸ <strong>Receita diária:</strong> US$ 44,1 mi/dia (+9,2%)<br>
+  ▸ <strong>Volume diário médio:</strong> 23,7 mil t/dia<br>
+  ▸ <strong>Resiliência:</strong> Receita CRESCE mesmo com volume oscilando!</div>
+</div>
+
+<div class="alert dn">
+  <span class="ai">📉</span>
+  <div><strong style="color:var(--dn)">PREÇO INTERNO RECUOU! Demanda doméstica fraca pressionou cotações na 2ª quinzena</strong><br>
+  <strong>CEPEA Frango SP:</strong><br>
+  ▸ <strong>Início abril:</strong> R$ 7,25/kg (alta após 3 semanas)<br>
+  ▸ <strong>15/04:</strong> R$ 7,24/kg (estável)<br>
+  ▸ <strong>24/04:</strong> R$ 7,23/kg (recuo)<br>
+  ▸ <strong>30/04:</strong> R$ 7,20/kg (estimativa)<br>
+  ▸ <strong>Variação semanal:</strong> −0,4% (leve queda)<br><br>
+  <strong>Frango congelado SP (atacado):</strong><br>
+  ▸ <strong>Mar/26:</strong> R$ 7,00/kg (−2,4% vs fev · −17% vs mar/25!)<br>
+  ▸ <strong>Início abr:</strong> R$ 7,25/kg (recuperação)<br>
+  ▸ <strong>Atacado/varejo:</strong> Distribuição moderada<br><br>
+  <strong>Por que preço caiu na 2ª quinzena?</strong><br>
+  ▸ <strong>Demanda doméstica fraca:</strong> Final mês · orçamento apertado<br>
+  ▸ <strong>Trade-down de classes médias:</strong> Foco proteínas baratas<br>
+  ▸ <strong>Oferta equilibrada:</strong> Indústria mantém produção<br>
+  ▸ <strong>Saída de ração competitiva:</strong> Custos OK<br>
+  ▸ <strong>Compete com ovo:</strong> Substituto direto barato<br><br>
+  <strong>Cenário maio/26:</strong> Recuperação esperada com recebimento de salário (1º maio) · injeção de capital revigora supermercados · projeção positiva.</div>
+</div>
+
+<div class="alert blue">
+  <span class="ai">🆚</span>
+  <div><strong style="color:var(--blue)">FRANGO GANHOU COMPETITIVIDADE FRENTE AO BOI! Relação superou 3 kg vs 1 kg dianteiro</strong><br>
+  <strong>Relação de troca FRANGO vs BOI:</strong><br>
+  ▸ <strong>Mar/26:</strong> 3+ kg frango = 1 kg dianteiro bovino<br>
+  ▸ <strong>30% acima da média histórica</strong> de março!<br>
+  ▸ <strong>Pico ciclo:</strong> 5 anos atrás (2021)<br>
+  ▸ <strong>Razão:</strong> Boi gordo R$ 367/@ (recorde) · frango caiu<br>
+  ▸ <strong>Resultado:</strong> Consumidor migrou massivamente!<br><br>
+  <strong>Frango vs Suíno (estável):</strong><br>
+  ▸ <strong>Relação:</strong> 1,3 kg frango = 1 kg suíno<br>
+  ▸ <strong>Próximo da média histórica</strong><br>
+  ▸ <strong>Pouca migração</strong> entre essas duas proteínas<br><br>
+  <strong>Frango vs Ovo (substituição):</strong><br>
+  ▸ <strong>Frango:</strong> R$ 7,24/kg<br>
+  ▸ <strong>Ovo branco:</strong> R$ 153/cx 30 dúzias (R$ 5,10/dz)<br>
+  ▸ <strong>Por kg proteína:</strong> Ovo ~R$ 12 · Frango ~R$ 7 · Suíno ~R$ 8,62 carcaça<br>
+  ▸ <strong>Frango = proteína mais barata BR!</strong><br><br>
+  <strong>Efeito no consumo doméstico:</strong><br>
+  ▸ <strong>Famílias trocaram boi por frango</strong> (boom de demanda)<br>
+  ▸ <strong>Restaurantes:</strong> Frango virou estrela (filezinho · sanduíche)<br>
+  ▸ <strong>Fast food:</strong> Promoções massivas frango<br>
+  ▸ <strong>Estabelecimentos populares:</strong> Frango assado em alta<br>
+  ▸ <strong>BR consome:</strong> 45+ kg frango/habitante/ano (líder mundial!)</div>
+</div>
+
+<div class="alert orange">
+  <span class="ai">🌏</span>
+  <div><strong style="color:var(--orange)">JAPÃO E CHINA SÃO OS GRANDES IMPULSIONADORES! Asiáticos respondem por 40% das exportações</strong><br>
+  <strong>🇯🇵 JAPÃO — Boom espetacular 2026:</strong><br>
+  ▸ <strong>Mar/26:</strong> 42,1 mil t (+41,3%!)<br>
+  ▸ <strong>Fev/26:</strong> 38,2 mil t (+38%!)<br>
+  ▸ <strong>Jan/26:</strong> 29,2 mil t (+4%)<br>
+  ▸ <strong>Razão:</strong> Surto gripe aviária no Japão (rebanho doméstico afetado)<br>
+  ▸ <strong>Substituição:</strong> Brasil supre déficit japonês<br>
+  ▸ <strong>Yakitori, karaage, oyakodon:</strong> Demanda doméstica firme<br><br>
+  <strong>🇨🇳 CHINA — Retomada confirmada:</strong><br>
+  ▸ <strong>Mar/26:</strong> 51,8 mil t (+11,6% · LIDERANÇA RETOMADA!)<br>
+  ▸ <strong>Fev/26:</strong> 49,4 mil t (−0,4% · estável)<br>
+  ▸ <strong>Jan/26:</strong> 33,5 mil t (−25%)<br>
+  ▸ <strong>Trajetória:</strong> Crescente · normalização total<br>
+  ▸ <strong>Brasil retomou patamares</strong> pré-gripe aviária<br>
+  ▸ <strong>JBS, BRF, Aurora:</strong> Plantas habilitadas em pleno fluxo<br><br>
+  <strong>🇪🇺 UE — Crescimento expressivo:</strong><br>
+  ▸ <strong>Mar/26:</strong> 30,7 mil t (+33,7%!)<br>
+  ▸ <strong>Fev/26:</strong> 30,1 mil t (+46,3%!)<br>
+  ▸ <strong>Razão:</strong> Gripe aviária na Europa · BR substitui<br>
+  ▸ <strong>Cota Hilton:</strong> Em pleno uso<br><br>
+  <strong>🇿🇦 ÁFRICA DO SUL:</strong><br>
+  ▸ <strong>Mar/26:</strong> 33,1 mil t (+21,4%!)<br>
+  ▸ <strong>Crescimento sólido</strong> em volume e receita<br>
+  ▸ <strong>Continente africano em expansão</strong></div>
+</div>
+
+<div class="alert red">
+  <span class="ai">⚠️</span>
+  <div><strong style="color:var(--dn)">ATENÇÃO! Conflito Estreito de Hormuz reduziu exportação Oriente Médio em 18,5%!</strong><br>
+  <strong>Crise geopolítica recente:</strong><br>
+  ▸ <strong>Conflito EUA-Israel-Irã:</strong> Fechamento Estreito de Hormuz<br>
+  ▸ <strong>Mar/26:</strong> Oriente Médio caiu 18,5% vs fev<br>
+  ▸ <strong>Países afetados:</strong> Arábia Saudita, EAU, Catar, Bahrein, Omã<br>
+  ▸ <strong>Volume direto afetado:</strong> 45+ mil t<br>
+  ▸ <strong>Total Oriente Médio mar/26:</strong> 100+ mil t (rotas alternativas)<br><br>
+  <strong>🇸🇦 ARÁBIA SAUDITA:</strong><br>
+  ▸ <strong>Jan/26:</strong> 33,5 mil t (+5%)<br>
+  ▸ <strong>Fev/26:</strong> 33,8 mil t (+7,3%)<br>
+  ▸ <strong>Mar/26:</strong> 38,7 mil t (−5,3%)<br>
+  ▸ <strong>Tendência:</strong> Estabilização vs queda<br><br>
+  <strong>🇦🇪 EMIRADOS ÁRABES:</strong><br>
+  ▸ <strong>Jan/26:</strong> 44,3 mil t (+14%)<br>
+  ▸ <strong>Fev/26:</strong> 44 mil t (+13,4%)<br>
+  ▸ <strong>Mar/26:</strong> Queda · rotas alternativas<br>
+  ▸ <strong>Logística problemática</strong> · seguros mais caros<br><br>
+  <strong>🇨🇱 CHILE — DESVIO DEMANDA:</strong><br>
+  ▸ <strong>China suspendeu importações Chile</strong> (gripe aviária Chile abr/26)<br>
+  ▸ <strong>Brasil pode beneficiar-se!</strong><br>
+  ▸ <strong>Demanda China migra para BR</strong><br>
+  ▸ <strong>Janela aberta:</strong> 2-6 meses (até Chile recuperar)<br><br>
+  <strong>Estratégia ABPA:</strong> Rotas alternativas via Suez · seguros estendidos · diversificação 100+ países importadores · armazenamento estratégico em portos.</div>
+</div>
+
+<div class="alert nt">
+  <span class="ai">🌽</span>
+  <div><strong style="color:var(--nt)">CUSTOS: Milho e Soja DEFINIRÃO MARGEM 2026! Farelo e milho representam 70% custo</strong><br>
+  <strong>Custos da avicultura BR (estrutura):</strong><br>
+  ▸ <strong>Milho (ração):</strong> 50-55% custo total<br>
+  ▸ <strong>Farelo de soja:</strong> 18-22% custo total<br>
+  ▸ <strong>Pintinho de 1 dia:</strong> 10-12%<br>
+  ▸ <strong>Mão de obra:</strong> 5-7%<br>
+  ▸ <strong>Energia:</strong> 4-6%<br>
+  ▸ <strong>Vacinas/medicamentos:</strong> 3-4%<br>
+  ▸ <strong>Outros:</strong> 5-8%<br><br>
+  <strong>Cotações insumos atuais:</strong><br>
+  ▸ <strong>Milho Campinas (CEPEA):</strong> R$ 66,36/sc 60kg<br>
+  ▸ <strong>Soja Paranaguá:</strong> R$ 126,90/sc 60kg<br>
+  ▸ <strong>Farelo soja:</strong> ~R$ 1.500/t<br>
+  ▸ <strong>Tendência milho:</strong> Pressionado pela colheita 2ª safra (jul-set)<br>
+  ▸ <strong>Tendência soja:</strong> Estável · safra recorde<br><br>
+  <strong>Cálculo de custo médio (frango pronto):</strong><br>
+  ▸ <strong>Conversão alimentar:</strong> 1,7 kg ração/kg vivo<br>
+  ▸ <strong>Custo ração/kg vivo:</strong> R$ 3,50<br>
+  ▸ <strong>Pintinho + sanidade + mão obra:</strong> R$ 1,80<br>
+  ▸ <strong>Custo total/kg vivo:</strong> R$ 5,30<br>
+  ▸ <strong>Custo/kg pronto (rendimento 73%):</strong> R$ 7,26<br>
+  ▸ <strong>Preço atual atacado:</strong> R$ 7,25/kg<br>
+  ▸ <strong>Margem industrial:</strong> APERTADA (próximo ao break-even!)<br><br>
+  <strong>Margens dependem de:</strong><br>
+  ▸ <strong>Genética eficiente</strong> (Cobb 500, Ross 308)<br>
+  ▸ <strong>Manejo nutricional otimizado</strong><br>
+  ▸ <strong>Escala industrial</strong> (BRF, JBS, Aurora dominam)<br>
+  ▸ <strong>Exportação puxa margem</strong> (preço maior)</div>
+</div>
+
+<div class="alert purple">
+  <span class="ai">🏦</span>
+  <div><strong style="color:var(--purple)">EVENTO MACRO: COPOM CORTOU SELIC PARA 14,50%! Real fraco favorece exportação avícola</strong><br>
+  Banco Central cortou Selic em 0,25 p.p. (29/04). <strong>Dólar:</strong> R$ 4,9523 (mín 2 anos!).<br><br>
+  <strong>Para o setor avícola:</strong><br>
+  ▸ <strong>Selic 14,50%:</strong> Crédito custeio mais barato<br>
+  ▸ <strong>Investimento aviários:</strong> Mais viável<br>
+  ▸ <strong>Modernização:</strong> Plano Safra 26/27 com taxas atrativas<br>
+  ▸ <strong>BNDES:</strong> Linhas para automação · climatização · biossegurança<br><br>
+  <strong>Dólar fraco — IMPACTOS:</strong><br>
+  ▸ ✗ <strong>Reduz receita exportação</strong> em R$<br>
+  ▸ ✓ <strong>Mas volume cresce:</strong> +6% em mar (compensa)<br>
+  ▸ ✓ <strong>Insumos importados</strong> baratos (medicamentos, suplementos)<br>
+  ▸ ✓ <strong>Custos internos:</strong> Estáveis em R$<br><br>
+  <strong>Cálculo de paridade exportação:</strong><br>
+  ▸ <strong>Preço médio export:</strong> US$ 1.857/t<br>
+  ▸ <strong>Em R$ (4,95):</strong> R$ 9.193/t = R$ 9,19/kg<br>
+  ▸ <strong>Atual atacado BR:</strong> R$ 7,25/kg<br>
+  ▸ <strong>Premium exportação:</strong> R$ 1,94/kg (+27%!)<br>
+  ▸ <strong>= Exportação MUITO mais lucrativa!</strong><br><br>
+  <strong>Cenário composto:</strong><br>
+  ▸ <strong>Recordes export</strong> (positivo)<br>
+  ▸ <strong>Demanda doméstica fraca</strong> (preços apertados)<br>
+  ▸ <strong>Selic baixa</strong> (alívio crédito)<br>
+  ▸ <strong>Custos estáveis</strong> (milho/soja)<br>
+  ▸ <strong>= Cenário NEUTRO-POSITIVO</strong> com viés exportador</div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#d97706,#f59e0b)">📊</div><h2>Indicadores-Chave <span>— CEPEA · ABPA · Macro · Mercado</span></h2></div>
+
+<div class="kpi-row">
+  <div class="kpi gd"><div class="kpi-lb">CEPEA SP frango (24/04)</div><div class="kpi-val gd">R$ 7,24</div><div class="kpi-sub">/kg · estável-baixa</div></div>
+  <div class="kpi gd"><div class="kpi-lb">Frango congelado SP (mar)</div><div class="kpi-val gd">R$ 7,00</div><div class="kpi-sub">/kg · −17% ano!</div></div>
+  <div class="kpi up"><div class="kpi-lb">Export Mar/26 volume</div><div class="kpi-val up">504,3 mil t</div><div class="kpi-sub">+6% vs mar/25!</div></div>
+  <div class="kpi up"><div class="kpi-lb">Export Mar receita</div><div class="kpi-val up">US$ 944,7 mi</div><div class="kpi-sub">RECORDE histórico!</div></div>
+  <div class="kpi up"><div class="kpi-lb">Acum 1ºT/26 volume</div><div class="kpi-val up">1,456 mi t</div><div class="kpi-sub">+5% vs 1ºT/25</div></div>
+  <div class="kpi up"><div class="kpi-lb">Acum 1ºT/26 receita</div><div class="kpi-val up">US$ 2,76 bi</div><div class="kpi-sub">+6,9%</div></div>
+  <div class="kpi gd"><div class="kpi-lb">Total 2025 (recorde)</div><div class="kpi-val gd">5,32 mi t</div><div class="kpi-sub">US$ 9,79 bi</div></div>
+  <div class="kpi up"><div class="kpi-lb">China Mar volume</div><div class="kpi-val up">51,8 mil t</div><div class="kpi-sub">+11,6% retomada!</div></div>
+  <div class="kpi up"><div class="kpi-lb">Japão Mar volume</div><div class="kpi-val up">42,1 mil t</div><div class="kpi-sub">+41,3%! BOOM!</div></div>
+  <div class="kpi gd"><div class="kpi-lb">Paraná export jan</div><div class="kpi-val gd">187,7 mil t</div><div class="kpi-sub">Líder absoluto!</div></div>
+  <div class="kpi up"><div class="kpi-lb">Preço médio export</div><div class="kpi-val up">US$ 1.857</div><div class="kpi-sub">/t · +1,2% ano</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Relação Frango/Boi</div><div class="kpi-val nt">3+ kg</div><div class="kpi-sub">por 1kg dianteiro · 30% acima média</div></div>
+  <div class="kpi or"><div class="kpi-lb">Oriente Médio Mar</div><div class="kpi-val or">−18,5%</div><div class="kpi-sub">vs fev · Hormuz fechado</div></div>
+  <div class="kpi up"><div class="kpi-lb">UE Mar volume</div><div class="kpi-val up">30,7 mil t</div><div class="kpi-sub">+33,7%!</div></div>
+  <div class="kpi pu"><div class="kpi-lb">Selic 29/04</div><div class="kpi-val pu">14,50%</div><div class="kpi-sub">↓ 0,25 p.p.</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Dólar 30/04</div><div class="kpi-val dn">R$ 4,95</div><div class="kpi-sub">Mín 2 anos</div></div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#d97706,#f59e0b)">📍</div><h2>Cotações da Semana <span>— CEPEA · Atacado · Praças · 27 a 30 Abril 2026</span></h2></div>
+
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Indicador</th><th>14/04</th><th>21/04</th><th>24/04</th><th>28/04</th><th>30/04</th><th>Var. Sem</th><th>Var. Mês</th></tr></thead>
+<tbody>
+<tr><td class="td-name">📊 CEPEA SP frango vivo</td><td>7,25</td><td>7,24</td><td>7,23</td><td class="td-dn">7,21</td><td>7,20</td><td class="td-dn">−0,4%</td><td class="td-dn">−0,7%</td></tr>
+<tr><td class="td-name">🍗 Frango congelado SP atacado</td><td>7,25</td><td>7,20</td><td>7,18</td><td>7,15</td><td>7,12</td><td class="td-dn">−1,1%</td><td class="td-dn">−1,8%</td></tr>
+<tr><td class="td-name">🌍 Preço médio export US$/t</td><td>1.870</td><td>1.860</td><td>1.857</td><td>1.855</td><td class="td-up">1.857</td><td class="td-dn">−0,2%</td><td class="td-up">+1,2%</td></tr>
+<tr><td class="td-name">🌽 Milho Campinas SP (sc 60kg)</td><td>66,50</td><td>66,40</td><td>66,36</td><td>66,30</td><td>66,25</td><td class="td-dn">−0,4%</td><td class="td-dn">−0,6%</td></tr>
+<tr><td class="td-name">🌱 Soja Paranaguá (sc 60kg)</td><td>127,50</td><td>127,00</td><td>126,90</td><td>127,10</td><td>127,30</td><td class="td-up">+0,2%</td><td class="td-up">+0,8%</td></tr>
+<tr><td class="td-name">🐂 Boi gordo CEPEA (R$/@)</td><td>367,05</td><td>365,10</td><td>362,40</td><td>358,40</td><td class="td-dn">354,45</td><td class="td-dn">−2,9%</td><td class="td-dn">−0,4%</td></tr>
+<tr><td class="td-name">🍳 Ovo branco SP (cx 30dz)</td><td>153,00</td><td>153,30</td><td>153,51</td><td>153,40</td><td>153,20</td><td class="td-up">+0,1%</td><td class="td-up">+0,7%</td></tr>
+</tbody>
+</table>
+</div>
+
+<p style="font-size:.78rem;color:var(--text3);margin-top:6px;text-align:center"><em>CEPEA é referência nacional · Frango vivo é matéria-prima da indústria · Frango congelado é produto final · custo ração calculado por milho + soja</em></p>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#d97706,#f59e0b)">📈</div><h2>Análise Gráfica <span>— 6 perspectivas · CEPEA · Export · Top destinos · Estados · Substitutos · Custos</span></h2></div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📊 CEPEA Frango SP · 12 Meses <span class="ch-tag">R$/kg</span></h3>
+    <div class="chart-wrap"><canvas id="ch1"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>🌍 Exportação Brasil 1ºT/26 <span class="ch-tag">ABPA · mil t/mês</span></h3>
+    <div class="chart-wrap"><canvas id="ch2"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>🌏 Top Destinos Mar/26 <span class="ch-tag">ABPA · mil t</span></h3>
+    <div class="chart-wrap"><canvas id="ch3"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>📍 Top Estados Exportadores <span class="ch-tag">Jan/26 · mil t</span></h3>
+    <div class="chart-wrap"><canvas id="ch4"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>🆚 Frango vs Outras Proteínas <span class="ch-tag">Relação · março/26</span></h3>
+    <div class="chart-wrap"><canvas id="ch5"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>💰 Estrutura de Custos Avicultura <span class="ch-tag">% custo total</span></h3>
+    <div class="chart-wrap"><canvas id="ch6"></canvas></div>
+  </div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)">🔍</div><h2>Análise Aprofundada <span>— Brasil é REI mundial · Exportação puxa margem · Custos sob controle</span></h2></div>
+
+<div class="co gd">
+  <h4>🐔 A Tese Central: Brasil é REI MUNDIAL Absoluto e Liderança Está Consolidada!</h4>
+  <p><strong>Brasil é #1 exportador mundial de frango:</strong><br>
+  ▸ <strong>Exportação 2025:</strong> 5,324 mi t (RECORDE histórico!)<br>
+  ▸ <strong>Receita 2025:</strong> US$ 9,79 bilhões<br>
+  ▸ <strong>Posição global:</strong> ~36% do mercado mundial!<br>
+  ▸ <strong>Concorrentes principais:</strong> EUA (3,5 mi t), UE (1,8 mi t), Tailândia (1,1 mi t)<br>
+  ▸ <strong>Brasil tem mais que EUA + UE juntos!</strong><br><br>
+  <strong>Por que somos imbatíveis?</strong><br>
+  ▸ <strong>Grãos baratos:</strong> Milho + soja BR são os melhores do mundo<br>
+  ▸ <strong>Genética avançada:</strong> Cobb 500, Ross 308, Hubbard JA57<br>
+  ▸ <strong>Sanidade rigorosa:</strong> SVO/MAPA · biossegurança<br>
+  ▸ <strong>Indústria integrada:</strong> BRF, JBS Seara, Aurora, C.Vale<br>
+  ▸ <strong>Habilitações em 100+ países</strong><br>
+  ▸ <strong>Custo logístico Sul:</strong> Portos próximos PR/SC/RS<br><br>
+  <strong>Top estados produtores (2025):</strong><br>
+  ▸ <strong>1º Paraná:</strong> 33% produção BR · líder export<br>
+  ▸ <strong>2º Santa Catarina:</strong> 18% · cluster industrial<br>
+  ▸ <strong>3º Rio Grande do Sul:</strong> 13%<br>
+  ▸ <strong>4º São Paulo:</strong> 11%<br>
+  ▸ <strong>5º Goiás:</strong> 10% (em forte crescimento!)<br><br>
+  <strong>Recuperação total da gripe aviária 2025:</strong><br>
+  ▸ Foco isolado em maio/2025 (única ocorrência em produção comercial!)<br>
+  ▸ <strong>China retomou em fev/26</strong> (parte chave!)<br>
+  ▸ <strong>União Europeia também</strong><br>
+  ▸ <strong>Recorde anual confirmado</strong> apesar do susto<br>
+  ▸ <strong>Setor mostrou resiliência total</strong></p>
+</div>
+
+<div class="co up">
+  <h4>📈 Recordes em Cadeia! 1ºT/26 Foi o Melhor da História em Receita</h4>
+  <p><strong>Trajetória mensal recente:</strong><br>
+  ▸ <strong>Dezembro/25:</strong> 510,8 mil t (+13,9%) · US$ 947,9 mi (+10,6%)<br>
+  ▸ <strong>Janeiro/26:</strong> 459 mil t (+3,6%) · US$ 874 mi (+5,8%)<br>
+  ▸ <strong>Fevereiro/26:</strong> 493,2 mil t (+5,3%) · US$ 945,4 mi (+8,6%)<br>
+  ▸ <strong>Março/26:</strong> 504,3 mil t (+6%) · US$ 944,7 mi (+6,2%)<br>
+  ▸ <strong>Acumulado 1ºT/26:</strong> 1,456 mi t (+5%) · US$ 2,764 bi (+6,9%)<br><br>
+  <strong>Por que receita cresce mais que volume?</strong><br>
+  ▸ <strong>Preço médio export:</strong> +5,5% no ano<br>
+  ▸ <strong>Mix de produtos:</strong> Mais cortes premium (peito, coxa)<br>
+  ▸ <strong>Mercados premium:</strong> Japão paga muito mais (+ qualidade)<br>
+  ▸ <strong>Cortes especiais:</strong> Coxas/asas para Ásia, peito para UE<br>
+  ▸ <strong>Mercado halal:</strong> Premium 10-20% (Arábia, EAU)<br><br>
+  <strong>Mercados em forte crescimento (Mar/26 vs ano):</strong><br>
+  ▸ <strong>🇯🇵 Japão:</strong> +41,3% (gripe aviária no Japão!)<br>
+  ▸ <strong>🇪🇺 UE:</strong> +33,7% (gripe aviária na Europa!)<br>
+  ▸ <strong>🇿🇦 África do Sul:</strong> +21,4%<br>
+  ▸ <strong>🇨🇳 China:</strong> +11,6% (retomada total)<br>
+  ▸ <strong>🇵🇭 Filipinas:</strong> +29% (consumo crescente)<br><br>
+  <strong>Mercados em queda:</strong><br>
+  ▸ <strong>🇲🇽 México:</strong> −24% (proteção doméstica)<br>
+  ▸ <strong>🇸🇦 Arábia Saudita:</strong> −5,3% (Hormuz)<br>
+  ▸ <strong>🇦🇪 Emirados:</strong> Logística complicada<br><br>
+  <strong>Gripe aviária mundial = OPORTUNIDADE BR:</strong><br>
+  ▸ <strong>Japão:</strong> Surto rebanho doméstico (substituição)<br>
+  ▸ <strong>Europa:</strong> Casos isolados afetam autoabastecimento<br>
+  ▸ <strong>Chile:</strong> China suspendeu importações (BR ganha!)<br>
+  ▸ <strong>Brasil é o ÚNICO grande sem gripe aviária ativa!</strong><br>
+  ▸ <strong>Vantagem competitiva inédita</strong></p>
+</div>
+
+<div class="co bl">
+  <h4>🆚 Frango Ganhou Competitividade Doméstica! Boi Subiu · Frango Caiu</h4>
+  <p><strong>Quadro comparativo proteínas BR (abr/26):</strong><br>
+  ▸ <strong>Boi gordo:</strong> R$ 354/@ = R$ 33,50/kg carcaça<br>
+  ▸ <strong>Suíno carcaça:</strong> R$ 8,62/kg<br>
+  ▸ <strong>Frango congelado:</strong> R$ 7,12/kg<br>
+  ▸ <strong>Ovo (kg proteína):</strong> R$ 12,40<br><br>
+  <strong>Relação de troca FRANGO/BOI:</strong><br>
+  ▸ <strong>Mar/26:</strong> 3+ kg frango = 1 kg dianteiro bovino!<br>
+  ▸ <strong>Média histórica:</strong> 2,3 kg<br>
+  ▸ <strong>Atual:</strong> 30% acima da média!<br>
+  ▸ <strong>Pico ciclo:</strong> 2021 (similar)<br>
+  ▸ <strong>Resultado:</strong> Trade-down massivo dos consumidores<br><br>
+  <strong>Efeito no consumo doméstico:</strong><br>
+  ▸ <strong>BR consome 45+ kg frango/hab/ano</strong> (líder mundial!)<br>
+  ▸ <strong>Boi caiu para 25 kg/hab/ano</strong> (recorde de baixa)<br>
+  ▸ <strong>Suíno:</strong> 18 kg/hab/ano<br>
+  ▸ <strong>Famílias migraram</strong> em massa<br>
+  ▸ <strong>Restaurantes:</strong> Frango virou estrela (filezinho · sanduíche)<br>
+  ▸ <strong>Fast food:</strong> Promoções massivas frango (KFC · Bob's · Subway)<br>
+  ▸ <strong>Padarias:</strong> Coxinha/empadinha em alta<br>
+  ▸ <strong>Frango assado:</strong> "Frango Pop" populariza<br><br>
+  <strong>Por que frango fica caro só sazonalmente:</strong><br>
+  ▸ <strong>Ciclo curto:</strong> 42-45 dias do pintinho ao abate<br>
+  ▸ <strong>Resposta rápida:</strong> Indústria ajusta produção em 60-90 dias<br>
+  ▸ <strong>Não há choque oferta:</strong> Indústria sempre se adapta<br>
+  ▸ <strong>Margem indústria:</strong> R$ 0,05-0,30/kg (apertada!)<br>
+  ▸ <strong>Empresas margem:</strong> Vivem do volume + exportação</p>
+</div>
+
+<div class="co or">
+  <h4>🌏 Crise Oriente Médio: Hormuz Fechou · Brasil Reagiu Rápido com Rotas Alternativas</h4>
+  <p><strong>Crise geopolítica recente:</strong><br>
+  ▸ <strong>Conflito EUA-Israel-Irã:</strong> Fechamento Estreito de Hormuz<br>
+  ▸ <strong>Período crítico:</strong> Mar-Abr/2026<br>
+  ▸ <strong>Impacto Mar/26:</strong> −18,5% Oriente Médio vs fev<br>
+  ▸ <strong>Países afetados:</strong> Arábia Saudita, EAU, Catar, Bahrein, Omã, Irã<br>
+  ▸ <strong>Volume direto afetado:</strong> 45+ mil t<br><br>
+  <strong>Estratégia ABPA + MAPA:</strong><br>
+  ▸ <strong>Rotas alternativas:</strong> Suez · Cabo da Boa Esperança<br>
+  ▸ <strong>Seguros estendidos:</strong> Cobertura de risco de guerra<br>
+  ▸ <strong>Acordos diplomáticos:</strong> Garantir corredor humanitário<br>
+  ▸ <strong>Armazenamento:</strong> Estoques em portos seguros<br>
+  ▸ <strong>Sucesso:</strong> 100+ mil t enviadas em mar/26 mesmo com crise<br><br>
+  <strong>Outras crises sanitárias = oportunidade BR:</strong><br>
+  ▸ <strong>🇨🇱 China suspendeu Chile</strong> (gripe aviária abr/26)<br>
+  ▸ <strong>🇯🇵 Japão:</strong> Surto rebanho doméstico (substituição)<br>
+  ▸ <strong>🇪🇺 Europa:</strong> Casos isolados afetam abastecimento<br>
+  ▸ <strong>🇰🇷 Coreia:</strong> Importação subiu para repor<br>
+  ▸ <strong>Brasil é o ÚNICO grande sem gripe aviária ativa!</strong><br><br>
+  <strong>Vantagem competitiva BR (única no mundo):</strong><br>
+  ▸ <strong>Sanidade impecável</strong> (após superar foco mai/25)<br>
+  ▸ <strong>SISBI:</strong> Sistema brasileiro inspeção pleno<br>
+  ▸ <strong>Habilitações:</strong> 100+ países<br>
+  ▸ <strong>Plantas auditadas:</strong> Constantemente<br>
+  ▸ <strong>Confiabilidade:</strong> Maior do mundo</p>
+</div>
+
+<div class="co cy">
+  <h4>💰 Custos: Milho + Soja = 70% do Custo · Defenda Sua Margem!</h4>
+  <p><strong>Estrutura de custos avicultura BR (industrial):</strong><br>
+  ▸ <strong>Milho (energia ração):</strong> 50-55% do custo<br>
+  ▸ <strong>Farelo de soja (proteína):</strong> 18-22%<br>
+  ▸ <strong>Pintinho 1 dia:</strong> 10-12%<br>
+  ▸ <strong>Mão de obra:</strong> 5-7%<br>
+  ▸ <strong>Energia (climatização):</strong> 4-6%<br>
+  ▸ <strong>Vacinas/medicamentos:</strong> 3-4%<br>
+  ▸ <strong>Outros:</strong> 5-8%<br><br>
+  <strong>Cotações insumos atuais (CEPEA · 24-30/04):</strong><br>
+  ▸ <strong>Milho Campinas:</strong> R$ 66,36/sc 60kg = R$ 1.106/t<br>
+  ▸ <strong>Soja Paranaguá:</strong> R$ 126,90/sc 60kg = R$ 2.115/t<br>
+  ▸ <strong>Farelo soja 47%:</strong> ~R$ 1.500/t<br>
+  ▸ <strong>Premix (vitaminas):</strong> R$ 5-8/kg<br><br>
+  <strong>Cálculo de custo médio (frango pronto industrial):</strong><br>
+  ▸ <strong>Conversão alimentar (eficiência):</strong> 1,7 kg ração/kg vivo<br>
+  ▸ <strong>Custo ração/kg vivo:</strong> R$ 3,50<br>
+  ▸ <strong>Pintinho + sanidade + manejo:</strong> R$ 1,80<br>
+  ▸ <strong>Custo total/kg vivo:</strong> R$ 5,30<br>
+  ▸ <strong>Custo/kg pronto (rendimento 73%):</strong> R$ 7,26<br>
+  ▸ <strong>Preço atual atacado:</strong> R$ 7,12-7,25/kg<br>
+  ▸ <strong>Margem industrial:</strong> APERTADA (próximo ao break-even!)<br><br>
+  <strong>Tendências dos insumos:</strong><br>
+  ▸ <strong>Milho:</strong> Pressão baixista (colheita 2ª safra jul-set)<br>
+  ▸ <strong>Soja:</strong> Estável · safra recorde 179 mi t<br>
+  ▸ <strong>Custo ração:</strong> Deve cair 5-10% em jul-set<br>
+  ▸ <strong>Margem industrial:</strong> Vai melhorar no 3ºT/26<br><br>
+  <strong>Vantagem competitiva BR:</strong> Grãos baratos em casa = custo de produção 30-40% MENOR que EUA/UE. Por isso somos REIS mundiais!</p>
+</div>
+
+<div class="co pu">
+  <h4>🏦 Macro: Cenário Modestamente Positivo · Selic Baixa + Custos Estáveis</h4>
+  <p><strong>Decisão Copom (29/04):</strong> Selic cortada para 14,50% (−0,25 p.p.)<br>
+  <strong>Dólar:</strong> R$ 4,9523 (mín 2 anos!)<br><br>
+  <strong>Para o setor avícola:</strong><br>
+  ▸ <strong>Selic 14,50%:</strong> Crédito custeio mais barato<br>
+  ▸ <strong>Investimento aviários:</strong> Mais viável (climatização, automação)<br>
+  ▸ <strong>Plano Safra 26/27:</strong> Linhas custeio + investimento<br>
+  ▸ <strong>BNDES Avicultura:</strong> Biossegurança · modernização<br><br>
+  <strong>Dólar fraco — IMPACTOS DUPLOS:</strong><br>
+  ▸ ✗ <strong>Reduz receita exportação</strong> em R$<br>
+  ▸ ✓ <strong>Mas volume cresce:</strong> +6% em mar (compensa)<br>
+  ▸ ✓ <strong>Insumos importados</strong> baratos (medicamentos, suplementos premix)<br>
+  ▸ ✓ <strong>Custos internos:</strong> Estáveis em R$<br><br>
+  <strong>Cálculo de paridade exportação:</strong><br>
+  ▸ <strong>Preço médio export:</strong> US$ 1.857/t<br>
+  ▸ <strong>Em R$ (4,95):</strong> R$ 9.193/t = R$ 9,19/kg<br>
+  ▸ <strong>Atual atacado BR:</strong> R$ 7,12-7,25/kg<br>
+  ▸ <strong>Premium exportação:</strong> R$ 1,94/kg (+27%!)<br>
+  ▸ <strong>= Exportação MUITO mais lucrativa!</strong><br><br>
+  <strong>Cenário composto 2026:</strong><br>
+  ▸ <strong>Recordes export</strong> (positivo)<br>
+  ▸ <strong>Demanda doméstica fraca</strong> (preços apertados)<br>
+  ▸ <strong>Selic baixa</strong> (alívio crédito)<br>
+  ▸ <strong>Custos estáveis</strong> (milho/soja sob controle)<br>
+  ▸ <strong>= Cenário NEUTRO-POSITIVO</strong> com viés exportador<br><br>
+  <strong>Conclusão para BRF, JBS Seara, Aurora:</strong> Foco em EXPORTAÇÃO. Mercado interno só "absorve" produção excedente. Margem grossa vem de fora. Setor está em ciclo de OURO graças a gripe aviária mundial + retomada China + Japão.</p>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)">🌡️</div><h2>Termômetros do Mercado <span>— Pressões e Vetores</span></h2></div>
+
+<div class="grid3">
+  <div class="card">
+    <div class="thermo"><h4>📊 Preço CEPEA SP</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:48%"></div></div>
+      <div class="th-lb"><span>Crash</span><span>Médio</span><span>Pico</span></div>
+      <p style="font-size:.78rem;color:var(--nt);margin-top:8px;font-weight:700">→ MÉDIO</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">R$ 7,24/kg · acomodação</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🌍 Exportação BR</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:90%"></div></div>
+      <div class="th-lb"><span>Fraca</span><span>Média</span><span>Recorde</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ RECORDE!</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">+5% volume · +6,9% receita 1ºT</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🇨🇳 China Demanda</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:80%"></div></div>
+      <div class="th-lb"><span>Fraca</span><span>Média</span><span>Forte</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ FORTE</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">+11,6% retomada total!</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🇯🇵 Japão Demanda</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:95%"></div></div>
+      <div class="th-lb"><span>Fraca</span><span>Média</span><span>Boom</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ BOOM!</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">+41,3%! gripe aviária local</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🍖 Consumo Doméstico</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:65%"></div></div>
+      <div class="th-lb"><span>Fraco</span><span>Médio</span><span>Forte</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ ALTO</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">Trade-down do boi · 3 kg/1kg!</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>💰 Custo Ração</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:42%"></div></div>
+      <div class="th-lb"><span>Caro</span><span>Médio</span><span>Barato</span></div>
+      <p style="font-size:.78rem;color:var(--nt);margin-top:8px;font-weight:700">→ ESTÁVEL</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">Milho R$ 66 · Soja estável</p>
+    </div>
+  </div>
+</div>
+
+<div class="dv"></div>
+
+<div class="opinion">
+  <h3>🎯 Opinião do Analista — Brasil é REI MUNDIAL e Vai Capitalizar Crise Sanitária Global!</h3>
+
+  <p><strong>O setor avícola brasileiro vive momento ESTRATÉGICO em 2026: Brasil é #1 EXPORTADOR MUNDIAL absoluto (5,324 mi t em 2025 · ~36% do mercado!). RECORDES em CADEIA no 1ºT/26: 1,456 mi t (+5%) com receita US$ 2,764 bi (+6,9%). MARÇO/26 bateu RECORDE histórico em receita: US$ 944,7 mi (+6,2%) com 504,3 mil t (+6%). CHINA RETOMOU liderança (+11,6%!) · JAPÃO BOOM (+41,3%! gripe aviária no Japão!) · UE +33,7% · ÁFRICA do SUL +21,4%. Foco gripe aviária BR de mai/25 SUPERADO totalmente. ÚNICA grande potência sem gripe aviária ativa = vantagem competitiva inédita! CHINA suspendeu CHILE (abr/26) = oportunidade migra para BR. CEPEA SP frango R$ 7,24/kg em acomodação · trade-down massivo do boi gordo (3 kg frango = 1 kg dianteiro · 30% acima média!). Custos sob controle (milho R$ 66 · soja R$ 127). Selic 14,50% + dólar R$ 4,95 = exportação 27% mais lucrativa que mercado interno! BRF, JBS Seara, Aurora e C.Vale capitalizam ciclo de OURO!</strong></p>
+
+  <p><strong>Semana 27-30/abr (curta · feriado 1º Mai) — Em síntese:</strong><br>
+  ▸ <strong>CEPEA SP frango (24/04):</strong> R$ 7,24/kg (−0,4% sem)<br>
+  ▸ <strong>Frango congelado SP (mar):</strong> R$ 7,00/kg (−17% ano!)<br>
+  ▸ <strong>Export Mar/26:</strong> 504,3 mil t (+6%) · US$ 944,7 mi (RECORDE!)<br>
+  ▸ <strong>Acumulado 1ºT/26:</strong> 1,456 mi t (+5%) · US$ 2,76 bi (+6,9%)<br>
+  ▸ <strong>2025 anual (recorde):</strong> 5,32 mi t · US$ 9,79 bi<br>
+  ▸ <strong>China:</strong> 51,8 mil t (+11,6% retomada!)<br>
+  ▸ <strong>Japão:</strong> 42,1 mil t (+41,3%! BOOM!)<br>
+  ▸ <strong>UE:</strong> 30,7 mil t (+33,7%!)<br>
+  ▸ <strong>Top estado:</strong> Paraná 187,7 mil t (líder!)<br>
+  ▸ <strong>Custos:</strong> Milho R$ 66 · Soja R$ 127 (sob controle)<br>
+  ▸ <strong>Relação Frango/Boi:</strong> 3+ kg = 1 kg dianteiro (30% acima média!)<br>
+  ▸ <strong>Selic:</strong> 14,50% · <strong>Dólar:</strong> R$ 4,95</p>
+
+  <p><strong>Recomendações estratégicas:</strong></p>
+
+  <p><strong>1. AVICULTOR INTEGRADO: MANTENHA QUALIDADE · NÃO TROQUE INTEGRADORA!</strong> O sistema de integração (Sadia/BRF, Seara/JBS, Aurora) tem garantia de remuneração contratual. Em ciclo de margem apertada, INTEGRAÇÃO ESTÁVEL > especulação. Foque em: a) Conversão alimentar (1,65 kg/kg ideal), b) Mortalidade < 4%, c) Uniformidade do lote, d) Cumprimento prazo. Bonificações por desempenho são chave.</p>
+
+  <p><strong>2. AVICULTOR INDEPENDENTE: HEDGE NO MILHO + CONTRATOS COM FRIGORÍFICO REGIONAL!</strong> Quem é independente (poucos no BR) precisa: a) Comprar milho safrinha barato (jul-set), b) Estocar 4-6 meses, c) Negociar com frigoríficos regionais (Mercúrio, Dourados, Frango Forte). Sem hedge, ciclo de prejuízo é certo.</p>
+
+  <p><strong>3. EMPRESÁRIOS RURAIS: APROVEITE SELIC BAIXA PARA MODERNIZAR AVIÁRIOS!</strong> Climatização inteligente, comedouros automáticos, sensores IoT, energia solar (climatização demanda 60% energia da granja!). ROI em 4-6 anos. Plano Safra Avicultura 26/27 sai junho com taxas atrativas. BNDES tem linhas para automação completa.</p>
+
+  <p><strong>4. EXPORTADORES (BRF, JBS, AURORA): AGRESSIVO EM CHINA + JAPÃO + UE!</strong> Janela de OURO. Gripe aviária no Japão e Europa = substituição forçada por BR. China suspendeu Chile = mais demanda. Foco em: a) Cortes premium para Japão (yakitori, karaage), b) Halal certificação para Oriente Médio (apesar Hormuz), c) Coxas/asas para Filipinas, México (recuperação?), d) Inteiro para África do Sul.</p>
+
+  <p><strong>5. CONSUMIDOR FINAL · APROVEITE FRANGO BARATO!</strong> Relação 3:1 com boi é histórica. Frango congelado R$ 7,12/kg vs boi R$ 33,50/kg carcaça. Substituição = economia 70%! Estratégia: comprar peças (peito, coxa) em supermercado de atacado · congelar · usar em receitas variadas. Família 4 pessoas economiza R$ 200-400/mês trocando boi por frango.</p>
+
+  <p><strong>6. CUIDADO COM A SAÚDE DO REBANHO! Biossegurança é tudo!</strong> Foco da gripe aviária em mai/25 quase derrubou setor. Investir em: a) Cercas de proteção contra aves silvestres, b) Higienização rigorosa (nichos · galpões · veículos), c) Vacinação preventiva, d) Quarentena de visitantes, e) Monitoramento sanitário SVO/MAPA.</p>
+
+  <p><strong>7. NÃO ESPERE DEMANDA INTERNA EM SUMA! SAIA NO ATACADO COM EXPORTAÇÃO!</strong> Mercado interno está saturado (45 kg/hab/ano · líder mundial). Crescimento real vem da EXPORTAÇÃO. China (1,4 bi pessoas), Japão (125 mi), UE (450 mi) são mercados gigantes. Foque em qualidade premium + halal + sanidade impecável.</p>
+
+  <div class="opinion .scenarios" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px">
+    <div class="sc up">
+      <h5>🟢 Cenário Altista</h5>
+      <p>Gripe aviária se espalha (Japão + Europa) · Chile fechado · China retoma 70+ mil t/mês · Hormuz reabre · Selic cai → <strong>Export 5,7 mi t · CEPEA R$ 7,80/kg · margens em alta!</strong>. Probabilidade: ~35%</p>
+    </div>
+    <div class="sc nt">
+      <h5>🟡 Cenário Neutro</h5>
+      <p>Mercado lateral · gripe aviária estabilizada mundo · custos estáveis · demanda interna média → <strong>Export 5,4-5,5 mi t · CEPEA R$ 7,00-7,40/kg · margem normal</strong>. Probabilidade: ~50%</p>
+    </div>
+    <div class="sc dn">
+      <h5>🔴 Cenário Baixista</h5>
+      <p>Foco gripe aviária no BR · custos disparam · trade barreiras · China bloqueia · safra americana recorde → <strong>Export 4,8 mi t · CEPEA R$ 6,40/kg · margem apertada</strong>. Probabilidade: ~15%</p>
+    </div>
+  </div>
+
+  <div class="sig">📅 Análise Rural IN · Quinta, 30/Abr/2026 · Semana curta (feriado 1º Mai) · BRASIL É REI MUNDIAL DO FRANGO · GRIPE AVIÁRIA GLOBAL = OPORTUNIDADE BR · CHINA + JAPÃO + UE PUXAM RECORDES!</div>
+</div>
+
+<footer class="footer"><div class="wrap">
+  <div class="footer-brand"><span class="r">Rural</span> <span class="i">IN</span></div>
+  <p>Radar Agro Semanal · Frango · Semana 27–30 Abril 2026<br>
+  Fontes: CEPEA-Esalq/USP · ABPA · Globo Rural · CNN Brasil · Reuters · BeefPoint · Comprerural · NPagro · Agro2 · Agrimidia · Folha Exata · Portal do Agronegócio · Feedfood · Banco Central · COPOM · MDIC/Secex</p>
+  <div class="footer-credits">
+    <h4>Análise e Construção</h4>
+    <div class="name">Dr. Sidney Souza</div>
+    <div class="title">Economista e Adm. Agrícola — Estrategista Econômico do Produtor</div>
+    <div class="desc">Especialista em economia da fazenda e gestão de risco no agro<br>Transformamos dados da fazenda em decisões econômicas<br>Ajudamos produtores a entender se o mercado sustenta seu negócio</div>
+    <div class="contact">📧 <a href="mailto:sidneyagro@gmail.com">sidneyagro@gmail.com</a> · 📱 <a href="tel:+5564992266886">(64) 9 9226-6886</a> · 📸 <a href="https://instagram.com/ruralin.ai" target="_blank">@ruralin.ai</a></div>
+  </div>
+  <p style="margin-top:18px"><em>⚠️ Material informativo. Não constitui recomendação de investimento.</em></p>
+</div></footer>
+
+</div>
+
+<script>
+const gc='rgba(44,34,16,.5)';
+const tt={backgroundColor:'rgba(18,14,6,.97)',borderColor:'#3d3018',borderWidth:1,titleFont:{size:11,weight:'700'},bodyFont:{size:10},padding:10,cornerRadius:8};
+
+new Chart(document.getElementById('ch1').getContext('2d'),{
+  type:'line',
+  data:{labels:['Mai/25','Jul/25','Set/25','Nov/25','Jan/26','Mar/26','Abr/26'],
+    datasets:[{label:'CEPEA Frango SP (R$/kg)',data:[8.70,8.20,7.85,7.50,7.30,7.00,7.24],
+      borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,.13)',borderWidth:3,fill:true,tension:.3,pointRadius:5,pointBackgroundColor:'#f59e0b',pointBorderColor:'#fcd34d',pointBorderWidth:1.5}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+    scales:{y:{min:6.5,max:9,grid:{color:gc},ticks:{callback:function(v){return'R$'+v.toFixed(2)},font:{size:9,weight:'600'},color:'#fed7aa'}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#fed7aa'}}}}
+});
+
+new Chart(document.getElementById('ch2').getContext('2d'),{
+  type:'bar',
+  data:{labels:['Jan/26','Fev/26','Mar/26'],
+    datasets:[{label:'Volume (mil t)',data:[459,493.2,504.3],backgroundColor:'rgba(245,158,11,.7)',borderColor:'#f59e0b',borderWidth:2,borderRadius:7,yAxisID:'y'},
+      {label:'Receita (US$ mi)',data:[874,945.4,944.7],backgroundColor:'rgba(34,197,94,.6)',borderColor:'#22c55e',borderWidth:2,borderRadius:7,yAxisID:'y1',type:'line',tension:.2,pointRadius:6}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{color:'#fed7aa',font:{size:10,weight:'600'},boxWidth:14,padding:8}},tooltip:tt},
+    scales:{y:{position:'left',min:440,max:520,grid:{color:gc},ticks:{callback:function(v){return v+' mil t'},font:{size:9,weight:'600'},color:'#fed7aa'}},
+      y1:{position:'right',min:850,max:980,grid:{display:false},ticks:{callback:function(v){return'$'+v+'mi'},font:{size:9,weight:'600'},color:'#22c55e'}},
+      x:{grid:{display:false},ticks:{font:{size:11,weight:'700'},color:'#fed7aa'}}}}
+});
+
+new Chart(document.getElementById('ch3').getContext('2d'),{
+  type:'bar',
+  data:{labels:['🇨🇳 China','🇯🇵 Japão','🇸🇦 Arábia','🇿🇦 África Sul','🇪🇺 UE','🇵🇭 Filipinas','🇰🇷 Coreia'],
+    datasets:[{label:'mil t (Mar/26)',data:[51.8,42.1,38.7,33.1,30.7,28,18.5],
+      backgroundColor:function(c){if(c.dataIndex<=1)return 'rgba(34,197,94,.7)';if(c.dataIndex<=3)return 'rgba(245,158,11,.65)';return 'rgba(168,85,247,.55)'},
+      borderColor:function(c){if(c.dataIndex<=1)return '#22c55e';if(c.dataIndex<=3)return '#f59e0b';return '#a855f7'},
+      borderWidth:2,borderRadius:7}]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+    scales:{x:{min:0,max:60,grid:{color:gc},ticks:{callback:function(v){return v+' mil t'},font:{size:9,weight:'600'},color:'#fed7aa'}},y:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#fed7aa'}}}}
+});
+
+new Chart(document.getElementById('ch4').getContext('2d'),{
+  type:'doughnut',
+  data:{labels:['🟦 Paraná (43%)','🟩 SC (24%)','🟧 RS (14%)','🟪 SP (6%)','🟫 GO (6%)','Outros (7%)'],
+    datasets:[{data:[43,24,14,6,6,7],
+      backgroundColor:['rgba(245,158,11,.75)','rgba(34,197,94,.65)','rgba(59,130,246,.6)','rgba(168,85,247,.5)','rgba(234,88,12,.5)','rgba(160,160,160,.4)'],
+      borderColor:['#f59e0b','#22c55e','#3b82f6','#a855f7','#ea580c','#a0a0a0'],
+      borderWidth:2,hoverOffset:8}]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom',labels:{color:'#fed7aa',font:{size:9,weight:'600'},boxWidth:12,padding:6}},tooltip:tt},
+    cutout:'58%'}
+});
+
+new Chart(document.getElementById('ch5').getContext('2d'),{
+  type:'bar',
+  data:{labels:['Frango/Boi (kg)','Frango/Suíno (kg)','Frango/Ovo (R$/kg)'],
+    datasets:[{label:'Atual',data:[3.0,1.3,7.24],backgroundColor:'rgba(245,158,11,.7)',borderColor:'#f59e0b',borderWidth:2,borderRadius:6},
+      {label:'Média histórica',data:[2.3,1.3,7.50],backgroundColor:'rgba(122,134,154,.5)',borderColor:'#7a869a',borderWidth:2,borderRadius:6}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{color:'#fed7aa',font:{size:10,weight:'600'},boxWidth:14,padding:8}},tooltip:tt},
+    scales:{y:{min:0,max:10,grid:{color:gc},ticks:{font:{size:9,weight:'600'},color:'#fed7aa'}},x:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#fed7aa'}}}}
+});
+
+new Chart(document.getElementById('ch6').getContext('2d'),{
+  type:'doughnut',
+  data:{labels:['🌽 Milho (52%)','🌱 Farelo Soja (20%)','🐣 Pintinho (11%)','💼 MO (6%)','⚡ Energia (5%)','💉 Sanidade (3%)','🔧 Outros (3%)'],
+    datasets:[{data:[52,20,11,6,5,3,3],
+      backgroundColor:['rgba(245,158,11,.75)','rgba(34,197,94,.65)','rgba(252,211,77,.6)','rgba(59,130,246,.5)','rgba(168,85,247,.5)','rgba(239,68,68,.5)','rgba(160,160,160,.4)'],
+      borderColor:['#f59e0b','#22c55e','#fcd34d','#3b82f6','#a855f7','#ef4444','#a0a0a0'],
+      borderWidth:2,hoverOffset:8}]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom',labels:{color:'#fed7aa',font:{size:9,weight:'600'},boxWidth:12,padding:6}},tooltip:tt},
+    cutout:'55%'}
+});
+</script>
+</body>
+</html>

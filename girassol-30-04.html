@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Rural IN — Girassol · 27-30 Abr 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0904;--bg2:#120e06;--bg3:#1a1408;--bg4:#23190d;--border:#2c2210;--border2:#3d3018;--sun:#eab308;--sun2:#facc15;--sun3:#fde047;--gold:#f59e0b;--gold2:#fbbf24;--leaf2:#84cc16;--text:#fefce8;--text2:#fde68a;--text3:#a89968;--up:#22c55e;--dn:#ef4444;--nt:#eab308;--blue:#3b82f6;--purple:#a855f7;--orange:#f97316;--cyan:#06b6d4;--r:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 1000px 700px at 10% 15%,rgba(234,179,8,.12),transparent),radial-gradient(ellipse 800px 600px at 90% 85%,rgba(245,158,11,.08),transparent);pointer-events:none;z-index:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+.nav{background:rgba(18,14,6,.95);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:14px}
+.nav-logo-img{height:42px;width:auto;border-radius:8px}
+.nav-logo{font-weight:900;font-size:1.2rem}
+.nav-logo .r{color:var(--sun2)}
+.nav-logo .i{color:var(--leaf2)}
+.nav-badge{background:linear-gradient(135deg,#a16207,#eab308);border:1px solid rgba(253,224,71,.5);padding:5px 14px;border-radius:20px;font-size:.7rem;font-weight:800;color:#1a1408;letter-spacing:.6px;box-shadow:0 0 25px rgba(234,179,8,.5)}
+.nav-back{color:var(--text3);font-size:.8rem;text-decoration:none}
+.nav-back:hover{color:var(--sun2)}
+.hero{padding:54px 0 40px;position:relative}
+.hero::after{content:'';position:absolute;bottom:0;left:0;width:240px;height:3px;background:linear-gradient(90deg,#a16207,var(--sun2),transparent)}
+.hero-top{display:flex;align-items:center;gap:22px;margin-bottom:16px}
+.hero-icon-wrap{width:84px;height:84px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,rgba(234,179,8,.4),transparent 70%);border-radius:50%}
+.hero-icon{font-size:3.6rem;filter:drop-shadow(0 6px 18px rgba(234,179,8,.7))}
+.hero-texts h1{font-size:2.4rem;font-weight:900;letter-spacing:-1.2px;line-height:1.1}
+.hero-texts h1 .hl{background:linear-gradient(135deg,#a16207,#ca8a04,#eab308,#fde047);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-texts .sub{font-size:.9rem;color:var(--text2);margin-top:6px;font-weight:500}
+.hero-bar{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border-radius:22px;font-size:.72rem;font-weight:700;border:1px solid}
+.chip.up{color:var(--up);border-color:rgba(34,197,94,.3);background:rgba(34,197,94,.08)}
+.chip.dn{color:var(--dn);border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.08)}
+.chip.nt{color:var(--nt);border-color:rgba(234,179,8,.4);background:rgba(234,179,8,.1)}
+.chip.pu{color:var(--purple);border-color:rgba(168,85,247,.3);background:rgba(168,85,247,.08)}
+.chip.sn{color:var(--sun2);border-color:rgba(234,179,8,.5);background:rgba(234,179,8,.13)}
+.chip.lf{color:var(--leaf2);border-color:rgba(132,204,22,.3);background:rgba(132,204,22,.08)}
+.alert{border-radius:var(--r);padding:18px 22px;margin-bottom:14px;display:flex;gap:14px;border:1px solid;font-size:.85rem;line-height:1.75;color:var(--text2);position:relative}
+.alert::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
+.alert strong{color:var(--text)}
+.alert .ai{font-size:1.4rem;flex-shrink:0;margin-top:1px}
+.alert.green{background:linear-gradient(90deg,rgba(34,197,94,.08),rgba(34,197,94,.02));border-color:rgba(34,197,94,.25)}
+.alert.green::before{background:var(--up)}
+.alert.red{background:linear-gradient(90deg,rgba(239,68,68,.08),rgba(239,68,68,.02));border-color:rgba(239,68,68,.25)}
+.alert.red::before{background:var(--dn)}
+.alert.amber{background:linear-gradient(90deg,rgba(234,179,8,.1),rgba(234,179,8,.02));border-color:rgba(234,179,8,.3)}
+.alert.amber::before{background:var(--nt)}
+.alert.blue{background:linear-gradient(90deg,rgba(59,130,246,.08),rgba(59,130,246,.02));border-color:rgba(59,130,246,.25)}
+.alert.blue::before{background:var(--blue)}
+.alert.purple{background:linear-gradient(90deg,rgba(168,85,247,.08),rgba(168,85,247,.02));border-color:rgba(168,85,247,.25)}
+.alert.purple::before{background:var(--purple)}
+.alert.cyan{background:linear-gradient(90deg,rgba(6,182,212,.08),rgba(6,182,212,.02));border-color:rgba(6,182,212,.25)}
+.alert.cyan::before{background:var(--cyan)}
+.alert.orange{background:linear-gradient(90deg,rgba(249,115,22,.1),rgba(249,115,22,.02));border-color:rgba(249,115,22,.3)}
+.alert.orange::before{background:var(--orange)}
+.alert.sun{background:linear-gradient(90deg,rgba(234,179,8,.15),rgba(253,224,71,.04));border-color:rgba(234,179,8,.4)}
+.alert.sun::before{background:var(--sun2)}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin:24px 0}
+.kpi{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:16px 18px;position:relative;transition:all .25s}
+.kpi:hover{transform:translateY(-3px);border-color:var(--border2)}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2)}
+.kpi.up::before{background:linear-gradient(90deg,var(--up),var(--leaf2))}
+.kpi.dn::before{background:linear-gradient(90deg,var(--dn),var(--orange))}
+.kpi.nt::before{background:linear-gradient(90deg,var(--nt),var(--sun3))}
+.kpi.bl::before{background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.kpi.pu::before{background:linear-gradient(90deg,var(--purple),#ec4899)}
+.kpi.or::before{background:linear-gradient(90deg,var(--orange),var(--sun3))}
+.kpi.sn::before{background:linear-gradient(90deg,#a16207,var(--sun2))}
+.kpi.lf::before{background:linear-gradient(90deg,#65a30d,var(--leaf2))}
+.kpi-lb{font-size:.6rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:5px;font-weight:700}
+.kpi-val{font-size:1.18rem;font-weight:900;letter-spacing:-.5px;line-height:1.2}
+.kpi-val.up{color:var(--up)}.kpi-val.dn{color:var(--dn)}.kpi-val.nt{color:var(--nt)}.kpi-val.bl{color:var(--blue)}.kpi-val.pu{color:var(--purple)}.kpi-val.or{color:var(--orange)}.kpi-val.sn{color:var(--sun2)}.kpi-val.lf{color:var(--leaf2)}
+.kpi-sub{font-size:.66rem;color:var(--text3);margin-top:3px;font-weight:500}
+.dv{height:1px;background:linear-gradient(90deg,transparent,var(--border2) 20%,var(--sun2) 50%,var(--border2) 80%,transparent);margin:36px 0}
+.stitle{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.stitle .icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.stitle h2{font-size:1.18rem;font-weight:800;letter-spacing:-.3px}
+.stitle h2 span{color:var(--text2);font-weight:400;font-size:.85rem;margin-left:4px}
+.co{border-radius:var(--r);padding:20px 24px;margin-bottom:14px;border-left:4px solid;font-size:.85rem;color:var(--text2);line-height:1.85;background:linear-gradient(90deg,var(--bg2),var(--bg3))}
+.co strong{color:var(--text)}
+.co h4{font-size:.98rem;font-weight:800;margin-bottom:10px}
+.co.up{border-color:var(--up)}.co.up h4{color:var(--up)}
+.co.dn{border-color:var(--dn)}.co.dn h4{color:var(--dn)}
+.co.nt{border-color:var(--nt)}.co.nt h4{color:var(--nt)}
+.co.bl{border-color:var(--blue)}.co.bl h4{color:var(--blue)}
+.co.or{border-color:var(--orange)}.co.or h4{color:var(--orange)}
+.co.pu{border-color:var(--purple)}.co.pu h4{color:var(--purple)}
+.co.cy{border-color:var(--cyan)}.co.cy h4{color:var(--cyan)}
+.co.sn{border-color:var(--sun2)}.co.sn h4{color:var(--sun2)}
+.chart-box{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--r);padding:22px 24px;margin-bottom:14px}
+.chart-box h3{font-size:.9rem;color:var(--text);margin-bottom:14px;font-weight:700;display:flex;align-items:center;gap:8px}
+.chart-box h3 .ch-tag{margin-left:auto;font-size:.62rem;font-weight:700;padding:2px 10px;border-radius:10px;background:rgba(234,179,8,.18);color:var(--sun2)}
+.chart-wrap{position:relative;height:290px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:800px){.grid2,.grid3{grid-template-columns:1fr}}
+.tbl-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--border);margin-bottom:14px;background:var(--bg2)}
+table{width:100%;border-collapse:collapse;font-size:.78rem}
+thead th{background:linear-gradient(180deg,var(--bg3),var(--bg4));padding:12px 14px;text-align:center;font-weight:800;color:var(--text2);font-size:.66rem;text-transform:uppercase;letter-spacing:.9px;border-bottom:1px solid var(--border)}
+tbody td{padding:10px 12px;border-bottom:1px solid rgba(44,34,16,.5);text-align:center}
+tbody tr:hover{background:rgba(234,179,8,.05)}
+.td-name{text-align:left!important;font-weight:700;white-space:nowrap}
+.td-up{color:var(--up);font-weight:800}.td-dn{color:var(--dn);font-weight:800}.td-nt{color:var(--nt);font-weight:800}
+.thermo h4{font-size:.84rem;color:var(--text);margin-bottom:10px;font-weight:700}
+.th-bar{height:14px;border-radius:7px;position:relative;box-shadow:inset 0 1px 4px rgba(0,0,0,.4)}
+.th-marker{position:absolute;top:-6px;width:4px;height:26px;background:#fff;border-radius:2px;transform:translateX(-50%);box-shadow:0 0 12px rgba(255,255,255,.6)}
+.th-lb{display:flex;justify-content:space-between;font-size:.66rem;color:var(--text3);margin-top:6px;font-weight:600}
+.card{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--r);padding:22px 26px;margin-bottom:14px}
+.opinion{background:linear-gradient(135deg,rgba(234,179,8,.2),rgba(253,224,71,.06),rgba(234,179,8,.02));border:1px solid rgba(253,224,71,.35);border-radius:var(--r);padding:30px 32px;margin:26px 0;position:relative}
+.opinion::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#a16207,var(--sun2),var(--gold2),#a16207)}
+.opinion h3{font-size:1.08rem;font-weight:800;color:var(--sun2);margin-bottom:12px}
+.opinion p{font-size:.88rem;color:var(--text2);line-height:1.9;margin-bottom:12px}
+.opinion p strong{color:var(--text)}
+.opinion .scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.opinion .sc{padding:14px 16px;border-radius:10px;border:1px solid;background:rgba(0,0,0,.3)}
+.opinion .sc.up{border-color:rgba(34,197,94,.3)}.opinion .sc.nt{border-color:rgba(234,179,8,.3)}.opinion .sc.dn{border-color:rgba(239,68,68,.3)}
+.opinion .sc h5{font-size:.78rem;font-weight:800;margin-bottom:6px}
+.opinion .sc.up h5{color:var(--up)}.opinion .sc.nt h5{color:var(--nt)}.opinion .sc.dn h5{color:var(--dn)}
+.opinion .sc p{font-size:.74rem;line-height:1.6;margin:0}
+@media(max-width:700px){.opinion .scenarios{grid-template-columns:1fr}}
+.opinion .sig{margin-top:18px;padding-top:14px;border-top:1px solid rgba(253,224,71,.2);font-size:.78rem;color:var(--text3);font-style:italic}
+.footer{border-top:1px solid var(--border);padding:42px 0;text-align:center;margin-top:36px}
+.footer-brand{font-size:1.5rem;font-weight:900;margin-bottom:12px}
+.footer-brand .r{color:var(--sun2)}.footer-brand .i{color:var(--leaf2)}
+.footer p{font-size:.78rem;color:var(--text3);line-height:1.8}
+.footer-credits{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+.footer-credits h4{font-size:.92rem;color:var(--sun2);font-weight:700;margin-bottom:6px}
+.footer-credits .name{font-size:1.05rem;font-weight:800;color:var(--text);margin-bottom:2px}
+.footer-credits .title{font-size:.78rem;color:var(--gold2);font-weight:600;margin-bottom:8px}
+.footer-credits .desc{font-size:.74rem;color:var(--text2);line-height:1.7;max-width:540px;margin:0 auto 12px}
+.footer-credits .contact{font-size:.74rem;color:var(--text3)}
+.footer-credits .contact a{color:var(--sun2);text-decoration:none}
+.bignum-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+.bignum{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:20px 18px;text-align:center}
+.bignum .v{font-size:1.7rem;font-weight:900;letter-spacing:-1px;line-height:1;margin-bottom:6px}
+.bignum .v.up{color:var(--up)}.bignum .v.dn{color:var(--dn)}.bignum .v.nt{color:var(--nt)}.bignum .v.sn{color:var(--sun2)}
+.bignum .l{font-size:.72rem;color:var(--text2);font-weight:600}
+.bignum .s{font-size:.66rem;color:var(--text3);margin-top:3px}
+@media(max-width:700px){.bignum-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.hero-top{flex-direction:column;text-align:center}.hero-texts h1{font-size:1.65rem}.kpi-row{grid-template-columns:repeat(2,1fr)}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap"><div class="nav-left"><img src="https://ruralinrv.github.io/ruralin/logo.png" alt="Rural IN" class="nav-logo-img" onerror="this.style.display='none'"><div class="nav-logo"><span class="r">Rural</span> <span class="i">IN</span></div><div class="nav-badge">🌻 GIRASSOL</div></div><a href="portal-30-04.html" class="nav-back">← Voltar</a></div></nav>
+
+<div class="wrap">
+
+<section class="hero">
+  <div class="hero-top">
+    <div class="hero-icon-wrap"><span class="hero-icon">🌻</span></div>
+    <div class="hero-texts">
+      <h1><span class="hl">Girassol</span> · Radar Semanal</h1>
+      <div class="sub">27–30 Abril 2026 · CONAB · SAFEX · Ucrânia · Argentina · Mar Negro · Goiás é REI! · Biocombustíveis em alta!</div>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <span class="chip up">🌻 Goiás líder: 71,6% BR!</span>
+    <span class="chip up">🛢️ Óleo girassol: +17,56% ano!</span>
+    <span class="chip lf">🇦🇷 Argentina recorde: 7 mi t!</span>
+    <span class="chip nt">🇺🇦 Ucrânia: receita +21%!</span>
+    <span class="chip sn">📊 SAFEX: ZAR 8.749/t</span>
+    <span class="chip pu">🏦 Selic: 14,50%</span>
+  </div>
+</section>
+
+<div class="bignum-row">
+  <div class="bignum"><div class="v sn">72,3 mil t</div><div class="l">Safra 25/26 BR (CONAB)</div><div class="s">Goiás 71,6%!</div></div>
+  <div class="bignum"><div class="v up">+17,56%</div><div class="l">Óleo Girassol vs ano</div><div class="s">US$ 1.540 · 30/04</div></div>
+  <div class="bignum"><div class="v sn">7 mi t</div><div class="l">Argentina 25/26 (recorde!)</div><div class="s">Alívio mercado global</div></div>
+  <div class="bignum"><div class="v sn">38%</div><div class="l">Rússia exportação mundial óleo</div><div class="s">Líder · Índia 25% destino</div></div>
+</div>
+
+<div class="alert sun">
+  <span class="ai">🌻</span>
+  <div><strong style="color:var(--sun2)">GIRASSOL BRASILEIRO É CULTURA DE NICHO COM POTENCIAL EXPLOSIVO! Goiás concentra 71,6%!</strong><br>
+  ▸ <strong>Produção BR 25/26:</strong> 72,3 mil t (CONAB)<br>
+  ▸ <strong>Mundo:</strong> ~55-58 mi t · Brasil = 0,12% (30º produtor)<br>
+  ▸ <strong>Goiás 24/25:</strong> 71 mil t (recorde!) · 47,3 mil ha (+20,7%)<br>
+  ▸ <strong>Crescimento Goiás:</strong> +58,8% produção · +31,6% produtividade!<br><br>
+  <strong>Top municípios goianos:</strong><br>
+  ▸ <strong>Silvânia:</strong> 8 mil t · 5 mil ha (líder absoluto!)<br>
+  ▸ <strong>Ipameri, Catalão:</strong> Sudeste goiano<br>
+  ▸ <strong>Rio Verde, Cristalina:</strong> Sudoeste/Cerrado<br><br>
+  <strong>Calendário fitossanitário (Agrodefesa):</strong><br>
+  ▸ <strong>Plantio até 31/03:</strong> Obrigatório · controle ferrugem asiática<br>
+  ▸ <strong>Razão:</strong> Evitar plantas voluntárias de soja (tiguera)<br>
+  ▸ <strong>Colheita 25/26:</strong> Junho-Agosto/2026 (em curso!)</div>
+</div>
+
+<div class="alert green">
+  <span class="ai">🛢️</span>
+  <div><strong style="color:var(--up)">ÓLEO DE GIRASSOL EM ALTA REAL DE +17,56% NO ANO! Biocombustíveis sustentam mercado!</strong><br>
+  <strong>Trading Economics — Óleo Girassol (30/04):</strong><br>
+  ▸ <strong>Cotação:</strong> US$ 1.540,70/10 kg INR<br>
+  ▸ <strong>Variação dia:</strong> −0,08%<br>
+  ▸ <strong>Variação mês:</strong> −4,85%<br>
+  ▸ <strong>Variação ano:</strong> <strong>+17,56%!</strong><br>
+  ▸ <strong>Pico histórico:</strong> US$ 2.400 (mar/2022 · guerra Ucrânia)<br><br>
+  <strong>Drivers altistas:</strong><br>
+  ▸ <strong>EPA EUA:</strong> Confirmou maior mistura biodiesel 2026-27<br>
+  ▸ <strong>Petróleo +6%:</strong> Tensões Oriente Médio<br>
+  ▸ <strong>Mar Negro apertado:</strong> Ucrânia produção −10%<br>
+  ▸ <strong>Rússia tarifas:</strong> Reduzidas (preço-base 82.500→90.750 rublos)<br>
+  ▸ <strong>Demanda Índia:</strong> Importadora #1 mundial<br><br>
+  <strong>SAFEX (futuros África Sul · ZAR/t):</strong><br>
+  ▸ Abr/26: 8.749 · Mai/26: 8.777 · Jul/26: 8.985 · Dez/26: 9.335<br>
+  ▸ <strong>Curva ascendente!</strong> Mercado ainda apertado</div>
+</div>
+
+<div class="alert blue">
+  <span class="ai">🇦🇷</span>
+  <div><strong style="color:var(--blue)">ARGENTINA TEVE SAFRA RECORDE DE 7 MI T! Alívio parcial · não suficiente para reverter alta</strong><br>
+  <strong>Argentina 2025/26:</strong><br>
+  ▸ <strong>Produção:</strong> 7 milhões de toneladas (quase recorde histórico!)<br>
+  ▸ <strong>Implicação:</strong> Esmagadores UE (Bulgária, Romênia) compram da Argentina<br>
+  ▸ <strong>Substituiu</strong> oferta ucraniana reduzida<br>
+  ▸ <strong>Mas:</strong> Não rompeu rally do óleo (estoques globais ainda apertados)<br><br>
+  <strong>Ucrânia 2025/26 (jul/25-mar/26):</strong><br>
+  ▸ <strong>Volume óleo exportado:</strong> 3,16 mi t (−10,1%!)<br>
+  ▸ <strong>Receita exportação:</strong> US$ 4 bi (firme!)<br>
+  ▸ <strong>Total óleos vegetais:</strong> US$ 4,94 bi (+21,1% receita!)<br>
+  ▸ <strong>Paradoxo:</strong> Menos volume · MAIS dinheiro (preços altos!)<br><br>
+  <strong>Top destinos Argentina (Óleo girassol):</strong><br>
+  ▸ <strong>Índia:</strong> 0,65 mi t (principal!)<br>
+  ▸ Restante: Europa, Oriente Médio, Norte da África</div>
+</div>
+
+<div class="alert orange">
+  <span class="ai">🇷🇺</span>
+  <div><strong style="color:var(--orange)">RÚSSIA DOMINA 38% DA EXPORTAÇÃO MUNDIAL DE ÓLEO! Reduziu tarifas para vender mais</strong><br>
+  <strong>Rússia — Movimento estratégico (abr/26):</strong><br>
+  ▸ <strong>Preço-base óleo:</strong> 82.500 → 90.750 rublos/t (+10%)<br>
+  ▸ <strong>Preço-base farelo:</strong> 15.875 → 17.463 rublos/t<br>
+  ▸ <strong>Efeito:</strong> Reduz tarifa final · facilita exportação<br>
+  ▸ <strong>Tarifa abril:</strong> 16.222 rublos/t (maior desde fev/2025)<br><br>
+  <strong>Posição global Rússia:</strong><br>
+  ▸ <strong>38% das exportações mundiais</strong> de óleo girassol!<br>
+  ▸ <strong>30% do farelo</strong> mundial<br>
+  ▸ <strong>Mecanismo tarifário</strong> em vigor desde 2021 · prorrogado até 2028<br><br>
+  <strong>Top destinos óleo russo 2025:</strong><br>
+  ▸ <strong>Índia:</strong> 25% (líder)<br>
+  ▸ <strong>Irã:</strong> 22%<br>
+  ▸ <strong>Turquia:</strong> 22%<br>
+  ▸ <strong>China:</strong> Crescente (substitui óleo de soja OGM)</div>
+</div>
+
+<div class="alert amber">
+  <span class="ai">🌾</span>
+  <div><strong style="color:var(--nt)">BRASIL: GIRASSOL É CULTURA DE SAFRINHA · NICHO COM ROTATIVIDADE NA SOJA</strong><br>
+  <strong>Características da cultura no BR:</strong><br>
+  ▸ <strong>Sistema:</strong> 2ª safra (após soja) · safrinha<br>
+  ▸ <strong>Ciclo:</strong> 90-120 dias<br>
+  ▸ <strong>Plantio:</strong> Janeiro-Março (até 31/03 em GO)<br>
+  ▸ <strong>Colheita:</strong> Junho-Setembro<br>
+  ▸ <strong>Produtividade GO:</strong> ~1.500 kg/ha (boa)<br>
+  ▸ <strong>Produtividade BR média:</strong> 1.200-1.500 kg/ha<br><br>
+  <strong>Vantagens da cultura:</strong><br>
+  ▸ <strong>Tolera estiagem</strong> melhor que milho safrinha<br>
+  ▸ <strong>Ciclo curto</strong> · libera área rapidamente<br>
+  ▸ <strong>Diversifica rotação</strong> (quebra ciclo soja-milho)<br>
+  ▸ <strong>Apícola:</strong> Excelente para abelhas (mel premium)<br>
+  ▸ <strong>Mecanização:</strong> Mesmo maquinário da soja<br>
+  ▸ <strong>Custo baixo:</strong> R$ 1.500-2.500/ha (vs milho R$ 3.500+)<br><br>
+  <strong>Variedades adaptadas BR:</strong><br>
+  ▸ <strong>BRS Multissol:</strong> Embrapa · alto rendimento<br>
+  ▸ <strong>Helio 250 / 253:</strong> Atlântica Sementes<br>
+  ▸ <strong>SYN 045:</strong> Syngenta<br>
+  ▸ <strong>Aguará 06:</strong> Heliasol/CATI<br><br>
+  <strong>Limitação atual:</strong> Mercado interno comprador limitado · indústria de óleo concentrada (Helianthus, Cargill, Caramuru). Falta esmagamento dedicado em escala.</div>
+</div>
+
+<div class="alert purple">
+  <span class="ai">🐝</span>
+  <div><strong style="color:var(--purple)">USOS DIVERSIFICADOS · ÓLEO PREMIUM + APICULTURA + RAÇÃO + ORNAMENTAL</strong><br>
+  <strong>1. Óleo de girassol:</strong><br>
+  ▸ Alto teor de gordura insaturada (saudável)<br>
+  ▸ Premium para frituras e panificação<br>
+  ▸ Mercado nutricionista (high-oleic)<br>
+  ▸ <strong>Preço varejo BR:</strong> R$ 12-18/L (premium vs soja R$ 7-9/L)<br><br>
+  <strong>2. Apicultura — Mel premium:</strong><br>
+  ▸ <strong>1 ha girassol</strong> = produção de 30-40 kg mel<br>
+  ▸ <strong>Mel girassol Goiás:</strong> R$ 25-40/kg (premium)<br>
+  ▸ <strong>Polinização:</strong> Aumenta produtividade do girassol em 30-50%!<br>
+  ▸ <strong>Sinergia ganha-ganha</strong> com apicultores<br><br>
+  <strong>3. Farelo/Torta para ração:</strong><br>
+  ▸ Alternativa ao farelo de soja<br>
+  ▸ Proteína 28-35% (vs soja 45%)<br>
+  ▸ Bovinos · ovinos · equinos · aves<br><br>
+  <strong>4. Confeitaria/Snacks:</strong><br>
+  ▸ Sementes torradas (snack saudável)<br>
+  ▸ Mercado fitness em explosão<br>
+  ▸ Granolas e barras<br><br>
+  <strong>5. Ornamental:</strong><br>
+  ▸ Mercado de flores cortadas<br>
+  ▸ Turismo rural · "campos de girassol"<br>
+  ▸ Eventos/casamentos<br><br>
+  <strong>6. Biodiesel:</strong><br>
+  ▸ Matriz alternativa<br>
+  ▸ Compete com soja/sebo<br>
+  ▸ Demanda crescente (mistura B15 BR)</div>
+</div>
+
+<div class="alert cyan">
+  <span class="ai">🌍</span>
+  <div><strong style="color:var(--cyan)">INDIA É O GRANDE COMPRADOR MUNDIAL! Argentina dispara exportação para o gigante asiático</strong><br>
+  <strong>Índia — Importadora #1 mundial óleos vegetais:</strong><br>
+  ▸ <strong>Importa 14+ mi t/ano</strong> de óleos vegetais brutos<br>
+  ▸ <strong>Valor:</strong> US$ 17,5 bi/ano<br>
+  ▸ <strong>Razão:</strong> Consumo > produção doméstica<br><br>
+  <strong>Argentina → Índia (2025):</strong><br>
+  ▸ <strong>Total óleos:</strong> 3,53 mi t<br>
+  ▸ <strong>Óleo soja:</strong> 2,88 mi t<br>
+  ▸ <strong>Óleo girassol:</strong> 0,65 mi t<br>
+  ▸ <strong>Argentina é fornecedor #1</strong> da Índia em óleos<br><br>
+  <strong>Brasil pode capturar essa demanda?</strong><br>
+  ▸ <strong>Sim · em teoria:</strong> Logística + qualidade + clima<br>
+  ▸ <strong>Não · na prática:</strong> Volume baixo (72 mil t)<br>
+  ▸ <strong>Necessário:</strong> Expandir área para 500+ mil ha<br>
+  ▸ <strong>Potencial:</strong> Centro-Oeste tem 10+ mi ha de safrinha disponíveis<br>
+  ▸ <strong>Janela:</strong> Substituir parte do milho 2ª safra<br><br>
+  <strong>Cenário médio prazo:</strong> Brasil pode crescer 5-10x em 5-10 anos se preços continuarem firmes e indústria investir em esmagamento.</div>
+</div>
+
+<div class="alert purple">
+  <span class="ai">🏦</span>
+  <div><strong style="color:var(--purple)">EVENTO MACRO: COPOM CORTOU SELIC PARA 14,50%! Real fraco favorece exportação girassol</strong><br>
+  Banco Central cortou Selic em 0,25 p.p. (29/04). <strong>Dólar:</strong> R$ 4,9523 (mín 2 anos!).<br><br>
+  <strong>Para o setor de girassol:</strong><br>
+  ▸ <strong>Selic 14,50%:</strong> Crédito custeio mais barato<br>
+  ▸ <strong>Plano Safra 26/27:</strong> Pode incluir girassol em linhas específicas<br>
+  ▸ <strong>Investimento esmagamento:</strong> Pequenas indústrias regionais viáveis<br><br>
+  <strong>Dólar fraco · impactos:</strong><br>
+  ▸ ✗ Reduz receita exportação<br>
+  ▸ ✓ Mas Brasil produz pouco · não exporta de fato<br>
+  ▸ ✓ <strong>Importação cresce caro</strong> · óleo gira BR pode crescer no MI!<br>
+  ▸ ✓ <strong>Substitui óleo importado</strong> (Argentina/Ucrânia)<br><br>
+  <strong>Cálculo de paridade:</strong><br>
+  ▸ <strong>Óleo importado:</strong> US$ 1.540/t × R$ 4,95 = R$ 7.623/t<br>
+  ▸ <strong>Óleo BR (estimativa):</strong> R$ 6.500-7.000/t<br>
+  ▸ <strong>Espaço para BR substituir importação!</strong><br>
+  ▸ <strong>Sementes BR (estimativa):</strong> R$ 90-110/sc 25kg (crescimento esperado)</div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#a16207,#ca8a04)">📊</div><h2>Indicadores-Chave <span>— CONAB · SAFEX · Trading Economics · Macro</span></h2></div>
+
+<div class="kpi-row">
+  <div class="kpi sn"><div class="kpi-lb">Safra BR 25/26 (CONAB)</div><div class="kpi-val sn">72,3 mil t</div><div class="kpi-sub">Goiás 71,6%</div></div>
+  <div class="kpi sn"><div class="kpi-lb">Goiás 24/25 (recorde)</div><div class="kpi-val sn">71 mil t</div><div class="kpi-sub">+58,8%! · 47,3 mil ha</div></div>
+  <div class="kpi up"><div class="kpi-lb">Óleo Girassol 30/04</div><div class="kpi-val up">US$ 1.540</div><div class="kpi-sub">/10kg · +17,56% ano!</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Óleo var. mês</div><div class="kpi-val dn">−4,85%</div><div class="kpi-sub">Correção técnica</div></div>
+  <div class="kpi nt"><div class="kpi-lb">SAFEX abr/26 (8/04)</div><div class="kpi-val nt">ZAR 8.749</div><div class="kpi-sub">−2,4% dia</div></div>
+  <div class="kpi up"><div class="kpi-lb">SAFEX mai/26 (24/04)</div><div class="kpi-val up">ZAR 8.777</div><div class="kpi-sub">+0,65%</div></div>
+  <div class="kpi up"><div class="kpi-lb">SAFEX dez/26 (curva)</div><div class="kpi-val up">ZAR 9.335</div><div class="kpi-sub">Curva ascendente!</div></div>
+  <div class="kpi up"><div class="kpi-lb">Argentina 25/26</div><div class="kpi-val up">7 mi t</div><div class="kpi-sub">Recorde histórico!</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Ucrânia óleo export</div><div class="kpi-val dn">3,16 mi t</div><div class="kpi-sub">−10,1% volume</div></div>
+  <div class="kpi up"><div class="kpi-lb">Ucrânia receita</div><div class="kpi-val up">+21,1%</div><div class="kpi-sub">US$ 4,94 bi · paradoxo!</div></div>
+  <div class="kpi sn"><div class="kpi-lb">Rússia % mundial óleo</div><div class="kpi-val sn">38%</div><div class="kpi-sub">Líder absoluto</div></div>
+  <div class="kpi sn"><div class="kpi-lb">Índia % importação russa</div><div class="kpi-val sn">25%</div><div class="kpi-sub">Maior comprador!</div></div>
+  <div class="kpi sn"><div class="kpi-lb">FOB Ucrânia sementes</div><div class="kpi-val sn">€0,58/kg</div><div class="kpi-sub">Black 98%</div></div>
+  <div class="kpi sn"><div class="kpi-lb">Pico histórico óleo</div><div class="kpi-val sn">US$ 2.400</div><div class="kpi-sub">mar/22 · guerra UA</div></div>
+  <div class="kpi pu"><div class="kpi-lb">Selic 29/04</div><div class="kpi-val pu">14,50%</div><div class="kpi-sub">↓ 0,25 p.p.</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Dólar 30/04</div><div class="kpi-val dn">R$ 4,95</div><div class="kpi-sub">Mín 2 anos</div></div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#a16207,#ca8a04)">📍</div><h2>Cotações da Semana <span>— Mercados Globais · 14 a 30 Abril 2026</span></h2></div>
+
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Indicador</th><th>14/04</th><th>21/04</th><th>24/04</th><th>28/04</th><th>30/04</th><th>Variação</th></tr></thead>
+<tbody>
+<tr><td class="td-name">🛢️ Óleo Girassol (US$/10kg)</td><td>~1.580</td><td>~1.560</td><td>~1.555</td><td>~1.545</td><td class="td-dn">1.540,70</td><td class="td-dn">−2,5% sem · +17,56% ano</td></tr>
+<tr><td class="td-name">📊 SAFEX abr/26 (ZAR/t)</td><td>~8.700</td><td>8.645</td><td>—</td><td>—</td><td>—</td><td class="td-nt">Estável</td></tr>
+<tr><td class="td-name">📊 SAFEX mai/26 (ZAR/t)</td><td>~8.700</td><td>8.684</td><td class="td-up">8.777</td><td>~8.800</td><td>~8.820</td><td class="td-up">+1,5% sem</td></tr>
+<tr><td class="td-name">📊 SAFEX jul/26 (ZAR/t)</td><td>~8.900</td><td>8.876</td><td class="td-up">8.985</td><td>~9.000</td><td>~9.020</td><td class="td-up">+1,6% sem</td></tr>
+<tr><td class="td-name">🇺🇦 Ucrânia FOB sementes (€/kg)</td><td>0,58</td><td>0,58</td><td>0,58</td><td>0,58</td><td>0,58</td><td>Estável</td></tr>
+<tr><td class="td-name">🇨🇳 China FOB sementes (€/kg)</td><td>1,42</td><td>1,42</td><td>1,45</td><td>1,45</td><td class="td-up">1,45</td><td class="td-up">+2,1%</td></tr>
+<tr><td class="td-name">🛢️ Petróleo Brent (US$/barril)</td><td>~62</td><td>~64</td><td>~65</td><td>~66</td><td class="td-up">~67</td><td class="td-up">+8,1% mês</td></tr>
+</tbody>
+</table>
+</div>
+
+<p style="font-size:.78rem;color:var(--text3);margin-top:6px;text-align:center"><em>SAFEX = Bolsa Futuros África Sul · ZAR = Rand sul-africano · Brasil não tem futuros formais de girassol · referência segue mercado externo</em></p>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#a16207,#ca8a04)">📈</div><h2>Análise Gráfica <span>— 6 perspectivas · Óleo · SAFEX · Goiás · Mundial · Ucrânia · Argentina</span></h2></div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>🛢️ Óleo Girassol — Trajetória Anual <span class="ch-tag">12 meses · US$/10kg</span></h3>
+    <div class="chart-wrap"><canvas id="ch1"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>📊 SAFEX Curva Futuros <span class="ch-tag">Abr-Dez 26 · ZAR/t</span></h3>
+    <div class="chart-wrap"><canvas id="ch2"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>🌻 Goiás — Crescimento Histórico <span class="ch-tag">CONAB · mil t</span></h3>
+    <div class="chart-wrap"><canvas id="ch3"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>🌍 Top Produtores Mundiais <span class="ch-tag">USDA · mi t</span></h3>
+    <div class="chart-wrap"><canvas id="ch4"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>🇺🇦 Ucrânia · Volume vs Receita <span class="ch-tag">2025/26 · jul-mar</span></h3>
+    <div class="chart-wrap"><canvas id="ch5"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>🇷🇺 Destinos Óleo Russo 2025 <span class="ch-tag">% exportação</span></h3>
+    <div class="chart-wrap"><canvas id="ch6"></canvas></div>
+  </div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#ca8a04,#eab308)">🔍</div><h2>Análise Aprofundada <span>— A oportunidade BR no mercado mundial de girassol</span></h2></div>
+
+<div class="co sn">
+  <h4>🌻 A Tese Central: Brasil Tem Espaço Enorme Para Crescer no Girassol!</h4>
+  <p><strong>O paradoxo brasileiro:</strong><br>
+  ▸ <strong>Produzimos:</strong> 72,3 mil t (0,12% mundial)<br>
+  ▸ <strong>Importamos:</strong> Centenas de milhares de toneladas de óleo<br>
+  ▸ <strong>Pagamos a preço internacional</strong> (US$ 1.540/t × R$ 4,95 = R$ 7.623/t)<br>
+  ▸ <strong>Mercado interno:</strong> Cresce demanda por óleo premium<br><br>
+  <strong>Por que produzimos tão pouco?</strong><br>
+  ▸ <strong>Soja é mais lucrativa</strong> · concorre área<br>
+  ▸ <strong>Milho safrinha</strong> tem mercado garantido<br>
+  ▸ <strong>Indústria esmagadora</strong> limitada (só Helianthus/Cargill/Caramuru)<br>
+  ▸ <strong>Falta de fomento</strong> público específico<br>
+  ▸ <strong>Riscos:</strong> Aves silvestres atacam capítulos · perda 10-30%<br><br>
+  <strong>Por que pode crescer?</strong><br>
+  ▸ <strong>Goiás cresceu +58,8%</strong> em uma safra!<br>
+  ▸ <strong>Centro-Oeste</strong> tem 10+ mi ha de safrinha · pequena fração serve<br>
+  ▸ <strong>Preços globais</strong> firmes (+17,56% ano)<br>
+  ▸ <strong>Demanda Índia</strong> infinita<br>
+  ▸ <strong>Biocombustíveis</strong> em alta (EPA EUA)<br>
+  ▸ <strong>Apicultura sinergia</strong> · mel premium R$ 25-40/kg<br><br>
+  <strong>Conclusão:</strong> Cultura de NICHO mas com potencial de crescer 5-10x em 5-10 anos. Quem entrar AGORA pega ciclo de alta. Ideal para produtor goiano/cerrado com soja e querendo diversificar safrinha.</p>
+</div>
+
+<div class="co up">
+  <h4>📈 Mercado Global em ALTA REAL · Óleo +17,56% ano · Biocombustíveis sustentam!</h4>
+  <p><strong>Trajetória do óleo de girassol (12 meses):</strong><br>
+  ▸ <strong>Abr/2025:</strong> ~US$ 1.310/10kg<br>
+  ▸ <strong>Set/2025:</strong> US$ 1.359 (alta 4 meses)<br>
+  ▸ <strong>Mar/2026:</strong> ~US$ 1.620 (pico recente)<br>
+  ▸ <strong>Abr/2026:</strong> US$ 1.540 (correção)<br>
+  ▸ <strong>Variação anual:</strong> +17,56%!<br><br>
+  <strong>5 catalisadores altistas:</strong><br>
+  ▸ <strong>1. EPA EUA biodiesel:</strong> Confirmou maior mistura 2026-27<br>
+  ▸ <strong>2. Petróleo +8% mês:</strong> Óleos vegetais sobem em paralelo<br>
+  ▸ <strong>3. Mar Negro apertado:</strong> Ucrânia produção −19% (cenário anterior)<br>
+  ▸ <strong>4. Demanda China:</strong> Substitui óleo soja OGM<br>
+  ▸ <strong>5. Demanda Índia:</strong> 14+ mi t/ano (#1 mundial!)<br><br>
+  <strong>Catalisadores baixistas:</strong><br>
+  ▸ <strong>Argentina recorde:</strong> 7 mi t (alívio)<br>
+  ▸ <strong>UE estoques:</strong> Recompondo<br>
+  ▸ <strong>Substituição:</strong> Palma + soja + colza<br>
+  ▸ <strong>Esmagamento alto:</strong> Margens em queda<br><br>
+  <strong>Cenário 2026:</strong> Faixa US$ 1.450-1.700/t com viés altista. Picos podem chegar US$ 1.800 com choques. Pisos US$ 1.350.</p>
+</div>
+
+<div class="co bl">
+  <h4>🇦🇷 Argentina é a Grande Surpresa de 2025/26 · 7 mi t recorde!</h4>
+  <p><strong>Argentina remodela mercado global:</strong><br>
+  ▸ <strong>Safra 2025/26:</strong> ~7 mi t (quase recorde histórico!)<br>
+  ▸ <strong>Crescimento:</strong> +25% vs safra anterior<br>
+  ▸ <strong>Razão:</strong> Clima favorável + preços incentivaram plantio<br>
+  ▸ <strong>Esmagadores UE</strong> (Bulgária, Romênia) compram da AR ao invés da UA<br>
+  ▸ <strong>Substituição</strong> da oferta ucraniana<br><br>
+  <strong>Argentina + Brasil = América do Sul forte!</strong><br>
+  ▸ Argentina: 7 mi t<br>
+  ▸ Brasil: 0,072 mi t<br>
+  ▸ Paraguai/Uruguai: cultivo marginal<br>
+  ▸ <strong>América do Sul:</strong> ~7,1 mi t<br>
+  ▸ <strong>Mundial:</strong> ~55-58 mi t<br>
+  ▸ <strong>Participação SA:</strong> ~12% mundial<br><br>
+  <strong>Janela complementar:</strong><br>
+  ▸ <strong>Mar Negro colhe:</strong> Set-Out (out/nov)<br>
+  ▸ <strong>Argentina/BR colhem:</strong> Mar-Jul (autumn boreal)<br>
+  ▸ <strong>Mundo abastecido</strong> o ano todo<br>
+  ▸ <strong>Sudoeste BR (GO, MS, MG, MT)</strong> tem janela perfeita<br><br>
+  <strong>Argentina paga melhor que BR?</strong><br>
+  ▸ Sementes BR: estimado R$ 90-110/sc 25kg<br>
+  ▸ Argentina: ~US$ 480/t = R$ 2.376/t = R$ 59,40/sc 25kg<br>
+  ▸ <strong>BR mais caro</strong> · mas mercado interno paga<br>
+  ▸ <strong>Custo produção AR:</strong> Mais baixo que BR (escala enorme)</p>
+</div>
+
+<div class="co or">
+  <h4>🇷🇺 🇺🇦 Mar Negro Continua Pesando · Mas Volume Cai e Receita Sobe!</h4>
+  <p><strong>O paradoxo Ucrânia 2025/26:</strong><br>
+  ▸ <strong>Volume óleo exportado:</strong> 3,16 mi t (−10,1%!)<br>
+  ▸ <strong>Receita exportação:</strong> US$ 4 bi (firme!)<br>
+  ▸ <strong>Total óleos vegetais UA:</strong> US$ 4,94 bi (+21,1%!)<br>
+  ▸ <strong>Significa:</strong> Preços compensaram menor volume!<br><br>
+  <strong>Rússia consolidou liderança:</strong><br>
+  ▸ <strong>38% exportação mundial óleo!</strong><br>
+  ▸ <strong>30% farelo mundial</strong><br>
+  ▸ <strong>Mecanismo de tarifas</strong> mensal (desde 2021)<br>
+  ▸ <strong>Movimento abr/26:</strong> Reduziu pressão tributária<br>
+  ▸ <strong>Quer exportar mais</strong> em 2026<br><br>
+  <strong>Geopolítica continua relevante:</strong><br>
+  ▸ <strong>Guerra Ucrânia x Rússia</strong> ainda em curso<br>
+  ▸ <strong>Logística porto Odessa</strong> (UA) sob risco<br>
+  ▸ <strong>Sanções</strong> contra produtos russos (UE, EUA)<br>
+  ▸ <strong>Crise Hormuz</strong> · custo frete sobe<br>
+  ▸ <strong>Mercado mantém prêmio de risco</strong><br><br>
+  <strong>Implicação para BR:</strong> Enquanto guerra durar, preços globais ficam em patamar elevado. Brasil tem janela ÚNICA para crescer mercado · não vai durar para sempre.</p>
+</div>
+
+<div class="co cy">
+  <h4>🇮🇳 Índia É o Comprador Universal · Brasil Pode Capturar Esse Mercado</h4>
+  <p><strong>Por que a Índia compra TANTO óleo vegetal?</strong><br>
+  ▸ <strong>Consumo interno:</strong> 22+ mi t/ano (1,4 bi habitantes)<br>
+  ▸ <strong>Produção doméstica:</strong> ~10 mi t<br>
+  ▸ <strong>Déficit:</strong> 12-14 mi t/ano (importa massivamente!)<br>
+  ▸ <strong>Cultura culinária:</strong> Frituras intensivas (samosas, pakoras, etc)<br>
+  ▸ <strong>Crescimento PIB:</strong> Classe média comendo mais<br><br>
+  <strong>Mix de importações Índia:</strong><br>
+  ▸ <strong>Óleo de palma:</strong> ~50% (Indonésia · Malásia)<br>
+  ▸ <strong>Óleo de soja:</strong> ~25% (Argentina · Brasil)<br>
+  ▸ <strong>Óleo de girassol:</strong> ~20% (Rússia · Ucrânia · Argentina)<br>
+  ▸ <strong>Outros:</strong> ~5%<br><br>
+  <strong>Brasil pode capturar fatia do girassol indiano?</strong><br>
+  ▸ <strong>Sim · em teoria:</strong> Já fornece soja maciçamente<br>
+  ▸ <strong>Limitação:</strong> Volume produção (apenas 72 mil t)<br>
+  ▸ <strong>Necessário:</strong> Produzir 1+ mi t para exportar significativamente<br>
+  ▸ <strong>Possível?</strong> Sim · em 5-10 anos com fomento<br>
+  ▸ <strong>Como?</strong> Triplicar área (de 50 mil para 500 mil ha em GO/MT/MS/MG)<br><br>
+  <strong>Estratégia visionária:</strong> Goiás + MS + MG poderiam formar "Polo do Girassol Brasileiro" e suprir Índia em parte. Custo logístico maior (vs Argentina), mas qualidade BR é diferenciada.</p>
+</div>
+
+<div class="co pu">
+  <h4>🐝 A Sinergia Perfeita: Girassol + Apicultura · Receita Dupla!</h4>
+  <p><strong>Mel de girassol é PREMIUM no Brasil:</strong><br>
+  ▸ <strong>Cor amarelo-claro</strong> característica<br>
+  ▸ <strong>Sabor suave</strong> · perfumado<br>
+  ▸ <strong>Cristaliza rapidamente</strong> · textura cremosa<br>
+  ▸ <strong>Preço varejo:</strong> R$ 25-40/kg (vs mel comum R$ 15-20)<br>
+  ▸ <strong>Mercado gourmet</strong> em explosão<br><br>
+  <strong>Cálculo de produção mel + girassol:</strong><br>
+  ▸ <strong>1 ha girassol</strong> = 30-40 kg mel produzido<br>
+  ▸ <strong>Receita mel:</strong> R$ 30/kg × 35 kg = R$ 1.050/ha (extra!)<br>
+  ▸ <strong>Sem custos extras</strong> para o produtor de girassol<br>
+  ▸ <strong>Apicultor paga</strong> R$ 80-150/ha pelo direito de instalar colmeias<br>
+  ▸ <strong>Receita total bonus:</strong> R$ 80-150/ha (passivo!)<br><br>
+  <strong>Polinização aumenta produtividade:</strong><br>
+  ▸ <strong>Sem polinização:</strong> 1.200 kg/ha<br>
+  ▸ <strong>Com abelhas:</strong> 1.500-1.800 kg/ha (+25-50%!)<br>
+  ▸ <strong>Receita extra produção:</strong> R$ 500-1.000/ha!<br>
+  ▸ <strong>Total bonus apicultura:</strong> R$ 600-1.150/ha<br><br>
+  <strong>Estado de Goiás · "Rota do Mel de Girassol":</strong><br>
+  ▸ Silvânia, Ipameri, Catalão organizando cooperativas<br>
+  ▸ Apicultores mineiros e paranaenses migram temporariamente<br>
+  ▸ <strong>Modelo win-win</strong> · ambas atividades crescem juntas<br><br>
+  <strong>Recomendação:</strong> Todo produtor de girassol em GO/MS/MG/MT deveria contratar apicultores. Receita incremental + maior produção do girassol = combinação imbatível.</p>
+</div>
+
+<div class="co nt">
+  <h4>🚜 Cultura de Safrinha · Custo Baixo · Risco Médio</h4>
+  <p><strong>Estrutura de custos típica girassol Centro-Oeste (R$/ha):</strong><br>
+  ▸ <strong>Sementes:</strong> R$ 350-500 (R$ 25-40/kg · 6-8 kg/ha)<br>
+  ▸ <strong>Fertilizantes:</strong> R$ 600-800 (NPK reduzido vs soja)<br>
+  ▸ <strong>Defensivos:</strong> R$ 250-400 (poucas pragas próprias)<br>
+  ▸ <strong>Operações:</strong> R$ 350-500 (mecanização padrão)<br>
+  ▸ <strong>Colheita:</strong> R$ 250-350 (mesma colheitadeira da soja)<br>
+  ▸ <strong>Total:</strong> R$ 1.800-2.550/ha<br>
+  ▸ <strong>Comparativo milho safrinha:</strong> R$ 3.500-4.500/ha (66-77% mais caro!)<br><br>
+  <strong>Receita esperada (cenário realista):</strong><br>
+  ▸ <strong>Produtividade GO:</strong> 1.500 kg/ha (60 sc 25kg)<br>
+  ▸ <strong>Preço estimado:</strong> R$ 95/sc 25kg<br>
+  ▸ <strong>Receita bruta:</strong> R$ 5.700/ha<br>
+  ▸ <strong>Custo total:</strong> R$ 2.200/ha<br>
+  ▸ <strong>Margem bruta:</strong> R$ 3.500/ha (61%!)<br>
+  ▸ <strong>Comparativo milho safrinha:</strong> Margem ~R$ 2.000-2.500/ha<br><br>
+  <strong>Por isso girassol é OPORTUNIDADE:</strong><br>
+  ▸ <strong>Margem MAIOR</strong> que milho safrinha em GO!<br>
+  ▸ <strong>Custo MENOR</strong><br>
+  ▸ <strong>Risco médio</strong> (clima · pragas · aves)<br>
+  ▸ <strong>Diversifica rotação</strong><br>
+  ▸ <strong>Apicultura</strong> agrega R$ 600-1.150/ha<br><br>
+  <strong>Mas há riscos:</strong><br>
+  ▸ <strong>Aves silvestres</strong> · perdas 10-30% se não controlar<br>
+  ▸ <strong>Pássaros pretos</strong> (sanhaço, periquito)<br>
+  ▸ <strong>Mercado pequeno</strong> · venda nem sempre garantida<br>
+  ▸ <strong>Beneficiamento limitado</strong> · poucas opções de comprador<br>
+  ▸ <strong>Volatilidade preço</strong> · sem contrato futuro BR</p>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#ca8a04,#eab308)">🌡️</div><h2>Termômetros do Mercado <span>— Pressões e Vetores</span></h2></div>
+
+<div class="grid3">
+  <div class="card">
+    <div class="thermo"><h4>🛢️ Óleo Girassol</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:75%"></div></div>
+      <div class="th-lb"><span>Crash</span><span>Médio</span><span>Pico</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ FORTE</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">+17,56% ano · biocombustíveis</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🌻 Goiás Brasil</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:88%"></div></div>
+      <div class="th-lb"><span>Fraca</span><span>Média</span><span>Boom</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ BOOM!</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">+58,8%! · 71,6% nacional</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🇦🇷 Argentina</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:90%"></div></div>
+      <div class="th-lb"><span>Quebra</span><span>Médio</span><span>Recorde</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ RECORDE!</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">7 mi t · alívio mundo</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🇺🇦 Ucrânia</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:30%"></div></div>
+      <div class="th-lb"><span>Quebra</span><span>Médio</span><span>Recorde</span></div>
+      <p style="font-size:.78rem;color:var(--dn);margin-top:8px;font-weight:700">⬇ APERTADA</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">−10% volume · receita +21%</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🐝 Apicultura</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:80%"></div></div>
+      <div class="th-lb"><span>Fraca</span><span>Média</span><span>Boom</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ EM ALTA</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">Mel premium R$ 25-40/kg!</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🇮🇳 Demanda Índia</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:92%"></div></div>
+      <div class="th-lb"><span>Fraca</span><span>Média</span><span>Boom</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ INFINITA!</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">14+ mi t/ano · #1 mundial</p>
+    </div>
+  </div>
+</div>
+
+<div class="dv"></div>
+
+<div class="opinion">
+  <h3>🎯 Opinião do Analista — Girassol é a "Cultura Esquecida" Que Pode Explodir!</h3>
+
+  <p><strong>O setor de girassol brasileiro vive momento ÚNICO em 2026: GOIÁS CONSOLIDA LIDERANÇA com 71,6% da produção nacional (+58,8% em Goiás!) e safra 25/26 BR projetada em 72,3 mil t. ÓLEO MUNDIAL EM ALTA DE +17,56% no ano (US$ 1.540/10kg) sustentado por: 1) EPA EUA confirmando maior mistura biodiesel · 2) Petróleo +8% mês · 3) Mar Negro apertado (Ucrânia −10% volume · receita +21%!) · 4) Argentina em RECORDE de 7 mi t mas insuficiente para reverter alta · 5) Rússia liderando 38% exportação mundial · 6) Índia importando 14+ mi t/ano. SAFEX em curva ASCENDENTE (abr/26 ZAR 8.749 → dez/26 ZAR 9.335). Brasil é apenas 30º produtor mundial (0,12%!) MAS tem POTENCIAL ENORME: cerrado tem 10+ mi ha de safrinha disponíveis, custo é 66-77% MENOR que milho safrinha (R$ 1.800-2.550 vs R$ 3.500-4.500/ha!), margem bruta de 61%! Apicultura agrega R$ 600-1.150/ha (mel premium R$ 25-40/kg). Selic 14,50% + dólar R$ 4,95 favorecem. CULTURA ESQUECIDA · MAS QUE PODE EXPLODIR EM 5-10 ANOS!</strong></p>
+
+  <p><strong>Semana 27-30/abr (curta · feriado 1º Mai) — Em síntese:</strong><br>
+  ▸ <strong>Safra BR 25/26:</strong> 72,3 mil t (CONAB) · Goiás 71,6%<br>
+  ▸ <strong>Goiás 24/25:</strong> 71 mil t recorde · 47,3 mil ha (+20,7%)<br>
+  ▸ <strong>Top municípios GO:</strong> Silvânia (8 mil t), Ipameri, Catalão, Rio Verde<br>
+  ▸ <strong>Óleo mundial 30/04:</strong> US$ 1.540/10kg (+17,56% ano)<br>
+  ▸ <strong>SAFEX abr/26:</strong> ZAR 8.749/t · curva ascendente até dez/26 (ZAR 9.335)<br>
+  ▸ <strong>Argentina:</strong> 7 mi t recorde 25/26<br>
+  ▸ <strong>Ucrânia:</strong> Volume −10% · receita +21% (preços altos!)<br>
+  ▸ <strong>Rússia:</strong> 38% mundial óleo · reduziu tarifas<br>
+  ▸ <strong>Índia:</strong> 25% importação russa · #1 destino global<br>
+  ▸ <strong>Selic:</strong> 14,50% · <strong>Dólar:</strong> R$ 4,95</p>
+
+  <p><strong>Recomendações estratégicas:</strong></p>
+
+  <p><strong>1. PRODUTOR DE SOJA EM GO/MS/MT/MG: CONSIDERE GIRASSOL NA SAFRINHA!</strong> Em vez de milho safrinha (custo R$ 3.500-4.500/ha), girassol custa R$ 1.800-2.550/ha (62% menos!) com margem bruta de 61%. Ciclo curto (90-120 dias) libera área rápido. Plantar até 31/03 em GO (regra fitossanitária). Comece com 50-100 ha como teste em 26/27.</p>
+
+  <p><strong>2. FECHE PARCERIA COM APICULTORES!</strong> Cada hectare de girassol gera R$ 600-1.150 EXTRAS via apicultura: 1) Apicultor paga R$ 80-150/ha pelo direito de colmeia, 2) Polinização aumenta produtividade 25-50% (R$ 500-1.000/ha extras). Win-win total. Apicultores de MG/PR/SP migram temporariamente para GO/MS na safra do girassol. Procure cooperativas de apicultores regionais.</p>
+
+  <p><strong>3. CONTROLE AVES SILVESTRES! É O MAIOR RISCO DA CULTURA!</strong> Pássaros pretos (sanhaços, periquitos) podem causar perdas de 10-30% nos capítulos. Estratégias: 1) Plantio em áreas grandes (50+ ha) · diluição, 2) Variedades de ciclo curto (escapa), 3) Espantadores sonoros, 4) Repelentes naturais (capsaicina), 5) Colheita rápida assim que ponto. NÃO subestime esse risco · pode quebrar a margem.</p>
+
+  <p><strong>4. ESCOLHA VARIEDADES ADAPTADAS!</strong> Para GO/Cerrado: BRS Multissol (Embrapa, alto rendimento), Helio 250/253 (Atlântica), SYN 045 (Syngenta). Evite cultivares antigos · novos têm 20-30% mais rendimento. Sementes custam R$ 25-40/kg, gasta-se 6-8 kg/ha · investimento R$ 350-500/ha. Não economize aqui!</p>
+
+  <p><strong>5. NEGOCIE VENDA ANTECIPADA COM ESMAGADORAS!</strong> Mercado BR é pequeno · poucos compradores (Helianthus em SP/MS, Cargill, Caramuru). Negocie contrato ANTES de plantar com prêmio sobre referência internacional. Sem isso, risco de vender à preço baixo na safra. Cooperativas estão se organizando em GO · participe!</p>
+
+  <p><strong>6. INVISTAM EM ESMAGAMENTO REGIONAL!</strong> Empresários rurais com capital: monte uma esmagadora regional em GO/MT. Investimento R$ 5-15 mi para escala 50-100 mil t/ano. Demanda interna BR está crescendo (premium · biocombustíveis). Margem de esmagamento global está alta · oportunidade real. Plano Safra 26/27 + BNDES tem linhas específicas.</p>
+
+  <p><strong>7. PARA PRODUTORES INICIANTES · COMECE PEQUENO!</strong> Girassol parece atraente mas tem peculiaridades: aves, mercado limitado, secagem específica. Plante 30-50 ha de teste primeiro. Aprenda os pormenores. Em 2-3 anos, expanda para 200-500 ha. Quem entrar AGORA pega ciclo de alta global · quando demanda Índia + biocombustíveis explodir definitivamente, BR pode crescer 10x.</p>
+
+  <div class="opinion .scenarios" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px">
+    <div class="sc up">
+      <h5>🟢 Cenário Altista</h5>
+      <p>EPA EUA biodiesel B20 · Mar Negro escalada · Argentina quebra · Índia importa +20% → <strong>Óleo US$ 1.700-2.000 · BR sementes R$ 110-130/sc · Goiás expande 50%</strong>. Probabilidade: ~30%</p>
+    </div>
+    <div class="sc nt">
+      <h5>🟡 Cenário Neutro</h5>
+      <p>Petróleo lateraliza · safras normais Mar Negro · Argentina mantém · demanda firme → <strong>Óleo US$ 1.450-1.600 · BR sementes R$ 90-110/sc · Goiás cresce 10-15%</strong>. Probabilidade: ~50%</p>
+    </div>
+    <div class="sc dn">
+      <h5>🔴 Cenário Baixista</h5>
+      <p>Paz Ucrânia-Rússia · safras recordes UA + RU + AR · petróleo &lt; US$ 60 · biocombustíveis fracos → <strong>Óleo US$ 1.250-1.400 · BR sementes R$ 75-95/sc · estabilização</strong>. Probabilidade: ~20%</p>
+    </div>
+  </div>
+
+  <div class="sig">📅 Análise Rural IN · Quinta, 30/Abr/2026 · Semana curta (feriado 1º Mai) · GIRASSOL É CULTURA ESQUECIDA QUE PODE EXPLODIR · GOIÁS LIDERA · APICULTURA + BIOCOMBUSTÍVEIS = TRINDADE VENCEDORA!</div>
+</div>
+
+<footer class="footer"><div class="wrap">
+  <div class="footer-brand"><span class="r">Rural</span> <span class="i">IN</span></div>
+  <p>Radar Agro Semanal · Girassol · Semana 27–30 Abril 2026<br>
+  Fontes: CONAB · SEAPA-GO · Agrodefesa · Trading Economics · SAFEX (Bolsa Sul-Africana) · Commodity Board · USDA · Euronews · CIARA-CEC (Argentina) · Agroexport (Rússia) · Index Mundi · Banco Central · COPOM</p>
+  <div class="footer-credits">
+    <h4>Análise e Construção</h4>
+    <div class="name">Dr. Sidney Souza</div>
+    <div class="title">Economista e Adm. Agrícola — Estrategista Econômico do Produtor</div>
+    <div class="desc">Especialista em economia da fazenda e gestão de risco no agro<br>Transformamos dados da fazenda em decisões econômicas<br>Ajudamos produtores a entender se o mercado sustenta seu negócio</div>
+    <div class="contact">📧 <a href="mailto:sidneyagro@gmail.com">sidneyagro@gmail.com</a> · 📱 <a href="tel:+5564992266886">(64) 9 9226-6886</a> · 📸 <a href="https://instagram.com/ruralin.ai" target="_blank">@ruralin.ai</a></div>
+  </div>
+  <p style="margin-top:18px"><em>⚠️ Material informativo. Não constitui recomendação de investimento.</em></p>
+</div></footer>
+
+</div>
+
+<script>
+const gc='rgba(44,34,16,.5)';
+const tt={backgroundColor:'rgba(18,14,6,.97)',borderColor:'#3d3018',borderWidth:1,titleFont:{size:11,weight:'700'},bodyFont:{size:10},padding:10,cornerRadius:8};
+
+new Chart(document.getElementById('ch1').getContext('2d'),{
+  type:'line',
+  data:{labels:['Mai/25','Jul/25','Set/25','Nov/25','Jan/26','Mar/26','Abr/26'],
+    datasets:[{label:'Óleo Girassol (US$/10kg)',data:[1310,1290,1359,1450,1520,1620,1540],
+      borderColor:'#eab308',backgroundColor:'rgba(234,179,8,.13)',borderWidth:3,fill:true,tension:.3,pointRadius:5,pointBackgroundColor:'#eab308',pointBorderColor:'#fde047',pointBorderWidth:1.5}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+    scales:{y:{min:1250,max:1700,grid:{color:gc},ticks:{callback:function(v){return'$'+v},font:{size:9,weight:'600'},color:'#fde68a'}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#fde68a'}}}}
+});
+
+new Chart(document.getElementById('ch2').getContext('2d'),{
+  type:'line',
+  data:{labels:['Abr/26','Mai/26','Jul/26','Set/26','Dez/26'],
+    datasets:[{label:'SAFEX ZAR/t',data:[8645,8777,8985,9143,9335],
+      borderColor:'#22c55e',backgroundColor:'rgba(34,197,94,.13)',borderWidth:3,fill:true,tension:.2,pointRadius:6,pointBackgroundColor:'#22c55e',pointBorderColor:'#84cc16',pointBorderWidth:2}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+    scales:{y:{min:8500,max:9500,grid:{color:gc},ticks:{callback:function(v){return v},font:{size:9,weight:'600'},color:'#fde68a'}},x:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#fde68a'}}}}
+});
+
+new Chart(document.getElementById('ch3').getContext('2d'),{
+  type:'bar',
+  data:{labels:['20/21','21/22','22/23','23/24','24/25','25/26'],
+    datasets:[{label:'Goiás (mil t)',data:[15,22,28,45,71,72.3],
+      backgroundColor:function(c){if(c.dataIndex===5)return 'rgba(34,197,94,.7)';if(c.dataIndex===4)return 'rgba(234,179,8,.7)';return 'rgba(245,158,11,.55)'},
+      borderColor:function(c){if(c.dataIndex===5)return '#22c55e';if(c.dataIndex===4)return '#eab308';return '#f59e0b'},
+      borderWidth:2,borderRadius:7}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+    scales:{y:{min:0,max:80,grid:{color:gc},ticks:{callback:function(v){return v+' mil t'},font:{size:9,weight:'600'},color:'#fde68a'}},x:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#fde68a'}}}}
+});
+
+new Chart(document.getElementById('ch4').getContext('2d'),{
+  type:'bar',
+  data:{labels:['🇺🇦 Ucrânia','🇷🇺 Rússia','🇦🇷 Argentina','🇪🇺 UE','🇨🇳 China','🇧🇷 Brasil'],
+    datasets:[{label:'mi t (USDA 25/26)',data:[12,18,7,9,3,0.072],
+      backgroundColor:function(c){if(c.dataIndex===5)return 'rgba(234,179,8,.8)';return 'rgba(245,158,11,.55)'},
+      borderColor:function(c){if(c.dataIndex===5)return '#eab308';return '#f59e0b'},
+      borderWidth:2,borderRadius:7}]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+    scales:{x:{min:0,max:20,grid:{color:gc},ticks:{callback:function(v){return v+' mi t'},font:{size:9,weight:'600'},color:'#fde68a'}},y:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#fde68a'}}}}
+});
+
+new Chart(document.getElementById('ch5').getContext('2d'),{
+  type:'bar',
+  data:{labels:['Volume','Receita Total Óleos'],
+    datasets:[{label:'2024/25',data:[100,100],backgroundColor:'rgba(122,134,154,.6)',borderColor:'#7a869a',borderWidth:2,borderRadius:6},
+      {label:'2025/26',data:[89.9,121.1],backgroundColor:'rgba(34,197,94,.7)',borderColor:'#22c55e',borderWidth:2,borderRadius:6}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{color:'#fde68a',font:{size:10,weight:'600'},boxWidth:14,padding:8}},tooltip:tt},
+    scales:{y:{min:0,max:140,grid:{color:gc},ticks:{callback:function(v){return v+' (base 100)'},font:{size:9,weight:'600'},color:'#fde68a'}},x:{grid:{display:false},ticks:{font:{size:11,weight:'700'},color:'#fde68a'}}}}
+});
+
+new Chart(document.getElementById('ch6').getContext('2d'),{
+  type:'doughnut',
+  data:{labels:['🇮🇳 Índia (25%)','🇮🇷 Irã (22%)','🇹🇷 Turquia (22%)','Outros (31%)'],
+    datasets:[{data:[25,22,22,31],
+      backgroundColor:['rgba(34,197,94,.7)','rgba(234,179,8,.7)','rgba(245,158,11,.6)','rgba(168,85,247,.5)'],
+      borderColor:['#22c55e','#eab308','#f59e0b','#a855f7'],
+      borderWidth:2,hoverOffset:8}]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom',labels:{color:'#fde68a',font:{size:9,weight:'600'},boxWidth:12,padding:6}},tooltip:tt},
+    cutout:'58%'}
+});
+</script>
+</body>
+</html>

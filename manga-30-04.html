@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Rural IN — Manga · 27-30 Abr 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0805;--bg2:#15100a;--bg3:#1f1810;--bg4:#2c2418;--border:#2e251a;--border2:#42342a;--mg:#f97316;--mg2:#fb923c;--mg3:#fdba74;--mg4:#ea580c;--leaf:#65a30d;--leaf2:#84cc16;--leaf3:#a3e635;--text:#fff7ed;--text2:#fed7aa;--text3:#a8a29e;--text4:#78716c;--up:#22c55e;--dn:#ef4444;--nt:#eab308;--blue:#3b82f6;--purple:#a855f7;--cyan:#06b6d4;--gold:#fbbf24;--pink:#ec4899;--red:#dc2626;--r:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 1100px 800px at 15% 10%,rgba(249,115,22,.15),transparent),radial-gradient(ellipse 900px 700px at 85% 90%,rgba(101,163,13,.1),transparent);pointer-events:none;z-index:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+.nav{background:rgba(21,16,10,.95);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:14px}
+.nav-logo-img{height:42px;width:auto;border-radius:8px}
+.nav-logo{font-weight:900;font-size:1.2rem}
+.nav-logo .r{color:var(--mg)}.nav-logo .i{color:var(--leaf2)}
+.nav-badge{background:linear-gradient(135deg,#f97316,#65a30d);padding:5px 14px;border-radius:20px;font-size:.7rem;font-weight:800;color:#fff7ed;letter-spacing:.6px;box-shadow:0 0 25px rgba(249,115,22,.5)}
+.nav-back{color:var(--text3);font-size:.8rem;text-decoration:none}
+.hero{padding:54px 0 40px}
+.hero-top{display:flex;align-items:center;gap:22px;margin-bottom:16px}
+.hero-icon-wrap{width:84px;height:84px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,rgba(249,115,22,.4),transparent 70%);border-radius:50%}
+.hero-icon{font-size:3.6rem;filter:drop-shadow(0 6px 22px rgba(249,115,22,.7))}
+.hero-texts h1{font-size:2.4rem;font-weight:900;letter-spacing:-1.2px;line-height:1.1}
+.hero-texts h1 .hl{background:linear-gradient(135deg,#f97316,#fb923c,#65a30d,#84cc16);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-texts .sub{font-size:.9rem;color:var(--text2);margin-top:6px;font-weight:500}
+.hero-bar{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border-radius:22px;font-size:.72rem;font-weight:700;border:1px solid}
+.chip.up{color:var(--up);border-color:rgba(34,197,94,.3);background:rgba(34,197,94,.08)}
+.chip.dn{color:var(--dn);border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.08)}
+.chip.nt{color:var(--nt);border-color:rgba(234,179,8,.4);background:rgba(234,179,8,.1)}
+.chip.mg{color:var(--mg2);border-color:rgba(249,115,22,.5);background:rgba(249,115,22,.13)}
+.chip.lf{color:var(--leaf2);border-color:rgba(101,163,13,.4);background:rgba(101,163,13,.1)}
+.chip.bl{color:var(--blue);border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.08)}
+.chip.gd{color:var(--gold);border-color:rgba(251,191,36,.4);background:rgba(251,191,36,.1)}
+.bignum-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+.bignum{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:20px 18px;text-align:center}
+.bignum .v{font-size:1.7rem;font-weight:900;letter-spacing:-1px;line-height:1;margin-bottom:6px}
+.bignum .v.up{color:var(--up)}.bignum .v.dn{color:var(--dn)}.bignum .v.nt{color:var(--nt)}.bignum .v.mg{color:var(--mg2)}.bignum .v.lf{color:var(--leaf2)}
+.bignum .l{font-size:.72rem;color:var(--text2);font-weight:600}
+.bignum .s{font-size:.66rem;color:var(--text3);margin-top:3px}
+.alert{border-radius:var(--r);padding:18px 22px;margin-bottom:14px;display:flex;gap:14px;border:1px solid;font-size:.85rem;line-height:1.75;color:var(--text2);position:relative}
+.alert::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
+.alert strong{color:var(--text)}
+.alert .ai{font-size:1.4rem;flex-shrink:0;margin-top:1px}
+.alert.green{background:rgba(34,197,94,.06);border-color:rgba(34,197,94,.25)}.alert.green::before{background:var(--up)}
+.alert.red{background:rgba(239,68,68,.06);border-color:rgba(239,68,68,.25)}.alert.red::before{background:var(--dn)}
+.alert.amber{background:rgba(234,179,8,.08);border-color:rgba(234,179,8,.3)}.alert.amber::before{background:var(--nt)}
+.alert.blue{background:rgba(59,130,246,.06);border-color:rgba(59,130,246,.25)}.alert.blue::before{background:var(--blue)}
+.alert.purple{background:rgba(168,85,247,.06);border-color:rgba(168,85,247,.25)}.alert.purple::before{background:var(--purple)}
+.alert.mango{background:rgba(249,115,22,.1);border-color:rgba(249,115,22,.4)}.alert.mango::before{background:var(--mg)}
+.alert.leaf{background:rgba(101,163,13,.08);border-color:rgba(101,163,13,.3)}.alert.leaf::before{background:var(--leaf)}
+.alert.gold{background:rgba(251,191,36,.1);border-color:rgba(251,191,36,.35)}.alert.gold::before{background:var(--gold)}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin:24px 0}
+.kpi{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:16px 18px;position:relative}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2)}
+.kpi.up::before{background:linear-gradient(90deg,var(--up),var(--leaf2))}
+.kpi.dn::before{background:linear-gradient(90deg,var(--dn),var(--mg))}
+.kpi.nt::before{background:linear-gradient(90deg,var(--nt),#fde047)}
+.kpi.mg::before{background:linear-gradient(90deg,var(--mg),var(--mg2))}
+.kpi.lf::before{background:linear-gradient(90deg,var(--leaf),var(--leaf2))}
+.kpi.bl::before{background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.kpi.gd::before{background:linear-gradient(90deg,var(--gold),#fde047)}
+.kpi.pu::before{background:linear-gradient(90deg,var(--purple),var(--pink))}
+.kpi-lb{font-size:.6rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:5px;font-weight:700}
+.kpi-val{font-size:1.18rem;font-weight:900;line-height:1.2}
+.kpi-val.up{color:var(--up)}.kpi-val.dn{color:var(--dn)}.kpi-val.nt{color:var(--nt)}.kpi-val.mg{color:var(--mg2)}.kpi-val.lf{color:var(--leaf2)}.kpi-val.bl{color:var(--blue)}.kpi-val.gd{color:var(--gold)}.kpi-val.pu{color:var(--purple)}
+.kpi-sub{font-size:.66rem;color:var(--text3);margin-top:3px;font-weight:500}
+.dv{height:1px;background:linear-gradient(90deg,transparent,var(--mg) 50%,transparent);margin:36px 0}
+.stitle{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.stitle .icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;background:linear-gradient(135deg,#f97316,#65a30d)}
+.stitle h2{font-size:1.18rem;font-weight:800}
+.stitle h2 span{color:var(--text2);font-weight:400;font-size:.85rem;margin-left:4px}
+.chart-box{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--r);padding:22px 24px;margin-bottom:14px}
+.chart-box h3{font-size:.9rem;color:var(--text);margin-bottom:14px;font-weight:700;display:flex;align-items:center;gap:8px}
+.chart-box h3 .ch-tag{margin-left:auto;font-size:.62rem;font-weight:700;padding:2px 10px;border-radius:10px;background:rgba(249,115,22,.18);color:var(--mg2)}
+.chart-wrap{position:relative;height:280px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:800px){.grid2{grid-template-columns:1fr}}
+.tbl-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--border);margin-bottom:14px;background:var(--bg2)}
+table{width:100%;border-collapse:collapse;font-size:.78rem}
+thead th{background:var(--bg3);padding:12px 14px;text-align:center;font-weight:800;color:var(--text2);font-size:.66rem;text-transform:uppercase;letter-spacing:.9px;border-bottom:1px solid var(--border)}
+tbody td{padding:10px 12px;border-bottom:1px solid rgba(46,37,26,.5);text-align:center}
+.td-name{text-align:left!important;font-weight:700;white-space:nowrap}
+.td-up{color:var(--up);font-weight:800}.td-dn{color:var(--dn);font-weight:800}.td-nt{color:var(--nt);font-weight:800}
+.opinion{background:linear-gradient(135deg,rgba(249,115,22,.13),rgba(101,163,13,.08));border:1px solid rgba(249,115,22,.4);border-radius:var(--r);padding:30px 32px;margin:26px 0;position:relative}
+.opinion::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#f97316,#65a30d,#f97316)}
+.opinion h3{font-size:1.08rem;font-weight:800;color:var(--mg2);margin-bottom:12px}
+.opinion p{font-size:.88rem;color:var(--text2);line-height:1.9;margin-bottom:12px}
+.opinion p strong{color:var(--text)}
+.opinion .scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.opinion .sc{padding:14px 16px;border-radius:10px;border:1px solid;background:rgba(0,0,0,.3)}
+.opinion .sc.up{border-color:rgba(34,197,94,.3)}.opinion .sc.nt{border-color:rgba(234,179,8,.3)}.opinion .sc.dn{border-color:rgba(239,68,68,.3)}
+.opinion .sc h5{font-size:.78rem;font-weight:800;margin-bottom:6px}
+.opinion .sc.up h5{color:var(--up)}.opinion .sc.nt h5{color:var(--nt)}.opinion .sc.dn h5{color:var(--dn)}
+.opinion .sc p{font-size:.74rem;line-height:1.6;margin:0}
+@media(max-width:700px){.opinion .scenarios{grid-template-columns:1fr}}
+.opinion .sig{margin-top:18px;padding-top:14px;border-top:1px solid rgba(249,115,22,.2);font-size:.78rem;color:var(--text3);font-style:italic}
+.footer{border-top:1px solid var(--border);padding:42px 0;text-align:center;margin-top:36px}
+.footer-brand{font-size:1.5rem;font-weight:900;margin-bottom:12px}
+.footer-brand .r{color:var(--mg)}.footer-brand .i{color:var(--leaf2)}
+.footer p{font-size:.78rem;color:var(--text3);line-height:1.8}
+.footer-credits{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+.footer-credits h4{font-size:.92rem;color:var(--mg2);font-weight:700;margin-bottom:6px}
+.footer-credits .name{font-size:1.05rem;font-weight:800;color:var(--text)}
+.footer-credits .title{font-size:.78rem;color:var(--leaf3);font-weight:600;margin-bottom:8px}
+.footer-credits .desc{font-size:.74rem;color:var(--text2);max-width:540px;margin:0 auto 12px}
+.footer-credits .contact{font-size:.74rem;color:var(--text3)}
+.footer-credits .contact a{color:var(--mg2);text-decoration:none}
+@media(max-width:700px){.bignum-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.hero-top{flex-direction:column;text-align:center}.hero-texts h1{font-size:1.65rem}.kpi-row{grid-template-columns:repeat(2,1fr)}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap"><div class="nav-left"><img src="https://ruralinrv.github.io/ruralin/logo.png" alt="Rural IN" class="nav-logo-img" onerror="this.style.display='none'"><div class="nav-logo"><span class="r">Rural</span> <span class="i">IN</span></div><div class="nav-badge">🥭 MANGA</div></div><a href="portal-30-04.html" class="nav-back">← Voltar</a></div></nav>
+
+<div class="wrap">
+
+<section class="hero">
+  <div class="hero-top">
+    <div class="hero-icon-wrap"><span class="hero-icon">🥭</span></div>
+    <div class="hero-texts">
+      <h1><span class="hl">Manga</span> · Radar Semanal</h1>
+      <div class="sub">27–30 Abril 2026 · Tommy CAI 10% (R$ 2,51/kg) · Palmer estável (R$ 1,94/kg) · BR é 7º produtor mundial · Vale SF lidera!</div>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <span class="chip dn">📉 Tommy Vale SF: R$ 2,51/kg (-10%!)</span>
+    <span class="chip nt">↔️ Palmer Vale SF: R$ 1,94/kg</span>
+    <span class="chip up">📈 Palmer Livramento: R$ 2,16/kg (+6%)</span>
+    <span class="chip mg">🥭 BR 7º produtor mundial · 1,4 mi t</span>
+    <span class="chip lf">🚢 Export 2025: 240 mil t · UE 70%</span>
+    <span class="chip dn">🌧️ Antracnose ataca após chuvas</span>
+  </div>
+</section>
+
+<div class="bignum-row">
+  <div class="bignum"><div class="v dn">R$ 2,51/kg</div><div class="l">Tommy Vale SF (13-17/04)</div><div class="s">↓ 10% · 1ª queda em 2 meses!</div></div>
+  <div class="bignum"><div class="v nt">R$ 1,94/kg</div><div class="l">Palmer Vale SF</div><div class="s">Estável · mercado travado</div></div>
+  <div class="bignum"><div class="v up">R$ 4,28/kg</div><div class="l">Atacado SP (Ceagesp)</div><div class="s">↑ 3,6% · oferta restrita</div></div>
+  <div class="bignum"><div class="v mg">1,4 mi t</div><div class="l">Produção BR 2025</div><div class="s">7º produtor mundial</div></div>
+</div>
+
+<div class="alert mango">
+  <span class="ai">🥭</span>
+  <div><strong style="color:var(--mg2)">SETOR EM TRANSIÇÃO! Tommy CAI após 2 meses de alta · Palmer mantém · Vale SF DOMINA · Ano de RECORDES (Palmer +212% em 2025!)</strong><br>
+  <strong>Brasil em manga mundial:</strong><br>
+  ▸ <strong>Produção BR 2025:</strong> 1,4 milhão de toneladas<br>
+  ▸ <strong>Posição mundial:</strong> 7º produtor (atrás Índia · China · Tailândia · Indonésia · México · Paquistão)<br>
+  ▸ <strong>Líder mundial:</strong> Índia (24 mi t · 40% mundo!)<br>
+  ▸ <strong>Brasil exportação:</strong> 4º exportador mundial<br>
+  ▸ <strong>Área plantada BR:</strong> ~83 mil hectares<br>
+  ▸ <strong>Produtividade média:</strong> 17-30 t/ha (Vale SF até 50!)<br>
+  ▸ <strong>Valor produção:</strong> R$ 4,2 bi/ano<br>
+  ▸ <strong>Empregos diretos:</strong> 60 mil<br>
+  ▸ <strong>Cadeia:</strong> 200 mil empregos indiretos<br><br>
+  <strong>Top produtores Brasil 2025:</strong><br>
+  ▸ <strong>🥇 Pernambuco + Bahia (Vale SF):</strong> 65% (Petrolina · Juazeiro · Casa Nova)<br>
+  ▸ <strong>🥈 São Paulo:</strong> 18% (Monte Alto · Taquaritinga · safra dez-fev)<br>
+  ▸ <strong>🥉 Ceará:</strong> 6% (Limoeiro do Norte · Quixeré)<br>
+  ▸ <strong>4º Bahia (Livramento de Nossa Senhora):</strong> 5% (manga premium · sequeiro)<br>
+  ▸ <strong>5º Minas Gerais:</strong> 4% (Norte MG · Jaíba · Janaúba)<br>
+  ▸ <strong>6º Outros:</strong> 2% (RN · PI · MS)<br>
+  ▸ <strong>Vale SF + SP:</strong> 83% concentração!<br><br>
+  <strong>Variedades cultivadas BR:</strong><br>
+  ▸ <strong>🥇 Tommy Atkins:</strong> 75% produção (rústica · resistente · vermelha · ácida-doce)<br>
+  ▸ <strong>🥈 Palmer:</strong> 15% produção (alongada · roxa-vermelha · doce · premium UE)<br>
+  ▸ <strong>🥉 Keitt:</strong> 4% (verde · grande · sazonal · agroindústria)<br>
+  ▸ <strong>4º Kent:</strong> 3% (premium EUA · vermelho-amarelo)<br>
+  ▸ <strong>5º Haden:</strong> 2% (tradicional · em queda)<br>
+  ▸ <strong>6º Manga rosa · Espada · Coquinho:</strong> 1% (regionais · suco)<br><br>
+  <strong>Característica do mercado BR:</strong><br>
+  ▸ <strong>Mercado interno:</strong> 80% produção<br>
+  ▸ <strong>Exportação:</strong> 17% (240 mil t/ano · cresce!)<br>
+  ▸ <strong>Indústria (suco · polpa):</strong> 3%<br>
+  ▸ <strong>Vale SF é DOMINANTE:</strong> 90% exportação BR<br>
+  ▸ <strong>Estimativa 2026:</strong> Produção +5% · safra normal</div>
+</div>
+
+<div class="alert red">
+  <span class="ai">📉</span>
+  <div><strong style="color:var(--dn)">TOMMY EM QUEDA! R$ 2,51/kg Vale SF (-10%!) · Após 2 meses de alta · Demanda recuou aos R$ 3,00 · Crescimento oferta!</strong><br>
+  <strong>Cotações TOMMY (Cepea/HF Brasil):</strong><br>
+  ▸ <strong>Vale SF (PE/BA) 13-17/04:</strong> R$ 2,51/kg (↓ 10%!)<br>
+  ▸ <strong>Vale SF semana anterior:</strong> R$ 2,79/kg<br>
+  ▸ <strong>Pico recente:</strong> R$ 3,00/kg<br>
+  ▸ <strong>Livramento (BA):</strong> R$ 1,34/kg (estável)<br>
+  ▸ <strong>Norte MG:</strong> R$ 1,80-2,00/kg<br>
+  ▸ <strong>Atacado SP (Ceagesp):</strong> R$ 4,00-4,30/kg<br>
+  ▸ <strong>Histórico jan/26:</strong> R$ 0,99/kg (mínima!)<br>
+  ▸ <strong>Variação ano:</strong> +154% (de R$ 0,99 para R$ 2,51)<br><br>
+  <strong>Por que TOMMY caiu agora?</strong><br>
+  ▸ <strong>1. Preço R$ 3,00 era ALTO demais:</strong> Compradores resistentes<br>
+  ▸ <strong>2. Demanda recuou:</strong> Pedidos reduziram<br>
+  ▸ <strong>3. Crescimento da oferta:</strong> Leve aumento volume<br>
+  ▸ <strong>4. Final de mês + feriados:</strong> Mercado travado<br>
+  ▸ <strong>5. Concorrência exportação africana:</strong> Pressionou interno<br>
+  ▸ <strong>6. Após 2 meses de alta:</strong> Correção natural<br>
+  ▸ <strong>7. Início rotina colheita:</strong> Volume volta<br><br>
+  <strong>Cotações PALMER (mais estável):</strong><br>
+  ▸ <strong>Vale SF (PE/BA):</strong> R$ 1,94/kg (estável!)<br>
+  ▸ <strong>Livramento (BA):</strong> R$ 2,16/kg (↑ 6% sem)<br>
+  ▸ <strong>Norte MG:</strong> R$ 1,90-2,10/kg<br>
+  ▸ <strong>Atacado SP:</strong> R$ 4,28/kg (atacado)<br>
+  ▸ <strong>Pico recente Vale SF:</strong> R$ 2,58/kg (fev/26)<br>
+  ▸ <strong>Variação ano:</strong> Palmer +45,9% acumulado 12 meses!<br><br>
+  <strong>Histórico Tommy Vale SF (Cepea 2025-26):</strong><br>
+  ▸ <strong>Mai/2025:</strong> R$ 0,80 (mínima ano)<br>
+  ▸ <strong>Ago/2025:</strong> R$ 1,02 (rentabilidade ↑85%!)<br>
+  ▸ <strong>Set/2025:</strong> R$ 2,04<br>
+  ▸ <strong>Jan/2026:</strong> R$ 0,99 (queda)<br>
+  ▸ <strong>Fev/2026:</strong> R$ 2,58 (recuperação Palmer)<br>
+  ▸ <strong>Mar/2026:</strong> R$ 2,79<br>
+  ▸ <strong>Abr/2026 (17/04):</strong> R$ 2,51 (queda!)<br>
+  ▸ <strong>Próxima semana:</strong> Pode voltar a subir início mai<br><br>
+  <strong>Histórico Palmer (alta de 212% em 2025!):</strong><br>
+  ▸ <strong>Maio/2025:</strong> Salto histórico (R$ 92,50/cx 26kg em maio · pico!)<br>
+  ▸ <strong>Variação jan-mai/2025:</strong> +212,8% Palmer!<br>
+  ▸ <strong>Tommy 2025:</strong> +180,5% no acumulado<br>
+  ▸ <strong>2025 fechou:</strong> Ano histórico para mangicultor BA/PE<br>
+  ▸ <strong>FAEB confirmou:</strong> Manga foi PRODUTO #1 em valorização BA<br><br>
+  <strong>Calendário oferta BR (manga):</strong><br>
+  ▸ <strong>Out-Mar (entressafra Vale SF):</strong> Preços altos<br>
+  ▸ <strong>Mar-Abr-Mai:</strong> Pico colheita Vale SF<br>
+  ▸ <strong>Jun-Set:</strong> Safra plena Vale SF (preços baixos)<br>
+  ▸ <strong>Out-Dez:</strong> SP entra (Monte Alto · Taquaritinga)<br>
+  ▸ <strong>Mar-Mai:</strong> Janela exportação ativa<br>
+  ▸ <strong>Jul-Out:</strong> 2ª janela exportação UE</div>
+</div>
+
+<div class="alert leaf">
+  <span class="ai">🌳</span>
+  <div><strong style="color:var(--leaf2)">VALE DO SÃO FRANCISCO · O Vale Mágico! 65% da produção BR · 90% exportação · Petrolina/Juazeiro!</strong><br>
+  <strong>Vale do São Francisco em números:</strong><br>
+  ▸ <strong>Área plantada:</strong> 25-30 mil hectares<br>
+  ▸ <strong>Produção:</strong> 900 mil-1 milhão t/ano<br>
+  ▸ <strong>Produtividade:</strong> 35-50 t/ha (uma das maiores mundo!)<br>
+  ▸ <strong>Trabalhadores:</strong> 30 mil diretos<br>
+  ▸ <strong>Vantagens únicas:</strong> 2 safras/ano · sol 300+ dias · irrigação São Francisco<br>
+  ▸ <strong>Capital mundial da fruticultura tropical irrigada</strong><br><br>
+  <strong>Top municípios produtores:</strong><br>
+  ▸ <strong>🥇 Petrolina (PE):</strong> Capital nacional uva/manga<br>
+  ▸ <strong>🥈 Juazeiro (BA):</strong> Hub fruticultura<br>
+  ▸ <strong>🥉 Casa Nova (BA):</strong> Forte produção<br>
+  ▸ <strong>4º Curaçá · Sento Sé (BA):</strong> Tradição<br>
+  ▸ <strong>5º Lagoa Grande (PE):</strong> Mecanização<br>
+  ▸ <strong>6º Santa Maria da Boa Vista (PE):</strong> Premium<br><br>
+  <strong>Por que Vale SF é UNICO?</strong><br>
+  ▸ <strong>Clima semiárido com irrigação:</strong> Controle total maturação<br>
+  ▸ <strong>2 safras/ano:</strong> Vantagem mundial!<br>
+  ▸ <strong>Sol 300+ dias/ano:</strong> Açúcar concentrado<br>
+  ▸ <strong>Rio São Francisco:</strong> Água abundante (irrigação)<br>
+  ▸ <strong>Solo aluvial fértil:</strong> Frutas premium<br>
+  ▸ <strong>Investimento empresarial:</strong> Tecnologia<br>
+  ▸ <strong>Logística próxima portos:</strong> Pecém · Suape · Salvador<br>
+  ▸ <strong>Mão de obra qualificada</strong><br>
+  ▸ <strong>Embrapa Semiárido:</strong> Pesquisa local<br><br>
+  <strong>Empresas líderes Vale SF:</strong><br>
+  ▸ <strong>Frutal Nordeste:</strong> Tommy + Palmer<br>
+  ▸ <strong>Agropecuária Cipó · Special Fruit:</strong> Premium<br>
+  ▸ <strong>Coopexvale (cooperativa):</strong> Produtores<br>
+  ▸ <strong>Bagô · Citropan · Brazil Mangoes:</strong> Exportadoras<br>
+  ▸ <strong>Frutiplan · Univale:</strong> Empacotadoras<br><br>
+  <strong>Livramento de Nossa Senhora (BA) · Pólo separado:</strong><br>
+  ▸ <strong>Cultivo SEM IRRIGAÇÃO</strong> (sequeiro!)<br>
+  ▸ <strong>Manga premium · sabor concentrado</strong><br>
+  ▸ <strong>1 safra/ano</strong><br>
+  ▸ <strong>Foco mercado interno</strong> qualidade superior<br>
+  ▸ <strong>Tradição familiar</strong><br>
+  ▸ <strong>Cotações premium:</strong> R$ 2,16/kg Palmer (acima Vale SF!)<br><br>
+  <strong>São Paulo · 2º produtor:</strong><br>
+  ▸ <strong>Monte Alto · Taquaritinga:</strong> Capital paulista<br>
+  ▸ <strong>Safra:</strong> Outubro a fevereiro<br>
+  ▸ <strong>Variedades:</strong> Tommy + Palmer<br>
+  ▸ <strong>Produtividade:</strong> 18-25 t/ha<br>
+  ▸ <strong>Mercado:</strong> Interno SP/RJ + indústria<br>
+  ▸ <strong>Bacteriose:</strong> Ataca após chuvas<br>
+  ▸ <strong>Indústria moagem:</strong> 20 mil t/ano<br>
+  ▸ <strong>Suco de manga:</strong> Cargill · Sucocítrico</div>
+</div>
+
+<div class="alert blue">
+  <span class="ai">🚢</span>
+  <div><strong style="color:var(--blue)">EXPORTAÇÃO BR · 240 mil t · 4º exportador MUNDIAL! UE 70% destino · Concorrência Peru/África!</strong><br>
+  <strong>Exportação manga BR 2025:</strong><br>
+  ▸ <strong>Volume:</strong> 240 mil toneladas (recorde!)<br>
+  ▸ <strong>Receita FOB:</strong> US$ 320 milhões<br>
+  ▸ <strong>Posição mundial:</strong> 4º exportador (atrás México · Tailândia · Peru)<br>
+  ▸ <strong>Vale SF participação:</strong> 90% exportação BR<br>
+  ▸ <strong>Variedade:</strong> 70% Palmer · 25% Tommy · 5% Kent/Keitt<br>
+  ▸ <strong>Crescimento 2025 vs 2024:</strong> +12%<br>
+  ▸ <strong>2 janelas/ano:</strong> Mar-Mai + Jul-Out<br><br>
+  <strong>Top destinos exportação BR:</strong><br>
+  ▸ <strong>🥇 Holanda:</strong> 28% (porta UE)<br>
+  ▸ <strong>🥈 Espanha:</strong> 18%<br>
+  ▸ <strong>🥉 Reino Unido:</strong> 14%<br>
+  ▸ <strong>4º Portugal:</strong> 9%<br>
+  ▸ <strong>5º EUA:</strong> 8% (em recuperação · Tommy)<br>
+  ▸ <strong>6º Alemanha:</strong> 7%<br>
+  ▸ <strong>7º Canadá:</strong> 5%<br>
+  ▸ <strong>8º Outros:</strong> 11% (Argentina · Chile · Oriente Médio)<br><br>
+  <strong>Concorrência mundial 2026:</strong><br>
+  ▸ <strong>🇲🇽 México:</strong> Líder histórico EUA<br>
+  ▸ <strong>🇵🇪 Peru:</strong> Concorrente direto BR na UE!<br>
+  ▸ <strong>🇨🇮 Costa do Marfim · 🇸🇳 Senegal · 🇲🇱 Mali:</strong> "Exportações africanas" iniciaram!<br>
+  ▸ <strong>🇮🇳 Índia:</strong> Volume mundial · qualidade superior<br>
+  ▸ <strong>🇵🇰 Paquistão:</strong> Variedades premium<br>
+  ▸ <strong>BR no abr/26:</strong> Pressão africana derruba preços!<br><br>
+  <strong>Acordo Mercosul-UE (jan/2026):</strong><br>
+  ▸ <strong>Tarifas zero gradualmente</strong> para manga BR<br>
+  ▸ <strong>Cota inicial:</strong> 10 mil t/ano (sobre tarifa atual 5,5%)<br>
+  ▸ <strong>Crescimento:</strong> Para 50 mil t em 10 anos<br>
+  ▸ <strong>Mercado-alvo:</strong> Itália · Espanha · UE central<br>
+  ▸ <strong>Vantagem competitiva</strong> vs Peru/África<br><br>
+  <strong>Logística exportação:</strong><br>
+  ▸ <strong>🚢 Porto Pecém (CE):</strong> Principal · 70% volume<br>
+  ▸ <strong>🚢 Porto Suape (PE):</strong> Próximo Petrolina<br>
+  ▸ <strong>🚢 Porto Salvador (BA):</strong> Crescente<br>
+  ▸ <strong>Container refrigerado:</strong> 12-13 °C<br>
+  ▸ <strong>Tempo travessia UE:</strong> 12-18 dias<br>
+  ▸ <strong>Atmosfera modificada:</strong> Vida útil 25-35 dias<br>
+  ▸ <strong>Tratamento hidrotérmico (HWT):</strong> Obrigatório EUA<br><br>
+  <strong>Mercado dos EUA · oportunidade renovada:</strong><br>
+  ▸ <strong>Tommy lidera:</strong> Padrão americano<br>
+  ▸ <strong>Tratamento hidrotérmico</strong> exigido (mosca-das-frutas)<br>
+  ▸ <strong>Pacote APHIS:</strong> Certificação rigorosa<br>
+  ▸ <strong>BR cresceu 30% EUA em 2025</strong><br>
+  ▸ <strong>Concorrência:</strong> México domina · BR e Peru competem</div>
+</div>
+
+<div class="alert amber">
+  <span class="ai">⚠️</span>
+  <div><strong style="color:var(--nt)">DESAFIOS · Antracnose · Mosca-das-frutas · Bacteriose · Clima · Custos · Concorrência mundial cresce!</strong><br>
+  <strong>Top doenças/pragas manga BR:</strong><br>
+  ▸ <strong>1. Antracnose (Colletotrichum gloeosporioides):</strong> Fungo nº 1 · pós-colheita<br>
+  &nbsp;&nbsp;Atacando Livramento de Nossa Senhora abr/26 (chuvas mar/26)<br>
+  ▸ <strong>2. Mosca-das-frutas (Anastrepha · Ceratitis):</strong> Inseto · barreira EUA/Japão<br>
+  ▸ <strong>3. Bacteriose (Xanthomonas):</strong> Bactéria · Monte Alto SP em alta!<br>
+  ▸ <strong>4. Oídio (Erysiphe):</strong> Pó branco floração<br>
+  ▸ <strong>5. Cochonilhas (Aulacaspis):</strong> Inseto sugador<br>
+  ▸ <strong>6. Tripes:</strong> Sucção pétalas/folhas<br>
+  ▸ <strong>7. Murcha-de-ceratocystis:</strong> Fungo solo (devastador!)<br><br>
+  <strong>Custos produção manga (1 hectare Vale SF):</strong><br>
+  ▸ <strong>Defensivos (antracnose · mosca):</strong> R$ 8-14 mil/ha/ano<br>
+  ▸ <strong>Adubação · fertirrigação:</strong> R$ 12-18 mil/ha/ano<br>
+  ▸ <strong>Mão de obra (poda · raleio · colheita):</strong> R$ 20-35 mil/ha<br>
+  ▸ <strong>Irrigação (energia · manutenção):</strong> R$ 5-8 mil/ha<br>
+  ▸ <strong>Embalagem · pós-colheita:</strong> R$ 6-12 mil/ha<br>
+  ▸ <strong>Hormônios (paclobutrazol · indução):</strong> R$ 4-8 mil/ha<br>
+  ▸ <strong>Total operacional:</strong> R$ 55-95 mil/ha/ano (2 safras!)<br>
+  ▸ <strong>Investimento implantação:</strong> R$ 60-100 mil/ha (3-4 anos retorno)<br>
+  ▸ <strong>Ciclo produtivo:</strong> 30-40 anos<br><br>
+  <strong>Custos por kg:</strong><br>
+  ▸ <strong>Custo Vale SF (alta produtividade):</strong> R$ 1,30-1,80/kg<br>
+  ▸ <strong>Custo Livramento (sequeiro):</strong> R$ 1,80-2,30/kg<br>
+  ▸ <strong>Custo SP:</strong> R$ 1,60-2,00/kg<br>
+  ▸ <strong>Tommy Vale SF abr/26 R$ 2,51:</strong> Margem +R$ 0,71-1,21/kg<br>
+  ▸ <strong>Palmer Vale SF abr/26 R$ 1,94:</strong> Margem +R$ 0,14-0,64/kg<br>
+  ▸ <strong>Cenário:</strong> Tommy mais lucrativa que Palmer agora!<br><br>
+  <strong>Margem produtor (cenário atual abr/26):</strong><br>
+  ▸ <strong>Tommy:</strong> Margem +30-50% (lucrativa!)<br>
+  ▸ <strong>Palmer:</strong> Margem +5-30% (apertada)<br>
+  ▸ <strong>Mas Palmer EXPORTAÇÃO:</strong> Premium R$ 3,50-4,50/kg<br>
+  ▸ <strong>Indústria (suco):</strong> R$ 0,40-0,80/kg (pouco rentável)<br>
+  ▸ <strong>Mercado interno SP atacado:</strong> R$ 4,28/kg (margem boa)<br><br>
+  <strong>Tecnologia recomendada:</strong><br>
+  ▸ <strong>Indução floração (paclobutrazol):</strong> 2 safras/ano<br>
+  ▸ <strong>Irrigação localizada</strong> (gotejamento · microaspersão)<br>
+  ▸ <strong>Fertirrigação:</strong> Adubação eficiente<br>
+  ▸ <strong>Manejo integrado pragas (MIP):</strong> Reduz custos<br>
+  ▸ <strong>Tratamento hidrotérmico (HWT):</strong> Para EUA · Japão<br>
+  ▸ <strong>Câmaras frias:</strong> Conservação<br>
+  ▸ <strong>Embalagens vented:</strong> Atmosfera modificada<br>
+  ▸ <strong>Drones · sensores · IA:</strong> Pomares inteligentes<br><br>
+  <strong>Riscos para 2026:</strong><br>
+  ▸ <strong>Concorrência africana</strong> (CI · Senegal · Mali)<br>
+  ▸ <strong>Peru</strong> mantém peso na UE<br>
+  ▸ <strong>El Niño/La Niña:</strong> Climático<br>
+  ▸ <strong>Bacteriose SP</strong> reduz oferta paulista<br>
+  ▸ <strong>Antracnose Livramento</strong> qualidade ruim<br>
+  ▸ <strong>Real forte:</strong> Pressiona exportação</div>
+</div>
+
+<div class="alert gold">
+  <span class="ai">🍴</span>
+  <div><strong style="color:var(--gold)">MERCADO EM CRESCIMENTO! Per capita BR 4 kg · "Manga de colher" boom · Indústria suco · Saúde tropical!</strong><br>
+  <strong>Consumo per capita manga:</strong><br>
+  ▸ <strong>🥇 Índia:</strong> 30 kg/hab/ano (cultura nacional!)<br>
+  ▸ <strong>🥈 Filipinas:</strong> 18 kg/hab/ano<br>
+  ▸ <strong>🥉 Tailândia:</strong> 15 kg/hab/ano<br>
+  ▸ <strong>4º México:</strong> 12 kg/hab/ano<br>
+  ▸ <strong>5º BRASIL:</strong> 4 kg/hab/ano (potencial enorme!)<br>
+  ▸ <strong>EUA:</strong> 1,5 kg/hab/ano<br>
+  ▸ <strong>UE:</strong> 1,2 kg/hab/ano<br><br>
+  <strong>Por que BR consome menos que tropicais?</strong><br>
+  ▸ <strong>Cultura banana/laranja:</strong> Tradição<br>
+  ▸ <strong>Preço manga premium:</strong> R$ 8-15/kg varejo<br>
+  ▸ <strong>Concorrência banana:</strong> R$ 5-9/kg<br>
+  ▸ <strong>Sazonal:</strong> Picos preço variam<br>
+  ▸ <strong>Mas tendência:</strong> +6% ao ano consumo!<br><br>
+  <strong>Tendências de consumo 2026:</strong><br>
+  ▸ <strong>"Manga de colher" (Tommy madura):</strong> BOOM no varejo!<br>
+  &nbsp;&nbsp;Empresas investindo (Frutal Nordeste · Special Fruit)<br>
+  ▸ <strong>Manga orgânica:</strong> +15% ao ano · premium R$ 18-25/kg<br>
+  ▸ <strong>Polpa congelada:</strong> Vitaminas · sucos<br>
+  ▸ <strong>Suco integral:</strong> Maguary · Aurora · Hering<br>
+  ▸ <strong>Manga desidratada:</strong> Snack saudável<br>
+  ▸ <strong>Sorvetes · sobremesas:</strong> Premium<br>
+  ▸ <strong>Mango sticky rice (tailandês):</strong> Gourmet<br>
+  ▸ <strong>Salada de manga verde:</strong> Cozinha asiática<br>
+  ▸ <strong>Smoothies/açaí com manga:</strong> Foodservice<br><br>
+  <strong>Nutrição (100g manga madura):</strong><br>
+  ▸ <strong>Calorias:</strong> 60 kcal (média entre frutas)<br>
+  ▸ <strong>Carboidratos:</strong> 15g<br>
+  ▸ <strong>Açúcares naturais:</strong> 14g (frutose)<br>
+  ▸ <strong>Fibras:</strong> 1,6g<br>
+  ▸ <strong>Vitamina C:</strong> 36 mg (60% VD!)<br>
+  ▸ <strong>Vitamina A:</strong> 21% VD (beta-caroteno!)<br>
+  ▸ <strong>Potássio:</strong> 168 mg<br>
+  ▸ <strong>Folato:</strong> 11% VD<br>
+  ▸ <strong>Antioxidantes:</strong> Mangiferina · polifenóis<br><br>
+  <strong>Indústria de suco/polpa:</strong><br>
+  ▸ <strong>Volume processado BR:</strong> 50 mil t/ano<br>
+  ▸ <strong>Cargill (Bahia):</strong> Maior processadora<br>
+  ▸ <strong>Sucocítrico Cutrale:</strong> Multi-frutas<br>
+  ▸ <strong>Maguary · Hering:</strong> Suco integral<br>
+  ▸ <strong>Aurora · Sefrut:</strong> Polpa congelada<br>
+  ▸ <strong>Preço produtor indústria:</strong> R$ 0,40-0,80/kg<br>
+  ▸ <strong>Margem baixa:</strong> Apenas frutas defeitos vão indústria<br><br>
+  <strong>Mercado de varejo BR:</strong><br>
+  ▸ <strong>Supermercados:</strong> 55% volume<br>
+  ▸ <strong>Feiras livres:</strong> 25%<br>
+  ▸ <strong>Sacolões/hortifrúti:</strong> 15%<br>
+  ▸ <strong>Atacado direto:</strong> 5%<br>
+  ▸ <strong>Margem varejo:</strong> 100-200% sobre atacado<br>
+  ▸ <strong>Perdas pós-colheita:</strong> 25-35% (alta!)<br>
+  ▸ <strong>Logística refrigerada</strong> reduz perdas</div>
+</div>
+
+<div class="alert mango">
+  <span class="ai">🏦</span>
+  <div><strong style="color:var(--mg2)">MACRO: Selic 14,50% e Real R$ 4,95 · Cenário MISTO para manga · Exportação pressionada · Insumos baratos!</strong><br>
+  Copom cortou Selic (29/04) para 14,50% (-0,25 pp). Dólar em R$ 4,9523 (mín 2 anos!).<br><br>
+  <strong>IMPACTOS no setor manga BR:</strong><br>
+  ▸ ✗ <strong>Exportação Vale SF:</strong> Receita em R$ menor (Real forte)<br>
+  ▸ ✗ <strong>Concorrência Peru · África:</strong> Mais competitiva<br>
+  ▸ ✗ <strong>Margem exportador Palmer:</strong> Pressionada<br>
+  ▸ ✓ <strong>Insumos importados (defensivos · adubos · paclobutrazol):</strong> -10-12%<br>
+  ▸ ✓ <strong>Maquinário · embalagens:</strong> Mais barato<br>
+  ▸ ✓ <strong>Crédito Plano Safra:</strong> Taxas menores<br>
+  ▸ ✓ <strong>FNE (BNB):</strong> Linhas Vale SF<br>
+  ▸ ✓ <strong>Mosca-das-frutas EUA:</strong> Tratamento hidrotérmico investimento mais barato<br><br>
+  <strong>Linhas de crédito manga:</strong><br>
+  ▸ <strong>Plano Safra 26/27 (junho/26):</strong> Volume R$ 550 bi<br>
+  ▸ <strong>Pronaf:</strong> Pequenos · taxas 4-6%<br>
+  ▸ <strong>Pronamp:</strong> Médios · taxas 8-10%<br>
+  ▸ <strong>BNDES Fruticultura:</strong> Investimento (irrigação · pomares)<br>
+  ▸ <strong>FNE Vale SF (BNB):</strong> 6-8% · até 18 anos<br>
+  ▸ <strong>Custeio até R$ 6 milhões/ano</strong><br><br>
+  <strong>Cálculo retorno (1 hectare manga Vale SF):</strong><br>
+  ▸ <strong>Investimento implantação:</strong> R$ 80 mil (com irrigação)<br>
+  ▸ <strong>Produtividade:</strong> 40 t/ha (2 safras/ano!)<br>
+  ▸ <strong>Preço médio anual:</strong> R$ 2,00/kg (média Tommy+Palmer)<br>
+  ▸ <strong>Receita bruta:</strong> R$ 80 mil/ha/ano<br>
+  ▸ <strong>Custo operacional:</strong> R$ 70 mil/ha<br>
+  ▸ <strong>Margem bruta:</strong> R$ 10-30 mil/ha<br>
+  ▸ <strong>Payback:</strong> 4-6 anos<br>
+  ▸ <strong>Ciclo produtivo:</strong> 30+ anos<br>
+  ▸ <strong>ROI 30 anos:</strong> 400-600% (excelente!)<br>
+  ▸ <strong>Em ano de pico (Palmer R$ 3,50/kg):</strong> Lucros multiplicam<br><br>
+  <strong>Riscos macro:</strong><br>
+  ▸ <strong>Real continuar forte:</strong> Pressão exportação<br>
+  ▸ <strong>Concorrência africana</strong> cresce<br>
+  ▸ <strong>Inflação fertilizantes (Ormuz):</strong> Custos sobem<br>
+  ▸ <strong>Mudanças climáticas:</strong> Vale SF chuvas erráticas<br>
+  ▸ <strong>El Niño/La Niña:</strong> Atenção 2026/27<br>
+  ▸ <strong>Eleições BR 2026:</strong> Volatilidade política</div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon">📊</div><h2>Indicadores-Chave <span>— Cepea/HF · FAEB · IBGE · ABRAFRUTAS</span></h2></div>
+
+<div class="kpi-row">
+  <div class="kpi dn"><div class="kpi-lb">Tommy Vale SF</div><div class="kpi-val dn">R$ 2,51</div><div class="kpi-sub">/kg · ↓ 10% · 1ª queda 2 meses</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Palmer Vale SF</div><div class="kpi-val nt">R$ 1,94</div><div class="kpi-sub">/kg · estável</div></div>
+  <div class="kpi up"><div class="kpi-lb">Palmer Livramento</div><div class="kpi-val up">R$ 2,16</div><div class="kpi-sub">/kg · ↑ 6% premium</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Tommy Livramento</div><div class="kpi-val nt">R$ 1,34</div><div class="kpi-sub">/kg · estável</div></div>
+  <div class="kpi up"><div class="kpi-lb">Atacado SP Ceagesp</div><div class="kpi-val up">R$ 4,28</div><div class="kpi-sub">/kg Palmer · ↑ 3,6%</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Varejo BR</div><div class="kpi-val nt">R$ 8-15</div><div class="kpi-sub">/kg · varia variedade</div></div>
+  <div class="kpi mg"><div class="kpi-lb">Produção BR 2025</div><div class="kpi-val mg">1,4 mi t</div><div class="kpi-sub">7º produtor mundial</div></div>
+  <div class="kpi mg"><div class="kpi-lb">Vale SF produção</div><div class="kpi-val mg">~950 mil t</div><div class="kpi-sub">65% BR · Petrolina líder</div></div>
+  <div class="kpi lf"><div class="kpi-lb">Export BR 2025</div><div class="kpi-val lf">240 mil t</div><div class="kpi-sub">4º exportador mundial</div></div>
+  <div class="kpi lf"><div class="kpi-lb">Receita FOB 2025</div><div class="kpi-val lf">US$ 320 mi</div><div class="kpi-sub">UE 70% · EUA 8%</div></div>
+  <div class="kpi up"><div class="kpi-lb">Palmer 2025 acum</div><div class="kpi-val up">+212%</div><div class="kpi-sub">jan-mai · histórico BA!</div></div>
+  <div class="kpi up"><div class="kpi-lb">Tommy 2025 acum</div><div class="kpi-val up">+180%</div><div class="kpi-sub">jan-mai · explosão!</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Per capita BR</div><div class="kpi-val nt">4 kg</div><div class="kpi-sub">/hab/ano · cresce 6%</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Área plantada BR</div><div class="kpi-val nt">~83 mil ha</div><div class="kpi-sub">PE+BA = 65%</div></div>
+  <div class="kpi pu"><div class="kpi-lb">Selic 29/04</div><div class="kpi-val pu">14,50%</div><div class="kpi-sub">↓ 0,25 pp</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Dólar 30/04</div><div class="kpi-val dn">R$ 4,95</div><div class="kpi-sub">prejudica exportador</div></div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon">📍</div><h2>Cotações da Semana <span>— Manga · Variedades · Regiões · Abr/26</span></h2></div>
+
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Variedade/Região</th><th>Tipo</th><th>Jan/26</th><th>Mar/26</th><th>13-17/04</th><th>Var. Mês</th><th>Var. Ano</th></tr></thead>
+<tbody>
+<tr><td class="td-name">🥭 Tommy Vale SF</td><td>R$/kg produtor</td><td>0,99</td><td>2,79</td><td class="td-dn">2,51</td><td class="td-dn">-10%</td><td class="td-up">+154%</td></tr>
+<tr><td class="td-name">🥭 Tommy Livramento</td><td>R$/kg produtor</td><td>1,24</td><td>1,30</td><td class="td-nt">1,34</td><td class="td-up">+3%</td><td class="td-up">+15%</td></tr>
+<tr><td class="td-name">🥭 Tommy Norte MG</td><td>R$/kg produtor</td><td>1,40</td><td>1,75</td><td class="td-nt">1,90</td><td class="td-up">+9%</td><td class="td-up">+30%</td></tr>
+<tr><td class="td-name">🥭 Palmer Vale SF</td><td>R$/kg produtor</td><td>2,80</td><td>2,79</td><td class="td-nt">1,94</td><td class="td-dn">-30%</td><td class="td-up">+45%</td></tr>
+<tr><td class="td-name">🥭 Palmer Livramento</td><td>R$/kg produtor</td><td>1,49</td><td>2,04</td><td class="td-up">2,16</td><td class="td-up">+6%</td><td class="td-up">+45%</td></tr>
+<tr><td class="td-name">🥭 Palmer Norte MG</td><td>R$/kg produtor</td><td>1,80</td><td>1,95</td><td class="td-nt">2,00</td><td class="td-up">+3%</td><td class="td-up">+25%</td></tr>
+<tr><td class="td-name">📊 Palmer atacado SP</td><td>Ceagesp R$/kg</td><td>3,80</td><td>4,13</td><td class="td-up">4,28</td><td class="td-up">+4%</td><td class="td-up">+18%</td></tr>
+<tr><td class="td-name">📊 Tommy atacado SP</td><td>Ceagesp R$/kg</td><td>3,20</td><td>3,80</td><td class="td-up">4,00</td><td class="td-up">+5%</td><td class="td-up">+25%</td></tr>
+<tr><td class="td-name">🚢 Palmer EXPORTAÇÃO</td><td>FOB US$/kg</td><td>0,75</td><td>0,82</td><td class="td-up">0,87</td><td class="td-up">+6%</td><td class="td-up">+15%</td></tr>
+<tr><td class="td-name">🚢 Tommy EXPORTAÇÃO</td><td>FOB US$/kg</td><td>0,65</td><td>0,72</td><td class="td-up">0,75</td><td class="td-up">+4%</td><td class="td-up">+12%</td></tr>
+<tr><td class="td-name">🛒 Varejo BR Palmer</td><td>R$/kg</td><td>9,50</td><td>11,80</td><td class="td-up">12,50</td><td class="td-up">+6%</td><td class="td-up">+22%</td></tr>
+<tr><td class="td-name">🛒 Varejo BR Tommy</td><td>R$/kg</td><td>7,80</td><td>9,50</td><td class="td-up">10,00</td><td class="td-up">+5%</td><td class="td-up">+20%</td></tr>
+</tbody>
+</table>
+</div>
+
+<p style="font-size:.78rem;color:var(--text3);margin-top:6px;text-align:center"><em>Cotações manga 30/04/26 estimativa Cepea/HF Brasil/Ceagesp · Tommy Vale SF é referência mercado · Palmer = exportação · Livramento de Nossa Senhora = sequeiro premium</em></p>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon">📈</div><h2>Análise Gráfica <span>— 6 perspectivas · Trajetória · Variedades · Estados · Export · Calendário · Custos</span></h2></div>
+
+<div class="grid2">
+  <div class="chart-box"><h3>📊 Tommy vs Palmer Vale SF · 12 sem <span class="ch-tag">R$/kg produtor</span></h3><div class="chart-wrap"><canvas id="ch1"></canvas></div></div>
+  <div class="chart-box"><h3>🇧🇷 Top Produtores BR <span class="ch-tag">% safra</span></h3><div class="chart-wrap"><canvas id="ch2"></canvas></div></div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box"><h3>🥭 Variedades BR <span class="ch-tag">% participação</span></h3><div class="chart-wrap"><canvas id="ch3"></canvas></div></div>
+  <div class="chart-box"><h3>🚢 Top Destinos Export BR <span class="ch-tag">% volume</span></h3><div class="chart-wrap"><canvas id="ch4"></canvas></div></div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box"><h3>📅 Calendário Oferta Vale SF <span class="ch-tag">% pico anual</span></h3><div class="chart-wrap"><canvas id="ch5"></canvas></div></div>
+  <div class="chart-box"><h3>🌍 Top Produtores Mundo <span class="ch-tag">milhões t</span></h3><div class="chart-wrap"><canvas id="ch6"></canvas></div></div>
+</div>
+
+<div class="dv"></div>
+
+<div class="opinion">
+  <h3>🎯 Opinião do Analista — Tommy DESPONTA · Palmer ESTABILIZA · Vale SF é o motor · Margens consolidadas!</h3>
+
+  <p><strong>O setor de manga brasileiro vive um momento DE TRANSIÇÃO em abril/2026: TOMMY ATKINS CAIU 10% no Vale SF (R$ 2,51/kg após pico de R$ 3,00) — primeira queda em 2 meses · compradores resistentes aos preços altos · oferta retomando ritmo · concorrência exportações africanas (Costa do Marfim · Senegal · Mali) inicia! PALMER se manteve estável (R$ 1,94/kg Vale SF) com mercado travado · LIVRAMENTO DE NOSSA SENHORA (BA · sequeiro · premium) brilha com Palmer R$ 2,16/kg (+6% sem) e Tommy R$ 1,34/kg. ATACADO SP (CEAGESP) sustenta com Palmer R$ 4,28/kg (+3,6% sem). 2025 foi HISTÓRICO: Palmer +212,8% e Tommy +180,5% no acumulado jan-mai — manga foi PRODUTO #1 em valorização BA segundo FAEB. Brasil é 7º produtor mundial (1,4 mi t) · 4º EXPORTADOR (240 mil t · US$ 320 mi · UE 70% destino) · Vale SF DOMINA com 65% produção e 90% exportação · Petrolina/Juazeiro = capital mundial fruticultura tropical irrigada (2 safras/ano · sol 300 dias · irrigação rio São Francisco) · Tommy 75% mix · Palmer 15% premium UE. SP segundo (Monte Alto · Taquaritinga) com bacteriose preocupando. Acordo Mercosul-UE (jan/26) abrirá portas! Selic 14,50% + dólar baixo = misto · insumos baratos mas exportação pressionada. PRODUTOR: Tommy ainda lucrativa · Palmer é jogada longa (UE) · Livramento brilha sequeiro · Frente africana é AMEAÇA · Indução floração + irrigação são ouro · "Manga de colher" é o futuro!</strong></p>
+
+  <p><strong>Semana 13-17/abr/2026 — Em síntese:</strong><br>
+  ▸ <strong>Tommy Vale SF:</strong> R$ 2,51/kg (↓ 10% sem · pós-pico R$ 3,00)<br>
+  ▸ <strong>Palmer Vale SF:</strong> R$ 1,94/kg (estável)<br>
+  ▸ <strong>Tommy Livramento (BA):</strong> R$ 1,34/kg<br>
+  ▸ <strong>Palmer Livramento (BA):</strong> R$ 2,16/kg (↑ 6% premium)<br>
+  ▸ <strong>Atacado SP Ceagesp Palmer:</strong> R$ 4,28/kg<br>
+  ▸ <strong>Atacado SP Tommy:</strong> R$ 4,00/kg<br>
+  ▸ <strong>Exportação Palmer FOB:</strong> US$ 0,87/kg<br>
+  ▸ <strong>Varejo BR Palmer:</strong> R$ 12,50/kg<br>
+  ▸ <strong>Produção BR 2025:</strong> 1,4 mi t (7º mundo)<br>
+  ▸ <strong>Vale SF participação:</strong> 65% BR · 90% exportação<br>
+  ▸ <strong>Variedades:</strong> Tommy 75% · Palmer 15% · Outras 10%<br>
+  ▸ <strong>Exportação 2025:</strong> 240 mil t · US$ 320 mi (4º mundo!)<br>
+  ▸ <strong>UE 70%</strong> destino (Holanda · Espanha · UK)<br>
+  ▸ <strong>Per capita BR:</strong> 4 kg/hab (cresce 6%)<br>
+  ▸ <strong>Área BR:</strong> 83 mil ha · 60 mil empregos<br>
+  ▸ <strong>Selic:</strong> 14,50% · <strong>Dólar:</strong> R$ 4,95<br>
+  ▸ <strong>Margem produtor Tommy:</strong> +30-50% (lucrativa!)<br>
+  ▸ <strong>Margem Palmer:</strong> +5-30% (apertada interno · alta exportação)</p>
+
+  <p><strong>Recomendações estratégicas:</strong></p>
+
+  <p><strong>1. PRODUTOR VALE SF: TOMMY ESTÁ LUCRATIVA · APROVEITE!</strong> Margem 30-50%. Estratégias: a) Investir em indução floração (paclobutrazol · 2 safras/ano!), b) Irrigação localizada (gotejamento · economia água), c) Tratamento hidrotérmico (HWT) para EUA (premium!), d) Vender direto consumidor (e-commerce frutas · Mercado Livre), e) Cooperativismo (Coopexvale) para escala, f) Diversificar com Kent/Keitt (mercado EUA premium).</p>
+
+  <p><strong>2. PRODUTOR PALMER: FOQUE EXPORTAÇÃO UE!</strong> Mercado interno apertado · UE prêmio. Estratégias: a) Certificação GlobalGAP (obrigatória UE), b) Hedge cambial (Real R$ 4,95 prejudica receita), c) 2 janelas exportação (mar-mai + jul-out), d) Acordo Mercosul-UE (cota 10 mil t), e) Diferenciar qualidade visual (cor · uniformidade), f) Container refrigerado próprio (custo logística).</p>
+
+  <p><strong>3. PRODUTOR LIVRAMENTO (BA): SEQUEIRO É OURO!</strong> Premium pelo sabor concentrado. Estratégias: a) Marca regional "Manga Premium da Bahia", b) Indicação Geográfica (em estudo!), c) Foco mercado interno SP/RJ premium, d) Combate ANTRACNOSE (urgente · após chuvas), e) Cooperativismo, f) Festa da Manga (turismo · marketing).</p>
+
+  <p><strong>4. ATENÇÃO À CONCORRÊNCIA AFRICANA!</strong> Costa do Marfim · Senegal · Mali iniciaram exportação UE. Estratégias: a) ABRAFRUTAS deve fortalecer marketing "Brazil Mangoes", b) Logística + rápida (Suape · Pecém), c) Diferencial qualidade BR (sabor · cor), d) Investir certificações (Rainforest · Fair Trade), e) Sustentabilidade (carbono baixo · pegada hídrica), f) Diversificar destinos (EUA · Oriente Médio · Ásia).</p>
+
+  <p><strong>5. INVESTIR NO BOOM DA "MANGA DE COLHER"!</strong> Tommy madura para varejo direto consumidor. Estratégias: a) Empresas como Frutal Nordeste · Special Fruit lideram, b) Embalagem premium (caixa madeira · individual), c) Pronta-para-consumir (madurada controlada), d) Marketing digital (Instagram · TikTok), e) Wine clubs/Mango clubs (assinatura mensal!), f) Premium R$ 18-25/kg varejo.</p>
+
+  <p><strong>6. PRODUTOS DE VALOR AGREGADO!</strong> Margem em fruta in natura é apertada. Estratégias: a) Polpa congelada (R$ 8-15/kg), b) Suco integral premium (R$ 12-20/L), c) Manga desidratada (snack · R$ 30-50/kg), d) Sorvetes · sobremesas, e) Geleias · doces artesanais, f) Cosméticos com manga (mangiferina · skincare).</p>
+
+  <p><strong>7. AGENDA: a) Plano Safra 26/27 em junho/26 (taxas subsidiadas), b) FNE Vale SF (BNB · 6-8%), c) Janela exportação Vale SF mar-mai (em andamento), d) 2ª janela jul-out, e) Acordo Mercosul-UE entra em vigor, f) Festas regionais (Festa da Manga · Frutos da Caatinga), g) Frutal/Anuga UE (out/26).</strong></p>
+
+  <div class="opinion .scenarios" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px">
+    <div class="sc up"><h5>🟢 Cenário Altista</h5><p>Tommy retoma R$ 3,00/kg em mai · Palmer recupera R$ 2,50 com 2ª janela export (jul-out) · clima estável Vale SF · Mercosul-UE bombando · concorrência africana fraca · "manga de colher" cresce · 280 mil t exportadas · 2026 supera 2025 → <strong>Setor lucra · margem 50%+</strong>. Probabilidade: ~30%</p></div>
+    <div class="sc nt"><h5>🟡 Cenário Neutro</h5><p>Tommy oscila R$ 2,00-2,80/kg · Palmer R$ 1,80-2,30 · Livramento sustenta premium · exportação 240 mil t · concorrência africana modera · oferta normal · margem moderada → <strong>Cenário misto · qualidade premia</strong>. Probabilidade: ~50%</p></div>
+    <div class="sc dn"><h5>🔴 Cenário Baixista</h5><p>Africa exporta 50 mil t para UE · Peru cresce · Tommy cai R$ 1,50 · Palmer R$ 1,40 · antracnose Livramento devastadora · Real R$ 4,80 · safra abundante mundial · pequenos produtores quebram → <strong>Crise · pequenos sofrem</strong>. Probabilidade: ~20%</p></div>
+  </div>
+
+  <div class="sig">📅 Análise Rural IN · Quinta, 30/Abr/2026 · Semana curta (feriado 1º Mai) · TOMMY EM CORREÇÃO · PALMER ESTÁVEL · 2025 FOI HISTÓRICO (+212%) · BR 4º EXPORTADOR MUNDIAL · ÁFRICA É AMEAÇA!</div>
+</div>
+
+<footer class="footer"><div class="wrap">
+  <div class="footer-brand"><span class="r">Rural</span> <span class="i">IN</span></div>
+  <p>Radar Agro Semanal · Manga · Semana 27–30 Abril 2026<br>Fontes: Cepea/Esalq · HF Brasil · Hortifrúti/Cepea · ABRAFRUTAS · IBRAF · FAEB · Embrapa Semiárido · Embrapa Mandioca e Fruticultura · Globo Rural · Agrofy · Sistema Faeb/Senar · IBGE · Comex Stat · MAPA · APHIS</p>
+  <div class="footer-credits">
+    <h4>Análise e Construção</h4>
+    <div class="name">Dr. Sidney Souza</div>
+    <div class="title">Economista e Adm. Agrícola — Estrategista Econômico do Produtor</div>
+    <div class="desc">Especialista em economia da fazenda e gestão de risco no agro<br>Transformamos dados da fazenda em decisões econômicas</div>
+    <div class="contact">📧 <a href="mailto:sidneyagro@gmail.com">sidneyagro@gmail.com</a> · 📱 <a href="tel:+5564992266886">(64) 9 9226-6886</a> · 📸 <a href="https://instagram.com/ruralin.ai" target="_blank">@ruralin.ai</a></div>
+  </div>
+  <p style="margin-top:18px"><em>⚠️ Material informativo. Não constitui recomendação de investimento.</em></p>
+</div></footer>
+
+</div>
+
+<script>
+const gc='rgba(46,37,26,.5)';
+const tt={backgroundColor:'rgba(21,16,10,.97)',borderColor:'#42342a',borderWidth:1,titleFont:{size:11,weight:'700'},bodyFont:{size:10},padding:10,cornerRadius:8};
+
+new Chart(document.getElementById('ch1').getContext('2d'),{type:'line',
+data:{labels:['Jan/26','Fev/26','Mar/26','06/04','13/04','17/04','30/04'],
+datasets:[
+{label:'Tommy Vale SF',data:[0.99,1.20,2.79,2.85,2.79,2.51,2.40],borderColor:'#f97316',backgroundColor:'rgba(249,115,22,.18)',borderWidth:3,fill:false,tension:.3,pointRadius:5},
+{label:'Palmer Vale SF',data:[2.80,2.58,2.79,2.40,2.10,1.94,1.95],borderColor:'#84cc16',backgroundColor:'rgba(132,204,22,.13)',borderWidth:3,fill:false,tension:.3,pointRadius:5}
+]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{color:'#fed7aa',font:{size:10},boxWidth:14,padding:8}},tooltip:tt},
+scales:{y:{min:0.5,max:3.2,grid:{color:gc},ticks:{callback:v=>'R$'+v.toFixed(1),font:{size:9},color:'#fed7aa'}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#fed7aa'}}}}});
+
+new Chart(document.getElementById('ch2').getContext('2d'),{type:'doughnut',
+data:{labels:['🥇 PE+BA Vale SF (65%)','🥈 SP (18%)','🥉 CE (6%)','BA Livramento (5%)','MG (4%)','Outros (2%)'],
+datasets:[{data:[65,18,6,5,4,2],
+backgroundColor:['rgba(249,115,22,.7)','rgba(132,204,22,.7)','rgba(59,130,246,.7)','rgba(168,85,247,.7)','rgba(251,191,36,.7)','rgba(120,113,108,.5)'],
+borderColor:['#f97316','#84cc16','#3b82f6','#a855f7','#fbbf24','#78716c'],borderWidth:2,hoverOffset:8}]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#fed7aa',font:{size:9},boxWidth:12,padding:6}},tooltip:tt},cutout:'58%'}});
+
+new Chart(document.getElementById('ch3').getContext('2d'),{type:'doughnut',
+data:{labels:['Tommy Atkins (75%)','Palmer (15%)','Keitt (4%)','Kent (3%)','Haden (2%)','Outras (1%)'],
+datasets:[{data:[75,15,4,3,2,1],
+backgroundColor:['rgba(249,115,22,.7)','rgba(168,85,247,.7)','rgba(132,204,22,.7)','rgba(220,38,38,.7)','rgba(251,191,36,.6)','rgba(120,113,108,.5)'],
+borderColor:['#f97316','#a855f7','#84cc16','#dc2626','#fbbf24','#78716c'],borderWidth:2,hoverOffset:8}]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#fed7aa',font:{size:9},boxWidth:12,padding:6}},tooltip:tt},cutout:'58%'}});
+
+new Chart(document.getElementById('ch4').getContext('2d'),{type:'bar',
+data:{labels:['🇳🇱 Holanda','🇪🇸 Espanha','🇬🇧 UK','🇵🇹 Portugal','🇺🇸 EUA','🇩🇪 Alemanha','🇨🇦 Canadá','Outros'],
+datasets:[{label:'% volume',data:[28,18,14,9,8,7,5,11],
+backgroundColor:'rgba(249,115,22,.7)',borderColor:'#f97316',borderWidth:2,borderRadius:7}]},
+options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+scales:{x:{min:0,max:30,grid:{color:gc},ticks:{callback:v=>v+'%',font:{size:9},color:'#fed7aa'}},y:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#fed7aa'}}}}});
+
+new Chart(document.getElementById('ch5').getContext('2d'),{type:'bar',
+data:{labels:['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+datasets:[{label:'Oferta Vale SF',data:[60,55,75,90,95,85,55,45,55,75,90,80],
+backgroundColor:c=>c.parsed.y>=85?'rgba(239,68,68,.7)':c.parsed.y>=70?'rgba(249,115,22,.6)':'rgba(132,204,22,.6)',
+borderColor:c=>c.parsed.y>=85?'#ef4444':c.parsed.y>=70?'#f97316':'#84cc16',borderWidth:2,borderRadius:7}]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+scales:{y:{min:30,max:100,grid:{color:gc},ticks:{callback:v=>v+'%',font:{size:9},color:'#fed7aa'}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#fed7aa'}}}}});
+
+new Chart(document.getElementById('ch6').getContext('2d'),{type:'bar',
+data:{labels:['🇮🇳 Índia','🇨🇳 China','🇹🇭 Tailândia','🇮🇩 Indonésia','🇲🇽 México','🇵🇰 Paquistão','🇧🇷 BRASIL','🇪🇬 Egito'],
+datasets:[{label:'Produção (mi t)',data:[24,4.8,3.2,2.8,2.2,1.8,1.4,1.3],
+backgroundColor:c=>c.dataIndex===6?'rgba(249,115,22,.85)':'rgba(132,204,22,.6)',
+borderColor:c=>c.dataIndex===6?'#f97316':'#84cc16',borderWidth:2,borderRadius:7}]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt},
+scales:{y:{min:0,max:26,grid:{color:gc},ticks:{font:{size:9},color:'#fed7aa'}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#fed7aa'}}}}});
+</script>
+</body>
+</html>

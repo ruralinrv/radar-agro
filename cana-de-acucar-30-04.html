@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Rural IN — Cana-de-Açúcar · Radar Agro Semanal · 27-30 Abr 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#040a06;--bg2:#071109;--bg3:#0c1a10;--bg4:#122418;--border:#1a2a1f;--border2:#243d2c;--accent:#14532d;--accent2:#166534;--accent3:#15803d;--cane:#65a30d;--cane2:#84cc16;--cane3:#a3e635;--leaf:#16a34a;--leaf2:#22c55e;--gold:#fbbf24;--gold2:#fcd34d;--cream:#f0fdf4;--text:#ecfdf5;--text2:#bbf7d0;--text3:#6b9d7a;--up:#22c55e;--upDark:#15803d;--dn:#ef4444;--dnDark:#b91c1c;--nt:#eab308;--blue:#3b82f6;--purple:#a855f7;--orange:#f97316;--cyan:#06b6d4;--teal:#14b8a6;--pink:#ec4899;--lime:#84cc16;--r:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 1000px 700px at 10% 15%,rgba(101,163,13,.1),transparent),radial-gradient(ellipse 800px 600px at 90% 85%,rgba(132,204,22,.06),transparent),radial-gradient(ellipse 600px 500px at 50% 50%,rgba(22,163,74,.04),transparent);pointer-events:none;z-index:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+
+.nav{background:rgba(7,17,9,.95);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:14px}
+.nav-logo-img{height:42px;width:auto;border-radius:8px}
+.nav-logo{font-weight:900;font-size:1.2rem}
+.nav-logo .r{color:var(--cane2)}
+.nav-logo .i{color:var(--leaf2)}
+.nav-badge{background:linear-gradient(135deg,#14532d,#65a30d);border:1px solid rgba(132,204,22,.4);padding:5px 14px;border-radius:20px;font-size:.7rem;font-weight:800;color:var(--cream);letter-spacing:.6px;box-shadow:0 0 20px rgba(101,163,13,.4)}
+.nav-back{color:var(--text3);font-size:.8rem;text-decoration:none;transition:color .2s}
+.nav-back:hover{color:var(--cane2)}
+
+.hero{padding:54px 0 40px;position:relative;text-align:left}
+.hero::after{content:'';position:absolute;bottom:0;left:0;width:240px;height:3px;background:linear-gradient(90deg,var(--accent2),var(--cane2),transparent)}
+.hero-top{display:flex;align-items:center;gap:22px;margin-bottom:16px}
+.hero-icon-wrap{position:relative;width:84px;height:84px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,rgba(101,163,13,.3),transparent 70%);border-radius:50%}
+.hero-icon{font-size:3.6rem;filter:drop-shadow(0 6px 18px rgba(101,163,13,.6))}
+.hero-texts h1{font-size:2.4rem;font-weight:900;letter-spacing:-1.2px;line-height:1.1}
+.hero-texts h1 .hl{background:linear-gradient(135deg,#166534,#15803d,#65a30d,#a3e635);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-texts .sub{font-size:.9rem;color:var(--text2);margin-top:6px;font-weight:500}
+.hero-bar{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border-radius:22px;font-size:.72rem;font-weight:700;border:1px solid;backdrop-filter:blur(8px)}
+.chip.up{color:var(--up);border-color:rgba(34,197,94,.3);background:rgba(34,197,94,.08)}
+.chip.dn{color:var(--dn);border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.08)}
+.chip.nt{color:var(--nt);border-color:rgba(234,179,8,.3);background:rgba(234,179,8,.08)}
+.chip.bl{color:var(--blue);border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.08)}
+.chip.pu{color:var(--purple);border-color:rgba(168,85,247,.3);background:rgba(168,85,247,.08)}
+.chip.or{color:var(--orange);border-color:rgba(249,115,22,.3);background:rgba(249,115,22,.08)}
+.chip.cn{color:var(--cane2);border-color:rgba(132,204,22,.3);background:rgba(132,204,22,.08)}
+
+.alert{border-radius:var(--r);padding:18px 22px;margin-bottom:14px;display:flex;align-items:flex-start;gap:14px;border:1px solid;font-size:.85rem;line-height:1.75;color:var(--text2);position:relative;overflow:hidden}
+.alert::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
+.alert strong{color:var(--text)}
+.alert .ai{font-size:1.4rem;flex-shrink:0;margin-top:1px}
+.alert.green{background:linear-gradient(90deg,rgba(34,197,94,.08),rgba(34,197,94,.02));border-color:rgba(34,197,94,.25)}
+.alert.green::before{background:var(--up)}
+.alert.red{background:linear-gradient(90deg,rgba(239,68,68,.08),rgba(239,68,68,.02));border-color:rgba(239,68,68,.25)}
+.alert.red::before{background:var(--dn)}
+.alert.amber{background:linear-gradient(90deg,rgba(234,179,8,.08),rgba(234,179,8,.02));border-color:rgba(234,179,8,.25)}
+.alert.amber::before{background:var(--nt)}
+.alert.blue{background:linear-gradient(90deg,rgba(59,130,246,.08),rgba(59,130,246,.02));border-color:rgba(59,130,246,.25)}
+.alert.blue::before{background:var(--blue)}
+.alert.purple{background:linear-gradient(90deg,rgba(168,85,247,.08),rgba(168,85,247,.02));border-color:rgba(168,85,247,.25)}
+.alert.purple::before{background:var(--purple)}
+.alert.cyan{background:linear-gradient(90deg,rgba(6,182,212,.08),rgba(6,182,212,.02));border-color:rgba(6,182,212,.25)}
+.alert.cyan::before{background:var(--cyan)}
+.alert.orange{background:linear-gradient(90deg,rgba(249,115,22,.1),rgba(249,115,22,.02));border-color:rgba(249,115,22,.3)}
+.alert.orange::before{background:var(--orange)}
+.alert.cane{background:linear-gradient(90deg,rgba(101,163,13,.13),rgba(132,204,22,.04));border-color:rgba(132,204,22,.3)}
+.alert.cane::before{background:var(--cane2)}
+
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin:24px 0}
+.kpi{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:16px 18px;position:relative;overflow:hidden;transition:all .25s ease}
+.kpi:hover{transform:translateY(-3px);border-color:var(--border2);box-shadow:0 12px 30px rgba(0,0,0,.5)}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2)}
+.kpi.up::before{background:linear-gradient(90deg,var(--up),var(--lime))}
+.kpi.dn::before{background:linear-gradient(90deg,var(--dn),var(--orange))}
+.kpi.nt::before{background:linear-gradient(90deg,var(--nt),var(--gold))}
+.kpi.bl::before{background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.kpi.pu::before{background:linear-gradient(90deg,var(--purple),var(--pink))}
+.kpi.or::before{background:linear-gradient(90deg,var(--orange),var(--gold))}
+.kpi.cn::before{background:linear-gradient(90deg,var(--accent2),var(--cane2))}
+.kpi-lb{font-size:.6rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin-bottom:5px;font-weight:700}
+.kpi-val{font-size:1.18rem;font-weight:900;letter-spacing:-.5px;line-height:1.2}
+.kpi-val.up{color:var(--up)}
+.kpi-val.dn{color:var(--dn)}
+.kpi-val.nt{color:var(--nt)}
+.kpi-val.bl{color:var(--blue)}
+.kpi-val.pu{color:var(--purple)}
+.kpi-val.or{color:var(--orange)}
+.kpi-val.cn{color:var(--cane2)}
+.kpi-sub{font-size:.66rem;color:var(--text3);margin-top:3px;font-weight:500}
+
+.dv{height:1px;background:linear-gradient(90deg,transparent,var(--border2) 20%,var(--cane2) 50%,var(--border2) 80%,transparent);margin:36px 0}
+
+.stitle{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.stitle .icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;box-shadow:0 4px 14px rgba(0,0,0,.4)}
+.stitle h2{font-size:1.18rem;font-weight:800;letter-spacing:-.3px}
+.stitle h2 span{color:var(--text2);font-weight:400;font-size:.85rem;margin-left:4px}
+
+.co{border-radius:var(--r);padding:20px 24px;margin-bottom:14px;border-left:4px solid;font-size:.85rem;color:var(--text2);line-height:1.85;position:relative;background:linear-gradient(90deg,var(--bg2),var(--bg3))}
+.co strong{color:var(--text)}
+.co h4{font-size:.98rem;font-weight:800;margin-bottom:10px;letter-spacing:-.2px}
+.co.up{border-color:var(--up)}.co.up h4{color:var(--up)}
+.co.dn{border-color:var(--dn)}.co.dn h4{color:var(--dn)}
+.co.nt{border-color:var(--nt)}.co.nt h4{color:var(--nt)}
+.co.bl{border-color:var(--blue)}.co.bl h4{color:var(--blue)}
+.co.or{border-color:var(--orange)}.co.or h4{color:var(--orange)}
+.co.pu{border-color:var(--purple)}.co.pu h4{color:var(--purple)}
+.co.cy{border-color:var(--cyan)}.co.cy h4{color:var(--cyan)}
+.co.cn{border-color:var(--cane2)}.co.cn h4{color:var(--cane2)}
+
+.chart-box{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--r);padding:22px 24px;margin-bottom:14px;overflow:hidden;transition:border-color .2s}
+.chart-box:hover{border-color:var(--border2)}
+.chart-box h3{font-size:.9rem;color:var(--text);margin-bottom:14px;font-weight:700;display:flex;align-items:center;gap:8px}
+.chart-box h3 .ch-tag{margin-left:auto;font-size:.62rem;font-weight:700;padding:2px 10px;border-radius:10px;background:rgba(101,163,13,.18);color:var(--cane2);letter-spacing:.5px}
+.chart-wrap{position:relative;height:290px;overflow:hidden}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:800px){.grid2,.grid3{grid-template-columns:1fr}}
+
+.tbl-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--border);margin-bottom:14px;background:var(--bg2)}
+table{width:100%;border-collapse:collapse;font-size:.78rem}
+thead th{background:linear-gradient(180deg,var(--bg3),var(--bg4));padding:12px 14px;text-align:center;font-weight:800;color:var(--text2);font-size:.66rem;text-transform:uppercase;letter-spacing:.9px;border-bottom:1px solid var(--border)}
+tbody td{padding:10px 12px;border-bottom:1px solid rgba(26,42,31,.5);text-align:center}
+tbody tr:hover{background:rgba(101,163,13,.05)}
+.td-name{text-align:left!important;font-weight:700;white-space:nowrap}
+.td-up{color:var(--up);font-weight:800}
+.td-dn{color:var(--dn);font-weight:800}
+.td-nt{color:var(--nt);font-weight:800}
+
+.thermo{margin:14px 0}
+.thermo h4{font-size:.84rem;color:var(--text);margin-bottom:10px;font-weight:700}
+.th-bar{height:14px;border-radius:7px;position:relative;box-shadow:inset 0 1px 4px rgba(0,0,0,.4)}
+.th-marker{position:absolute;top:-6px;width:4px;height:26px;background:#fff;border-radius:2px;transform:translateX(-50%);box-shadow:0 0 12px rgba(255,255,255,.6)}
+.th-lb{display:flex;justify-content:space-between;font-size:.66rem;color:var(--text3);margin-top:6px;font-weight:600}
+
+.card{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:var(--r);padding:22px 26px;margin-bottom:14px;transition:border-color .2s}
+.card:hover{border-color:var(--border2)}
+
+.opinion{background:linear-gradient(135deg,rgba(101,163,13,.18),rgba(132,204,22,.06),rgba(101,163,13,.02));border:1px solid rgba(132,204,22,.3);border-radius:var(--r);padding:30px 32px;margin:26px 0;position:relative;overflow:hidden}
+.opinion::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent2),var(--cane2),var(--accent2))}
+.opinion h3{font-size:1.08rem;font-weight:800;color:var(--cane2);margin-bottom:12px;letter-spacing:-.2px}
+.opinion p{font-size:.88rem;color:var(--text2);line-height:1.9;margin-bottom:12px}
+.opinion p strong{color:var(--text)}
+.opinion .scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.opinion .sc{padding:14px 16px;border-radius:10px;border:1px solid;background:rgba(0,0,0,.3)}
+.opinion .sc.up{border-color:rgba(34,197,94,.3)}
+.opinion .sc.nt{border-color:rgba(234,179,8,.3)}
+.opinion .sc.dn{border-color:rgba(239,68,68,.3)}
+.opinion .sc h5{font-size:.78rem;font-weight:800;margin-bottom:6px}
+.opinion .sc.up h5{color:var(--up)}
+.opinion .sc.nt h5{color:var(--nt)}
+.opinion .sc.dn h5{color:var(--dn)}
+.opinion .sc p{font-size:.74rem;line-height:1.6;margin:0}
+@media(max-width:700px){.opinion .scenarios{grid-template-columns:1fr}}
+.opinion .sig{margin-top:18px;padding-top:14px;border-top:1px solid rgba(132,204,22,.2);font-size:.78rem;color:var(--text3);font-style:italic;display:flex;align-items:center;gap:8px}
+
+.footer{border-top:1px solid var(--border);padding:42px 0;text-align:center;margin-top:36px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.5))}
+.footer-brand{font-size:1.5rem;font-weight:900;margin-bottom:12px}
+.footer-brand .r{color:var(--cane2)}
+.footer-brand .i{color:var(--leaf2)}
+.footer p{font-size:.78rem;color:var(--text3);line-height:1.8}
+.footer-credits{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+.footer-credits h4{font-size:.92rem;color:var(--cane2);font-weight:700;margin-bottom:6px}
+.footer-credits .name{font-size:1.05rem;font-weight:800;color:var(--text);margin-bottom:2px}
+.footer-credits .title{font-size:.78rem;color:var(--gold2);font-weight:600;margin-bottom:8px}
+.footer-credits .desc{font-size:.74rem;color:var(--text2);line-height:1.7;max-width:540px;margin:0 auto 12px}
+.footer-credits .contact{font-size:.74rem;color:var(--text3)}
+.footer-credits .contact a{color:var(--cane2);text-decoration:none}
+.footer-credits .contact a:hover{text-decoration:underline}
+
+.bignum-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+.bignum{background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:14px;padding:20px 18px;text-align:center;position:relative;overflow:hidden}
+.bignum::after{content:'';position:absolute;top:-50%;right:-30%;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(101,163,13,.13),transparent 70%)}
+.bignum .v{font-size:1.7rem;font-weight:900;letter-spacing:-1px;line-height:1;margin-bottom:6px;position:relative;z-index:1}
+.bignum .v.up{color:var(--up)}
+.bignum .v.dn{color:var(--dn)}
+.bignum .v.nt{color:var(--nt)}
+.bignum .v.bl{color:var(--blue)}
+.bignum .v.or{color:var(--orange)}
+.bignum .v.cn{color:var(--cane2)}
+.bignum .l{font-size:.72rem;color:var(--text2);font-weight:600;position:relative;z-index:1}
+.bignum .s{font-size:.66rem;color:var(--text3);margin-top:3px}
+@media(max-width:700px){.bignum-row{grid-template-columns:repeat(2,1fr)}}
+
+@media(max-width:600px){
+  .hero-top{flex-direction:column;text-align:center;gap:12px}
+  .hero-texts h1{font-size:1.65rem}
+  .nav .wrap{flex-direction:column;gap:10px}
+  .kpi-row{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1"></script>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap"><div class="nav-left"><img src="https://ruralinrv.github.io/ruralin/logo.png" alt="Rural IN" class="nav-logo-img" onerror="this.style.display='none'"><div class="nav-logo"><span class="r">Rural</span> <span class="i">IN</span></div><div class="nav-badge">🎋 CANA-DE-AÇÚCAR</div></div><a href="portal-30-04.html" class="nav-back">← Voltar ao Portal</a></div></nav>
+
+<div class="wrap">
+
+<section class="hero">
+  <div class="hero-top">
+    <div class="hero-icon-wrap"><span class="hero-icon">🎋</span></div>
+    <div class="hero-texts">
+      <h1><span class="hl">Cana-de-Açúcar</span> · Radar Semanal</h1>
+      <div class="sub">Semana 27–30 Abril 2026 (curta · feriado 1º Mai) · CONSECANA · CEPEA · UNICA · CTC · ICE NY · Centro-Sul · Mix Etanol Disparou para 67%!</div>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <span class="chip up">🚀 ICE NY Açúcar 29/04: 14,77¢ (+3,79% dia!)</span>
+    <span class="chip dn">📉 Açúcar Cristal SP: R$ 99,39 (−5,76% mês!)</span>
+    <span class="chip cn">🎋 Safra 25/26 ENCERRADA: 611,15 mi t</span>
+    <span class="chip up">⛽ Mix Etanol 26/27: 67,07% (vs 55,29%!)</span>
+    <span class="chip up">🇨🇳 China importa! Petróleo +6%!</span>
+    <span class="chip pu">🏦 Selic: 14,75% → 14,50%</span>
+  </div>
+</section>
+
+<div class="bignum-row">
+  <div class="bignum"><div class="v cn">611,15 mi t</div><div class="l">Cana moída 25/26 (CTC/UNICA)</div><div class="s">−1,7% a/a · 4ª maior histórica</div></div>
+  <div class="bignum"><div class="v up">19,56 mi t</div><div class="l">Moagem 1ª quinz. abr 26/27</div><div class="s">+19,67% vs 25/26!</div></div>
+  <div class="bignum"><div class="v up">14,77¢/lb</div><div class="l">Açúcar #11 ICE NY 29/04</div><div class="s">+3,79% dia · petróleo +6%!</div></div>
+  <div class="bignum"><div class="v dn">R$ 99,39</div><div class="l">Açúcar Cristal SP 20/04 (sc 50kg)</div><div class="s">−5,76% mês · oferta cheia</div></div>
+</div>
+
+<div class="alert cane">
+  <span class="ai">🎋</span>
+  <div><strong style="color:var(--cane2)">SAFRA 25/26 ENCERRADA: 611,15 MI T DE CANA · 4ª MAIOR DA HISTÓRIA DO CENTRO-SUL!</strong><br>
+  <strong>Balanço CTC/UNICA — Centro-Sul (publicado 30/04):</strong><br>
+  ▸ <strong>Cana moída:</strong> 611,15 milhões de toneladas (vs 621,93 mi · −10,78 mi t)<br>
+  ▸ <strong>Açúcar produzido:</strong> 40,43 mi t (estável vs 40,18 mi · 4,7% abaixo recorde)<br>
+  ▸ <strong>Etanol total:</strong> 33,72 bilhões de litros (−3,56% · 2º maior!)<br>
+  &nbsp;&nbsp;▸ De cana: 20,83 bi L<br>
+  &nbsp;&nbsp;▸ De milho: ~12,89 bi L<br>
+  ▸ <strong>ATR:</strong> 137,79 kg/t (−2,34% a/a)<br>
+  ▸ <strong>Produtividade:</strong> 74,4 t/ha (−4,1% a/a)<br><br>
+  <strong>Por estado (cana moída):</strong><br>
+  ▸ <strong>São Paulo:</strong> −4,3%<br>
+  ▸ <strong>Goiás:</strong> −9,4%<br>
+  ▸ <strong>Minas Gerais:</strong> <strong>−15,9%</strong> (pior queda!)<br>
+  ▸ <strong>Mato Grosso:</strong> +3,2%<br>
+  ▸ <strong>Mato Grosso do Sul:</strong> +6,0%<br>
+  ▸ <strong>Paraná:</strong> <strong>+15,5%!</strong> (melhor desempenho!)<br><br>
+  <strong>Luciano Rodrigues (Diretor UNICA):</strong> "<em>A redução da moagem já era esperada em função das condições climáticas registradas no período de crescimento da lavoura. A despeito disso, o ciclo registrou a quarta maior moagem histórica do Centro-Sul e a segunda maior produção de etanol e de açúcar.</em>"</div>
+</div>
+
+<div class="alert green">
+  <span class="ai">🚀</span>
+  <div><strong style="color:var(--up)">SAFRA 26/27 COMEÇOU EM RITMO ACELERADO! Moagem +19,67% e MIX ETANOL EXPLODIU para 67%!</strong><br>
+  <strong>UNICA — 1ª quinzena abril 2026 (publicado 30/04):</strong><br>
+  ▸ <strong>Cana moída:</strong> 19,56 milhões de toneladas (vs 16,68 mi · <strong>+19,67%!</strong>)<br>
+  ▸ <strong>Etanol produzido:</strong> 1,23 bilhão de litros (<strong>+33,32%!</strong>)<br>
+  ▸ <strong>Açúcar produzido:</strong> 647,21 mil t (vs 735 mi · −11,94%)<br>
+  ▸ <strong>ATR:</strong> 103,36 kg/t (−0,10% · estável)<br><br>
+  <strong>Mix Etanol/Açúcar — A virada do ciclo:</strong><br>
+  ▸ <strong>Mix Etanol 26/27:</strong> <strong>67,07%</strong> (vs 55,29% no 25/26!)<br>
+  ▸ <strong>Mix Açúcar 26/27:</strong> 32,93% (vs 44,71% no 25/26!)<br>
+  ▸ <strong>Movimento:</strong> Usinas migrando MASSIVAMENTE para etanol!<br><br>
+  <strong>Por que a virada brutal?</strong><br>
+  ▸ <strong>Açúcar caiu</strong> nas bolsas (preços não compensam)<br>
+  ▸ <strong>Petróleo subiu +6%</strong> · gasolina cara · etanol vantajoso<br>
+  ▸ <strong>Real fraco</strong> reduz competitividade exportação açúcar<br>
+  ▸ <strong>Proposta governo</strong> de elevar mistura etanol/gasolina<br>
+  ▸ <strong>Etanol hidratado vantajoso</strong> nas bombas (<70% gasolina)<br><br>
+  <strong>Operação Centro-Sul (30/04):</strong> 195 unidades em operação · 177 cana · 10 etanol de milho · 8 flex · 126 entraram só na 1ª quinz. abril!</div>
+</div>
+
+<div class="alert orange">
+  <span class="ai">🌎</span>
+  <div><strong style="color:var(--orange)">ICE NY: AÇÚCAR DISPAROU NA QUARTA-FEIRA! +3,79% com PETRÓLEO em alta de 6%!</strong><br>
+  <strong>Trajetória ICE NY Açúcar #11 (Demerara · julho/26):</strong><br>
+  ▸ <strong>Sexta 17/04:</strong> 13,48¢/lb (mín. 5 anos!)<br>
+  ▸ <strong>Quarta 22/04:</strong> 13,57¢/lb (+1%)<br>
+  ▸ <strong>Sexta 24/04:</strong> 14,11¢/lb (+4,7% sem)<br>
+  ▸ <strong>Quarta 29/04:</strong> <strong>14,77¢/lb (+3,79% dia!)</strong><br>
+  ▸ <strong>Tendência:</strong> Recuperação técnica após mín. 5 anos!<br><br>
+  <strong>Açúcar Branco · ICE Londres (terça 21/04):</strong><br>
+  ▸ Agosto/26: US$ 422/t (+US$ 4,40)<br>
+  ▸ Outubro/26: US$ 419,50<br>
+  ▸ Dezembro/26: US$ 420,50<br><br>
+  <strong>Maurício Muruci (Safras & Mercado):</strong> "<em>A alta do petróleo impacta o açúcar, pois eleva o preço da gasolina em Nova York, que chegou ao maior valor em três anos. Isso reflete também no Brasil, que deve ter um combustível mais caro, beneficiando a produção do etanol e reduzindo a do açúcar.</em>"<br><br>
+  <strong>Catalisadores:</strong><br>
+  ▸ <strong>Petróleo Brent:</strong> +6% no período (sustentou commodities energéticas)<br>
+  ▸ <strong>China importa:</strong> Aumento das importações chinesas<br>
+  ▸ <strong>Real forte:</strong> Reduz oferta exportável BR<br>
+  ▸ <strong>CONAB:</strong> Projeção açúcar BR 26/27 caiu 0,5% (43,95 mi t)<br>
+  ▸ <strong>Proposta etanol:</strong> Governo quer elevar mistura na gasolina<br><br>
+  <strong>Mas há limites:</strong> Superávit global 26/27 ainda esperado em <strong>9-10 mi t</strong> (vs 11 mi 25/26). Tailândia abundante. Cenário estrutural ainda baixista.</div>
+</div>
+
+<div class="alert red">
+  <span class="ai">📉</span>
+  <div><strong style="color:var(--dn)">MERCADO INTERNO PRESSIONADO: Açúcar Cristal SP CAIU −5,76% no mês de abril!</strong><br>
+  <strong>CEPEA Açúcar Cristal Branco SP (saca 50kg):</strong><br>
+  ▸ <strong>Início abril:</strong> ~R$ 105,46<br>
+  ▸ <strong>20/04 (segunda):</strong> R$ 99,39 (−5,76% mês!)<br>
+  ▸ <strong>21/04 (Tiradentes):</strong> Sem cotação<br>
+  ▸ <strong>Safra 25/26 média:</strong> R$ 116,90 (<strong>−20% vs 24/25!</strong>)<br><br>
+  <strong>Razões da queda:</strong><br>
+  ▸ <strong>Compradores cautelosos:</strong> Aguardando novas baixas<br>
+  ▸ <strong>Avanço da safra 26/27:</strong> Oferta crescente<br>
+  ▸ <strong>Tempo firme:</strong> Acelera moagem · mais oferta diária<br>
+  ▸ <strong>ICE NY caindo:</strong> Reflexo internacional<br>
+  ▸ <strong>Feriado Tiradentes:</strong> Reduziu negócios<br><br>
+  <strong>Indicador Diário Paulínia — Etanol Hidratado:</strong><br>
+  ▸ <strong>20/04:</strong> R$ 2.601,50/m³ (−1,12% dia)<br>
+  ▸ <strong>Acumulado abr:</strong> <strong>−14,07%!</strong><br>
+  ▸ <strong>Sub R$ 3/L:</strong> Primeira vez desde 1º agosto 2025!<br><br>
+  <strong>CEPEA Etanol Hidratado SP (R$/litro · líq. ICMS+PIS/Cofins):</strong><br>
+  ▸ <strong>6-10/04:</strong> R$ 2,7873 (−3,47% sem)<br>
+  ▸ <strong>13-17/04:</strong> R$ 2,5920 (−7,01% sem!)<br>
+  ▸ <strong>Anidro 13-17/04:</strong> R$ 2,9575 (−7,43% sem!)<br><br>
+  <strong>Mas houve reação esta semana (28/04):</strong> Ribeirão Preto etanol hidratado de R$ 3,07/L (17/04) caiu para níveis menores · ainda com viés baixista.</div>
+</div>
+
+<div class="alert blue">
+  <span class="ai">⛽</span>
+  <div><strong style="color:var(--blue)">ETANOL: Apesar da queda em abril, fechou safra 25/26 em ALTA REAL de +6,5%!</strong><br>
+  <strong>CEPEA — Médias da Safra 25/26 encerrada (abr/25 a mar/26):</strong><br>
+  ▸ <strong>Etanol hidratado:</strong> R$ 2,7805/L (<strong>+6,52% real!</strong>)<br>
+  ▸ <strong>Etanol anidro:</strong> R$ 3,1291/L (<strong>+6,21% real!</strong>)<br>
+  ▸ <strong>Volume hidratado vendido:</strong> −28% vs 24/25 (oferta menor)<br>
+  ▸ <strong>Mai/25:</strong> Maior volume negociado<br>
+  ▸ <strong>Jul/25:</strong> Menor volume<br><br>
+  <strong>Relação etanol/gasolina:</strong><br>
+  ▸ <strong>Safra 25/26:</strong> Sempre abaixo de 70% (vantajoso!)<br>
+  ▸ <strong>Distribuidoras compraram MAIS</strong> nos picos<br>
+  ▸ <strong>Consumidor final</strong> migrou para etanol<br><br>
+  <strong>Para 26/27 (Cepea):</strong> "<em>O ambiente tende a ser de maior cautela. As atuais volatilidades nos preços do petróleo e a perspectiva de aumento da oferta de etanol</em>" (cana + milho) podem pressionar preços PARA BAIXO. Mas mix favorável a etanol pode equilibrar.<br><br>
+  <strong>Etanol de milho avança:</strong> 10 unidades dedicadas operam no Centro-Sul · 8 flex · ~13 bi L em 25/26 (~38% do total etanol BR).<br><br>
+  <strong>Alagoas (NE) — interessante:</strong> 12 das 15 usinas priorizaram ETANOL em 25/26! Setor reage a açúcar baixo migrando para combustível.</div>
+</div>
+
+<div class="alert nt">
+  <span class="ai">⚖️</span>
+  <div><strong style="color:var(--nt)">CONSECANA-SP: Preço do ATR cai gradualmente · Mar/26 em R$ 1,0007/kg ATR</strong><br>
+  <strong>Consecana-SP — Preços do kg do ATR (R$):</strong><br>
+  ▸ <strong>Dez/25:</strong> 1,0587 (mensal) · 1,0952 (acumulado)<br>
+  ▸ <strong>Jan/26:</strong> 1,0567 · 1,0929<br>
+  ▸ <strong>Fev/26:</strong> 1,0231 · 1,0886<br>
+  ▸ <strong>Mar/26:</strong> <strong>1,0007</strong> · 1,0816<br>
+  ▸ <strong>Tendência:</strong> Queda gradual · −5,5% nos 4 meses<br><br>
+  <strong>Pecege (projeção fim 25/26):</strong> Consecana-SP fecha em <strong>~R$ 1,12/kg ATR</strong> (acumulado · com viés de baixa)<br><br>
+  <strong>João Rosa (Botão · Pecege):</strong> "<em>Estamos voltando a níveis historicamente 'normais' após dois anos muito favoráveis; o ATR tende a ficar pressionado.</em>"<br><br>
+  <strong>Cálculo prático:</strong><br>
+  ▸ <strong>1 tonelada de cana × ATR 137,79 kg × R$ 1,0816 =</strong> R$ 149,03/t<br>
+  ▸ <strong>Comparativo histórico:</strong> Em 2024/25 fechou em ~R$ 1,18 (5% acima)<br>
+  ▸ <strong>Custo médio de produção:</strong> ~R$ 130-145/t (margens apertando!)<br><br>
+  <strong>Impacto para o produtor:</strong> Quem entrega cana via Consecana está vendo margens APERTANDO. Foco em <strong>elevar TCH</strong> (toneladas por hectare) e <strong>melhorar ATR</strong> (qualidade) é essencial. Variedades com alto rendimento + colheita no ponto ótimo.</div>
+</div>
+
+<div class="alert purple">
+  <span class="ai">🌍</span>
+  <div><strong style="color:var(--purple)">SAFRA 26/27 PROJETADA: 625-630 MI T (+3-4%)! Brasil mantém liderança mundial</strong><br>
+  <strong>Projeções Centro-Sul 2026/27:</strong><br>
+  ▸ <strong>Moagem (Pecege/UNICA):</strong> 625-630 mi t (+3-4% vs 25/26)<br>
+  ▸ <strong>Açúcar BR (CONAB):</strong> 43,95 mi t (−0,5%)<br>
+  ▸ <strong>Etanol total:</strong> Recorde esperado (mix favorável)<br>
+  ▸ <strong>Brasil:</strong> Maior exportador mundial de açúcar<br>
+  ▸ <strong>Brasil:</strong> 2º maior produtor de etanol (atrás dos EUA)<br><br>
+  <strong>Cenário global açúcar 26/27 (StoneX):</strong><br>
+  ▸ <strong>Superávit mundial:</strong> 9-10 mi t (vs 11 mi 25/26)<br>
+  ▸ <strong>Tailândia:</strong> Excedente robusto 1º semestre<br>
+  ▸ <strong>Índia:</strong> Recuperação produção<br>
+  ▸ <strong>Pressão baixista estrutural</strong> mantida<br><br>
+  <strong>Catalisadores altistas potenciais:</strong><br>
+  ▸ <strong>El Niño/La Niña:</strong> Pode afetar Tailândia/Índia<br>
+  ▸ <strong>Mix etanol BR:</strong> Migra produção (já em 67%!)<br>
+  ▸ <strong>China importadora:</strong> Demanda crescente<br>
+  ▸ <strong>Petróleo:</strong> Geopolítica (Ormuz, Rússia)<br><br>
+  <strong>Catalisadores baixistas:</strong><br>
+  ▸ <strong>Safras grandes</strong> Tailândia e Índia<br>
+  ▸ <strong>Real fraco</strong> reduz competitividade<br>
+  ▸ <strong>Demanda enfraquecida</strong> (recessão global?)<br>
+  ▸ <strong>Estoques globais</strong> ainda confortáveis</div>
+</div>
+
+<div class="alert cyan">
+  <span class="ai">🏭</span>
+  <div><strong style="color:var(--cyan)">RAÍZEN EM REESTRUTURAÇÃO! Setor enfrenta turbulência financeira</strong><br>
+  <strong>Notícia recente (28/04):</strong> Raízen (joint venture Cosan + Shell) confirma negociações com credores. <strong>Maior produtora de açúcar e etanol do mundo</strong> reorganiza estrutura financeira.<br><br>
+  <strong>Outras movimentações importantes do setor:</strong><br>
+  ▸ <strong>Companhia Bioenergética:</strong> Emissão debêntures R$ 1,1 bi<br>
+  ▸ <strong>Cocal:</strong> Divulgou resultados 2025 (em recuperação)<br>
+  ▸ <strong>Setor sucroenergético:</strong> Cenário de pressão financeira generalizada<br>
+  ▸ <strong>Razões:</strong> Açúcar caiu 20% safra 25/26 + endividamento + taxa Selic alta histórica<br><br>
+  <strong>Implicações para o produtor:</strong><br>
+  ▸ <strong>Negociações de cana:</strong> Usinas mais cautelosas em pagamento<br>
+  ▸ <strong>Atrasos:</strong> Possível em algumas usinas pequenas<br>
+  ▸ <strong>Selic 14,50%</strong> reduz pressão financeira (alívio)<br>
+  ▸ <strong>Setor consolidando:</strong> Fusões/aquisições esperadas<br><br>
+  <strong>Mensagem:</strong> Setor sucroenergético é cíclico · momento de turbulência mas estrutura competitiva BR é mundial. Próximos 12-18 meses serão de <strong>reorganização</strong> · produtores devem priorizar <strong>usinas sólidas</strong> (Raízen reestruturada continua relevante; Coopersucar, Tereos, BP Bunge, São Martinho são consolidadas).</div>
+</div>
+
+<div class="alert purple">
+  <span class="ai">🏦</span>
+  <div><strong style="color:var(--purple)">EVENTO MACRO: COPOM CORTOU SELIC PARA 14,50%! Dólar fraco favorece etanol vs açúcar</strong><br>
+  Banco Central reduziu Selic em <strong>0,25 p.p.</strong> (29/04). <strong>Dólar:</strong> R$ 4,9523 (mín. 2 anos!).<br><br>
+  <strong>Impacto sobre cana-de-açúcar:</strong><br>
+  ▸ <strong>Selic 14,50%:</strong> Custo financeiro de usinas reduz (alívio)<br>
+  ▸ <strong>Renovação canaviais:</strong> Crédito mais barato (BNDES, FCO)<br>
+  ▸ <strong>Plano Safra 26/27:</strong> Taxas mais favoráveis<br>
+  ▸ <strong>Dívidas Raízen e outras:</strong> Pressão menor com Selic em queda<br><br>
+  <strong>Dólar fraco (R$ 4,9523 · mín 2 anos):</strong><br>
+  ▸ ✗ <strong>Reduz competitividade exportação</strong> de açúcar<br>
+  ▸ ✓ <strong>Etanol mais vantajoso</strong> (não exporta · mercado interno)<br>
+  ▸ ✓ <strong>Insumos importados</strong> (fertilizante, defensivo) mais baratos<br>
+  ▸ ✗ <strong>ICE NY açúcar</strong> reflete câmbio · receita usinas reduz em R$<br><br>
+  <strong>Cenário composto:</strong> Selic baixa + dólar fraco + petróleo alto + mix etanol em 67% = <strong>setor migra MASSIVAMENTE para etanol</strong> em 26/27. Produtores devem focar em <strong>qualidade ATR</strong> (variedades alta sacarose) que serve TANTO para açúcar QUANTO para etanol.</div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#14532d,#166534)">📊</div><h2>Indicadores-Chave <span>— CONSECANA · CEPEA · UNICA · CTC · ICE NY · Macro</span></h2></div>
+
+<div class="kpi-row">
+  <div class="kpi cn"><div class="kpi-lb">Consecana SP Mar/26 (kg ATR)</div><div class="kpi-val cn">R$ 1,0007</div><div class="kpi-sub">Mensal · acum. R$ 1,0816</div></div>
+  <div class="kpi cn"><div class="kpi-lb">Consecana 25/26 acumul.</div><div class="kpi-val cn">~R$ 1,12</div><div class="kpi-sub">Pecege · viés baixa</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Açúcar Cristal SP 20/04</div><div class="kpi-val dn">R$ 99,39</div><div class="kpi-sub">−5,76% mês · sc 50kg</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Açúcar safra 25/26 média</div><div class="kpi-val dn">R$ 116,90</div><div class="kpi-sub">−20% vs 24/25!</div></div>
+  <div class="kpi up"><div class="kpi-lb">ICE NY Açúcar #11 (29/04)</div><div class="kpi-val up">14,77¢/lb</div><div class="kpi-sub">+3,79% dia! · jul/26</div></div>
+  <div class="kpi nt"><div class="kpi-lb">Açúcar Branco Londres 21/04</div><div class="kpi-val nt">US$ 422,00</div><div class="kpi-sub">/t · ago/26 · +1%</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Etanol Hidratado SP 13-17/04</div><div class="kpi-val dn">R$ 2,5920</div><div class="kpi-sub">−7,01% sem · /L</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Etanol Anidro SP 13-17/04</div><div class="kpi-val dn">R$ 2,9575</div><div class="kpi-sub">−7,43% sem · /L</div></div>
+  <div class="kpi up"><div class="kpi-lb">Etanol Hidratado 25/26 (média)</div><div class="kpi-val up">R$ 2,7805</div><div class="kpi-sub">+6,52% real safra!</div></div>
+  <div class="kpi cn"><div class="kpi-lb">Cana moída 25/26 (CS)</div><div class="kpi-val cn">611,15 mi t</div><div class="kpi-sub">−1,7% · 4ª maior história!</div></div>
+  <div class="kpi up"><div class="kpi-lb">Cana 1ª quinz. abr 26/27</div><div class="kpi-val up">19,56 mi t</div><div class="kpi-sub">+19,67%! · UNICA</div></div>
+  <div class="kpi up"><div class="kpi-lb">Mix Etanol 26/27 (1ª quinz)</div><div class="kpi-val up">67,07%</div><div class="kpi-sub">vs 55,29% ano anterior!</div></div>
+  <div class="kpi cn"><div class="kpi-lb">Etanol total 25/26</div><div class="kpi-val cn">33,72 bi L</div><div class="kpi-sub">−3,56% · 2ª maior história</div></div>
+  <div class="kpi cn"><div class="kpi-lb">Açúcar total 25/26</div><div class="kpi-val cn">40,43 mi t</div><div class="kpi-sub">Estável · 2ª maior</div></div>
+  <div class="kpi pu"><div class="kpi-lb">Selic 29/04</div><div class="kpi-val pu">14,50% a.a.</div><div class="kpi-sub">↓ 0,25 p.p. CORTE</div></div>
+  <div class="kpi dn"><div class="kpi-lb">Dólar 30/04</div><div class="kpi-val dn">R$ 4,9523</div><div class="kpi-sub">−1,00% · mín. 2 anos</div></div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#14532d,#166534)">📍</div><h2>Cotações da Semana <span>— Açúcar · Etanol · ICE NY · 27 a 30 Abril 2026</span></h2></div>
+
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Indicador</th><th>22/04</th><th>24/04</th><th>27/04</th><th>28/04</th><th>29/04</th><th>30/04</th><th>Var.</th></tr></thead>
+<tbody>
+<tr><td class="td-name">🌎 ICE NY Açúcar #11 (¢/lb · jul/26)</td><td>13,57</td><td>14,11</td><td>14,32</td><td class="td-up">14,23</td><td class="td-up">14,77</td><td>—</td><td class="td-up">+8,8% sem!</td></tr>
+<tr><td class="td-name">🌍 ICE Londres Açúcar Branco (US$/t)</td><td>423,70</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td class="td-up">+0,4%</td></tr>
+<tr><td class="td-name">🇧🇷 Açúcar Cristal SP CEPEA (R$/sc 50kg)</td><td>—</td><td>~98,50</td><td>~98,00</td><td>~97,80</td><td>~97,50</td><td>~97,30</td><td class="td-dn">−6,6% mês</td></tr>
+<tr><td class="td-name">⛽ Etanol Hidratado SP (R$/L)</td><td>~2,59</td><td>~2,55</td><td>~2,52</td><td>~2,50</td><td>~2,50</td><td>~2,50</td><td class="td-dn">−14% mês</td></tr>
+<tr><td class="td-name">⛽ Etanol Anidro SP (R$/L)</td><td>~2,96</td><td>~2,92</td><td>~2,88</td><td>~2,85</td><td>~2,85</td><td>~2,85</td><td class="td-dn">−7,4% sem</td></tr>
+<tr><td class="td-name">⚖️ Consecana-SP (R$/kg ATR · acum.)</td><td colspan="6">R$ 1,0816 (mar/26 · referência)</td><td class="td-dn">−1,2% mês</td></tr>
+<tr><td class="td-name">🛢️ Petróleo Brent (US$/barril)</td><td>~62</td><td>~64</td><td>~64</td><td>~65</td><td class="td-up">~67</td><td>~67</td><td class="td-up">+6%!</td></tr>
+</tbody>
+</table>
+</div>
+
+<p style="font-size:.78rem;color:var(--text3);margin-top:6px;text-align:center"><em>Saca 50 kg = unidade do açúcar cristal · ATR = Açúcares Totais Recuperáveis (qualidade da cana) · Mix etanol/açúcar = % cana destinada · CEPEA preços líquidos ICMS+PIS/Cofins</em></p>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#14532d,#166534)">📈</div><h2>Análise Gráfica <span>— 6 perspectivas · ICE NY · Etanol · Mix · Estados · Histórico · Macro</span></h2></div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📊 ICE NY Açúcar #11 — Recuperação <span class="ch-tag">Abr/26 · ¢/lb</span></h3>
+    <div class="chart-wrap"><canvas id="ch1"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>⛽ Etanol Hidratado SP CEPEA <span class="ch-tag">Abr/26 · R$/L</span></h3>
+    <div class="chart-wrap"><canvas id="ch2"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>🎋 Cana Centro-Sul por Estado 25/26 <span class="ch-tag">CTC · variação %</span></h3>
+    <div class="chart-wrap"><canvas id="ch3"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>⚖️ Mix Açúcar vs Etanol — A Virada <span class="ch-tag">UNICA · 25/26 vs 26/27</span></h3>
+    <div class="chart-wrap"><canvas id="ch4"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="chart-box">
+    <h3>📊 Histórico Cana Centro-Sul <span class="ch-tag">UNICA · mi t · 5 safras</span></h3>
+    <div class="chart-wrap"><canvas id="ch5"></canvas></div>
+  </div>
+  <div class="chart-box">
+    <h3>💰 Consecana-SP ATR <span class="ch-tag">R$/kg · 4 meses</span></h3>
+    <div class="chart-wrap"><canvas id="ch6"></canvas></div>
+  </div>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#166534,#15803d)">🔍</div><h2>Análise Aprofundada <span>— A grande virada do setor sucroenergético em 2026</span></h2></div>
+
+<div class="co cn">
+  <h4>🎋 A Tese Central: Setor Sucroenergético em "Modo Etanol" Total!</h4>
+  <p><strong>O Brasil vive uma virada HISTÓRICA no mix produtivo da cana:</strong><br>
+  ▸ <strong>Mix Etanol 26/27:</strong> <strong>67,07%</strong> (vs 55,29% no 25/26 = +21,3 pp!)<br>
+  ▸ <strong>Mix Açúcar 26/27:</strong> 32,93% (vs 44,71% = −26,4%!)<br>
+  ▸ <strong>Movimento:</strong> Maior virada em direção ao etanol em uma década<br>
+  ▸ <strong>Causa:</strong> Açúcar caiu 20% na safra · etanol +6,5% real<br><br>
+  <strong>Por que isso importa para o BRASIL?</strong><br>
+  ▸ <strong>Brasil é maior exportador mundial</strong> de açúcar (~30% global)<br>
+  ▸ <strong>Brasil é 2º maior produtor mundial</strong> de etanol<br>
+  ▸ <strong>Centro-Sul:</strong> Concentra 90% da produção nacional<br>
+  ▸ <strong>São Paulo + GO + MG + MT + MS + PR:</strong> 6 estados-chave<br>
+  ▸ <strong>Setor emprega:</strong> 1,1 milhão de pessoas direto<br>
+  ▸ <strong>VBP setor:</strong> R$ 200+ bilhões/ano<br><br>
+  <strong>O grande paradoxo de 2026:</strong><br>
+  ▸ <strong>Safra 25/26 ENCERRADA:</strong> 4ª maior histórica (611 mi t)<br>
+  ▸ <strong>Safra 26/27 INICIANDO:</strong> +19,67% na 1ª quinzena<br>
+  ▸ <strong>Mas:</strong> Preços do açúcar despencando · etanol pressionado<br>
+  ▸ <strong>Solução do setor:</strong> Migrar massivamente para etanol<br><br>
+  <strong>Luciano Rodrigues (UNICA):</strong> "<em>Esse movimento reflete as condições de mercado favoráveis ao etanol neste início de safra.</em>"<br><br>
+  <strong>Conclusão:</strong> Setor está se reorganizando ESTRUTURALMENTE. Quem produz cana via Consecana-SP precisa entender que <strong>2026 é ano de etanol</strong> · 2027 pode ser de açúcar novamente (cíclico). <strong>Foco em qualidade ATR é universal</strong> (serve para os dois produtos).</p>
+</div>
+
+<div class="co up">
+  <h4>📈 ICE NY: Recuperação Técnica de Mín. 5 Anos! +8,8% na Semana</h4>
+  <p><strong>Trajetória do açúcar #11 (Demerara) em ICE NY:</strong><br>
+  ▸ <strong>Sexta 17/04:</strong> 13,48¢/lb (<strong>MÍN. 5 ANOS!</strong>)<br>
+  ▸ <strong>Quarta 22/04:</strong> 13,57¢ (+1%)<br>
+  ▸ <strong>Sexta 24/04:</strong> 14,11¢ (+4,7% sem)<br>
+  ▸ <strong>Quarta 29/04:</strong> <strong>14,77¢ (+3,79% dia!)</strong><br>
+  ▸ <strong>Variação semanal 22-29/04:</strong> <strong>+8,8%!</strong><br><br>
+  <strong>3 catalisadores da reversão:</strong><br>
+  ▸ <strong>1. Petróleo Brent:</strong> Disparou +6% no período (Ormuz preocupa)<br>
+  ▸ <strong>2. China importa:</strong> Aumento das compras chinesas<br>
+  ▸ <strong>3. Real forte:</strong> Reduz oferta exportável BR (−1% dólar/dia)<br><br>
+  <strong>Maurício Muruci (Safras & Mercado):</strong> "<em>A alta do petróleo impacta o açúcar, pois eleva o preço da gasolina em Nova York, que chegou ao maior valor em três anos. Isso reflete também no Brasil, que deve ter um combustível mais caro, beneficiando a produção do etanol e reduzindo a do açúcar.</em>"<br><br>
+  <strong>Limitadores da alta (estrutural):</strong><br>
+  ▸ <strong>Superávit global 26/27:</strong> 9-10 mi t (vs 11 mi 25/26 · ainda gordo!)<br>
+  ▸ <strong>Tailândia:</strong> Excedente robusto 1º semestre<br>
+  ▸ <strong>Índia:</strong> Recuperação produção<br>
+  ▸ <strong>Rabobank:</strong> "queda dos preços do etanol no Brasil em 7% reflete aceleração da colheita"<br><br>
+  <strong>Visão técnica:</strong> Mín. 5 anos foi atingida · suporte forte. Recuperação até 15-16¢/lb é técnica. Acima de 17¢ exigiria choque de oferta. <strong>Faixa para 2026:</strong> 13-17¢/lb · média 14,5-15¢.</p>
+</div>
+
+<div class="co dn">
+  <h4>📉 Açúcar Doméstico: A Queda Brutal de 20% na Safra Encerrada!</h4>
+  <p><strong>O ano mais difícil para o açúcar brasileiro em uma década:</strong><br>
+  ▸ <strong>Açúcar Cristal SP CEPEA — Média Safra 24/25:</strong> R$ 145,50/sc 50kg<br>
+  ▸ <strong>Açúcar Cristal SP CEPEA — Média Safra 25/26:</strong> R$ 116,90/sc<br>
+  ▸ <strong>Queda real (deflacionada IGP-M):</strong> <strong>−19,7%!</strong><br>
+  ▸ <strong>Atual (20/04/26):</strong> R$ 99,39 (já abaixo R$ 100!)<br>
+  ▸ <strong>Mínima do ciclo:</strong> Possivelmente em maio-julho/26<br><br>
+  <strong>Razões da queda:</strong><br>
+  ▸ <strong>Oferta global 25/26:</strong> Superávit de 11 mi t (acima do esperado)<br>
+  ▸ <strong>Tailândia:</strong> Recuperou produção<br>
+  ▸ <strong>Índia:</strong> Safra forte<br>
+  ▸ <strong>Brasil safra 25/26:</strong> 4ª maior histórica<br>
+  ▸ <strong>Estoques globais:</strong> Confortáveis<br>
+  ▸ <strong>Demanda enfraquecida:</strong> Recessão, alimentos saudáveis, redução de açúcar<br><br>
+  <strong>Comparativo histórico CEPEA Cristal SP:</strong><br>
+  ▸ <strong>2022/23:</strong> R$ 98,50 (média)<br>
+  ▸ <strong>2023/24:</strong> R$ 132,80<br>
+  ▸ <strong>2024/25:</strong> R$ 145,50 (PICO!)<br>
+  ▸ <strong>2025/26:</strong> R$ 116,90 (queda)<br>
+  ▸ <strong>2026/27 (proj.):</strong> R$ 95-110 (faixa)<br><br>
+  <strong>Implicação para usinas:</strong> Margens estão APERTANDO. Receita por tonelada de cana caiu de R$ 165 (24/25) para ~R$ 145 (25/26) = R$ 20/t a menos. Em uma usina com 5 mi t/ano = R$ 100 milhões a menos de receita anual!<br><br>
+  <strong>Por isso a virada para ETANOL é racional:</strong> Etanol manteve margem · açúcar comprime · usinas migram naturalmente.</p>
+</div>
+
+<div class="co or">
+  <h4>⛽ Etanol: Apesar da Queda em Abril, Safra Fechou em ALTA REAL de +6,5%!</h4>
+  <p><strong>Balanço da Safra 25/26 (médias deflacionadas IGP-M · CEPEA):</strong><br>
+  ▸ <strong>Etanol hidratado:</strong> R$ 2,7805/L (+6,52% real)<br>
+  ▸ <strong>Etanol anidro:</strong> R$ 3,1291/L (+6,21% real)<br>
+  ▸ <strong>Volume hidratado vendido:</strong> −28% vs 24/25 (oferta menor)<br><br>
+  <strong>Mas abril/26 foi de QUEDA brutal:</strong><br>
+  ▸ <strong>Hidratado 6-10/04:</strong> R$ 2,7873 (−3,47% sem)<br>
+  ▸ <strong>Hidratado 13-17/04:</strong> R$ 2,5920 (<strong>−7,01% sem!</strong>)<br>
+  ▸ <strong>Anidro 13-17/04:</strong> R$ 2,9575 (<strong>−7,43% sem!</strong>)<br>
+  ▸ <strong>Indicador Paulínia 20/04:</strong> R$ 2.601,50/m³ (−14,07% mês!)<br>
+  ▸ <strong>Hidratado abaixo R$ 3/L:</strong> 1ª vez desde 1º agosto/2025!<br><br>
+  <strong>Razões da queda em abril:</strong><br>
+  ▸ <strong>Safra 26/27 começou:</strong> +19,67% moagem · oferta cheia<br>
+  ▸ <strong>Mix etanol 67%:</strong> Muito etanol no mercado<br>
+  ▸ <strong>Etanol de milho:</strong> Adicional ao mix (Centro-Sul)<br>
+  ▸ <strong>Distribuidoras cautelosas:</strong> Compram pouco<br>
+  ▸ <strong>Consumidor:</strong> Demanda estável (não absorve aumento oferta)<br><br>
+  <strong>Relação etanol/gasolina:</strong><br>
+  ▸ <strong>Sempre abaixo 70%</strong> em SP durante 25/26<br>
+  ▸ <strong>Vantajoso para consumidor</strong><br>
+  ▸ <strong>Distribuidoras priorizam etanol</strong><br><br>
+  <strong>Cenário 26/27 (Cepea):</strong> "<em>O ambiente tende a ser de maior cautela. As atuais volatilidades nos preços do petróleo e a perspectiva de aumento da oferta de etanol</em>" podem pressionar preços. Mas se petróleo subir + governo elevar mistura, etanol pode reagir.</p>
+</div>
+
+<div class="co bl">
+  <h4>🏭 UNICA 1ª Quinzena: A Maior Aceleração Inicial de Safra em Anos!</h4>
+  <p><strong>Dados UNICA Centro-Sul (1ª quinzena abril 2026):</strong><br>
+  ▸ <strong>Cana moída:</strong> 19,56 mi t (vs 16,68 mi · <strong>+19,67%!</strong>)<br>
+  ▸ <strong>Etanol total:</strong> 1,23 bi L (<strong>+33,32%!</strong>)<br>
+  ▸ <strong>Açúcar:</strong> 647,21 mil t (−11,94%)<br>
+  ▸ <strong>ATR:</strong> 103,36 kg/t (−0,10% · estável)<br><br>
+  <strong>Estrutura operacional:</strong><br>
+  ▸ <strong>195 unidades em operação</strong><br>
+  ▸ <strong>177 com cana</strong><br>
+  ▸ <strong>10 com etanol de milho</strong> (totalmente)<br>
+  ▸ <strong>8 flex</strong> (cana + milho)<br>
+  ▸ <strong>126 unidades</strong> entraram só na 1ª quinzena de abril<br>
+  ▸ <strong>52 unidades</strong> haviam iniciado em março<br><br>
+  <strong>O movimento histórico:</strong><br>
+  ▸ <strong>Mix Etanol 1ª quinz. 26/27:</strong> 67,07%<br>
+  ▸ <strong>Mix Etanol 1ª quinz. 25/26:</strong> 55,29%<br>
+  ▸ <strong>Variação:</strong> +11,8 pontos percentuais!<br>
+  ▸ <strong>Significado:</strong> Maior virada de mix em uma quinzena em DÉCADAS!<br><br>
+  <strong>Por que tanta cana e tanto etanol?</strong><br>
+  ▸ <strong>Tempo seco favorável:</strong> Acelerou colheita<br>
+  ▸ <strong>Açúcar caiu:</strong> Usinas migram para etanol<br>
+  ▸ <strong>Petróleo subiu:</strong> Etanol mais atrativo<br>
+  ▸ <strong>Real fraco:</strong> Penaliza exportação açúcar<br>
+  ▸ <strong>Estoques etanol baixos:</strong> Indústria precisa repor<br><br>
+  <strong>Implicação:</strong> Se ritmo se mantiver, safra 26/27 pode bater <strong>625-635 mi t</strong> (3-4% acima de 25/26) e produzir <strong>recorde de etanol</strong> (35+ bi L). <strong>Cenário muito positivo</strong> para mercado interno de combustível.</p>
+</div>
+
+<div class="co cy">
+  <h4>📊 Por Estado: PR Disparou +15,5% · MG Caiu −15,9% (Encerramento 25/26)</h4>
+  <p><strong>Performance dos estados produtores 25/26 (CTC/UNICA):</strong><br><br>
+  <strong>🟢 Estados em crescimento:</strong><br>
+  ▸ <strong>Paraná:</strong> <strong>+15,5%!</strong> (melhor desempenho!)<br>
+  ▸ <strong>Mato Grosso do Sul:</strong> +6,0%<br>
+  ▸ <strong>Mato Grosso:</strong> +3,2%<br><br>
+  <strong>🔴 Estados em queda:</strong><br>
+  ▸ <strong>São Paulo:</strong> −4,3% (líder absoluto · ainda 50%+ Brasil)<br>
+  ▸ <strong>Goiás:</strong> −9,4%<br>
+  ▸ <strong>Minas Gerais:</strong> <strong>−15,9%!</strong> (pior queda!)<br><br>
+  <strong>Por que essa heterogeneidade?</strong><br>
+  ▸ <strong>Clima ruim:</strong> SP/GO/MG sofreram com seca em 2025<br>
+  ▸ <strong>El Niño:</strong> Afetou regiões tradicionais<br>
+  ▸ <strong>Renovação tardia:</strong> Canaviais antigos em SP/GO<br>
+  ▸ <strong>PR/MS/MT:</strong> Áreas novas com canaviais jovens<br>
+  ▸ <strong>PR:</strong> Investimentos em novas variedades<br><br>
+  <strong>Produtividade média 25/26:</strong> 74,4 t/ha (−4,1% a/a)<br>
+  ▸ Variedades novas (RB867515, RB966928) em expansão<br>
+  ▸ Renovação canaviais em ritmo abaixo do ideal<br>
+  ▸ Custo R$ 130-145/t produzido<br><br>
+  <strong>ATR:</strong> 137,79 kg/t (−2,34% a/a)<br>
+  ▸ Qualidade média da matéria-prima<br>
+  ▸ Influencia diretamente preço Consecana<br>
+  ▸ Variedades melhoradas podem chegar a 150 kg/t<br><br>
+  <strong>Implicação para o produtor:</strong> Quem está em <strong>PR/MS/MT</strong> teve ano excelente em 2025/26. Quem está em SP/GO/MG (epicentro tradicional) sofreu mais. Para 26/27, a tendência é <strong>retomada generalizada</strong> com tempo seco favorecendo colheita rápida.</p>
+</div>
+
+<div class="co pu">
+  <h4>🏦 Macro: Petróleo, Selic e Câmbio Definem o Mix da Safra</h4>
+  <p><strong>O setor sucroenergético é o MAIS sensível ao tripé macro:</strong><br><br>
+  <strong>1. Petróleo (Brent · barril):</strong><br>
+  ▸ <strong>Atual:</strong> ~US$ 67/barril (+6% no mês)<br>
+  ▸ <strong>Catalisador:</strong> Tensões Ormuz · Rússia · OPEP+<br>
+  ▸ <strong>Impacto:</strong> Petróleo alto = gasolina cara = etanol vantajoso = mix etanol sobe<br>
+  ▸ <strong>Hoje:</strong> Mix etanol em 67% confirma efeito<br><br>
+  <strong>2. Câmbio (Dólar):</strong><br>
+  ▸ <strong>Atual:</strong> R$ 4,9523 (mín 2 anos!)<br>
+  ▸ <strong>Açúcar é exportado:</strong> Dólar fraco PENALIZA receita em R$<br>
+  ▸ <strong>Etanol é interno:</strong> Dólar fraco BENEFICIA (não compete com importado)<br>
+  ▸ <strong>Hoje:</strong> Dólar fraco confirma migração para etanol<br><br>
+  <strong>3. Selic (juros):</strong><br>
+  ▸ <strong>Atual:</strong> 14,50% (cortada 0,25 pp em 29/04)<br>
+  ▸ <strong>Setor super endividado:</strong> Selic baixa alivia muito<br>
+  ▸ <strong>Renovação canaviais:</strong> Crédito barato favorece<br>
+  ▸ <strong>BNDES:</strong> Linhas específicas etanol/açúcar<br><br>
+  <strong>Cálculo de paridade ICE NY → preço cana:</strong><br>
+  ▸ Açúcar 14,77¢/lb × 2.205 lb/t = US$ 325,69/t<br>
+  ▸ Em R$: US$ 325,69 × 4,9523 = R$ 1.613/t açúcar<br>
+  ▸ Frete + processamento: −R$ 200/t<br>
+  ▸ Receita líquida açúcar: R$ 1.413/t<br>
+  ▸ Cana ATR 137,79 → R$ 1.413 ÷ 137,79 = ~R$ 10,25/kg ATR (paridade exportação)<br>
+  ▸ Hoje Consecana: R$ 1,08/kg ATR (preço PRODUTOR · não inclui margem usina)<br><br>
+  <strong>Conclusão:</strong> Setor sucroenergético é <strong>commodities + energia + câmbio</strong>. Quem entende os 3 vetores fica à frente. Para 26/27, cenário é <strong>etanol-friendly</strong> · próximas safras devem ter mix similar (60-70% etanol).</p>
+</div>
+
+<div class="co nt">
+  <h4>🏗️ Raízen e a Reestruturação: Setor Em Reorganização Histórica</h4>
+  <p><strong>Notícia bombástica recente (28/04):</strong><br>
+  ▸ <strong>Raízen</strong> (joint venture Cosan + Shell) confirma negociações com credores<br>
+  ▸ <strong>Maior produtora</strong> mundial de açúcar e etanol em <strong>RESTRUCTURAÇÃO</strong>!<br>
+  ▸ <strong>Causa:</strong> Endividamento + queda do açúcar 20% + Selic alta histórica<br><br>
+  <strong>Outras movimentações:</strong><br>
+  ▸ <strong>Companhia Bioenergética:</strong> Emissão debêntures R$ 1,1 bi (sinal de aperto)<br>
+  ▸ <strong>Cocal:</strong> Resultados 2025 divulgados (recuperação)<br>
+  ▸ <strong>Cosan/Atvos:</strong> Em negociações<br><br>
+  <strong>Mapa de risco do setor:</strong><br>
+  ▸ <strong>Empresas sólidas (baixo risco):</strong> Cosan, São Martinho, Tereos, BP Bunge, Coopersucar<br>
+  ▸ <strong>Em ajuste (risco médio):</strong> Raízen (em negociação), Atvos<br>
+  ▸ <strong>Em recuperação (risco alto):</strong> Algumas usinas pequenas<br><br>
+  <strong>Implicações para o produtor de cana:</strong><br>
+  ▸ <strong>Pagamentos:</strong> Atrasos podem ocorrer em usinas com restruturação<br>
+  ▸ <strong>Antecipação:</strong> Sair com cana para usinas confiáveis<br>
+  ▸ <strong>Selic baixa:</strong> Aliviará usinas (acumulado de cortes nos próximos meses)<br>
+  ▸ <strong>Consolidação:</strong> Próximos 12-18 meses verão fusões/aquisições<br>
+  ▸ <strong>Investimento estrangeiro:</strong> Fundos americanos/europeus comprarão ativos<br><br>
+  <strong>Mensagem:</strong> Setor é cíclico. Em 2024/25 estava no auge. Em 2026/27 corrige. Em 2027/28 deve voltar a equilibrar. <strong>Brasil mantém vantagem competitiva mundial</strong> · custo R$ 130-145/t cana é o menor do mundo. <strong>Produtor que aguenta o ciclo sai forte.</strong></p>
+</div>
+
+<div class="dv"></div>
+
+<div class="stitle"><div class="icon" style="background:linear-gradient(135deg,#166534,#15803d)">🌡️</div><h2>Termômetros do Mercado <span>— Pressões e Vetores</span></h2></div>
+
+<div class="grid3">
+  <div class="card">
+    <div class="thermo"><h4>🌎 ICE NY Açúcar</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:55%"></div></div>
+      <div class="th-lb"><span>Crash</span><span>Médio</span><span>Pico</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ RECUPERANDO</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">14,77¢ · +8,8% sem · de mín 5 anos</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🇧🇷 Açúcar Cristal SP</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:25%"></div></div>
+      <div class="th-lb"><span>Crash</span><span>Médio</span><span>Pico</span></div>
+      <p style="font-size:.78rem;color:var(--dn);margin-top:8px;font-weight:700">⬇ EM CRASH</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">R$ 99,39 · −20% safra · −5,76% mês</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>⛽ Etanol SP</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:35%"></div></div>
+      <div class="th-lb"><span>Fraco</span><span>Médio</span><span>Forte</span></div>
+      <p style="font-size:.78rem;color:var(--dn);margin-top:8px;font-weight:700">⬇ PRESSIONADO</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">−14% mês · safra cheia</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🏭 Moagem 26/27</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:88%"></div></div>
+      <div class="th-lb"><span>Fraca</span><span>Média</span><span>Boom</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ BOOM!</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">+19,67% 1ª quinz! · 195 usinas</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>⚖️ Mix Etanol/Açúcar</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--orange),var(--nt),var(--up))"><div class="th-marker" style="left:90%"></div></div>
+      <div class="th-lb"><span>Açúcar</span><span>Equil.</span><span>Etanol</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">🟢 PRÓ-ETANOL!</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">67,07% · maior virada da década!</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="thermo"><h4>🛢️ Petróleo Brent</h4>
+      <div class="th-bar" style="background:linear-gradient(90deg,var(--dn),var(--nt),var(--up))"><div class="th-marker" style="left:65%"></div></div>
+      <div class="th-lb"><span>Baixo</span><span>Médio</span><span>Alto</span></div>
+      <p style="font-size:.78rem;color:var(--up);margin-top:8px;font-weight:700">⬆ EM ALTA</p>
+      <p style="font-size:.74rem;color:var(--text2);margin-top:4px">~US$ 67 · +6% sem · favorece etanol</p>
+    </div>
+  </div>
+</div>
+
+<div class="dv"></div>
+
+<div class="opinion">
+  <h3>🎯 Opinião do Analista — Cana-de-Açúcar Vive Maior Virada de Mix em uma Década!</h3>
+
+  <p><strong>O setor sucroenergético brasileiro vive momento HISTÓRICO em 2026: SAFRA 25/26 ENCERRADA em 611,15 mi t (4ª maior história do Centro-Sul!) com açúcar a 40,43 mi t e etanol total a 33,72 bi L. SAFRA 26/27 INICIOU EM ESTOURO com moagem +19,67% na 1ª quinz. de abril e MIX ETANOL EXPLODIU para 67,07% (vs 55,29% · maior virada da década!). ICE NY se recupera de mín. 5 anos (+8,8% semana · 14,77¢/lb!) com petróleo +6%. Açúcar Cristal SP DESPENCOU para R$ 99,39 (−5,76% mês · −20% safra!). Etanol SP cai 14% mês mas safra fechou +6,5% real. Raízen em RESTRUCTURAÇÃO! 195 usinas operando · 126 entraram só em abril. Para produtor: foque em QUALIDADE ATR (universal · serve açúcar OU etanol) · escolha usinas SÓLIDAS · aproveite Selic 14,50% para renovar canaviais. SETOR EM "MODO ETANOL" TOTAL!</strong></p>
+
+  <p><strong>Semana 27-30/abr (curta · feriado 1º Mai) — Em síntese:</strong><br>
+  ▸ <strong>Consecana-SP Mar/26:</strong> R$ 1,0007/kg ATR mensal · R$ 1,0816 acumul.<br>
+  ▸ <strong>Açúcar Cristal SP 20/04:</strong> R$ 99,39/sc 50kg (−5,76% mês!)<br>
+  ▸ <strong>ICE NY Açúcar 29/04:</strong> 14,77¢/lb (+3,79% dia · +8,8% sem!)<br>
+  ▸ <strong>Etanol Hidratado SP 13-17/04:</strong> R$ 2,5920/L (−7,01% sem)<br>
+  ▸ <strong>Etanol Anidro 13-17/04:</strong> R$ 2,9575/L (−7,43% sem)<br>
+  ▸ <strong>Cana 25/26 ENCERRADA:</strong> 611,15 mi t (4ª maior!)<br>
+  ▸ <strong>1ª quinz. abr 26/27:</strong> 19,56 mi t (+19,67%!)<br>
+  ▸ <strong>Mix etanol 26/27:</strong> 67,07% (vs 55,29%!)<br>
+  ▸ <strong>Petróleo Brent:</strong> ~US$ 67 (+6%)<br>
+  ▸ <strong>Selic:</strong> Cortada para 14,50% · <strong>Dólar:</strong> R$ 4,9523</p>
+
+  <p><strong>Recomendações estratégicas:</strong></p>
+
+  <p><strong>1. FOQUE EM QUALIDADE ATR · É UNIVERSAL!</strong> Diferente de outras culturas onde mix afeta destino (soja vs farelo), em cana o <strong>ATR alto serve para AÇÚCAR ou ETANOL igualmente</strong>. Variedades RB867515, RB966928, CTC9001, CTC9003 podem render 145-155 kg/t (vs média 137,79). Renovação de 18-22% da área por ano é essencial.</p>
+
+  <p><strong>2. ESCOLHA USINAS SÓLIDAS! Cuidado com pagamentos!</strong> Setor em restruturação: Raízen em negociação · usinas pequenas em risco. Priorize <strong>São Martinho, Cosan, Tereos, BP Bunge, Coopersucar</strong>. Evite usinas com histórico de atraso · prefira contratos com índice (Consecana) para travar referência. Cooperativas de produtores (Coopersucar) são SUPER seguras.</p>
+
+  <p><strong>3. APROVEITE SELIC 14,50% PARA RENOVAR CANAVIAIS!</strong> Selic em queda + Plano Safra 26/27 com taxas favoráveis = momento ideal para renovação. Variedades modernas + plantio mecanizado + adubação variada = TCH pode subir de 70-75 t/ha para 90-100 t/ha. Investimento de R$ 8-12k/ha rende em 5-6 anos.</p>
+
+  <p><strong>4. PRODUTOR INDEPENDENTE: NEGOCIE ANTECIPAÇÕES!</strong> Algumas usinas oferecem prêmios de 10-20% sobre Consecana para volumes contratados antes da safra. Em 2026/27 (mix etanol alto · pressão financeira), usinas competirão por boa cana. Aproveite para negociar.</p>
+
+  <p><strong>5. ETANOL CARBURANTE EM ALTA · LONGO PRAZO!</strong> Brasil quer expandir mistura etanol/gasolina (proposta governo). Frota flex já em 80% dos veículos. <strong>Carro elétrico vai demorar</strong> a chegar em escala no Brasil. Etanol é matriz energética estratégica de longo prazo. <strong>Cana é cultura permanente</strong> · vale a pena.</p>
+
+  <p><strong>6. ACOMPANHE PETRÓLEO COMO 2º TERMÔMETRO!</strong> Para o setor sucroenergético, petróleo é tão importante quanto preço de açúcar/etanol. Brent acima de US$ 70/barril = etanol favorecido = mix etanol em 70%+ = boa para usinas e produtores. Brent abaixo US$ 60 = açúcar favorecido. Ajuste estratégias semanalmente.</p>
+
+  <p><strong>7. CANA É CULTURA DE LONGO PRAZO · 5-6 ANOS DE PRODUÇÃO!</strong> Diferente de soja (anual), cana plantada hoje produz por 5-6 anos. Decisões de hoje impactam até 2031-2032. Foque em variedades certas · solo bem corrigido · drenagem · maquinário moderno. <strong>Setor sobreviverá a Raízen</strong> · sobreviverá a queda de açúcar · sobreviverá a recessões. Sempre voltou e sempre vai voltar.</p>
+
+  <div class="opinion .scenarios" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px">
+    <div class="sc up">
+      <h5>🟢 Cenário Altista</h5>
+      <p>Petróleo &gt; US$ 80 + governo eleva mistura etanol + China importa açúcar + Tailândia quebra → <strong>ICE NY 17-19¢ · Cristal SP R$ 130+ · Etanol R$ 3,30+</strong>. Probabilidade: ~20%</p>
+    </div>
+    <div class="sc nt">
+      <h5>🟡 Cenário Neutro</h5>
+      <p>Petróleo lateraliza · safra 26/27 normal · mix etanol 60-65% · estoques globais confortáveis → <strong>ICE NY 13-16¢ · Cristal SP R$ 100-115 · Etanol R$ 2,70-2,95</strong>. Probabilidade: ~55%</p>
+    </div>
+    <div class="sc dn">
+      <h5>🔴 Cenário Baixista</h5>
+      <p>Petróleo &lt; US$ 60 + Tailândia/Índia abundantes + recessão global · Brasil safra recorde → <strong>ICE NY 11-14¢ · Cristal SP R$ 85-100 · Etanol R$ 2,30-2,70</strong>. Probabilidade: ~25%</p>
+    </div>
+  </div>
+
+  <div class="sig">📅 Análise Rural IN · Quinta-feira, 30/Abr/2026 · Semana curta (feriado 1º Mai) · MIX ETANOL 67% É A MAIOR VIRADA EM UMA DÉCADA!</div>
+</div>
+
+<footer class="footer"><div class="wrap">
+  <div class="footer-brand"><span class="r">Rural</span> <span class="i">IN</span></div>
+  <p>Radar Agro Semanal · Cana-de-Açúcar · Semana 27–30 Abril 2026<br>
+  Fontes: CONSECANA-SP · CEPEA/ESALQ-USP · UNICA · CTC (Centro de Tecnologia Canavieira) · ICE Futures Nova York · ICE Europe Londres · CONAB · Pecege · StoneX · Safras & Mercado · Rabobank · Globo Rural · UDOP · Cana Online · CNN Brasil · Banco Central · COPOM</p>
+  <div class="footer-credits">
+    <h4>Análise e Construção</h4>
+    <div class="name">Dr. Sidney Souza</div>
+    <div class="title">Economista e Adm. Agrícola — Estrategista Econômico do Produtor</div>
+    <div class="desc">Especialista em economia da fazenda e gestão de risco no agro<br>Transformamos dados da fazenda em decisões econômicas<br>Ajudamos produtores a entender se o mercado sustenta seu negócio</div>
+    <div class="contact">📧 <a href="mailto:sidneyagro@gmail.com">sidneyagro@gmail.com</a> · 📱 <a href="tel:+5564992266886">(64) 9 9226-6886</a> · 📸 <a href="https://instagram.com/ruralin.ai" target="_blank">@ruralin.ai</a></div>
+  </div>
+  <p style="margin-top:18px"><em>⚠️ Material informativo. Não constitui recomendação de investimento. Consulte profissionais habilitados.</em></p>
+</div></footer>
+
+</div>
+
+<script>
+const gc='rgba(26,42,31,.5)';
+const tt={backgroundColor:'rgba(7,17,9,.97)',borderColor:'#243d2c',borderWidth:1,titleFont:{size:11,weight:'700'},bodyFont:{size:10},padding:10,cornerRadius:8};
+
+// CH1: ICE NY Açúcar #11
+new Chart(document.getElementById('ch1').getContext('2d'),{
+  type:'line',
+  data:{
+    labels:['14/04','17/04','21/04','22/04','23/04','24/04','25/04','28/04','29/04'],
+    datasets:[{label:'ICE NY Açúcar #11 (¢/lb · jul/26)',data:[13.85,13.48,13.43,13.57,13.85,14.11,14.20,14.23,14.77],
+      borderColor:'#84cc16',backgroundColor:'rgba(132,204,22,.13)',borderWidth:3,fill:true,tension:.3,pointRadius:4,pointBackgroundColor:'#84cc16',pointBorderColor:'#a3e635',pointBorderWidth:1.5}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tt,
+      annotation:{annotations:{
+        min:{type:'label',xValue:1,yValue:13.2,content:['📉 Mín 5 anos!','13,48¢'],font:{size:9,weight:'bold'},color:'#ef4444',backgroundColor:'rgba(239,68,68,.13)',padding:4},
+        rec:{type:'label',xValue:8,yValue:15.0,content:['🚀 +3,79%!','Petróleo +6%'],font:{size:9,weight:'bold'},color:'#22c55e',backgroundColor:'rgba(34,197,94,.13)',padding:4}
+      }}
+    },
+    scales:{y:{min:13,max:15.2,grid:{color:gc},ticks:{callback:function(v){return v.toFixed(1)+'¢'},font:{size:9,weight:'600'},color:'#bbf7d0'}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#bbf7d0'}}}
+  }
+});
+
+// CH2: Etanol Hidratado SP CEPEA
+new Chart(document.getElementById('ch2').getContext('2d'),{
+  type:'line',
+  data:{
+    labels:['1-3/04','6-10/04','13-17/04','20-24/04','27-30/04 (proj.)'],
+    datasets:[{label:'Etanol Hidratado SP (R$/L)',data:[2.8870,2.7873,2.5920,2.5300,2.5000],
+      borderColor:'#ef4444',backgroundColor:'rgba(239,68,68,.13)',borderWidth:3,fill:true,tension:.3,pointRadius:5,pointBackgroundColor:'#ef4444',pointBorderColor:'#f97316',pointBorderWidth:1.5}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tt,
+      annotation:{annotations:{
+        crash:{type:'label',xValue:4,yValue:2.42,content:['💥 −14% mês!','Safra cheia'],font:{size:9,weight:'bold'},color:'#ef4444',backgroundColor:'rgba(239,68,68,.13)',padding:4}
+      }}
+    },
+    scales:{y:{min:2.4,max:2.95,grid:{color:gc},ticks:{callback:function(v){return'R$ '+v.toFixed(2)},font:{size:9,weight:'600'},color:'#bbf7d0'}},x:{grid:{display:false},ticks:{font:{size:8,weight:'700'},color:'#bbf7d0'}}}
+  }
+});
+
+// CH3: Cana por estado
+new Chart(document.getElementById('ch3').getContext('2d'),{
+  type:'bar',
+  data:{
+    labels:['Paraná','MS','MT','SP','GO','MG'],
+    datasets:[{label:'Variação cana 25/26 (%)',data:[15.5,6.0,3.2,-4.3,-9.4,-15.9],
+      backgroundColor:function(c){
+        if(c.parsed.y>10)return 'rgba(34,197,94,.7)';
+        if(c.parsed.y>0)return 'rgba(132,204,22,.6)';
+        if(c.parsed.y>-10)return 'rgba(234,179,8,.55)';
+        return 'rgba(239,68,68,.65)';
+      },
+      borderColor:function(c){
+        if(c.parsed.y>10)return '#22c55e';
+        if(c.parsed.y>0)return '#84cc16';
+        if(c.parsed.y>-10)return '#eab308';
+        return '#ef4444';
+      },
+      borderWidth:2,borderRadius:7}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tt,
+      annotation:{annotations:{
+        pr:{type:'label',xValue:0,yValue:18,content:['🥇 Líder!','+15,5%'],font:{size:9,weight:'bold'},color:'#22c55e',backgroundColor:'rgba(34,197,94,.13)',padding:4},
+        mg:{type:'label',xValue:5,yValue:-19,content:['💥 Pior!','−15,9%'],font:{size:9,weight:'bold'},color:'#ef4444',backgroundColor:'rgba(239,68,68,.13)',padding:4}
+      }}
+    },
+    scales:{y:{min:-22,max:22,grid:{color:gc},ticks:{callback:function(v){return v+'%'},font:{size:9,weight:'600'},color:'#bbf7d0'}},x:{grid:{display:false},ticks:{font:{size:11,weight:'700'},color:'#bbf7d0'}}}
+  }
+});
+
+// CH4: Mix Açúcar vs Etanol
+new Chart(document.getElementById('ch4').getContext('2d'),{
+  type:'bar',
+  data:{
+    labels:['Mix Açúcar','Mix Etanol'],
+    datasets:[
+      {label:'Safra 25/26',data:[44.71,55.29],backgroundColor:'rgba(122,134,154,.6)',borderColor:'#7a869a',borderWidth:2,borderRadius:6},
+      {label:'Safra 26/27 (1ª quinz)',data:[32.93,67.07],backgroundColor:'rgba(132,204,22,.7)',borderColor:'#84cc16',borderWidth:2,borderRadius:6}
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{display:true,position:'top',labels:{color:'#bbf7d0',font:{size:10,weight:'600'},boxWidth:14,padding:8}},
+      tooltip:tt,
+      annotation:{annotations:{
+        rev:{type:'label',xValue:1,yValue:75,content:['🚀 +11,8 pp!','Maior virada da década'],font:{size:9,weight:'bold'},color:'#22c55e',backgroundColor:'rgba(34,197,94,.13)',padding:4}
+      }}
+    },
+    scales:{y:{min:0,max:80,grid:{color:gc},ticks:{callback:function(v){return v+'%'},font:{size:9,weight:'600'},color:'#bbf7d0'}},x:{grid:{display:false},ticks:{font:{size:11,weight:'700'},color:'#bbf7d0'}}}
+  }
+});
+
+// CH5: Histórico cana 5 safras
+new Chart(document.getElementById('ch5').getContext('2d'),{
+  type:'bar',
+  data:{
+    labels:['21/22','22/23','23/24','24/25','25/26','26/27 (proj.)'],
+    datasets:[{label:'mi t cana (Centro-Sul)',data:[523,548,654,621.93,611.15,628],
+      backgroundColor:function(c){
+        if(c.dataIndex===5)return 'rgba(132,204,22,.7)';
+        if(c.dataIndex===2)return 'rgba(34,197,94,.65)';
+        return 'rgba(101,163,13,.55)';
+      },
+      borderColor:function(c){
+        if(c.dataIndex===5)return '#84cc16';
+        if(c.dataIndex===2)return '#22c55e';
+        return '#65a30d';
+      },
+      borderWidth:2,borderRadius:7}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:tt,
+      annotation:{annotations:{
+        rec:{type:'label',xValue:2,yValue:680,content:['🏆 Recorde','654 mi t'],font:{size:9,weight:'bold'},color:'#22c55e',backgroundColor:'rgba(34,197,94,.13)',padding:4},
+        proj:{type:'label',xValue:5,yValue:655,content:['🌱 Projeção','+3% a/a'],font:{size:9,weight:'bold'},color:'#84cc16',backgroundColor:'rgba(132,204,22,.13)',padding:4}
+      }}
+    },
+    scales:{y:{min:480,max:700,grid:{color:gc},ticks:{callback:function(v){return v+' mi t'},font:{size:9,weight:'600'},color:'#bbf7d0'}},x:{grid:{display:false},ticks:{font:{size:9,weight:'700'},color:'#bbf7d0'}}}
+  }
+});
+
+// CH6: Consecana ATR
+new Chart(document.getElementById('ch6').getContext('2d'),{
+  type:'line',
+  data:{
+    labels:['Dez/25','Jan/26','Fev/26','Mar/26'],
+    datasets:[
+      {label:'Mensal',data:[1.0587,1.0567,1.0231,1.0007],borderColor:'#84cc16',backgroundColor:'rgba(132,204,22,.1)',borderWidth:3,fill:false,tension:.3,pointRadius:5,pointBackgroundColor:'#84cc16',pointBorderColor:'#a3e635',pointBorderWidth:1.5},
+      {label:'Acumulado',data:[1.0952,1.0929,1.0886,1.0816],borderColor:'#22c55e',backgroundColor:'rgba(34,197,94,.1)',borderWidth:3,fill:false,tension:.3,pointRadius:5,pointBackgroundColor:'#22c55e',pointBorderColor:'#84cc16',pointBorderWidth:1.5}
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{display:true,position:'top',labels:{color:'#bbf7d0',font:{size:10,weight:'600'},boxWidth:14,padding:8}},
+      tooltip:tt,
+      annotation:{annotations:{
+        trend:{type:'label',xValue:3,yValue:0.985,content:['📉 −5,5%','em 4 meses'],font:{size:9,weight:'bold'},color:'#f97316',backgroundColor:'rgba(249,115,22,.13)',padding:4}
+      }}
+    },
+    scales:{y:{min:0.95,max:1.12,grid:{color:gc},ticks:{callback:function(v){return'R$ '+v.toFixed(3)},font:{size:9,weight:'600'},color:'#bbf7d0'}},x:{grid:{display:false},ticks:{font:{size:10,weight:'700'},color:'#bbf7d0'}}}
+  }
+});
+</script>
+</body>
+</html>
